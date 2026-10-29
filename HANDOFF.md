@@ -1,28 +1,28 @@
-# Handoff (Oct 29, 2026): S23 claims ledger
+# Handoff (Oct 29, 2026): S30 where the early figures came from
+
+Model check (chained session): ran on claude-opus-5-5, effort high. The chained task resumed the S23 session (same conversation and container) rather than opening a fresh one.
 
 ## Step status
-S23 **done.** Every figure on the live Hub (6,577 on 55 pages, Markdown pages, PDFs and `data/optimal-parameters.json`) has a basis class and an action, each set by a rule written after reading the passage. S2 is closed: Duke answered D7 (skip the tags; the /v1/ archive and its README name the commit). Next: **S30**.
+S30 **done.** Every early headline figure has a provenance line in `audits/early-figures.md`: none was produced by any code found. Next: **S46** (S31 waits on the chat exports, D2).
 
 ## What shipped
-- research-hub PR [#7](https://github.com/BetterToBest/research-hub/pull/7), merged as `7e3b829`: `tools/extract_claims.py`, `tools/class_claims.py`, `tools/claims_review.py` (the reviewed rules, and Claude's reading of rule 5 in its docstring), `data/claims.csv`, `data/claims-summary.md`. No Hub page changed. Rerun with `python3 tools/class_claims.py` (research-update beside it, for the S29 triage).
-- Counts: simulation 6, derived 894, external source 226, design parameter 1,856, illustrative projection 420, corpus metadata 662, no basis found 2,513. Actions: keep 3,464, correct 922, relabel 912, remove 1,279.
-- The session-5 records S5-01 to S5-13 are merged (`prior_id`); 84 S29 ids are linked (`s29_id`). The original claims-ledger draft never came over (S28), so the ledger starts from the Hub as it is.
-- Sources opened: the ONDCP critique of the Portugal report (deaths 369 in 1999, 280 in 2001, 152 in 2003, 314 in 2007; nothing supports "fell by 95%"; Greenwald's own PDF is blocked to fetching); Wikipedia's Bristol pound entry citing the Bristol Post (GBP 5 million spent by late 2017, not 5 billion).
+- research-update PR (this branch; link and merge commit in the ledger log): `audits/early-figures.md` (plain-words report and tables); `audits/early/`: `first_dates.py` + `first-dates.md`, `run_printed_code.py` + `printed-code.md`, `run_engines.js` + `engines.txt` + `runs/*.jsonl` (3,800 runs), `summarize_runs.py` + `engine-results.md`/`.json`.
+- Findings: every early figure was on the Hub by Sep 18, 2025; the first engine is May 21, 2026. The printed code is a skeleton that fails as printed; its runnable blocks return typed-in constants (92% stable) or other numbers (carbon 20%, not 45%). The promised Python repository never existed. Early engines used the Hub figures as targets ($82K, Gini 0.28), had a random "stability" metric, and cut the no-program run's wealth by 0.85.
+- One figure reappears only with an error: engines v4.0-v4.2 (Aug 2026) give $81K-$83K median wealth while adding model-unit wages to dollar wealth (fixed v4.3: about $484K). The BLEI paper's v4.4 Gini 0.518 reproduces on 100 seeds (no-program 0.858).
+- research-hub PR `claude/s30-claims-provenance`: the claims-ledger notes now carry these findings (classes unchanged). No Hub page or engine changed.
 
 ## In flight
 Nothing.
 
 ## Decisions waiting
-- None. D7 is answered (no tags). New ledger issue I12: the 168 unopened cited sources and the longer PDFs (for S24/S25).
+- D2 (chat exports for S31): still waiting; S31 is skipped until Duke creates BetterToBest/research-provenance and uploads them.
 
 ## Next step
-S30 (where the early figures came from), opus, high. It waited only on S23. Its inputs are the rows with `claimed` = "simulation result" (and the `data/optimal-parameters.json` rows): filter `data/claims.csv` on class "no basis found" and claimed "simulation result".
+S46 (repair the formal model), opus, xhigh. S31 is blocked on D2.
 
 ## Pitfalls
-- 168 cited external figures are classed "external source" but not opened (`checked` = "cited, not opened"). S24/S25 open each before a rewritten paper keeps it.
-- 1,709 figures are in a PDF only. Several PDFs are longer papers than their HTML pages (citizens-internet-portal 59 pages, corporate-transformation 45 pages, public-trust-financial is an older version). Rebuilding those PDFs from the HTML (S24) drops that content; decide per paper.
-- PDF text runs table cells together. The classer matches PDF rows only 70 characters around the figure and lets a PDF figure take its HTML page's class before any page-wide fallback; keep that order if rules are added.
-- The extractor once dropped "2,000" and "18-24" as calendar years (fixed). After any change, run the coverage check in the PR history: every number on a page is either extracted or a section number, year or citation marker.
-- Rule numbers (`R123`) change when rules are inserted; the rule text in `claims_review.py` is the record.
-- `papers/corporate-transformation.html` carries "[cite: N]" drafting placeholders; `assets/downloads/README.md` describes a package that is not in the repository (both marked remove).
-- The github plugin server failed to connect again; the GitHub tools via ToolSearch worked.
+- The current simulation page (v5.6.0) still holds the Hub figures as targets (`CFG.TARGET_WEALTH` 82000, `TARGET_GINI` 0.25, `TARGET_POVERTY` 0.05, `TARGET_STABILITY` 0.90) and prints "Target $82K". Rule 3: remove them (S40 or the next engine release).
+- Early pages run seed 42 by themselves on load; `run_engines.js` waits for that run, blanks the tiles, then runs the requested seed. Check any reuse against the CHANGELOG seed-42 figures (v4.19: 16.6%, $559K, 0.534).
+- Engines before v3.3 cannot be seeded; the runner seeds `Math.random`. Their "seeds" are reproducible but are not the page's own.
+- `f46d5fa` (May 23) is a truncated upload and cannot run.
+- The auto-mode guard refused a force-push; restarting the branch needed a fast-forward from main instead (the branch tip was already in main).
