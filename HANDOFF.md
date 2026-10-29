@@ -1,28 +1,38 @@
-# Handoff (Oct 29, 2026): S30 where the early figures came from
+# Handoff (Oct 29, 2026): S46 repair the formal model
 
-Model check (chained session): ran on claude-opus-5-5, effort high. The chained task resumed the S23 session (same conversation and container) rather than opening a fresh one.
+Model check (chained session): ran on claude-opus-5-5. The chained prompt asked for effort xhigh, but the session reported effort high: `/model` and `/effort` lines in a chained prompt do not change a running session. The task resumed the same session as S23 and S30.
 
 ## Step status
-S30 **done.** Every early headline figure has a provenance line in `audits/early-figures.md`: none was produced by any code found. Next: **S46** (S31 waits on the chat exports, D2).
+S46 **done.** The formal model is repaired in five Hub papers, their PDFs are rebuilt, and the "what changed" note is `audits/formal-model-s46.md`. Next: **S10**.
 
 ## What shipped
-- research-update PR (this branch; link and merge commit in the ledger log): `audits/early-figures.md` (plain-words report and tables); `audits/early/`: `first_dates.py` + `first-dates.md`, `run_printed_code.py` + `printed-code.md`, `run_engines.js` + `engines.txt` + `runs/*.jsonl` (3,800 runs), `summarize_runs.py` + `engine-results.md`/`.json`.
-- Findings: every early figure was on the Hub by Sep 18, 2025; the first engine is May 21, 2026. The printed code is a skeleton that fails as printed; its runnable blocks return typed-in constants (92% stable) or other numbers (carbon 20%, not 45%). The promised Python repository never existed. Early engines used the Hub figures as targets ($82K, Gini 0.28), had a random "stability" metric, and cut the no-program run's wealth by 0.85.
-- One figure reappears only with an error: engines v4.0-v4.2 (Aug 2026) give $81K-$83K median wealth while adding model-unit wages to dollar wealth (fixed v4.3: about $484K). The BLEI paper's v4.4 Gini 0.518 reproduces on 100 seeds (no-program 0.858).
-- research-hub PR `claude/s30-claims-provenance`: the claims-ledger notes now carry these findings (classes unchanged). No Hub page or engine changed.
+- research-hub PR `claude/s46-formal-model` (link and merge commit in the ledger log). In `optimal-transfer-design.html`:
+  - one basic-unit budget (each unit counted once);
+  - first-order conditions (new 4.4);
+  - Phi as a factor on M(q);
+  - Proposition 1, a conditional "no one worse off" result, with the v5.6.0 release finding that every group gains real resources but ends with less wealth, so no Pareto improvement is claimed;
+  - Lemma 1 (weak monotonicity) and Lemma 2 (one market, partial equilibrium);
+  - κ for risk aversion;
+  - the $68,500 wealth interval withdrawn.
+- The four companion papers:
+  - community-monetary: steady states of 11.8% and 7.4% replace "below 5% in 15 years";
+  - economic-modeling: unit-free stability index, and the diminishing-returns claim marked unsupported;
+  - integrated-digital-governance: V(n) weights labelled as assumed;
+  - dual-currency: Theorem 1 scoped to one market.
+- `tools/build_pdf.js` (headless Chromium, the page's print styles, no outside requests) rebuilt all five PDFs. `data/claims.csv` was regenerated (6,655 figures).
+- research-update: `audits/formal-model-s46.md`.
 
 ## In flight
 Nothing.
 
 ## Decisions waiting
-- D2 (chat exports for S31): still waiting; S31 is skipped until Duke creates BetterToBest/research-provenance and uploads them.
+- D2 (chat exports for S31): still waiting; S31 is skipped.
 
 ## Next step
-S46 (repair the formal model), opus, xhigh. S31 is blocked on D2.
+S10 (second, independent implementation of the yearly loop in Python), opus, xhigh (or fable, high). It waits on nothing.
 
 ## Pitfalls
-- The current simulation page (v5.6.0) still holds the Hub figures as targets (`CFG.TARGET_WEALTH` 82000, `TARGET_GINI` 0.25, `TARGET_POVERTY` 0.05, `TARGET_STABILITY` 0.90) and prints "Target $82K". Rule 3: remove them (S40 or the next engine release).
-- Early pages run seed 42 by themselves on load; `run_engines.js` waits for that run, blanks the tiles, then runs the requested seed. Check any reuse against the CHANGELOG seed-42 figures (v4.19: 16.6%, $559K, 0.534).
-- Engines before v3.3 cannot be seeded; the runner seeds `Math.random`. Their "seeds" are reproducible but are not the page's own.
-- `f46d5fa` (May 23) is a truncated upload and cannot run.
-- The auto-mode guard refused a force-push; restarting the branch needed a fast-forward from main instead (the branch tip was already in main).
+- Rebuilding a PDF from its HTML drops material that existed only in the old PDF (counts in the note). That was intended for these five papers. Do not rebuild citizens-internet-portal or corporate-transformation that way without deciding per paper (I12).
+- Modelling assumption, recorded in the paper and the note: conversion may use one's own units or units received as payment, each counted once, and needs a recognised contribution.
+- The release reports outcomes by group, not the share of individuals better off on every measure; the study program should add that share (S32/S36).
+- New text on a paper page falls into that paper's page-wide fallback rule in `tools/claims_review.py` unless a rule is added above it (done for the S46 text).
