@@ -1,26 +1,28 @@
-# Handoff (Oct 29, 2026): S29 refine.ink audit triage
+# Handoff (Oct 29, 2026): S23 claims ledger
 
 ## Step status
-S29 **done.** All 145 comments are classified, and `recompute.py` runs clean (64 checks). S2 is still partly done (the tags, D7). Next: **S23**.
+S23 **done.** Every figure on the live Hub (6,577 on 55 pages, Markdown pages, PDFs and `data/optimal-parameters.json`) has a basis class and an action, each set by a rule written after reading the passage. S2 is closed: Duke answered D7 (skip the tags; the /v1/ archive and its README name the commit). Next: **S30**.
 
 ## What shipped
-- research-update: the S29 pull request (link and merge commit in the ledger log). Files: `audits/refine/triage.md` (summary and item lists), `triage.csv` (one row per comment), `recompute.py`, `triage.py` (rebuilds the CSV, the triage.md lists and the additions file), `presence_check.py` fixes, and `audits/corrections-additions.md` (53 headline and derivation items for S24).
-- Checked against research-hub `8a72c68`, read only. Nothing changed on the Hub.
-- Result: 99 comments live, 36 PDF-only, 10 gone. 124 valid, 5 partly valid, 0 wrong, 16 moot. Of the live ones, 96 are valid: 30 change a headline figure, 23 a derivation, 43 wording only.
+- research-hub PR [#7](https://github.com/BetterToBest/research-hub/pull/7), merged as `7e3b829`: `tools/extract_claims.py`, `tools/class_claims.py`, `tools/claims_review.py` (the reviewed rules, and Claude's reading of rule 5 in its docstring), `data/claims.csv`, `data/claims-summary.md`. No Hub page changed. Rerun with `python3 tools/class_claims.py` (research-update beside it, for the S29 triage).
+- Counts: simulation 6, derived 894, external source 226, design parameter 1,856, illustrative projection 420, corpus metadata 662, no basis found 2,513. Actions: keep 3,464, correct 922, relabel 912, remove 1,279.
+- The session-5 records S5-01 to S5-13 are merged (`prior_id`); 84 S29 ids are linked (`s29_id`). The original claims-ledger draft never came over (S28), so the ledger starts from the Hub as it is.
+- Sources opened: the ONDCP critique of the Portugal report (deaths 369 in 1999, 280 in 2001, 152 in 2003, 314 in 2007; nothing supports "fell by 95%"; Greenwald's own PDF is blocked to fetching); Wikipedia's Bristol pound entry citing the Bristol Post (GBP 5 million spent by late 2017, not 5 billion).
 
 ## In flight
 Nothing.
 
 ## Decisions waiting
-- D7 (from S2): Duke to create tag `hub-v1` and the releases by hand. Default: carry on without them.
-- No new decisions from S29.
+- None. D7 is answered (no tags). New ledger issue I12: the 168 unopened cited sources and the longer PDFs (for S24/S25).
 
 ## Next step
-S23 (claims ledger), opus, high. It waited only on S29. Its `S29 id` column should cite the ids in `audits/refine/triage.csv`. Each headline row there is a figure S23 must class; most have no run behind them.
+S30 (where the early figures came from), opus, high. It waited only on S23. Its inputs are the rows with `claimed` = "simulation result" (and the `data/optimal-parameters.json` rows): filter `data/claims.csv` on class "no basis found" and claimed "simulation result".
 
 ## Pitfalls
-- presence_check.py treated a bare "<" (for example "p* < 0.05") as the start of an HTML tag, which hid text on several pages. It is fixed, and ten locators were corrected. The Oct 28 counts (128 present, 32 PDF-only) were therefore slightly off: the true counts are 132 and 33.
-- Several HTML pages (optimal-transfer-design, dual-currency-inflation, drug-policy-reform) are rewrites of their PDFs, not copies: figures differ between the two (drug-policy integrated net value: $5.0T on the HTML page, $4.7T in the PDF). Judge the HTML. The PDF-only rows are fixed by rebuilding the PDFs (S24).
-- The audit's critiques hold, but some of its explanations do not. On B097, B053, B093, B017, B095, B036, B075, B016 and B083 it supplies a reconciliation the paper does not state (listed in triage.md). Do not cite those explanations as the paper's.
-- The B028 (Portugal) and B011 (Bristol Pound) source figures were not opened this session. S23 opens them.
-- The github plugin server failed to connect at start again, as in S2.
+- 168 cited external figures are classed "external source" but not opened (`checked` = "cited, not opened"). S24/S25 open each before a rewritten paper keeps it.
+- 1,709 figures are in a PDF only. Several PDFs are longer papers than their HTML pages (citizens-internet-portal 59 pages, corporate-transformation 45 pages, public-trust-financial is an older version). Rebuilding those PDFs from the HTML (S24) drops that content; decide per paper.
+- PDF text runs table cells together. The classer matches PDF rows only 70 characters around the figure and lets a PDF figure take its HTML page's class before any page-wide fallback; keep that order if rules are added.
+- The extractor once dropped "2,000" and "18-24" as calendar years (fixed). After any change, run the coverage check in the PR history: every number on a page is either extracted or a section number, year or citation marker.
+- Rule numbers (`R123`) change when rules are inserted; the rule text in `claims_review.py` is the record.
+- `papers/corporate-transformation.html` carries "[cite: N]" drafting placeholders; `assets/downloads/README.md` describes a package that is not in the repository (both marked remove).
+- The github plugin server failed to connect again; the GitHub tools via ToolSearch worked.
