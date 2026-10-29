@@ -1,27 +1,26 @@
-# Handoff (Oct 29, 2026): S2 Hub v1 archive
+# Handoff (Oct 29, 2026): S29 refine.ink audit triage
 
 ## Step status
-S2 **partly done.** The /v1/ archive is built and merged. The two tags and their releases do not exist yet (blocked, see Pitfalls). Next: **S29** (it does not need the tags). S24 still waits on S2.
+S29 **done.** All 145 comments are classified, and `recompute.py` runs clean (64 checks). S2 is still partly done (the tags, D7). Next: **S23**.
 
 ## What shipped
-- research-hub [pull request 6](https://github.com/BetterToBest/research-hub/pull/6) (merged 8a72c68; the repository has no checks): `v1/` built from commit 152d0bc (32 HTML pages, wiki, 18 PDFs), each page with the banner, noindex, canonical to the live page, links kept inside /v1/; "Version 1 (archived)" in the live footer (index.html); `v1/README.md`; `tools/build_v1.py` and `tools/check_v1.py`. Check: 32 pages, 0 failing. `python3 -m http.server` served v1/, v1/wiki/glossary.html, v1/papers/ and one PDF (all 200).
-- Commits to record for the tags:
-  - research-hub main at the freeze: `152d0bc314a25db56c1995b05ba29317f18b8a9d`
-  - bettertobest.github.io main: `a468ea2e45e7bf63cba745d8e06e23524dbb62f0`
-  - Simulation tag v5.6.0 is `126a9c3` (Oct 14). **NEEC cites `d10ed6e`**, a later main commit (Oct 14, 36 commits on: studies, suite page). Between the two, the engine file index.html differs by 2 lines and harness.js not at all. So the engine is the same; the tag and NEEC's commit differ. Nothing moved or retagged.
+- research-update: the S29 pull request (link and merge commit in the ledger log). Files: `audits/refine/triage.md` (summary and item lists), `triage.csv` (one row per comment), `recompute.py`, `triage.py` (rebuilds the CSV, the triage.md lists and the additions file), `presence_check.py` fixes, and `audits/corrections-additions.md` (53 headline and derivation items for S24).
+- Checked against research-hub `8a72c68`, read only. Nothing changed on the Hub.
+- Result: 99 comments live, 36 PDF-only, 10 gone. 124 valid, 5 partly valid, 0 wrong, 16 moot. Of the live ones, 96 are valid: 30 change a headline figure, 23 a derivation, 43 wording only.
 
 ## In flight
 Nothing.
 
 ## Decisions waiting
-- D7: Create tag `hub-v1` and a release on research-hub (at 152d0bc) and on bettertobest.github.io (at a468ea2) by hand in the GitHub web page; this session's tag push got HTTP 403 and no tool can make a release. Default: carry on without them; v1/README.md names the commit.
-- D6 (answered by Duke: package added to the claude.ai project context box). This session cannot read that box. The package must reach a repository before the box files can go (S23/S24 need it as files).
+- D7 (from S2): Duke to create tag `hub-v1` and the releases by hand. Default: carry on without them.
+- No new decisions from S29.
 
 ## Next step
-S29 (refine.ink audits against today's Hub), opus, medium. Auto-chain is not scheduled, because S2 is not fully done.
+S23 (claims ledger), opus, high. It waited only on S29. Its `S29 id` column should cite the ids in `audits/refine/triage.csv`. Each headline row there is a figure S23 must class; most have no run behind them.
 
 ## Pitfalls
-- `git push` of a tag to either repository fails with 403 (this session's git proxy); the connector has no tag or release tool. I wrote a branch-only GitHub Actions workflow to create them; the auto-mode classifier refused it, so I did not try again. Do not work around that.
-- v1/README.md says the tag is meant to mark the commit; if D7 is done, do not edit v1/ (frozen). Note the tag in the corrections log instead.
-- The github plugin server failed to connect at start ("Authorization header badly formatted"); the mcp__github__ tools still worked.
-- PDFs cannot carry noindex; only v1 HTML is hidden from search.
+- presence_check.py treated a bare "<" (for example "p* < 0.05") as the start of an HTML tag, which hid text on several pages. It is fixed, and ten locators were corrected. The Oct 28 counts (128 present, 32 PDF-only) were therefore slightly off: the true counts are 132 and 33.
+- Several HTML pages (optimal-transfer-design, dual-currency-inflation, drug-policy-reform) are rewrites of their PDFs, not copies: figures differ between the two (drug-policy integrated net value: $5.0T on the HTML page, $4.7T in the PDF). Judge the HTML. The PDF-only rows are fixed by rebuilding the PDFs (S24).
+- The audit's critiques hold, but some of its explanations do not. On B097, B053, B093, B017, B095, B036, B075, B016 and B083 it supplies a reconciliation the paper does not state (listed in triage.md). Do not cite those explanations as the paper's.
+- The B028 (Portugal) and B011 (Bristol Pound) source figures were not opened this session. S23 opens them.
+- The github plugin server failed to connect at start again, as in S2.
