@@ -24,3 +24,7 @@ Spot checks so far (Claude's recomputation, to be confirmed in S29):
 | B009 | $1.52T total | the table sums to $4,616B: audit right |
 | B097 | NPV $1,847 | the printed formula gives $2,046; the audit's explanation gives $1,832: both off |
 | B093 | $82,000 median wealth | an input in data/optimal-parameters.json, reported elsewhere as a result: traced in S30 |
+
+## Oct 29, 2026 triage (S29)
+
+Done. `triage.md` has the summary, the valid live items by severity and the PDF-only list; `triage.csv` has one row per comment (where it is on the Hub, verdict, severity, correction). `recompute.py` reruns every arithmetic point (64 checks). `triage.py <research-hub checkout>` reruns the presence check and rebuilds `triage.csv`, `triage.md` (below its marker) and `../corrections-additions.md`. All spot checks above are confirmed except B053 and B097: on B053 the audit's own explanation is also wrong, and on B097 its explanation gives $1,832 (see triage.md).
