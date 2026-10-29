@@ -29,9 +29,10 @@ Nothing.
 - D2 (chat exports for S31): still waiting; S31 is skipped.
 
 ## Next step
-S10 (second, independent implementation of the yearly loop in Python), opus, xhigh (or fable, high). It waits on nothing.
+S10 (second, independent implementation of the yearly loop in Python), opus, xhigh (or fable, high). It waits on nothing, but it **must start in a new session**. The chained S10 task fired into this session on Oct 29 at 19:46 UTC, and S10 was deliberately not started there. That session had read engine code during S30 (the early engine pages, the current page's `CFG.TARGET_*` constants, the CHANGELOG's fix descriptions). An implementation written in it would not be independent of harness.js internals, which S10 forbids. The chain stops here; Duke starts S10 by hand.
 
 ## Pitfalls
+- Chained tasks resume the same session (same conversation and container), so later steps inherit everything earlier steps read. For any step that must be independent (S10, outside audits), start a fresh session instead of chaining.
 - Rebuilding a PDF from its HTML drops material that existed only in the old PDF (counts in the note). That was intended for these five papers. Do not rebuild citizens-internet-portal or corporate-transformation that way without deciding per paper (I12).
 - Modelling assumption, recorded in the paper and the note: conversion may use one's own units or units received as payment, each counted once, and needs a recognised contribution.
 - The release reports outcomes by group, not the share of individuals better off on every measure; the study program should add that share (S32/S36).
