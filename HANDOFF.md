@@ -1,34 +1,29 @@
-# Handoff (Oct 28, 2026): plan set up in the planning chat (S27)
+# Handoff (Oct 29, 2026): S28 wiring
 
 ## Step status
-S27 (planning) done. Next: **S28**.
+S28 done once the three open pull requests below show merged (see "What shipped"). Next: **S2**.
 
 ## What shipped
-- This repository: CLAUDE.md (rules), PLAN.md (36-row order with model and effort), `/start-session` and `/end-session`, `prereg/TEMPLATE.md`, `audits/refine/presence_check.py`.
-- Ledger (document `hub`): steps S27-S48 added, decisions D1-D5, issues I9-I11; `next`, `left`, `watch` and `landing` updated.
+- research-hub [pull request 5](https://github.com/BetterToBest/research-hub/pull/5): short CLAUDE.md (merged, no checks run in that repo).
+- compassionism-simulation [pull request 47](https://github.com/BetterToBest/compassionism-simulation/pull/47): landing rule replaces "Duke merges"; guardrails untouched; `/handoff` points at ledger F1hceP6XEfPQ1pf6Sw1Ki8, document `hub`, and prefers this repository's `/end-session`.
+- NormativeEvaluation [pull request 53](https://github.com/BetterToBest/NormativeEvaluation/pull/53): same landing rule; NEEC stays paused.
+- This repository: `.github/workflows/links.yml` (relative-link check), this file.
 
-## Findings from planning (to build on, not redo)
-- The two refine.ink audits hold 145 distinct comments (13 on the mechanism-design paper, 132 on the Oct 2025 compendium). 128 of the quoted passages are still on the live Hub; 32 of those survive only in the PDFs (the HTML was corrected but the PDFs were not rebuilt; for example the Bristol Pound "£5 billion" and the 2.86 multiplier).
-- Spot-checked arithmetic: the audits are right on the multiplier (1.95), the half-life (3.72 discrete), the steady state (11.8% and 7.4%, both above the theorem's 5%), the elasticity (-1.6), 13 not 15 points, 11% not 14% of GDP; the audit is itself wrong on the $1,847 NPV (its explanation gives $1,832).
-- `research-hub/data/optimal-parameters.json` lists $82,000 under PTH parameters as "expected wealth building" (an input); the papers report the same figure as a simulation result with a 95% interval. S30 traces it.
-- The ledger's I7 already notes no record that the theta "Monte Carlo calibration" was ever run.
-- No tags exist on research-hub (S2). The Hub links one of the 22+ Academia papers (S43).
+## Checks of the old items
+- S9: nothing to merge. The compare-page restyle and study-page history removal shipped in pull requests 40-46 (merged Oct 16); no draft pull request is open. Close S9.
+- S17: mostly shipped. Confirmed: shared glossary on front and findings pages; "same-rules reading" on both; CONTRIBUTING.md open-items table and dev/PROGRESS.md marked historical. **Missing, small follow-up:** British spellings remain on live pages (index.html: labour, behaviour, neighbourhood, Labour, including inside the release data strings; compare.html: favour, labour); one "design-neutral reading" remains in an index.html code comment (line ~2372). Not found by grep, check by eye on the live pages: the damping row wording for PTF/PTH and the v5.5 entry in the release list (the v5.5.0 notes exist in CHANGELOG.md).
+- S18: `dev/packets/` holds three zips: s118 (is S10), s119 (is S15), s148 (is S13), with builders and a README. Nothing else remains; close S18.
+- Corrections package (C1-C30) and claims-ledger draft: not in any of the five repositories (only mentions in PLAN.md and a one-line item in compassionism-simulation `dev/background/ledger-export.md`). Decision for Duke: bring them over from the other account (ledger sync file below).
+- Workflow file: GitHub accepted `.github/workflows/links.yml` pushed from this session with `git push`. S33 can rely on that.
+- Chaining test: see the end-of-session reply.
 
-## Decisions (answered Oct 28)
-- D1: tag plus /v1/ archive pages, bannered and hidden from search engines (S2).
-- D2: chat exports from both accounts into a private repository; Duke creates BetterToBest/research-provenance and uploads them (S31 waits for that).
-- D3: Duke pastes the Academia links into D3's note (S43 waits for them).
-- D4: GitHub Actions now; Duke adds the Runpod key once the design is frozen (S47, then S48).
-- D5: BeforeIT.jl cross-check after the scale results, regardless (S39).
-- Duke, Oct 28: settle every design before any paid run, so nothing has to be rerun. The plan now runs free pilots on Actions (S35), freezes the full design (S47), then runs one batch (S48).
-- Duke, Oct 28: sessions should start the next step themselves. AUTOCHAIN.md and `/end-session` step 5 do this; S28 tests it.
+## Decisions waiting
+- Bring the corrections package and claims-ledger draft over from the other account (default: S23/S24 start from the Hub as it is today).
 
 ## Next step
-S28: wiring (merge rule in each repository's CLAUDE.md, ledger pointers, S9, S17, S18, workflow-file test).
+S2 (tag Hub v1 and the cited Simulation release; build /v1/ archive), sonnet, medium. D1 default proceeds.
 
 ## Pitfalls
-- Open and merge pull requests with `gh api` (repos/<owner>/<repo>/pulls, then .../pulls/<n>/merge). The GitHub connector's pull-request tools returned 403 here; `git push` works once the repository is attached with add_repo.
-- Past-chat search from the claude.ai Project only sees chats inside the Project, so early chats are out of reach there (S31 uses a data export instead).
-- The corrections package (C1-C30) and the claims-ledger draft were worked on in the other account; S28 looks for them in these repositories first.
-- An older account-level skill also named `start-session` belongs to the CIP portal plan (portal steps 1-12). If `/start-session S28` answers with portal steps, the wrong skill ran: ask Duke to remove that plugin skill (the portal repository has its own `/start-sessions`).
-- compassionism-simulation's `/handoff` still points at the other account's ledger until S28 changes it.
+- The GitHub connector's pull-request tools worked this time (create, read checks, merge); the 403 in the earlier handoff did not recur. `gh` here fails to log in; use the connector.
+- compassionism-simulation's checks include a ~3 minute `guard` job; do not wait on it in a loop.
+- research-hub has no CI, so its pull requests merge at once; review your own diff first.
