@@ -5,7 +5,7 @@ S27 (planning) done. Next: **S28**.
 
 ## What shipped
 - This repository: CLAUDE.md (rules), PLAN.md (36-row order with model and effort), `/start-session` and `/end-session`, `prereg/TEMPLATE.md`, `audits/refine/presence_check.py`.
-- Ledger (document `hub`): steps S27-S46 added, decisions D1-D5, issues I9-I11; `next`, `left`, `watch` and `landing` updated.
+- Ledger (document `hub`): steps S27-S48 added, decisions D1-D5, issues I9-I11; `next`, `left`, `watch` and `landing` updated.
 
 ## Findings from planning (to build on, not redo)
 - The two refine.ink audits hold 145 distinct comments (13 on the mechanism-design paper, 132 on the Oct 2025 compendium). 128 of the quoted passages are still on the live Hub; 32 of those survive only in the PDFs (the HTML was corrected but the PDFs were not rebuilt; for example the Bristol Pound "£5 billion" and the 2.86 multiplier).
@@ -27,6 +27,7 @@ S27 (planning) done. Next: **S28**.
 S28: wiring (merge rule in each repository's CLAUDE.md, ledger pointers, S9, S17, S18, workflow-file test).
 
 ## Pitfalls
+- Open and merge pull requests with `gh api` (repos/<owner>/<repo>/pulls, then .../pulls/<n>/merge). The GitHub connector's pull-request tools returned 403 here; `git push` works once the repository is attached with add_repo.
 - Past-chat search from the claude.ai Project only sees chats inside the Project, so early chats are out of reach there (S31 uses a data export instead).
 - The corrections package (C1-C30) and the claims-ledger draft were worked on in the other account; S28 looks for them in these repositories first.
 - An older account-level skill also named `start-session` belongs to the CIP portal plan (portal steps 1-12). If `/start-session S28` answers with portal steps, the wrong skill ran: ask Duke to remove that plugin skill (the portal repository has its own `/start-sessions`).
