@@ -1,0 +1,344 @@
+{
+ "244075c": {
+  "poverty %": 1.564,
+  "base poverty %": 9.912,
+  "Gini": 0.42704,
+  "base Gini": 0.5286500000000001,
+  "median wealth $": 237000.0,
+  "base median wealth $": 40470.0,
+  "stability %": 91.82
+ },
+ "9e499c0": {
+  "poverty %": 1.564,
+  "base poverty %": 9.912,
+  "Gini": 0.42704,
+  "base Gini": 0.5286500000000001,
+  "median wealth $": 237000.0,
+  "base median wealth $": 40470.0,
+  "stability %": 91.82
+ },
+ "64c866a": {
+  "poverty %": 29.246,
+  "base poverty %": 99.93599999999999,
+  "Gini": 0.6005699999999999,
+  "base Gini": 0.16184,
+  "median wealth $": 143170.0,
+  "base median wealth $": 0.0,
+  "stability %": 78.37
+ },
+ "54f926a": {
+  "poverty %": 29.364,
+  "base poverty %": 99.938,
+  "Gini": 0.60139,
+  "base Gini": 0.16122,
+  "median wealth $": 142560.0,
+  "base median wealth $": 0.0,
+  "stability %": 80.64
+ },
+ "2a64b56": {
+  "poverty %": 6.888,
+  "base poverty %": 36.188,
+  "Gini": 0.44106,
+  "base Gini": 0.67068,
+  "median wealth $": 452270.0,
+  "base median wealth $": 129930.0,
+  "stability %": 82.41
+ },
+ "2389c8d": {
+  "poverty %": 1.502,
+  "base poverty %": 10.25,
+  "Gini": 0.35675999999999997,
+  "base Gini": 0.53196,
+  "median wealth $": 230730.0,
+  "base median wealth $": 40310.0,
+  "stability %": 97.72
+ },
+ "dcfdd0a": {
+  "poverty %": 4.964,
+  "base poverty %": 28.818,
+  "Gini": 0.37199,
+  "base Gini": 0.53198,
+  "median wealth $": 120270.0,
+  "base median wealth $": 40300.0,
+  "stability %": 97.68
+ },
+ "46e6c11": {
+  "poverty %": 4.958,
+  "base poverty %": 29.13,
+  "Gini": 0.37202999999999997,
+  "base Gini": 0.5330900000000001,
+  "median wealth $": 120210.0,
+  "base median wealth $": 40140.0,
+  "stability %": 97.84
+ },
+ "db1b618": {
+  "poverty %": 11.236,
+  "base poverty %": 61.462,
+  "Gini": 0.43651,
+  "base Gini": 0.75413,
+  "median wealth $": 91410.0,
+  "base median wealth $": 12430.0,
+  "stability %": 79.72
+ },
+ "5f95861": {
+  "poverty %": 11.786,
+  "base poverty %": 61.63,
+  "Gini": 0.44044,
+  "base Gini": 0.84485,
+  "median wealth $": 91760.0,
+  "base median wealth $": 12200.0,
+  "stability %": 78.14
+ },
+ "cb699cc": {
+  "poverty %": 11.784,
+  "base poverty %": 61.68,
+  "Gini": 0.43628,
+  "base Gini": 0.75587,
+  "median wealth $": 91900.0,
+  "base median wealth $": 12150.0,
+  "stability %": 77.66
+ },
+ "844cddb": {
+  "poverty %": 11.844,
+  "base poverty %": 61.634,
+  "Gini": 0.4368,
+  "base Gini": 0.7551,
+  "median wealth $": 91490.0,
+  "base median wealth $": 12250.0,
+  "stability %": 77.29
+ },
+ "f3963a9": {
+  "poverty %": 11.844,
+  "base poverty %": 62.552,
+  "Gini": 0.45971,
+  "base Gini": 0.7761100000000001,
+  "median wealth $": 92820.0,
+  "base median wealth $": 11420.0,
+  "stability %": 74.24
+ },
+ "a2e3bdb": {
+  "poverty %": 11.991999999999999,
+  "base poverty %": 62.512,
+  "Gini": 0.46264,
+  "base Gini": 0.77708,
+  "median wealth $": 92720.0,
+  "base median wealth $": 11410.0,
+  "stability %": 74.46
+ },
+ "0efeae2": {
+  "poverty %": 12.042,
+  "base poverty %": 62.508,
+  "Gini": 0.46365,
+  "base Gini": 0.7777700000000001,
+  "median wealth $": 92720.0,
+  "base median wealth $": 11380.0,
+  "stability %": 73.36
+ },
+ "b6d4636": {
+  "poverty %": 11.902,
+  "base poverty %": 62.516,
+  "Gini": 0.4581,
+  "base Gini": 0.77427,
+  "median wealth $": 92580.0,
+  "base median wealth $": 11430.0,
+  "stability %": 74.29
+ },
+ "37f86e1": {
+  "poverty %": 9.793999999999999,
+  "base poverty %": 61.888,
+  "Gini": 0.43831,
+  "base Gini": 0.76469,
+  "median wealth $": 90230.0,
+  "base median wealth $": 12690.0,
+  "stability %": 91.51
+ },
+ "79a5d85": {
+  "poverty %": 9.818,
+  "base poverty %": 62.022,
+  "Gini": 0.43806,
+  "base Gini": 0.76497,
+  "median wealth $": 90240.0,
+  "base median wealth $": 12510.0,
+  "stability %": 91.44
+ },
+ "ae31e52": {
+  "poverty %": 16.888,
+  "base poverty %": 67.978,
+  "Gini": 0.5828800000000001,
+  "base Gini": 0.8182699999999999,
+  "median wealth $": 81490.0,
+  "base median wealth $": 1730.0,
+  "stability %": 98.23
+ },
+ "710ce2e": {
+  "poverty %": 16.046,
+  "base poverty %": 67.978,
+  "Gini": 0.60804,
+  "base Gini": 0.8182699999999999,
+  "median wealth $": 82900.0,
+  "base median wealth $": 1730.0,
+  "stability %": 98.61
+ },
+ "970c11a": {
+  "poverty %": 14.864,
+  "base poverty %": 67.836,
+  "Gini": 0.48694,
+  "base Gini": 0.81968,
+  "median wealth $": 81890.0,
+  "base median wealth $": 2010.0,
+  "stability %": 94.66
+ },
+ "8a70325": {
+  "poverty %": 20.406,
+  "base poverty %": 72.612,
+  "Gini": 0.5419900000000001,
+  "base Gini": 0.85781,
+  "median wealth $": 483770.0,
+  "base median wealth $": -10000.0,
+  "stability %": 88.56
+ },
+ "0beb185": {
+  "poverty %": 15.44,
+  "base poverty %": 71.422,
+  "Gini": 0.51757,
+  "base Gini": 0.85831,
+  "median wealth $": 526820.0,
+  "base median wealth $": -10000.0,
+  "stability %": 88.68
+ },
+ "df48f72": {
+  "poverty %": 15.354,
+  "base poverty %": 71.422,
+  "Gini": 0.5163,
+  "base Gini": 0.85831,
+  "median wealth $": 528700.0,
+  "base median wealth $": -10000.0,
+  "stability %": 88.61
+ },
+ "27f971c": {
+  "poverty %": 15.444,
+  "base poverty %": 71.422,
+  "Gini": 0.51653,
+  "base Gini": 0.85831,
+  "median wealth $": 528540.0,
+  "base median wealth $": -10000.0,
+  "stability %": 88.66
+ },
+ "1e975b4": {
+  "poverty %": 15.362,
+  "base poverty %": 71.422,
+  "Gini": 0.51667,
+  "base Gini": 0.85831,
+  "median wealth $": 528440.0,
+  "base median wealth $": -10000.0,
+  "stability %": 88.67
+ },
+ "e0eb8ff": {
+  "poverty %": 15.32,
+  "base poverty %": 71.422,
+  "Gini": 0.51615,
+  "base Gini": 0.85831,
+  "median wealth $": 530160.0,
+  "base median wealth $": -10000.0,
+  "stability %": 88.66
+ },
+ "d7efd7b": {
+  "poverty %": 15.37,
+  "base poverty %": 71.422,
+  "Gini": 0.51626,
+  "base Gini": 0.85831,
+  "median wealth $": 529130.0,
+  "base median wealth $": -10000.0,
+  "stability %": 88.62
+ },
+ "e27a9e3": {
+  "poverty %": 15.388,
+  "base poverty %": 71.422,
+  "Gini": 0.51648,
+  "base Gini": 0.85831,
+  "median wealth $": 529220.0,
+  "base median wealth $": -10000.0,
+  "stability %": 88.6
+ },
+ "f93fa38": {
+  "poverty %": 15.408,
+  "base poverty %": 71.422,
+  "Gini": 0.51657,
+  "base Gini": 0.85831,
+  "median wealth $": 528950.0,
+  "base median wealth $": -10000.0,
+  "stability %": 88.62
+ },
+ "03e6919": {
+  "poverty %": 15.446,
+  "base poverty %": 71.422,
+  "Gini": 0.51685,
+  "base Gini": 0.85831,
+  "median wealth $": 528850.0,
+  "base median wealth $": -10000.0,
+  "stability %": 88.57
+ },
+ "ce539b2": {
+  "poverty %": 15.374,
+  "base poverty %": 71.422,
+  "Gini": 0.51639,
+  "base Gini": 0.85831,
+  "median wealth $": 529200.0,
+  "base median wealth $": -10000.0,
+  "stability %": 88.63
+ },
+ "21b603d": {
+  "poverty %": 15.308,
+  "base poverty %": 71.422,
+  "Gini": 0.51618,
+  "base Gini": 0.85831,
+  "median wealth $": 529880.0,
+  "base median wealth $": -10000.0,
+  "stability %": 88.67
+ },
+ "cd0ceec": {
+  "poverty %": 15.286,
+  "base poverty %": 71.422,
+  "Gini": 0.51624,
+  "base Gini": 0.85831,
+  "median wealth $": 529130.0,
+  "base median wealth $": -10000.0,
+  "stability %": 88.6
+ },
+ "7e5b256": {
+  "poverty %": 15.342,
+  "base poverty %": 71.422,
+  "Gini": 0.51592,
+  "base Gini": 0.85831,
+  "median wealth $": 530280.0,
+  "base median wealth $": -10000.0,
+  "stability %": 88.71
+ },
+ "19d098c": {
+  "poverty %": 15.342,
+  "base poverty %": 71.422,
+  "Gini": 0.51592,
+  "base Gini": 0.85831,
+  "median wealth $": 530280.0,
+  "base median wealth $": -10000.0,
+  "stability %": 88.71
+ },
+ "11f9299": {
+  "poverty %": 15.342,
+  "base poverty %": 71.422,
+  "Gini": 0.51592,
+  "base Gini": 0.85831,
+  "median wealth $": 530280.0,
+  "base median wealth $": -10000.0,
+  "stability %": 88.71
+ },
+ "33c7aef": {
+  "poverty %": 15.342,
+  "base poverty %": 71.422,
+  "Gini": 0.51592,
+  "base Gini": 0.85831,
+  "median wealth $": 530280.0,
+  "base median wealth $": -10000.0,
+  "stability %": 88.71
+ }
+}

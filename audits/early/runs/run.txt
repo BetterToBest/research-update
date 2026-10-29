@@ -1,0 +1,10 @@
+S30 engine runs (Oct 29, 2026, UTC)
+Engines: compassionism-simulation commits listed in ../engines.txt (38 engines before v4.20), checkout at 6f4c6e7.
+Seeds: 1-100 per engine. Preset: Full Integration ('optimal' before v3.5, 'reference' after).
+Command (four shards in parallel, from research-update):
+  grep -v '^#' audits/early/engines.txt | awk '{print > ("audits/early/runs/shard" (NR%4) ".txt")}'
+  for i in 0 1 2 3; do node audits/early/run_engines.js ../compassionism-simulation audits/early/runs/shard$i.txt 1-100 audits/early/runs/shard$i.jsonl & done
+Runtime: Node v22.22.0, Playwright 1.63.0, headless Chromium.
+Summary: python3 audits/early/summarize_runs.py audits/early/runs/*.jsonl --engines audits/early/engines.txt --out audits/early/engine-results.md
+Check: v4.19 (33c7aef) seed 42 gives 16.6% / $559K / 0.534, the CHANGELOG's documented seed-42 figures.
+Result: 3,800 runs, 0 errors.
