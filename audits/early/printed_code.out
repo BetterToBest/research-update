@@ -1,0 +1,59 @@
+## MonteCarloAnalysis (Appendix A.1, HTML)
+source: economic-modeling-simulation.html lines 1194-1237
+A (as printed): call fails: MonteCarloAnalysis(n_iterations=10000).run_integrated_simulation() -> NameError: name 'random' is not defined
+B (imports supplied): call fails: MonteCarloAnalysis(n_iterations=10000).run_integrated_simulation() -> AttributeError: 'MonteCarloAnalysis' object has no attribute 'generate_shock'
+
+## CCOAgent (Appendix A.2, HTML)
+source: economic-modeling-simulation.html lines 1240-1280
+A (as printed): call fails: CCOAgent(1, {'wealth': 0, 'skills': 1}).make_decisions({}) -> AttributeError: 'CCOAgent' object has no attribute 'optimize_work_allocation'
+B (imports supplied): call fails: CCOAgent(1, {'wealth': 0, 'skills': 1}).make_decisions({}) -> AttributeError: 'CCOAgent' object has no attribute 'optimize_work_allocation'
+
+## MonteCarloAnalysis (section 11.1, PDF)
+source: papers/pdfs/economic-modeling-simulation.pdf section 11.1
+A (as printed): call fails: MonteCarloAnalysis().run_integrated_simulation() -> NameError: name 'random' is not defined
+B (imports supplied): call fails: MonteCarloAnalysis().run_integrated_simulation() -> AttributeError: 'MonteCarloAnalysis' object has no attribute 'calculate_outcome'
+
+## calculate_ptf_enhanced_conversion (section 1.2, PDF)
+source: papers/pdfs/economic-modeling-simulation.pdf section 1.2
+A (as printed): defines only; the paper states no inputs to call it with
+B (imports supplied): defines only; the paper states no inputs to call it with
+
+## AcreEquityModel (section 2.2, PDF)
+source: papers/pdfs/economic-modeling-simulation.pdf section 2.2
+A (as printed): runs: AcreEquityModel().calculate_wealth_growth(30) -> {'acre_value': 324.34, 'cumulative_dividends': 168.255, 'total_wealth': 492.595, 'annualized_return': 0.055}
+B (imports supplied): runs: AcreEquityModel().calculate_wealth_growth(30) -> {'acre_value': 324.34, 'cumulative_dividends': 168.255, 'total_wealth': 492.595, 'annualized_return': 0.055}
+
+## ptf_job_creation (section 4, PDF)
+source: papers/pdfs/economic-modeling-simulation.pdf section 4
+A (as printed): defines only; the paper states no inputs to call it with
+B (imports supplied): defines only; the paper states no inputs to call it with
+
+## InflationModel (section 5, PDF)
+source: papers/pdfs/economic-modeling-simulation.pdf section 5
+A (as printed): call fails: InflationModel().simulate_with_ptf(10) -> NameError: name 'random' is not defined
+B (imports supplied): call fails: InflationModel().simulate_with_ptf(10) -> AttributeError: module 'random' has no attribute 'normal'
+C (random = numpy.random, the only reading under which random.normal exists): runs: InflationModel().simulate_with_ptf(10) -> [3.619, 2.836, 2.239, 2.125, 2.532, 1.678, 2.244, 1.893, 2.045, 1.965]
+
+## SystemStability (section 7.1, PDF)
+source: papers/pdfs/economic-modeling-simulation.pdf section 7.1
+A (as printed): runs: SystemStability().calculate_risk_metrics() -> {'diversification_index': 0.85, 'correlation_risk': 0.25, 'cascade_probability': 0.05, 'recovery_time': 6, 'stress_test_pass_rate': 0.92}
+B (imports supplied): runs: SystemStability().calculate_risk_metrics() -> {'diversification_index': 0.85, 'correlation_risk': 0.25, 'cascade_probability': 0.05, 'recovery_time': 6, 'stress_test_pass_rate': 0.92}
+
+## carbon_reduction_ptf (section 9.1, PDF)
+source: papers/pdfs/economic-modeling-simulation.pdf section 9.1
+A (as printed): runs: carbon_reduction_ptf() -> 0.2
+B (imports supplied): runs: carbon_reduction_ptf() -> 0.2
+
+## CCOSimulation (Appendix B, PDF)
+source: papers/pdfs/dual-currency-inflation.pdf Appendix B
+A (as printed): call fails: CCOSimulation({'basic_unit_amount': 1200, 'population': 500, 'industries': [], 'octave_caps': []}).run_simulation(20) -> AttributeError: 'CCOSimulation' object has no attribute 'distribute_basic_units'
+B (imports supplied): call fails: CCOSimulation({'basic_unit_amount': 1200, 'population': 500, 'industries': [], 'octave_caps': []}).run_simulation(20) -> AttributeError: 'CCOSimulation' object has no attribute 'distribute_basic_units'
+
+## Gini(t) = Gini0 x (1 - rho_CCO - rho_PTF - rho_synergy)^t (section 6.1, PDF)
+year 5: formula 0.352, printed 0.38
+year 10: formula 0.259, printed 0.31
+year 20: formula 0.139, printed 0.25
+year 30: formula 0.075, printed 0.22
+
+## InflationModel expected path (noise mean zero)
+expected by year: [3.05, 3.05, 2.35, 2.35, 2.35, 2.0, 2.0, 2.0, 2.0, 2.0]; peak 3.05; 10-year mean 2.315; printed: peak 3.5, long-term average 2.1
