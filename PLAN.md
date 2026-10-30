@@ -117,6 +117,7 @@ Repos: compassionism-simulation. S10 checked the validation presets (`runScenari
 ### S34 · The no-program baseline against outside data
 Repos: compassionism-simulation.
 Compare the no-program run (Reference, years 0 and 20) with CPS ASEC income and official poverty, the Fed's SCF wealth distribution (median, share below the model's wealth line), BLS employment, and for today's safety net, PolicyEngine-US (`pip install policyengine-us`, AGPL; household calculator) for six representative households against the engine's SNAP, EITC and CTC amounts. Write `dev/reports/baseline-realism.md` with a gap table. Fix gaps only with cited constants behind switches (simulation guardrails); changes to released figures wait for S7.
+Done Oct 30 (compassionism-simulation #49; results `s34-baseline-realism-e8f8a77`): safety net matches PolicyEngine-US; the wage scale is far below US earnings (with CPS earnings, no-programme basket poverty 49.2% to 27.1%; reading `lt: {s: 'all', m: 'all'}`, off by default); everyone works (scope); household debt drift open (the spending rule).
 
 ### S33 · Study runner on GitHub Actions; runtime benchmarks (D4: Actions now; Runpod only in S48)
 Repos: compassionism-sim-results, compassionism-simulation (read).
@@ -132,6 +133,7 @@ Write `prereg/2026-11-study-program.md` from `prereg/TEMPLATE.md`, pinned to the
 - Q3 horizon: 20 and 40 years; outcomes by age at joining.
 - Q4 participation: 10% to 90% (feeds S5).
 - Q5: every row with the octave wage raise on and off (ledger watch rule).
+- Q6 yardstick (from S34): every row against both no-programme yardsticks, the released wages and the CPS earnings of adults 25-64 (`lt: {s: 'all', m: 'all'}`). Fix here, before any result, which one the headline uses (S34 recommends the CPS one) and say which on every page. Consider a preregistered reading for the debt drift (S34 report, section 5).
 - Primary outcomes, fixed now: share below 30 days of basic living (BLEI); share below the cost of living; share with too little wealth (years 20 and 40); program cost per adult; cumulative inflation. Secondary: Gini, children below the cost of living, work hours.
 - Decision rules: a synergy is claimed only where the interaction's interval excludes zero; a scale effect only where it exceeds both the Monte Carlo error and one percentage point.
 - Reporting: every cell published (research rule 2).
