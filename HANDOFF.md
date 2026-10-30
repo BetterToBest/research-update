@@ -4,7 +4,7 @@
 S34 **done**. The released no-programme run (v5.6, with today's safety net) was compared with CPS ASEC 2026, SCF 2025 and 2022, BLS 2025 and PolicyEngine-US, under a preregistration committed before any run (`prereg/s34-baseline-realism.md`, two dated amendments).
 
 ## What shipped
-- compassionism-simulation #49 `claude/s34-baseline-realism`: `dev/reports/baseline-realism.md` (plain words, gap table), `baseline-realism-tables.md`, tools, `sources/baseline_realism_us.py`, `CFG.CPS_EARN` behind the existing wage reading (off by default; guard identical, lineage link bc0422920f8c), DECISIONS entries. Merge state: see "In flight".
+- compassionism-simulation #49 `claude/s34-baseline-realism`: `dev/reports/baseline-realism.md` (plain words, gap table), `baseline-realism-tables.md`, tools, `sources/baseline_realism_us.py`, `CFG.CPS_EARN` behind the existing wage reading (off by default; guard identical, lineage link bc0422920f8c), DECISIONS entries. Merged (d33de07), checks green.
 - compassionism-sim-results #3 (merged, 292c166): `s34-baseline-realism-e8f8a77`, with run.txt, SHA256SUMS, DONE.
 - research-update: prereg file; PLAN.md marks S34 done and adds Q6 (the yardstick choice) to S32.
 
@@ -15,7 +15,7 @@ S34 **done**. The released no-programme run (v5.6, with today's safety net) was 
 - **Open:** household debt drifts from 15.5% to 33.4% in 20 years (SCF 9.3%); this is the spending rule, not ageing. For S32/S47.
 
 ## In flight
-Nothing. If #49's checks were not green at session end, it stays open: read its CI first.
+Nothing. All three pull requests merged (research-update #12, compassionism-simulation #49, compassionism-sim-results #3). Ledger synced (version 30; issue I15 records what S24, S32 and S47 must carry).
 
 ## Decisions waiting
 - D2 (chat exports for S31): still waiting; S31 is skipped.
