@@ -1,6 +1,6 @@
 # Auto-chain
 
-status: on
+status: off
 max_chained_sessions_per_day: 6
 delay_minutes: 5
 

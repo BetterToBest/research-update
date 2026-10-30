@@ -26,7 +26,8 @@ Model and effort per step are below. "fable" means: use it only if it uses no us
 | 14 | S6 | C2.2 coverage and adequacy | opus | high | ledger decision if the design changes |
 | 15 | S14 | Population-weighted cost-of-living line, audited | opus | high | |
 | 16 | S13 | Outside audits: triage the Grok audit (I5) and audit the engine before the freeze | opus | high | S10 |
-| 17 | S47 | Design freeze: every row and output the plan needs, dry-run at 2 seeds, cost estimate | opus | high | S10, S13, S32-S37, S6, S14 |
+| 16a | S50 | Second, independent implementation of the release row (S10 covered only the validation presets) | opus | xhigh | S13 |
+| 17 | S47 | Design freeze: every row and output the plan needs, dry-run at 2 seeds, cost estimate | opus | high | S10, S13, S50, S32-S37, S6, S14 |
 | 18 | S48 | The full study batch (Actions where it fits, Runpod for the rest) | opus | medium | S47 and your Runpod key (gate) |
 | 19 | S36 | Synergy report: Shapley shares, interactions, 20 and 40 years | opus | high | S48 |
 | 20 | S38 | Community-layer report (if S37 built it) | opus | medium | S48 |
@@ -108,6 +109,10 @@ The 13-comment audit (A01-A13) finds: the Pareto theorem rests on unproven premi
 
 ### S10 · Second, independent implementation of the yearly loop
 As ledger S10: write it from `dev/packets/s118-second-implementation.zip` without reading harness.js internals beyond the spec; save under `dev/reports/s118-independent-implementation/`; compare with `python-reference-500.json` as `dev/packets/s118-brief.md` says. Any disagreement is reported, then explained.
+Done Oct 29 (compassionism-simulation #48): exact on all 2,500 validation runs once the three functions the packet lacked were added; 31 description gaps in `GAPS.md`. The validation presets run the older engine path, not the release row, hence S50.
+
+### S50 · Second, independent implementation of the release row
+Repos: compassionism-simulation. S10 checked the validation presets (`runScenario`), which switch off every release-model mechanism. This step does the same for the release row and its no-programme pair (Reference, Adverse, Stress): households, BU on essentials, project hiring, ESP payroll and the split, PTF capacity, open enrolment, the price module, the labour response, the spending rule. First close the description gaps S10 listed (`dev/reports/s118-independent-implementation/GAPS.md`) in MODEL_SPEC.md. Then build a packet from the release row with every function it calls, including samplers and reporting, and engine outputs for 500 seeds. A fresh session that has not read the engine writes the program. Same two phases as S10: independent result committed first, then differences explained. May take two sessions.
 
 ### S34 · The no-program baseline against outside data
 Repos: compassionism-simulation.
@@ -136,7 +141,7 @@ Run reduced versions of Q1 to Q5 on GitHub Actions only (for example 50 seeds; 5
 
 ### S47 · Design freeze (before any money is spent)
 1. Collect every output the rest of the plan will need from the batch, consumer by consumer: the release panel (S7), the BLEI visual series (S11, I1), the participation figure (S5), the synergy tables (S36), the community-layer rows (S38), the scale rows and settings S39 compares with, NEEC's simulation readings (N-S70), the advocacy charts (S45), and the preregistration (S32 plus amendments). Write `prereg/run-manifest.md`: every job, its rows, environments, seeds, population, horizon, outputs and their consumer.
-2. Check nothing is still moving: S10 matches (or its differences are explained), the engine audit (S13) is triaged, S6 and S14 are settled, S37 is built or ruled out. Pin the engine commit.
+2. Check nothing is still moving: S10 and S50 match (or their differences are explained), the engine audit (S13) is triaged, S6 and S14 are settled, S37 is built or ruled out. Pin the engine commit.
 3. Dry-run every job at 2 seeds on Actions; confirm each output file exists and loads in its consumer's script.
 4. Estimate Runpod hours and cost per job from S33's benchmarks; put the cheapest split (Actions vs Runpod) in the manifest.
 5. Add a ledger decision: "Design frozen; add the Runpod key to the Claude Code environment to start S48" with the cost estimate. The chain stops here.
