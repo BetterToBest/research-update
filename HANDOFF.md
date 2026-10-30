@@ -1,45 +1,35 @@
-# Handoff (Oct 30, 2026): S32 the study programme preregistered
+# Handoff (Oct 30, 2026): S35 pilot studies, partly done
 
 ## Step status
-S32 **done**. The programme is fixed in `prereg/2026-11-study-program.md` before any run of S35-S38.
+S35 **partly done**. Everything the preregistration requires before a run has landed, and the seven pilots are running on Actions. Remaining: the pilot report, once every folder has `DONE`.
 
 ## What shipped
-- research-update [#17](https://github.com/BetterToBest/research-update/pull/17): the preregistration (engine d33de07); `prereg/checks/s32_feasibility.js` (design checks; prints no outcome value); PLAN.md marks S32 done.
-- Fixed in it:
-  - **Headline yardstick:** CPS earnings of adults 25-64 (`lt: {s: 'all', m: 'all'}`), with the released wages beside it on every page.
-  - **Headline setting:** octave raise off; every CCO row is also run with it on.
-  - **Studies (seeds 1-500, three environments, about 463 core-hours, no Runpod):** seven of them.
-    - A: scale, 500 to 50,000 adults.
-    - B: full 32-cell synergy factorial.
-    - B10: B at 10,000 adults.
-    - C: ageing, 20 and 40 years, outcomes by age at joining.
-    - D: participation 10-90%.
-    - D10: D at 10,000 adults.
-    - F: debt reading, I15.
-  - **Rules:** primary outcomes, Shapley and interaction definitions, and decision rules for synergy, scale, horizon, participation (S5's figure), raise and yardstick.
-- Design checks (60 adults, 2 seeds):
-  - All 32 combinations run.
-  - All five off equals no programme, so the factorial's empty cell is the no-programme run.
-  - SZH alone moves only the design's own BLEI (a term in its formula), so BLEI claims use the design-neutral BLEI.
-  - Without CCO the octave raise still acted through preset starting octaves, so it is off in every cell without CCO.
+- compassionism-simulation [#50](https://github.com/BetterToBest/compassionism-simulation/pull/50), merged as `70d23beff2065b554b687a2a4843c1433b19498b`. It adds reporting keys `plv_0`..`plv_39` (price level by year) and `hhDebt20`/`hhDebt40` (families in debt), plus the debt reading (`c.dr`, borrowing limit 0, off by default). Guard test identical; lineage link to 6f35bc221fb7; validate, unit (222) and domtest (153) pass; decisions in `dev/DECISIONS.md` (S35).
+- compassionism-sim-results [#8](https://github.com/BetterToBest/compassionism-sim-results/pull/8), merged: `runner/jobs/program.js` (`--study=A|B|B10|C|D|D10|F --env=all`). `--check` passes: row counts match the preregistration, and the main and none rows match `release-pair.js` byte for byte. It keeps 46 measures per row; the full set would be 3.6 GB for study B. Study C's outcomes by age at joining come from the reporting hook (adults matched by id; 100% matched in a test).
+- research-update [#18](https://github.com/BetterToBest/research-update/pull/18): preregistration amendment 1 (engine commit, job script, choices the preregistration left open); this handoff.
 
 ## In flight
-Nothing.
+- Seven `run-study` runs in compassionism-sim-results (runs 13-19, dispatched 05:54 UTC; run 13 = pilot-a ... run 19 = pilot-f). All use engine 70d23be, seeds 1-50, `--env=all`.
+- Folders: `pilot-a-70d23be` (A at 500, 2,000 and 10,000 adults), `pilot-b-70d23be`, `pilot-b10-70d23be`, `pilot-c-70d23be`, `pilot-d-70d23be`, `pilot-d10-70d23be`, `pilot-f-70d23be`. Each one is done when its `DONE` file exists. Expected within an hour.
+- If a shard failed: `rerun_failed_jobs` on that run (RUNNING.md section 1.6).
 
 ## Decisions waiting
-None. The yardstick choice is a modelling choice (S34's recommendation, taken), with the reason in the preregistration (decision rule 7).
+None.
 
 ## Next step
-**S35** (pilot studies on Actions), opus, medium. Before any pilot it must land the preregistration's "Before the first run" items, each as a pull request:
-1. `runner/jobs/program.js` in compassionism-sim-results, with row-count checks.
-2. Three reporting-only measures in the engine: the price level by year to year 40, outcomes by age at joining, families in debt at years 20 and 40.
-3. The debt-reading switch, off = bit-identical, guard test passing.
-
-Each engine change gets a dated amendment in the preregistration naming the new commit. The pilots are labelled pilot and go to `pilot-<study>-<engine7>` folders.
+**S35 (continue)**, opus, medium: check the seven `DONE` files, then write `dev/reports/pilot-studies.md` (compassionism-simulation), labelled pilot throughout. It must cover:
+- the per-block timings, from each shard's `timing.json`, for S47;
+- does any outcome move with population size beyond Monte Carlo error? If not, say so plainly;
+- the synergy table, its size and noise;
+- age at joining;
+- participation curve shape;
+- the debt reading against the SCF's 9.3%;
+- every output still missing for the full batch.
+Then S37 only if the pilots show a community layer is needed.
 
 ## Pitfalls
-- In the engine, `c.p.ccoOn: false` on the release row still leaves preset octaves on every adult. Any row without CCO needs `c.pw = {octaveWage: true}`.
-- The no-programme row's participant-group measures (`gPart*`, `bOP*`, ...) change with `partRate` (same draw); all-adult measures do not.
-- Families in debt is not a per-seed key today (only `dev/tools/baseline_realism.js` computes it).
-- `/start-session` and `/end-session` cannot be invoked by Claude; this session followed the end-session file by hand.
-- Commit trailers: `Co-Authored-By: Claude <noreply@anthropic.com>` (no model names).
+- The release row's price level is about 2,500 times at year 20 (50.8% a year; already in the release panel), and about 18 million times at year 40 in a 100-adult test. Read inflation outcomes with that in mind; the pilots will show it at scale.
+- The first CI run of an engine PR fails 2 domtest checks until the engine-lineage link is committed: run `engine_lineage.js prove` before pushing, not after.
+- With the debt reading on, Stress still shows about 50% of families in debt at year 40 (one seed): the debt floor's other flows (job loss, shocks) remain.
+- The engine's `domtest` takes about 12 minutes while the lineage proof is also running; start them one after the other.
+- Commit trailers: `Co-Authored-By: Claude <noreply@anthropic.com>` (no model names). This session's branch for research-update was the harness-assigned `claude/confident-gates-jfn3pw`.
