@@ -49,3 +49,5 @@ Every cell above is published, including figures that match and gaps that remain
 
 ## Amendments
 Dated, with the reason, below this line. Nothing above changes after the first run.
+
+**Oct 30, 2026 (before any run).** The labels of the two rows are corrected; their switches are unchanged. The v5.6 release panel was run with `--v54 --snab --slope` (the release data's `_meta.command` in `index.html`), so its no-programme run includes today's safety net with SNAP's work rule and the slope reading. Row **B** is therefore the released yardstick ("as released"), and row **A** is the same run without today's safety net (the v5.4 release's no-programme run, and the "no programme, no safety net" reference line). Primary outcomes are read on row B first; row A is reported beside it.
