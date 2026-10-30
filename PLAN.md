@@ -102,6 +102,7 @@ Done when: every early headline figure has a provenance line.
 
 ### S31 · Chat-history provenance (D2: export)
 Duke exports chat data from both accounts (claude.ai Settings, Privacy, Export data), creates a private repository BetterToBest/research-provenance (sessions cannot create repositories) and uploads the zips there. Until they are there, this step is skipped and the chain moves on. Search `conversations.json` for each figure S30 found no code for: first appearance, who wrote it, and whether a run or a source stood behind it. Keep chat text in the private repository only; copy just the table (figure, first date, basis yes or no) into `audits/early-figures.md`.
+Done Oct 30 (D2 answered: the five zips in research-provenance suffice; `audits/early-figures.md` section "Chat-history provenance (S31)", `audits/early/provenance_scan.py`): Claude, not Duke, wrote each figure first, in drafts dated Aug 1-26 and Sep 5, 2025; no code ran for any (the export's 41 shell calls are all Nov 4-8, 2025); five figures appear in no chat before the Hub (65% inflation, elasticity table, $64,000-$103,000 interval, 75% minimum viable participation, 88% work participation).
 
 ### S46 · Repair the formal model
 Repos: research-hub (paper sources), research-update.
