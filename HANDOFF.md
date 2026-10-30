@@ -4,7 +4,7 @@
 S10 **done**. A Python program written from the s118 packet reproduces the engine's validation presets: statistically from the packet alone, and **exactly on all 2,500 runs** (5 presets × seeds 1-500) once the three functions the packet lacked were added. The validation presets run the engine's older path, not the release row, so the figures the Hub and NEEC cite are not yet covered. New step **S50** does that, before the freeze. Duke asked to pause auto-chaining: `AUTOCHAIN.md` is `status: off`.
 
 ## What shipped
-- compassionism-simulation #48 `claude/s10-independent-loop` (open, checks running), `dev/reports/s118-independent-implementation/`:
+- compassionism-simulation #48 `claude/s10-independent-loop` (merged, fc6880b), `dev/reports/s118-independent-implementation/`:
   - `s118_loop.py`: the program, Python standard library only.
   - `REPORT.md`: plain words, for Duke.
   - `GAPS.md`: 31 gaps in the written description, 8 of them contradictions.
