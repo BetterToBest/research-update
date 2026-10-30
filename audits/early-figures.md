@@ -128,9 +128,44 @@ Created Sep 18, 2025 (`ce3a737`), titled "Optimal parameters ... achieving 98% p
 | Gamma sampler returned the constant 1 at a = 1 (automation risk draws) | to v4.3 | v4.4 |
 | RNG draws depended on which branches ran, so paired scenarios drifted apart | to v4.2 | v4.2-v4.3 |
 
+## Chat-history provenance (S31)
+
+Oct 30, 2026. Source: the claude.ai export of Duke's account (139 conversations, 2,131 messages, Jul 12 to Nov 29, 2025), kept in the private repository `research-provenance`. Only this table and counts are copied here; no chat text and no personal data. The search script is `early/provenance_scan.py`; each hit was then read by hand, because bare numbers such as "65%" match unrelated sentences.
+
+**Results.**
+- In every case where a chat shows the figure first, **Claude wrote it, inside a document it was drafting (an artifact), and Duke had not typed it.** Duke's own first mention of any of them is on Sep 21, 2025 or later (the day he pasted the Hub page for editing).
+- **No code ran for any of them.** The export holds 41 shell calls; all are from Nov 4-8, 2025 (copying files, listing folders, and verification scripts), after every figure was published. No chat before Nov 2025 ran a simulation.
+- The block of figures on the Hub on Sep 16, 2025 was written in a single reply on **Aug 25, 2025** (chat `68fe152d`), in answer to a request for a "stability analysis" of the combined system. Duke asked no number there. The next morning he asked what the improvement column meant, and the reply rewrote the table (adding $37,000 and $82,000).
+- Several figures the Hub's early papers print first appear in no chat before they were on the Hub (65% inflation, the elasticity table, the $64,000-$103,000 interval, 75% minimum viable participation, 88% work participation). Either they were written in a tool outside this export, or on a day without a chat. This account's chats cannot settle it, and the export does not cover other accounts.
+
+| Figure | On the Hub | First in the chats | Who | Run or source behind it | Basis |
+|---|---|---|---|---|---|
+| 85% poverty reduction (CCO only) | Aug 27, 2025 | Aug 25, 2025, chat `68fe152d`, comparison table "CCO alone vs CCO-PTF" | Claude | no run, no source | no |
+| 98% poverty reduction (integrated) | Sep 16, 2025 | Aug 25, 2025, same table | Claude | no run, no source | no |
+| $37,000 median wealth | Sep 16, 2025 | Aug 26, 2025, `68fe152d`, rewritten comparison table (30-year median wealth) | Claude | no run, no source | no |
+| $82,000 median wealth | Sep 16, 2025 | Aug 26, 2025, same table | Claude | no run, no source | no |
+| Interval $64,000-$103,000 | Sep 16, 2025 | none before the Hub; first seen Nov 5, 2025 (project files holding the Hub text) | n/a | none | no |
+| 65% lower inflation | Sep 2, 2025 | none before the Hub; first seen Sep 3, 2025 as fetched Hub text. Earlier chats state only the untested hypothesis "lower than UBI" | n/a | none | no |
+| "10,000 iterations" / 10,000+ Monte Carlo | Aug 27, 2025 | Aug 1, 2025, chat `1fdf7e1a` (a different paper, with invented scenario percentages); again Aug 25, `68fe152d` | Claude | no run, no source | no |
+| Elasticity table (Basic Unit -0.71) | Sep 16, 2025 | none before the Hub; first seen Nov 4, 2025 when an outside audit comment was read | n/a | none | no |
+| Gini 0.28 (integrated) | Sep 16, 2025 | Aug 25, 2025, `68fe152d`, outcome table row "US with CCO-PTF" (0.287 in an Aug 1 draft, `1fdf7e1a`, for a different country case) | Claude | no run, no source | no |
+| 30% participation viability | Sep 16, 2025 | Sep 5, 2025, chat `de1e7d0b`, "system viability at 30% participation" | Claude | no run, no source | no |
+| 55% minimum viable participation | Sep 16, 2025 | Aug 25, 2025, `68fe152d`, "breakpoint analysis" | Claude | no run, no source | no |
+| 75% minimum viable participation | Sep 18, 2025 | none before the Hub; first seen Sep 21, 2025 as fetched Hub text | n/a | none | no |
+| θ 0.15-0.25 | Sep 18, 2025 | Aug 25, 2025, `68fe152d`, "synergy coefficient (estimated 0.15-0.25)" | Claude | labelled an estimate; no run | design parameter (the "from Monte Carlo" wording is later and has no chat behind it) |
+| 94% system stability | Sep 16, 2025 | Aug 25, 2025, `68fe152d`, "system stability: 94% of all scenarios" | Claude | the same reply prints a typed-in constant; no run | no |
+| 92% of scenarios stable | Sep 16, 2025 | Aug 25, 2025, `68fe152d`, as `stress_test_pass_rate: 0.92` in code | Claude | typed constant, no run | no (a constant) |
+| 88% work participation | Sep 18, 2025 | none before the Hub; first seen Sep 30 and Oct 10, 2025 in tables Claude wrote | n/a | none | no |
+| 45% carbon reduction | Sep 16, 2025 | Aug 25, 2025, `68fe152d`, "35-45% by Year 10" | Claude | no run, no source | no |
+| `cco-ptf-simulation` package | Sep 18, 2025 | Sep 21, 2025, `d48df1d6`, Duke asks to update the replication page | Duke (page name) | no package or repository is mentioned as existing | no |
+
+**What this settles.** None of the early figures had a run, a dataset or a cited source behind it in any chat, including the ones that were first written in a chat. They were drafted as expected outcomes in prose and tables and later presented as simulation results. S24 removes or relabels them as already planned; S25 replaces them with the preregistered studies' results. Duke's role in the record is the request for a combined-system analysis and later editing instructions, not the numbers.
+
+**Caveats.** One account only. Eight conversations are empty and October 2025 has two conversations, so a figure could have been written in a chat not in the export. "First in the chats" is the first match after reading, not proof of origin.
+
 ## What follows
 
 - `data/claims.csv` (S23) already classes these figures "no basis found" (811 rows claimed as simulation results). This report confirms it: none was produced by code. S24 removes or relabels them per the claims ledger; S25 replaces them with results from the preregistered studies.
-- S31 (chat-history provenance) looks for where the figures were written in August-September 2025.
+- S31 (chat-history provenance, done Oct 30, 2026): see the section above.
 - The simulation page still shows the Hub's $82K, Gini 0.25, 5% poverty and 90% stability as targets (`CFG.TARGET_*`). They should go (S40, or the next engine release).
 - The papers' printed code should be removed or marked "illustrative pseudo-code, not run" (S24). The `SystemStability` block in particular presents a typed-in constant as a test result.
