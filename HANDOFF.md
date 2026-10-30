@@ -1,26 +1,45 @@
-# Handoff (Oct 30, 2026): S31 chat-history provenance of the early figures
+# Handoff (Oct 30, 2026): S32 the study programme preregistered
 
 ## Step status
-S31 **done**. D2 is answered: the five zips in the private repository research-provenance cover what S31 needs.
+S32 **done**. The programme is fixed in `prereg/2026-11-study-program.md` before any run of S35-S38.
 
 ## What shipped
-- research-update [#15](https://github.com/BetterToBest/research-update/pull/15) (merged, 98bc2b1): section "Chat-history provenance (S31)" in `audits/early-figures.md` (figure, Hub date, first date in the chats, author, run or source, basis); `audits/early/provenance_scan.py`; PLAN.md marks S31 done.
-- Findings: Claude wrote each figure first, in drafts dated Aug 1-26 and Sep 5, 2025; Duke's first mention is Sep 21 or later. Most of the Hub block came from one reply on Aug 25, 2025 (chat `68fe152d`). No code ran for any figure: the export's 41 shell calls are all Nov 4-8, 2025. Five figures appear in no chat before the Hub (65% inflation, elasticity table, $64,000-$103,000 interval, 75% minimum viable participation, 88% work participation).
-- No chat text or personal data was copied into any repository.
+- research-update [#17](https://github.com/BetterToBest/research-update/pull/17): the preregistration (engine d33de07); `prereg/checks/s32_feasibility.js` (design checks; prints no outcome value); PLAN.md marks S32 done.
+- Fixed in it:
+  - **Headline yardstick:** CPS earnings of adults 25-64 (`lt: {s: 'all', m: 'all'}`), with the released wages beside it on every page.
+  - **Headline setting:** octave raise off; every CCO row is also run with it on.
+  - **Studies (seeds 1-500, three environments, about 463 core-hours, no Runpod):** seven of them.
+    - A: scale, 500 to 50,000 adults.
+    - B: full 32-cell synergy factorial.
+    - B10: B at 10,000 adults.
+    - C: ageing, 20 and 40 years, outcomes by age at joining.
+    - D: participation 10-90%.
+    - D10: D at 10,000 adults.
+    - F: debt reading, I15.
+  - **Rules:** primary outcomes, Shapley and interaction definitions, and decision rules for synergy, scale, horizon, participation (S5's figure), raise and yardstick.
+- Design checks (60 adults, 2 seeds):
+  - All 32 combinations run.
+  - All five off equals no programme, so the factorial's empty cell is the no-programme run.
+  - SZH alone moves only the design's own BLEI (a term in its formula), so BLEI claims use the design-neutral BLEI.
+  - Without CCO the octave raise still acted through preset starting octaves, so it is off in every cell without CCO.
 
 ## In flight
 Nothing.
 
 ## Decisions waiting
-None.
+None. The yardstick choice is a modelling choice (S34's recommendation, taken), with the reason in the preregistration (decision rule 7).
 
 ## Next step
-**S32** (preregister the study program), opus, high: S33 and S34 are done. Carry Q6 (the yardstick) and ledger issue I15 into it. S32 can cite the S31 table. The chain is off (`AUTOCHAIN.md`), so Duke starts it by hand.
+**S35** (pilot studies on Actions), opus, medium. Before any pilot it must land the preregistration's "Before the first run" items, each as a pull request:
+1. `runner/jobs/program.js` in compassionism-sim-results, with row-count checks.
+2. Three reporting-only measures in the engine: the price level by year to year 40, outcomes by age at joining, families in debt at years 20 and 40.
+3. The debt-reading switch, off = bit-identical, guard test passing.
+
+Each engine change gets a dated amendment in the preregistration naming the new commit. The pilots are labelled pilot and go to `pilot-<study>-<engine7>` folders.
 
 ## Pitfalls
-- `/start-session` and `/end-session` cannot be run by Claude; the first attempt in this session was refused until Duke ran it.
-- A bare-number search (for example "65%") matches unrelated text; every hit in the table was read by hand. The script's raw output is noisy.
-- The export covers one account, has 8 empty conversations and only 2 in October 2025. "Not in any chat" does not prove a figure had no earlier source.
-- An Aug 26, 2025 chat asked for an author line naming a Claude model on the papers. If S24 or S25 touches that line: no model names in pushed files (CLAUDE.md).
-- The research-provenance repository holds phone, email and login IPs in `light_metadata`; never copy them.
+- In the engine, `c.p.ccoOn: false` on the release row still leaves preset octaves on every adult. Any row without CCO needs `c.pw = {octaveWage: true}`.
+- The no-programme row's participant-group measures (`gPart*`, `bOP*`, ...) change with `partRate` (same draw); all-adult measures do not.
+- Families in debt is not a per-seed key today (only `dev/tools/baseline_realism.js` computes it).
+- `/start-session` and `/end-session` cannot be invoked by Claude; this session followed the end-session file by hand.
 - Commit trailers: `Co-Authored-By: Claude <noreply@anthropic.com>` (no model names).
