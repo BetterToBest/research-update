@@ -125,6 +125,7 @@ Repos: compassionism-sim-results, compassionism-simulation (read).
 2. Add `.github/workflows/run-study.yml` to compassionism-sim-results: `workflow_dispatch` (study id, engine commit, job script, shard count); a matrix of shards, each running its seed range, writing outputs with `run.txt` and `SHA256SUMS`; a final job that checks every shard and writes `DONE`. It commits to its own repository with `GITHUB_TOKEN` (contents: write) only. If GitHub refuses the file: S28's rule.
 3. Smoke test: dispatch a 4-seed study; its outputs must match a local run of the same seeds byte for byte.
 4. Write `prereg/RUNNING.md`: how a session dispatches a study, checks it started, records it in HANDOFF.md and ends; and the Runpod route (`dev/batch/runpod.sh`) for jobs too long for Actions.
+Done Oct 30 (compassionism-sim-results #4 to #7; `prereg/RUNNING.md`): GitHub accepted the workflow file from the session; smoke tests byte for byte equal to local runs (also with 4 processes per shard); benchmarks on a runner: 0.68, 1.5, 9.2 and 63 seconds a seed (main row plus no-programme pair, 20 years) at 500, 2,000, 10,000 and 50,000 adults, about twice that at 40 years; nothing planned in S32 needs Runpod by these numbers (worst case about 830 core-hours, 10.5 hours on 20 runners). S32 sizes its seeds from RUNNING.md sections 3 and 5.
 
 ### S32 · Preregister the study program
 Write `prereg/2026-11-study-program.md` from `prereg/TEMPLATE.md`, pinned to the engine commit after S34, committed before any run of S35-S38.

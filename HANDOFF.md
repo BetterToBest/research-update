@@ -1,33 +1,31 @@
-# Handoff (Oct 30, 2026): S34 the no-programme baseline against outside data
+# Handoff (Oct 30, 2026): S33 the study runner on GitHub Actions; runtime benchmarks
 
 ## Step status
-S34 **done**. The released no-programme run (v5.6, with today's safety net) was compared with CPS ASEC 2026, SCF 2025 and 2022, BLS 2025 and PolicyEngine-US, under a preregistration committed before any run (`prereg/s34-baseline-realism.md`, two dated amendments).
+S33 **done**. A study can now be dispatched on GitHub Actions: seed range cut into shards, each shard run on a GitHub-hosted runner in a clean checkout of a pinned engine commit, every shard checked, `run.txt`, `SHA256SUMS` and `DONE` written, folder committed to the results repository. Instructions for sessions: `prereg/RUNNING.md`.
 
 ## What shipped
-- compassionism-simulation #49 `claude/s34-baseline-realism`: `dev/reports/baseline-realism.md` (plain words, gap table), `baseline-realism-tables.md`, tools, `sources/baseline_realism_us.py`, `CFG.CPS_EARN` behind the existing wage reading (off by default; guard identical, lineage link bc0422920f8c), DECISIONS entries. Merged (d33de07), checks green.
-- compassionism-sim-results #3 (merged, 292c166): `s34-baseline-realism-e8f8a77`, with run.txt, SHA256SUMS, DONE.
-- research-update: prereg file; PLAN.md marks S34 done and adds Q6 (the yardstick choice) to S32.
+- compassionism-sim-results #4 (merged, ebaa959): `.github/workflows/run-study.yml`, `runner/jobs/release-pair.js` (release main row plus no-programme pair, per-seed values), `runner/check-shards.js`. GitHub accepted the workflow file from the session (the question in PLAN S28 is answered: yes).
+- #5 (77da73d): `--procs=K`, K processes per shard, byte-identical to one. #6 (d7f4557): no concurrency group on the commit job (it cancelled waiting jobs when studies finished together). #7 (dd008ea): README.
+- Result folders in compassionism-sim-results, each with run.txt, SHA256SUMS, DONE: `s33-smoke-d33de07` (4 seeds, 2 shards) and `s33-smoke-procs-d33de07` (8 seeds, 2 shards, 4 processes), both byte for byte equal to local runs; `s33-bench-*-d33de07`: seconds and memory per seed at 500, 2,000, 10,000 and 50,000 adults (20 years) and 500 and 10,000 adults (40 years).
+- research-update: `prereg/RUNNING.md` (dispatch steps, tests, benchmarks, runner limits, sizing of the planned studies, the Runpod route); PLAN.md marks S33 done.
 
 ## Findings that change later steps
-- **Safety net:** the engine matches PolicyEngine-US for six households (within $10; one $138 CTC difference from the missing child and dependent care credit).
-- **Wages:** the model's wage scale came from the median personal income of everyone 15+ ($42,220); every model adult is 25-64 and works full time. Median earnings $39,200 against $60,000. With CPS earnings (`lt: {s: 'all', m: 'all'}`), no-programme basket poverty falls from 49.2% to 27.1% and too little wealth from 32.7% to 20.3%. S32 must preregister both yardsticks and fix which one the headline uses before any result (Q6).
-- **Scope:** nobody in the model is out of the labour force (US: 19% of adults 25-64 have no earnings). For S24: the Hub should say "working adults and their families".
-- **Open:** household debt drifts from 15.5% to 33.4% in 20 years (SCF 9.3%); this is the spending rule, not ageing. For S32/S47.
+- Per seed (main row plus no-programme pair, one environment, 20 years): 0.68, 1.5, 9.2, 63 seconds at 500, 2,000, 10,000, 50,000 adults; 40 years about twice. Memory at most 1.1 GB. The whole S32 program fits on Actions: worst case about 830 core-hours, about 10.5 hours on 20 runners. Nothing needs Runpod by these numbers (RUNNING.md section 5).
+- S32 sizes seeds from RUNNING.md section 3; S35 should time a real row of each kind (the sizing takes a row as half the pair).
+- Before S47: GitHub's terms limit Actions to the repository's own software work; the pilots will show whether this use is accepted; Runpod stays the fallback (ledger issue I16).
 
 ## In flight
-Nothing. All three pull requests merged (research-update #12, compassionism-simulation #49, compassionism-sim-results #3). Ledger synced (version 30; issue I15 records what S24, S32 and S47 must carry).
+Nothing. All four results-repository pull requests merged (it has no checks). Ledger synced (version 31).
 
 ## Decisions waiting
 - D2 (chat exports for S31): still waiting; S31 is skipped.
 
 ## Next step
-**S33** (study runner on GitHub Actions, runtime benchmarks), sonnet, high: next in the Order table, and it waits on nothing. S32 needs S33 and S34. The chain is paused (`AUTOCHAIN.md` off), so Duke starts it by hand.
+**S32** (preregister the study program), opus, high: waits on S33 and S34, both done. Q6 (the yardstick) and ledger issue I15 must be carried into it. The chain is off (`AUTOCHAIN.md`), so Duke starts it by hand.
 
 ## Pitfalls
-- The v5.6 release panel already has today's safety net in every run (`--snab --slope`). "No programme" means that run, not `relMainCfgs(PR)[0]` alone.
-- After any engine edit, run `python3 dev/tools/sync_earlier.py`, or domtest fails (functions drift between pages).
-- A `node_modules` symlink in a worktree makes the run manifest dirty. Run studies from a clean worktree without it.
-- `pkill -f <pattern>` killed the session's own shell again. Kill by PID.
-- The safety-net check needs `snBenAt` (harness export), because `SNET` is internal to the harness.
-- The outside microdata (CPS 139 MB zip) is not in any repository. `sources/baseline_realism_us.py` documents the URLs.
-- Commit trailers: use `Co-Authored-By: Claude <noreply@anthropic.com>` (no model names).
+- A GitHub concurrency group keeps one pending job and cancels the rest; do not put one on a job that several dispatches reach together.
+- A dispatch-only workflow can be run only after its file is on the default branch; merge it first (it runs only on dispatch).
+- The session branch `claude/jolly-bardeen-7xhcrf` already held older merged history on the remote; this session used `claude/s33-study-runner` here instead (no force-push). Its stray commit e9256a8 can be deleted.
+- `pkill -f <pattern>` kills the session's own shell; kill by PID. A guarded `rm -f $VAR/*` is blocked; use literal paths.
+- Commit trailers: `Co-Authored-By: Claude <noreply@anthropic.com>` (no model names).
