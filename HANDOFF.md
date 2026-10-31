@@ -18,7 +18,8 @@ S14 is **done**. The pilot of study L (100 seeds) is analysed as preregistered i
 Nothing.
 
 ## Decisions waiting
-- **D9** (Duke): ask MIT's Living Wage Institute to license the 51 state figures? The default makes no request: the release keeps $49,370, labelled the unweighted mean, and study L's rows are published beside it.
+- **D9 answered** (Duke: "check the Simulation repo first"). Searched Oct 31: the Simulation (files and full history), NEEC and the Research Hub. None holds the 51 state figures, only the two summary means from the outside review in v4.11 ($23.7355/hr unweighted, $24.6160/hr weighted = ext). Recorded in the report, section 6.
+- **D10** (Duke): can you find the outside review's (Grok's) reply that listed the 51 state figures, in your chat history, and paste it? Then ext can be recomputed and checked state by state. Default (no answer): keep $49,370 as the unweighted mean, publish study L beside it, and leave ext labelled an outside figure that was only partly checked. Nothing waits on it.
 
 ## Next step
 **S13** (outside audits before the freeze: triage the Grok audit and audit the engine), opus, high; then S50. Both come before S47.
