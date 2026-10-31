@@ -4,7 +4,7 @@
 S37 **done**. The layer is built behind a switch (off by default, every earlier figure unchanged), and its preregistration addendum is committed. No study row with the layer has been run. Its rows run in the full batch (S48) after S47 freezes the design.
 
 ## What shipped
-- compassionism-simulation [#52](https://github.com/BetterToBest/compassionism-simulation/pull/52), merged as `ENGINE_COMMIT`:
+- compassionism-simulation [#52](https://github.com/BetterToBest/compassionism-simulation/pull/52), merged as `c9d5287`:
   - The switch `COMM` (study row option `cl`), with the reading `dev/reports/community-layer.md` and the decisions in `dev/DECISIONS.md` (S37).
   - A unit test (one community equals the layer off), and an engine lineage link (the 12-seed release panels unchanged).
 - Earlier in this session: compassionism-simulation [#51](https://github.com/BetterToBest/compassionism-simulation/pull/51) (the S35 pilot report), merged with checks green.
