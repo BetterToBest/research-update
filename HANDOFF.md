@@ -1,35 +1,33 @@
-# Handoff (Oct 30, 2026): S35 pilot studies, partly done
+# Handoff (Oct 31, 2026): S35 pilot studies, done
 
 ## Step status
-S35 **partly done**. Everything the preregistration requires before a run has landed, and the seven pilots are running on Actions. Remaining: the pilot report, once every folder has `DONE`.
+S35 **done**. All seven pilots finished (`DONE` in every folder, SHA256SUMS verified), and the pilot report is written.
 
 ## What shipped
-- compassionism-simulation [#50](https://github.com/BetterToBest/compassionism-simulation/pull/50), merged as `70d23beff2065b554b687a2a4843c1433b19498b`. It adds reporting keys `plv_0`..`plv_39` (price level by year) and `hhDebt20`/`hhDebt40` (families in debt), plus the debt reading (`c.dr`, borrowing limit 0, off by default). Guard test identical; lineage link to 6f35bc221fb7; validate, unit (222) and domtest (153) pass; decisions in `dev/DECISIONS.md` (S35).
-- compassionism-sim-results [#8](https://github.com/BetterToBest/compassionism-sim-results/pull/8), merged: `runner/jobs/program.js` (`--study=A|B|B10|C|D|D10|F --env=all`). `--check` passes: row counts match the preregistration, and the main and none rows match `release-pair.js` byte for byte. It keeps 46 measures per row; the full set would be 3.6 GB for study B. Study C's outcomes by age at joining come from the reporting hook (adults matched by id; 100% matched in a test).
-- research-update [#18](https://github.com/BetterToBest/research-update/pull/18): preregistration amendment 1 (engine commit, job script, choices the preregistration left open); this handoff.
+- compassionism-simulation [#51](https://github.com/BetterToBest/compassionism-simulation/pull/51): `dev/reports/pilot-studies.md` (labelled pilot throughout), tables and every estimate in `dev/runs/pilot-studies/`, written by `dev/tools/pilot_studies.py`, plus decisions in `dev/DECISIONS.md` (S35, Oct 31). No engine change. Merge status: see "In flight".
+- Earlier in S35: compassionism-simulation #50 (engine 70d23be), compassionism-sim-results #8 (job script), research-update #18 (preregistration amendment 1).
+- Results: compassionism-sim-results `pilot-{a,b,b10,c,d,d10,f}-70d23be`.
+
+## What the pilots show (50 seeds; not headline figures)
+- No outcome depends on population size beyond Monte Carlo error (11 of 504 comparisons, 2.2%). The only cases that pass the scale rule come from compounding: cumulative inflation at year 40, whose spread between seeds narrows with size.
+- The CCO accounts for 93-97% of the effect. PTF, PTH and SZH are near inert (each between -1.2 and +0.3 points). The material interactions are CCO × CIP: they overlap on the cost of living (-1 to -3 points) and reinforce each other on wealth (up to +5 points).
+- With ageing on, the release row makes wealth worse (Reference, year 40: 16.7 points worse). Adults who never join are worse off with the programme.
+- Participation: in Reference the detection level is the grid floor (10%). In Adverse and Stress no level qualifies, because the wealth effect goes the wrong way.
+- The debt reading lowers families in debt from 21.4% to 14.9% with no programme (SCF: 9.3%). It changes no decision.
+- Full batch: about 230 runner-hours, all on Actions, at 2 processes per runner.
+- Report section 9 lists what S47 must still add. Some items need a preregistration amendment: write null rather than 0 for keys past the run; the design-neutral BLEI at year 20 in 40-year runs; a yearly-rate reading of inflation; participation levels of 2% and 5%; the wording for hours.
 
 ## In flight
-- Seven `run-study` runs in compassionism-sim-results (runs 13-19, dispatched 05:54 UTC; run 13 = pilot-a ... run 19 = pilot-f). All use engine 70d23be, seeds 1-50, `--env=all`.
-- Folders: `pilot-a-70d23be` (A at 500, 2,000 and 10,000 adults), `pilot-b-70d23be`, `pilot-b10-70d23be`, `pilot-c-70d23be`, `pilot-d-70d23be`, `pilot-d10-70d23be`, `pilot-f-70d23be`. Each one is done when its `DONE` file exists. Expected within an hour.
-- If a shard failed: `rerun_failed_jobs` on that run (RUNNING.md section 1.6).
+- compassionism-simulation #51: checks were running at the end of this session (domtest and guard test take about 15 minutes). If it is still open, the next session merges it once its checks are green.
 
 ## Decisions waiting
-None.
+None. S37 going ahead was a modelling call, recorded in the report (section 8) and in dev/DECISIONS.md.
 
 ## Next step
-**S35 (continue)**, opus, medium: check the seven `DONE` files, then write `dev/reports/pilot-studies.md` (compassionism-simulation), labelled pilot throughout. It must cover:
-- the per-block timings, from each shard's `timing.json`, for S47;
-- does any outcome move with population size beyond Monte Carlo error? If not, say so plainly;
-- the synergy table, its size and noise;
-- age at joining;
-- participation curve shape;
-- the debt reading against the SCF's 9.3%;
-- every output still missing for the full batch.
-Then S37 only if the pilots show a community layer is needed.
+**S37** (community and zone layer), opus, xhigh. The pilots show it is needed: the parts the density argument rests on are inert in the engine, and nothing in the engine depends on population size. If the Hub papers give no mechanism that can be modelled without invented constants, S37 says so and stops.
 
 ## Pitfalls
-- The release row's price level is about 2,500 times at year 20 (50.8% a year; already in the release panel), and about 18 million times at year 40 in a 100-adult test. Read inflation outcomes with that in mind; the pilots will show it at scale.
-- The first CI run of an engine PR fails 2 domtest checks until the engine-lineage link is committed: run `engine_lineage.js prove` before pushing, not after.
-- With the debt reading on, Stress still shows about 50% of families in debt at year 40 (one seed): the debt floor's other flows (job loss, shocks) remain.
-- The engine's `domtest` takes about 12 minutes while the lineage proof is also running; start them one after the other.
-- Commit trailers: `Co-Authored-By: Claude <noreply@anthropic.com>` (no model names). This session's branch for research-update was the harness-assigned `claude/confident-gates-jfn3pw`.
+- Pilot files write 0 for keys past the run (`plv_39`, `ppov_39` and others in 20-year rows; `jnP*` in none rows). Never read those as values.
+- A 40-year run's first 20 years equal the 20-year run exactly, so year-20 points appear twice. Count them once.
+- Core-seconds measured with 4 processes per 4-vCPU runner are about doubled. Plan with runner-hours.
+- The results repository is large: clone it with `--filter=blob:none --sparse` and `git sparse-checkout set <folders>` (folder names, not patterns).
