@@ -4,7 +4,7 @@
 S14 is **done**. The pilot of study L (100 seeds) is analysed as preregistered in section 6 of compassionism-simulation `dev/reports/lw-weighted-line.md`, with every cell's rule 1 label. Study L's 500-seed rows join the S48 batch through S47.
 
 ## What shipped
-- compassionism-simulation [#57](https://github.com/BetterToBest/compassionism-simulation/pull/57): report section 6, `dev/tools/lw_pilot.py`, tables in `dev/runs/lw-pilot/` (from compassionism-sim-results `pilot-l-f66dc67`, SHA256SUMS verified), analysis readings in `dev/DECISIONS.md`. No engine change.
+- compassionism-simulation [#57](https://github.com/BetterToBest/compassionism-simulation/pull/57), merged `cc4e853`: report section 6, `dev/tools/lw_pilot.py`, tables in `dev/runs/lw-pilot/` (from compassionism-sim-results `pilot-l-f66dc67`, SHA256SUMS verified), analysis readings in `dev/DECISIONS.md`. No engine change.
 - Earlier this step: compassionism-simulation #56 (switch `LW`, `f66dc67`), compassionism-sim-results #10 (`runner/jobs/lw.js`), research-update #25 (preregistration of study L).
 
 ## What the pilot found (labelled pilot)
@@ -19,7 +19,7 @@ Nothing.
 
 ## Decisions waiting
 - **D9 answered** (Duke: "check the Simulation repo first"). Searched Oct 31: the Simulation (files and full history), NEEC and the Research Hub. None holds the 51 state figures, only the two summary means from the outside review in v4.11 ($23.7355/hr unweighted, $24.6160/hr weighted = ext). Recorded in the report, section 6.
-- **D10** (Duke): can you find the outside review's (Grok's) reply that listed the 51 state figures, in your chat history, and paste it? Then ext can be recomputed and checked state by state. Default (no answer): keep $49,370 as the unweighted mean, publish study L beside it, and leave ext labelled an outside figure that was only partly checked. Nothing waits on it.
+- **D10** (Duke): the 51 state figures. Duke found the outside review's source (Oct 31): Money Talks News, "How much is really a living wage in every state" (moneytalksnews.com/slideshows/how-much-is-really-a-living-wage-in-every-state/). The site refuses automated access (HTTP 403), so it was not read; Duke can paste the page's 51 figures. Then: check they reproduce $23.7355 (unweighted) and $24.6160 (weighted, Census Vintage 2025); spot-check against the eight MIT pages held; if they agree, ext is verified (rule 3 still needs ext and bea within 1%). Commit the script and the input file's hash, not the 51-figure table (MIT's ten-location limit). Default (no answer): keep $49,370; ext stays partly checked. Nothing waits on it.
 
 ## Next step
 **S13** (outside audits before the freeze: triage the Grok audit and audit the engine), opus, high; then S50. Both come before S47.
