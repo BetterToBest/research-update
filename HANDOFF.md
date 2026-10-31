@@ -6,7 +6,7 @@ S6 **done**. The design options are modelled and preregistered (study K). The 10
 ## What shipped
 - compassionism-simulation [#53](https://github.com/BetterToBest/compassionism-simulation/pull/53), merged `3e79adb`: the switch `C22` (row option `c22`). It models the Act's status rule (`u`, 4.1% and 5.6%, Pew 2023), automatic distribution (`auto`), and the BU indexed to the price of food, housing and medical care (`idx: 'needs'`). It adds `c22NeedsBU()` ($1,788.43 a month, MIT 2026) and coverage keys. Off by default; guard test identical.
 - compassionism-simulation [#54](https://github.com/BetterToBest/compassionism-simulation/pull/54), merged `395dd5b`: a rounding tolerance in the coverage tally (preregistration amendment 1).
-- compassionism-simulation [#55](https://github.com/BetterToBest/compassionism-simulation/pull/55): the report `dev/reports/c22-coverage-adequacy.md`, with tables in `dev/runs/c22-pilot/` written by `dev/tools/c22_pilot.py`.
+- compassionism-simulation [#55](https://github.com/BetterToBest/compassionism-simulation/pull/55), merged `cc779df`: the report `dev/reports/c22-coverage-adequacy.md`, with tables in `dev/runs/c22-pilot/` written by `dev/tools/c22_pilot.py`.
 - compassionism-sim-results [#9](https://github.com/BetterToBest/compassionism-sim-results/pull/9), merged: `runner/jobs/c22.js`. Results `pilot-k-3e79adb` (first run, kept) and `pilot-k-395dd5b` (the one used); both have run.txt and SHA256SUMS.
 - research-update #21, #22 and this PR: `prereg/2026-11-c22-coverage-adequacy.md` with amendment 1; study programme Amendment 3; S47 note; section 102 items in `audits/corrections-package-s5.md`.
 
