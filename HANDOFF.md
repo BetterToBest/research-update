@@ -1,31 +1,31 @@
-# Handoff (Oct 31, 2026): S14 population-weighted cost-of-living line, partly done (pilot running)
+# Handoff (Oct 31, 2026): S14 population-weighted cost-of-living line, done
 
 ## Step status
-S14 is **partly done**. The derivation and every dollar path are audited, the engine switch is merged, study L is preregistered, and its 100-seed pilot was started on Actions. What remains is the pilot's results section in the report (`dev/reports/lw-weighted-line.md`, section 6), with the decision-rule labels. The next session does this first. Duke's D8 answer is recorded in both preregistrations.
+S14 is **done**. The pilot of study L (100 seeds) is analysed as preregistered in section 6 of compassionism-simulation `dev/reports/lw-weighted-line.md`, with every cell's rule 1 label. Study L's 500-seed rows join the S48 batch through S47.
 
 ## What shipped
-- compassionism-simulation [#56](https://github.com/BetterToBest/compassionism-simulation/pull/56), merged `f66dc67`. It adds the switch `LW` (row option `lw: 'ext' | 'bea'`), which sets the line and refits the basket shares, household ratios and childcare at it (`sources/lw_line.py`), plus project pay. `sources/lw_bea.py` holds the BEA estimate, and the report is `dev/reports/lw-weighted-line.md`. Checks: guard identical, lineage proof (six panels identical), unit 225/0, validate, domtest.
-- compassionism-sim-results [#10](https://github.com/BetterToBest/compassionism-sim-results/pull/10), merged: `runner/jobs/lw.js` (9 rows; `--check` passes).
-- research-update (this PR): `prereg/2026-11-lw-weighted-line.md` (study L). Study programme Amendment 4 adds study L and Duke's D8 answer. Study K Amendment 2 adds the D8 answer.
+- compassionism-simulation [#57](https://github.com/BetterToBest/compassionism-simulation/pull/57): report section 6, `dev/tools/lw_pilot.py`, tables in `dev/runs/lw-pilot/` (from compassionism-sim-results `pilot-l-f66dc67`, SHA256SUMS verified), analysis readings in `dev/DECISIONS.md`. No engine change.
+- Earlier this step: compassionism-simulation #56 (switch `LW`, `f66dc67`), compassionism-sim-results #10 (`runner/jobs/lw.js`), research-update #25 (preregistration of study L).
 
-## What S14 found
-- MIT's terms allow web use of at most 10 locations, and a weighted national mean needs all 51. So MIT's own weighted figure is not computed: ledger decision D9 (licence).
-- Two estimates run beside $49,370. ext is $51,201 (+3.7%), an outside figure that was only partly checked. bea is $51,838 (+5.0%), this step's estimate from BEA price parities and the 8 MIT pages already held; leaving one state out gives $51,708-51,995.
-- At a higher line the housing share rises (27.6% → 28.8-29.2%). The C2.2 needs level rises from $1,788 to $1,885-1,918 a month.
-- No dollar path was found wrongly fixed at $49,370, apart from the fitted sets, which the switch refits. The adult $25,000 wealth line (`pov`) does not follow the line by design, so study L also reports `hhWlthPY`.
+## What the pilot found (labelled pilot)
+- No programme: at a higher line, 1-3 points more people are below each line (headline: cost of living +1.7 at ext, +2.3 at bea).
+- Release row: not changed by the line on all four primary share outcomes in the headline cell, at ext and bea, so robust to the line (rule 2). Five Adverse comparisons are 1.0-1.5 points smaller at the higher line. Cost hardly moves; inflation is 6-8% higher (20 years, Reference), because project pay follows the line.
+- C2.2 design: changed by the line, mostly by construction. Its BU follows the line, so its effect grows by about the gap the higher line opens; cost +5.5-8.1%. Its figures are stated with their range across the lines.
+- Rule 3: ext and bea are 1.2% apart (more than 1%), so the release keeps $49,370, labelled the unweighted mean.
+- Rule 1 labels every inflation comparison "changed" (cumulative inflation compounds; a ±1-point band is meaningless). The report gives inflation as a percentage of the base; S47 should settle a yearly-rate reading for every study (pilot studies report, section 9).
 
 ## In flight
-- Pilot `pilot-l`: run-study workflow in compassionism-sim-results, engine `f66dc67`, job `lw.js --env=all --procs=2`, seeds 1-100, 10 shards. Results land in `pilot-l-<engine 7>/` with run.txt and SHA256SUMS. It is finished when the folder has `DONE`. Run: https://github.com/BetterToBest/compassionism-sim-results/actions/runs/41168320930
+Nothing.
 
 ## Decisions waiting
-- **D9** (Duke): ask MIT's Living Wage Institute to license the 51 state figures? The default makes no request: the release keeps $49,370, labelled the unweighted mean, and study L's rows are published beside it.
+- **D9 answered** (Duke: "check the Simulation repo first"). Searched Oct 31: the Simulation (files and full history), NEEC and the Research Hub. None holds the 51 state figures, only the two summary means from the outside review in v4.11 ($23.7355/hr unweighted, $24.6160/hr weighted = ext). Recorded in the report, section 6.
+- **D10** (Duke): can you find the outside review's (Grok's) reply that listed the 51 state figures, in your chat history, and paste it? Then ext can be recomputed and checked state by state. Default (no answer): keep $49,370 as the unweighted mean, publish study L beside it, and leave ext labelled an outside figure that was only partly checked. Nothing waits on it.
 
 ## Next step
-Finish S14 first: write the pilot's section 6 and the rule labels, then merge (short). Then **S13** (outside audits before the freeze), opus, high, followed by S50. All of these come before S47.
+**S13** (outside audits before the freeze: triage the Grok audit and audit the engine), opus, high; then S50. Both come before S47.
 
 ## Pitfalls
 - MIT asks not to be scraped. More than 10 locations needs a licence, so never pull the 51 state pages.
-- `sync_earlier.py` must run after any edit to `index.html`'s script, or domtest fails ("same script false", and functions "DRIFTED").
-- `engine_lineage.js prove` takes about 12 minutes. Run it in the background, then commit `dev/runs/engine-lineage.json`.
-- `gh` has no valid token in this environment. Use the GitHub tools for pull requests and workflow dispatch.
+- Result files write 0 for keys past the run's horizon (year-40 keys in 20-year rows); `lw_pilot.py` reads horizon keys only.
+- `gh` has no valid token here; the GitHub tools work for pull requests and workflow runs.
 - S47 must build the batch on the C2.2 design (study programme Amendment 4) and add `lw.js` and `c22.js` to the manifest.
