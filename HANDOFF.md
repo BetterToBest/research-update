@@ -1,33 +1,31 @@
-# Handoff (Oct 31, 2026): S6 C2.2 coverage and adequacy, done (pilot)
+# Handoff (Oct 31, 2026): S14 population-weighted cost-of-living line, partly done (pilot running)
 
 ## Step status
-S6 **done**. The design options are modelled and preregistered (study K). The 100-seed pilot ran on Actions and its report is written. Which option the design adopts is Duke's call: ledger decision D8. Study K's 500-seed rows run in the S48 batch.
+S14 is **partly done**. The derivation and every dollar path are audited, the engine switch is merged, study L is preregistered, and its 100-seed pilot was started on Actions. What remains is the pilot's results section in the report (`dev/reports/lw-weighted-line.md`, section 6), with the decision-rule labels. The next session does this first. Duke's D8 answer is recorded in both preregistrations.
 
 ## What shipped
-- compassionism-simulation [#53](https://github.com/BetterToBest/compassionism-simulation/pull/53), merged `3e79adb`: the switch `C22` (row option `c22`). It models the Act's status rule (`u`, 4.1% and 5.6%, Pew 2023), automatic distribution (`auto`), and the BU indexed to the price of food, housing and medical care (`idx: 'needs'`). It adds `c22NeedsBU()` ($1,788.43 a month, MIT 2026) and coverage keys. Off by default; guard test identical.
-- compassionism-simulation [#54](https://github.com/BetterToBest/compassionism-simulation/pull/54), merged `395dd5b`: a rounding tolerance in the coverage tally (preregistration amendment 1).
-- compassionism-simulation [#55](https://github.com/BetterToBest/compassionism-simulation/pull/55), merged `cc779df`: the report `dev/reports/c22-coverage-adequacy.md`, with tables in `dev/runs/c22-pilot/` written by `dev/tools/c22_pilot.py`.
-- compassionism-sim-results [#9](https://github.com/BetterToBest/compassionism-sim-results/pull/9), merged: `runner/jobs/c22.js`. Results `pilot-k-3e79adb` (first run, kept) and `pilot-k-395dd5b` (the one used); both have run.txt and SHA256SUMS.
-- research-update #21, #22 and this PR: `prereg/2026-11-c22-coverage-adequacy.md` with amendment 1; study programme Amendment 3; S47 note; section 102 items in `audits/corrections-package-s5.md`.
+- compassionism-simulation [#56](https://github.com/BetterToBest/compassionism-simulation/pull/56), merged `f66dc67`. It adds the switch `LW` (row option `lw: 'ext' | 'bea'`), which sets the line and refits the basket shares, household ratios and childcare at it (`sources/lw_line.py`), plus project pay. `sources/lw_bea.py` holds the BEA estimate, and the report is `dev/reports/lw-weighted-line.md`. Checks: guard identical, lineage proof (six panels identical), unit 225/0, validate, domtest.
+- compassionism-sim-results [#10](https://github.com/BetterToBest/compassionism-sim-results/pull/10), merged: `runner/jobs/lw.js` (9 rows; `--check` passes).
+- research-update (this PR): `prereg/2026-11-lw-weighted-line.md` (study L). Study programme Amendment 4 adds study L and Duke's D8 answer. Study K Amendment 2 adds the D8 answer.
 
-## What the pilot shows (100 seeds; Reference, 20 years, CPS unless stated)
-- As released, the BU reaches 83% of adult-years (43% in Stress) and covers housing, food and medical care in **none**: it pays about 65% of those needs.
-- Coverage closes only with automatic distribution and no status rule. Adequacy closes in no row. The "C2.2 design" (automatic, all residents, needs level, needs-indexed) covers 95% of adult-years; the rest are single parents (a quarter-BU child allowance is below a child's needs).
-- Adults left out by the status rule end with too little wealth 8 to 53 points more often than with no programme, in all 12 cells.
-- The C2.2 design is better than the release row on cost of living and on wealth in all 12 cells, at $23,700-38,700 more per adult-year. Automatic distribution alone is mixed: worse on wealth in Adverse and Stress.
+## What S14 found
+- MIT's terms allow web use of at most 10 locations, and a weighted national mean needs all 51. So MIT's own weighted figure is not computed: ledger decision D9 (licence).
+- Two estimates run beside $49,370. ext is $51,201 (+3.7%), an outside figure that was only partly checked. bea is $51,838 (+5.0%), this step's estimate from BEA price parities and the 8 MIT pages already held; leaving one state out gives $51,708-51,995.
+- At a higher line the housing share rises (27.6% → 28.8-29.2%). The C2.2 needs level rises from $1,788 to $1,885-1,918 a month.
+- No dollar path was found wrongly fixed at $49,370, apart from the fitted sets, which the switch refits. The adult $25,000 wealth line (`pov`) does not follow the line by design, so study L also reports `hhWlthPY`.
 
 ## In flight
-Nothing running.
+- Pilot `pilot-l`: run-study workflow in compassionism-sim-results, engine `f66dc67`, job `lw.js --env=all --procs=2`, seeds 1-100, 10 shards. Results land in `pilot-l-<engine 7>/` with run.txt and SHA256SUMS. It is finished when the folder has `DONE`. Run: https://github.com/BetterToBest/compassionism-sim-results/actions/runs/41168320930
 
 ## Decisions waiting
-- **D8** (Duke): adopt a C2.2 design change? The default keeps the design as written; NEEC's C2.2 hold (its decision 69.4) stands, and the findings are published.
+- **D9** (Duke): ask MIT's Living Wage Institute to license the 51 state figures? The default makes no request: the release keeps $49,370, labelled the unweighted mean, and study L's rows are published beside it.
 
 ## Next step
-**S14** (population-weighted cost-of-living line), opus, high: next in the Order table. S13 and S50 follow; all before S47.
+Finish S14 first: write the pilot's section 6 and the rule labels, then merge (short). Then **S13** (outside audits before the freeze), opus, high, followed by S50. All of these come before S47.
 
 ## Pitfalls
-- A BU set exactly to the needs failed `>=` through rounding in 1 adult-year in 10 (amendment 1). Compare money with a relative tolerance.
-- `gh` works through REST only (`gh api`), not GraphQL. `gh workflow run` fails; dispatch with `gh api -X POST .../dispatches`.
-- Never force-push; after a merged PR, restart the session branch from main and push normally.
-- `c22` on the none row only marks who is left out (identical outputs), so the same adults can be paired.
-- If Duke changes the design under D8, the release row changes: a dated amendment to both preregistrations before S47.
+- MIT asks not to be scraped. More than 10 locations needs a licence, so never pull the 51 state pages.
+- `sync_earlier.py` must run after any edit to `index.html`'s script, or domtest fails ("same script false", and functions "DRIFTED").
+- `engine_lineage.js prove` takes about 12 minutes. Run it in the background, then commit `dev/runs/engine-lineage.json`.
+- `gh` has no valid token in this environment. Use the GitHub tools for pull requests and workflow dispatch.
+- S47 must build the batch on the C2.2 design (study programme Amendment 4) and add `lw.js` and `c22.js` to the manifest.

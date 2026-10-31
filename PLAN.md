@@ -176,6 +176,7 @@ Done Oct 31 (pilot): switch `C22` (compassionism-simulation #53, #54), preregist
 
 ### S14 · Population-weighted cost-of-living line
 As ledger S14: audit the derivation from MIT's data and every dollar path in the engine first, then run it beside the current line.
+Oct 31 (partly done): audit and switch `LW` (compassionism-simulation #56, `f66dc67`), report `dev/reports/lw-weighted-line.md`, preregistration `prereg/2026-11-lw-weighted-line.md` (study L), pilot `pilot-l-f66dc67` started on Actions. Remaining: the report's section 6 (pilot results and rule labels). MIT's own weighted figure needs a licence (ledger D9; default: no request). Study L's 500-seed rows join S48 (S47).
 
 ### S39 · Outside engine cross-check (D5: after the scale results, regardless)
 BeforeIT.jl implements Poledna et al. (2023) and runs at full population scale (Austria; an experimental Italy calibration). Add a Basic Unit and conversion module, run at full scale, and compare price-level effects with this engine at matched settings. Report what a US calibration would take.
