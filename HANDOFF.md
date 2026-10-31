@@ -19,7 +19,7 @@ Nothing.
 
 ## Decisions waiting
 - **D9 answered** (Duke: "check the Simulation repo first"). Searched Oct 31: the Simulation (files and full history), NEEC and the Research Hub. None holds the 51 state figures, only the two summary means from the outside review in v4.11 ($23.7355/hr unweighted, $24.6160/hr weighted = ext). Recorded in the report, section 6.
-- **D10** (Duke): the 51 state figures. Duke found the outside review's source (Oct 31): Money Talks News, "How much is really a living wage in every state" (moneytalksnews.com/slideshows/how-much-is-really-a-living-wage-in-every-state/). The site refuses automated access (HTTP 403), so it was not read; Duke can paste the page's 51 figures. Then: check they reproduce $23.7355 (unweighted) and $24.6160 (weighted, Census Vintage 2025); spot-check against the eight MIT pages held; if they agree, ext is verified (rule 3 still needs ext and bea within 1%). Commit the script and the input file's hash, not the 51-figure table (MIT's ten-location limit). Default (no answer): keep $49,370; ext stays partly checked. Nothing waits on it.
+- **D10 answered** (Duke pasted the Money Talks News table). ext re-derived: $51,201.27 against $51,201.28; the eight MIT pages held match exactly (compassionism-simulation [#58](https://github.com/BetterToBest/compassionism-simulation/pull/58), `sources/lw_check_ext.py`; prereg Amendment 1). The 51 figures are not committed (MIT's ten-location limit). bea overstates the weighting by 1.2%. Recommendation to S47: adopt ext as the line, keeping the $49,370 rows beside it.
 
 ## Next step
 **S13** (outside audits before the freeze: triage the Grok audit and audit the engine), opus, high; then S50. Both come before S47.
@@ -28,4 +28,4 @@ Nothing.
 - MIT asks not to be scraped. More than 10 locations needs a licence, so never pull the 51 state pages.
 - Result files write 0 for keys past the run's horizon (year-40 keys in 20-year rows); `lw_pilot.py` reads horizon keys only.
 - `gh` has no valid token here; the GitHub tools work for pull requests and workflow runs.
-- S47 must build the batch on the C2.2 design (study programme Amendment 4) and add `lw.js` and `c22.js` to the manifest.
+- S47 decides the line (study L rule 3; recommendation: ext, $51,201). S47 must build the batch on the C2.2 design (study programme Amendment 4) and add `lw.js` and `c22.js` to the manifest.
