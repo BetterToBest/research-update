@@ -75,3 +75,9 @@ Every cell goes to compassionism-sim-results (`pilot-k-<engine>`, later `k-<engi
 One US-average cost-of-living line (S14 builds a population-weighted one). MIT's medical budget assumes employer coverage. Status is drawn by household, so mixed-status families are not modelled. Temporary visa holders are not modelled separately. "Automatic" also opens conversion to everyone. Everyone in the model works (S34).
 
 ## Amendments
+
+### Amendment 1 (Oct 31, 2026, S6, after the first pilot run): a rounding error in the coverage measure
+- **What was wrong.** In the rows where the BU is set to the C2.2 needs and indexed to them, a single adult's BU equals their needs exactly. In about 1 adult-year in 10, floating-point rounding made the BU a few billionths of a dollar short of the needs, so the test "BU at least the needs" failed. This understated `c22PY` in the rows `needs`, `c22`, `c22.act` and `c22.cb50`. It was found by checking each adult's ratio by household type on one seed (singles: exactly 1.000000; 90.5% counted as covered).
+- **Change.** An adult-year counts as covered when the BU is at least the needs within a relative 1e-9 (engine pull request 54). Nothing else changes: the measure, the rows and every other output are unchanged (guard test identical, release panels identical).
+- **Runs.** The first pilot (`pilot-k-3e79adb`) stays published. The pilot is rerun on the fixed engine (`pilot-k-<new commit>`), and the report takes `c22PY` from the rerun. The report also checks that every other kept measure is identical between the two runs, seed by seed.
+- **Engine:** compassionism-simulation at commit `ENGINE_COMMIT_A1` (pull request 54). S47 pins the batch's commit.
