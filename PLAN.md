@@ -148,6 +148,7 @@ Partly done Oct 30: the "Before the first run" items landed (engine 70d23be, com
 ### S47 · Design freeze (before any money is spent)
 1. Collect every output the rest of the plan will need from the batch, consumer by consumer: the release panel (S7), the BLEI visual series (S11, I1), the participation figure (S5), the synergy tables (S36), the community-layer rows (S38), the scale rows and settings S39 compares with, NEEC's simulation readings (N-S70), the advocacy charts (S45), and the preregistration (S32 plus amendments). Write `prereg/run-manifest.md`: every job, its rows, environments, seeds, population, horizon, outputs and their consumer.
 2. Check nothing is still moving: S10 and S50 match (or their differences are explained), the engine audit (S13) is triaged, S6 and S14 are settled, S37 is built or ruled out. Pin the engine commit.
+   For the community layer (S37): add studies G, G10, H, I, J to compassionism-sim-results `runner/jobs/program.js` (row counts per the addendum) and keep its keys (`clN`, `clZ`, `clSd`, `clHi`, `clTh`, `pfMem`, `pfCut`) before the dry run.
 3. Dry-run every job at 2 seeds on Actions; confirm each output file exists and loads in its consumer's script.
 4. Estimate Runpod hours and cost per job from S33's benchmarks; put the cheapest split (Actions vs Runpod) in the manifest.
 5. Add a ledger decision: "Design frozen; add the Runpod key to the Claude Code environment to start S48" with the cost estimate. The chain stops here.
@@ -160,9 +161,10 @@ From the batch: Shapley shares and the interaction table, 20 and 40 years, three
 
 ### S37 · Community and zone layer (only if the pilots, S35, show it is needed)
 The framework's synergy argument rests partly on local density: SZH zones, PTF merchant networks, PTH communities. Today the engine gates SZH by the realised PTF share but has no communities. Read the SZH, PTF and PTH papers and write "Claude's reading" of what should depend on local density. Design a community layer (communities of sourced sizes; local PTF and PTH density; zone formation), every parameter sourced or labelled and swept; build it behind a switch (off = bit-identical, `guard_test`). Add a preregistration addendum before any run.
+Done Oct 31 (compassionism-simulation #52, engine ENGINE_COMMIT; `dev/reports/community-layer.md`; addendum `prereg/2026-11-community-layer.md`, amendment 2 of the programme; checks `prereg/checks/s37_layer_checks.js`): the Hub puts the PTF density tests (food price cut at 40%, θ at 55%) "in a given zone" and has SZH organize where PTF is deployed; the layer reads those tests per community and, with SZH, places the starting members together in zones (k 100, f 0.5; both swept). PTH density not modelled (the Hub gives only a household count). One community equals off exactly. Studies G, G10, H, I, J, about 25 runner-hours; headline at 10,000 adults. No row run yet.
 
 ### S38 · Community-layer report
-From the batch (S48): the S37 addendum's rows, 20 and 40 years, three environments; reported as S36.
+From the batch (S48): the S37 addendum's rows (`prereg/2026-11-community-layer.md`: studies G, G10, H, I, J), 20 and 40 years, three environments; reported as S36, headline at 10,000 adults.
 
 ### S5 · Participation threshold
 Take the figure from the batch's Q4, with its computation, and correct each paper that states 30%, 55%, 60-65% or 75% differently (lands through S24/S25).
