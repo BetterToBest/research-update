@@ -172,6 +172,7 @@ Take the figure from the batch's Q4, with its computation, and correct each pape
 
 ### S6 · C2.2 coverage and adequacy
 As ledger S6. Model options are Claude's call; a change to the design itself (who receives Basic Units, how much) goes to Duke as a ledger decision with the modelled figures beside each option.
+Done Oct 31 (pilot): switch `C22` (compassionism-simulation #53, #54), preregistration `prereg/2026-11-c22-coverage-adequacy.md` (study K), pilot `pilot-k-395dd5b`, report `dev/reports/c22-coverage-adequacy.md` (#55). Duke's design choice: ledger D8 (default: keep the design as written). Study K's 500-seed rows join the S48 batch (S47).
 
 ### S14 · Population-weighted cost-of-living line
 As ledger S14: audit the derivation from MIT's data and every dollar path in the engine first, then run it beside the current line.

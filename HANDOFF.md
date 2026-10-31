@@ -1,42 +1,33 @@
-# Handoff (Oct 31, 2026): S37 community and zone layer, done
+# Handoff (Oct 31, 2026): S6 C2.2 coverage and adequacy, done (pilot)
 
 ## Step status
-S37 **done**. The layer is built behind a switch (off by default, every earlier figure unchanged), and its preregistration addendum is committed. No study row with the layer has been run. Its rows run in the full batch (S48) after S47 freezes the design.
+S6 **done**. The design options are modelled and preregistered (study K). The 100-seed pilot ran on Actions and its report is written. Which option the design adopts is Duke's call: ledger decision D8. Study K's 500-seed rows run in the S48 batch.
 
 ## What shipped
-- compassionism-simulation [#52](https://github.com/BetterToBest/compassionism-simulation/pull/52), merged as `c9d5287`:
-  - The switch `COMM` (study row option `cl`), with the reading `dev/reports/community-layer.md` and the decisions in `dev/DECISIONS.md` (S37).
-  - A unit test (one community equals the layer off), and an engine lineage link (the 12-seed release panels unchanged).
-- Earlier in this session: compassionism-simulation [#51](https://github.com/BetterToBest/compassionism-simulation/pull/51) (the S35 pilot report), merged with checks green.
-- research-update (this repository):
-  - `prereg/2026-11-community-layer.md`: the addendum, with studies G, G10, H, I and J, about 25 runner-hours, the headline at 10,000 adults.
-  - Amendment 2 of `prereg/2026-11-study-program.md`, which points to the addendum.
-  - `prereg/checks/s37_layer_checks.js`, and the S37, S38 and S47 sections of PLAN.md.
+- compassionism-simulation [#53](https://github.com/BetterToBest/compassionism-simulation/pull/53), merged `3e79adb`: the switch `C22` (row option `c22`). It models the Act's status rule (`u`, 4.1% and 5.6%, Pew 2023), automatic distribution (`auto`), and the BU indexed to the price of food, housing and medical care (`idx: 'needs'`). It adds `c22NeedsBU()` ($1,788.43 a month, MIT 2026) and coverage keys. Off by default; guard test identical.
+- compassionism-simulation [#54](https://github.com/BetterToBest/compassionism-simulation/pull/54), merged `395dd5b`: a rounding tolerance in the coverage tally (preregistration amendment 1).
+- compassionism-simulation [#55](https://github.com/BetterToBest/compassionism-simulation/pull/55): the report `dev/reports/c22-coverage-adequacy.md`, with tables in `dev/runs/c22-pilot/` written by `dev/tools/c22_pilot.py`.
+- compassionism-sim-results [#9](https://github.com/BetterToBest/compassionism-sim-results/pull/9), merged: `runner/jobs/c22.js`. Results `pilot-k-3e79adb` (first run, kept) and `pilot-k-395dd5b` (the one used); both have run.txt and SHA256SUMS.
+- research-update #21, #22 and this PR: `prereg/2026-11-c22-coverage-adequacy.md` with amendment 1; study programme Amendment 3; S47 note; section 102 items in `audits/corrections-package-s5.md`.
 
-## What the layer is (Claude's reading of the design)
-- **Why it was needed.** The Hub's BLEI paper puts the PTF density tests "in a given zone": the food price cut needs about 40% of residents to be members, and the synergy coefficient θ needs 55%. The engine read them on the share of all adults, 18% at the start, so they never passed. That is why the pilots found SZH inert.
-- **What it does.** The layer reads the three tests (food price cut, θ, imitation) in each community of about k adults. With SZH on, it places the starting PTF members together in zones where members are a share f of the residents. Who is a member does not change.
-- **Design parameters, each swept:** k 100 (50, 250); f 0.5 (2/3, 1; the Hub's survey majority); zones need CIP, no (yes); imitation local (population-wide).
-- **CIP.** In the main reading zones form without CIP, so that any CIP and SZH synergy comes from a mechanism, not from a rule written in. The Hub's literal rule (zones only with CIP) is a sweep row, labelled as such.
-- **Not modelled:** PTH density (the Hub gives only a household count, 30-40, which a sample of adults cannot show), moving between zones, capacity by zone, cross-zone shopping.
-- **Checks:**
-  - One community equals the layer off on every measure, in three environments, at 20 years and at 40 with ageing.
-  - Rows without PTF are unchanged.
-  - Guard test, validate, unit (223), domtest (153) and the glossary check pass.
-  - No outcome value was looked at.
+## What the pilot shows (100 seeds; Reference, 20 years, CPS unless stated)
+- As released, the BU reaches 83% of adult-years (43% in Stress) and covers housing, food and medical care in **none**: it pays about 65% of those needs.
+- Coverage closes only with automatic distribution and no status rule. Adequacy closes in no row. The "C2.2 design" (automatic, all residents, needs level, needs-indexed) covers 95% of adult-years; the rest are single parents (a quarter-BU child allowance is below a child's needs).
+- Adults left out by the status rule end with too little wealth 8 to 53 points more often than with no programme, in all 12 cells.
+- The C2.2 design is better than the release row on cost of living and on wealth in all 12 cells, at $23,700-38,700 more per adult-year. Automatic distribution alone is mixed: worse on wealth in Adverse and Stress.
 
 ## In flight
 Nothing running.
 
 ## Decisions waiting
-None. The CIP reading above is a modelling assumption (both readings are preregistered). If Duke thinks it misrepresents the design, that is a ledger decision for a later session.
+- **D8** (Duke): adopt a C2.2 design change? The default keeps the design as written; NEEC's C2.2 hold (its decision 69.4) stands, and the findings are published.
 
 ## Next step
-**S6** (C2.2 coverage and adequacy), opus, high: next in the Order table. S14, S13 and S50 follow; all must finish before S47.
+**S14** (population-weighted cost-of-living line), opus, high: next in the Order table. S13 and S50 follow; all before S47.
 
 ## Pitfalls
-- The study row option `cm` is the conversion model; the layer is `cl`.
-- At 500 adults zones are coarse (5 communities): about half the members reach the 40% test with k 100. That is why the addendum's headline is at 10,000 adults.
-- S47 must add studies G to J to the job script `runner/jobs/program.js`, and keep the layer's keys, before its dry run (PLAN.md, S47).
-- Commit trailers: this project forbids model names. Use `Co-Authored-By: Claude <noreply@anthropic.com>`, not the default trailer.
-- The results repository is large: clone it with `--filter=blob:none --sparse`.
+- A BU set exactly to the needs failed `>=` through rounding in 1 adult-year in 10 (amendment 1). Compare money with a relative tolerance.
+- `gh` works through REST only (`gh api`), not GraphQL. `gh workflow run` fails; dispatch with `gh api -X POST .../dispatches`.
+- Never force-push; after a merged PR, restart the session branch from main and push normally.
+- `c22` on the none row only marks who is left out (identical outputs), so the same adults can be paired.
+- If Duke changes the design under D8, the release row changes: a dated amendment to both preregistrations before S47.
