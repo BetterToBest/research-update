@@ -1,33 +1,42 @@
-# Handoff (Oct 31, 2026): S35 pilot studies, done
+# Handoff (Oct 31, 2026): S37 community and zone layer, done
 
 ## Step status
-S35 **done**. All seven pilots finished (`DONE` in every folder, SHA256SUMS verified), and the pilot report is written.
+S37 **done**. The layer is built behind a switch (off by default, every earlier figure unchanged), and its preregistration addendum is committed. No study row with the layer has been run. Its rows run in the full batch (S48) after S47 freezes the design.
 
 ## What shipped
-- compassionism-simulation [#51](https://github.com/BetterToBest/compassionism-simulation/pull/51): `dev/reports/pilot-studies.md` (labelled pilot throughout), tables and every estimate in `dev/runs/pilot-studies/`, written by `dev/tools/pilot_studies.py`, plus decisions in `dev/DECISIONS.md` (S35, Oct 31). No engine change. Merge status: see "In flight".
-- Earlier in S35: compassionism-simulation #50 (engine 70d23be), compassionism-sim-results #8 (job script), research-update #18 (preregistration amendment 1).
-- Results: compassionism-sim-results `pilot-{a,b,b10,c,d,d10,f}-70d23be`.
+- compassionism-simulation [#52](https://github.com/BetterToBest/compassionism-simulation/pull/52), merged as `c9d5287`:
+  - The switch `COMM` (study row option `cl`), with the reading `dev/reports/community-layer.md` and the decisions in `dev/DECISIONS.md` (S37).
+  - A unit test (one community equals the layer off), and an engine lineage link (the 12-seed release panels unchanged).
+- Earlier in this session: compassionism-simulation [#51](https://github.com/BetterToBest/compassionism-simulation/pull/51) (the S35 pilot report), merged with checks green.
+- research-update (this repository):
+  - `prereg/2026-11-community-layer.md`: the addendum, with studies G, G10, H, I and J, about 25 runner-hours, the headline at 10,000 adults.
+  - Amendment 2 of `prereg/2026-11-study-program.md`, which points to the addendum.
+  - `prereg/checks/s37_layer_checks.js`, and the S37, S38 and S47 sections of PLAN.md.
 
-## What the pilots show (50 seeds; not headline figures)
-- No outcome depends on population size beyond Monte Carlo error (11 of 504 comparisons, 2.2%). The only cases that pass the scale rule come from compounding: cumulative inflation at year 40, whose spread between seeds narrows with size.
-- The CCO accounts for 93-97% of the effect. PTF, PTH and SZH are near inert (each between -1.2 and +0.3 points). The material interactions are CCO × CIP: they overlap on the cost of living (-1 to -3 points) and reinforce each other on wealth (up to +5 points).
-- With ageing on, the release row makes wealth worse (Reference, year 40: 16.7 points worse). Adults who never join are worse off with the programme.
-- Participation: in Reference the detection level is the grid floor (10%). In Adverse and Stress no level qualifies, because the wealth effect goes the wrong way.
-- The debt reading lowers families in debt from 21.4% to 14.9% with no programme (SCF: 9.3%). It changes no decision.
-- Full batch: about 230 runner-hours, all on Actions, at 2 processes per runner.
-- Report section 9 lists what S47 must still add. Some items need a preregistration amendment: write null rather than 0 for keys past the run; the design-neutral BLEI at year 20 in 40-year runs; a yearly-rate reading of inflation; participation levels of 2% and 5%; the wording for hours.
+## What the layer is (Claude's reading of the design)
+- **Why it was needed.** The Hub's BLEI paper puts the PTF density tests "in a given zone": the food price cut needs about 40% of residents to be members, and the synergy coefficient θ needs 55%. The engine read them on the share of all adults, 18% at the start, so they never passed. That is why the pilots found SZH inert.
+- **What it does.** The layer reads the three tests (food price cut, θ, imitation) in each community of about k adults. With SZH on, it places the starting PTF members together in zones where members are a share f of the residents. Who is a member does not change.
+- **Design parameters, each swept:** k 100 (50, 250); f 0.5 (2/3, 1; the Hub's survey majority); zones need CIP, no (yes); imitation local (population-wide).
+- **CIP.** In the main reading zones form without CIP, so that any CIP and SZH synergy comes from a mechanism, not from a rule written in. The Hub's literal rule (zones only with CIP) is a sweep row, labelled as such.
+- **Not modelled:** PTH density (the Hub gives only a household count, 30-40, which a sample of adults cannot show), moving between zones, capacity by zone, cross-zone shopping.
+- **Checks:**
+  - One community equals the layer off on every measure, in three environments, at 20 years and at 40 with ageing.
+  - Rows without PTF are unchanged.
+  - Guard test, validate, unit (223), domtest (153) and the glossary check pass.
+  - No outcome value was looked at.
 
 ## In flight
-- compassionism-simulation #51: checks were running at the end of this session (domtest and guard test take about 15 minutes). If it is still open, the next session merges it once its checks are green.
+Nothing running.
 
 ## Decisions waiting
-None. S37 going ahead was a modelling call, recorded in the report (section 8) and in dev/DECISIONS.md.
+None. The CIP reading above is a modelling assumption (both readings are preregistered). If Duke thinks it misrepresents the design, that is a ledger decision for a later session.
 
 ## Next step
-**S37** (community and zone layer), opus, xhigh. The pilots show it is needed: the parts the density argument rests on are inert in the engine, and nothing in the engine depends on population size. If the Hub papers give no mechanism that can be modelled without invented constants, S37 says so and stops.
+**S6** (C2.2 coverage and adequacy), opus, high: next in the Order table. S14, S13 and S50 follow; all must finish before S47.
 
 ## Pitfalls
-- Pilot files write 0 for keys past the run (`plv_39`, `ppov_39` and others in 20-year rows; `jnP*` in none rows). Never read those as values.
-- A 40-year run's first 20 years equal the 20-year run exactly, so year-20 points appear twice. Count them once.
-- Core-seconds measured with 4 processes per 4-vCPU runner are about doubled. Plan with runner-hours.
-- The results repository is large: clone it with `--filter=blob:none --sparse` and `git sparse-checkout set <folders>` (folder names, not patterns).
+- The study row option `cm` is the conversion model; the layer is `cl`.
+- At 500 adults zones are coarse (5 communities): about half the members reach the 40% test with k 100. That is why the addendum's headline is at 10,000 adults.
+- S47 must add studies G to J to the job script `runner/jobs/program.js`, and keep the layer's keys, before its dry run (PLAN.md, S47).
+- Commit trailers: this project forbids model names. Use `Co-Authored-By: Claude <noreply@anthropic.com>`, not the default trailer.
+- The results repository is large: clone it with `--filter=blob:none --sparse`.
