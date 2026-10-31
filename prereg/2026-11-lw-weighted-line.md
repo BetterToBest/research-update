@@ -68,3 +68,7 @@ Neither weighted figure is MIT's own. The shares are fitted on eight state pages
 
 ## Amendments
 Dated, with the reason, below this line. Nothing above changes after the first run.
+
+### Amendment 1 (Oct 31, 2026, after the pilot): ext re-derived
+Reason: a fact about one line changed, not the design. Duke found the outside review's source table (a news article republishing MIT's one-adult pre-tax figures for the 50 states). It matches the eight MIT pages held exactly. With DC at MIT's $26.72 an hour and Census Vintage 2025 weights, it gives $51,201.27 against ext's $51,201.28 (compassionism-simulation `sources/lw_check_ext.py`, pull request 58). So ext is MIT's own population-weighted mean, from a published copy of MIT's table, not from licensed data. In Plain-words summary and Limits, "partly checked" and "Neither weighted figure is MIT's own" no longer hold for ext. Rows, outcomes, analysis and decision rules are unchanged. Rule 3 still leaves the choice of line to S47; Claude's recommendation to S47 is ext (report, section 6).
+
