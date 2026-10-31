@@ -81,3 +81,8 @@ One US-average cost-of-living line (S14 builds a population-weighted one). MIT's
 - **Change.** An adult-year counts as covered when the BU is at least the needs within a relative 1e-9 (engine pull request 54). Nothing else changes: the measure, the rows and every other output are unchanged (guard test identical, release panels identical).
 - **Runs.** The first pilot (`pilot-k-3e79adb`) stays published. The pilot is rerun on the fixed engine (`pilot-k-<new commit>`), and the report takes `c22PY` from the rerun. The report also checks that every other kept measure is identical between the two runs, seed by seed.
 - **Engine:** compassionism-simulation at commit `395dd5bd0475a03467e816d08534705bd0e1f9c8` (pull request 54). S47 pins the batch's commit.
+
+### Amendment 2 (Oct 31, 2026, S14, before any 500-seed run): Duke's design answer (ledger D8)
+- **Answer:** the BU should cover the basics and depend on the cost of living, and for testing no one is left out (quoted in the study programme's Amendment 4).
+- **Reading:** the row `c22` (automatic, every resident, BU at the C2.2 needs level, indexed to the needs; child allowance a quarter, as released) is the design Duke chose. Study K's rows, outcomes and rules do not change. Its report and the findings page name `c22` as the chosen design, and every other row as an option Duke did not choose. The decision put to Duke under rule 3 is answered: no status rule.
+- **Batch:** study K runs as preregistered in S48. The study programme's Amendment 4 says how the other studies are built on the chosen design.
