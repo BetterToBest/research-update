@@ -1,32 +1,33 @@
-# Handoff (Nov 1, 2026): S50 second independent implementation, part 1 (the packet) done
+# Handoff (Nov 1, 2026): S50 done, the second independent implementation of the release row
 
 ## Step status
-S50 is **partly done**. Part 1 is done: the spec now describes the published release row, and the packet for the second program is built and checked. Part 2 (the program itself) remains, for a fresh session that has not read the engine. This session read the engine, so it could not write an independent program.
+S50 is **done**. Part 1 (the packet) was done earlier today. In part 2, a session that had never read the engine wrote a Python program from the packet alone, and it reproduces the published release row and its no-programme run.
 
 ## What shipped
-- compassionism-simulation [#60](https://github.com/BetterToBest/compassionism-simulation/pull/60), merged `d6d14a2`. No engine change (`index.html` and `harness.js` unchanged since 168d287).
-  - `MODEL_SPEC.md` describes the v5.6 release row. Section 12 covers job loss and re-employment, PTH's books, PTF by sector, today's safety net with SNAP's work rule, and the flat contribution (audit finding E2). Section 4.1 gives the samplers exactly as drawn. Appendix A closes the 31 gaps S10 found; Appendix B describes the validation path.
-  - `dev/packets/s50-release-row.zip` (6.6 MB) holds the spec, every switch in effect as data, the code the six runs execute (V8 coverage: folded and whole, about 3,600 lines), and the engine's per-seed outputs for seeds 1-500 (631 keys) in Reference, Adverse and Stress. It is built by `make_s50_reference.js` and `build_s50_packet.py`; the brief is `dev/packets/s50-brief.md`.
-- research-update: this handoff and PLAN.md's S50 section (the part-2 rules).
+- compassionism-simulation [#61](https://github.com/BetterToBest/compassionism-simulation/pull/61), merged `MERGE_SHA`. No engine change.
+  - `dev/reports/s50-independent-implementation/`: the program `s50_release.py`, `GAPS.md`, `REPORT.md` (plain words, for Duke), and `results/` (per-seed outputs for seeds 1-500 in all three environments, both phases; `COMPARISON.md`, `COMPARISON-phase2.md`, `run.txt`, `SHA256SUMS`).
+  - Phase 1 (commit 50a6ffd, pushed before the engine was opened): in all six runs and in the programme's effect, 630 of 631 keys are exact on every seed, and all 631 pass the 2-SE test. The exception, `snAbN`, counts rounding remainders of about 1e-16 of a month.
+  - Phase 2: Python's and Node's maths libraries differ in the last binary digit of log, exp, pow, cos and tan. The `--js-math` switch (Node's Math, not the engine) shows PHASE2_LINE
+- research-update (this PR): this handoff; PLAN.md's S50 section (part 2 done) and S47 step 2 (the S50 findings to fix and measure).
 
-## Checks
-- The 500-seed reference equals the published v5.6 panel (`data/releases/v5.6.json`) to its rounding on every headline key, for both runs in all three environments.
-- A second Stress run gave identical outputs. The PR's CI is green.
+## Findings for the design freeze (S47; GAPS.md, phase-2 table)
+- **PTH's books are opened before households are formed.** About 28% of PTH members have no books (their equity grows by the old 3-5% rule and they never leave the network), and about 25 homes a seed have books but no member.
+- **The supply path's price-only run lacks job loss, the safety net and the labour response** (stale since September). As a result the no-programme price level moves 0.5% in Reference.
+- **PTH home prices are set at the BLEI daily cost** (about half the basket's housing cost), against the engine's own comment.
+- `snAbN` counts rounding remainders.
+- **MODEL_SPEC.md needs four corrections:** the flat contribution's need; the octave cost base (the BLEI cost, deliberately); recessions can start in the last year; zone induction is for participants only. It also needs its 30 gaps closed.
 
 ## In flight
 Nothing.
 
 ## Decisions waiting
-None new.
+None new. The findings above are model and code questions (delegated), to be fixed and measured in S47 as dated amendments.
 
 ## Next step
-**S50, part 2** (opus, xhigh). Start it in a fresh session. It attaches compassionism-simulation, unzips the packet outside the repository and follows `00-START-HERE.md`. It must not open `index.html`, `harness.js`, `earlier-engine.html`, `dev/` (other than the packet and `dev/reports/s50-independent-implementation/`) or the results repository until its phase-1 program and results are pushed. Phase 2 (explaining the differences) may follow in the same session or the next. Then S47.
+**S47**, the design freeze (opus, high). It waits on S10, S13 and S50 (all done), S32-S37, S6 and S14 (done per earlier handoffs). Step 2 now includes the S50 findings.
 
 ## Pitfalls
-- In the packet, the "dirty" flag on Stress means a doc file was being edited while it ran; the engine hashes are asserted equal across all files. Run reference jobs from a tree you are not editing.
-- Two quirks of the packet:
-  - In `release-config.json`, the entries `S3_CACHE`, `HL_GOVREF`, `HHS` and `TB_BLEI_NET` are run state, not settings.
-  - Keys `_20` to `_39` are 0 in 20-year runs.
-- The release row's Stress no-programme run is the same economy as Adverse's (identical figures); that is by design, not a bug.
-- `check_stale_claims.js` and domtest need `npm install` first (jsdom).
-- `gh` has no valid token here; the GitHub tools work for pull requests.
+- The release row's programme inflation is about 51% a year in Reference (prices about 2,500 times higher after 20 years). Both programs compute it, so it is the model's rule, not a code slip: it is the S13 audit's E6 question, for S47.
+- `s50_release.py` reads the packet zip. After any engine change it reproduces the old engine until a new packet is built.
+- Python's math and Node's Math differ in the last digit of log, exp, pow, cos and tan (3-10% of calls). Use `--js-math` for a bit-for-bit comparison.
+- The `gh` CLI has no valid token here; the GitHub MCP tools work for pull requests.
