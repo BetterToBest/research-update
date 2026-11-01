@@ -7,7 +7,7 @@ S50 is **done**. Part 1 (the packet) was done earlier today. In part 2, a sessio
 - compassionism-simulation [#61](https://github.com/BetterToBest/compassionism-simulation/pull/61), merged `MERGE_SHA`. No engine change.
   - `dev/reports/s50-independent-implementation/`: the program `s50_release.py`, `GAPS.md`, `REPORT.md` (plain words, for Duke), and `results/` (per-seed outputs for seeds 1-500 in all three environments, both phases; `COMPARISON.md`, `COMPARISON-phase2.md`, `run.txt`, `SHA256SUMS`).
   - Phase 1 (commit 50a6ffd, pushed before the engine was opened): in all six runs and in the programme's effect, 630 of 631 keys are exact on every seed, and all 631 pass the 2-SE test. The exception, `snAbN`, counts rounding remainders of about 1e-16 of a month.
-  - Phase 2: Python's and Node's maths libraries differ in the last binary digit of log, exp, pow, cos and tan. The `--js-math` switch (Node's Math, not the engine) shows PHASE2_LINE
+  - Phase 2: Python's and Node's maths libraries differ in the last binary digit of log, exp, pow, cos and tan. The `--js-math` switch (Node's Math, not the engine) shows that this is the only source of difference: with it, every key of every seed in all six runs is identical to the engine's in every binary digit (1,893,000 values).
 - research-update (this PR): this handoff; PLAN.md's S50 section (part 2 done) and S47 step 2 (the S50 findings to fix and measure).
 
 ## Findings for the design freeze (S47; GAPS.md, phase-2 table)
