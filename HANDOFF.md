@@ -4,8 +4,8 @@
 S13's first pass is **done**: the Grok audit (I5) is triaged and the engine was audited against its own specification. Confirmed bugs are fixed behind a switch, and the study page's "What would have to be true" panel is corrected. The second pass (on the release) comes after S7.
 
 ## What shipped
-- research-update [#29](https://github.com/BetterToBest/research-update/pull/29): `audits/grok-i5-triage.md` (18 items: 2 valid before the freeze, the rest addressed, later steps or turned down) and the S47 checklist in PLAN.md.
-- compassionism-simulation [#59](https://github.com/BetterToBest/compassionism-simulation/pull/59): `dev/reports/s13-engine-audit.md` (E1-E18, the panel review). Switch `AUD`, row option `au`, off by default (guard test and SNAP rule check identical; lineage proof recorded): `au: true` = `gate` (wage-bonus BLEI gate in year-0 prices), `sg` (graded spending on all cash income), `fbs` (octave score in year-0 dollars); `wOut` = wages follow outside inflation (a reading). The study panel text is corrected via `dev/tools/study_data.py`.
+- research-update [#29](https://github.com/BetterToBest/research-update/pull/29), merged `5094c08`: `audits/grok-i5-triage.md` (18 items: 2 valid before the freeze, the rest addressed, later steps or turned down) and the S47 checklist in PLAN.md.
+- compassionism-simulation [#59](https://github.com/BetterToBest/compassionism-simulation/pull/59), merged `168d287` (checks and guard green): `dev/reports/s13-engine-audit.md` (E1-E18, the panel review). Switch `AUD`, row option `au`, off by default (guard test and SNAP rule check identical; lineage proof recorded): `au: true` = `gate` (wage-bonus BLEI gate in year-0 prices), `sg` (graded spending on all cash income), `fbs` (octave score in year-0 dollars); `wOut` = wages follow outside inflation (a reading). The study panel text is corrected via `dev/tools/study_data.py`.
 
 ## What the audit found (probes, 50 and 20 paired seeds)
 - No accounting, draw-count or estimand error. The three corrections move the release row's effect by a few tenths of a point on basket poverty and 0.6-0.8 points on BLEI; no headline changes direction.
