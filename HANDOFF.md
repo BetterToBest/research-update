@@ -4,7 +4,7 @@
 S50 is **partly done**. Part 1 is done: the spec now describes the published release row, and the packet for the second program is built and checked. Part 2 (the program itself) remains, for a fresh session that has not read the engine. This session read the engine, so it could not write an independent program.
 
 ## What shipped
-- compassionism-simulation [#60](https://github.com/BetterToBest/compassionism-simulation/pull/60), merged `MERGE_SHA`. No engine change (`index.html` and `harness.js` unchanged since 168d287).
+- compassionism-simulation [#60](https://github.com/BetterToBest/compassionism-simulation/pull/60), merged `d6d14a2`. No engine change (`index.html` and `harness.js` unchanged since 168d287).
   - `MODEL_SPEC.md` describes the v5.6 release row. Section 12 covers job loss and re-employment, PTH's books, PTF by sector, today's safety net with SNAP's work rule, and the flat contribution (audit finding E2). Section 4.1 gives the samplers exactly as drawn. Appendix A closes the 31 gaps S10 found; Appendix B describes the validation path.
   - `dev/packets/s50-release-row.zip` (6.6 MB) holds the spec, every switch in effect as data, the code the six runs execute (V8 coverage: folded and whole, about 3,600 lines), and the engine's per-seed outputs for seeds 1-500 (631 keys) in Reference, Adverse and Stress. It is built by `make_s50_reference.js` and `build_s50_packet.py`; the brief is `dev/packets/s50-brief.md`.
 - research-update: this handoff and PLAN.md's S50 section (the part-2 rules).
