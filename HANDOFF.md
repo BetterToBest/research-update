@@ -1,30 +1,32 @@
-# Handoff (Nov 1, 2026): S13 outside audits, first pass, done
+# Handoff (Nov 1, 2026): S50 second independent implementation, part 1 (the packet) done
 
 ## Step status
-S13's first pass is **done**: the Grok audit (I5) is triaged and the engine was audited against its own specification. Confirmed bugs are fixed behind a switch, and the study page's "What would have to be true" panel is corrected. The second pass (on the release) comes after S7.
+S50 is **partly done**. Part 1 is done: the spec now describes the published release row, and the packet for the second program is built and checked. Part 2 (the program itself) remains, for a fresh session that has not read the engine. This session read the engine, so it could not write an independent program.
 
 ## What shipped
-- research-update [#29](https://github.com/BetterToBest/research-update/pull/29), merged `5094c08`: `audits/grok-i5-triage.md` (18 items: 2 valid before the freeze, the rest addressed, later steps or turned down) and the S47 checklist in PLAN.md.
-- compassionism-simulation [#59](https://github.com/BetterToBest/compassionism-simulation/pull/59), merged `168d287` (checks and guard green): `dev/reports/s13-engine-audit.md` (E1-E18, the panel review). Switch `AUD`, row option `au`, off by default (guard test and SNAP rule check identical; lineage proof recorded): `au: true` = `gate` (wage-bonus BLEI gate in year-0 prices), `sg` (graded spending on all cash income), `fbs` (octave score in year-0 dollars); `wOut` = wages follow outside inflation (a reading). The study panel text is corrected via `dev/tools/study_data.py`.
+- compassionism-simulation [#60](https://github.com/BetterToBest/compassionism-simulation/pull/60), merged `MERGE_SHA`. No engine change (`index.html` and `harness.js` unchanged since 168d287).
+  - `MODEL_SPEC.md` describes the v5.6 release row. Section 12 covers job loss and re-employment, PTH's books, PTF by sector, today's safety net with SNAP's work rule, and the flat contribution (audit finding E2). Section 4.1 gives the samplers exactly as drawn. Appendix A closes the 31 gaps S10 found; Appendix B describes the validation path.
+  - `dev/packets/s50-release-row.zip` (6.6 MB) holds the spec, every switch in effect as data, the code the six runs execute (V8 coverage: folded and whole, about 3,600 lines), and the engine's per-seed outputs for seeds 1-500 (631 keys) in Reference, Adverse and Stress. It is built by `make_s50_reference.js` and `build_s50_packet.py`; the brief is `dev/packets/s50-brief.md`.
+- research-update: this handoff and PLAN.md's S50 section (the part-2 rules).
 
-## What the audit found (probes, 50 and 20 paired seeds)
-- No accounting, draw-count or estimand error. The three corrections move the release row's effect by a few tenths of a point on basket poverty and 0.6-0.8 points on BLEI; no headline changes direction.
-- Wages ignore the 2% outside inflation in Adverse and Stress (E5). With `wOut`, Adverse no-programme basket poverty falls from 66% to 52%, and the "too little wealth" penalty shrinks by about a third.
-- **Biggest finding (E6):** the headline needs wages to keep up in full, within the year, with the programme's own ~51%/year inflation. At 95% indexation the Reference fall in basket poverty is 22 points instead of 30. At 75%, the programme raises basket poverty everywhere. It hardly matters if every dollar is backed (no programme inflation).
-- MODEL_SPEC.md (v5.3) and ODD.md (v5.2) describe an older model (E1). The release charges every earner a flat contribution of about 2.8% for the PTF/PTH price cuts (E2). The spec says it has none.
-- Study panel: BLEI poverty rises in Stress (the panel said it falls); the damping constant acts on outside inflation only (wording chosen with d201/d213 was wrong, corrected; flagged for Duke).
+## Checks
+- The 500-seed reference equals the published v5.6 panel (`data/releases/v5.6.json`) to its rounding on every headline key, for both runs in all three environments.
+- A second Stress run gave identical outputs. The PR's CI is green.
 
 ## In flight
 Nothing.
 
 ## Decisions waiting
-None new. The S47 recommendations (main rows with `au: true`; `wOut`, a `wIdx` sweep, FBS50, both other backing readings; 0.593 re-derived; specs written for the frozen model) are Claude's modelling choices, landed as amendments at the freeze.
+None new.
 
 ## Next step
-**S50** (second, independent implementation of the release row), opus, xhigh. It waits on S13, now done. Then S47.
+**S50, part 2** (opus, xhigh). Start it in a fresh session. It attaches compassionism-simulation, unzips the packet outside the repository and follows `00-START-HERE.md`. It must not open `index.html`, `harness.js`, `earlier-engine.html`, `dev/` (other than the packet and `dev/reports/s50-independent-implementation/`) or the results repository until its phase-1 program and results are pushed. Phase 2 (explaining the differences) may follow in the same session or the next. Then S47.
 
 ## Pitfalls
-- `wIdx` and the backing reading interact: sweep them together in S47, or the E6 result reads worse than the every-dollar-backed reading shows.
-- `au` changes the no-programme run slightly in Adverse and Stress (the gate correction applies to both runs). Run both rows of a pair with the same `au`.
-- The Grok share link is read through `https://grok.com/rest/app-chat/share_links/<id>` (the page itself is script-built).
+- In the packet, the "dirty" flag on Stress means a doc file was being edited while it ran; the engine hashes are asserted equal across all files. Run reference jobs from a tree you are not editing.
+- Two quirks of the packet:
+  - In `release-config.json`, the entries `S3_CACHE`, `HL_GOVREF`, `HHS` and `TB_BLEI_NET` are run state, not settings.
+  - Keys `_20` to `_39` are 0 in 20-year runs.
+- The release row's Stress no-programme run is the same economy as Adverse's (identical figures); that is by design, not a bug.
+- `check_stale_claims.js` and domtest need `npm install` first (jsdom).
 - `gh` has no valid token here; the GitHub tools work for pull requests.
