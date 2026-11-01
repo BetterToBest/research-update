@@ -1,31 +1,30 @@
-# Handoff (Oct 31, 2026): S14 population-weighted cost-of-living line, done
+# Handoff (Nov 1, 2026): S13 outside audits, first pass, done
 
 ## Step status
-S14 is **done**. The pilot of study L (100 seeds) is analysed as preregistered in section 6 of compassionism-simulation `dev/reports/lw-weighted-line.md`, with every cell's rule 1 label. Study L's 500-seed rows join the S48 batch through S47.
+S13's first pass is **done**: the Grok audit (I5) is triaged and the engine was audited against its own specification. Confirmed bugs are fixed behind a switch, and the study page's "What would have to be true" panel is corrected. The second pass (on the release) comes after S7.
 
 ## What shipped
-- compassionism-simulation [#57](https://github.com/BetterToBest/compassionism-simulation/pull/57), merged `cc4e853`: report section 6, `dev/tools/lw_pilot.py`, tables in `dev/runs/lw-pilot/` (from compassionism-sim-results `pilot-l-f66dc67`, SHA256SUMS verified), analysis readings in `dev/DECISIONS.md`. No engine change.
-- Earlier this step: compassionism-simulation #56 (switch `LW`, `f66dc67`), compassionism-sim-results #10 (`runner/jobs/lw.js`), research-update #25 (preregistration of study L).
+- research-update [#29](https://github.com/BetterToBest/research-update/pull/29): `audits/grok-i5-triage.md` (18 items: 2 valid before the freeze, the rest addressed, later steps or turned down) and the S47 checklist in PLAN.md.
+- compassionism-simulation [#59](https://github.com/BetterToBest/compassionism-simulation/pull/59): `dev/reports/s13-engine-audit.md` (E1-E18, the panel review). Switch `AUD`, row option `au`, off by default (guard test and SNAP rule check identical; lineage proof recorded): `au: true` = `gate` (wage-bonus BLEI gate in year-0 prices), `sg` (graded spending on all cash income), `fbs` (octave score in year-0 dollars); `wOut` = wages follow outside inflation (a reading). The study panel text is corrected via `dev/tools/study_data.py`.
 
-## What the pilot found (labelled pilot)
-- No programme: at a higher line, 1-3 points more people are below each line (headline: cost of living +1.7 at ext, +2.3 at bea).
-- Release row: not changed by the line on all four primary share outcomes in the headline cell, at ext and bea, so robust to the line (rule 2). Five Adverse comparisons are 1.0-1.5 points smaller at the higher line. Cost hardly moves; inflation is 6-8% higher (20 years, Reference), because project pay follows the line.
-- C2.2 design: changed by the line, mostly by construction. Its BU follows the line, so its effect grows by about the gap the higher line opens; cost +5.5-8.1%. Its figures are stated with their range across the lines.
-- Rule 3: ext and bea are 1.2% apart (more than 1%), so the release keeps $49,370, labelled the unweighted mean.
-- Rule 1 labels every inflation comparison "changed" (cumulative inflation compounds; a ±1-point band is meaningless). The report gives inflation as a percentage of the base; S47 should settle a yearly-rate reading for every study (pilot studies report, section 9).
+## What the audit found (probes, 50 and 20 paired seeds)
+- No accounting, draw-count or estimand error. The three corrections move the release row's effect by a few tenths of a point on basket poverty and 0.6-0.8 points on BLEI; no headline changes direction.
+- Wages ignore the 2% outside inflation in Adverse and Stress (E5). With `wOut`, Adverse no-programme basket poverty falls from 66% to 52%, and the "too little wealth" penalty shrinks by about a third.
+- **Biggest finding (E6):** the headline needs wages to keep up in full, within the year, with the programme's own ~51%/year inflation. At 95% indexation the Reference fall in basket poverty is 22 points instead of 30. At 75%, the programme raises basket poverty everywhere. It hardly matters if every dollar is backed (no programme inflation).
+- MODEL_SPEC.md (v5.3) and ODD.md (v5.2) describe an older model (E1). The release charges every earner a flat contribution of about 2.8% for the PTF/PTH price cuts (E2). The spec says it has none.
+- Study panel: BLEI poverty rises in Stress (the panel said it falls); the damping constant acts on outside inflation only (wording chosen with d201/d213 was wrong, corrected; flagged for Duke).
 
 ## In flight
 Nothing.
 
 ## Decisions waiting
-- **D9 answered** (Duke: "check the Simulation repo first"). Searched Oct 31: the Simulation (files and full history), NEEC and the Research Hub. None holds the 51 state figures, only the two summary means from the outside review in v4.11 ($23.7355/hr unweighted, $24.6160/hr weighted = ext). Recorded in the report, section 6.
-- **D10 answered** (Duke pasted the Money Talks News table). ext re-derived: $51,201.27 against $51,201.28; the eight MIT pages held match exactly (compassionism-simulation [#58](https://github.com/BetterToBest/compassionism-simulation/pull/58), `sources/lw_check_ext.py`; prereg Amendment 1). The 51 figures are not committed (MIT's ten-location limit). bea overstates the weighting by 1.2%. Recommendation to S47: adopt ext as the line, keeping the $49,370 rows beside it.
+None new. The S47 recommendations (main rows with `au: true`; `wOut`, a `wIdx` sweep, FBS50, both other backing readings; 0.593 re-derived; specs written for the frozen model) are Claude's modelling choices, landed as amendments at the freeze.
 
 ## Next step
-**S13** (outside audits before the freeze: triage the Grok audit and audit the engine), opus, high; then S50. Both come before S47.
+**S50** (second, independent implementation of the release row), opus, xhigh. It waits on S13, now done. Then S47.
 
 ## Pitfalls
-- MIT asks not to be scraped. More than 10 locations needs a licence, so never pull the 51 state pages.
-- Result files write 0 for keys past the run's horizon (year-40 keys in 20-year rows); `lw_pilot.py` reads horizon keys only.
-- `gh` has no valid token here; the GitHub tools work for pull requests and workflow runs.
-- S47 decides the line (study L rule 3; recommendation: ext, $51,201). S47 must build the batch on the C2.2 design (study programme Amendment 4) and add `lw.js` and `c22.js` to the manifest.
+- `wIdx` and the backing reading interact: sweep them together in S47, or the E6 result reads worse than the every-dollar-backed reading shows.
+- `au` changes the no-programme run slightly in Adverse and Stress (the gate correction applies to both runs). Run both rows of a pair with the same `au`.
+- The Grok share link is read through `https://grok.com/rest/app-chat/share_links/<id>` (the page itself is script-built).
+- `gh` has no valid token here; the GitHub tools work for pull requests.
