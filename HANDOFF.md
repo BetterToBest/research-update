@@ -24,7 +24,7 @@ Nothing.
 None new. The findings above are model and code questions (delegated), to be fixed and measured in S47 as dated amendments.
 
 ## Next step
-**S47**, the design freeze (opus, high). It waits on S10, S13 and S50 (all done), S32-S37, S6 and S14 (done per earlier handoffs). Step 2 now includes the S50 findings.
+**S51** (added Nov 1 in the planning chat, with S52 and S53): backing as a mechanism and the break-even backing share. Then S52 (supply-shock environment), S53 (security outcomes), then **S47**, the design freeze, which now also waits on S51-S53. Ledger decision D11 (backing) is open; its default proceeds.
 
 ## Pitfalls
 - The release row's programme inflation is about 51% a year in Reference (prices about 2,500 times higher after 20 years). Both programs compute it, so it is the model's rule, not a code slip: it is the S13 audit's E6 question, for S47.

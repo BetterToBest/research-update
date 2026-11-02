@@ -27,7 +27,10 @@ Model and effort per step are below. "fable" means: use it only if it uses no us
 | 15 | S14 | Population-weighted cost-of-living line, audited | opus | high | |
 | 16 | S13 | Outside audits: triage the Grok audit (I5) and audit the engine before the freeze | opus | high | S10 |
 | 16a | S50 | Second, independent implementation of the release row (S10 covered only the validation presets) | opus | xhigh | S13 |
-| 17 | S47 | Design freeze: every row and output the plan needs, dry-run at 2 seeds, cost estimate | opus | high | S10, S13, S50, S32-S37, S6, S14 |
+| 16b | S51 | Backing as a mechanism; break-even backing share against wage indexation (D11) | opus | xhigh | S50, D11 (default proceeds) |
+| 16c | S52 | Outside supply-shock environment: markup vs scarcity, PTF local sourcing | opus | high | S51 |
+| 16d | S53 | Security outcomes beyond wealth; per-year series for S19 | opus | high | S51, S52 |
+| 17 | S47 | Design freeze: every row and output the plan needs, dry-run at 2 seeds, cost estimate | opus | high | S10, S13, S50, S51-S53, S32-S37, S6, S14 |
 | 18 | S48 | The full study batch (Actions where it fits, Runpod for the rest) | opus | medium | S47 and your Runpod key (gate) |
 | 19 | S36 | Synergy report: Shapley shares, interactions, 20 and 40 years | opus | high | S48 |
 | 20 | S38 | Community-layer report (if S37 built it) | opus | medium | S48 |
@@ -42,12 +45,12 @@ Model and effort per step are below. "fable" means: use it only if it uses no us
 | 29 | S3 | OEIAS as the umbrella name | sonnet | medium | |
 | 30 | S4 | X-cents folded into the CCO architecture | sonnet | medium | |
 | 31 | S41 | Site and wiki design refresh | sonnet | high | S40 |
-| 32 | S43 | Links and publications: portal, x-cents, NEEC, Academia papers | sonnet | medium | your Academia links (D3) |
+| 32 | S43 | Links and publications: portal, x-cents, NEEC, Academia papers | sonnet | medium | D3 (answered in the ledger's message box, Nov 1) |
 | 33 | S42 | Machine-readable files regenerated from one manifest | sonnet | medium | S43 |
 | 34 | S44 | Hub v2 fresh-eyes review | opus | high | S40-S43 |
 | 35 | S45 | Advocacy kit from the release | sonnet | medium | S7, S44 |
 | 36 | S15, S16 | CoMSES package and fact sheet; share and access kit | sonnet | medium | S7 |
-| 37 | S19-S22 | Comparison items (optional; the comparison stays frozen) | opus | medium | S7 |
+| 37 | S19-S22 | Comparison items (optional; the comparison stays frozen). S19 after S48, from S53's series, no new run; S21's question is answered by S47's wOut reading | opus | medium | S7 |
 | 38 | S8 | Hand back to NEEC | sonnet | low | S7, S25, S44 |
 | 39 | N-S70, N-S71, N-S72, N-S42, N-S44, N-S73, N-S43, N-S49, then S26 | NEEC v2 and v2.1, as the NEEC ledger orders them | opus | high | S8 |
 
@@ -148,8 +151,32 @@ Done Oct 30 (`prereg/2026-11-study-program.md`, checks `prereg/checks/s32_feasib
 Run reduced versions of Q1 to Q5 on GitHub Actions only (for example 50 seeds; 500 to 10,000 adults; every architecture combination; 20 and 40 years). Purpose: find what the full batch must contain (is a community layer needed? which rows matter? are any outputs missing?), not headline figures. Write `dev/reports/pilot-studies.md`, labelled pilot throughout, and list everything the pilots show the full batch needs. If no mechanism in the engine depends on population size, say so plainly: a bigger population then only narrows intervals, itself a robustness result.
 Partly done Oct 30: the "Before the first run" items landed (engine 70d23be, compassionism-simulation #50; job script `runner/jobs/program.js`, compassionism-sim-results #8; preregistration amendment 1). Seven pilots dispatched on Actions (50 seeds, three environments, 500 to 10,000 adults): folders `pilot-{a,b,b10,c,d,d10,f}-70d23be`. Done Oct 31: all seven `DONE`; `dev/reports/pilot-studies.md` (compassionism-simulation #51). No outcome depends on population size; PTF, PTH and SZH near inert, so S37 goes ahead; its section 9 lists what S47 must add.
 
+### S51 · Backing as a mechanism (before the freeze)
+Added Nov 1 (planning chat; ledger D11). The release row treats conversion pay as almost unbacked (only matched output, about 7.7% of the Source's payout), which is where its programme inflation of about 51% a year comes from; the every-dollar-backed reading removes it by assumption. Neither is earned inside the model. The design's claim is that conversions are backed by output the community chooses to fund.
+1. Write "Claude's reading of the design" on backing from the Hub papers (rule 6).
+2. Behind a switch (no released figure moves): conversion pay funds projects whose output enters supply (essentials capacity through PTF, or the general price level) after a lag, with a productivity parameter. The backed share is then an outcome, not an input; label every new constant as sourced or a design parameter and sweep it.
+3. Preregistration addendum: a sweep of the backed share crossed with wage indexation (`wIdx`: 100, 95, 90, 75%) in all three environments. Primary output: the break-even backed share at which basket poverty falls without full indexation, with its interval.
+4. Pilot on Actions (50 seeds), labelled pilot; report in plain words; list what S47 must carry.
+
+### S52 · Outside supply-shock environment (before the freeze)
+Added Nov 1. Tests whether PTF and PTH insulate the basics from shocks, whatever their cause (war, weather, cartels); the model does not represent motives.
+1. A new environment: an energy price spike (size, length and pass-through by basket category from cited sources; historical episodes as the calibration, not targets) that reaches food, transport, utilities and heating.
+2. Separate the profit-markup part of the shock from real scarcity: PTF removes markup and pools cost; it cannot remove scarcity unless it sources locally. Sweep PTF's local-sourcing share (design parameter).
+3. Outcomes: share of the shock reaching participants' and non-participants' essential costs; volatility of essential costs; basket poverty during and after the shock.
+4. Within the study programme only; the policy comparison stays frozen (d94) unless Duke lifts it. Preregistration addendum, pilot on Actions, report.
+
+### S53 · Security outcomes beyond wealth (before the freeze)
+Added Nov 1. Add to the run manifest, each labelled "by construction" or "emergent" in the preregistration addendum:
+- big income drops (25% or more) with no buffer to cover them;
+- months a household could cover the basics without wages;
+- hours of work needed to cover the basics;
+- forced moves (PTH tenure; displacement by price);
+- share of the household budget exposed to market prices for essentials.
+Also export the per-year poverty series S19 needs (public costs of poverty: crime, homelessness services, emergency and institutional care), so S19 is post-processing after S48 with no new run. Pilot the outputs on Actions; confirm each loads in its consumer's script.
+
 ### S47 · Design freeze (before any money is spent)
 1. Collect every output the rest of the plan will need from the batch, consumer by consumer: the release panel (S7), the BLEI visual series (S11, I1), the participation figure (S5), the synergy tables (S36), the community-layer rows (S38), the scale rows and settings S39 compares with, NEEC's simulation readings (N-S70), the advocacy charts (S45), and the preregistration (S32 plus amendments). Write `prereg/run-manifest.md`: every job, its rows, environments, seeds, population, horizon, outputs and their consumer.
+   From S51-S53: the backing mechanism and its sweep, the supply-shock environment, and the security outputs and S19 series, as their addenda specify.
 2. Check nothing is still moving: S10 and S50 match (or their differences are explained), the engine audit (S13) is triaged, S6 and S14 are settled, S37 is built or ruled out. Pin the engine commit.
    For the community layer (S37): add studies G, G10, H, I, J to compassionism-sim-results `runner/jobs/program.js` (row counts per the addendum) and keep its keys (`clN`, `clZ`, `clSd`, `clHi`, `clTh`, `pfMem`, `pfCut`) before the dry run.
    For the outside audits (S13; Simulation `dev/reports/s13-engine-audit.md` section 3, research-update `audits/grok-i5-triage.md`), each as a dated amendment: main rows with the audit's corrections (`au: true`) and the as-released row beside them; wages following outside inflation (`au: {wOut: true}`) as a sensitivity reading in Adverse and Stress; a sweep of wage indexation (`wIdx`); the FBS50 reading; the middle and every-dollar-backed readings of the release pair; the 0.593 spending share re-derived on the current no-programme run; MODEL_SPEC.md and TESTBED_SPEC.md written for the frozen model.
