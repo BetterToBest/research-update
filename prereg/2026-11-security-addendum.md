@@ -41,7 +41,7 @@ The model reports poverty, wealth, work, cost and prices. It did not report secu
 - Environments: Reference, Adverse, Stress.
 - Seeds: pilot 1-50; full 1-500. Paired across all rows (common random numbers).
 - 500 adults, 20 years.
-- Engine: compassionism-simulation commit `ENGINE_COMMIT` (pull request PR_NUMBER; the merge commit).
+- Engine: compassionism-simulation commit `f15eaf65b31ca15430590af764ee0b629a0229a0` (pull request 66; the merge commit).
 - Where: GitHub Actions, workflow `run-study`, study `s53-security`, job `security.js`, `job_args` `--env=all --procs=4`, 5 shards; folder `s53-security-<engine, 7 characters>/` in compassionism-sim-results.
 
 ## Outcomes
