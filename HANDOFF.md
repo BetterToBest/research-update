@@ -9,7 +9,7 @@ S53 is **partly done**. The measures, the per-year series for S19, the addendum,
 - research-update (this PR): `prereg/2026-11-security-addendum.md` (study P), study programme Amendment 7, and PLAN.md (S53 status; S47's S53 line).
 
 ## In flight
-- Study `s53-security`: engine `f15eaf65b31ca15430590af764ee0b629a0229a0`, job `security.js`, `job_args` `--env=all --procs=4`, seeds 1-50, 5 shards; run RUN_LINK. Results land in compassionism-sim-results `s53-security-f15eaf6/`. It is done when that folder holds `DONE`.
+- Study `s53-security`: engine `f15eaf65b31ca15430590af764ee0b629a0229a0`, job `security.js`, `job_args` `--env=all --procs=4`, seeds 1-50, 5 shards; run [41423271435](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/41423271435) (queued Nov 2, 09:45 UTC). Results land in compassionism-sim-results `s53-security-f15eaf6/`. It is done when that folder holds `DONE`.
 - Next session: `python3 dev/tools/s53_security.py <folder> --check`, then `python3 dev/tools/s53_security.py <folder> --out dev/reports/s53-security-tables.md`, and `python3 dev/tools/s19_series.py <folder>`. Write `dev/reports/s53-security.md`, labelled pilot.
 
 ## What the measures are (no results yet)
