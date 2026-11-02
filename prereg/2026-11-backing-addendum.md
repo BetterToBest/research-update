@@ -72,3 +72,14 @@ Every cell above is published, including null and unfavourable results and the A
 
 ## Amendments
 Dated, with the reason, below this line. Nothing above changes after the first run.
+
+### Amendment 1 (Nov 2, 2026, after the pilot; to be built and frozen at S47)
+**Reason.** The pilot (seeds 1-50; report `dev/reports/s51-backing-mechanism.md` in the engine repository) showed two patterns. A 10-seed check on the session machine, not preregistered (`dev/tools/s51_diag.js`), traced each to a cause:
+- Wealth poverty rises under the release row because money savings do not keep up with about 51% inflation a year. With savings that keep up with prices (row option `sv`), the rise becomes a fall.
+- Arm A dips near full backing. In the release row the BU is raised to the price level only in years when inflation exceeds 5%, so at 2-5% inflation it wears down unprotected and participation falls.
+
+**Change.** Two sensitivities are added, both labelled "added after the pilot". Nothing above changes: the primary measure, the confirmation measures, the decision rules and every preregistered row stay as they are.
+1. **Savings that keep up with prices.** Arm A for both designs at all four wage indexations, the no-programme rows included, with `sv` on both sides of each pair (104 rows per environment). Wealth poverty is reported both ways, side by side. The preregistered measure stays the test.
+2. **The BU raised every year (release row).** Arm A's 90%, 95% and 100% rows at all four wage indexations, with the BU raised to the price level every year (12 rows per environment).
+
+S47 adds these rows to `runner/jobs/backing.js` (row count 350 → 466 per environment), dry-runs them, and pins them with the rest of the batch.

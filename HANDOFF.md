@@ -1,33 +1,32 @@
-# Handoff (Nov 2, 2026): S51 partly done, backing as a mechanism (pilot running)
+# Handoff (Nov 2, 2026): S51 done, backing as a mechanism (pilot reported)
 
 ## Step status
-S51 is **partly done**: items 1-3 are done, and item 4's pilot is running on Actions. What remains: when the pilot is `DONE`, run the analysis, write the plain-words pilot report with the list for S47, and mark S51 done (one short session; PLAN.md S51 has the exact commands).
+S51 is **done**. The 50-seed pilot finished on Actions (25 shards, checksums verified). The preregistered analysis ran, and the plain-words pilot report with the list for S47 is merged.
 
 ## What shipped
-- compassionism-simulation [#62](https://github.com/BetterToBest/compassionism-simulation/pull/62), merged `6428b96`: the row option `bkm`, off by default.
-  - What it does: a share of the Source's net payout funds supply-adding projects, and their output backs the new money after a lag. The backed share becomes an outcome.
-  - Proof nothing moved: guard test identical, engine lineage proved (six 12-seed panels), 4 new unit tests, all checks green.
-  - Also in it: `dev/reports/s51-backing-reading.md` (Claude's reading of the design, for Duke), `dev/tools/s51_backing.py` (the preregistered analysis), and `dev/DECISIONS.md` (S51).
-- compassionism-sim-results [#11](https://github.com/BetterToBest/compassionism-sim-results/pull/11), merged `bf52f82`: `runner/jobs/backing.js` (350 rows per environment; `--check` passes).
-- research-update (this PR): `prereg/2026-11-backing-addendum.md` (study M), committed before any run; Amendment 5 of the study programme; PLAN.md's S51 section.
+- compassionism-simulation [#63](https://github.com/BetterToBest/compassionism-simulation/pull/63), merged `6d75cfd`. It adds `dev/reports/s51-backing-mechanism.md` (the pilot report, for Duke), `dev/reports/s51-backing-tables.md` (every preregistered table), `dev/tools/s51_diag.js` (a 10-seed explanatory check, not preregistered) and `dev/DECISIONS.md` (the pilot read). No engine change.
+- compassionism-sim-results `s51-backing-6428b96/` (already on main): per-seed values, run.txt, SHA256SUMS, DONE.
+- research-update (this PR): `prereg/2026-11-backing-addendum.md` Amendment 1 (two sensitivities added after the pilot, for S47); PLAN.md S51 marked done, S47 list extended.
 
-## The modelling choices (for Duke to read; all labelled modelling assumptions)
-- **Only added output absorbs new money (main reading).** The engine's price rule is the quantity theory's, and the Hub's own inflation equation uses output growth. The other reading, "the projects' proceeds retire the money", is the convention of the released matched output and the every-dollar-backed row. It is swept.
-- **Added output is capped at 8% of earned income** (BLS U-6, the underused labour). 16% (Kenya's measured peak) and no ceiling are swept. Without a ceiling, the top setting has the projects out-producing the whole economy's earned income 2.25 times over by year 19.
-- The payout is about 60% of earned income every year, so under the main reading little of it can be backed. The study's question is therefore the **break-even share**, and whether any setting reaches it.
+## What the pilot found (pilot; not figures of the model)
+- The C2.2 design cuts basket poverty with no backing at every wage indexation, in all three environments.
+- The release row needs backing for basket poverty only at 75% wages (46%, 31%, 54%). For wealth poverty it needs 32-75% even at full wages.
+- Under the main reading (only added output absorbs new money, 8% ceiling), the mechanism backs about 1% of the release row's payout. 0 of 36 main-reading settings reach break-even.
+- With no ceiling, the main reading backs at most 19.5% (projects at 2.3 times earned income) and still does not reach break-even. Only "proceeds retire the money" with no ceiling does (6 of 216; none in Stress).
+- Wealth poverty's rise is money savings losing value to about 51% inflation a year. With savings that keep up with prices (`sv`), it becomes a fall (10-seed check).
+- The release row's surge protocol raises the BU only in years when inflation exceeds 5%, so at 2-5% inflation the BU wears down. This is the dip in arm A near full backing; the BU raised every year removes it (10-seed check).
 
 ## In flight
-- Study `s51-backing`, pilot, seeds 1-50, all three environments, 25 shards: workflow run https://github.com/BetterToBest/compassionism-sim-results/actions/runs/41373143374 (dispatched Nov 2, 01:34 UTC; started). Engine `6428b96f95e28bbbda5b0717e8915a09206310a0`. Results land in compassionism-sim-results `s51-backing-6428b96/`; done when `DONE` is in that folder. A failed shard: "Re-run failed jobs" on the run.
+Nothing.
 
 ## Decisions waiting
-None new. D11 was answered (backing is the design's requirement). If the pilot shows no main-reading setting reaches break-even, the design's levers (payout size or pace, conversion tax, octave capacity) are Duke's call: a ledger decision then, not now.
+- D12 (new): the release row's payout cannot be backed under the main reading. Which design lever, if any: a smaller or slower payout, a conversion tax or the Source taking back project proceeds, octave capacity, or the C2.2 way of protecting the BU? Default: no design change; C2.2 stays the headline design, and the release row is reported as released with these results.
 
 ## Next step
-Finish **S51** (the pilot report), then **S52** (outside supply-shock environment), then S53, then S47.
+**S52** (outside supply-shock environment), then S53, then the S47 freeze. S47 now also builds the S51 Amendment 1 rows (466 rows per environment).
 
 ## Pitfalls
-- domtest also compares `earlier-engine.html`, which carries a copy of the page script. After any engine edit run `python3 dev/tools/sync_earlier.py`, or CI fails ("DRIFTED: tbRunCore", "same script false").
-- The proxy refused to delete a stray branch, compassionism-sim-results `claude/s51-backing`. Its commit trailer names a model, against the rule; it was never merged and has no PR. It can be deleted on GitHub by hand.
-- A 2-seed pipeline test ran before the preregistration was committed. The addendum discloses it and the one rule it changed (decision rule 2 now also requires wealth poverty to fall, which is stricter).
-- The study job takes about 400 s a seed for all three environments on one process (350 rows each).
-- Under 90% wage indexation, the release row can lower basket poverty while raising wealth poverty (the 2-seed test). Read both measures.
+- Two stray branches in compassionism-simulation carry a model name in their commit trailer, against the rule: `claude/s51-backing-pilot-report` (this session, never merged, no PR) and, in compassionism-sim-results, `claude/s51-backing` (last session). The proxy refuses branch deletes; Duke can delete both on GitHub. Use the `Co-Authored-By: Claude <noreply@anthropic.com>` trailer only.
+- The 10-seed check is explanatory and was not preregistered; Amendment 1 says so. Do not quote its numbers as results.
+- Under 90% wages the release row's median wealth at year 20 falls to about $130 (year-0 dollars, 10 seeds): read wealth figures with their savings treatment.
+- One seed of the backing job takes about 315 s on one process for all three environments (350 rows each).
