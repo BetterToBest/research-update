@@ -71,3 +71,16 @@ Every cell above is published, including null and unfavourable results and the A
 
 ## Amendments
 Dated, with the reason, below this line. Nothing above changes after the first run.
+
+### Amendment 1 (Nov 2, 2026, after the pilot, seeds 1-50): presentation of the tables, and outputs for the full study
+Nothing above changes: no row, constant, group, window, outcome, interval method or decision rule.
+1. **Presentation of the analysis script** (`dev/tools/s52_shock.py`, compassionism-simulation pull request 65).
+   - Programme inflation (`endoAnn`) is shown in points; the first draft printed the fraction under a "points" label.
+   - The tables add the secondary outcomes named above that the first draft left out: wealth poverty of participants and non-participants (`gPartW`, `gNonW`), median real wealth (`medWealthReal`), participation in year 19 (`jnP19`), and the price level at year 20 (`pLev20`, as the shocked level over the unshocked one, paired bootstrap).
+   - A group with no adults is shown as such, not as "nan".
+   Reason: the pilot tables must show every preregistered outcome, in the units their labels name.
+2. **Outputs added for the full study** (reporting keys only, behind the existing switch, so the guard test must stay identical; built before the S47 dry run). The pilot report (`dev/reports/s52-supply-shock.md`, section "What S47 must carry") explains why each is needed:
+   - essential costs by payer (BU spent, PTF's cut, PTH's cut, money) and category, per group and window;
+   - a yearly series of the Source's backed and unbacked payout and of the BU's cost;
+   - a dollar-based volatility reading beside `sxV`.
+   All three are descriptive. None enters a decision rule.
