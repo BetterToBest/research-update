@@ -4,8 +4,8 @@
 S53 is **done**. The 50-seed pilot finished (checksums verified; both consumer scripts load it), the plain-words pilot report is written, and the addendum's Amendment 1 lists what the full study adds. S47's S53 line in PLAN.md now carries those additions.
 
 ## What shipped
-- compassionism-simulation [#67](https://github.com/BetterToBest/compassionism-simulation/pull/67): `dev/reports/s53-security.md` (pilot report), `dev/reports/s53-security-tables.md`, `dev/tools/s53_security.py` now prints the Q19 difference in differences (savings that keep up with prices) and, descriptively, shock against no shock. No engine change.
-- research-update (this PR): addendum `prereg/2026-11-security-addendum.md` Amendment 1; PLAN.md (S53 done with findings; S47's S53 line).
+- compassionism-simulation [#67](https://github.com/BetterToBest/compassionism-simulation/pull/67) (squash 5027297): `dev/reports/s53-security.md` (pilot report), `dev/reports/s53-security-tables.md`, `dev/tools/s53_security.py` now prints the Q19 difference in differences (savings that keep up with prices) and, descriptively, shock against no shock. No engine change.
+- research-update [#41](https://github.com/BetterToBest/research-update/pull/41) (merge bd2eab9): addendum `prereg/2026-11-security-addendum.md` Amendment 1; PLAN.md (S53 done with findings; S47's S53 line).
 - Results: compassionism-sim-results `s53-security-f15eaf6/` (50 seeds, run 41423271435).
 
 ## Pilot findings (labelled pilot; not figures of the model)
