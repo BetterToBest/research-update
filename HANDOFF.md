@@ -4,7 +4,7 @@
 S51 is **done**. The 50-seed pilot finished on Actions (25 shards, checksums verified). The preregistered analysis ran, and the plain-words pilot report with the list for S47 is merged.
 
 ## What shipped
-- compassionism-simulation [#63](https://github.com/BetterToBest/compassionism-simulation/pull/63), merged `MERGE63`. It adds `dev/reports/s51-backing-mechanism.md` (the pilot report, for Duke), `dev/reports/s51-backing-tables.md` (every preregistered table), `dev/tools/s51_diag.js` (a 10-seed explanatory check, not preregistered) and `dev/DECISIONS.md` (the pilot read). No engine change.
+- compassionism-simulation [#63](https://github.com/BetterToBest/compassionism-simulation/pull/63), merged `6d75cfd`. It adds `dev/reports/s51-backing-mechanism.md` (the pilot report, for Duke), `dev/reports/s51-backing-tables.md` (every preregistered table), `dev/tools/s51_diag.js` (a 10-seed explanatory check, not preregistered) and `dev/DECISIONS.md` (the pilot read). No engine change.
 - compassionism-sim-results `s51-backing-6428b96/` (already on main): per-seed values, run.txt, SHA256SUMS, DONE.
 - research-update (this PR): `prereg/2026-11-backing-addendum.md` Amendment 1 (two sensitivities added after the pilot, for S47); PLAN.md S51 marked done, S47 list extended.
 
