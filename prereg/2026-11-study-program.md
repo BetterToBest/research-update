@@ -154,3 +154,9 @@ Dated, with the reason, below this line. Nothing above changes after the first r
 - **Why:** the Hub claims PTF and PTH protect the basics from shocks, and no environment so far has had one from outside (plan step S52, Nov 1).
 - **Engine:** the preset key `sx` (the outside supply shock), off by default, in compassionism-simulation at commit `98b61000697078619b496b1cca0f3bf495de73b2` (pull request 64). Off is bit-identical: guard test identical.
 - **Pilot:** seeds 1-50 on Actions now, labelled pilot. The 500-seed rows join the S48 batch, and S47 adds them to the run manifest. The policy comparison stays frozen (ledger d94).
+
+### Amendment 7 (Nov 2, 2026, S53, before any run of study P): security outcomes beyond wealth, and the per-year series for public costs
+- **What it adds:** study P, 10 rows per environment, and a reporting-only study option `sec` that records five security outcomes (income drops with no buffer, months the basics are covered without wages, hours of work for the basics, forced moves, exposure to market prices for essentials) by group, and the per-year poverty series S19 costs. It is preregistered in `prereg/2026-11-security-addendum.md` before any of its rows has run on Actions. Nothing above changes.
+- **Why:** plan step S53 (Nov 1): security as people live it is not the same as wealth at year 20, and S19 should need no new run.
+- **Engine:** the study option `sec`, reporting only, in compassionism-simulation (commit named in the addendum). Off is bit-identical: guard test identical.
+- **Pilot:** seeds 1-50 on Actions now, labelled pilot. S47 adds `sec: true` to the batch jobs S54 and S19 read, and study P's rows at seeds 1-500.
