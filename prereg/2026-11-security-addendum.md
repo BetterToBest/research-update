@@ -69,3 +69,11 @@ Every cell above is published, including null and unfavourable results and the A
 
 ## Amendments
 Dated, with the reason, below this line. Nothing above changes after the first run.
+
+### Amendment 1 (Nov 2, 2026, after the 50-seed pilot, before the full study)
+Reason: the pilot (report `dev/reports/s53-security.md` in compassionism-simulation) showed that two decision rules cannot be fully answered from the outputs above. Nothing above changes; these are additions for the full study, decided before any of its seeds run.
+
+1. **Table presentation.** `dev/tools/s53_security.py` now prints the Q19 difference in differences (rule 3) as its own table, and, descriptively, the same difference for the main supply shock against no shock in both designs. Same bootstrap and resample.
+2. **Two more rows per environment** (descriptive sensitivity): `c22.off.none.sv` and `c22.off.prog.sv`, the C2.2 design and its no-programme run with savings that keep up with prices (row option `sv`). Why: under C2.2 the median adult's real savings fall by about two thirds in the pilot, while the months-covered measures improve through lower need; without these rows the inflation share of C2.2's savings result (rule 3) cannot be measured. Study P then has 12 rows per environment (`runner/jobs/security.js`, `PREREG_ROWS` 12). Rule 3 applies to C2.2 as it does to the release row.
+3. **Two descriptive measures**, reporting keys under study option `sec` only (guard test identical), per group: (a) any 25% fall in money income, split by its main cause (wages, conversion pay, other), so rule 4's channel is measured, not inferred from the 10-seed exploratory check the pilot report describes; (b) uncovered 25% falls in resources that leave the adult below their own cost of living that year, so a fall that leaves the basics covered is told apart from one that does not. Both are reported beside `secU25`; neither replaces a preregistered outcome or changes a decision rule.
+4. **Engine:** items 2 and 3 need a reporting-only engine change and a job change before S47's dry run; S47 pins the engine commit that has them.

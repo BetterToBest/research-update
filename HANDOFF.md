@@ -1,35 +1,36 @@
-# Handoff (Nov 2, 2026): S53 partly done, security outcomes beyond wealth (pilot dispatched)
+# Handoff (Nov 2, 2026): S53 done, security outcomes beyond wealth (pilot reported)
 
 ## Step status
-S53 is **partly done**. The measures, the per-year series for S19, the addendum, the job and both consumer scripts have landed. The pilot (study P, seeds 1-50) is running on Actions. What remains: once `DONE` appears, run the analysis, write the plain-words pilot report, and list what S47 must carry. That is the next session's work.
+S53 is **done**. The 50-seed pilot finished (checksums verified; both consumer scripts load it), the plain-words pilot report is written, and the addendum's Amendment 1 lists what the full study adds. S47's S53 line in PLAN.md now carries those additions.
 
 ## What shipped
-- compassionism-simulation [#66](https://github.com/BetterToBest/compassionism-simulation/pull/66) (merge f15eaf6): study option `sec`, reporting only (`index.html` SEC block: `secNew`, `secAcc`, `secYear`, `secRes`, `SEC_KEYS`, `S19_KEYS`). Guard test identical; lineage linked; 4 unit tests in `secUnitSuite`; validate, unit (237), domtest (153) and glossary all pass. Reading `dev/reports/s53-security-reading.md`; choices `dev/DECISIONS.md` (S53). Consumer scripts: `dev/tools/s53_security.py` (study P analysis, `--check`) and `dev/tools/s19_series.py` (S19 loader and check).
-- compassionism-sim-results [#13](https://github.com/BetterToBest/compassionism-sim-results/pull/13) (merge d1cbadd): `runner/jobs/security.js` (10 rows per environment; `--check` passes).
-- research-update (this PR): `prereg/2026-11-security-addendum.md` (study P), study programme Amendment 7, and PLAN.md (S53 status; S47's S53 line).
+- compassionism-simulation [#67](https://github.com/BetterToBest/compassionism-simulation/pull/67): `dev/reports/s53-security.md` (pilot report), `dev/reports/s53-security-tables.md`, `dev/tools/s53_security.py` now prints the Q19 difference in differences (savings that keep up with prices) and, descriptively, shock against no shock. No engine change.
+- research-update (this PR): addendum `prereg/2026-11-security-addendum.md` Amendment 1; PLAN.md (S53 done with findings; S47's S53 line).
+- Results: compassionism-sim-results `s53-security-f15eaf6/` (50 seeds, run 41423271435).
+
+## Pilot findings (labelled pilot; not figures of the model)
+- The BU makes income falls of any size much rarer for every group under both designs.
+- C2.2: months of cover and displacement by price improve for every group, but through lower need. Prices rise about 36% a year under C2.2 too, and median real savings fall by about two thirds.
+- Release row: more households under three months of cover (+7 to +17 points), more displaced by price. Non-participants are less secure on almost every savings measure and have more uncovered income falls (decision rule 2: harm).
+- Savings that keep up with prices reverse every unfavourable savings result (rule 3: nearly all of it comes from inflation).
+- Money-income falls are less often covered under both designs (rule 4). A 10-seed exploratory check, not preregistered, points to a smaller buffer under the release row and to falls in conversion pay under C2.2.
+- Results hold under S52's shock (they move by less than one point).
+
+## For S47 (Amendment 1)
+- Study P goes to 12 rows per environment: add the C2.2 design and its no-programme run with savings that keep up with prices (`security.js`, `PREREG_ROWS` 12; about 0.85 runner-hours at 500 seeds).
+- Two reporting keys under `sec`, with the guard test identical: money-income falls split by cause (wages, conversion pay, other), and uncovered falls that leave the adult below their own cost of living.
+- For S54's addendum: `secU25` and `secM3` on both savings readings for every lever row, and in stage 3's no-harm test.
 
 ## In flight
-- Study `s53-security`: engine `f15eaf65b31ca15430590af764ee0b629a0229a0`, job `security.js`, `job_args` `--env=all --procs=4`, seeds 1-50, 5 shards; run [41423271435](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/41423271435) (queued Nov 2, 09:45 UTC). Results land in compassionism-sim-results `s53-security-f15eaf6/`. It is done when that folder holds `DONE`.
-- Next session: `python3 dev/tools/s53_security.py <folder> --check`, then `python3 dev/tools/s53_security.py <folder> --out dev/reports/s53-security-tables.md`, and `python3 dev/tools/s19_series.py <folder>`. Write `dev/reports/s53-security.md`, labelled pilot.
-
-## What the measures are (no results yet)
-- Groups: all adults, those who take part, those who choose not to.
-- Uncovered income drops: resources (money plus in-kind help) fall 25% or more, and 20% of savings does not cover the fall.
-- Months of need covered without wages: conversion proceeds are left out, the cautious reading.
-- Hours a week the basics cost at the adult's usual wage.
-- PTH tenancies ended. Forced PTH moves are zero by construction: no rule ends a tenancy.
-- Displacement by price: entries into the engine's housing-distress test. This is a proxy, because the model has no moving decision.
-- Essentials paid in money, as a share of the budget and of the essentials.
-- Hours and exposure are true by construction, and the report must say so.
+- Nothing.
 
 ## Decisions waiting
 - None new.
 
 ## Next step
-**S53** again (the pilot report), once `DONE` is in. Then S54 and the S47 freeze.
+**S54** (policy levers): S51-S53 are done, and D13 is answered.
 
 ## Pitfalls
-- The 2-seed local test showed savings-based measures (months covered) can move against the design for non-participants while income-drop measures improve. Do not read 2 seeds; wait for the 50.
-- The S19 series run to year 40 in the engine; the job keeps years 0-19 for 20-year rows (0 past the run otherwise).
-- `secPx` is non-zero for some adults who chose not to join the CCO: PTH membership is drawn apart from CCO membership.
-- Use the `Co-Authored-By: Claude <noreply@anthropic.com>` trailer only. The two stray branches named earlier are still there for Duke to delete.
+- Commit trailers: use `Co-Authored-By: Claude <noreply@anthropic.com>` only. This session's first compassionism-simulation commit (branch `claude/s53-security-pilot`) carried a model name. Main is clean because the PR was squash-merged with a clean message. The branch still holds that commit, so Duke may delete the branch. The two stray branches named earlier are still there too.
+- Group "chose not to take part" is fixed at the start from each adult's drawn willingness. Under C2.2 everyone gets the BU automatically, so the groups differ little there.
+- The months-covered measures are mixed: under C2.2 the lower need dominates. Read them beside `medWealthReal`.
