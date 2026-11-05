@@ -1,33 +1,33 @@
-# Handoff (Nov 5, 2026): S54 partly done, policy levers (switch landed, pilot running)
+# Handoff (Nov 5, 2026): S54 partly done, policy levers (pilot stages 1-2 reported, stage 3 running)
 
 ## Step status
-S54 is **partly done**. Items 1-3 and 5 are done. Item 6's stages 1 and 2 (seeds 1-50) are running on Actions. Remaining: the analysis script, stage 3 (confirmation on seeds 51-100), the pilot report, and the list for S47.
+S54 is **partly done**. Done: the analysis script (written before the results were read), the analysis of stages 1-2, stage 3's rows in a dated amendment, stage 3 dispatched, and the pilot report for stages 1-2. Remaining: analyse stage 3 when it lands and add its section to the report. Then S54 is done.
 
 ## What shipped
-- compassionism-simulation [#68](https://github.com/BetterToBest/compassionism-simulation/pull/68) (squash e6da050): reading `dev/reports/s54-levers-reading.md`; row option `lv` (the policy levers) with joining that sees what joining pays; 4 unit tests; DECISIONS (S54); TESTBED_SPEC row; lineage link. Guard test identical; validate, unit (241), domtest (153) pass.
-- compassionism-simulation [#69](https://github.com/BetterToBest/compassionism-simulation/pull/69): its HANDOFF.md.
-- compassionism-sim-results [#14](https://github.com/BetterToBest/compassionism-sim-results/pull/14) (squash 17cf7af): `runner/jobs/levers.js` (stages 1 and 2; `--check` PASS; multi-process join checked against single-process runs).
-- research-update [#43](https://github.com/BetterToBest/research-update/pull/43) (merge 07e321b): `prereg/2026-11-levers-addendum.md` (study N) and study programme Amendment 8, merged before any run.
+- compassionism-simulation [#70](https://github.com/BetterToBest/compassionism-simulation/pull/70) (squash f0bf959): `dev/tools/s54_levers.py`, pushed as 5b22d9f before any result was read. DECISIONS (S54) records the readings where the addendum is silent.
+- compassionism-simulation [#71](https://github.com/BetterToBest/compassionism-simulation/pull/71): pilot report `dev/reports/s54-levers.md`, tables `dev/reports/s54-levers-tables.md`, every cell in `dev/runs/s54-levers/`, its HANDOFF.
+- research-update [#45](https://github.com/BetterToBest/research-update/pull/45) (merge eee8856): addendum Amendment 1, which lists stage 3's 246 settings before they run.
+- compassionism-sim-results [#15](https://github.com/BetterToBest/compassionism-sim-results/pull/15) (squash 6dd6627): `levers.js --stage=3` and `runner/jobs/levers-stage3.json`. Stages 1-2 build byte-identical rows; a seed-1 stage-3 run reproduced 4,634 values exactly.
+- Results read: `s54-levers1-e6da050/`, `s54-levers2-e6da050/` (checksums verified, `--check` PASS).
+
+## Pilot outcome (labelled pilot, 50 seeds)
+- No setting tested meets D13, in either design or at either wage. Inflation is the barrier: the BU's face value is new money, and every lever inside the design leaves 21% a year or more in some environment.
+- The conversion tax has no break-even within 0-40%: it never makes the Source self-funding, basket poverty is lowest at 0%, and participation hardly moves.
+- Only outside finance gets under 5%. The closest setting is C2.2 with a flat wage contribution. It fails only on big income falls (+1.4 to +5.2 per 100 adult-years).
 
 ## In flight
-- Study `s54-levers1` (stage 1, 520 rows per environment): run [42099920669](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/42099920669), 25 shards, about 10-15 minutes each.
-- Study `s54-levers2` (stage 2, 1,164 rows per environment): run [42099926032](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/42099926032), 50 shards, about 11 minutes each.
-- Both use engine e6da0506188d67fc542f1bd2c430e733a44bd921, seeds 1-50, `levers.js --stage=N --env=all --procs=4`. They are done when `DONE` is in `s54-levers1-e6da050/` and `s54-levers2-e6da050/` in compassionism-sim-results. A failed shard: "Re-run failed jobs" on that run.
-
-## Next session (S54 continued)
-1. Before reading any result, write `dev/tools/s54_levers.py` in compassionism-simulation to the addendum's Analysis section: paired bootstrap 2,000, seed 54; lever effects; the three break-even tax rates; Morris effects; the Pareto front over the 3-environment means; stage 3 selection by rule 4.
-2. List stage 3's rows in a dated addendum amendment. Add `--stage=3` to `levers.js`, reading the list. Dispatch seeds 51-100.
-3. Pilot report `dev/reports/s54-levers.md` (plain words, labelled pilot): what works, what does nothing and why, the front, confirmed settings, and what S47 carries.
+- Study `s54-levers3` (stage 3, seeds 51-100, 250 rows per environment): run [42112585864](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/42112585864), 25 shards, engine e6da050, `levers.js --stage=3 --env=all --procs=4`. It is done when `s54-levers3-e6da050/DONE` exists in compassionism-sim-results. A failed shard: "Re-run failed jobs".
+- Then run `python3 dev/tools/s54_levers.py --s3 ../compassionism-sim-results/s54-levers3-e6da050 --list dev/runs/s54-levers/stage3-settings.json` (run `--s3 ... --check` first). Replace the report's "Stage 3 (running)" section, then the S54 step is done.
 
 ## Decisions waiting
-- None new. Any design change the results suggest becomes a ledger decision (addendum rule 6).
+- D14 (new): should the design change before the freeze? The C2.2 design paid by a flat wage contribution or a land-value tax is the only route under 5% inflation. Default: no change; S47 carries study N as preregistered.
 
 ## Next step
-**S54** (continued): the pilot is running; then stage 3 and the report. S47 waits on S54.
+**S54** (continued, short: stage 3's analysis and report section). Then S47, the design freeze. D14 has a default, so it blocks nothing.
 
 ## Pitfalls
-- Seed-1 tests, not results: the uncapped protected account paid with new money ran away (about 1,200% inflation a year). The flat wage contribution (`fflat`) removes inflation but raises basket poverty. Every-year indexation equals the surge protocol in Reference, because inflation is above 5% every year anyway.
-- Stress's released tax is 18% (not 12%). The job passes `tref` = the design's own tax, so deterrence is measured from each environment's released rate.
-- Output is large: about 120 MB at 50 seeds. S47 must trim keys or compress before 500 seeds.
-- Both studies commit to compassionism-sim-results main when done. If one commit job fails on a push race, re-run that job.
-- The first version of `levers.js` dropped the first piece's rows when joining processes. Fixed before merge and checked. Always compare a multi-process join with a single-process run.
+- A commit trailer named the model (branch commit 5b22d9f, before the squash). Commit trailers must read `Co-Authored-By: Claude <noreply@anthropic.com>` only.
+- A sparse, blob-less clone of compassionism-sim-results: `git ls-tree -l` fetches every blob, one at a time. Use `--name-only`.
+- The three issuance caps give identical rows: each removes the whole premium, since the BU's face value alone exceeds the cap.
+- Recycling expired BU is inert in combination: smaller BU leave nothing unspent.
+- Under C2.2, "non-participants" (the X group) receive the BU too. The group is the model's fixed set of adults who would not choose to join.
