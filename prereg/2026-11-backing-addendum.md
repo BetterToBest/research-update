@@ -83,3 +83,6 @@ Dated, with the reason, below this line. Nothing above changes after the first r
 2. **The BU raised every year (release row).** Arm A's 90%, 95% and 100% rows at all four wage indexations, with the BU raised to the price level every year (12 rows per environment).
 
 S47 adds these rows to `runner/jobs/backing.js` (row count 350 → 466 per environment), dry-runs them, and pins them with the rest of the batch.
+
+### Amendment 2 (Nov 5, 2026, S47, before any 500-seed run): the frozen engine
+Every row of this study in the S48 batch, the no-programme rows included, runs on the frozen engine: the outside audit's corrections (`au: true`) and the second implementation's four fixes (`fx: true`), as the study programme's Amendment 9 sets out. Rows, outcomes, analysis and decision rules are otherwise unchanged. The pilot ran on the published engine, so a pilot-to-batch difference combines new seeds and the corrections; the report says so, and study R measures the corrections. Jobs, folders and outputs: `prereg/run-manifest.md`. Amendment 1's 116 rows are included (466 rows per environment). Arm A at a backed share of 0 is the outside audit's wage-indexation sweep (its item E6) on both designs, so the batch adds no other row for it.

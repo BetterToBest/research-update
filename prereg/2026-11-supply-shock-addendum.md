@@ -84,3 +84,6 @@ Nothing above changes: no row, constant, group, window, outcome, interval method
    - a yearly series of the Source's backed and unbacked payout and of the BU's cost;
    - a dollar-based volatility reading beside `sxV`.
    All three are descriptive. None enters a decision rule.
+
+### Amendment 2 (Nov 5, 2026, S47, before any 500-seed run): the frozen engine, and the levers' confirmed points under the shock
+Every row of this study in the S48 batch, the no-programme rows included, runs on the frozen engine: the outside audit's corrections (`au: true`) and the second implementation's four fixes (`fx: true`), as the study programme's Amendment 9 sets out. Rows, outcomes, analysis and decision rules are otherwise unchanged. The pilot ran on the published engine, so a pilot-to-batch difference combines new seeds and the corrections; the report says so, and study R measures the corrections. Jobs, folders and outputs: `prereg/run-manifest.md`. Study O also records `sec: true` and Amendment 1's three descriptive outputs. Study N's stage 3 list runs again on this addendum's main shock path (seeds 501-1000; folder `n3x-<engine>`), with participation under the joining reading reported, as the levers addendum asked. Those rows are descriptive here; the levers addendum's rules decide on them.
