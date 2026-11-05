@@ -74,3 +74,6 @@ Every cell of G, G10, H, I and J is published in compassionism-sim-results (per-
 
 ## Amendments
 Dated, with the reason, below this line. Nothing above changes after the first run.
+
+### Amendment 1 (Nov 5, 2026, S47, before any run of these rows): the frozen engine and both designs
+Every row of this study in the S48 batch, the no-programme rows included, runs on the frozen engine: the outside audit's corrections (`au: true`) and the second implementation's four fixes (`fx: true`), as the study programme's Amendment 9 sets out. Rows, outcomes, analysis and decision rules are otherwise unchanged. The pilot ran on the published engine, so a pilot-to-batch difference combines new seeds and the corrections; the report says so, and study R measures the corrections. Jobs, folders and outputs: `prereg/run-manifest.md`. Each study's rows are built twice: on the C2.2 design (headline, study programme Amendment 4) and on the release design beside it, so G has 36 rows per environment, G10 32, H 18, I 12 and J 4. `program.js --check` confirms these counts. The none rows come from the matching programme study on the same engine.
