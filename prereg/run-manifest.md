@@ -112,9 +112,15 @@ Jobs (compassionism-sim-results `runner/jobs/`; each with `--check` of its row c
 Every job at seeds 1-2 on Actions, one shard each (`run-study`, study id `dry-<job>`). For each: the folder is `DONE`, checksums pass, and the consumer's script loads it: `pilot_studies.py` (A to J), `c22_pilot.py` (K), `lw_pilot.py` (L), `s51_backing.py` (M), `s54_levers.py --check` (N), `s52_shock.py` (O), `s53_security.py --check` and `s19_series.py` (P, R), `merge_panel.py` (R-panel). Timings from the dry run replace section 3's estimates.
 
 ## 8. Where it runs, and the cost
-- **Cheapest split: everything on GitHub Actions, at no cost.** No job exceeds the thresholds of `prereg/RUNNING.md` section 5 (about 1,000 core-hours in one study, or 6 hours in one process). The pilots of S35 and S51 to S54 ran there with no objection from GitHub.
+- **Cheapest split, and the route Duke chose (Amendment 1): everything on GitHub Actions, at no cost.** No job exceeds the thresholds of `prereg/RUNNING.md` section 5 (about 1,000 core-hours in one study, or 6 hours in one process). The pilots of S35 and S51 to S54 ran there with no objection from GitHub.
 - **Caution (ledger I16):** GitHub's terms describe Actions as being for building, testing and deploying a repository's own software. The batch is about 670 runner-hours, several times the pilots. If GitHub objects, the Runpod route (RUNNING.md section 6) takes the rest from the piece where it stopped.
 - **Runpod, if used** (a 16-vCPU CPU pod at $0.48 an hour, the price paid on Oct 12, 2026; to be re-checked when the key is added; a vCPU counted as half a core, as on Actions): the two largest pieces (study A at 50,000 adults and study N, about 760 core-hours) take about 95 pod-hours, about $46; the whole batch (about 1,340 core-hours) about 170 pod-hours, about $80. The dry run's timings replace these figures.
 
 ## Amendments
 Dated, with the reason, below this line.
+
+### Amendment 1 (Nov 5, 2026, S47 part 2, before any 500-seed run): the batch runs on GitHub Actions
+- **Duke's choice** (in the S47 part 2 session, Nov 5): the batch runs on GitHub Actions, as section 8's cheapest split proposed, not on Runpod. Step 5's ledger decision no longer asks for the Runpod key or a choice of route; it records that the design is frozen and that S48 runs on Actions.
+- **What it changes:** S48 starts once the freeze is complete (section 6 landed, engine pinned, every job's 2-seed dry run passed); it no longer waits for a Runpod key. Nothing in the design changes. Dispatch stays as section 5 says (`--procs=2`, shards under 2 hours, at most 20 runners at once).
+- **If GitHub objects or limits the runs** (ledger I16): S48 stops where it is (every piece is resumable), and moving the rest to Runpod becomes a new ledger decision with its cost; nothing that costs money runs before Duke answers it and adds the key.
+- Why: the first estimate (section 8) puts every job under RUNNING.md's thresholds, at no cost; Duke prefers that route.
