@@ -1,39 +1,36 @@
-# Handoff (Nov 5, 2026): S54 done, policy levers (pilot stages 1-3 reported)
+# Handoff (Nov 5, 2026): S47 partly done, design freeze (manifest written; engine fixes started)
 
 ## Step status
-S54 is **done**. Stage 3 (the confirmation on fresh seeds 51-100) is analysed as preregistered, and the pilot report is complete.
+S47 is **partly done**. Step 1 is done: the run manifest and the freeze's amendments are written. Steps 2 to 5 remain: the engine and job changes in the manifest's section 6, pinning the engine commit, the 2-seed dry run, the cost estimate from the dry run's timings, and the ledger decision that ends the chain.
 
 ## What shipped
-- compassionism-simulation [#72](https://github.com/BetterToBest/compassionism-simulation/pull/72): the stage 3 section of `dev/reports/s54-levers.md`, and tables for all three stages in `dev/reports/s54-levers-tables.md` (stages 1-2 regenerate byte-identical). Every stage 3 cell is in `dev/runs/s54-levers/stage3-effects.csv.gz`. `s54_levers.py --csv` now writes stage 3 too; this changes output only (DECISIONS S54). HANDOFF updated.
-- Results read: compassionism-sim-results `s54-levers3-e6da050/` (run 42112585864, 25 shards). Checksums pass and `--check` passes (750 rows, 33 keys). The settings file's SHA-256 matches addendum Amendment 1.
-- Earlier today: #70 and #71 (script, stages 1-2 report), research-update #45 (Amendment 1), compassionism-sim-results #15 (stage 3 job).
-
-## Pilot outcome (labelled pilot; chosen on seeds 1-50, confirmed on 51-100)
-- No setting meets D13 (Duke's rule). Rule 4 chose none, so stage 3 could not confirm a best setting.
-- Three points of the C2.2 trade-off front pass the poverty and no-harm tests on fresh seeds, all at 29-82% inflation a year:
-  - the Source keeping half of project sales (wages 100%);
-  - the capped protected account (wages 100% and 90%).
-  They are confirmed points of the front, not findings of a best setting.
-- These three failed rule 4's strict no-harm test on the choosing seeds and pass rule 5's half-point margin. Both rules were preregistered.
-- No release-row point passes. Most fail four no-harm tests at once (non-participants' wealth poverty, months of cover, big income falls, wealth poverty overall).
-- The flat wage contribution (C2.2) is again the only point under 5% inflation. It fails again on big income falls, by the same amount (+1.4 to +5.2 per 100 adult-years).
-- Fresh-seed estimates differ from the choosing seeds' by a median of 0.1-0.4 points.
+- research-update [#48](https://github.com/BetterToBest/research-update/pull/48) (merged, 3427ab1): `prereg/run-manifest.md` (draft: every job, row, consumer, folder and a first cost estimate), study programme Amendment 9 (the design freeze), and short pointer amendments in the K, L, M, N, O, P and community-layer addenda.
+- compassionism-simulation [#73](https://github.com/BetterToBest/compassionism-simulation/pull/73) (merged, squash d2d56ec): row option `fx`, parts `pthb`, `hb`, `ab` (`fx: true` = all three for now), off by default. Guard test identical, lineage linked, `fxUnitSuite` (3 tests); all CI checks green. Choices: DECISIONS.md (S47). The engine's own HANDOFF.md does not list it yet: add it in part 2.
+- The freeze choices made, all in Amendment 9:
+  - every row of every study runs on the frozen engine (audit corrections `au: true` plus the second implementation's fixes `fx: true`);
+  - the C2.2 design is the headline, with the release design beside it in A, B, B10, C, F and G-J; D and D10 stay on the release design; at 50,000 adults, A runs the C2.2 design only;
+  - the published engine runs only in a new study R (release panel and bridge, 18 rows per environment and yardstick);
+  - the line stays at $49,370 (study L's rule 3);
+  - the pilots' section 9 items: adopted, except dropping the 20-year rows;
+  - the outcome-5 thresholds apply to the yearly inflation rate.
+- First estimate: about 670 runner-hours (about 34 hours on 20 runners), all of it fitting on Actions at no cost. Runpod would be about $46 for the two largest pieces, or about $80 for everything (pod price from Oct 12; to be re-checked).
 
 ## In flight
 Nothing.
 
 ## Decisions waiting
-- D14: should the design change before the freeze? Stage 3 changes nothing in it: the outside-finance C2.2 rows are still the only route under 5% inflation. Default: no change; S47 carries study N as preregistered.
+- D14 (default A, no design change): S47 follows the default.
 
 ## Next step
-**S47**, the design freeze (Order table row 17). D14 has a default, so nothing blocks it. S47 carries from S54 (report section "What S47 carries"):
-- stages 1-3 at 500 seeds;
-- the full study's stage-3 confirmed points on S52's shock path;
-- stage 3 at about 59 processor-hours for a front of this size (142 seconds per seed per environment on one process).
+**S47 again** (opus, high), part 2, in this order (manifest section 6):
+1. Engine: fx part `sp`. The supply path (`s3BaseS`, index.html near line 6079) comes from `priceRun`, which has no job loss, safety net or labour response. `tbStudy` computes `S` once per seed, before its rows (line ~6559), so `sp` must be decided at study level, not per row. One way: `S` from the no-programme testbed run with those modules on, and `FX` added to the cache key. Then measure `au` and each `fx` part on 50 paired seeds in all three environments, and record the result in DECISIONS and the manifest.
+2. Engine reporting keys: the design-neutral BLEI share at year 20 in 40-year runs; the S53 and S52 descriptive outputs; `testbed --frozen`; the `explore_export.js` series. Re-derive the 0.593 spending share. Write MODEL_SPEC and TESTBED_SPEC for the frozen model.
+3. Jobs (compassionism-sim-results): `program.js` gets studies R and G-J, both designs, 2% and 5% participation, nulls for missing keys, and `au`/`fx` on every row; the other jobs get `--frozen`, backing gets its 116 rows, and levers gets the key trim, gzip and `--sx=main`.
+4. Pin the engine commit; dry-run at 2 seeds; timings; the ledger decision ("Design frozen ..."; Actions vs Runpod).
+This may take 2-3 sessions.
 
 ## Pitfalls
-- Under the flat wage contribution, the 90% and 100% wage rows are byte-identical. Wages follow the general price level, which only new money moves, and a fully taxed payout makes none.
-- The release-row points nearest to passing have the uncapped protected account (runaway inflation of 1,100-1,400% a year). Never present them as near-misses without that figure.
-- A sparse, blob-less clone of compassionism-sim-results: `git sparse-checkout set <folders>` fetches just those blobs (stages 1-3 total 134 MB). `git ls-tree -l` fetches every blob, so use `--name-only`.
-- Commit trailers must read `Co-Authored-By: Claude <noreply@anthropic.com>` only.
-- The GitHub plugin server failed to connect this session; the built-in GitHub tools worked.
+- Row options such as `au`, `fx`, `c22` and `cl` sit on the row object (`m.fx`); study options such as `bkm`, `lv` and `sec` sit in `m.o`. The first fx unit test set `o.fx`, and nothing moved.
+- `fx.pthb` and `fx.hb` move 263 of the release row's keys on seed 1 (unit test). They are real changes, so they must be measured before the freeze.
+- Commit trailers: `Co-Authored-By: Claude <noreply@anthropic.com>` only (no model name).
+- The GitHub plugin server failed to connect again; the built-in GitHub tools worked.
