@@ -160,3 +160,9 @@ Dated, with the reason, below this line. Nothing above changes after the first r
 - **Why:** plan step S53 (Nov 1): security as people live it is not the same as wealth at year 20, and S19 should need no new run.
 - **Engine:** the study option `sec`, reporting only, in compassionism-simulation (commit `f15eaf65b31ca15430590af764ee0b629a0229a0`, pull request 66). Off is bit-identical: guard test identical.
 - **Pilot:** seeds 1-50 on Actions now, labelled pilot. S47 adds `sec: true` to the batch jobs S54 and S19 read, and study P's rows at seeds 1-500.
+
+### Amendment 8 (Nov 5, 2026, S54, before any run of study N): the policy levers (ledger D12, D13)
+- **What it adds:** study N, in three stages: each lever a government could set, swept on its own around the release row and the C2.2 design (stage 1, 520 rows per environment); all levers together, a Morris screening and a Latin hypercube with the trade-off front (stage 2, 1,164 rows per environment); the best settings by Duke's rule D13 and every front point, confirmed on seeds never used to choose them (stage 3). Preregistered in `prereg/2026-11-levers-addendum.md` before any of its rows has run on Actions. Nothing above changes.
+- **Why:** plan step S54 (Nov 1, Duke's answer to D12): S51 found the release row's new money too large for any plausible output to back; test every lever before choosing.
+- **Engine:** row option `lv` in compassionism-simulation (commit `e6da0506188d67fc542f1bd2c430e733a44bd921`, pull request 68), with a second joining reading that sees the conversion income after tax. Off is bit-identical: guard test identical.
+- **Pilot:** stages 1-2 on seeds 1-50 on Actions now, stage 3 on 51-100 after them, labelled pilot. S47 carries stages 1-3 at seeds 1-500 and 501-1000.
