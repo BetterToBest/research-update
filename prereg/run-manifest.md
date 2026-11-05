@@ -98,7 +98,7 @@ About 670 runner-hours is about 34 hours on 20 runners at once. No job needs mor
 
 ## 6. What must land before the dry run (S47, later sessions)
 Engine (compassionism-simulation; guardrails 1-9; off = bit-identical, guard test, lineage):
-1. Row option `fx` (the four S50 fixes), each part separately switchable, measured on 50 paired seeds before the freeze (a dated note in the engine's DECISIONS.md and in this file).
+1. Row option `fx` (the four S50 fixes), each part separately switchable, measured on 50 paired seeds before the freeze (a dated note in the engine's DECISIONS.md and in this file). **Done Nov 5** (Amendment 2).
 2. Reporting keys: the design-neutral basic-living share at year 20 in 40-year runs; the security addendum's two descriptive measures under `sec`; the supply-shock addendum's three descriptive outputs.
 3. `harness.js testbed ... --frozen` (the page-format panel on the frozen engine and the C2.2 design), and `explore_export.js`'s added series.
 4. The 0.593 spending share (`SPEND_SOURCED`) re-derived on the frozen engine's no-programme run (audit E17). If it differs, that is a dated amendment before the freeze, and the measured effect is recorded; no other constant moves.
@@ -124,3 +124,9 @@ Dated, with the reason, below this line.
 - **What it changes:** S48 starts once the freeze is complete (section 6 landed, engine pinned, every job's 2-seed dry run passed); it no longer waits for a Runpod key. Nothing in the design changes. Dispatch stays as section 5 says (`--procs=2`, shards under 2 hours, at most 20 runners at once).
 - **If GitHub objects or limits the runs** (ledger I16): S48 stops where it is (every piece is resumable), and moving the rest to Runpod becomes a new ledger decision with its cost; nothing that costs money runs before Duke answers it and adds the key.
 - Why: the first estimate (section 8) puts every job under RUNNING.md's thresholds, at no cost; Duke prefers that route.
+
+### Amendment 2 (Nov 5, 2026, S47 part 2, before any 500-seed run): the fourth fix built, and all of them measured
+- **Built:** `fx` part `sp` (compassionism-simulation pull request 74). Each year's capacity for the essentials now comes from the study's own no-programme testbed run: the same seed, environment, population and economy-wide rules. Until now it came from a separate price-only run with no job loss, safety net or labour response, always at 500 adults. With `sp`, a no-programme row's essentials prices stay exactly still. `fx: true` is all four parts.
+- **Measured** (Simulation `dev/reports/s47-fx.md`; seeds 1-50, all three environments, none, the release design and the C2.2 design, published vs `au` vs each part vs frozen). `sp` removes the no-programme drift (0.7% by year 20 in Reference), lowers basket poverty without a programme by 0.3 to 0.4 points, and lowers programme inflation by 0.24 to 0.59 points a year. `pthb`, `hb` and `ab` move no outcome beyond its interval (`ab` only the work-rule count). The audit's corrections stay the larger change. No programme effect changes direction.
+- **Decision:** the freeze keeps every part on (section 1 unchanged). Section 1's engine commit is pinned when the rest of section 6 has landed.
+- **For the job scripts (item 6-7):** `fx: true` on a row now includes `sp`, so no job needs a separate option. Study R's "audit's corrections only" rows stay `au: true` with no `fx`.
