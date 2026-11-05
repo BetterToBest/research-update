@@ -1,36 +1,33 @@
-# Handoff (Nov 2, 2026): S53 done, security outcomes beyond wealth (pilot reported)
+# Handoff (Nov 5, 2026): S54 partly done, policy levers (switch landed, pilot running)
 
 ## Step status
-S53 is **done**. The 50-seed pilot finished (checksums verified; both consumer scripts load it), the plain-words pilot report is written, and the addendum's Amendment 1 lists what the full study adds. S47's S53 line in PLAN.md now carries those additions.
+S54 is **partly done**. Items 1-3 and 5 are done. Item 6's stages 1 and 2 (seeds 1-50) are running on Actions. Remaining: the analysis script, stage 3 (confirmation on seeds 51-100), the pilot report, and the list for S47.
 
 ## What shipped
-- compassionism-simulation [#67](https://github.com/BetterToBest/compassionism-simulation/pull/67) (squash 5027297): `dev/reports/s53-security.md` (pilot report), `dev/reports/s53-security-tables.md`, `dev/tools/s53_security.py` now prints the Q19 difference in differences (savings that keep up with prices) and, descriptively, shock against no shock. No engine change.
-- research-update [#41](https://github.com/BetterToBest/research-update/pull/41) (merge bd2eab9): addendum `prereg/2026-11-security-addendum.md` Amendment 1; PLAN.md (S53 done with findings; S47's S53 line).
-- Results: compassionism-sim-results `s53-security-f15eaf6/` (50 seeds, run 41423271435).
-
-## Pilot findings (labelled pilot; not figures of the model)
-- The BU makes income falls of any size much rarer for every group under both designs.
-- C2.2: months of cover and displacement by price improve for every group, but through lower need. Prices rise about 36% a year under C2.2 too, and median real savings fall by about two thirds.
-- Release row: more households under three months of cover (+7 to +17 points), more displaced by price. Non-participants are less secure on almost every savings measure and have more uncovered income falls (decision rule 2: harm).
-- Savings that keep up with prices reverse every unfavourable savings result (rule 3: nearly all of it comes from inflation).
-- Money-income falls are less often covered under both designs (rule 4). A 10-seed exploratory check, not preregistered, points to a smaller buffer under the release row and to falls in conversion pay under C2.2.
-- Results hold under S52's shock (they move by less than one point).
-
-## For S47 (Amendment 1)
-- Study P goes to 12 rows per environment: add the C2.2 design and its no-programme run with savings that keep up with prices (`security.js`, `PREREG_ROWS` 12; about 0.85 runner-hours at 500 seeds).
-- Two reporting keys under `sec`, with the guard test identical: money-income falls split by cause (wages, conversion pay, other), and uncovered falls that leave the adult below their own cost of living.
-- For S54's addendum: `secU25` and `secM3` on both savings readings for every lever row, and in stage 3's no-harm test.
+- compassionism-simulation [#68](https://github.com/BetterToBest/compassionism-simulation/pull/68) (squash e6da050): reading `dev/reports/s54-levers-reading.md`; row option `lv` (the policy levers) with joining that sees what joining pays; 4 unit tests; DECISIONS (S54); TESTBED_SPEC row; lineage link. Guard test identical; validate, unit (241), domtest (153) pass.
+- compassionism-simulation [#69](https://github.com/BetterToBest/compassionism-simulation/pull/69): its HANDOFF.md.
+- compassionism-sim-results [#14](https://github.com/BetterToBest/compassionism-sim-results/pull/14) (squash 17cf7af): `runner/jobs/levers.js` (stages 1 and 2; `--check` PASS; multi-process join checked against single-process runs).
+- research-update [#43](https://github.com/BetterToBest/research-update/pull/43) (merge 07e321b): `prereg/2026-11-levers-addendum.md` (study N) and study programme Amendment 8, merged before any run.
 
 ## In flight
-- Nothing.
+- Study `s54-levers1` (stage 1, 520 rows per environment): run [42099920669](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/42099920669), 25 shards, about 10-15 minutes each.
+- Study `s54-levers2` (stage 2, 1,164 rows per environment): run [42099926032](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/42099926032), 50 shards, about 11 minutes each.
+- Both use engine e6da0506188d67fc542f1bd2c430e733a44bd921, seeds 1-50, `levers.js --stage=N --env=all --procs=4`. They are done when `DONE` is in `s54-levers1-e6da050/` and `s54-levers2-e6da050/` in compassionism-sim-results. A failed shard: "Re-run failed jobs" on that run.
+
+## Next session (S54 continued)
+1. Before reading any result, write `dev/tools/s54_levers.py` in compassionism-simulation to the addendum's Analysis section: paired bootstrap 2,000, seed 54; lever effects; the three break-even tax rates; Morris effects; the Pareto front over the 3-environment means; stage 3 selection by rule 4.
+2. List stage 3's rows in a dated addendum amendment. Add `--stage=3` to `levers.js`, reading the list. Dispatch seeds 51-100.
+3. Pilot report `dev/reports/s54-levers.md` (plain words, labelled pilot): what works, what does nothing and why, the front, confirmed settings, and what S47 carries.
 
 ## Decisions waiting
-- None new.
+- None new. Any design change the results suggest becomes a ledger decision (addendum rule 6).
 
 ## Next step
-**S54** (policy levers): S51-S53 are done, and D13 is answered.
+**S54** (continued): the pilot is running; then stage 3 and the report. S47 waits on S54.
 
 ## Pitfalls
-- Commit trailers: use `Co-Authored-By: Claude <noreply@anthropic.com>` only. This session's first compassionism-simulation commit (branch `claude/s53-security-pilot`) carried a model name. Main is clean because the PR was squash-merged with a clean message. The branch still holds that commit, so Duke may delete the branch. The two stray branches named earlier are still there too.
-- Group "chose not to take part" is fixed at the start from each adult's drawn willingness. Under C2.2 everyone gets the BU automatically, so the groups differ little there.
-- The months-covered measures are mixed: under C2.2 the lower need dominates. Read them beside `medWealthReal`.
+- Seed-1 tests, not results: the uncapped protected account paid with new money ran away (about 1,200% inflation a year). The flat wage contribution (`fflat`) removes inflation but raises basket poverty. Every-year indexation equals the surge protocol in Reference, because inflation is above 5% every year anyway.
+- Stress's released tax is 18% (not 12%). The job passes `tref` = the design's own tax, so deterrence is measured from each environment's released rate.
+- Output is large: about 120 MB at 50 seeds. S47 must trim keys or compress before 500 seeds.
+- Both studies commit to compassionism-sim-results main when done. If one commit job fails on a push race, re-run that job.
+- The first version of `levers.js` dropped the first piece's rows when joining processes. Fixed before merge and checked. Always compare a multi-process join with a single-process run.
