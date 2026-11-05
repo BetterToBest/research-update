@@ -94,3 +94,38 @@ Every cell above is published, including null and unfavourable results and the A
 
 ## Amendments
 Dated, with the reason, below this line. Nothing above changes after the first run.
+
+### Amendment 1 (Nov 5, 2026): stage 3's rows, and how the analysis reads what this file leaves open
+**Reason.** Stages 1 and 2 finished on seeds 1-50 (runs 42099920669 and 42099926032; folders `s54-levers1-e6da050/`, `s54-levers2-e6da050/`, checksums verified, every row and key present). This file says stage 3's rows are derived by decision rule 4 and listed in a dated amendment before they run. Nothing above this heading changes.
+
+**The analysis script.** `dev/tools/s54_levers.py` in compassionism-simulation, committed (commit 5b22d9f, pull request 70) before any result was read and tested only on made-up numbers. Where this file is silent it reads (compassionism-simulation `dev/DECISIONS.md`, S54):
+1. Each row is compared with the row it differs from in one thing only. Today's rule's tax sweep (`asis.tNN`) is compared with `asis`. `asis` is compared with `base`, so that row measures the joining reading. The `.sv` twins are compared with `base.sv` and `none.sv`. The protected accounts (`sva`, `svc`) are compared with `base` and `none`: the account belongs to the programme, and the world without the programme has none.
+2. Programme inflation is the change in `endoAnn` against the no-programme row, as the Outcomes section defines every outcome.
+3. A bootstrap replicate that never reaches a break-even counts as beyond 40%.
+4. Candidates with identical objectives are one point on the front. Ties in rule 4 go to the first candidate listed.
+5. If no candidate passes rule 4, the five closest are ranked by the summed excess of what fails, in points (inflation counts its excess over 5 points a year).
+
+**Rule 4 on seeds 1-50: no setting tested meets the rule, in any design or wage.** Of 435 candidates per design at wages 100% and 255 at 90%:
+- Release row: none passes the no-harm test, at either wage.
+- C2.2 design, wages 100%: 175 pass the no-harm test, but none of them keeps programme inflation under 5% a year in every environment.
+- C2.2 design, wages 90%: none passes the no-harm test.
+
+So there is no chosen setting. Stage 3 therefore has no `.sv` twin and no run under today's rule. The closest candidates are named in the tables (`dev/reports/s54-levers-tables.md`) and the pilot report. Rule 4 says none of them is reported as a finding.
+
+**Stage 3's rows.** Each design and wage gets its no-programme row and every point of the front on the three-environment means. That is 246 settings and 4 no-programme rows: 250 rows per environment.
+- Release row, wages 100% (162 points): `t0`, `bt0`, `t4`, `ixn`, `t8`, `rcap`, `pr0c75`, `kp50`, `mm9`, `kp25`, `kp10`, `phi0`, `mm6`, `mm3`, `ex0`, `ph5`, `svc`, `bt25`, `t25`, `ph10`, `h100`, `bu80`, `h10`, `h192`, `br2`, `h23`, `bt50`, `h119`, `h4`, `h141`, `h126`, `bu60`, `m9.6`, `br1`, `h50`, `h89`, `h132`, `h41`, `m3.4`, `h154`, `m0.0`, `h138`, `h130`, `h164`, `h46`, `h20`, `h61`, `m7.12`, `m1.4`, `h178`, `m1.7`, `m7.11`, `h32`, `h131`, `h166`, `h66`, `h102`, `h153`, `h146`, `h105`, `fland`, `h21`, `h168`, `m3.9`, `h47`, `m3.5`, `h108`, `h86`, `m9.5`, `m9.1`, `h71`, `m4.16`, `m9.0`, `h162`, `h40`, `h30`, `h176`, `m9.2`, `h193`, `m9.3`, `h113`, `h14`, `h129`, `h182`, `h25`, `h26`, `m3.2`, `h123`, `m3.3`, `m3.0`, `m1.1`, `m1.2`, `h53`, `h34`, `m1.0`, `h8`, `m1.3`, `h74`, `h114`, `m7.5`, `h167`, `sva`, `m2.0`, `m2.1`, `m2.4`, `m2.5`, `h177`, `h83`, `m7.6`, `m7.9`, `m7.8`, `m7.10`, `h142`, `h101`, `m8.0`, `h122`, `h67`, `h92`, `h137`, `h98`, `h28`, `h160`, `m4.2`, `m4.4`, `h147`, `h81`, `m9.12`, `m5.6`, `m5.7`, `m5.4`, `m5.3`, `m4.6`, `m4.5`, `m5.2`, `h158`, `m4.12`, `m5.0`, `h170`, `h55`, `h77`, `h93`, `m6.0`, `h184`, `m6.1`, `m6.4`, `h197`, `h189`, `h62`, `m9.9`, `h13`, `h112`, `h37`, `h90`, `h143`, `h64`, `h87`, `h103`, `h36`, `m5.8`, `m5.11`, `m6.12`, `fflat`.
+- Release row, wages 90% (74 points): `t0`, `bt0`, `t4`, `t8`, `fland`, `kp50`, `ixn`, `pr0c75`, `kp25`, `kp10`, `no6`, `phi0`, `ph5`, `ph10`, `bt25`, `bu80`, `h10`, `svc`, `bu60`, `h119`, `h100`, `h50`, `h192`, `h89`, `h61`, `h154`, `h23`, `h126`, `h32`, `h174`, `h86`, `h141`, `h132`, `h138`, `h182`, `h53`, `h74`, `h28`, `h101`, `h164`, `h102`, `h144`, `h26`, `h147`, `h81`, `h146`, `h162`, `h153`, `h108`, `h21`, `h105`, `fflat`, `sva`, `h170`, `h197`, `h189`, `h118`, `h62`, `h190`, `h42`, `h159`, `h13`, `h165`, `h171`, `h112`, `h181`, `h116`, `h48`, `h187`, `h24`, `h90`, `h143`, `h64`, `h87`.
+- C2.2 design, wages 100% (5 points): `t0`, `kp50`, `svc`, `fflat`, `fland`.
+- C2.2 design, wages 90% (5 points): `t0`, `kp50`, `svc`, `fflat`, `fland`.
+
+`hI` is point I of the Latin hypercube. `mT.S` is step S of Morris trajectory T. Both are rebuilt from the job's seed-54 design. The other names are stage 1's rows.
+
+The list is compassionism-sim-results `runner/jobs/levers-stage3.json` (SHA-256 `6b906101993040b344ae601a3d0c07c4693a8c6869ab7bfccb7e58238b68e782`), written by `s54_levers.py --select`. The job is `runner/jobs/levers.js --stage=3 --env=all --procs=4`. Its `--check` passes with 250 rows per environment. Stages 1 and 2 build exactly the same rows as before: their configurations hash identically.
+
+A seed-1 run of stage 3 in Reference reproduced all 4,634 values of the same rows in stages 1 and 2 exactly. That run is a check of the job, not a result.
+
+**Run.** Study `s54-levers3`, seeds 51-100 (never used to choose), all three environments, engine `e6da0506188d67fc542f1bd2c430e733a44bd921`, 25 shards on GitHub Actions. Folder `s54-levers3-e6da050/`.
+
+**Analysis.** `s54_levers.py --s3 FOLDER --list runner/jobs/levers-stage3.json` applies decision rule 5 to every point. Pareto points are tested on basket poverty and the no-harm margin; the inflation test is reported. Rule 4 chose no setting, so stage 3 cannot produce a confirmed best setting. Any Pareto point it confirms is reported as a confirmed point of the trade-off front, with its inflation, and not as the best setting.
+
+**Diagnostic, not preregistered.** In stage 2's Morris screening, the share of expired BU recycled to projects changed nothing in any release-row trajectory. Seed-1 runs on the session machine showed why. The share acts only on BU that expire unspent. Fewer BU expire as the BU gets smaller (548 at the full BU, 109 at 87%), so in most combinations nothing is left for the share to act on. This explains a null result; it is not a result.
