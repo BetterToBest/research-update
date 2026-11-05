@@ -5,7 +5,7 @@ S47 is **partly done**. Step 1 is done: the run manifest and the freeze's amendm
 
 ## What shipped
 - research-update [#48](https://github.com/BetterToBest/research-update/pull/48) (merged, 3427ab1): `prereg/run-manifest.md` (draft: every job, row, consumer, folder and a first cost estimate), study programme Amendment 9 (the design freeze), and short pointer amendments in the K, L, M, N, O, P and community-layer addenda.
-- compassionism-simulation, ENGINE_PR_LINE
+- compassionism-simulation [#73](https://github.com/BetterToBest/compassionism-simulation/pull/73) (merged, squash d2d56ec): row option `fx`, parts `pthb`, `hb`, `ab` (`fx: true` = all three for now), off by default. Guard test identical, lineage linked, `fxUnitSuite` (3 tests); all CI checks green. Choices: DECISIONS.md (S47). The engine's own HANDOFF.md does not list it yet: add it in part 2.
 - The freeze choices made, all in Amendment 9:
   - every row of every study runs on the frozen engine (audit corrections `au: true` plus the second implementation's fixes `fx: true`);
   - the C2.2 design is the headline, with the release design beside it in A, B, B10, C, F and G-J; D and D10 stay on the release design; at 50,000 adults, A runs the C2.2 design only;
