@@ -6,7 +6,7 @@ S47 is **partly done**.
 - Remaining: item 5 (MODEL_SPEC.md and TESTBED_SPEC.md for the frozen model), items 6-7 (the job scripts in compassionism-sim-results), pinning the engine commit, the 2-seed dry run on Actions with timings in manifest section 3, and the closing ledger record.
 
 ## What shipped
-- compassionism-simulation [#75](https://github.com/BetterToBest/compassionism-simulation/pull/75) (see "In flight" for its merge state):
+- compassionism-simulation [#75](https://github.com/BetterToBest/compassionism-simulation/pull/75) (merged, squash f23ce50; all CI checks green):
   - reporting keys, all reporting only: `bNAy20`/`bOAy20`; under `sec`, `secF25*` (money-income falls by cause) and `secU25b*`; under `sx`, the payer breakdown `sxE*`/`sxK*`, the Source's payout by year `sxQ*_t`, and `sxVd`.
   - harness `FROZEN`, `SPEND_FROZEN`, `frozenRow`, `c22Design`; `testbed ... release ... --frozen` (C2.2 row `c22`); `explore_export.js --frozen` (its self-check passes against a 2-seed frozen panel).
   - checks: guard test identical, unit 249/249, validate, domtest 153/153, lineage link recorded.
@@ -18,7 +18,7 @@ S47 is **partly done**.
 - research-update (this branch): manifest section 1, sections 3-4 (R is 21 rows), section 6 items 2-4 marked done, Amendment 3; study programme Amendment 10; PLAN.md's S47 entry.
 
 ## In flight
-Nothing running. #75 merges once its checks pass; if this file still says "open" for it, merge it next session first.
+Nothing.
 
 ## Decisions waiting
 - D14 (default A, no design change): S47 follows the default.
