@@ -1,35 +1,42 @@
-# Handoff (Nov 5, 2026): S47 partly done, design freeze (part 2 started: supply-path fix built and every correction measured; Actions chosen)
+# Handoff (Nov 6, 2026): S47 partly done, design freeze (part 3: reporting keys, frozen modes, the spending share re-derived)
 
 ## Step status
-S47 is **partly done**. Done: step 1 (the manifest and the freeze's amendments), section 6 item 1 (the four `fx` parts built and measured), and Duke's choice of route: GitHub Actions, not Runpod (manifest Amendment 1). Remaining: section 6 items 2-7, pinning the engine commit, the 2-seed dry run with its timings, and the closing ledger record.
+S47 is **partly done**.
+- Done: step 1 (manifest), Duke's route choice (Actions), and manifest section 6 items 1-4: the four `fx` parts; the reporting keys; `testbed --frozen` and `explore_export.js --frozen`; the 0.593 spending share re-derived.
+- Remaining: item 5 (MODEL_SPEC.md and TESTBED_SPEC.md for the frozen model), items 6-7 (the job scripts in compassionism-sim-results), pinning the engine commit, the 2-seed dry run on Actions with timings in manifest section 3, and the closing ledger record.
 
 ## What shipped
-- compassionism-simulation [#74](https://github.com/BetterToBest/compassionism-simulation/pull/74) (merged, squash 8375cb3; all CI checks green): `fx` part `sp`. Each year's essentials capacity now comes from the study's own no-programme testbed run (`tbBaseS`). The programme's own switches and options are set to their defaults for that run, so every row of a seed gets the same path in any row order. A no-programme row's essentials prices now stay exactly still. `fx: true` = all four parts. Two unit tests; guard test identical; lineage linked. Measurement: `dev/reports/s47-fx.md`, `dev/reports/s47-fx-tables.md`, `dev/runs/s47-fx/`, `dev/tools/s47_fx_measure.js`; decision record in DECISIONS.md (S47).
-- Measured (seeds 1-50, all three environments, none / release / C2.2):
-  - `sp` removes the no-programme drift (0.7% by year 20 in Reference), lowers no-programme basket poverty by 0.3-0.4 points, and lowers programme inflation by 0.24-0.59 points a year.
-  - `pthb`, `hb` and `ab` move nothing beyond their intervals.
-  - The audit's corrections stay the larger change (the C2.2 design's wealth-poverty cut shrinks by 2.1-5.2 points).
-  - No programme effect changes direction. The freeze keeps every part on.
-- research-update (this PR): `prereg/run-manifest.md` Amendment 1 (Duke, Nov 5: the batch runs on Actions; if GitHub objects, S48 stops and Runpod becomes a new decision) and Amendment 2 (`sp` built and measured); PLAN.md's S47, S48 and gate lines updated.
+- compassionism-simulation [#75](https://github.com/BetterToBest/compassionism-simulation/pull/75) (merged, squash f23ce50; all CI checks green):
+  - reporting keys, all reporting only: `bNAy20`/`bOAy20`; under `sec`, `secF25*` (money-income falls by cause) and `secU25b*`; under `sx`, the payer breakdown `sxE*`/`sxK*`, the Source's payout by year `sxQ*_t`, and `sxVd`.
+  - harness `FROZEN`, `SPEND_FROZEN`, `frozenRow`, `c22Design`; `testbed ... release ... --frozen` (C2.2 row `c22`); `explore_export.js --frozen` (its self-check passes against a 2-seed frozen panel).
+  - checks: guard test identical, unit 249/249, validate, domtest 153/153, lineage link recorded.
+- **The spending share, re-derived** (audit E17; Simulation `dev/reports/s47-spend.md`; tools `dev/tools/s47_spend.js` and `s47_spend_effect.js`; data `dev/runs/s47-spend/`):
+  - At 0.593 the frozen no-programme run saves 19.5% of disposable income; the method's target is 5.4%. Re-derived: 0.877, or 0.862 on the method's own formula over wages.
+  - The original derivation also counted the supply-path run and a repeated year 0 (counting faults, now fixed in the tool).
+  - Measured on 50 paired seeds: basket poverty and inflation do not move. Savings halve. The programmes' wealth-poverty effect rises sharply: at 0.877 the C2.2 design no longer cuts wealth poverty in Reference (+0.5 points) and raises it in Adverse (+30) and Stress (+42).
+  - Recorded as a dated amendment (manifest Amendment 3, study programme Amendment 10). Study R gets 3 rows at 0.593 beside the frozen ones. The published engine keeps 0.593.
+- research-update (this branch): manifest section 1, sections 3-4 (R is 21 rows), section 6 items 2-4 marked done, Amendment 3; study programme Amendment 10; PLAN.md's S47 entry.
 
 ## In flight
 Nothing.
 
 ## Decisions waiting
 - D14 (default A, no design change): S47 follows the default.
-- None new. Duke's Actions choice is recorded, so step 5 is now a record ("design frozen; S48 runs on Actions"), not a question.
+- No new decision. The share is a calibration re-derived by its own method; under CLAUDE.md that is Claude's call, recorded as an amendment. It changes the headline wealth result a great deal, so the S47 ledger record (step 5) should name it for Duke to read.
 
 ## Next step
-**S47 again** (opus, high), part 3, manifest section 6 from item 2:
-1. Engine reporting keys: the design-neutral BLEI share at year 20 in 40-year runs; S53's two descriptive measures under `sec`; S52's three descriptive outputs. Then `harness.js testbed ... --frozen` (it must use `tbBaseS` through `fx: true`), and the `dev/tools/explore_export.js` series. Note: explore_export and other harness modes call `s3BaseS` directly. Under `--frozen` they must take the path from `tbBaseS`.
-2. Re-derive the 0.593 spending share on the frozen no-programme run (audit E17; a dated amendment if it differs). Then write MODEL_SPEC and TESTBED_SPEC for the frozen model.
-3. Jobs in compassionism-sim-results (items 6-7: `program.js` R and G-J, both designs, 2% and 5%, nulls, `au`/`fx` on every row; `--frozen` in the other jobs; backing's 116 rows; levers' trim, gzip and `--sx=main`).
-4. Pin the engine; dry-run every job at 2 seeds on Actions; put the timings in manifest section 3; write the ledger record.
+**S47 again** (opus, high), part 4:
+1. Item 5: MODEL_SPEC.md and TESTBED_SPEC.md for the frozen model: every switch `frozenRow` and the rows turn on, including the share; correct the S50 contradictions; close its 30 gaps (Simulation `dev/reports/s50-independent-implementation/GAPS.md`).
+2. Items 6-7 in compassionism-sim-results `runner/jobs/`, all through `H.frozenRow` and `H.c22Design`:
+   - `program.js`: R (21 rows: published, au-only, frozen, and frozen at 0.593), G-J, both designs in A, B, B10, C and F; D and D10 at 2% and 5%; nulls for missing keys.
+   - `--frozen` in `c22.js`, `lw.js`, `backing.js`, `shock.js`, `security.js` and `levers.js`.
+   - backing's 116 rows; levers' trim, gzip and `--sx=main`.
+   - add the new keys to KEYS where the consumers read them (`bNAy20`, `secF25*`, `sxE*`).
+3. Pin the engine; dry-run every job at 2 seeds on Actions; put the timings in manifest section 3; write the ledger record.
 
 ## Pitfalls
-- The session worker restarted mid-run and killed three local measurement runs. Commit before long local runs, and keep local runs to minutes.
-- Run `engine_lineage.js prove` on a clean tree: untracked files can make its manifest dirty. domtest's two "manifest names a commit" checks fail until the proof is recorded.
-- `git stash` with only untracked files does nothing. Don't use it to test main; use a second checkout.
-- `fx.sp` adds one no-programme run per seed for each distinct set of economy-wide switches. The dry run should time it, mainly in study N (many `lv` rows; `lv` is left out of the path's key on purpose).
+- `frozenRow` sets the row's `sc` to 0.877. A job that sets `sc` after calling it replaces the frozen share (the measurement tools do this on purpose). Under `fx.sp` the study-level `sc` does not matter; the row's does.
+- Ledger-based measurements double-count: each cold seed also writes its supply-path run and tbRun's one-year rate pass into `LEDGER`. Warm the cache first, or read flows with the reporting hook and ACCT, as `s47_spend.js` does.
+- Run `engine_lineage.js prove` on a clean tree; it takes about 10 minutes on 4 cores. Don't run other studies beside it.
 - Commit trailers: `Co-Authored-By: Claude <noreply@anthropic.com>` only (no model name).
 - The GitHub plugin server failed to connect again; the built-in GitHub tools worked.
