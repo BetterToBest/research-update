@@ -9,6 +9,8 @@ Written Nov 5, 2026 by S47, before any 500-seed run. This file lists every job t
 - **The frozen engine** is the published engine (v5.6) with two sets of corrections switched on in every row of every job, the no-programme rows included:
   - the outside audit's three corrections (row option `au: true`: the BLEI test for the wage bonus and PTF adoption deflated by the price level; income-graded spending once the year's cash income is known; the financial-stability score deflated). Source: Simulation `dev/reports/s13-engine-audit.md` section 1.
   - the second implementation's four fixes (a new row option, `fx: true`, built in section 6): PTH's books opened after households are formed; the essentials' supply path from a run with job loss, the safety net and the labour response; PTH home prices at the basket's housing cost; `snAbN` counting no rounding remainders. Source: Simulation `dev/reports/s50-independent-implementation/GAPS.md`, phase 2, items 2, 6, 7 and 8.
+  - the spending share re-derived by its own method on the frozen no-programme run: 0.877 of cash surplus consumed (`SPEND_FROZEN`), in place of 0.593 (Amendment 3). The published engine keeps 0.593.
+  - All three are set by one helper, Simulation `harness.js` `frozenRow(c)` (`au: true, fx: true, sc: 0.877`), which every job script uses; the C2.2 design is `c22Design(c)`.
 - **The headline design** is the C2.2 design (study programme Amendment 4, Duke's answer to ledger D8): the BU at the cost of food, housing with utilities, and medical care for one adult (`c22NeedsBU()`, $1,788.43 a month), indexed to those prices every year, paid automatically to every resident; child allowance a quarter of the adult BU.
 - **Beside it, in every table where its question applies:** the release design ($1,200, opt-in, as published in v5.6), on the same frozen engine. Labelled "release design".
 - **The published engine itself** (v5.6 exactly: no `au`, no `fx`) runs only in study R. R measures how far each set of corrections moves the release row and the C2.2 design, so every other study can be read against the published figures.
@@ -37,7 +39,7 @@ Runner-hours are for 500 seeds at 2 processes per runner, from the pilots' measu
 
 | Job | Script and arguments | Rows per environment | Adults | Years | Seeds | Runner-hours | Folder |
 |---|---|---|---|---|---|---|---|
-| R release panel and bridge | `program.js --study=R` | 18 rows x 2 yardsticks | 500 | 20, 40 | 1-500 | 6 | `prog-r-<engine>` |
+| R release panel and bridge | `program.js --study=R` | 21 rows x 2 yardsticks | 500 | 20, 40 | 1-500 | 6 | `prog-r-<engine>` |
 | R-panel (page format) | `harness.js testbed 500 release ENV --v54 --snab --slope` (published engine) and the same with `--frozen` (section 6) | the testbed's | 500 | 20, 40 | 1-500 | 2 | `panel-<engine>` |
 | A scale | `program.js --study=A` | 12 (500 to 10,000 adults); 6 (50,000) | 500, 2,000, 10,000, 50,000 | 20, 40 | 1-500 | 187 | `prog-a-<engine>` |
 | B synergy | `program.js --study=B` | 192 | 500 | 20, 40 | 1-500 | 29 | `prog-b-<engine>` |
@@ -68,6 +70,7 @@ About 670 runner-hours is about 34 hours on 20 runners at once. No job needs mor
 - the frozen engine (`au: true, fx: true`): the same 3 rows; the C2.2 row here is the headline;
 - on the frozen engine, both designs: the middle backing reading (`aK: CFG.KENYA_ABSORB_ROLLOUT`) and the every-dollar-backed reading (`a: 1`) (Grok audit triage, item 6); the FBS50 reading (`fb: {dist: 'fbs50'}`, audit E7) (6 rows);
 - on the frozen engine: wages that also follow outside inflation (`au: {gate: true, sg: true, fbs: true, wOut: true}`) for none and both designs (audit E5; identical to the frozen rows in Reference, which has no outside inflation, and kept as a check) (3 rows).
+- on the frozen engine at the published spending share, 0.593: none and both designs (Amendment 3) (3 rows). R is then 21 rows per yardstick and horizon.
 - Study options `sec: true` on every row (security addendum: the release panel's security outcomes and the S19 series).
 - Checks: the published-engine none and release rows equal `release-pair.js`'s byte for byte; the published-engine panel reproduces the v5.6 panel fingerprints (REPRODUCE.md).
 - The audit's `wIdx` sweep (E6) is study M's arm A at a backed share of 0 (four wage indexations on both designs); R adds no row for it.
@@ -99,9 +102,9 @@ About 670 runner-hours is about 34 hours on 20 runners at once. No job needs mor
 ## 6. What must land before the dry run (S47, later sessions)
 Engine (compassionism-simulation; guardrails 1-9; off = bit-identical, guard test, lineage):
 1. Row option `fx` (the four S50 fixes), each part separately switchable, measured on 50 paired seeds before the freeze (a dated note in the engine's DECISIONS.md and in this file). **Done Nov 5** (Amendment 2).
-2. Reporting keys: the design-neutral basic-living share at year 20 in 40-year runs; the security addendum's two descriptive measures under `sec`; the supply-shock addendum's three descriptive outputs.
-3. `harness.js testbed ... --frozen` (the page-format panel on the frozen engine and the C2.2 design), and `explore_export.js`'s added series.
-4. The 0.593 spending share (`SPEND_SOURCED`) re-derived on the frozen engine's no-programme run (audit E17). If it differs, that is a dated amendment before the freeze, and the measured effect is recorded; no other constant moves.
+2. Reporting keys: the design-neutral basic-living share at year 20 in 40-year runs; the security addendum's two descriptive measures under `sec`; the supply-shock addendum's three descriptive outputs. **Done Nov 6** (Simulation pull request 75): `bNAy20`, `bOAy20`; `secF25`, `secF25w`, `secF25c`, `secF25o`, `secU25b` per group; `sxE*`, `sxK*` per group and window, `sxQb_t`, `sxQu_t`, `sxQi_t`, `sxVd`.
+3. `harness.js testbed ... --frozen` (the page-format panel on the frozen engine and the C2.2 design), and `explore_export.js`'s added series. **Done Nov 6** (pull request 75): the C2.2 design is the panel's row `c22`; `explore_export.js ... --suite --frozen --panel=FILE` writes the visual series (BLEI tiers, the median BLEI and its parts, relative income poverty, extreme poverty) for no programme, C2.2 and the release design, and checks its yearly means against the frozen panel.
+4. The 0.593 spending share (`SPEND_SOURCED`) re-derived on the frozen engine's no-programme run (audit E17). If it differs, that is a dated amendment before the freeze, and the measured effect is recorded; no other constant moves. **Done Nov 6: it differs (0.877; Amendment 3).**
 5. MODEL_SPEC.md and TESTBED_SPEC.md written for the frozen model (every switch its rows turn on; the S50 contradictions corrected and its 30 gaps closed).
 
 Jobs (compassionism-sim-results `runner/jobs/`; each with `--check` of its row counts):
@@ -130,3 +133,17 @@ Dated, with the reason, below this line.
 - **Measured** (Simulation `dev/reports/s47-fx.md`; seeds 1-50, all three environments, none, the release design and the C2.2 design, published vs `au` vs each part vs frozen). `sp` removes the no-programme drift (0.7% by year 20 in Reference), lowers basket poverty without a programme by 0.3 to 0.4 points, and lowers programme inflation by 0.24 to 0.59 points a year. `pthb`, `hb` and `ab` move no outcome beyond its interval (`ab` only the work-rule count). The audit's corrections stay the larger change. No programme effect changes direction.
 - **Decision:** the freeze keeps every part on (section 1 unchanged). Section 1's engine commit is pinned when the rest of section 6 has landed.
 - **For the job scripts (item 6-7):** `fx: true` on a row now includes `sp`, so no job needs a separate option. Study R's "audit's corrections only" rows stay `au: true` with no `fx`.
+
+### Amendment 3 (Nov 6, 2026, S47 part 3, before any 500-seed run): the spending share, re-derived
+- **What was asked** (section 6 item 4; outside audit E17): repeat the derivation of the 0.593 spending share by its own method on the frozen model's no-programme run. The method: the share of cash surplus consumed at which that run saves 5.4% of income, the US personal saving rate in 2025 (BEA NIPA Table 2.1, line 35), in Reference over seeds 1-100.
+- **Found** (Simulation `dev/reports/s47-spend.md`, `dev/tools/s47_spend.js`, `dev/runs/s47-spend/rederive.json`):
+  - At 0.593 the frozen no-programme run saves 19.5% of disposable income. Re-derived: **0.877** on saving over disposable income, 0.862 on the method's own formula over wages.
+  - The original derivation's ledger also counted the supply-path run and a repeated year 0. Counted as it was then, the published run reproduces 5.40% at 0.593, so the new tool counts as the old one did before the faults are removed.
+- **Decision:** every frozen row uses 0.877 (`SPEND_FROZEN`, set by `frozenRow`). Saving over disposable income is the reading because the 5.4% target is a share of disposable income, and the frozen run has income besides wages: Social Security, unemployment insurance, the safety net's cash net of tax, and income-graded spending. The published engine and study R's published rows keep 0.593. This re-derives a constant by its own method. No programme figure was used to choose it.
+- **Measured effect** (50 paired seeds, all three environments, no programme and both designs on the frozen engine at 0.593, 0.779 and 0.877; `dev/tools/s47_spend_effect.js`, tables `dev/reports/s47-spend-tables.md`):
+  - Basket poverty and programme inflation do not move (at most 0.1 point).
+  - Median real wealth with no programme falls by about half (Reference: $409,000 to $212,000).
+  - The programme's effect on year-20 wealth poverty rises: C2.2 from −17.4 to +0.5 points in Reference, −17.4 to +30.1 in Adverse, −7.8 to +41.7 in Stress; the release design from −3.5 to +21.4 in Reference. These are far outside their intervals.
+  - The design-neutral BLEI effect moves by under a point.
+- **Added rows:** study R runs the frozen engine at 0.593 for none and both designs (3 rows per yardstick and horizon; section 4), so the release panel shows how much of the frozen model's wealth result comes from the share.
+- **Nothing else moves:** no other constant, row, outcome or decision rule. The fix measurements of Amendment 2 were made at 0.593; they measure the fixes, and stay as they are.
