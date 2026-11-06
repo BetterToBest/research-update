@@ -1,38 +1,34 @@
-# Handoff (Nov 6, 2026): S47 part 4, design freeze (specs written, every job script built, dry run started)
+# Handoff (Nov 6, 2026): S47 part 5, design freeze complete
 
 ## Step status
-S47 is **partly done**. Manifest section 6 is complete (items 1-7). The engine is pinned at `ce8d030` (manifest section 1). The 2-seed dry run of every job is running on Actions.
-Remaining (part 5): check each dry-run folder and load it in its consumer's script (manifest section 7); put the timings in section 3 and the cost in section 8; mark the manifest frozen; write the S47 ledger record (step 5), which names the spending-share change (Amendment 3) for Duke to read.
+S47 is **done**. Every job passed its 2-seed dry run and loads in the script that reads it (`prereg/run-manifest.md` section 7, result). The manifest now has measured timings and a shard plan (section 3), a cost (section 8) and the status "frozen" (Amendment 4). The ledger record is D15 (default: S48 proceeds on Actions).
 
 ## What shipped
-- compassionism-simulation [#76](https://github.com/BetterToBest/compassionism-simulation/pull/76) (merged, squash ce8d030, the pin; checks green): MODEL_SPEC.md section 13 (the frozen model and the C2.2 design), the eight S50 contradictions corrected in place, Appendix C (the 30 gaps); TESTBED_SPEC.md section 6; `s54_levers.py` reads gzip shards.
-- compassionism-sim-results [#16](https://github.com/BetterToBest/compassionism-sim-results/pull/16) (031861a):
-  - `program.js` with studies R and G-J, both designs (`c22`, `rls`) and 2% and 5% in D and D10. Every row is frozen except R's published and audit-only rows. Keys that mean nothing for a row are written as null.
-  - `--frozen` in the six other jobs. Backing has 466 rows, security 12; levers gains `--sx=main` and `--gzip`.
-  - `panel.js` and `series.js` (the R-panel and X jobs).
-  - The workflow gzips shards when `--gzip` is given.
-  - Every `--check` passes. Each job ran one seed on the session machine.
-- research-update (this branch): manifest section 1 pinned, section 3's R-panel and X commands, section 6 items 5-7 done, section 7's dispatch list; PLAN.md's S47 entry.
+- compassionism-simulation [#77](https://github.com/BetterToBest/compassionism-simulation/pull/77) (tools only, no engine change):
+  - `s19_series.py` and `s53_security.py --check` read each row to its own horizon (study R holds 20- and 40-year rows in one file).
+  - `merge_parts.py` reads `panel.js` pieces.
+  - New `batch_load.py`: loads and checks the A-J and R folders. Its `by_design()` gives the pilots' row names.
+- research-update (this branch): manifest sections 3, 7 and 8, status frozen, Amendment 4; PLAN.md's S47 and S48 entries.
+- Dry-run folders `dry-*-ce8d030/` in compassionism-sim-results (26 folders, all `DONE`, checksums pass). They are the record of the dry run; they are not results.
 
 ## In flight
-- 26 run-study runs on Actions, started Nov 6 about 02:07 UTC: engine `ce8d030`, job scripts at `031861a`. The list is in manifest section 7.
-- Results land in compassionism-sim-results as `dry-<id>-ce8d030/`, each with run.txt, SHA256SUMS and `DONE`.
-- A run that failed has no folder: its log is in the Actions tab (workflow run-study, runs 42148172842 to 42148283075).
-- The levers folders hold `shard-0000.json.gz`.
-- Watch `dry-a50`: 50,000 adults, which tests memory at 2 processes.
+Nothing.
 
 ## Decisions waiting
-- D14 (default A): S47 follows the default. No new decision this session. The S47 record (part 5) names the spending share's effect.
+- D15 (default A, proceeds): the design is frozen and S48 runs the manifest on Actions. Duke is asked to read the spending-share change (Amendment 3): basket poverty does not move, and the programmes' effect on wealth poverty changes sharply. Option B holds S48 until Duke has read it.
 
 ## Next step
-**S47 again** (opus, high), part 5. Every manifest step is below; the order is the manifest's.
-1. Each `dry-*` folder in compassionism-sim-results has `DONE`. For each, run its consumer (manifest section 7) on that folder. `pilot_studies.py` hard-codes the pilot folders and 50 seeds, so for A-J check loading with a short script, or give it folder and seed arguments.
-2. Put the measured seconds per seed into section 3 (500-seed runner-hours at 2 processes) and update section 8. Shard counts: about 2 hours a shard.
-3. Mark the manifest frozen (status line, section 7 result) and add a dated amendment if anything changed. Write the ledger record (step 5). The chain stops there. S48 then dispatches the manifest exactly.
+**S48** (opus, medium): dispatch the manifest exactly as section 3 says, on run-study.
+- Engine `ce8d030`; job scripts at compassionism-sim-results main (`031861a` or later).
+- At most 20 runners at once. Start, confirm they started, record the run IDs here, end.
+- Don't dispatch N3 and N3x yet. They wait for N1 and N2: `s54_levers.py --s1 N1 --s2 N2 --select LIST` (rule 4), then a dated amendment to the levers addendum, then dispatch.
+- X's panel check waits for the frozen R-panel to be merged.
 
 ## Pitfalls
-- `pilot_studies.py`, `c22_pilot.py` and `lw_pilot.py` read the pilots' folder names and seed counts. The batch's row names now carry a design segment (`ENV.nN.yY.c22.cps.main`), so their loaders need a prefix change before S36.
-- The C2.2 design's automatic receipt marks adults as taking part even in cells without CCO. Only `octMean` showed it, and it is now null there. Outcomes are equal on the two designs (checked).
-- `panel.js` and `series.js` use the workflow's "seed range" as a shard index (I-I picks the environment, horizon and piece). Their own seed count is `--n`.
-- The GitHub plugin server failed to connect again; the built-in GitHub tools worked. The PR API returned "too many files changed" for #76 (a GitHub-side error); the Actions API worked.
-- A stray `/x.log` (737 bytes, a failed command's log) is in the container's root; harmless.
+- **Shard counts:** A runs as two dispatches, `--sizes=500,2000,10000` (25 shards of 20 seeds) and `--sizes=50000` (100 shards of 5 seeds).
+- **R-panel shards:** `panel.js --n=500 --parts=5`, workflow seeds 1-30. Its seed range is a shard index, not seeds. Each shard runs all 500 seeds for a fifth of the rows.
+- **Pre-dry-run estimate:** the R-panel was estimated at 2 runner-hours; it measures 58.
+- **Levers processes:** `levers.js --env=all --procs=2` runs 3 processes (one per environment). That is what was timed; keep it.
+- **Reading S53 checks:** `s54_levers.py` takes `--s1/--s2/--s3 FOLDER`. A bare folder with `--check` checks nothing and exits 0.
+- **Merging the R-panel:** copy the shards to `release-panel[-40]-ENV.partI.json`, run `merge_parts.py DIR ENV YEARS 5 OUT`, then `merge_panel.py`. `merge_panel.py` rewrites `index.html`, so run it in a copy, never on main.
+- **GitHub plugin:** the GitHub plugin server failed to connect again; the built-in GitHub tools worked.
