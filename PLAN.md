@@ -31,7 +31,7 @@ Model and effort per step are below. "fable" means: use it only if it uses no us
 | 16c | S52 | Outside supply-shock environment: markup vs scarcity, PTF local sourcing | opus | high | S51 |
 | 16d | S53 | Security outcomes beyond wealth; per-year series for S19 (done Nov 2) | opus | high | S51, S52 |
 | 16e | S54 | Policy levers: everything a policymaker could set, swept alone and in combination, best settings confirmed on fresh seeds (D12, D13); done Nov 5 (pilot stages 1-3 reported: no setting meets D13; three C2.2 front points confirmed, all at 29-82% inflation; D14) | opus | xhigh (may take 2 sessions) | S53, D13 (default proceeds) |
-| 17 | S47 | Design freeze: every row and output the plan needs, dry-run at 2 seeds, cost estimate; part 1 done Nov 5 (`prereg/run-manifest.md`, study programme Amendment 9; fx parts pthb, hb, ab built), part 2 next (manifest section 6, then the dry run; may take 2-3 sessions) | opus | high | S10, S13, S50, S51-S54, S32-S37, S6, S14 |
+| 17 | S47 | Design freeze: every row and output the plan needs, dry-run at 2 seeds, cost estimate; part 1 done Nov 5 (`prereg/run-manifest.md`, study programme Amendment 9; fx parts pthb, hb, ab built), part 2 Nov 5 (Actions chosen; fx part sp built, every correction measured); part 3 next (manifest section 6 items 2-7, then the dry run) | opus | high | S10, S13, S50, S51-S54, S32-S37, S6, S14 |
 | 18 | S48 | The full study batch, on GitHub Actions (Duke's choice, Nov 5; run manifest Amendment 1). Runpod only if GitHub objects, then a new ledger decision and your key | opus | medium | S47 (freeze complete) |
 | 19 | S36 | Synergy report: Shapley shares, interactions, 20 and 40 years | opus | high | S48 |
 | 20 | S38 | Community-layer report (if S37 built it) | opus | medium | S48 |
@@ -235,6 +235,8 @@ Done Nov 5 (third session): stage 3 analysed (compassionism-simulation #72): che
 5. Add a ledger decision: "Design frozen; add the Runpod key to the Claude Code environment to start S48" with the cost estimate. The chain stops here. (Nov 5: Duke chose Actions, manifest Amendment 1; the decision becomes a record that the design is frozen and S48 runs on Actions.)
 
 Part 1 (Nov 5): step 1 done in `prereg/run-manifest.md` and study programme Amendment 9 (choices recorded there). What remains is the manifest's section 6 (engine fx part `sp` and reporting keys, the 0.593 share, MODEL_SPEC and TESTBED_SPEC, the job scripts), then steps 3-5. The first estimate (manifest section 8) puts the whole batch on Actions at no cost. If the dry run confirms it, step 5's decision asks Duke to choose Actions (default, free) or Runpod for the largest pieces, instead of asking only for the key.
+
+Part 2 (Nov 5): Duke chose Actions (manifest Amendment 1). Section 6 item 1 done: `fx` part `sp` built (compassionism-simulation #74) and the four parts and the audit's corrections measured on 50 paired seeds (`dev/reports/s47-fx.md`; manifest Amendment 2; every part kept). Next (part 3): section 6 items 2-7, then pin, dry run, record.
 
 ### S48 · The full study batch
 Only after the S47 freeze is complete. Run the manifest exactly on GitHub Actions (Duke's choice, Nov 5; manifest Amendment 1; if GitHub objects, stop and add a ledger decision for Runpod), pieces resumable, results to compassionism-sim-results with run.txt and SHA256SUMS. Start the jobs, confirm they started, record them in HANDOFF.md, and end; the next session checks for `DONE`. Any job that fails is rerun from its piece, never redesigned (a redesign is a preregistration amendment and a new S47 pass).
