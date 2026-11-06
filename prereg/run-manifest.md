@@ -2,7 +2,7 @@
 
 Written Nov 5, 2026 by S47, before any 500-seed run. This file lists every job the batch runs: its rows, environments, seeds, population, horizon, outputs, and which later step reads them. S48 runs it exactly. It is the record the study programme (`prereg/2026-11-study-program.md`, Amendment 9) and each addendum point to.
 
-**Status: draft, not yet frozen.** The design choices below are made. The freeze is complete when the items in section 6 have landed (done Nov 6), the engine commit is pinned in section 1 (done Nov 6), and every job has passed its 2-seed dry run (section 7; dispatched Nov 6). Until then no job here runs at 500 seeds.
+**Status: frozen (Nov 6, 2026, S47 part 5).** Every section 6 item has landed, the engine commit is pinned (section 1), and every job passed its 2-seed dry run and loads in its consumer (section 7). S48 runs this file exactly, on GitHub Actions (Amendment 1), with the dispatch of section 3. A change after this point is a dated amendment to the preregistration it touches and a new S47 pass; a job that fails is rerun from its shard, never redesigned.
 
 ## 1. The model being frozen
 - **Engine:** BetterToBest/compassionism-simulation at commit `ce8d030b8d16a752706c4ea2db71196e11e73831` (pinned Nov 6, 2026, S47 part 4: pull request 76's merge, after every section 6 item landed). Every job runs in a clean checkout of that one commit, with the job scripts of BetterToBest/compassionism-sim-results at `031861a` (pull request 16) or later.
@@ -35,32 +35,38 @@ Written Nov 5, 2026 by S47, before any 500-seed run. This file lists every job t
 
 ## 3. The jobs
 
-Runner-hours are for 500 seeds at 2 processes per runner, from the pilots' measured cost (S35 report section 1; S51 to S54 timings), before the dry run re-times them. "Rows per environment" counts each yardstick and each horizon setting as its own row where the job runs both.
+Runner-hours are for 500 seeds, measured by the 2-seed dry run on GitHub-hosted runners (section 7; Nov 6, 2026): each job's wall-clock seconds for seeds 1-2 (seeds 501-502 for N3 and N3x) times 250. They include each process's start-up, so they are upper bounds. Before the dry run they were estimated from the pilots (the previous estimate is in brackets). "Rows per environment" counts each yardstick as its own row and, where a job runs both horizons, counts the 20- and 40-year runs once (the folders hold both). "Shards" is the dispatch: seeds per shard sized so no shard runs over 2 hours at the measured rate (the workflow stops a shard at 350 minutes).
 
-| Job | Script and arguments | Rows per environment | Adults | Years | Seeds | Runner-hours | Folder |
-|---|---|---|---|---|---|---|---|
-| R release panel and bridge | `program.js --study=R` | 21 rows x 2 yardsticks | 500 | 20, 40 | 1-500 | 6 | `prog-r-<engine>` |
-| R-panel (page format) | `panel.js --n=500 --parts=K` (published engine) and `panel.js --n=500 --parts=K --frozen`: each shard runs one environment, horizon and piece of `harness.js testbed 500 release ENV --v54 --snab --slope [--years=40] [--frozen] --part=I/K` | the testbed's | 500 | 20, 40 | 1-500 | 2 | `panel-<engine>`, `panel-frz-<engine>` |
-| A scale | `program.js --study=A` | 12 (500 to 10,000 adults); 6 (50,000) | 500, 2,000, 10,000, 50,000 | 20, 40 | 1-500 | 187 | `prog-a-<engine>` |
-| B synergy | `program.js --study=B` | 192 | 500 | 20, 40 | 1-500 | 29 | `prog-b-<engine>` |
-| B10 synergy at scale | `program.js --study=B10` | 64 | 10,000 | 20 | 1-500 | 66 | `prog-b10-<engine>` |
-| C ageing | `program.js --study=C` | 12 | 500 | 20, 40 | 1-500 | 2 | `prog-c-<engine>` |
-| D participation | `program.js --study=D` | 46 | 500 | 20, 40 | 1-500 | 10 | `prog-d-<engine>` |
-| D10 participation at scale | `program.js --study=D10` | 12 | 10,000 | 20 | 1-500 | 19 | `prog-d10-<engine>` |
-| F debt reading | `program.js --study=F` | 12 | 500 | 20, 40 | 1-500 | 2 | `prog-f-<engine>` |
-| G, G10, H, I, J community layer | `program.js --study=G` (and G10, H, I, J) | 36, 32, 18, 12, 4 | as the addendum | as the addendum | 1-500 | 50 | `prog-g-<engine>` and so on |
-| K coverage and adequacy | `c22.js --env=all` | 13 | 500 | 20, 40 | 1-500 | 6 | `k-<engine>` |
-| L cost-of-living line | `lw.js --env=all` | 9 | 500 | 20, 40 | 1-500 | 4 | `l-<engine>` |
-| M backing | `backing.js --env=all` | 466 | 500 | 20 | 1-500 | 29 | `m-<engine>` |
-| N1, N2 levers, stages 1-2 | `levers.js --stage=1`, `--stage=2` | 520, 1,164 | 500 | 20 | 1-500 | 190 | `n1-<engine>`, `n2-<engine>` |
-| N3 levers, stage 3 | `levers.js --stage=3 --list=FILE` (list derived from N1 and N2 by rule 4, in a dated amendment) | the front's size (250 in the pilot) | 500 | 20 | 501-1000 | 30 | `n3-<engine>` |
-| N3x stage 3 on the shock path | `levers.js --stage=3 --list=FILE --sx=main` (section 6) | as N3 | 500 | 20 | 501-1000 | 30 | `n3x-<engine>` |
-| O supply shock | `shock.js --env=all` | 70 | 500 | 20 | 1-500 | 5 | `o-<engine>` |
-| P security | `security.js --env=all` | 12 | 500 | 20 | 1-500 | 1 | `p-<engine>` |
-| X per-year series | `series.js --n=500 --frozen`: each of 6 shards runs `explore_export.js ENV YRS 500 1 --v54 --snab --slope --suite --frozen` for one environment and horizon (no programme, the C2.2 design, the release design); checked against the frozen panel afterwards (`--panel=FILE`) | 3 | 500 | 20, 40 | 1-500 | 2 | `x-<engine>` |
-| **Total** | | | | | | **about 670** | |
+| Job | Script and arguments | Rows per environment | Adults | Years | Seeds | Runner-hours (estimate) | Shards (seeds each) | Folder |
+|---|---|---|---|---|---|---|---|---|
+| R release panel and bridge | `program.js --study=R --env=all --procs=2` | 21 rows x 2 yardsticks | 500 | 20, 40 | 1-500 | 8.6 (6) | 5 (100) | `prog-r-<engine>` |
+| R-panel (page format) | `panel.js --n=500 --parts=5` (published engine) and `panel.js --n=500 --parts=5 --frozen`: each shard runs one environment, horizon and fifth of the rows of `harness.js testbed 500 release ENV --v54 --snab --slope [--years=40] [--frozen] --part=I/5` on all 500 seeds | the testbed's (51; 52 frozen) | 500 | 20, 40 | 1-500 | 27.5 + 30.1 (2) | 30 + 30 (workflow seeds 1-30: environment, horizon and piece) | `panel-<engine>`, `panel-frz-<engine>` |
+| A scale, 500 to 10,000 adults | `program.js --study=A --env=all --procs=2 --sizes=500,2000,10000` | 12 per size | 500, 2,000, 10,000 | 20, 40 | 1-500 | 40.1 (187 with A50) | 25 (20) | `prog-a-<engine>` |
+| A50 scale, 50,000 adults | `program.js --study=A --env=all --procs=2 --sizes=50000` | 6 | 50,000 | 20, 40 | 1-500 | 130.3 | 100 (5) | `prog-a50-<engine>` |
+| B synergy | `program.js --study=B --env=all --procs=2` | 192 | 500 | 20, 40 | 1-500 | 25.8 (29) | 20 (25) | `prog-b-<engine>` |
+| B10 synergy at scale | `program.js --study=B10 --env=all --procs=2` | 64 | 10,000 | 20 | 1-500 | 54.5 (66) | 50 (10) | `prog-b10-<engine>` |
+| C ageing | `program.js --study=C --env=all --procs=2` | 12 | 500 | 20, 40 | 1-500 | 3.5 (2) | 2 (250) | `prog-c-<engine>` |
+| D participation | `program.js --study=D --env=all --procs=2` | 46 | 500 | 20, 40 | 1-500 | 6.2 (10) | 4 (125) | `prog-d-<engine>` |
+| D10 participation at scale | `program.js --study=D10 --env=all --procs=2` | 12 | 10,000 | 20 | 1-500 | 18.7 (19) | 10 (50) | `prog-d10-<engine>` |
+| F debt reading | `program.js --study=F --env=all --procs=2` | 12 | 500 | 20, 40 | 1-500 | 2.2 (2) | 2 (250) | `prog-f-<engine>` |
+| G layer synergy | `program.js --study=G --env=all --procs=2` | 36 | 500 | 20, 40 | 1-500 | 6.9 | 4 (125) | `prog-g-<engine>` |
+| G10 layer synergy at scale | `program.js --study=G10 --env=all --procs=2` | 32 | 10,000 | 20 | 1-500 | 31.1 | 20 (25) | `prog-g10-<engine>` |
+| H layer design parameters | `program.js --study=H --env=all --procs=2` | 18 | 500 | 20, 40 | 1-500 | 4.3 | 4 (125) | `prog-h-<engine>` |
+| I PTF starting size | `program.js --study=I --env=all --procs=2` | 12 | 500 | 20, 40 | 1-500 | 3.2 | 2 (250) | `prog-i-<engine>` |
+| J layer at scale | `program.js --study=J --env=all --procs=2` | 4 | 2,000, 10,000 | 20, 40 | 1-500 | 13.2 (G to J: 50) | 10 (50) | `prog-j-<engine>` |
+| K coverage and adequacy | `c22.js --env=all --procs=2 --frozen` | 13 | 500 | 20, 40 | 1-500 | 6.1 (6) | 4 (125) | `k-<engine>` |
+| L cost-of-living line | `lw.js --env=all --procs=2 --frozen` | 9 | 500 | 20, 40 | 1-500 | 1.2 (4) | 1 (500) | `l-<engine>` |
+| M backing | `backing.js --env=all --procs=2 --frozen` | 466 | 500 | 20 | 1-500 | 32.1 (29) | 20 (25) | `m-<engine>` |
+| N1 levers, stage 1 | `levers.js --stage=1 --env=all --procs=2 --frozen --gzip` | 520 | 500 | 20 | 1-500 | 47.0 (190 with N2) | 25 (20) | `n1-<engine>` |
+| N2 levers, stage 2 | `levers.js --stage=2 --env=all --procs=2 --frozen --gzip` | 1,164 | 500 | 20 | 1-500 | 105.0 | 100 (5) | `n2-<engine>` |
+| N3 levers, stage 3 | `levers.js --stage=3 --list=FILE --env=all --procs=2 --frozen --gzip` (list derived from N1 and N2 by rule 4, in a dated amendment) | the front's size (250 in the pilot and the dry run) | 500 | 20 | 501-1000 | 17.4 at 250 rows (30) | 10 (50) | `n3-<engine>` |
+| N3x stage 3 on the shock path | as N3, with `--sx=main` | as N3 | 500 | 20 | 501-1000 | 24.4 at 250 rows (30) | 20 (25) | `n3x-<engine>` |
+| O supply shock | `shock.js --env=all --procs=2 --frozen` | 70 | 500 | 20 | 1-500 | 6.2 (5) | 4 (125) | `o-<engine>` |
+| P security | `security.js --env=all --procs=2 --frozen` | 12 | 500 | 20 | 1-500 | 0.9 (1) | 1 (500) | `p-<engine>` |
+| X per-year series | `series.js --n=500 --frozen`: each of 6 shards runs `explore_export.js ENV YRS 500 1 --v54 --snab --slope --suite --frozen` for one environment and horizon (no programme, the C2.2 design, the release design); checked against the merged frozen panel afterwards (`--panel=FILE`) | 3 | 500 | 20, 40 | 1-500 | 1.8 (2) | 6 (workflow seeds 1-6) | `x-<engine>` |
+| **Total** | | | | | | **648 (about 670)** | **about 510** | |
 
-About 670 runner-hours is about 34 hours on 20 runners at once. No job needs more than 6 hours in one shard if shards are sized as section 5 says.
+About 650 runner-hours is about 33 hours on 20 runners at once, plus queueing. N3's and N3x's hours scale with the size of the front rule 4 picks (here the pilot's 250 rows). With `--env=all`, the levers job runs one process per environment (3 processes on the runner; `levers.js` gives each environment at least one), the setting the dry run timed. Peak memory: 1.8 GB (N2), 1.3 GB (A50); a runner has 16 GB.
 
 ## 4. Rows, job by job
 
@@ -120,10 +126,19 @@ Every job at seeds 1-2 on Actions, one shard each (`run-study`, study id `dry-<j
 - `levers.js --env=all --procs=2 --frozen --gzip`: `dry-n1` (`--stage=1`) and `dry-n2` (`--stage=2`) at seeds 1-2; `dry-n3` (`--stage=3`) and `dry-n3x` (`--stage=3 --sx=main`) at seeds 501-502, on the pilot's stage-3 list (`levers-stage3.json`; the batch's list comes from N1 and N2 by rule 4).
 - `panel.js --n=2 --parts=1` (`dry-panel`, the published engine) and the same with `--frozen` (`dry-panel-frz`), seeds 1-6 in 6 shards; `series.js --n=2 --frozen` (`dry-x`), 6 shards. For each: the folder is `DONE`, checksums pass, and the consumer's script loads it: `pilot_studies.py` (A to J), `c22_pilot.py` (K), `lw_pilot.py` (L), `s51_backing.py` (M), `s54_levers.py --check` (N), `s52_shock.py` (O), `s53_security.py --check` and `s19_series.py` (P, R), `merge_panel.py` (R-panel). Timings from the dry run replace section 3's estimates.
 
+**Result (Nov 6, 2026, S47 part 5): every job passed.** All 26 folders arrived with `DONE`, and every file matches its `SHA256SUMS`. The consumers read them as follows:
+- **A to J and R** (`program.js`): `dev/tools/batch_load.py --check` (Simulation pull request 77) passes on all 14 folders. It checks contiguous seeds, one engine commit, the same rows in every environment, the primary outcomes finite in every row, and keys past a row's horizon null. Row counts per environment, with both horizons where the job runs them: R 84, A 72, A50 12, B 384, B10 64, C 24, D 92, D10 12, F 24, G 72, G10 32, H 36, I 24, J 8. `pilot_studies.py` hard-codes the pilot folders and 50 seeds. Its readers get the batch through `batch_load.by_design()`, which gives one design's rows under the pilots' names. Every pilot row name and key of A, B and D is present, so S36 changes only the folder and the seed count.
+- **K** `c22_pilot.py` and **L** `lw_pilot.py`: both write their tables (2,412 and 2,100 estimates). **M** `s51_backing.py` and **O** `s52_shock.py`: both write their tables.
+- **N** `s54_levers.py --check`: PASS. Stage 1 has 1,560 rows and stage 2 has 3,492 (520 and 1,164 per environment). Stages 3 and 3x have 750 rows each. Every key is present. Stage 1's keys include `secU25` and `secM3` and the money-income falls by cause (`secF25*`).
+- **P and R** `s53_security.py --check`: PASS (P 30 rows, R 252 rows). `s19_series.py`: PASS on P, R (20 and 40 years) and O. Yearly basket poverty and FGT1, weighted by adults, equal the person-year figures within 1.4e-14. R's 40-year rows failed at first because both readers assumed one horizon per file. Both now read each row to its own horizon (Simulation pull request 77). The job output was complete.
+- **R-panel**: both panels (published and frozen) merge through `merge_parts.py` and `merge_panel.py`. `merge_parts.py` now reads `panel.js`'s pieces (pull request 77). Each environment holds 51 rows (52 frozen, with the `c22` row).
+- **X**: `explore_export.js ... --suite --frozen --panel=FILE` passes its self-check against the merged frozen dry-run panel (Reference 20 years, Stress 40 years). The Actions shard for Reference, 20 years matches a run on the session machine byte for byte.
+- **Timings** are in section 3. Two changes to the dispatch, neither to any row (Amendment 4): A runs as two dispatches by size, and the R-panel in 5 pieces per environment and horizon. The R-panel's cost was under-estimated (58 runner-hours, not 2). The total is about 650 runner-hours.
+
 ## 8. Where it runs, and the cost
-- **Cheapest split, and the route Duke chose (Amendment 1): everything on GitHub Actions, at no cost.** No job exceeds the thresholds of `prereg/RUNNING.md` section 5 (about 1,000 core-hours in one study, or 6 hours in one process). The pilots of S35 and S51 to S54 ran there with no objection from GitHub.
-- **Caution (ledger I16):** GitHub's terms describe Actions as being for building, testing and deploying a repository's own software. The batch is about 670 runner-hours, several times the pilots. If GitHub objects, the Runpod route (RUNNING.md section 6) takes the rest from the piece where it stopped.
-- **Runpod, if used** (a 16-vCPU CPU pod at $0.48 an hour, the price paid on Oct 12, 2026; to be re-checked when the key is added; a vCPU counted as half a core, as on Actions): the two largest pieces (study A at 50,000 adults and study N, about 760 core-hours) take about 95 pod-hours, about $46; the whole batch (about 1,340 core-hours) about 170 pod-hours, about $80. The dry run's timings replace these figures.
+- **Cheapest split, and the route Duke chose (Amendment 1): everything on GitHub Actions, at no cost.** No shard runs over 2 hours at the dry run's measured rate (section 3). No study exceeds the thresholds of `prereg/RUNNING.md` section 5 (about 1,000 core-hours in one study, or 6 hours in one process). The largest are A50 (about 260 core-hours) and N2 (about 210). The pilots of S35 and S51 to S54 ran there with no objection from GitHub, and so did the dry run (26 runs, 38 shards).
+- **Caution (ledger I16):** GitHub's terms describe Actions as being for building, testing and deploying a repository's own software. The batch is about 650 runner-hours in about 510 shards, several times the pilots. If GitHub objects, the Runpod route (RUNNING.md section 6) takes the rest from the shard where it stopped, after a new ledger decision and Duke's key.
+- **Runpod, if used.** Prices: a 16-vCPU CPU pod at $0.48 an hour (the price paid on Oct 12, 2026; to be re-checked when the key is added). A vCPU counts as half a core, as on Actions, so a 4-vCPU runner-hour is 2 core-hours and a pod-hour is 8. On the dry run's timings, the batch is about 1,300 core-hours, about 162 pod-hours, about $78. The two largest pieces (A50 and study N, about 323 runner-hours or 650 core-hours) take about 81 pod-hours, about $39.
 
 ## Amendments
 Dated, with the reason, below this line.
@@ -153,3 +168,10 @@ Dated, with the reason, below this line.
   - The design-neutral BLEI effect moves by under a point.
 - **Added rows:** study R runs the frozen engine at 0.593 for none and both designs (3 rows per yardstick and horizon; section 4), so the release panel shows how much of the frozen model's wealth result comes from the share.
 - **Nothing else moves:** no other constant, row, outcome or decision rule. The fix measurements of Amendment 2 were made at 0.593; they measure the fixes, and stay as they are.
+
+### Amendment 4 (Nov 6, 2026, S47 part 5, before any 500-seed run): the dry run's timings and the dispatch
+- **What changed:** section 3's runner-hours are now the dry run's measurements, and each job has a shard plan. Two dispatch changes: study A runs as two dispatches, `--sizes=500,2000,10000` (`prog-a-<engine>`) and `--sizes=50000` (`prog-a50-<engine>`). The R-panel runs in 5 pieces of rows per environment and horizon (`--parts=5`, 30 shards per panel).
+- **Why:** a 50,000-adult seed takes about 15.6 minutes on a runner, against about 4.8 minutes for all of the smaller sizes together. With all sizes in one shard, a 2-hour shard would hold 5 seeds of everything, or the small sizes would take 100 shards. The R-panel's testbed runs every seed in one process (it is cut by rows, not seeds). At 500 seeds its slowest environment and horizon takes about 8.3 hours whole. Five pieces keep each under 2 hours. The pre-dry-run estimate of 2 runner-hours came from the pilots' per-row cost and missed the testbed's 51 rows.
+- **What it does not change:** no row, seed, setting or output. Rows are separate runs on the same seeds (common random numbers), so how they are split into processes or shards changes no figure. `merge_parts.py` checks this: a row in two pieces must be identical. The folders' consumers join the shards as they did in the dry run. `program.js`'s `--sizes` was written for pilots, and here it is the batch's dispatch of A. The two A folders together hold exactly the rows of `program.js --study=A`, which `--check` counts.
+- **Consumers fixed, not jobs:** three readers did not load the dry run. `s19_series.py` and `s53_security.py --check` read R's 40-year rows as 20-year rows, and `merge_parts.py` did not accept `panel.js`'s pieces. `pilot_studies.py` cannot read batch folders. The readers were fixed and a batch loader added (Simulation pull request 77, tools only). The job outputs were complete.
+
