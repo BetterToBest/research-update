@@ -1,34 +1,41 @@
-# Handoff (Nov 6, 2026): S47 part 5, design freeze complete
+# Handoff (Nov 6, 2026): S48 part 1, the full batch dispatched
 
 ## Step status
-S47 is **done**. Every job passed its 2-seed dry run and loads in the script that reads it (`prereg/run-manifest.md` section 7, result). The manifest now has measured timings and a shard plan (section 3), a cost (section 8) and the status "frozen" (Amendment 4). The ledger record is D15 (default: S48 proceeds on Actions).
+S48 is **partly done**. Every job in manifest section 3 except N3 and N3x was dispatched on run-study (Nov 6, 04:02-04:04 UTC), exactly as section 3 says. Duke confirmed D15 (A) in the ledger before dispatch. Left for part 2: check each folder for `DONE`, rerun any failed piece, choose N3's list from N1 and N2 (rule 4) with a dated amendment and dispatch N3 and N3x, then merge the R-panel and run X's check.
 
 ## What shipped
-- compassionism-simulation [#77](https://github.com/BetterToBest/compassionism-simulation/pull/77) (tools only, no engine change):
-  - `s19_series.py` and `s53_security.py --check` read each row to its own horizon (study R holds 20- and 40-year rows in one file).
-  - `merge_parts.py` reads `panel.js` pieces.
-  - New `batch_load.py`: loads and checks the A-J and R folders. Its `by_design()` gives the pilots' row names.
-- research-update (this branch): manifest sections 3, 7 and 8, status frozen, Amendment 4; PLAN.md's S47 and S48 entries.
-- Dry-run folders `dry-*-ce8d030/` in compassionism-sim-results (26 folders, all `DONE`, checksums pass). They are the record of the dry run; they are not results.
+- No code. The 24 runs below, and this file and PLAN.md (S48 part 1).
 
 ## In flight
-Nothing.
+The 24 runs use engine `ce8d030b8d16a752706c4ea2db71196e11e73831` with the job scripts at compassionism-sim-results main `fd66941`. Their runner scripts are unchanged since `031861a`. Each run commits `<study>-ce8d030/` to compassionism-sim-results main with run.txt, SHA256SUMS and `DONE`. GitHub's free plan runs 20 jobs at once and queues the rest: about 650 runner-hours, so allow about 33 hours plus queueing (finished around Nov 7-8). The run number is in https://github.com/BetterToBest/compassionism-sim-results/actions/runs/<id>, and each run.txt names its run.
+| run # (id) | study, shards | run # (id) | study, shards |
+|---|---|---|---|
+| 55 (42160133662) | n1, 25 | 67 (42160185548) | prog-c, 2 |
+| 56 (42160141724) | n2, 100 | 68 (42160188793) | prog-d, 4 |
+| 57 (42160144569) | panel, 30 | 69 (42160191537) | prog-f, 2 |
+| 58 (42160147554) | panel-frz, 30 | 70 (42160194979) | prog-g, 4 |
+| 59 (42160150701) | prog-r, 5 | 71 (42160198409) | prog-h, 4 |
+| 60 (42160153696) | x, 6 (workflow seeds 1-6) | 72 (42160201563) | prog-i, 2 |
+| 61 (42160162103) | k, 4 | 73 (42160209708) | prog-j, 10 |
+| 62 (42160165359) | l, 1 | 74 (42160213184) | prog-d10, 10 |
+| 63 (42160168687) | m, 20 | 75 (42160216182) | prog-g10, 20 |
+| 64 (42160171648) | o, 4 | 76 (42160219274) | prog-b10, 50 |
+| 65 (42160174471) | p, 1 | 77 (42160222115) | prog-a, 25 (sizes 500, 2,000, 10,000) |
+| 66 (42160177592) | prog-b, 20 | 78 (42160225254) | prog-a50, 100 (size 50,000) |
+The run-to-study mapping follows the dispatch order. Job counts confirmed it for runs 55 (25 shards) and 60 (6 shards over seeds 1-6). When each folder lands, its run.txt is the check.
 
 ## Decisions waiting
-- D15 (default A, proceeds): the design is frozen and S48 runs the manifest on Actions. Duke is asked to read the spending-share change (Amendment 3): basket poverty does not move, and the programmes' effect on wealth poverty changes sharply. Option B holds S48 until Duke has read it.
+- None. D15 is answered (A: S48 runs the frozen manifest on Actions).
 
 ## Next step
-**S48** (opus, medium): dispatch the manifest exactly as section 3 says, on run-study.
-- Engine `ce8d030`; job scripts at compassionism-sim-results main (`031861a` or later).
-- At most 20 runners at once. Start, confirm they started, record the run IDs here, end.
-- Don't dispatch N3 and N3x yet. They wait for N1 and N2: `s54_levers.py --s1 N1 --s2 N2 --select LIST` (rule 4), then a dated amendment to the levers addendum, then dispatch.
-- X's panel check waits for the frozen R-panel to be merged.
+**S48 part 2** (opus, medium), once the batch has finished (check on or after Nov 8). For each of the 24 folders: `DONE` is there and `sha256sum -c SHA256SUMS` passes. A failed shard is rerun with `rerun_failed_jobs` on its run, never redesigned. Then:
+1. N3's list: `s54_levers.py --s1 n1-ce8d030 --s2 n2-ce8d030 --select LIST` (decision rule 4). Add a dated amendment to `prereg/2026-11-levers-addendum.md` and commit the list to runner/jobs/ before dispatch. Then dispatch N3 (`levers.js --stage=3 --list=FILE --env=all --procs=2 --frozen --gzip`, seeds 501-1000, 10 shards) and N3x (the same with `--sx=main`, 20 shards). Size the shards to the front's size (section 3: 17.4 and 24.4 runner-hours at 250 rows).
+2. The R-panel: `merge_parts.py`, then `merge_panel.py` in a copy (never on main). Then X's check: `explore_export.js ... --panel=FILE`.
+3. `batch_load.py --check` on A-J and R.
+S36 waits on all of it.
 
 ## Pitfalls
-- **Shard counts:** A runs as two dispatches, `--sizes=500,2000,10000` (25 shards of 20 seeds) and `--sizes=50000` (100 shards of 5 seeds).
-- **R-panel shards:** `panel.js --n=500 --parts=5`, workflow seeds 1-30. Its seed range is a shard index, not seeds. Each shard runs all 500 seeds for a fifth of the rows.
-- **Pre-dry-run estimate:** the R-panel was estimated at 2 runner-hours; it measures 58.
-- **Levers processes:** `levers.js --env=all --procs=2` runs 3 processes (one per environment). That is what was timed; keep it.
-- **Reading S53 checks:** `s54_levers.py` takes `--s1/--s2/--s3 FOLDER`. A bare folder with `--check` checks nothing and exits 0.
-- **Merging the R-panel:** copy the shards to `release-panel[-40]-ENV.partI.json`, run `merge_parts.py DIR ENV YEARS 5 OUT`, then `merge_panel.py`. `merge_panel.py` rewrites `index.html`, so run it in a copy, never on main.
-- **GitHub plugin:** the GitHub plugin server failed to connect again; the built-in GitHub tools worked.
+- **Queueing:** 479 shards and their plan jobs share one 20-job queue. Later runs' plan jobs wait behind earlier shards. That is expected, not a fault. If GitHub cancels jobs for queue time, rerun the failed jobs on that run (artifacts last 3 days).
+- **If GitHub objects or limits the runs** (ledger I16): stop. Moving the rest to Runpod is a new ledger decision, and nothing that costs money runs before Duke answers it.
+- **A's two folders** (`prog-a`, `prog-a50`) together are study A. R-panel workflow seeds are shard indices, not seeds.
+- **GitHub plugin:** failed to connect again (bad Authorization header); the built-in GitHub tools worked.
