@@ -2,10 +2,10 @@
 
 Written Nov 5, 2026 by S47, before any 500-seed run. This file lists every job the batch runs: its rows, environments, seeds, population, horizon, outputs, and which later step reads them. S48 runs it exactly. It is the record the study programme (`prereg/2026-11-study-program.md`, Amendment 9) and each addendum point to.
 
-**Status: draft, not yet frozen.** The design choices below are made. The freeze is complete when the items in section 6 have landed, the engine commit is pinned in section 1, and every job has passed its 2-seed dry run (section 7). Until then no job here runs at 500 seeds.
+**Status: draft, not yet frozen.** The design choices below are made. The freeze is complete when the items in section 6 have landed (done Nov 6), the engine commit is pinned in section 1 (done Nov 6), and every job has passed its 2-seed dry run (section 7; dispatched Nov 6). Until then no job here runs at 500 seeds.
 
 ## 1. The model being frozen
-- **Engine:** BetterToBest/compassionism-simulation at commit `<pinned when section 6's engine items land>`. Every job runs in a clean checkout of that one commit.
+- **Engine:** BetterToBest/compassionism-simulation at commit `ce8d030b8d16a752706c4ea2db71196e11e73831` (pinned Nov 6, 2026, S47 part 4: pull request 76's merge, after every section 6 item landed). Every job runs in a clean checkout of that one commit, with the job scripts of BetterToBest/compassionism-sim-results at `031861a` (pull request 16) or later.
 - **The frozen engine** is the published engine (v5.6) with two sets of corrections switched on in every row of every job, the no-programme rows included:
   - the outside audit's three corrections (row option `au: true`: the BLEI test for the wage bonus and PTF adoption deflated by the price level; income-graded spending once the year's cash income is known; the financial-stability score deflated). Source: Simulation `dev/reports/s13-engine-audit.md` section 1.
   - the second implementation's four fixes (a new row option, `fx: true`, built in section 6): PTH's books opened after households are formed; the essentials' supply path from a run with job loss, the safety net and the labour response; PTH home prices at the basket's housing cost; `snAbN` counting no rounding remainders. Source: Simulation `dev/reports/s50-independent-implementation/GAPS.md`, phase 2, items 2, 6, 7 and 8.
@@ -40,7 +40,7 @@ Runner-hours are for 500 seeds at 2 processes per runner, from the pilots' measu
 | Job | Script and arguments | Rows per environment | Adults | Years | Seeds | Runner-hours | Folder |
 |---|---|---|---|---|---|---|---|
 | R release panel and bridge | `program.js --study=R` | 21 rows x 2 yardsticks | 500 | 20, 40 | 1-500 | 6 | `prog-r-<engine>` |
-| R-panel (page format) | `harness.js testbed 500 release ENV --v54 --snab --slope` (published engine) and the same with `--frozen` (section 6) | the testbed's | 500 | 20, 40 | 1-500 | 2 | `panel-<engine>` |
+| R-panel (page format) | `panel.js --n=500 --parts=K` (published engine) and `panel.js --n=500 --parts=K --frozen`: each shard runs one environment, horizon and piece of `harness.js testbed 500 release ENV --v54 --snab --slope [--years=40] [--frozen] --part=I/K` | the testbed's | 500 | 20, 40 | 1-500 | 2 | `panel-<engine>`, `panel-frz-<engine>` |
 | A scale | `program.js --study=A` | 12 (500 to 10,000 adults); 6 (50,000) | 500, 2,000, 10,000, 50,000 | 20, 40 | 1-500 | 187 | `prog-a-<engine>` |
 | B synergy | `program.js --study=B` | 192 | 500 | 20, 40 | 1-500 | 29 | `prog-b-<engine>` |
 | B10 synergy at scale | `program.js --study=B10` | 64 | 10,000 | 20 | 1-500 | 66 | `prog-b10-<engine>` |
@@ -57,7 +57,7 @@ Runner-hours are for 500 seeds at 2 processes per runner, from the pilots' measu
 | N3x stage 3 on the shock path | `levers.js --stage=3 --list=FILE --sx=main` (section 6) | as N3 | 500 | 20 | 501-1000 | 30 | `n3x-<engine>` |
 | O supply shock | `shock.js --env=all` | 70 | 500 | 20 | 1-500 | 5 | `o-<engine>` |
 | P security | `security.js --env=all` | 12 | 500 | 20 | 1-500 | 1 | `p-<engine>` |
-| X per-year series | `explore_export.js ENV YRS 500 1 --v54 --snab --slope` extended (section 6), headline pair and release design | 3 | 500 | 20, 40 | 1-500 | 2 | `x-<engine>` |
+| X per-year series | `series.js --n=500 --frozen`: each of 6 shards runs `explore_export.js ENV YRS 500 1 --v54 --snab --slope --suite --frozen` for one environment and horizon (no programme, the C2.2 design, the release design); checked against the frozen panel afterwards (`--panel=FILE`) | 3 | 500 | 20, 40 | 1-500 | 2 | `x-<engine>` |
 | **Total** | | | | | | **about 670** | |
 
 About 670 runner-hours is about 34 hours on 20 runners at once. No job needs more than 6 hours in one shard if shards are sized as section 5 says.
@@ -105,14 +105,20 @@ Engine (compassionism-simulation; guardrails 1-9; off = bit-identical, guard tes
 2. Reporting keys: the design-neutral basic-living share at year 20 in 40-year runs; the security addendum's two descriptive measures under `sec`; the supply-shock addendum's three descriptive outputs. **Done Nov 6** (Simulation pull request 75): `bNAy20`, `bOAy20`; `secF25`, `secF25w`, `secF25c`, `secF25o`, `secU25b` per group; `sxE*`, `sxK*` per group and window, `sxQb_t`, `sxQu_t`, `sxQi_t`, `sxVd`.
 3. `harness.js testbed ... --frozen` (the page-format panel on the frozen engine and the C2.2 design), and `explore_export.js`'s added series. **Done Nov 6** (pull request 75): the C2.2 design is the panel's row `c22`; `explore_export.js ... --suite --frozen --panel=FILE` writes the visual series (BLEI tiers, the median BLEI and its parts, relative income poverty, extreme poverty) for no programme, C2.2 and the release design, and checks its yearly means against the frozen panel.
 4. The 0.593 spending share (`SPEND_SOURCED`) re-derived on the frozen engine's no-programme run (audit E17). If it differs, that is a dated amendment before the freeze, and the measured effect is recorded; no other constant moves. **Done Nov 6: it differs (0.877; Amendment 3).**
-5. MODEL_SPEC.md and TESTBED_SPEC.md written for the frozen model (every switch its rows turn on; the S50 contradictions corrected and its 30 gaps closed).
+5. MODEL_SPEC.md and TESTBED_SPEC.md written for the frozen model (every switch its rows turn on; the S50 contradictions corrected and its 30 gaps closed). **Done Nov 6** (Simulation pull request 76): MODEL_SPEC.md section 13 (the frozen model and the C2.2 design), the eight contradictions corrected where they occur, Appendix C (the 30 gaps); TESTBED_SPEC.md section 6 (what each job switches beyond the frozen engine).
 
 Jobs (compassionism-sim-results `runner/jobs/`; each with `--check` of its row counts):
-6. `program.js`: studies R, G, G10, H, I, J; both designs in A, B, B10, C, F; D and D10 at 2% and 5%; `au` and `fx` on every row; nulls for missing keys.
-7. `--frozen` (the `au` and `fx` options on every row) in `c22.js`, `lw.js`, `backing.js`, `shock.js`, `security.js`, `levers.js`; backing's 116 added rows; levers' key trim, gzip and `--sx=main`.
+6. `program.js`: studies R, G, G10, H, I, J; both designs in A, B, B10, C, F; D and D10 at 2% and 5%; `au` and `fx` on every row; nulls for missing keys. **Done Nov 6** (results pull request 16). Rows are named `ENV.nN.yY.DESIGN.ROW` (`c22` or `rls`); R's `ENV.n500.yY.YARD.ENGINE.DESIGN[.READING]`. `null` also for the mean octave (`octMean`) on rows without CCO, where the C2.2 design's automatic receipt would count adults who receive no BU, and for keys a row's switches do not report. `--check` passes: every row count; R's published rows equal `release-pair.js`; B's none row and cells without CCO equal on the two designs; R's `wout` rows equal its frozen rows in Reference.
+7. `--frozen` (the `au` and `fx` options on every row) in `c22.js`, `lw.js`, `backing.js`, `shock.js`, `security.js`, `levers.js`; backing's 116 added rows; levers' key trim, gzip and `--sx=main`. **Done Nov 6** (results pull request 16): `--frozen` is each job's batch version (shock's adds `sec`, the security outputs and the S19 series; levers' adds the money-income falls by cause); backing 466 rows; security 12 (the C2.2 design's savings rows); levers `--sx=main` and `--gzip` (the run-study workflow compresses the checked shards; `s54_levers.py` reads them). The R-panel and X jobs run through two wrappers, `panel.js` and `series.js` (section 3), because their engine commands average over all seeds in one process.
 
 ## 7. Dry run
-Every job at seeds 1-2 on Actions, one shard each (`run-study`, study id `dry-<job>`). For each: the folder is `DONE`, checksums pass, and the consumer's script loads it: `pilot_studies.py` (A to J), `c22_pilot.py` (K), `lw_pilot.py` (L), `s51_backing.py` (M), `s54_levers.py --check` (N), `s52_shock.py` (O), `s53_security.py --check` and `s19_series.py` (P, R), `merge_panel.py` (R-panel). Timings from the dry run replace section 3's estimates.
+Every job at seeds 1-2 on Actions, one shard each (`run-study`, study id `dry-<job>`).
+
+**Dispatched Nov 6, 2026 (S47 part 4), engine `ce8d030`, 26 runs** (folders `dry-<id>-ce8d030` in compassionism-sim-results, each with `DONE` when finished):
+- `program.js --env=all --procs=2`, seeds 1-2: `dry-r` (R), `dry-a` (A at 500, 2,000 and 10,000 adults), `dry-a50` (A at 50,000: memory at 2 processes), `dry-b`, `dry-b10`, `dry-c`, `dry-d`, `dry-d10`, `dry-f`, `dry-g`, `dry-g10`, `dry-h`, `dry-i`, `dry-j`.
+- `--env=all --procs=2 --frozen`, seeds 1-2: `dry-k` (`c22.js`), `dry-l` (`lw.js`), `dry-m` (`backing.js`), `dry-o` (`shock.js`), `dry-p` (`security.js`).
+- `levers.js --env=all --procs=2 --frozen --gzip`: `dry-n1` (`--stage=1`) and `dry-n2` (`--stage=2`) at seeds 1-2; `dry-n3` (`--stage=3`) and `dry-n3x` (`--stage=3 --sx=main`) at seeds 501-502, on the pilot's stage-3 list (`levers-stage3.json`; the batch's list comes from N1 and N2 by rule 4).
+- `panel.js --n=2 --parts=1` (`dry-panel`, the published engine) and the same with `--frozen` (`dry-panel-frz`), seeds 1-6 in 6 shards; `series.js --n=2 --frozen` (`dry-x`), 6 shards. For each: the folder is `DONE`, checksums pass, and the consumer's script loads it: `pilot_studies.py` (A to J), `c22_pilot.py` (K), `lw_pilot.py` (L), `s51_backing.py` (M), `s54_levers.py --check` (N), `s52_shock.py` (O), `s53_security.py --check` and `s19_series.py` (P, R), `merge_panel.py` (R-panel). Timings from the dry run replace section 3's estimates.
 
 ## 8. Where it runs, and the cost
 - **Cheapest split, and the route Duke chose (Amendment 1): everything on GitHub Actions, at no cost.** No job exceeds the thresholds of `prereg/RUNNING.md` section 5 (about 1,000 core-hours in one study, or 6 hours in one process). The pilots of S35 and S51 to S54 ran there with no objection from GitHub.
