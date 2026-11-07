@@ -132,3 +132,20 @@ A seed-1 run of stage 3 in Reference reproduced all 4,634 values of the same row
 
 ### Amendment 2 (Nov 5, 2026, S47, before any 500-seed run): the frozen engine, seeds and output
 Every row of this study in the S48 batch, the no-programme rows included, runs on the frozen engine: the outside audit's corrections (`au: true`) and the second implementation's four fixes (`fx: true`), as the study programme's Amendment 9 sets out. Rows, outcomes, analysis and decision rules are otherwise unchanged. The pilot ran on the published engine, so a pilot-to-batch difference combines new seeds and the corrections; the report says so, and study R measures the corrections. Jobs, folders and outputs: `prereg/run-manifest.md`. Stages 1 and 2 run at seeds 1-500 as preregistered (the reduction to 100 seeds this file allows is not taken; the batch fits on Actions). Stage 3's list is derived from them by rule 4 and recorded in a dated amendment before it runs on seeds 501-1000; it also runs on S52's main shock path (folder `n3x-<engine>`). The issuance-cap rows and the flat contribution's 90% wage row stay as checks. Each shard keeps only the keys this file's outcomes and `s54_levers.py` read, gzip-compressed (about 1.1 GB uncompressed at 500 seeds otherwise). Every row also records the security addendum's money-income falls by cause.
+
+### Amendment 3 (Nov 7, 2026, S48 part 2, before N3 and N3x run): stage 3's list for the batch
+**Reason.** Stages 1 and 2 (N1, N2) finished on seeds 1-500 on the frozen engine `ce8d030` (folders `n1-ce8d030/` and `n2-ce8d030/`, checksums verified). Amendment 2 says stage 3's rows are derived by decision rule 4 and recorded here before they run. Nothing above this heading changes.
+
+**Rule 4 on seeds 1-500: no setting tested meets the rule, in any design or wage** (`s54_levers.py --s1 n1-ce8d030 --s2 n2-ce8d030 --select`, 2,000 bootstrap replicates):
+- Release row, wages 100%: 435 candidates, none passes the no-harm test.
+- Release row, wages 90%: 255 candidates, none passes the no-harm test.
+- C2.2 design, wages 100%: 435 candidates, 170 pass the no-harm test, none keeps programme inflation under 5% a year in every environment.
+- C2.2 design, wages 90%: 255 candidates, none passes the no-harm test.
+
+So there is no chosen setting, no `.sv` twin and no run under today's rule, as on seeds 1-50. Stage 3's rows are the no-programme row and every point of the front on the three-environment means: 163 points (release, 100%), 73 (release, 90%), 5 (C2.2, 100%) and 4 (C2.2, 90%) = 245 settings and 4 no-programme rows, 249 rows per environment. The seed-1-50 pilot front had 250 rows, so the sizing in the run manifest holds. The list of names is the file below, not repeated here.
+
+**The list.** compassionism-sim-results `runner/jobs/levers-stage3-batch.json`, SHA-256 `63c441e86d830bebf209e9882aec4efe4d58e55af6263acdf458c174a0b8560b`. `levers.js --check --list=` passes on the frozen engine (249 rows per environment, every name present). The pilot's `levers-stage3.json` stays as it was.
+
+**Run.** Study `n3` and, on S52's main shock path, `n3x`: `levers.js --stage=3 --list=runner/jobs/levers-stage3-batch.json --env=all --procs=2 --frozen --gzip` (N3x adds `--sx=main`), seeds 501-1000, engine `ce8d030`, 10 and 20 shards. Folders `n3-ce8d030/` and `n3x-ce8d030/`.
+
+**Analysis.** As Amendment 1: `s54_levers.py --s3 FOLDER --list LIST`, decision rule 5. Rule 4 chose no setting, so no confirmed best setting can come out of stage 3; a confirmed Pareto point is reported as a point of the trade-off front with its inflation.
