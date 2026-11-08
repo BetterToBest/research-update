@@ -1,44 +1,42 @@
-# Handoff (Nov 8, 2026): S55 added to the plan (open PTF access); S38 done before it
+# Handoff (Nov 8, 2026): S55 part 1, open PTF access (the switch built, off by default)
 
 ## Step status
-S38 is **done**. The report reads studies G, G10, H, I and J (the community layer) against A, B and B10 (the same rows without it, and the no-programme rows), seeds 1-500, engine `ce8d030`. It covers both designs, three environments, 500 to 10,000 adults, 20 and 40 years. The headline is at 10,000 adults.
+S55 is **partly done**. Part 1 (sub-steps 1 and 2) is done: every member-only rule in the engine is sorted, and the switch `PTF_ACCESS` is built. Remaining: part 2 (sub-steps 3 and 4: the growth rule, then the dated amendments and a pilot); part 3 (sub-steps 5 and 6: the runs on Actions and the report). No study has run with the switch, and nothing is a result yet.
 
 ## What shipped
-- compassionism-simulation [PR 80](https://github.com/BetterToBest/compassionism-simulation/pull/80), merged `6f936f9` (analysis only): `dev/tools/s38_layer.py`, the report `dev/reports/s38-community-layer.md`, every table in `dev/runs/s38-layer/tables.md`, every estimate in `estimates.csv` (about 14,000), DECISIONS.md (S38).
-- research-update: PLAN.md marks S38 done, with its findings in one paragraph.
+- compassionism-simulation [PR 81](https://github.com/BetterToBest/compassionism-simulation/pull/81), merged `a7574cc` (checks green). Switch `PTF_ACCESS`, study row option `pa`: `'members'` (the default, the engine as it was), `'open'`, or `{fix}`. Every member-only rule sorted in `dev/DECISIONS.md` (S55). Reading in plain words: `dev/reports/s55-ptf-access-reading.md`. Also `paUnitSuite` (4 tests), TESTBED_SPEC, and an engine lineage link.
+- research-update: PLAN.md marks S55 part 1 done (row 22a and its section).
 
-## Findings (C2.2 design unless stated)
-- The layer changes no result materially anywhere: 0 of 300 layer effects. Headline (Reference, 10,000 adults, 20 years): basic living +0.01, cost of living +0.03, wealth +0.15 points; inflation −0.16 points a year; cost +$209 per adult-year (0.3%). The effects are detectable (paired seeds), but tiny.
-- One programme decision moves. C2.2's small unfavourable wealth effect in Reference at year 20 (−0.19 points) becomes indistinguishable from zero.
-- No synergy with the layer. PTF × SZH is at most 0.50 points on any share. 6 of 990 contrast decisions cross the materiality line, all of them overlaps already at the threshold. S36's split stands.
-- The design parameters (k, f, imitation, zones needing CIP) change only the direction of these tiny effects. Rule 3 asks that the headline name them, and the report does. The PTF's starting size changes nothing (rule 4: 0). No scale effect (0 of 720).
-- Likely reason (not tested): with the layer, 81% of members get the food price cut, but only 11% live where θ applies, and members are a fifth of adults.
+## What `'open'` does
+- Each zone has a PTF share s of its essential sales. A zone is a community of the layer, or the whole population without it. Every adult in the zone, member or not, buys the share s of food and utilities at PTF prices. Nobody buys more.
+- The 40% and 55% tests read s, and so does PTF's damping of outside inflation.
+- Each zone starts at its starting member share. `fix` holds every zone at one value (Duke's sweep, 10% to 100%). s does not grow yet: that is part 2.
+- 8 customer rules are opened at share s: the price cut, the ESP price pool, its sizing, the private ESPs' mirror, θ's BLEI term, PTH's cut on utilities, cost accounting, and the plan's health cut.
+- 7 rules are kept for members: joining and leaving, capacity on joining, the ESP workforce option, PTH, the layer's placement, reporting, and the conversion bonus 1.30 + θ. The Hub gives that bonus to PTF *workers* as an employment incentive. The model has no PTF workforce, so it stays with members, and open-against-members measures access alone (a stated limit).
 
 ## Checks
-All pass, in tables section 0:
-- row counts per study;
-- G10 and J share an identical release row;
-- B10 equals A at 10,000 adults;
-- the 40-year rows' first 20 years equal the 20-year rows;
-- rows without the CCO are identical under both designs;
-- communities = adults ÷ k on every seed;
-- Shapley efficiency holds per seed.
-
-## S55 added (Nov 8)
-- research-update [PR 62](https://github.com/BetterToBest/research-update/pull/62), merged `ddfb6bc`: `audits/2026-11-ptf-access.md` (the Nov 7 Chat note: what the engine does, what the Hub says, Claude's reading, Duke's D16 answers, the plan). PLAN.md: row 22a and a `### S55` section; S7 now waits on S55.
-- S5 leaves the BLEI paper's 40%/55% PTF density tests alone: S55 decides what those tests count. S5 corrects only the participation-threshold figures.
+- Guard test identical: 25 rows × 20 seeds × 483 outputs, all three environments.
+- `validate`, `unit` (253) and `domtest` (153) pass.
+- Engine lineage: link 34f91a85b94a → 8bb948abed0e, with all six 12-seed release panels unchanged.
+- `study_data.py --check` and `unsourced_check.py` pass. Their patterns for the damping constant were updated.
+- CI green on PR 81 (checks and guard jobs).
 
 ## In flight
-- Nothing. PR 80 merged once its checks were green (the checks job takes about 10 minutes).
+- Nothing.
 
 ## Decisions waiting
-- D16 (open PTF access readings): answered by Duke Nov 7 ("yes, with additions"); recorded in the audit note. Nothing waits on it.
+- None new. D16 is answered (Nov 7).
 
 ## Next step
-**S5** (participation threshold; sonnet, medium): next in the Order table. It reads studies D and D10 from the batch. S39 and S55 can also start. S7 waits on S5 and S55.
+**S5** (participation threshold; sonnet, medium) is next in the Order table. S39 and S55 part 2 can also start. S7 waits on S5 and S55.
+
+## For S55 part 2
+- Operations limit: start from the BLEI paper's section 3 cost structure, which cites Errasti et al. 2003 and Whyte and Whyte 1991. There, variable costs are 35-40% of the market price, overhead 20-25%, profit 15-20%, and PTF overhead 5-8%. Add outside retail data, opened and cited (for example Census Annual Retail Trade Survey margins for grocery stores).
+- Capacity limit: c = min(1, c0 + capital per adult ÷ $18,862) (ledger d101) is counted in members today. Part 2 applies it to s.
+- The growth rule goes in `paYear` (index.html), which runs before any test reads s.
 
 ## Pitfalls
-- The PTF diagnostics `pfMem` and `pfCut` are written only on rows with the layer. Layer-off rows have no comparison figure.
-- In this batch, "detected" means almost nothing on its own: 500 paired seeds detect effects of 0.01 points. Read the materiality flags.
-- Auto-merge is not enabled on compassionism-simulation. Wait for the checks, then merge.
+- A `//` comment appended mid-line silently cut a line of the engine. Put comments at line ends only.
+- `dev/tools/study_data.py` and `unsourced_check.py` read engine text with patterns. Grep `dev/tools` after editing an engine line.
+- The lineage proof takes about 15 minutes on 4 cores, and domtest fails until it is committed.
 - The GitHub plugin failed to connect again. The built-in GitHub tools worked.
