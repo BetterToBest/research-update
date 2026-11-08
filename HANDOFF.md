@@ -4,7 +4,7 @@
 S5 is **done**. S7 now has every input (S36, S38, S5, S55) and can start.
 
 ## What shipped
-- compassionism-simulation [PR 84](https://github.com/BetterToBest/compassionism-simulation/pull/84) (analysis only, no engine change): report `dev/reports/s5-participation.md`, tool `dev/tools/s5_participation.py` (8 checks pass), tables and every estimate in `dev/runs/s5-participation/`, DECISIONS.md. Merge status: see the last line of this file.
+- compassionism-simulation [PR 84](https://github.com/BetterToBest/compassionism-simulation/pull/84) (analysis only, no engine change): report `dev/reports/s5-participation.md`, tool `dev/tools/s5_participation.py` (8 checks pass), tables and every estimate in `dev/runs/s5-participation/`, DECISIONS.md. **Still open at the end of the session: checks (`checks`, `guard`) were running.** Merge it once both are green; nothing else depends on its merge except S7 reading the report.
 - research-update: PLAN.md (S5 done; notes for S24/S25/S7) and this file.
 - Read from compassionism-sim-results `prog-d-ce8d030` and `prog-d10-ce8d030` (500 seeds each).
 
@@ -16,7 +16,7 @@ S5 is **done**. S7 now has every input (S36, S38, S5, S55) and can start.
 - 10,000 adults give the same decisions as 500 (one Stress basic-living level differs).
 
 ## In flight
-- Nothing.
+- compassionism-simulation PR 84: checks running; merge when green (no job output depends on it).
 
 ## Decisions waiting
 - None.
