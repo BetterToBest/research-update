@@ -4,7 +4,7 @@
 S36 is **done**. The synergy report reads studies B (500 adults, 20 and 40 years) and B10 (10,000 adults) from the 500-seed batch at engine `ce8d030`. It covers both designs, three environments, both yardsticks, and the octave raise off and on.
 
 ## What shipped
-- compassionism-simulation [PR 79](https://github.com/BetterToBest/compassionism-simulation/pull/79), merged `MERGE_SHA` (analysis only): `dev/tools/s36_synergy.py`, the report `dev/reports/s36-synergy.md`, every table in `dev/runs/s36-synergy/tables.md`, every estimate in `estimates.csv` (about 25,600), DECISIONS.md (S36).
+- compassionism-simulation [PR 79](https://github.com/BetterToBest/compassionism-simulation/pull/79), merged `c921e6c` (analysis only): `dev/tools/s36_synergy.py`, the report `dev/reports/s36-synergy.md`, every table in `dev/runs/s36-synergy/tables.md`, every estimate in `estimates.csv` (about 25,600), DECISIONS.md (S36).
 - research-update: PLAN.md marks S36 done, with its findings in one paragraph.
 
 ## Findings (C2.2 design unless stated)
