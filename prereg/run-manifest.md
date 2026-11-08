@@ -181,3 +181,23 @@ Dated, with the reason, below this line.
 - **What was done:** the shard artifacts were downloaded before they expired (each zip's SHA-256 equal to GitHub's recorded digest) and checked with `runner/check-shards.js`, exactly as the last job does (passed). They were then compressed with `gzip -n -9`, as the workflow does for `--gzip` jobs. Gunzip gives back the run's bytes, checked file by file. The folders carry run.txt (with a line saying so), SHA256SUMS and DONE (results pull request 19). Four readers (`batch_load.py`, `s53_security.py`, `s19_series.py`, `s52_shock.py`) now read `.json.gz` (Simulation pull request 78, tools only).
 - **X's check:** `explore_export.js ... --panel=FILE` compares the series' yearly means, rounded as the panel rounds them, with the merged frozen panel. The X shards store exactly those means. So the comparison was made on the stored means (`dev/tools/x_panel_check.js`), without rerunning X: all 2,160 equal the panel. The merged panels (published and frozen, 20 and 40 years) are kept in `panel-merged-<engine>` (results pull request 20).
 - **What it does not change:** no row, seed, setting, output or figure. No shard was rerun.
+
+### Amendment 6 (Nov 8, 2026, S55 part 2, before any run of these jobs): the open-access jobs
+- **What is added:** the jobs of `prereg/2026-11-ptf-access-addendum.md`. They are not part of the frozen batch; they pair with it. Engine: BetterToBest/compassionism-simulation at `0c93593e1ea502555387e42215b79f290a60f127` (pull request 82). With `PTF_ACCESS` off it reproduces the frozen engine `ce8d030` figure for figure (guard test; engine lineage link 8bb948abed0e → 68b5d6170719). Job script: compassionism-sim-results `runner/jobs/program.js` (pull request 21), whose `--check` confirms each open row is a frozen row with `pa` added.
+
+| Job | Script and arguments | Rows per environment | Adults | Years | Seeds | Runner-hours (estimate) | Shards (seeds each) | Folder |
+|---|---|---|---|---|---|---|---|---|
+| T open access | `program.js --study=T --env=all --procs=2` | 2 | 500, 10,000 | 20, 40 | 1-500 | 6 | 10 (50) | `prog-t-<engine>` |
+| U open factorial | `program.js --study=U --env=all --procs=2` | 32 | 500 | 20, 40 | 1-500 | 4 | 4 (125) | `prog-u-<engine>` |
+| U10 at scale | `program.js --study=U10 --env=all --procs=2` | 32 | 10,000 | 20 | 1-500 | 27 | 20 (25) | `prog-u10-<engine>` |
+| V open layer | `program.js --study=V --env=all --procs=2` | 62 | 500 | 20, 40 | 1-500 | 12 | 10 (50) | `prog-v-<engine>` |
+| V10 open layer at scale | `program.js --study=V10 --env=all --procs=2` | 32 | 10,000 | 20 | 1-500 | 31 | 20 (25) | `prog-v10-<engine>` |
+| VJ open layer, other sizes | `program.js --study=VJ --env=all --procs=2` | 2 | 2,000, 10,000 | 20, 40 | 1-500 | 7 | 5 (100) | `prog-vj-<engine>` |
+| W fixed-share sweep | `program.js --study=W --env=all --procs=2` | 20 | 500 | 20, 40 | 1-500 | 3 | 2 (250) | `prog-w-<engine>` |
+| W10 sweep at scale | `program.js --study=W10 --env=all --procs=2` | 20 | 10,000 | 20 | 1-500 | 17 | 10 (50) | `prog-w10-<engine>` |
+| Y growth settings | `program.js --study=Y --env=all --procs=2` | 12 | 500 | 20, 40 | 1-500 | 2 | 2 (250) | `prog-y-<engine>` |
+| **Total** | | | | | | **about 108** | **83** | |
+
+- **Pilot first** (addendum, Pilot first): seeds 1-50, `--sizes=500 --years=20`, one dispatch each for T (with `--members`), U, V, W and Y, one shard each, folders `pilot55-<study>-<engine>`. T's members-only rows must equal `prog-a-ce8d030`'s values for seeds 1-50 on every kept measure. Shards are sized from the pilot's timings before the 500-seed dispatch; a change of shards changes no figure (seeds are paired and independent).
+- **Who reads them:** S55 part 3's report (open against members on every preregistered outcome, the fixed-share curve, which limit binds), with the frozen batch's A, B, B10, G, G10, H, I and J folders as the members-only side. S7's release carries both readings behind the switch.
+- **What it does not change:** no job, row, seed, setting or output of the frozen batch.
