@@ -201,3 +201,21 @@ Dated, with the reason, below this line.
 - **Pilot first** (addendum, Pilot first): seeds 1-50, `--sizes=500 --years=20`, one dispatch each for T (with `--members`), U, V, W and Y, one shard each, folders `pilot55-<study>-<engine>`. T's members-only rows must equal `prog-a-ce8d030`'s values for seeds 1-50 on every kept measure. Shards are sized from the pilot's timings before the 500-seed dispatch; a change of shards changes no figure (seeds are paired and independent).
 - **Who reads them:** S55 part 3's report (open against members on every preregistered outcome, the fixed-share curve, which limit binds), with the frozen batch's A, B, B10, G, G10, H, I and J folders as the members-only side. S7's release carries both readings behind the switch.
 - **What it does not change:** no job, row, seed, setting or output of the frozen batch.
+
+### Amendment 7 (Nov 8, 2026, S55 part 3): pilot checked, shards sized, the nine jobs dispatched
+- **Pilot result (seeds 1-50, 500 adults, 20 years):** T's members-only rows equal study A's (`prog-a-ce8d030`) for seeds 1-50 on all 55 kept measures in all six rows (3 environments × 2 designs); the 17 access keys (`pa*`, `pfMem`, `pfCut`) exist only in T. Row counts per environment match Amendment 6 (T 4 with members rows, U 32, V 62, W 20, Y 12); every seed array holds 50 values, none non-finite. Pilot timings (seconds per seed for three environments, 4 processes): T 1.33 (with members rows), U 5.2, V 22.9, W 5.0, Y 5.7.
+- **Shards re-sized from the timings** (the frozen batch's own timings give the scale: 10,000 adults cost about 21 times 500 adults, 40 years about 1.8 times 20 years). Largest expected shard is V10 at about 1.7 hours, under the 6-hour job limit; a change of shards changes no figure. Runs use `--procs=4` (a runner has 4 vCPUs; processes never change bytes, S33). Expected total about 96 runner-hours, inside Amendment 6's 108.
+
+| Job (study id) | Shards (seeds each) | Run |
+|---|---|---|
+| T `prog-t` | 10 (50) | [86](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/42472393103) |
+| U `prog-u` | 4 (125) | [87](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/42472395687) |
+| U10 `prog-u10` | 20 (25) | [88](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/42472398061) |
+| V `prog-v` | 10 (50) | [89](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/42472400373) |
+| V10 `prog-v10` | 20 (25) | [90](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/42472402724) |
+| VJ `prog-vj` | 10 (50; was 5) | [91](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/42472404743) |
+| W `prog-w` | 5 (100; was 2) | [92](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/42472407087) |
+| W10 `prog-w10` | 20 (25; was 10) | [93](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/42472409538) |
+| Y `prog-y` | 4 (125; was 2) | [94](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/42472411721) |
+
+- Total 103 shards (Amendment 6 said 83). Engine `0c93593e1ea502555387e42215b79f290a60f127`, seeds 1-500, `job=program.js`, `job_args=--study=<S> --env=all --procs=4`. Folders `prog-<study>-0c93593` with `DONE` when every shard is in. No row, outcome, seed or rule changed.
