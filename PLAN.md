@@ -37,7 +37,7 @@ Model and effort per step are below. "fable" means: use it only if it uses no us
 | 20 | S38 | Community-layer report (if S37 built it); **done Nov 8** (compassionism-simulation `dev/reports/s38-community-layer.md`) | opus | medium | S48 |
 | 21 | S5 | Participation threshold: one figure, papers corrected | sonnet | medium | S48 |
 | 22 | S39 | Outside engine cross-check (BeforeIT.jl), after the scale results | opus | high | S48 |
-| 22a | S55 | Open PTF access: anyone buys at PTF prices; both density tests read the PTFs' share of a zone's essential sales; switch `PTF_ACCESS`, growth limited by capacity, operations and demand, fixed-share sweep 10%-100% (D16); 2-3 sessions | opus | xhigh | S38, D16 (answered Nov 7) |
+| 22a | S55 | Open PTF access: anyone buys at PTF prices; both density tests read the PTFs' share of a zone's essential sales; switch `PTF_ACCESS`, growth limited by capacity, operations and demand, fixed-share sweep 10%-100% (D16); 2-3 sessions; part 1 done Nov 8 (sub-steps 1-2: the member-only rules sorted, switch `PTF_ACCESS` built, off = identical; compassionism-simulation PR 81); part 2 next (sub-steps 3-4: growth rule, amendments) | opus | xhigh | S38, D16 (answered Nov 7) |
 | 23 | S7 | Simulation release (tag, hashes, changelog, findings page) | sonnet | medium | S36, S38, S5, S55 |
 | 24 | S11 | BLEI visual series exported, visual suite rebuilt (S12 is yours) | sonnet | medium | S7 |
 | 25 | S13 | Outside audits of the release (second round) | opus | high | S7 |
@@ -285,6 +285,8 @@ BeforeIT.jl implements Poledna et al. (2023) and runs at full population scale (
 Raised Nov 7 in Chat after S38: in the design anyone can shop at a PTF, in dollars or BU; the engine lets only members pay PTF prices. Full reading, Duke's answers (D16) and plan: `audits/2026-11-ptf-access.md`. It changes the model of the design, not the design. S36 and S38 stand as published; the frozen batch is not revised.
 
 Waits on: nothing (D16 answered Nov 7). S7 waits on S55. Likely 3 sessions: design and switch; growth rule and amendments; run and report.
+
+**Part 1 done Nov 8** (sub-steps 1 and 2; compassionism-simulation PR 81): `dev/DECISIONS.md` (S55) sorts all 18 member-only rules (8 customer rules opened at the zone's share s, the two density tests and the inflation damping read s, 7 kept); `PTF_ACCESS` / row option `pa` ('members', 'open', `{fix}`), guard test identical, 4 unit tests; reading `dev/reports/s55-ptf-access-reading.md`. The conversion bonus (1.30 + θ) stays with members: the Hub gives it to PTF workers, and the model has none. Part 2 starts at sub-step 3; the BLEI paper's section 3 cost structure (variable costs 35-40% of price, overhead 20-25%, profit 15-20%; PTF overhead 5-8%; Errasti et al. 2003, Whyte and Whyte 1991) is the first source for the operations limit.
 
 1. Read the engine's member-only rules and write the table in reading 5 into the Simulation's `dev/DECISIONS.md`.
 2. Build `PTF_ACCESS` behind the switch, with the guard test (off = bit-identical) and unit tests: open access gives every adult in a zone the same share at PTF prices; the tests read the sales share; nothing changes in the no-programme run.
