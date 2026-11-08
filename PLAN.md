@@ -35,7 +35,7 @@ Model and effort per step are below. "fable" means: use it only if it uses no us
 | 18 | S48 | The full study batch, on GitHub Actions (Duke's choice, Nov 5; run manifest Amendment 1), dispatched as manifest section 3 says (about 650 runner-hours, about 510 shards). Runpod only if GitHub objects, then a new ledger decision and your key ; part 1 Nov 6: every job but N3 and N3x dispatched (24 runs, 479 shards; run IDs in HANDOFF.md). Part 2: check `DONE`, rerun failed pieces, N3 list and amendment, dispatch N3 and N3x, merge the R-panel, X check | opus | medium | S47 (freeze complete) |
 | 19 | S36 | Synergy report: Shapley shares, interactions, 20 and 40 years | opus | high | S48 |
 | 20 | S38 | Community-layer report (if S37 built it) | opus | medium | S48 |
-| 21 | S5 | Participation threshold: one figure, papers corrected | sonnet | medium | S48 |
+| 21 | S5 | Participation threshold: one figure, papers corrected; **done Nov 8** (compassionism-simulation `dev/reports/s5-participation.md`, PR 84; the paper corrections land through S24/S25) | sonnet | medium | S48 |
 | 22 | S39 | Outside engine cross-check (BeforeIT.jl), after the scale results | opus | high | S48 |
 | 23 | S7 | Simulation release (tag, hashes, changelog, findings page) | sonnet | medium | S36, S38, S5 |
 | 24 | S11 | BLEI visual series exported, visual suite rebuilt (S12 is yours) | sonnet | medium | S7 |
@@ -262,6 +262,8 @@ From the batch (S48): the S37 addendum's rows (`prereg/2026-11-community-layer.m
 
 ### S5 · Participation threshold
 Take the figure from the batch's Q4, with its computation, and correct each paper that states 30%, 55%, 60-65% or 75% differently (lands through S24/S25).
+
+Done Nov 8: the rule gives 2% (the grid floor, a detection level). Wealth gains only up to 5% and turns worse from 10%; basic living and cost of living improve at every level. No threshold can be confirmed or refuted (the engine has no network effect). For S24/S25: replace every 30%, 55%, 60-65% and 75% statement with the sentence in the report's section "What the Hub should say"; grep the Hub corpus for "60-65" (not found in the audits); do not apply the grid to the C2.2 design (everyone is covered). S7: the findings page carries the report's tables.
 
 ### S6 · C2.2 coverage and adequacy
 As ledger S6. Model options are Claude's call; a change to the design itself (who receives Basic Units, how much) goes to Duke as a ledger decision with the modelled figures beside each option.

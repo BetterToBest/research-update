@@ -1,41 +1,30 @@
-# Handoff (Nov 6, 2026): S48 part 1, the full batch dispatched
+# Handoff (Nov 8, 2026): S5 done, the participation figure
 
 ## Step status
-S48 is **partly done**. Every job in manifest section 3 except N3 and N3x was dispatched on run-study (Nov 6, 04:02-04:04 UTC), exactly as section 3 says. Duke confirmed D15 (A) in the ledger before dispatch. Left for part 2: check each folder for `DONE`, rerun any failed piece, choose N3's list from N1 and N2 (rule 4) with a dated amendment and dispatch N3 and N3x, then merge the R-panel and run X's check.
+S5 is **done**. S7 now has every input (S36, S38, S5, S55) and can start.
 
 ## What shipped
-- No code. The 24 runs below, and this file and PLAN.md (S48 part 1).
+- compassionism-simulation [PR 84](https://github.com/BetterToBest/compassionism-simulation/pull/84) (analysis only, no engine change): report `dev/reports/s5-participation.md`, tool `dev/tools/s5_participation.py` (8 checks pass), tables and every estimate in `dev/runs/s5-participation/`, DECISIONS.md. Merge status: see the last line of this file.
+- research-update: PLAN.md (S5 done; notes for S24/S25/S7) and this file.
+- Read from compassionism-sim-results `prog-d-ce8d030` and `prog-d10-ce8d030` (500 seeds each).
+
+## Findings (plain words)
+- By the preregistered rule the figure is **2%**, the floor of the grid, in every environment and at 10,000 adults. It is a detection level, not a viability threshold.
+- Headline cell (Reference, 500 adults, 20 years, CPS yardstick, raise off): basic living +0.71 and cost of living +2.15 points at 2%; wealth +0.95 at 2%, +0.58 at 5%, then worse: -0.21 at 10%, -22.43 at 90%. Basic living +10.44 and cost of living +18.08 at 90%. Inflation 0.34 points a year and cost $35,736 per adult-year at 90%.
+- All three measures improve together only up to 5% of adults joining (headline cell); in other cells 2% to 10%; at 90% in one cell (Reference, 40 years, raise on). With the as-released yardstick several cells find no level where all three improve.
+- No threshold of 30%, 55%, 60-65% or 75% can be confirmed or refuted: the engine has no network effect. The grid belongs to the as-released design; under C2.2 everyone is covered.
+- 10,000 adults give the same decisions as 500 (one Stress basic-living level differs).
 
 ## In flight
-The 24 runs use engine `ce8d030b8d16a752706c4ea2db71196e11e73831` with the job scripts at compassionism-sim-results main `fd66941`. Their runner scripts are unchanged since `031861a`. Each run commits `<study>-ce8d030/` to compassionism-sim-results main with run.txt, SHA256SUMS and `DONE`. GitHub's free plan runs 20 jobs at once and queues the rest: about 650 runner-hours, so allow about 33 hours plus queueing (finished around Nov 7-8). The run number is in https://github.com/BetterToBest/compassionism-sim-results/actions/runs/<id>, and each run.txt names its run.
-| run # (id) | study, shards | run # (id) | study, shards |
-|---|---|---|---|
-| 55 (42160133662) | n1, 25 | 67 (42160185548) | prog-c, 2 |
-| 56 (42160141724) | n2, 100 | 68 (42160188793) | prog-d, 4 |
-| 57 (42160144569) | panel, 30 | 69 (42160191537) | prog-f, 2 |
-| 58 (42160147554) | panel-frz, 30 | 70 (42160194979) | prog-g, 4 |
-| 59 (42160150701) | prog-r, 5 | 71 (42160198409) | prog-h, 4 |
-| 60 (42160153696) | x, 6 (workflow seeds 1-6) | 72 (42160201563) | prog-i, 2 |
-| 61 (42160162103) | k, 4 | 73 (42160209708) | prog-j, 10 |
-| 62 (42160165359) | l, 1 | 74 (42160213184) | prog-d10, 10 |
-| 63 (42160168687) | m, 20 | 75 (42160216182) | prog-g10, 20 |
-| 64 (42160171648) | o, 4 | 76 (42160219274) | prog-b10, 50 |
-| 65 (42160174471) | p, 1 | 77 (42160222115) | prog-a, 25 (sizes 500, 2,000, 10,000) |
-| 66 (42160177592) | prog-b, 20 | 78 (42160225254) | prog-a50, 100 (size 50,000) |
-The run-to-study mapping follows the dispatch order. Job counts confirmed it for runs 55 (25 shards) and 60 (6 shards over seeds 1-6). When each folder lands, its run.txt is the check.
+- Nothing.
 
 ## Decisions waiting
-- None. D15 is answered (A: S48 runs the frozen manifest on Actions).
+- None.
 
 ## Next step
-**S48 part 2** (opus, medium), once the batch has finished (check on or after Nov 8). For each of the 24 folders: `DONE` is there and `sha256sum -c SHA256SUMS` passes. A failed shard is rerun with `rerun_failed_jobs` on its run, never redesigned. Then:
-1. N3's list: `s54_levers.py --s1 n1-ce8d030 --s2 n2-ce8d030 --select LIST` (decision rule 4). Add a dated amendment to `prereg/2026-11-levers-addendum.md` and commit the list to runner/jobs/ before dispatch. Then dispatch N3 (`levers.js --stage=3 --list=FILE --env=all --procs=2 --frozen --gzip`, seeds 501-1000, 10 shards) and N3x (the same with `--sx=main`, 20 shards). Size the shards to the front's size (section 3: 17.4 and 24.4 runner-hours at 250 rows).
-2. The R-panel: `merge_parts.py`, then `merge_panel.py` in a copy (never on main). Then X's check: `explore_export.js ... --panel=FILE`.
-3. `batch_load.py --check` on A-J and R.
-S36 waits on all of it.
+**S39** (outside engine cross-check; opus, high): next unblocked row of the Order table. **S7** (sonnet, medium) can start now too.
 
 ## Pitfalls
-- **Queueing:** 479 shards and their plan jobs share one 20-job queue. Later runs' plan jobs wait behind earlier shards. That is expected, not a fault. If GitHub cancels jobs for queue time, rerun the failed jobs on that run (artifacts last 3 days).
-- **If GitHub objects or limits the runs** (ledger I16): stop. Moving the rest to Runpod is a new ledger decision, and nothing that costs money runs before Duke answers it.
-- **A's two folders** (`prog-a`, `prog-a50`) together are study A. R-panel workflow seeds are shard indices, not seeds.
-- **GitHub plugin:** failed to connect again (bad Authorization header); the built-in GitHub tools worked.
+- "Detected" at 2% does not mean "works at 2%": the wealth effect reverses. Any Hub sentence about the figure must say so, and keep "stated" apart from "material".
+- The "60-65%" statement is in no audit file; S24 must grep the Hub corpus for it (research-hub was not attached this session).
+- The results repository is large; clone it shallow with a long timeout. Reading D and D10 takes under a minute.
