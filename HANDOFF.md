@@ -1,30 +1,36 @@
-# Handoff (Nov 8, 2026): S5 done, the participation figure
+# Handoff (Nov 8, 2026): S39 part 1, the outside engine cross-check built and dispatched
 
 ## Step status
-S5 is **done**. S7 now has every input (S36, S38, S5, S55) and can start.
+S39 is **partly done**. Done: the preregistration, the engine side, the BeforeIT.jl module, the job, a dry run, and both studies dispatched. Remaining (part 2, about one session): once both result folders hold `DONE`, run the analysis tool, write the findings into the report, and apply decision rule 4. S7 can start meanwhile.
 
 ## What shipped
-- compassionism-simulation [PR 84](https://github.com/BetterToBest/compassionism-simulation/pull/84) (analysis only, no engine change): report `dev/reports/s5-participation.md`, tool `dev/tools/s5_participation.py` (8 checks pass), tables and every estimate in `dev/runs/s5-participation/`, DECISIONS.md. **Still open at the end of the session: checks (`checks`, `guard`) were running.** Merge it once both are green; nothing else depends on its merge except S7 reading the report.
-- research-update: PLAN.md (S5 done; notes for S24/S25/S7) and this file.
-- Read from compassionism-sim-results `prog-d-ce8d030` and `prog-d10-ce8d030` (500 seeds each).
+- research-update [PR 70](https://github.com/BetterToBest/research-update/pull/70): `prereg/2026-11-s39-outside-crosscheck.md` (committed before any run; the one-seed pilot seen before the decision rules is disclosed), plus this file and PLAN.md.
+- compassionism-sim-results [PR 22](https://github.com/BetterToBest/compassionism-sim-results/pull/22) (merged, f67b727): job `runner/jobs/beforeit.js`, module `runner/jobs/beforeit/` (BeforeIT 0.6.0, Julia 1.11.5 pinned, sizes in `shares.json`), `runner/jobs/s39-path.js`, and results `s39-path-ce8d030/` (the engine's year paths, seeds 1-500, three environments; every row reproduces study A's `plv_19` seed by seed).
+- compassionism-simulation [PR 85](https://github.com/BetterToBest/compassionism-simulation/pull/85): report `dev/reports/s39-outside-crosscheck.md` (part 1, with what a US calibration would take), tool `dev/tools/s39_crosscheck.py` (written before any BeforeIT result), `dev/runs/s39-crosscheck/tables.md`, DECISIONS.md. Also merged the previous session's [PR 84](https://github.com/BetterToBest/compassionism-simulation/pull/84) (S5; checks were green).
 
-## Findings (plain words)
-- By the preregistered rule the figure is **2%**, the floor of the grid, in every environment and at 10,000 adults. It is a detection level, not a viability threshold.
-- Headline cell (Reference, 500 adults, 20 years, CPS yardstick, raise off): basic living +0.71 and cost of living +2.15 points at 2%; wealth +0.95 at 2%, +0.58 at 5%, then worse: -0.21 at 10%, -22.43 at 90%. Basic living +10.44 and cost of living +18.08 at 90%. Inflation 0.34 points a year and cost $35,736 per adult-year at 90%.
-- All three measures improve together only up to 5% of adults joining (headline cell); in other cells 2% to 10%; at 90% in one cell (Reference, 40 years, raise on). With the as-released yardstick several cells find no level where all three improve.
-- No threshold of 30%, 55%, 60-65% or 75% can be confirmed or refuted: the engine has no network effect. The grid belongs to the as-released design; under C2.2 everyone is covered.
-- 10,000 adults give the same decisions as 500 (one Stress basic-living level differs).
+## Findings so far (plain words)
+- The engine counts most of the C2.2 payout as new money not backed by output. Under C2.2 (Reference) that is 31-46% of cash income each year: the Source's payout ($59,263 per adult-year) less its matched part ($19,140). It passes into the general price level one for one, a year later, so prices end about 415 times their start after 19 years. Release design: 16-34% a year, about 183 times.
+- The conversion tax the Source keeps ($12,336 per adult-year) does not reduce that money (open engine question, rule 4).
+- BeforeIT's firms price from costs and expected inflation, with no excess-demand term. In a one-seed pilot at 1:1000, new money of 10-35% of income a year moved prices less than 8% over 20 years. If the full study confirms this, the two engines differ by a factor of hundreds, each resting on one assumption.
 
 ## In flight
-- compassionism-simulation PR 84: checks running; merge when green (no job output depends on it).
+- compassionism-sim-results, run-study workflow, engine `ce8d030`, job `beforeit.js`:
+  - `s39-full` (full scale, 8.9 million agents, 65 shards of about 2.5 hours): run 42511582006, folder `s39-full-ce8d030/`.
+  - `s39-k1` (1:1000, 13 shards): run 42511585190, folder `s39-k1-ce8d030/`.
+  - `dry-s39`: run 42510677223 (its shard passed).
+- Each run is done when its folder has `DONE` (expect about 8-12 hours for `s39-full`). A failed shard is rerun, never redesigned.
+- compassionism-simulation PR 85: checks were running at the end. Merge when green (no job depends on it).
 
 ## Decisions waiting
-- None.
+- None. Part 2 may add a ledger decision under rule 4: Hub inflation sentences would name the engine's quantity-theory placeholder and give BeforeIT's figure beside it.
 
 ## Next step
-**S39** (outside engine cross-check; opus, high): next unblocked row of the Order table. **S7** (sonnet, medium) can start now too.
+**S7** (sonnet, medium): unblocked since S5. Then **S39 part 2** (opus, high) once both folders hold `DONE`:
+`python3 dev/tools/s39_crosscheck.py --engine RESULTS/s39-path-ce8d030 --full RESULTS/s39-full-ce8d030 --k1 RESULTS/s39-k1-ce8d030 --out dev/runs/s39-crosscheck`
 
 ## Pitfalls
-- "Detected" at 2% does not mean "works at 2%": the wealth effect reverses. Any Hub sentence about the figure must say so, and keep "stated" apart from "material".
-- The "60-65%" statement is in no audit file; S24 must grep the Hub corpus for it (research-hub was not attached this session).
-- The results repository is large; clone it shallow with a long timeout. Reading D and D10 takes under a minute.
+- Study A kept the price level only at years 10, 20 and 40, although the run manifest lists `plv_0`-`plv_39` for S39. `s39-path.js` reads the full year path instead.
+- Any rerun of study rows must set the runner's reference settings (`applyNR6()`, `tbSetG(TB_PROFILE_G)`) as program.js does. Without them the price level came out at about 300 instead of 415.
+- The engine's price level for year k reflects the new money of the years before it. Compare "after k years of payout".
+- BeforeIT does not repeat a seed with threads on, so every run is single-threaded. Its no-payout run drifts beyond 12 quarters (unemployment falls to zero), so every 20-year BeforeIT figure carries that caveat.
+- S7's findings page: any sentence on inflation should wait for S39 part 2, or say the figure rests on the engine's quantity-theory rule.
