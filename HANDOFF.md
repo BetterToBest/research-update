@@ -25,7 +25,7 @@ All pass, in tables section 0:
 - Shapley efficiency holds per seed.
 
 ## S55 added (Nov 8)
-- research-update: `audits/2026-11-ptf-access.md` (the Nov 7 Chat note: what the engine does, what the Hub says, Claude's reading, Duke's D16 answers, the plan). PLAN.md: row 22a and a `### S55` section; S7 now waits on S55.
+- research-update [PR 62](https://github.com/BetterToBest/research-update/pull/62), merged `ddfb6bc`: `audits/2026-11-ptf-access.md` (the Nov 7 Chat note: what the engine does, what the Hub says, Claude's reading, Duke's D16 answers, the plan). PLAN.md: row 22a and a `### S55` section; S7 now waits on S55.
 - S5 leaves the BLEI paper's 40%/55% PTF density tests alone: S55 decides what those tests count. S5 corrects only the participation-threshold figures.
 
 ## In flight
