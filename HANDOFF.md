@@ -6,7 +6,7 @@ S48 is **done**. All 24 batch folders plus N3 and N3x are in compassionism-sim-r
 ## What shipped
 - compassionism-sim-results [PR 19](https://github.com/BetterToBest/compassionism-sim-results/pull/19), merged `4eb0c52`: `prog-r-ce8d030/` and `o-ce8d030/`. Their shards were over GitHub's 100 MB file limit, so the workflow's last job could not push them; it was not the push race. The shards were recovered from the run artifacts (digests match), passed `check-shards.js`, and were stored as `.json.gz` (`gzip -n -9`, lossless). run.txt says so.
 - compassionism-sim-results [PR 20](https://github.com/BetterToBest/compassionism-sim-results/pull/20), merged `0ea9ea7`: `panel-merged-ce8d030/`, the release panel merged (published 51 rows, frozen 52 per environment; 20 and 40 years) by `merge_parts.py` then `merge_panel.py` in a scratch copy, with run.txt and SHA256SUMS.
-- compassionism-simulation [PR 78](https://github.com/BetterToBest/compassionism-simulation/pull/78) (tools only): four readers accept `.json.gz` (`batch_load.py`, `s53_security.py`, `s19_series.py`, `s52_shock.py`); `x_panel_check.js` (X's check on the means the X shards store).
+- compassionism-simulation [PR 78](https://github.com/BetterToBest/compassionism-simulation/pull/78), merged `4cbeadb` (tools only): four readers accept `.json.gz` (`batch_load.py`, `s53_security.py`, `s19_series.py`, `s52_shock.py`); `x_panel_check.js` (X's check on the means the X shards store).
 - research-update: run manifest Amendment 5 (how R and O are stored, how X was checked; nothing else moves).
 
 ## Checks (all PASS, full 500-seed folders)
