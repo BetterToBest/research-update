@@ -37,7 +37,8 @@ Model and effort per step are below. "fable" means: use it only if it uses no us
 | 20 | S38 | Community-layer report (if S37 built it); **done Nov 8** (compassionism-simulation `dev/reports/s38-community-layer.md`) | opus | medium | S48 |
 | 21 | S5 | Participation threshold: one figure, papers corrected | sonnet | medium | S48 |
 | 22 | S39 | Outside engine cross-check (BeforeIT.jl), after the scale results | opus | high | S48 |
-| 23 | S7 | Simulation release (tag, hashes, changelog, findings page) | sonnet | medium | S36, S38, S5 |
+| 22a | S55 | Open PTF access: anyone buys at PTF prices; both density tests read the PTFs' share of a zone's essential sales; switch `PTF_ACCESS`, growth limited by capacity, operations and demand, fixed-share sweep 10%-100% (D16); 2-3 sessions | opus | xhigh | S38, D16 (answered Nov 7) |
+| 23 | S7 | Simulation release (tag, hashes, changelog, findings page) | sonnet | medium | S36, S38, S5, S55 |
 | 24 | S11 | BLEI visual series exported, visual suite rebuilt (S12 is yours) | sonnet | medium | S7 |
 | 25 | S13 | Outside audits of the release (second round) | opus | high | S7 |
 | 26 | S24 | Corrections package landed on the Hub, PDFs rebuilt | sonnet | medium | S2, S23, S29, S30 |
@@ -280,8 +281,20 @@ Oct 31 (done): audit and switch `LW` (compassionism-simulation #56, `f66dc67`), 
 ### S39 · Outside engine cross-check (D5: after the scale results, regardless)
 BeforeIT.jl implements Poledna et al. (2023) and runs at full population scale (Austria; an experimental Italy calibration). Add a Basic Unit and conversion module, run at full scale, and compare price-level effects with this engine at matched settings. Report what a US calibration would take.
 
+### S55 · Open PTF access (opus, xhigh; may take 2-3 sessions)
+Raised Nov 7 in Chat after S38: in the design anyone can shop at a PTF, in dollars or BU; the engine lets only members pay PTF prices. Full reading, Duke's answers (D16) and plan: `audits/2026-11-ptf-access.md`. It changes the model of the design, not the design. S36 and S38 stand as published; the frozen batch is not revised.
+
+Waits on: nothing (D16 answered Nov 7). S7 waits on S55. Likely 3 sessions: design and switch; growth rule and amendments; run and report.
+
+1. Read the engine's member-only rules and write the table in reading 5 into the Simulation's `dev/DECISIONS.md`.
+2. Build `PTF_ACCESS` behind the switch, with the guard test (off = bit-identical) and unit tests: open access gives every adult in a zone the same share at PTF prices; the tests read the sales share; nothing changes in the no-programme run.
+3. Build the growth rule of reading 6: PTF operating accounts (sales against operating costs, from the cost structure the BLEI paper cites or outside sector data, opened and cited) and shoppers' demand at PTF prices (a sourced response to the price gap, or a labelled design parameter, swept). Each behind `PTF_ACCESS: 'open'`; unit tests for each limit binding alone.
+4. Before any run, dated amendments (research-update `prereg/`): the release row, the PTF and SZH cells Q2 needs, studies G-J's layer rows under `'open'`, and the fixed-share sweep (10% to 100% in steps of 10, growth off; Duke, D16); three environments; 20 and 40 years; 10,000 adults for the headline; seeds 1-500, paired with the frozen rows. Pilot on Actions at reduced seeds first. A run-manifest amendment covers the new jobs.
+5. Run on Actions; report open against members on every preregistered outcome, nulls included.
+6. The report shows the fixed-share curve with intervals and says which of capacity, operations and demand binds, by environment and year.
+
 ### S7 · Simulation release
-As ledger S7, plus: the release carries S34-S38, S5, S6 and S14 behind their switches as decided; release notes list each preregistered study with links to every result; the findings page shows them all.
+As ledger S7, plus: the release carries S34-S38, S55, S5, S6 and S14 behind their switches as decided; release notes list each preregistered study with links to every result; the findings page shows them all.
 
 ### S11 · BLEI visuals
 As ledger S11 (and I1). S12 (which visuals go on which page) stays Duke's choice.
