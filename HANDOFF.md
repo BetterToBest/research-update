@@ -1,20 +1,26 @@
-# Handoff (Nov 8, 2026): S48 done, the batch is complete and checked
+# Handoff (Nov 8, 2026): S36 done, the synergy report from the full batch
 
 ## Step status
-S48 is **done**. All 24 batch folders plus N3 and N3x are in compassionism-sim-results at engine `ce8d030`, each with `DONE` and passing checksums. Every folder loads in its consumer. The R-panel is merged, and X matches the frozen panel exactly.
+S36 is **done**. The synergy report reads studies B (500 adults, 20 and 40 years) and B10 (10,000 adults) from the 500-seed batch at engine `ce8d030`. It covers both designs, three environments, both yardsticks, and the octave raise off and on.
 
 ## What shipped
-- compassionism-sim-results [PR 19](https://github.com/BetterToBest/compassionism-sim-results/pull/19), merged `4eb0c52`: `prog-r-ce8d030/` and `o-ce8d030/`. Their shards were over GitHub's 100 MB file limit, so the workflow's last job could not push them; it was not the push race. The shards were recovered from the run artifacts (digests match), passed `check-shards.js`, and were stored as `.json.gz` (`gzip -n -9`, lossless). run.txt says so.
-- compassionism-sim-results [PR 20](https://github.com/BetterToBest/compassionism-sim-results/pull/20), merged `0ea9ea7`: `panel-merged-ce8d030/`, the release panel merged (published 51 rows, frozen 52 per environment; 20 and 40 years) by `merge_parts.py` then `merge_panel.py` in a scratch copy, with run.txt and SHA256SUMS.
-- compassionism-simulation [PR 78](https://github.com/BetterToBest/compassionism-simulation/pull/78), merged `4cbeadb` (tools only): four readers accept `.json.gz` (`batch_load.py`, `s53_security.py`, `s19_series.py`, `s52_shock.py`); `x_panel_check.js` (X's check on the means the X shards store).
-- research-update: run manifest Amendment 5 (how R and O are stored, how X was checked; nothing else moves).
+- compassionism-simulation [PR 79](https://github.com/BetterToBest/compassionism-simulation/pull/79), merged `c921e6c` (analysis only): `dev/tools/s36_synergy.py`, the report `dev/reports/s36-synergy.md`, every table in `dev/runs/s36-synergy/tables.md`, every estimate in `estimates.csv` (about 25,600), DECISIONS.md (S36).
+- research-update: PLAN.md marks S36 done, with its findings in one paragraph.
 
-## Checks (all PASS, full 500-seed folders)
-- `batch_load.py --check` prog-r: 84 rows per environment, seeds 1-500 (its null keys are the allowed kinds).
-- `s53_security.py --check` prog-r: 252 rows. `s19_series.py`: prog-r (20 and 40 years) and o (210 rows), largest difference 1.4e-14.
-- `s54_levers.py --check`: N1 1,560 rows; N2 3,492; N3 747 (249 per environment, seeds 501-1000); N3x 747.
-- `s52_shock.py` reads o end to end (run at 20 bootstrap replicates, as a load test only).
-- X: all 2,160 yearly means equal the merged frozen panel.
+## Findings (C2.2 design unless stated)
+- The CCO accounts for 97-100% of the gain in basic living and 93-99% of the gain on the cost of living, in all 24 settings. CIP comes next (1-6%). PTF, PTH and SZH stay under 0.33 points each.
+- On those two outcomes the parts overlap rather than reinforce each other, mostly CCO x CIP. The whole-design contrast is negative in every setting. A material synergy shows only in Adverse, 40 years, released-wage yardstick.
+- Wealth has the largest interactions (for example CCO x PTH +2.3), but their sign changes with the raise, the yardstick, the design and the horizon. No wealth synergy is stated.
+- The parts together inflate 0.4-4.3 points a year less than separately. The full effect is 26-89 points a year.
+- SZH is never material. Scale: 0 of 510 comparisons pass. Every material contrast survives Holm.
+- The Hub's 0.42/0.28/0.18/0.12 split (audit A08) cannot be recomputed in its own four categories. The report's short answer 8 gives the replacement line, by the five parts, for S24/S25.
+
+## Checks
+All pass, in tables section 0:
+- cells without the CCO are identical under both designs;
+- the first 20 years of each 40-year row equal the 20-year row;
+- B's 72 shared rows equal study A's, every key and seed;
+- Shapley efficiency holds per seed (gap 9e-16).
 
 ## In flight
 - Nothing.
@@ -23,11 +29,12 @@ S48 is **done**. All 24 batch folders plus N3 and N3x are in compassionism-sim-r
 - None.
 
 ## Next step
-**S36** (synergy report; opus, high): first in the Order table now that S48 is done. S38, S5 and S39 can also start.
+**S38** (community-layer report; opus, medium): next in the Order table. Studies G, G10, H, I and J at engine `ce8d030`, headline at 10,000 adults. `s36_synergy.py`'s linear maps (Shapley, contrasts, dividends) can be reused for G and G10's layer factorial. S5 and S39 can also start.
 
 ## Pitfalls
-- **Big shards:** a job without `--gzip` whose shard passes 100 MB cannot be committed by the workflow. The 2-seed dry run could not show it. Before a new large job, estimate the shard size from the dry run (bytes per seed x seeds per shard) and add `--gzip` if it passes about 90 MB.
-- **Run artifacts last 3 days.** A failed last job must be recovered before then (`download_workflow_run_artifact`, then curl the link).
-- `s52_shock.py`'s report header still says "PILOT" for any folder; the O report (S7/S36 work) should relabel batch results.
-- Loading R (650 MB of JSON) or O (870 MB) in Python takes 2-3 GB of memory; run the readers one at a time.
+- My own checks failed at first: the `main` row was counted as a no-CCO cell, and the C2.2-only keys (`c22PY`, `buPY`, `el*`) are null on release rows. Both are fixed in the script; the data were right.
+- Shapley shares of a near-zero full effect run to several hundred percent (C2.2 wealth, Reference, year 20). They are shown as preregistered; the report says why they are not meaningful there.
+- The PR's branch commit carries a model name in its co-author line, against the no-model-names rule. The squash merge on main does not. Use `Co-Authored-By: Claude <noreply@anthropic.com>`.
+- Sparse-clone the results repository (`--filter=blob:none --sparse`, then `sparse-checkout set <folders>`). The whole repository is several GB.
+- `s52_shock.py`'s report header still says "PILOT" for any folder; the O report (S7) should relabel batch results.
 - **GitHub plugin:** failed to connect again; the built-in GitHub tools worked.
