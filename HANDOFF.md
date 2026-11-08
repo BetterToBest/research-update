@@ -4,9 +4,9 @@
 S55 is **done** (parts 1-4). Part 4 wrote the report from the nine 500-seed runs, which all finished with `DONE`. S7 now waits only on S5.
 
 ## What shipped
-- compassionism-simulation [PR 83](https://github.com/BetterToBest/compassionism-simulation/pull/83) (analysis only, no engine change): report `dev/reports/s55-open-access.md`, tables `dev/runs/s55-open-access/tables.md`, every estimate `estimates.csv`, tool `dev/tools/s55_open_access.py` (17 checks pass: pilots equal seeds 1-50 of the full runs; S38's bootstrap reproduced exactly; operations never binds in the main reading; and so on), DECISIONS.md (S55 part 4), HANDOFF.md.
+- compassionism-simulation [PR 83](https://github.com/BetterToBest/compassionism-simulation/pull/83), merged `3fb40b6` (checks and guard test green; analysis only, no engine change): report `dev/reports/s55-open-access.md`, tables `dev/runs/s55-open-access/tables.md`, every estimate `estimates.csv`, tool `dev/tools/s55_open_access.py` (17 checks pass: pilots equal seeds 1-50 of the full runs; S38's bootstrap reproduced exactly; operations never binds in the main reading; and so on), DECISIONS.md (S55 part 4), HANDOFF.md.
 - Results used: compassionism-sim-results `prog-{t,u,u10,v,v10,vj,w,w10,y}-0c93593` (runs 86-94 of `run-study`, all succeeded) against `prog-{a,b,b10,g,g10,h,i,j}-ce8d030`.
-- research-update PR for this session: PLAN.md (S55 done; notes for S7) and this file.
+- research-update [PR 67](https://github.com/BetterToBest/research-update/pull/67): PLAN.md (S55 done; notes for S7) and this file. Ledger synced (`hub` version 93).
 
 ## Findings (plain words; the report has every setting)
 - Headline (C2.2 design, Reference, 10,000 adults, 20 years): open access against members only moves basic living +0.03 points, the cost of living +0.14, cost +$1,398 (2.3%) and inflation -0.64 points a year. None of these is material. Wealth moves +2.42 points, which is material: the programme's wealth effect turns from -0.19 to +2.23.
