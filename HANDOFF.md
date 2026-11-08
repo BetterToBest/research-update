@@ -4,7 +4,7 @@
 S38 is **done**. The report reads studies G, G10, H, I and J (the community layer) against A, B and B10 (the same rows without it, and the no-programme rows), seeds 1-500, engine `ce8d030`. It covers both designs, three environments, 500 to 10,000 adults, 20 and 40 years. The headline is at 10,000 adults.
 
 ## What shipped
-- compassionism-simulation [PR 80](https://github.com/BetterToBest/compassionism-simulation/pull/80) (analysis only): `dev/tools/s38_layer.py`, the report `dev/reports/s38-community-layer.md`, every table in `dev/runs/s38-layer/tables.md`, every estimate in `estimates.csv` (about 14,000), DECISIONS.md (S38).
+- compassionism-simulation [PR 80](https://github.com/BetterToBest/compassionism-simulation/pull/80), merged `6f936f9` (analysis only): `dev/tools/s38_layer.py`, the report `dev/reports/s38-community-layer.md`, every table in `dev/runs/s38-layer/tables.md`, every estimate in `estimates.csv` (about 14,000), DECISIONS.md (S38).
 - research-update: PLAN.md marks S38 done, with its findings in one paragraph.
 
 ## Findings (C2.2 design unless stated)
@@ -25,7 +25,7 @@ All pass, in tables section 0:
 - Shapley efficiency holds per seed.
 
 ## In flight
-- Nothing. PR 80's checks (guard about 3 minutes) were still running when this was written; merge it once they are green if this session could not.
+- Nothing. PR 80 merged once its checks were green (the checks job takes about 10 minutes).
 
 ## Decisions waiting
 - None.
