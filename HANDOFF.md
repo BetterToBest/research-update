@@ -4,9 +4,9 @@
 S39 is **partly done**. Done: the preregistration, the engine side, the BeforeIT.jl module, the job, a dry run, and both studies dispatched. Remaining (part 2, about one session): once both result folders hold `DONE`, run the analysis tool, write the findings into the report, and apply decision rule 4. S7 can start meanwhile.
 
 ## What shipped
-- research-update [PR 70](https://github.com/BetterToBest/research-update/pull/70): `prereg/2026-11-s39-outside-crosscheck.md` (committed before any run; the one-seed pilot seen before the decision rules is disclosed), plus this file and PLAN.md.
+- research-update [PR 70](https://github.com/BetterToBest/research-update/pull/70) (merged, 7e21521): `prereg/2026-11-s39-outside-crosscheck.md` (committed before any run; the one-seed pilot seen before the decision rules is disclosed), plus this file and PLAN.md.
 - compassionism-sim-results [PR 22](https://github.com/BetterToBest/compassionism-sim-results/pull/22) (merged, f67b727): job `runner/jobs/beforeit.js`, module `runner/jobs/beforeit/` (BeforeIT 0.6.0, Julia 1.11.5 pinned, sizes in `shares.json`), `runner/jobs/s39-path.js`, and results `s39-path-ce8d030/` (the engine's year paths, seeds 1-500, three environments; every row reproduces study A's `plv_19` seed by seed).
-- compassionism-simulation [PR 85](https://github.com/BetterToBest/compassionism-simulation/pull/85): report `dev/reports/s39-outside-crosscheck.md` (part 1, with what a US calibration would take), tool `dev/tools/s39_crosscheck.py` (written before any BeforeIT result), `dev/runs/s39-crosscheck/tables.md`, DECISIONS.md. Also merged the previous session's [PR 84](https://github.com/BetterToBest/compassionism-simulation/pull/84) (S5; checks were green).
+- compassionism-simulation [PR 85](https://github.com/BetterToBest/compassionism-simulation/pull/85) (merged, 2cf6ef0; checks green): report `dev/reports/s39-outside-crosscheck.md` (part 1, with what a US calibration would take), tool `dev/tools/s39_crosscheck.py` (written before any BeforeIT result), `dev/runs/s39-crosscheck/tables.md`, DECISIONS.md. Also merged the previous session's [PR 84](https://github.com/BetterToBest/compassionism-simulation/pull/84) (S5; checks were green).
 
 ## Findings so far (plain words)
 - The engine counts most of the C2.2 payout as new money not backed by output. Under C2.2 (Reference) that is 31-46% of cash income each year: the Source's payout ($59,263 per adult-year) less its matched part ($19,140). It passes into the general price level one for one, a year later, so prices end about 415 times their start after 19 years. Release design: 16-34% a year, about 183 times.
@@ -19,7 +19,6 @@ S39 is **partly done**. Done: the preregistration, the engine side, the BeforeIT
   - `s39-k1` (1:1000, 13 shards): run 42511585190, folder `s39-k1-ce8d030/`.
   - `dry-s39`: run 42510677223 (its shard passed).
 - Each run is done when its folder has `DONE` (expect about 8-12 hours for `s39-full`). A failed shard is rerun, never redesigned.
-- compassionism-simulation PR 85: checks were running at the end. Merge when green (no job depends on it).
 
 ## Decisions waiting
 - None. Part 2 may add a ledger decision under rule 4: Hub inflation sentences would name the engine's quantity-theory placeholder and give BeforeIT's figure beside it.
