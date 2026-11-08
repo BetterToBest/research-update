@@ -1,4 +1,4 @@
-# Handoff (Nov 8, 2026): S38 done, the community-layer report from the full batch
+# Handoff (Nov 8, 2026): S55 added to the plan (open PTF access); S38 done before it
 
 ## Step status
 S38 is **done**. The report reads studies G, G10, H, I and J (the community layer) against A, B and B10 (the same rows without it, and the no-programme rows), seeds 1-500, engine `ce8d030`. It covers both designs, three environments, 500 to 10,000 adults, 20 and 40 years. The headline is at 10,000 adults.
@@ -24,14 +24,18 @@ All pass, in tables section 0:
 - communities = adults ÷ k on every seed;
 - Shapley efficiency holds per seed.
 
+## S55 added (Nov 8)
+- research-update: `audits/2026-11-ptf-access.md` (the Nov 7 Chat note: what the engine does, what the Hub says, Claude's reading, Duke's D16 answers, the plan). PLAN.md: row 22a and a `### S55` section; S7 now waits on S55.
+- S5 leaves the BLEI paper's 40%/55% PTF density tests alone: S55 decides what those tests count. S5 corrects only the participation-threshold figures.
+
 ## In flight
 - Nothing. PR 80 merged once its checks were green (the checks job takes about 10 minutes).
 
 ## Decisions waiting
-- None.
+- D16 (open PTF access readings): answered by Duke Nov 7 ("yes, with additions"); recorded in the audit note. Nothing waits on it.
 
 ## Next step
-**S5** (participation threshold; sonnet, medium): next in the Order table. It reads studies D and D10 from the batch. S39 can also start. S7 waits on S5.
+**S5** (participation threshold; sonnet, medium): next in the Order table. It reads studies D and D10 from the batch. S39 and S55 can also start. S7 waits on S5 and S55.
 
 ## Pitfalls
 - The PTF diagnostics `pfMem` and `pfCut` are written only on rows with the layer. Layer-off rows have no comparison figure.
