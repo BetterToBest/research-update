@@ -1,30 +1,30 @@
-# Handoff (Nov 8, 2026): S55 done, the open-access report
+# Handoff (Nov 8, 2026): S5 done, the participation figure
 
 ## Step status
-S55 is **done** (parts 1-4). Part 4 wrote the report from the nine 500-seed runs, which all finished with `DONE`. S7 now waits only on S5.
+S5 is **done**. S7 now has every input (S36, S38, S5, S55) and can start.
 
 ## What shipped
-- compassionism-simulation [PR 83](https://github.com/BetterToBest/compassionism-simulation/pull/83), merged `3fb40b6` (checks and guard test green; analysis only, no engine change): report `dev/reports/s55-open-access.md`, tables `dev/runs/s55-open-access/tables.md`, every estimate `estimates.csv`, tool `dev/tools/s55_open_access.py` (17 checks pass: pilots equal seeds 1-50 of the full runs; S38's bootstrap reproduced exactly; operations never binds in the main reading; and so on), DECISIONS.md (S55 part 4), HANDOFF.md.
-- Results used: compassionism-sim-results `prog-{t,u,u10,v,v10,vj,w,w10,y}-0c93593` (runs 86-94 of `run-study`, all succeeded) against `prog-{a,b,b10,g,g10,h,i,j}-ce8d030`.
-- research-update [PR 67](https://github.com/BetterToBest/research-update/pull/67): PLAN.md (S55 done; notes for S7) and this file. Ledger synced (`hub` version 93).
+- compassionism-simulation [PR 84](https://github.com/BetterToBest/compassionism-simulation/pull/84) (analysis only, no engine change): report `dev/reports/s5-participation.md`, tool `dev/tools/s5_participation.py` (8 checks pass), tables and every estimate in `dev/runs/s5-participation/`, DECISIONS.md. **Still open at the end of the session: checks (`checks`, `guard`) were running.** Merge it once both are green; nothing else depends on its merge except S7 reading the report.
+- research-update: PLAN.md (S5 done; notes for S24/S25/S7) and this file.
+- Read from compassionism-sim-results `prog-d-ce8d030` and `prog-d10-ce8d030` (500 seeds each).
 
-## Findings (plain words; the report has every setting)
-- Headline (C2.2 design, Reference, 10,000 adults, 20 years): open access against members only moves basic living +0.03 points, the cost of living +0.14, cost +$1,398 (2.3%) and inflation -0.64 points a year. None of these is material. Wealth moves +2.42 points, which is material: the programme's wealth effect turns from -0.19 to +2.23.
-- 14 of 120 effects are material: wealth under the C2.2 design (10 of 12 settings) and inflation (C2.2, 40 years, Adverse and Stress). None is material under the release design. 500 and 10,000 adults give the same decisions.
-- Rule 2: the wealth result depends on the demand ceiling (a design parameter) and on the share growing. It is gone at a 25% ceiling, with outside running costs or with growth off. At 75-100% it is larger, and cost and inflation turn material too.
-- Capacity binds first, then demand; operations never in the main reading. The fixed-share curve is smooth, with no step at 55% and one at 40% (wealth, C2.2, Adverse). CCO x PTF becomes a material wealth synergy. The layer still changes nothing material.
+## Findings (plain words)
+- By the preregistered rule the figure is **2%**, the floor of the grid, in every environment and at 10,000 adults. It is a detection level, not a viability threshold.
+- Headline cell (Reference, 500 adults, 20 years, CPS yardstick, raise off): basic living +0.71 and cost of living +2.15 points at 2%; wealth +0.95 at 2%, +0.58 at 5%, then worse: -0.21 at 10%, -22.43 at 90%. Basic living +10.44 and cost of living +18.08 at 90%. Inflation 0.34 points a year and cost $35,736 per adult-year at 90%.
+- All three measures improve together only up to 5% of adults joining (headline cell); in other cells 2% to 10%; at 90% in one cell (Reference, 40 years, raise on). With the as-released yardstick several cells find no level where all three improve.
+- No threshold of 30%, 55%, 60-65% or 75% can be confirmed or refuted: the engine has no network effect. The grid belongs to the as-released design; under C2.2 everyone is covered.
+- 10,000 adults give the same decisions as 500 (one Stress basic-living level differs).
 
 ## In flight
-- Nothing.
+- compassionism-simulation PR 84: checks running; merge when green (no job output depends on it).
 
 ## Decisions waiting
-- None new.
+- None.
 
 ## Next step
-**S5** (participation threshold; sonnet, medium): row 21 of the Order table; S7 waits on it. S39 can also start.
+**S39** (outside engine cross-check; opus, high): next unblocked row of the Order table. **S7** (sonnet, medium) can start now too.
 
 ## Pitfalls
-- The 2,000-adult layer comparison under open access could not be formed: the addendum preregistered no open row without the layer at 2,000 adults. The report says so; nothing was run outside the preregistration.
-- The fixed-share curve is not monotone at its low end. Under C2.2 in Reference and Adverse, wealth is better at 10% than at 20-30%. This is untraced. PLAN.md's S7 section asks for a check before the findings page uses the curve.
-- Paired 500-seed comparisons detect effects of a few hundredths of a point. "Stated" (interval excludes zero) is not "material"; keep the two apart in any Hub text.
-- The results repository is 4.8 GB checked out (`prog-b-ce8d030` alone is 370 MB). Clone it shallow with a long timeout. The S55 script reads all 17 folders and the 5 pilots in about 70 seconds.
+- "Detected" at 2% does not mean "works at 2%": the wealth effect reverses. Any Hub sentence about the figure must say so, and keep "stated" apart from "material".
+- The "60-65%" statement is in no audit file; S24 must grep the Hub corpus for it (research-hub was not attached this session).
+- The results repository is large; clone it shallow with a long timeout. Reading D and D10 takes under a minute.

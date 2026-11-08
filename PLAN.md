@@ -35,7 +35,7 @@ Model and effort per step are below. "fable" means: use it only if it uses no us
 | 18 | S48 | The full study batch, on GitHub Actions (Duke's choice, Nov 5; run manifest Amendment 1), dispatched as manifest section 3 says (about 650 runner-hours, about 510 shards). Runpod only if GitHub objects, then a new ledger decision and your key ; part 1 Nov 6: every job but N3 and N3x dispatched (24 runs, 479 shards; run IDs in HANDOFF.md). Part 2: check `DONE`, rerun failed pieces, N3 list and amendment, dispatch N3 and N3x, merge the R-panel, X check. **Done Nov 8** (part 3) | opus | medium | S47 (freeze complete) |
 | 19 | S36 | Synergy report: Shapley shares, interactions, 20 and 40 years; **done Nov 8** (compassionism-simulation `dev/reports/s36-synergy.md`) | opus | high | S48 |
 | 20 | S38 | Community-layer report (if S37 built it); **done Nov 8** (compassionism-simulation `dev/reports/s38-community-layer.md`) | opus | medium | S48 |
-| 21 | S5 | Participation threshold: one figure, papers corrected | sonnet | medium | S48 |
+| 21 | S5 | Participation threshold: one figure, papers corrected; **done Nov 8** (compassionism-simulation `dev/reports/s5-participation.md`, PR 84; the paper corrections land through S24/S25) | sonnet | medium | S48 |
 | 22 | S39 | Outside engine cross-check (BeforeIT.jl), after the scale results | opus | high | S48 |
 | 22a | S55 | Open PTF access: anyone buys at PTF prices; both density tests read the PTFs' share of a zone's essential sales; switch `PTF_ACCESS`, growth limited by capacity, operations and demand, fixed-share sweep 10%-100% (D16); 2-3 sessions; part 1 done Nov 8 (sub-steps 1-2: the member-only rules sorted, switch `PTF_ACCESS` built, off = identical; compassionism-simulation PR 81); part 2 done Nov 8 (sub-steps 3-4: growth rule, PR 82; addendum `prereg/2026-11-ptf-access-addendum.md`, studies T-Y; job script, results PR 21; pilot at seeds 1-50 dispatched); part 3 done Nov 8 (sub-step 5: pilot checked, nine 500-seed jobs dispatched, manifest Amendment 7); **done Nov 8** (part 4, sub-step 6: the report, compassionism-simulation `dev/reports/s55-open-access.md`, PR 83) | opus | xhigh | S38, D16 (answered Nov 7) |
 | 23 | S7 | Simulation release (tag, hashes, changelog, findings page) | sonnet | medium | S36, S38, S5, S55 |
@@ -269,6 +269,8 @@ Done Nov 8 (compassionism-simulation pull request 80; tool `dev/tools/s38_layer.
 
 ### S5 · Participation threshold
 Take the figure from the batch's Q4, with its computation, and correct each paper that states 30%, 55%, 60-65% or 75% differently (lands through S24/S25).
+
+Done Nov 8: the rule gives 2% (the grid floor, a detection level). Wealth gains only up to 5% and turns worse from 10%; basic living and cost of living improve at every level. No threshold can be confirmed or refuted (the engine has no network effect). For S24/S25: replace every 30%, 55%, 60-65% and 75% statement with the sentence in the report's section "What the Hub should say"; grep the Hub corpus for "60-65" (not found in the audits); do not apply the grid to the C2.2 design (everyone is covered). S7: the findings page carries the report's tables.
 
 ### S6 · C2.2 coverage and adequacy
 As ledger S6. Model options are Claude's call; a change to the design itself (who receives Basic Units, how much) goes to Duke as a ledger decision with the modelled figures beside each option.
