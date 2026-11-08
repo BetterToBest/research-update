@@ -1,42 +1,34 @@
-# Handoff (Nov 8, 2026): S55 part 1, open PTF access (the switch built, off by default)
+# Handoff (Nov 8, 2026): S55 part 2, the growth rule and the preregistration (pilot running)
 
 ## Step status
-S55 is **partly done**. Part 1 (sub-steps 1 and 2) is done: every member-only rule in the engine is sorted, and the switch `PTF_ACCESS` is built. Remaining: part 2 (sub-steps 3 and 4: the growth rule, then the dated amendments and a pilot); part 3 (sub-steps 5 and 6: the runs on Actions and the report). No study has run with the switch, and nothing is a result yet.
+S55 is **partly done**. Parts 1 and 2 (sub-steps 1-4) are done: the switch `PTF_ACCESS`, the growth rule, the addendum and amendments, and a pilot at seeds 1-50, now running. Remaining: part 3 (sub-steps 5 and 6). Check the pilot, size the shards, dispatch the 500-seed jobs, then write the report. Nothing is a result yet.
 
 ## What shipped
-- compassionism-simulation [PR 81](https://github.com/BetterToBest/compassionism-simulation/pull/81), merged `a7574cc` (checks green). Switch `PTF_ACCESS`, study row option `pa`: `'members'` (the default, the engine as it was), `'open'`, or `{fix}`. Every member-only rule sorted in `dev/DECISIONS.md` (S55). Reading in plain words: `dev/reports/s55-ptf-access-reading.md`. Also `paUnitSuite` (4 tests), TESTBED_SPEC, and an engine lineage link.
-- research-update: PLAN.md marks S55 part 1 done (row 22a and its section).
-
-## What `'open'` does
-- Each zone has a PTF share s of its essential sales. A zone is a community of the layer, or the whole population without it. Every adult in the zone, member or not, buys the share s of food and utilities at PTF prices. Nobody buys more.
-- The 40% and 55% tests read s, and so does PTF's damping of outside inflation.
-- Each zone starts at its starting member share. `fix` holds every zone at one value (Duke's sweep, 10% to 100%). s does not grow yet: that is part 2.
-- 8 customer rules are opened at share s: the price cut, the ESP price pool, its sizing, the private ESPs' mirror, θ's BLEI term, PTH's cut on utilities, cost accounting, and the plan's health cut.
-- 7 rules are kept for members: joining and leaving, capacity on joining, the ESP workforce option, PTH, the layer's placement, reporting, and the conversion bonus 1.30 + θ. The Hub gives that bonus to PTF *workers* as an employment incentive. The model has no PTF workforce, so it stays with members, and open-against-members measures access alone (a stated limit).
+- compassionism-simulation [PR 82](https://github.com/BetterToBest/compassionism-simulation/pull/82), merged `0c93593` (checks and guard green). It adds the growth rule under `'open'`, with defaults `{grow: true, cap: 'own', ops: 'hub', dem: 0.49}`:
+  - **Capacity:** the PTFs' own capital, c = c0 + capital per adult ÷ $18,862 (d101). The d137 borrowing still serves membership only.
+  - **Operations:** the BLEI paper sets PTF prices at cost, so this limit never binds. With outside running costs (step 5 margins), sales cover 65%/47% of costs and the share stays at its start.
+  - **Demand:** a labelled ceiling of 0.49 (S Group's 49.0% of Finland's grocery sales, 2025, PTY/NielsenIQ), swept at 0.25, 0.75 and 1.
+  - New keys `paCap`, `paOps`, `paDem`, `paCv`, and the paths `paS*` and `paC*`. Records: `dev/DECISIONS.md` (S55 part 2) and `dev/reports/s55-ptf-growth.md`.
+- compassionism-sim-results [PR 21](https://github.com/BetterToBest/compassionism-sim-results/pull/21), merged `30e0b21`: `program.js` studies T, U, U10, V, V10, VJ, W, W10, Y. Its `--check` confirms every open row is a frozen row with `pa` added.
+- research-update PR 65: `prereg/2026-11-ptf-access-addendum.md` (Q24-Q28; headline Reference, 10,000 adults, 20 years, C2.2). Also study programme Amendment 11, layer addendum Amendment 2, run manifest Amendment 6 (jobs, about 108 runner-hours), and PLAN.md.
 
 ## Checks
-- Guard test identical: 25 rows × 20 seeds × 483 outputs, all three environments.
-- `validate`, `unit` (253) and `domtest` (153) pass.
-- Engine lineage: link 34f91a85b94a → 8bb948abed0e, with all six 12-seed release panels unchanged.
-- `study_data.py --check` and `unsourced_check.py` pass. Their patterns for the damping constant were updated.
-- CI green on PR 81 (checks and guard jobs).
+- Guard test identical (25 rows × 20 seeds × 483 outputs, three environments). Lineage link 8bb948abed0e → 68b5d6170719, all six panels unchanged.
+- `validate`, `unit` (257) and `domtest` (153) pass. `unsourced_check`, `study_data --check` and `glossary --check` pass.
+- Smoke run: T's members-only rows equal `prog-a-ce8d030` for seed 1 on all 55 kept measures.
 
-## In flight
-- Nothing.
+## In flight (GitHub Actions, workflow run-study, engine `0c93593e1ea502555387e42215b79f290a60f127`, seeds 1-50, 500 adults, 20 years, 1 shard each)
+- [Run 81](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/42451976202) `pilot55-t` (with `--members`); [82](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/42451978934) `pilot55-u`; [83](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/42451981351) `pilot55-v`; [84](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/42451983498) `pilot55-w`; [85](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/42451985431) `pilot55-y`.
+- Results land in `pilot55-<t|u|v|w|y>-0c93593/` with `DONE` when in. First check: T's members rows (`*.cps.main`) must equal `prog-a-ce8d030`'s for seeds 1-50 on every kept measure.
 
 ## Decisions waiting
-- None new. D16 is answered (Nov 7).
+- None new.
 
 ## Next step
-**S5** (participation threshold; sonnet, medium) is next in the Order table. S39 and S55 part 2 can also start. S7 waits on S5 and S55.
-
-## For S55 part 2
-- Operations limit: start from the BLEI paper's section 3 cost structure, which cites Errasti et al. 2003 and Whyte and Whyte 1991. There, variable costs are 35-40% of the market price, overhead 20-25%, profit 15-20%, and PTF overhead 5-8%. Add outside retail data, opened and cited (for example Census Annual Retail Trade Survey margins for grocery stores).
-- Capacity limit: c = min(1, c0 + capital per adult ÷ $18,862) (ledger d101) is counted in members today. Part 2 applies it to s.
-- The growth rule goes in `paYear` (index.html), which runs before any test reads s.
+**S5** (participation threshold; sonnet, medium) is next in the Order table. **S55 part 3** (opus, xhigh) can start once the pilots are `DONE`: check them, set shards from their timings (manifest Amendment 6), dispatch the nine 500-seed jobs, then report. S39 can also start. S7 waits on S5 and S55.
 
 ## Pitfalls
-- A `//` comment appended mid-line silently cut a line of the engine. Put comments at line ends only.
-- `dev/tools/study_data.py` and `unsourced_check.py` read engine text with patterns. Grep `dev/tools` after editing an engine line.
-- The lineage proof takes about 15 minutes on 4 cores, and domtest fails until it is committed.
-- The GitHub plugin failed to connect again. The built-in GitHub tools worked.
+- `earlier-engine.html` carries the page's script. Run `python3 dev/tools/sync_earlier.py` after any engine edit, or domtest fails on drift.
+- A `PA` object built by hand in a test now needs the growth defaults (`Object.assign({}, PA_DEFAULTS, ...)`).
+- The reporting hook is called twice for year 0. Count years by index, not by calls.
+- The worker restarted twice this session. Long local runs (lineage, about 15 minutes) survived on disk, but check `git status` after a restart.
