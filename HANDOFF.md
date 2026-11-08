@@ -4,7 +4,7 @@
 S55 is **partly done**. Part 1 (sub-steps 1 and 2) is done: every member-only rule in the engine is sorted, and the switch `PTF_ACCESS` is built. Remaining: part 2 (sub-steps 3 and 4: the growth rule, then the dated amendments and a pilot); part 3 (sub-steps 5 and 6: the runs on Actions and the report). No study has run with the switch, and nothing is a result yet.
 
 ## What shipped
-- compassionism-simulation [PR 81](https://github.com/BetterToBest/compassionism-simulation/pull/81), (checks running at this commit; merge recorded below once green). Switch `PTF_ACCESS`, study row option `pa`: `'members'` (the default, the engine as it was), `'open'`, or `{fix}`. Every member-only rule sorted in `dev/DECISIONS.md` (S55). Reading in plain words: `dev/reports/s55-ptf-access-reading.md`. Also `paUnitSuite` (4 tests), TESTBED_SPEC, and an engine lineage link.
+- compassionism-simulation [PR 81](https://github.com/BetterToBest/compassionism-simulation/pull/81), merged `a7574cc` (checks green). Switch `PTF_ACCESS`, study row option `pa`: `'members'` (the default, the engine as it was), `'open'`, or `{fix}`. Every member-only rule sorted in `dev/DECISIONS.md` (S55). Reading in plain words: `dev/reports/s55-ptf-access-reading.md`. Also `paUnitSuite` (4 tests), TESTBED_SPEC, and an engine lineage link.
 - research-update: PLAN.md marks S55 part 1 done (row 22a and its section).
 
 ## What `'open'` does
@@ -19,7 +19,7 @@ S55 is **partly done**. Part 1 (sub-steps 1 and 2) is done: every member-only ru
 - `validate`, `unit` (253) and `domtest` (153) pass.
 - Engine lineage: link 34f91a85b94a → 8bb948abed0e, with all six 12-seed release panels unchanged.
 - `study_data.py --check` and `unsourced_check.py` pass. Their patterns for the damping constant were updated.
-- CI green on PR 81.
+- CI green on PR 81 (checks and guard jobs).
 
 ## In flight
 - Nothing.
