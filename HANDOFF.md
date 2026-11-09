@@ -4,7 +4,7 @@
 S58 is **done** in one session. S7 stays held until round 2 is ready for release (PLAN.md).
 
 ## What shipped
-- research-update `prereg/2026-11-s58-price-rule.md` (committed before the build; Amendment 1 before the pilot: a weak pull below normal, κ₂, and one joint regression for κ, κ₂, ρ; Amendment 2 after the first run failed the nesting check: option `rs`, pilot rerun); PLAN.md (S58 done, S63 carries); this file. Pull request: see the ledger log line.
+- research-update `prereg/2026-11-s58-price-rule.md` (committed before the build; Amendment 1 before the pilot: a weak pull below normal, κ₂, and one joint regression for κ, κ₂, ρ; Amendment 2 after the first run failed the nesting check: option `rs`, pilot rerun); PLAN.md (S58 done, S63 carries); this file. Pull request [79](https://github.com/BetterToBest/research-update/pull/79).
 - compassionism-simulation [PR 90](https://github.com/BetterToBest/compassionism-simulation/pull/90): switch `PRICE_RULE` (row option `pr`; off = today's rule) and study option `mf` (money-flow table, reporting only). Main values from FRED data in the rule's own form (`sources/s58_price_rule.py`, inputs `sources/s58_fred/`): κ 0.445, κ₂ 0.051, ρ 0.275, α 0.508, slack 0. Guard identical, lineage linked twice, validate, unit (282), domtest (153) pass. Report `dev/reports/s58-price-rule.md`; tables `dev/runs/s58-price/`; S39 report correction note (conversion tax).
 - compassionism-sim-results [PR 25](https://github.com/BetterToBest/compassionism-sim-results/pull/25): `s58-price-74ca1a8` (seeds 1-100, three environments, 16 rows; run.txt, SHA256SUMS, DONE).
 
