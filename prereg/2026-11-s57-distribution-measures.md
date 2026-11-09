@@ -56,3 +56,7 @@ Every cell is published: the full tables and the per-seed estimates (every row, 
 
 ## Amendments
 Dated, with the reason, below this line. Nothing above changes after the first run.
+
+### Amendment 1 (2026-11-09, after the pilot's first analysis, before it was published)
+- The Holm step reads the normal tail of each cell's mean over its bootstrap standard error, not the bootstrap tail share. Reason: a 2,000-replicate bootstrap tail share cannot go below 1/2,001, which is above Holm's first threshold (0.05/378) for a family of 378 cells, so no cell could survive; the first analysis showed 0 of 366. The bootstrap tail share stays in `estimates.csv` as `p_boot`. Intervals are unchanged (percentile, 2,000 replicates, seed 57).
+- Pilot rows: the no-programme run, the release row and the C2.2 design on the frozen yardstick, as the Design section says; Adverse and Stress share one no-programme run (they differ only in the programme's settings), so their no-programme columns are identical. Year 0 is identical in all three environments.
