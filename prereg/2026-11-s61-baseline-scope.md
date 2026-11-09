@@ -70,3 +70,13 @@ Every cell is published, matching or not, in compassionism-simulation `dev/repor
 
 ## Amendments
 Dated, with the reason, below this line. Nothing above changes after the first run.
+
+**Amendment 1, Nov 9, 2026 (after the build, before the pilot; no pilot row had run).** Choices made while building that the text above did not fix (compassionism-simulation `dev/DECISIONS.md`, S61):
+1. An adult outside the labour force carries its own income in the engine's wage field from the start (as a retiree's benefit is carried each year), so every Year-0 measure reads it.
+2. Where such an adult has no own income, the engine's labour-raise ratio divided 0 by 0; it is set to 1 for these adults only (off: unchanged).
+3. Starting wealth is the household's SCF draw, as for every household, not drawn by labour-force status: a stated limit (adults outside the labour force start with the same wealth distribution as workers).
+4. The floor rule's threshold is a share of the household's year-0 budget (`CFG.HH_FPL` over the budget at year-0 prices, childcare included), applied to the year's cost.
+5. Q4's basket poverty by reason is not in the pilot tool (it needs a per-adult reporting key); the pilot reports official poverty, family net worth and the share in debt by reason, and S63 lists the key.
+6. The tally `drHit` (share of graded spending decisions the limit cut) and `drCut` (mean cut, year-0 dollars) are the secondary outcome "share of household-years whose spending was cut"; a decision is a couple's or a single adult's.
+7. Before this amendment the tool was smoke-tested at 2 seeds in Reference to check that it runs. Those figures were seen (for example, the cap reading at $2,500 left the share of families in debt almost where the frozen rule has it, while the limit of zero lowered it); nothing in the design, the criterion or the rows was changed after seeing them, and they are not reported.
+The pilot engine is the commit recorded in compassionism-simulation `dev/runs/s61-scope/` (each output's `_meta.manifest`).
