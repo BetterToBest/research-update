@@ -1,6 +1,6 @@
 # Preregistration: distribution measures (S57)
 
-Committed 2026-11-09 by S57, before the build and before any run. Engine: compassionism-simulation at `6e06c91d0a1c67447386e9aea3bf344817517190` (main, after S61). The build adds a reporting-only study option on a `claude/s57-distribution-measures` branch; the commit each result comes from is written in its `run.txt` (a result is valid only if the guard test, the unit tests and the checks in "Decision rules" passed on that commit).
+Committed 2026-11-09 by S57, before the build and before any run. (Two wording corrections made the same day, before any run: the income Palma flag, and the test in K2(f).) Engine: compassionism-simulation at `6e06c91d0a1c67447386e9aea3bf344817517190` (main, after S61). The build adds a reporting-only study option on a `claude/s57-distribution-measures` branch; the commit each result comes from is written in its `run.txt` (a result is valid only if the guard test, the unit tests and the checks in "Decision rules" passed on that commit).
 
 This is reporting only. It adds measurements to what a run already computes. No random draw, no rule and no figure changes; with the option off, every output is identical to today's.
 
@@ -14,7 +14,7 @@ This is reporting only. It adds measurements to what a run already computes. No 
 
 ## Design
 - Study option `dm` (true, or an object overriding the defaults), set on a study's options, so it applies to every row of the study, the no-programme rows included. Rows are therefore compared by the analysis tool on the same seed ("both runs of every row").
-- Reported at two moments: the end of Year 0 (suffix `0`, the start, after the first year's flows, as the engine's own Year 0 figures are) and the end of the last year (suffix `E`). The run-average labour shares (`PY`) use every year.
+- Reported at two moments: the end of Year 0 (suffix `S`, the start, after the first year's flows, as the engine's own Year 0 figures are) and the end of the last year (suffix `E`). The run-average labour shares (`PY`) use every year.
 - Units: every dollar in Year-0 dollars (nominal divided by the engine's price level for the year, as `tbRepYear` does). Wealth is the adult's net worth with debts kept (`a.wealth`). Income is the adult's disposable income (`a._tbDisp`, the Gini's own income). The unit is the adult; the family is used only for debt, as the engine's families-in-debt figure does.
 - Weights: every adult carries a weight `a._w` (1 until S59's tail exists). Every share, percentile and rate below is weighted; at weight 1 each equals the plain version (unit test).
 - Studied rows for the pilot (reduced seeds, session machine, free): the frozen yardstick's release row (`frozenRow`, CPS earnings, today's safety net) and the C2.2 design, each against its no-programme run; the three environments (Reference, Adverse, Stress); seeds 1-100; 500 adults; 20 years. The frozen batch (S47/S48) stores no per-adult data, so none of these measures can be recomputed from it except `eGiniWN`, which it already holds; the batch's rows are listed for S63, which decides whether the main rows run again with `dm` on.
@@ -23,11 +23,11 @@ This is reporting only. It adds measurements to what a run already computes. No 
 ## Outcomes
 Family: preregistered secondary (the study programme's five primary outcomes and their Holm adjustment are unchanged by this step). Every table names its family and whether its intervals are adjusted (review item A4).
 
-Per run and moment (keys `dm<measure><0|E>`; the matrix and grid keys carry an index):
+Per run and moment (keys `dm<measure><S|E>`, S the end of Year 0 and E the end of the last year; the matrix and grid keys carry an index):
 1. Gini of wealth with debts counted as zero, `eGiniW`, and with debts kept, `eGiniWN` (both already in every run; named in full in every table).
 2. Top 1% and top 10% share of wealth, and of disposable income, in percent of the total (wealth net worth with debts kept, so a share can exceed what a debt-free reading gives).
 3. Bottom 50% share of wealth (can be negative where debts exceed assets), and of income.
-4. Palma ratio of income: the top 10% over the bottom 40% of disposable income.
+4. Palma ratio of income: the top 10% over the bottom 40% of disposable income (flag key `dmYpOk` = 1 when the bottom 40% hold positive income; the ratio is 0 otherwise and left out of every table).
 5. Wealth top-10-to-bottom-40 ratio, named exactly that, reported only where the bottom 40% hold positive wealth (flag key `dmWrOk` = 1; otherwise the ratio is set to 0 in the key and left out of every table).
 6. Real wealth and real income at percentiles 1, 5, 10, 15, ..., 95, 99 (21 points; P10, P25, P50, P75, P90, P99 among them). P99.9 and the top 0.1% share are not reported: 500 adults cannot support them, and S59's tail comes first.
 7. Growth-incidence curve: the difference between the programme run's and the no-programme run's value at each of the 21 percentiles, wealth and income, last year, same seed (derived by the analysis tool from item 6; it compares the same rank in the two distributions, not the same person, which the tool states).
@@ -46,7 +46,7 @@ Per run and moment (keys `dm<measure><0|E>`; the matrix and grid keys carry an i
 ## Decision rules
 Written before the build; each is a pass/fail on the engine, not on the results.
 - K1. With `dm` off, a full-output diff against main is identical and the guard test passes; with it on, every key the engine already reports is identical (reporting only).
-- K2. Unit tests: (a) weights all 1 equal the plain quantile and shares; doubling one adult's weight equals listing the adult twice; (b) shares: top 10% >= top 1%, the bottom 50% + the top 50% = 100%; a perfectly equal population gives shares 1, 10, 50 and Palma 0.25; (c) the mobility rows sum to 100 and the identity case gives the identity matrix; (d) the labour share is between 0 and 100 with no programme income equal to wages; (e) debt keys on a hand-made set of families; (f) `eGiniWN` <= `eGiniW` is not assumed (it can exceed 1); the unit test checks that both are reproduced from the dm module's own Gini on the same data.
+- K2. Unit tests: (a) weights all 1 equal the plain quantile and shares; doubling one adult's weight equals listing the adult twice; (b) shares: top 10% >= top 1%, the bottom 50% + the top 50% = 100%; a perfectly equal population gives shares 1, 10, 50 and Palma 0.25; (c) the mobility rows sum to 100 and the identity case gives the identity matrix; (d) the labour share is between 0 and 100 with no programme income equal to wages; (e) debt keys on a hand-made set of families; (f) in a run, the families-in-debt share in the last year equals the engine's own `hhDebt20`, and `eGiniW` and `eGiniWN` are both reported in every run (`eGiniWN` can exceed `eGiniW` or fall below it; no order is assumed).
 - K3. The `lineage` record, the three checks (`validate`, `unit`, `domtest`) and `no_figure_change.py` pass; the new data file is new, so no published number moves.
 - If the no-programme top 10% share at Year 0 differs from the CBO/DFA checks by more than 10 points, the report says the start is not matched and which way, and S63 is told; the step makes no change to the start.
 - The pilot's statements are limited to what the intervals support: a measure is said to differ with the programme only where the paired interval excludes zero, and the report does not describe a difference as large or small without the dollars or points beside it.
