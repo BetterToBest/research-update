@@ -4,8 +4,8 @@
 S56 is **done**. Duke pasted two reviews (Grok, ChatGPT) of S39, S55 and the inequality measures. Every point was checked against the reports and code, every cited source that can be opened was opened, and each point is accepted, adapted or declined with a reason in `audits/2026-11-s39-s55-review-triage.md`.
 
 ## What shipped
-- research-update [PR 74](https://github.com/BetterToBest/research-update/pull/74): the triage; PLAN.md (S7 and S57-S63 amended, new S66, S60 after S61, D18 as answered); study programme Amendment 12; correction notes in the audit prompt and the round-2 note; this file.
-- compassionism-simulation [PR 87](https://github.com/BetterToBest/compassionism-simulation/pull/87): dated correction note in the S39 report (section 6); MODEL_SPEC section 9 (interval method, `giniW` vs `giniWN`); DECISIONS.md. Squash-merged once its checks (checks, guard) pass; if it is still open, read its checks first.
+- research-update [PR 74](https://github.com/BetterToBest/research-update/pull/74) (merged, 0d6c11e): the triage; PLAN.md (S7 and S57-S63 amended, new S66, S60 after S61, D18 as answered); study programme Amendment 12; correction notes in the audit prompt and the round-2 note; this file.
+- compassionism-simulation [PR 87](https://github.com/BetterToBest/compassionism-simulation/pull/87): dated correction note in the S39 report (section 6); MODEL_SPEC section 9 (interval method, `giniW` vs `giniWN`); DECISIONS.md. Squash-merged (7895f27) after its checks (checks, guard) passed.
 - Ledger synced (hub version 101): S56 done, S66 added, D19, D20, links for D18, next, log.
 
 ## Findings (plain words)
