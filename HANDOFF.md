@@ -4,9 +4,10 @@
 S61 is **done**. Duke asked at the start (Nov 9) to hold S7 until round 2 is ready for release: S7 now runs just before S65, and S57 and S58 no longer wait on it (PLAN.md).
 
 ## What shipped
-- research-update (branch `claude/friendly-ptolemy-lh8djy`): `prereg/2026-11-s61-baseline-scope.md` (criterion C1-C4 fixed before the build; Amendment 1, build choices; Amendment 2, the own-income table corrected to 0.5-point steps after a check against its source); PLAN.md (S7 held; S61 done; S63 carry-forward; D19 and D20 as answered); this file.
-- compassionism-simulation [PR 88](https://github.com/BetterToBest/compassionism-simulation/pull/88): switch `LF_SCOPE` (row option `lf`) and the debt reading extended (`dr`: `lim` moved with prices, main $2,500 from the SCF 2025; `liq`; `fl: 'fpl'`); sources `sources/lf_scope.py`, `sources/s61_borrowing.py`; pilot tool and tables; report `dev/reports/s61-baseline-scope.md`; DECISIONS.md. Guard identical, lineage linked, validate, unit (264), domtest (153) pass.
-- compassionism-sim-results [PR 23](https://github.com/BetterToBest/compassionism-sim-results/pull/23): folder `s61-scope-1d9ab84` (pilot, seeds 1-100, three environments; run.txt, SHA256SUMS, DONE).
+- research-update [PR 76](https://github.com/BetterToBest/research-update/pull/76) (merged, 6e4c865): `prereg/2026-11-s61-baseline-scope.md` (criterion C1-C4 fixed before the build; Amendment 1, build choices; Amendment 2, the own-income table corrected to 0.5-point steps after a check against its source); PLAN.md (S7 held; S61 done; S63 carry-forward; D19 and D20 as answered); this file.
+- compassionism-simulation [PR 88](https://github.com/BetterToBest/compassionism-simulation/pull/88): switch `LF_SCOPE` (row option `lf`) and the debt reading extended (`dr`: `lim` moved with prices, main $2,500 from the SCF 2025; `liq`; `fl: 'fpl'`); sources `sources/lf_scope.py`, `sources/s61_borrowing.py`; pilot tool and tables; report `dev/reports/s61-baseline-scope.md`; DECISIONS.md. Guard identical, lineage linked, validate, unit (264), domtest (153) pass; CI green; squash-merged (6e06c91).
+- compassionism-sim-results [PR 23](https://github.com/BetterToBest/compassionism-sim-results/pull/23): folder `s61-scope-1d9ab84` (pilot, seeds 1-100, three environments; run.txt, SHA256SUMS, DONE); merged (e8dc6ba).
+- Ledger synced (hub version 106): S61 done, S7 held, S57/S58 links, next, left, log.
 
 ## Findings (plain words; pilot at 100 seeds)
 - A positive borrowing limit changes how deep households fall, not how many fall into debt: families in debt at Year 20 (Reference) 22.0% frozen, 21.6% with the $2,500 cap; only a limit of zero gives 12.3%. The gap to the SCF's 9.3% stays open; no constant was tuned to it.
