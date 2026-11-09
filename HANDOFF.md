@@ -4,9 +4,9 @@
 S57 is **done**. S7 stays held until round 2 is ready for release (PLAN.md).
 
 ## What shipped
-- research-update `prereg/2026-11-s57-distribution-measures.md` (committed before the build; Amendment 1: Holm reads the normal tail of the mean over its bootstrap standard error, because a 2,000-replicate bootstrap tail share cannot reach Holm's first threshold for 378 cells); PLAN.md; this file. Pull request: see the list at the end of this file once merged.
+- research-update `prereg/2026-11-s57-distribution-measures.md` (committed before the build; Amendment 1: Holm reads the normal tail of the mean over its bootstrap standard error, because a 2,000-replicate bootstrap tail share cannot reach Holm's first threshold for 378 cells); PLAN.md; this file. Pull request [78](https://github.com/BetterToBest/research-update/pull/78).
 - compassionism-simulation [PR 89](https://github.com/BetterToBest/compassionism-simulation/pull/89): study option `dm` (reporting only): top 1%/10% and bottom 50% shares of wealth and income, income Palma, wealth top-10-to-bottom-40 ratio (only where the bottom 40% hold positive wealth), 21-point real percentile grid, wealth-fifth mobility, labour's share, debt depth; weights ready for S59 (all 1). Guard test identical, lineage linked, validate, unit (272), domtest (153) pass. Report `dev/reports/s57-distribution-measures.md`; tools `dev/tools/s57_dm.js`, `s57_table.py`; findings data file `data/studies/s57-distribution.json` (new; no published number moved).
-- compassionism-sim-results [PR 24](https://github.com/BetterToBest/compassionism-sim-results/pull/24): `s57-distribution-f156393` (seeds 1-100, three environments; run.txt, SHA256SUMS, DONE).
+- compassionism-sim-results [PR 24](https://github.com/BetterToBest/compassionism-sim-results/pull/24): `s57-distribution-f156393` (seeds 1-100, three environments; run.txt, SHA256SUMS, DONE); merged (4b48276).
 
 ## Findings (plain words; pilot at 100 seeds, intervals unadjusted; 366 of 378 estimates exclude zero, 359 survive Holm)
 - Start with no programme: top 10% hold 64.6% of wealth (CBO 69% / 60%), bottom half 3.6% (CBO 6%), top 1% 20.8% (Fed 32.5%): the top 1% gap is for S59.
