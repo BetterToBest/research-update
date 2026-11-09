@@ -39,6 +39,16 @@ Model and effort per step are below. "fable" means: use it only if it uses no us
 | 22 | S39 | Outside engine cross-check (BeforeIT.jl), after the scale results; part 1 done Nov 8 (`prereg/2026-11-s39-outside-crosscheck.md`; engine year paths `s39-path-ce8d030`; BeforeIT module and job; runs `s39-full`, `s39-k1` dispatched); **done Nov 9** (part 2: report sections 4-6, compassionism-simulation PR 86; BeforeIT pass-through 0 by its price rule against the engine's 1; rule 4 ledger decision) | opus | high | S48; part 2: `DONE` in both folders |
 | 22a | S55 | Open PTF access: anyone buys at PTF prices; both density tests read the PTFs' share of a zone's essential sales; switch `PTF_ACCESS`, growth limited by capacity, operations and demand, fixed-share sweep 10%-100% (D16); 2-3 sessions; part 1 done Nov 8 (sub-steps 1-2: the member-only rules sorted, switch `PTF_ACCESS` built, off = identical; compassionism-simulation PR 81); part 2 done Nov 8 (sub-steps 3-4: growth rule, PR 82; addendum `prereg/2026-11-ptf-access-addendum.md`, studies T-Y; job script, results PR 21; pilot at seeds 1-50 dispatched); part 3 done Nov 8 (sub-step 5: pilot checked, nine 500-seed jobs dispatched, manifest Amendment 7); **done Nov 8** (part 4, sub-step 6: the report, compassionism-simulation `dev/reports/s55-open-access.md`, PR 83) | opus | xhigh | S38, D16 (answered Nov 7) |
 | 23 | S7 | Simulation release (tag, hashes, changelog, findings page) | sonnet | medium | S36, S38, S5, S55 |
+| 23a | S56 | Outside reviews of S39, S55 and the inequality measures: **you** run `audits/2026-11-s39-s55-audit-prompt.md` in two or more AI systems and paste the replies back (Chat in this Project, or `/start-session S56`); Claude triages them into `audits/2026-11-s39-s55-review-triage.md` and amends S57-S65 | opus | high | your pasted reviews |
+| 23b | S57 | Engine round 2: distribution measures (top shares, Palma, real percentiles, growth-incidence curve, mobility, labour share); reporting only | sonnet | high | S7 |
+| 23c | S58 | Engine round 2: a price rule that answers demand and capacity, behind a switch; conversion tax and U (may take 2 sessions) | opus | xhigh (or fable, high) | S7, S56 |
+| 23d | S59 | Engine round 2: weighted top tail and returns on capital, behind switches (may take 2 sessions) | opus | xhigh | S57, S56 |
+| 23e | S60 | Engine round 2: bargaining power (outside option, employer markdown), behind a switch | opus | xhigh | S58, S56 |
+| 23f | S61 | Engine round 2: baseline scope (adults outside the labour force; the debt-drift spending rule), behind switches | opus | high | S56 |
+| 23g | S62 | Engine round 2: PTF realism (sourced running costs, PTF jobs and wages), behind a switch | opus | high | S60, S56 |
+| 23h | S63 | Engine round 2: preregister and freeze (readings beside the main row; main row chosen before results; dry run) | opus | high | S57-S62 |
+| 23i | S64 | Engine round 2: run on Actions and report (several sessions) | opus | high | S63 |
+| 23j | S65 | Release 2 and findings page; S40 regenerates Hub figures | sonnet | medium | S64 |
 | 24 | S11 | BLEI visual series exported, visual suite rebuilt (S12 is yours) | sonnet | medium | S7 |
 | 25 | S13 | Outside audits of the release (second round) | opus | high | S7 |
 | 26 | S24 | Corrections package landed on the Hub, PDFs rebuilt | sonnet | medium | S2, S23, S29, S30 |
@@ -49,11 +59,11 @@ Model and effort per step are below. "fable" means: use it only if it uses no us
 | 31 | S41 | Site and wiki design refresh | sonnet | high | S40 |
 | 32 | S43 | Links and publications: portal, x-cents, NEEC, Academia papers | sonnet | medium | D3 (answered in the ledger's message box, Nov 1) |
 | 33 | S42 | Machine-readable files regenerated from one manifest | sonnet | medium | S43 |
-| 34 | S44 | Hub v2 fresh-eyes review | opus | high | S40-S43 |
-| 35 | S45 | Advocacy kit from the release | sonnet | medium | S7, S44 |
+| 34 | S44 | Hub v2 fresh-eyes review | opus | high | S40-S43; S65 (D18 default) |
+| 35 | S45 | Advocacy kit from the release (release 2 under D18's default) | sonnet | medium | S7, S44; S65 (D18 default) |
 | 36 | S15, S16 | CoMSES package and fact sheet; share and access kit | sonnet | medium | S7 |
 | 37 | S19-S22 | Comparison items (optional; the comparison stays frozen). S19 after S48, from S53's series, no new run; S21's question is answered by S47's wOut reading | opus | medium | S7 |
-| 38 | S8 | Hand back to NEEC | sonnet | low | S7, S25, S44 |
+| 38 | S8 | Hand back to NEEC | sonnet | low | S7, S25, S44; S65 (D18 default) |
 | 39 | N-S70, N-S71, N-S72, N-S42, N-S44, N-S73, N-S43, N-S49, then S26 | NEEC v2 and v2.1, as the NEEC ledger orders them | opus | high | S8 |
 
 ## Steps
@@ -313,6 +323,51 @@ As ledger S7, plus: the release carries S34-S38, S55, S5, S6 and S14 behind thei
 From S39 (Nov 9): any findings-page sentence on inflation says the figure rests on the engine's placeholder price rule (all unmatched new money reaches prices) and, if it cites BeforeIT, gives its reason (its prices follow expected inflation and cannot answer demand); wording in compassionism-simulation `dev/reports/s39-outside-crosscheck.md`, section 6, item 4.
 
 From S55 (Nov 8): the findings page shows the open-access tables beside the members-only ones. The Hub's PTF figures (S25, S40) rest on open access, the reading Duke confirmed (D16). Any open-access wealth figure carries the addendum's rule-2 sentence: it depends on the demand ceiling, a design parameter, and on the share being able to grow. Before the page uses the fixed-share curve, check its low end. Under the C2.2 design in Reference and Adverse, wealth is better at a 10% share than at 20-30%, with lower inflation, at both sizes. The S55 report did not trace why (`dev/reports/s55-open-access.md`, section 4).
+
+### Engine round 2 (S56-S65): after S39 and S55
+Raised Nov 8 in Chat. Why, the six improvements, the order and D18: `audits/2026-11-engine-round-2.md`. Every engine change keeps compassionism-simulation's guardrails 1-9: behind a switch, off = bit-identical (guard test), CRN-paired on seeds 1-500 in all three environments, eight draws per agent-year, no constant tuned to a target, limits reported. Each build step ends with a plain-words reading in `dev/reports/` ("Claude's reading", sources opened and cited, labelled design parameters listed with the ranges to sweep) and unit tests for each mechanism working alone. Nothing is run at 500 seeds before S63's freeze; pilots at reduced seeds on Actions only to check the mechanism works.
+
+**D18 (default):** S24, S25 and S40 proceed on the S7 release (S40's blocks regenerate by tag); S44, S45 and S8 wait for S65, so Hub v2 is not launched on the placeholder price rule.
+
+### S56 · Outside reviews pasted back and triaged (you, then Claude)
+You: run `audits/2026-11-s39-s55-audit-prompt.md` (also the Project doc `claude/audit-prompt-s39-s55.md`) in two or more AI systems with web access, then paste each full reply into Claude, in Chat in this Project or in a session started with `/start-session S56`. Several replies can come in one message or several; say which system wrote each. Claude: check each claim against the reports and code before accepting it; open every source a review cites (a citation not found is recorded as such); sort every point into accept, adapt or decline, with a reason, in `audits/2026-11-s39-s55-review-triage.md`; fold the accepted points into the S57-S65 sections here (sources, parameter ranges, tests, outcomes); file a ledger decision for any point that changes the design rather than the model of it; correct any published report where a review finds a real error (a dated correction note, never a silent edit). If the reviews come in Chat, the Chat writes the triage file and plan edits in the same way. To start round 2 without reviews, write "start round 2 without the reviews" in the ledger message box.
+
+### S57 · Distribution measures (reporting only)
+Add to the study outputs, for both runs of every row: top 1% and top 10% shares of wealth (and of income), the Palma ratio (top 10% over bottom 40%), real wealth and income percentiles P10, P25, P50, P75, P90, P99, P99.9, a growth-incidence curve (each wealth and income percentile, programme against no programme, paired), a transition matrix between wealth fifths from year 0 to the last year, labour's share of income, and families in debt. Weighted versions ready for S59's tail (weights all 1 until then). Reporting only: `no_figure_change.py` and the guard test prove every published figure unchanged. Add the measures to the findings page's data file. Recompute them for the frozen batch where its per-seed outputs allow; otherwise list them for S63.
+
+### S58 · A price rule that answers demand and capacity (may take 2 sessions)
+1. Evidence, opened and cited: the pass-through of large cash transfers and money-financed spending into prices (local price effects of large cash-transfer programmes, pandemic stimulus, historical monetary financing, and the model literature), with the range each supports and whether any covers 30-50% of household income a year.
+2. A rule behind switch `PRICE_RULE` ('qt' = today, bit-identical; 'capacity'): prices respond to demand relative to capacity; output responds where there is slack; wages pass into costs; the essentials rule kept. Parameters sourced or labelled and swept (the old pass-through range 0.25-1 stays as a reading).
+3. S39's open item (b): whether the conversion tax the Source keeps leaves circulation; net it from U behind the same switch if so.
+4. Unit tests: no new money → today's path; slack → output rises, prices little; at capacity → prices rise. Pilot on Actions at reduced seeds against study A's rows.
+
+### S59 · A weighted top tail and returns on capital (may take 2 sessions)
+1. A top tail fitted to the SCF's top percentiles and the Forbes 400, carried by population weights so a small number of very wealthy agents represent the right share of people; weights enter the measures only, so the paired design and the eight-draws guarantee hold.
+2. Returns on savings that rise with wealth, and business ownership with its income, from opened sources (heterogeneous-returns studies; SCF portfolio shares); behind switches `WEALTH_TAIL` and `RETURNS` (off = bit-identical).
+3. Check against the SCF and the Fed's Distributional Financial Accounts (top 1% share, wealth Gini) as a comparison, never a tuning target; report any gap.
+4. State how the programme's flows reach owners (the ESP owners rule) and measure whether concentration rises or falls under each design.
+
+### S60 · Bargaining power
+A worker's outside option and an employer markdown, behind switch `BARGAIN`: a Basic Unit raises reservation wages; wages move with the markdown. Magnitudes from opened sources (markdown estimates for the US; evidence from unconditional cash and basic-income studies on wages, hours and job search). One wage elasticity for every change in the return to work (guardrail 7); the hours response kept consistent. Unit tests for each part alone. Report what share of any wage gain comes from the outside option.
+
+### S61 · Baseline scope
+1. Adults outside the labour force at CPS ASEC 2026 shares by age and household type (caregivers, disability, students, early retirees), with their incomes and benefits, behind switch `LF_SCOPE`.
+2. The debt drift (S34; I15): preregister the criterion first, then build both candidate rules (spending capped at income plus a borrowing limit; the graded rule only above a subsistence floor) behind a switch, from sourced behaviour (CE Survey, SCF borrowing). Compare with the SCF's 9.3% of families in debt as a check, not a target.
+3. Report each against S34's table.
+
+### S62 · PTF realism
+1. Running costs of not-for-profit grocers, utilities and childcare from opened sources (cooperative and public-utility financial data), as a reading beside the Hub's at-cost structure; the operations limit then can bind.
+2. PTF jobs and wages, including the conversion bonus the Hub gives to PTF workers (S55 kept it with members because the model had no PTF workforce), using S60's wage setting.
+3. Behind switch `PTF_OPS`; unit tests; report what each changes under open access.
+
+### S63 · Preregister and freeze round 2
+As S32 and S47 did: `prereg/` file (questions, rows, outcomes including S57's measures, decision rules), each new switch as a labelled reading beside the main row, both designs, three environments, 20 and 40 years. Which readings join the main row is a ledger decision filed before any result, with Claude's recommendation. Dry run at 2 seeds, timings, run-manifest amendment, engine pinned.
+
+### S64 · Run and report round 2 (several sessions)
+Dispatch on Actions (free) as frozen; failed pieces resumed, never redesigned. One plain-words report per preregistered question, nulls and unfavourable results in full, with the charts and tables the findings page needs. The headline sentence on wealth names the price rule reading it rests on.
+
+### S65 · Release 2
+As S7: tag, hashes, changelog, findings page with round 2 beside release 1; S40's generator refreshes every Hub figure by the new tag (`--check` must pass); the Hub's inflation and wealth sentences updated to what round 2 shows.
 
 ### S11 · BLEI visuals
 As ledger S11 (and I1). S12 (which visuals go on which page) stays Duke's choice.

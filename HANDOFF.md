@@ -18,7 +18,12 @@ S39 is **done** (part 2 this session). Both result folders were complete (`DONE`
 - Nothing.
 
 ## Decisions waiting
-- D17: how Hub sentences on inflation say this. Default: the report's wording (section 6, item 4). Name the placeholder, give BeforeIT's figure with its reason, and say neither model measures the pass-through. Never "an outside model found no inflation".
+- D17: answered Nov 9 (default): Hub inflation sentences use the report's wording (section 6, item 4).
+- D18 (filed Nov 9 in Chat): what waits for engine round 2. Default: S24, S25 and S40 proceed on the S7 release; S44, S45 and S8 wait for release 2 (S65).
+
+## Planned in Chat, Nov 9
+- Engine round 2, steps S56-S65 (PLAN.md; why and order: `audits/2026-11-engine-round-2.md`): distribution measures, a price rule that answers demand and capacity, a weighted top tail with returns on capital, bargaining power, baseline scope, PTF realism; then preregister, run, release 2.
+- S56 is Duke's: run `audits/2026-11-s39-s55-audit-prompt.md` in two or more AI systems and paste the replies back; Claude triages them before S58-S62 start.
 
 ## Next step
 **S7** (sonnet, medium): the Simulation release and findings page; everything it waits on is done. Its inflation sentences follow D17's default (PLAN.md S7).
