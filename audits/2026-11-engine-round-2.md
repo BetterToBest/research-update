@@ -6,7 +6,7 @@ Raised by Duke in Chat on Nov 8, after the S39 and S55 reports. This note says w
 
 Three findings from the latest studies point at the same gaps:
 
-- **The price rule decides the wealth results.** The engine passes all new money not matched by output into prices (pass-through 1, a labelled placeholder). S39 showed an outside model (BeforeIT.jl) gives pass-through 0, but by its own rule, so the check bounds the question without answering it. Under C2.2 the engine's prices run about 35% a year, and that inflation is what erodes savings in every wealth result, including S55's open-access gain.
+- **The price rule decides the wealth results.** The engine passes all new money not matched by output into prices (pass-through 1, a labelled placeholder). S39 showed an outside model (BeforeIT.jl) gives pass-through 0, but by its own rule, so the check bounds the question without answering it. (Correction, Nov 9, S56: 0 and 1 are the two engines' assumptions, not bounds on the real pass-through, which could lie outside them.) Under C2.2 the engine's prices run about 35% a year, and that inflation is what erodes savings in every wealth result, including S55's open-access gain.
 - **A falling Gini can mislead.** Under C2.2 (Reference, 10,000 adults, 20 years) the wealth Gini falls from 0.728 to 0.346, while median real wealth falls from about $212,000 to $43,000. The gap narrows from both ends: debt nearly disappears, but savings above the bottom lose their value to modelled inflation. The Gini alone cannot tell readers which.
 - **The model cannot see concentration.** Starting wealth stops at the SCF's 99.5th percentile (about $10.8 million); savings earn no return; there is no business or property income; the only labour response is hours. So the model cannot show fortunes large enough to give leverage over wages, prices or politics, or whether the programme changes that. Duke's question (Nov 8): one person holding a billion while everyone else holds under $10,000 is very different from everyone else holding $500 million to $999 million, and the Gini does not separate them well.
 
@@ -30,6 +30,8 @@ Every mechanism follows the engine's guardrails: behind a switch, off = bit-iden
 ## How the outside reviews feed in
 
 The audit prompt (`audits/2026-11-s39-s55-audit-prompt.md`, also a Project doc) asks outside AI systems to review S39, S55 and the inequality measures, and to help with each of the six improvements: evidence, sources, parameter ranges, model designs. **S56 is Duke's step:** run the prompt in two or more systems and paste the replies back, in Chat in this Project or in a Claude Code session started with `/start-session S56`. Claude then triages every point (accept, adapt or decline, each with a reason) into `audits/2026-11-s39-s55-review-triage.md`, edits the S57-S65 plan, and files a ledger decision for anything that would change the design rather than the model of it. S58-S62 wait on S56 so their designs can use the reviews; S57 does not.
+
+**Done Nov 9 (S56):** Grok and ChatGPT replied; the triage is `audits/2026-11-s39-s55-review-triage.md`. It adds S66 (trace the low end of S55's fixed-share curve), moves S60 after S61, folds the reviews' sources and tests into S57-S63, and files D19 and D20. D18 was answered Nov 9: everything on the Hub that cites simulation figures waits for S65.
 
 If Duke would rather not wait for the reviews, he writes "start round 2 without the reviews" in the ledger's message box, and S58 starts.
 

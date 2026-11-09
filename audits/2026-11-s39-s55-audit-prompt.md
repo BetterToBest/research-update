@@ -2,6 +2,9 @@
 
 Paste everything below the line into an AI system that can read web pages. Use it with two different systems and bring both replies back. It needs no code to run; the reports and code are public. Expected time to answer: 30 to 60 minutes. Then paste each full reply back into Claude (Chat in the Better To Best Research Project, or a Claude Code session started with `/start-session S56`) and say which system wrote it.
 
+
+**Correction notes (Nov 9, 2026, S56, after the two reviews came back; the prompt below is kept as sent).** (1) "The check bounds the pass-through between 0 and 1" (S39 results) overstates it: 0 and 1 are the two engines' assumptions, not bounds on the real value, which could lie outside them (S39 report, correction note under section 6). (2) The inequality table is the frozen headline (CPS wages, spending share 0.877, 10,000 adults). Its 21.9% of families in debt at year 20 is not comparable with S34's 33.4%, which is the released v5.6 engine with released wages and spending share 0.593 (with US wages S34 gives 21.4%). (3) "Wealth Gini" in the table counts debts as zero. Triage: `audits/2026-11-s39-s55-review-triage.md`.
+
 ---
 
 You are auditing two completed studies of an open agent-based simulation, and the way the simulation measures inequality. Please be direct: say what is wrong or unsupported, not only what is good. Where you are unsure, say so. Do not assume the results favour the policy; the author wants the work to stand up to critical economists.

@@ -1,34 +1,31 @@
-# Handoff (Nov 9, 2026): S39 done, the outside engine cross-check read
+# Handoff (Nov 9, 2026): S56 done, the outside reviews triaged
 
 ## Step status
-S39 is **done** (part 2 this session). Both result folders were complete (`DONE`; checksums verified; no shard rerun). The findings are in the report, read by the preregistered decision rules, and rule 4's ledger decision is filed (D17).
+S56 is **done**. Duke pasted two reviews (Grok, ChatGPT) of S39, S55 and the inequality measures. Every point was checked against the reports and code, every cited source that can be opened was opened, and each point is accepted, adapted or declined with a reason in `audits/2026-11-s39-s55-review-triage.md`.
 
 ## What shipped
-- compassionism-simulation [PR 86](https://github.com/BetterToBest/compassionism-simulation/pull/86): report `dev/reports/s39-outside-crosscheck.md` sections 4-6 and plain-words results; tool `dev/tools/s39_crosscheck.py`, which gains an identity check and rule 5's contrast intervals, both marked as added after the results; tables `dev/runs/s39-crosscheck/tables.md` and `estimates.csv`; DECISIONS.md. This session merges it once its checks (checks, guard) pass; if it is still open, its checks failed or were still running when the session ended: read them first.
-- research-update: this file, PLAN.md (S39 done; S7 note on inflation sentences).
-- Ledger synced (hub version 96): S39 done, D17, next, log.
+- research-update [PR 74](https://github.com/BetterToBest/research-update/pull/74): the triage; PLAN.md (S7 and S57-S63 amended, new S66, S60 after S61, D18 as answered); study programme Amendment 12; correction notes in the audit prompt and the round-2 note; this file.
+- compassionism-simulation [PR 87](https://github.com/BetterToBest/compassionism-simulation/pull/87): dated correction note in the S39 report (section 6); MODEL_SPEC section 9 (interval method, `giniW` vs `giniWN`); DECISIONS.md. Squash-merged once its checks (checks, guard) pass; if it is still open, read its checks first.
+- Ledger synced (hub version 101): S56 done, S66 added, D19, D20, links for D18, next, log.
 
 ## Findings (plain words)
-- Given the engine's C2.2 new money (31-46% of household income a year), BeforeIT's consumer prices end within a few percent of its no-payout run. At full scale its pass-through is 0.00 (interval -0.012 to 0.010) after 20 years; the engine's is 1. The price level after 20 years is about 1.00 against the engine's 408. By rule 1, "far less", by a factor of about 400.
-- That zero is BeforeIT's assumption, not a measurement. Its source, read after the runs, shows that with the packaged uniform starting prices every firm's cost term stays zero. The CPI then grows each quarter by exactly expected inflation, a forecast from past inflation plus a random draw. This was checked in all 1,365 runs to machine precision, and the food, housing and medical indices equal the CPI. So the engine's rule fixes its answer at 1 and BeforeIT's fixes its answer at 0. The cross-check bounds the question; it does not answer it.
-- In BeforeIT the money raises real output (+15.5% after 3 years: unemployment goes to zero and output per worker stretches up to 1.5 times) and government debt (9.8 years of output after 20 years, against 1.1 without the payout). Paid from an income tax instead (the rate rises from 21% to about 60%), almost none of the output gain remains, and prices again do not move.
-- Q4-Q8: no price difference anywhere, apart from one chance result (dose 3%, full scale, quarter 12). Essentials cannot be compared (BeforeIT's relative prices never move). The output response is 1-2 points larger at full scale in some readings.
+- The reviews confirm the project's reading: the placeholder price rule decides the inflation and wealth results; BeforeIT could not test it; no study covers new money of 30-50% of household income a year; the S55 wealth gain rests on PTF growth toward 49% at at-cost prices.
+- Three wording errors, no figure changed: S39's "0 to 1" is the range between two assumptions, not a bound; the published wealth Gini counts debts as zero (the prereg said "debts kept"); study intervals are paired-bootstrap (MODEL_SPEC gave only the release row's formula).
+- Two review claims were wrong: the headline already uses CPS earnings; the 21.9% vs 33.4% "debt gap" is the frozen headline (spending share 0.877, CPS wages) against S34's released v5.6.
+- Five cited sources were not found or differ (triage, "Sources opened"); they are not used.
 
 ## In flight
 - Nothing.
 
 ## Decisions waiting
-- D17: answered Nov 9 (default): Hub inflation sentences use the report's wording (section 6, item 4).
-- D18 (filed Nov 9 in Chat): what waits for engine round 2. Default: S24, S25 and S40 proceed on the S7 release; S44, S45 and S8 wait for release 2 (S65).
-
-## Planned in Chat, Nov 9
-- Engine round 2, steps S56-S65 (PLAN.md; why and order: `audits/2026-11-engine-round-2.md`): distribution measures, a price rule that answers demand and capacity, a weighted top tail with returns on capital, bargaining power, baseline scope, PTF realism; then preregister, run, release 2.
-- S56 is Duke's: run `audits/2026-11-s39-s55-audit-prompt.md` in two or more AI systems and paste the replies back; Claude triages them before S58-S62 start.
+- D19: who pays when PTF prices do not cover running costs. Default: S62 builds three readings; S63 chooses the main one.
+- D20: density tests as hard steps or a smooth curve. Default: keep the steps in the main row, add a smooth-curve reading.
+- D18 was answered Nov 9 (not the default): Hub text citing simulation figures (S24's simulation figures, S25, S40) waits for S65, as do S44, S45, S8. PLAN.md now says so.
 
 ## Next step
-**S7** (sonnet, medium): the Simulation release and findings page; everything it waits on is done. Its inflation sentences follow D17's default (PLAN.md S7).
+**S7** (sonnet, medium): the release of today's engine and its findings page; its section now carries S56's wording rules. S66 and S61 can also start now (both wait only on S56).
 
 ## Pitfalls
-- BeforeIT's sector indices (food, housing, medical, deflator) equal its CPI in every run. This is not a recording bug: the packaged calibration's relative prices never move. Do not cite them as an essentials result.
-- The engine round inherits two open questions, with no change now: an outside source for the price rule's pass-through, and the conversion tax not netted from the unmatched money U.
-- The results checkout used here was blobless and sparse (`s39-*` folders only), to save time and disk.
+- No model names in commits: the S56 branch commit in compassionism-simulation named one; PR 87 is squash-merged with a clean message instead (no history rewrite).
+- `eGiniW` is the debts-as-zero Gini; `eGiniWN` keeps debts and is already in every frozen output (S57 needs no rerun for it).
+- The audit prompt is kept as sent; read its correction notes (top of the file) before reusing it.
