@@ -1,30 +1,33 @@
-# Handoff (Nov 9, 2026): S57 done, distribution measures (reporting only)
+# Handoff (Nov 9, 2026): S58 done, a price rule that answers demand and capacity
 
 ## Step status
-S57 is **done**. S7 stays held until round 2 is ready for release (PLAN.md).
+S58 is **done** in one session. S7 stays held until round 2 is ready for release (PLAN.md).
 
 ## What shipped
-- research-update `prereg/2026-11-s57-distribution-measures.md` (committed before the build; Amendment 1: Holm reads the normal tail of the mean over its bootstrap standard error, because a 2,000-replicate bootstrap tail share cannot reach Holm's first threshold for 378 cells); PLAN.md; this file. Pull request [78](https://github.com/BetterToBest/research-update/pull/78).
-- compassionism-simulation [PR 89](https://github.com/BetterToBest/compassionism-simulation/pull/89): study option `dm` (reporting only): top 1%/10% and bottom 50% shares of wealth and income, income Palma, wealth top-10-to-bottom-40 ratio (only where the bottom 40% hold positive wealth), 21-point real percentile grid, wealth-fifth mobility, labour's share, debt depth; weights ready for S59 (all 1). Guard test identical, lineage linked, validate, unit (272), domtest (153) pass; CI green; squash-merged (8b10950). Report `dev/reports/s57-distribution-measures.md`; tools `dev/tools/s57_dm.js`, `s57_table.py`; findings data file `data/studies/s57-distribution.json` (new; no published number moved).
-- compassionism-sim-results [PR 24](https://github.com/BetterToBest/compassionism-sim-results/pull/24): `s57-distribution-f156393` (seeds 1-100, three environments; run.txt, SHA256SUMS, DONE); merged (4b48276).
+- research-update `prereg/2026-11-s58-price-rule.md` (committed before the build; Amendment 1 before the pilot: a weak pull below normal, κ₂, and one joint regression for κ, κ₂, ρ; Amendment 2 after the first run failed the nesting check: option `rs`, pilot rerun); PLAN.md (S58 done, S63 carries); this file. Pull request [79](https://github.com/BetterToBest/research-update/pull/79).
+- compassionism-simulation [PR 90](https://github.com/BetterToBest/compassionism-simulation/pull/90): switch `PRICE_RULE` (row option `pr`; off = today's rule) and study option `mf` (money-flow table, reporting only). Main values from FRED data in the rule's own form (`sources/s58_price_rule.py`, inputs `sources/s58_fred/`): κ 0.445, κ₂ 0.051, ρ 0.275, α 0.508, slack 0. Guard identical, lineage linked twice, validate, unit (282), domtest (153) pass. Report `dev/reports/s58-price-rule.md`; tables `dev/runs/s58-price/`; S39 report correction note (conversion tax).
+- compassionism-sim-results [PR 25](https://github.com/BetterToBest/compassionism-sim-results/pull/25): `s58-price-74ca1a8` (seeds 1-100, three environments, 16 rows; run.txt, SHA256SUMS, DONE).
 
-## Findings (plain words; pilot at 100 seeds, intervals unadjusted; 366 of 378 estimates exclude zero, 359 survive Holm)
-- Start with no programme: top 10% hold 64.6% of wealth (CBO 69% / 60%), bottom half 3.6% (CBO 6%), top 1% 20.8% (Fed 32.5%): the top 1% gap is for S59.
-- Reference, end of year 20: top 10% wealth share 58.9% without the programme; -27.0 points (release row), -33.3 (C2.2 design). Income shares: release row +1.0 point at the top 10%, C2.2 design -1.7. Families in debt 22.0%; -12.4 and -21.2 points.
-- Real-dollar wealth falls under the release row because its prices rise about 32% a year (median real wealth equals the engine's `medWealthReal`); shares and Ginis are not affected.
-- Rank mobility rises, partly because compressed wealth reorders ranks easily; labour's share is near 100% by construction; median debt sits on the -$10,000 floor.
+## Findings (plain words; pilot at 100 seeds; intervals unadjusted; 500 of 540 exclude zero, 482 survive Holm)
+- No study covers new money of 30-50% of income a year; across 110 countries inflation follows money about one for one (McCandless and Weber 1995).
+- The new rule agrees: pass-through after 19 years 0.96-1.04 in every reading; programme inflation within about 2 points a year of today's rule (C2.2 Reference 37.4 → 38.2; release 31.5 → 32.2).
+- But the path comes in waves of about 9 years (C2.2 Reference: 14% in year 1, 72% in year 4, 25% in year 9, 45% in year 13), from wage and expectation persistence.
+- Basket poverty and the cost of living unchanged (under 0.1 point at the main values). Wealth poverty moves with the wave's phase at year 20: C2.2 Reference +0.7 → −1.8; sweep −17.8 (ρ 0.45) to +1.6.
+- Both rules imply demand that output cannot meet (C2.2 Reference 22.5% a year today, 11.3% new); at shadow prices C2.2's wealth-poverty effect is +11.7 and +2.5.
+- The conversion tax is withheld from each payout, so it was never in U ($12,300 per adult-year, 23% of gross conversion, C2.2 Reference); no design question.
 
 ## In flight
 - Nothing.
 
 ## Decisions waiting
-- None.
+- None new. S63 files the main-row price-rule decision (Claude's recommendation, fixed before the pilot: `pr: true`, today's rule beside it).
 
 ## Next step
-**S58** (opus, xhigh; may take 2 sessions): the price rule. S66 (opus, high) can also start. S59 now waits only on S56 and S57 (done).
+**S66** (opus, high): trace the low end of S55's fixed-share curve (no engine change). Then S59 (opus, xhigh). S60 can start too (S56, S58 and S61 are done).
 
 ## Pitfalls
-- Key suffixes: `S` (start) and `E` (end), never `0`: `dmWt1` + `0` collided with `dmWt10`.
-- The Holm step needs a p-value finer than the bootstrap tail share (see Amendment 1).
-- `no_figure_change.py` fails on any engine change by design; for a reporting-only engine step the guard test and lineage are the proof, and the check was read for data files and reports only.
-- Run pilots from a clean worktree (`git worktree add`); remove the worktrees `sim-pilot`, `sim-main` afterwards.
+- The nesting point must switch off the recession's slack too (`rs: false`); only Adverse seed 39 showed it. A preregistered check caught it; the first run is unpublished.
+- Under `pr`, a year-20 wealth reading depends on the inflation wave's phase: read the yearly path.
+- A no-programme row's `pd*` keys read the previous run's PTF state (pre-existing, reporting only); after `paUnitSuite` the first study differs on them.
+- `no_figure_change.py` fails on any engine change by design; the guard test and lineage are the proof.
+- Run pilots from a clean worktree (`git worktree add`); remove `sim-pilot` afterwards.
