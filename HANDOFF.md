@@ -1,35 +1,29 @@
-# Handoff (Nov 8, 2026): S39 part 1, the outside engine cross-check built and dispatched
+# Handoff (Nov 9, 2026): S39 done, the outside engine cross-check read
 
 ## Step status
-S39 is **partly done**. Done: the preregistration, the engine side, the BeforeIT.jl module, the job, a dry run, and both studies dispatched. Remaining (part 2, about one session): once both result folders hold `DONE`, run the analysis tool, write the findings into the report, and apply decision rule 4. S7 can start meanwhile.
+S39 is **done** (part 2 this session). Both result folders were complete (`DONE`; checksums verified; no shard rerun). The findings are in the report, read by the preregistered decision rules, and rule 4's ledger decision is filed (D17).
 
 ## What shipped
-- research-update [PR 70](https://github.com/BetterToBest/research-update/pull/70) (merged, 7e21521): `prereg/2026-11-s39-outside-crosscheck.md` (committed before any run; the one-seed pilot seen before the decision rules is disclosed), plus this file and PLAN.md.
-- compassionism-sim-results [PR 22](https://github.com/BetterToBest/compassionism-sim-results/pull/22) (merged, f67b727): job `runner/jobs/beforeit.js`, module `runner/jobs/beforeit/` (BeforeIT 0.6.0, Julia 1.11.5 pinned, sizes in `shares.json`), `runner/jobs/s39-path.js`, and results `s39-path-ce8d030/` (the engine's year paths, seeds 1-500, three environments; every row reproduces study A's `plv_19` seed by seed).
-- compassionism-simulation [PR 85](https://github.com/BetterToBest/compassionism-simulation/pull/85) (merged, 2cf6ef0; checks green): report `dev/reports/s39-outside-crosscheck.md` (part 1, with what a US calibration would take), tool `dev/tools/s39_crosscheck.py` (written before any BeforeIT result), `dev/runs/s39-crosscheck/tables.md`, DECISIONS.md. Also merged the previous session's [PR 84](https://github.com/BetterToBest/compassionism-simulation/pull/84) (S5; checks were green).
+- compassionism-simulation [PR 86](https://github.com/BetterToBest/compassionism-simulation/pull/86): report `dev/reports/s39-outside-crosscheck.md` sections 4-6 and plain-words results; tool `dev/tools/s39_crosscheck.py`, which gains an identity check and rule 5's contrast intervals, both marked as added after the results; tables `dev/runs/s39-crosscheck/tables.md` and `estimates.csv`; DECISIONS.md. Merge status: see the end of this file.
+- research-update: this file, PLAN.md (S39 done; S7 note on inflation sentences).
+- Ledger synced (hub version 96): S39 done, D17, next, log.
 
-## Findings so far (plain words)
-- The engine counts most of the C2.2 payout as new money not backed by output. Under C2.2 (Reference) that is 31-46% of cash income each year: the Source's payout ($59,263 per adult-year) less its matched part ($19,140). It passes into the general price level one for one, a year later, so prices end about 415 times their start after 19 years. Release design: 16-34% a year, about 183 times.
-- The conversion tax the Source keeps ($12,336 per adult-year) does not reduce that money (open engine question, rule 4).
-- BeforeIT's firms price from costs and expected inflation, with no excess-demand term. In a one-seed pilot at 1:1000, new money of 10-35% of income a year moved prices less than 8% over 20 years. If the full study confirms this, the two engines differ by a factor of hundreds, each resting on one assumption.
+## Findings (plain words)
+- Given the engine's C2.2 new money (31-46% of household income a year), BeforeIT's consumer prices end within a few percent of its no-payout run. At full scale its pass-through is 0.00 (interval -0.012 to 0.010) after 20 years; the engine's is 1. The price level after 20 years is about 1.00 against the engine's 408. By rule 1, "far less", by a factor of about 400.
+- That zero is BeforeIT's assumption, not a measurement. Its source, read after the runs, shows that with the packaged uniform starting prices every firm's cost term stays zero. The CPI then grows each quarter by exactly expected inflation, a forecast from past inflation plus a random draw. This was checked in all 1,365 runs to machine precision, and the food, housing and medical indices equal the CPI. So the engine's rule fixes its answer at 1 and BeforeIT's fixes its answer at 0. The cross-check bounds the question; it does not answer it.
+- In BeforeIT the money raises real output (+15.5% after 3 years: unemployment goes to zero and output per worker stretches up to 1.5 times) and government debt (9.8 years of output after 20 years, against 1.1 without the payout). Paid from an income tax instead (the rate rises from 21% to about 60%), almost none of the output gain remains, and prices again do not move.
+- Q4-Q8: no price difference anywhere, apart from one chance result (dose 3%, full scale, quarter 12). Essentials cannot be compared (BeforeIT's relative prices never move). The output response is 1-2 points larger at full scale in some readings.
 
 ## In flight
-- compassionism-sim-results, run-study workflow, engine `ce8d030`, job `beforeit.js`:
-  - `s39-full` (full scale, 8.9 million agents, 65 shards of about 2.5 hours): run 42511582006, folder `s39-full-ce8d030/`.
-  - `s39-k1` (1:1000, 13 shards): run 42511585190, folder `s39-k1-ce8d030/`.
-  - `dry-s39`: run 42510677223 (its shard passed).
-- Each run is done when its folder has `DONE` (expect about 8-12 hours for `s39-full`). A failed shard is rerun, never redesigned.
+- Nothing.
 
 ## Decisions waiting
-- None. Part 2 may add a ledger decision under rule 4: Hub inflation sentences would name the engine's quantity-theory placeholder and give BeforeIT's figure beside it.
+- D17: how Hub sentences on inflation say this. Default: the report's wording (section 6, item 4). Name the placeholder, give BeforeIT's figure with its reason, and say neither model measures the pass-through. Never "an outside model found no inflation".
 
 ## Next step
-**S7** (sonnet, medium): unblocked since S5. Then **S39 part 2** (opus, high) once both folders hold `DONE`:
-`python3 dev/tools/s39_crosscheck.py --engine RESULTS/s39-path-ce8d030 --full RESULTS/s39-full-ce8d030 --k1 RESULTS/s39-k1-ce8d030 --out dev/runs/s39-crosscheck`
+**S7** (sonnet, medium): the Simulation release and findings page; everything it waits on is done. Its inflation sentences follow D17's default (PLAN.md S7).
 
 ## Pitfalls
-- Study A kept the price level only at years 10, 20 and 40, although the run manifest lists `plv_0`-`plv_39` for S39. `s39-path.js` reads the full year path instead.
-- Any rerun of study rows must set the runner's reference settings (`applyNR6()`, `tbSetG(TB_PROFILE_G)`) as program.js does. Without them the price level came out at about 300 instead of 415.
-- The engine's price level for year k reflects the new money of the years before it. Compare "after k years of payout".
-- BeforeIT does not repeat a seed with threads on, so every run is single-threaded. Its no-payout run drifts beyond 12 quarters (unemployment falls to zero), so every 20-year BeforeIT figure carries that caveat.
-- S7's findings page: any sentence on inflation should wait for S39 part 2, or say the figure rests on the engine's quantity-theory rule.
+- BeforeIT's sector indices (food, housing, medical, deflator) equal its CPI in every run. This is not a recording bug: the packaged calibration's relative prices never move. Do not cite them as an essentials result.
+- The engine round inherits two open questions, with no change now: an outside source for the price rule's pass-through, and the conversion tax not netted from the unmatched money U.
+- The results checkout used here was blobless and sparse (`s39-*` folders only), to save time and disk.
