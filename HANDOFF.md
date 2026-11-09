@@ -1,31 +1,29 @@
-# Handoff (Nov 9, 2026): S56 done, the outside reviews triaged
+# Handoff (Nov 9, 2026): S61 done, baseline scope (adults outside the labour force; borrowing for ordinary spending)
 
 ## Step status
-S56 is **done**. Duke pasted two reviews (Grok, ChatGPT) of S39, S55 and the inequality measures. Every point was checked against the reports and code, every cited source that can be opened was opened, and each point is accepted, adapted or declined with a reason in `audits/2026-11-s39-s55-review-triage.md`.
+S61 is **done**. Duke asked at the start (Nov 9) to hold S7 until round 2 is ready for release: S7 now runs just before S65, and S57 and S58 no longer wait on it (PLAN.md).
 
 ## What shipped
-- research-update [PR 74](https://github.com/BetterToBest/research-update/pull/74) (merged, 0d6c11e): the triage; PLAN.md (S7 and S57-S63 amended, new S66, S60 after S61, D18 as answered); study programme Amendment 12; correction notes in the audit prompt and the round-2 note; this file.
-- compassionism-simulation [PR 87](https://github.com/BetterToBest/compassionism-simulation/pull/87): dated correction note in the S39 report (section 6); MODEL_SPEC section 9 (interval method, `giniW` vs `giniWN`); DECISIONS.md. Squash-merged (7895f27) after its checks (checks, guard) passed.
-- Ledger synced (hub version 101): S56 done, S66 added, D19, D20, links for D18, next, log.
+- research-update (branch `claude/friendly-ptolemy-lh8djy`): `prereg/2026-11-s61-baseline-scope.md` (criterion C1-C4 fixed before the build; Amendment 1, build choices; Amendment 2, the own-income table corrected to 0.5-point steps after a check against its source); PLAN.md (S7 held; S61 done; S63 carry-forward; D19 and D20 as answered); this file.
+- compassionism-simulation [PR 88](https://github.com/BetterToBest/compassionism-simulation/pull/88): switch `LF_SCOPE` (row option `lf`) and the debt reading extended (`dr`: `lim` moved with prices, main $2,500 from the SCF 2025; `liq`; `fl: 'fpl'`); sources `sources/lf_scope.py`, `sources/s61_borrowing.py`; pilot tool and tables; report `dev/reports/s61-baseline-scope.md`; DECISIONS.md. Guard identical, lineage linked, validate, unit (264), domtest (153) pass.
+- compassionism-sim-results [PR 23](https://github.com/BetterToBest/compassionism-sim-results/pull/23): folder `s61-scope-1d9ab84` (pilot, seeds 1-100, three environments; run.txt, SHA256SUMS, DONE).
 
-## Findings (plain words)
-- The reviews confirm the project's reading: the placeholder price rule decides the inflation and wealth results; BeforeIT could not test it; no study covers new money of 30-50% of household income a year; the S55 wealth gain rests on PTF growth toward 49% at at-cost prices.
-- Three wording errors, no figure changed: S39's "0 to 1" is the range between two assumptions, not a bound; the published wealth Gini counts debts as zero (the prereg said "debts kept"); study intervals are paired-bootstrap (MODEL_SPEC gave only the release row's formula).
-- Two review claims were wrong: the headline already uses CPS earnings; the 21.9% vs 33.4% "debt gap" is the frozen headline (spending share 0.877, CPS wages) against S34's released v5.6.
-- Five cited sources were not found or differ (triage, "Sources opened"); they are not used.
+## Findings (plain words; pilot at 100 seeds)
+- A positive borrowing limit changes how deep households fall, not how many fall into debt: families in debt at Year 20 (Reference) 22.0% frozen, 21.6% with the $2,500 cap; only a limit of zero gives 12.3%. The gap to the SCF's 9.3% stays open; no constant was tuned to it.
+- Adults outside the labour force (17.3%) bring the share with earnings to 82.7% (CPS 80.9%) and official poverty from far below the survey to somewhat above it (the model's households hold no other relatives).
+- No reading changes the sign or significance of the C2.2 design's effects, but with `lf` its wealth-poverty harm grows from +0.7 to +9.8 points in Reference. Not yet traced.
+- Recommended to S63: the cap at $2,500 and `lf` as main-row candidates, the other readings beside them.
 
 ## In flight
 - Nothing.
 
 ## Decisions waiting
-- D19: who pays when PTF prices do not cover running costs. Default: S62 builds three readings; S63 chooses the main one.
-- D20: density tests as hard steps or a smooth curve. Default: keep the steps in the main row, add a smooth-curve reading.
-- D18 was answered Nov 9 (not the default): Hub text citing simulation figures (S24's simulation figures, S25, S40) waits for S65, as do S44, S45, S8. PLAN.md now says so.
+- None new. D19 and D20 were answered by Duke in the ledger (not the defaults): the Source pays a PTF cost gap as an explicit subsidy; the density tests become a smooth curve. PLAN.md (S62, S63) records both.
 
 ## Next step
-**S7** (sonnet, medium): the release of today's engine and its findings page; its section now carries S56's wording rules. S66 and S61 can also start now (both wait only on S56).
+**S57** (sonnet, high): distribution measures, reporting only; it now waits only on S56. S66 and S58 can also start; S60 now has S61 and waits on S58.
 
 ## Pitfalls
-- No model names in commits: the S56 branch commit in compassionism-simulation named one; PR 87 is squash-merged with a clean message instead (no history rewrite).
-- `eGiniW` is the debts-as-zero Gini; `eGiniWN` keeps debts and is already in every frozen output (S57 needs no rerun for it).
-- The audit prompt is kept as sent; read its correction notes (top of the file) before reusing it.
+- `lf` reuses the engine's retiree state (`a._ret`); any rule reading `a._ret` as "67 and over" must check `a._lf`. Zero-income adults have wage 0: guard every ratio to the wage.
+- Check engine input tables against their source's means: the 5-point percentile table overstated income by up to 280% (care) through its top bin.
+- Run pilots from a clean worktree (`git worktree add`), so each output's manifest is clean.
