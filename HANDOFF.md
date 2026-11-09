@@ -4,7 +4,7 @@
 S39 is **done** (part 2 this session). Both result folders were complete (`DONE`; checksums verified; no shard rerun). The findings are in the report, read by the preregistered decision rules, and rule 4's ledger decision is filed (D17).
 
 ## What shipped
-- compassionism-simulation [PR 86](https://github.com/BetterToBest/compassionism-simulation/pull/86): report `dev/reports/s39-outside-crosscheck.md` sections 4-6 and plain-words results; tool `dev/tools/s39_crosscheck.py`, which gains an identity check and rule 5's contrast intervals, both marked as added after the results; tables `dev/runs/s39-crosscheck/tables.md` and `estimates.csv`; DECISIONS.md. Merge status: see the end of this file.
+- compassionism-simulation [PR 86](https://github.com/BetterToBest/compassionism-simulation/pull/86): report `dev/reports/s39-outside-crosscheck.md` sections 4-6 and plain-words results; tool `dev/tools/s39_crosscheck.py`, which gains an identity check and rule 5's contrast intervals, both marked as added after the results; tables `dev/runs/s39-crosscheck/tables.md` and `estimates.csv`; DECISIONS.md. This session merges it once its checks (checks, guard) pass; if it is still open, its checks failed or were still running when the session ended: read them first.
 - research-update: this file, PLAN.md (S39 done; S7 note on inflation sentences).
 - Ledger synced (hub version 96): S39 done, D17, next, log.
 
