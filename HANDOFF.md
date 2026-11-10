@@ -19,11 +19,17 @@ S58 is **done** in one session. S7 stays held until round 2 is ready for release
 ## In flight
 - Nothing.
 
+## Audit (Nov 9, Chat, after S58)
+- `audits/2026-11-09-simulation-audit.md`: eight findings. The two that bear on every result: all wealth is held as nominal dollars with no return or revaluation (S59 amended: asset classes), and the capacity price rule's one-for-one pass-through is built in, its κ comes from a different variable, its waves are its own roots (new S67).
+- PLAN.md: new S67 (price rule), S68 (spec and cross-tests), S69 (second implementation of the round-2 main row), S70 (joint screening, specification curve), all before S63; S59, S63, S66 and S13 amended.
+
 ## Decisions waiting
-- None new. S63 files the main-row price-rule decision (Claude's recommendation, fixed before the pilot: `pr: true`, today's rule beside it).
+- D21: carry the C2.2 design paid for by a contribution on every round-2 outcome beside the main rows (default: yes, as a labelled reading; D14's no design change stands).
+- D22: use the stronger model on the steps marked "(or fable, ...)" even where it uses usage credits (default: today's rule, only where it uses none).
+- S63 files the main-row price-rule decision after S67, with both recommendations (the preregistration's `pr: true`; the audit's: today's rule as the main row, the capacity rule beside it).
 
 ## Next step
-**S66** (opus, high): trace the low end of S55's fixed-share curve (no engine change). Then S59 (opus, xhigh). S60 can start too (S56, S58 and S61 are done).
+**S66** (opus, high): trace the low end of S55's fixed-share curve, now with the erosion-of-opening-balances trace and the `lf` wealth harm (no engine change). Then S59 (opus, xhigh), which reads S66's trace. S67 and S60 can start too.
 
 ## Pitfalls
 - The nesting point must switch off the recession's slack too (`rs: false`); only Adverse seed 39 showed it. A preregistered check caught it; the first run is unpublished.
