@@ -49,4 +49,8 @@ Paired differences over seeds with the 2.5th-97.5th percentile interval of 2,000
 compassionism-simulation `dev/reports/s59-asset-classes.md` (plain words), tables in `dev/runs/s59-assets/`; per-seed results in compassionism-sim-results `s59-assets-<engine commit>` with run.txt and SHA256SUMS. Every reading is published, including nulls and the Adverse and Stress environments.
 
 ## Amendments
-(none yet)
+**Amendment 1 (Nov 10, 2026; after the switch was built and its unit tests passed on 2 seeds and 8 years, before any pilot run).**
+- One reading is added to the sweep, on both designs: **fixed-rate debt reprices like floating debt** (`chi: 1`; main stays 0, the dollar value kept). Reason: the first test run showed that under the programme's inflation the average household gains on its opening nominal position, because fixed-rate debts (mostly mortgages) lose real value faster than nominal assets do, and the model has no lender who bears that loss. The added reading removes the debt relief, so the table shows how much of any wealth gain is the missing creditor side.
+- A fact about the engine, found in the same test and recorded so the questions are read correctly: the no-programme run has no inflation (its price level stays at 1), so in that run the all-cash assumption erodes nothing, and `rt` changes it only through the real price gains ρ. Question 4 is therefore about ρ alone.
+- The class totals reported at the last year (`rtRE`, `rtNE`, `rtDvE`) count that year's saving as placed, so that they add up to real wealth (the yearly step places it at the start of the next year).
+- The engine commit of the pilot is the head of compassionism-simulation branch `claude/s59-asset-classes` at the run, recorded in each result's manifest and in run.txt.
