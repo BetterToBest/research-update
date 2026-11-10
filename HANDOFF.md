@@ -1,39 +1,38 @@
-# Handoff (Nov 9, 2026): S58 done, a price rule that answers demand and capacity
+# Handoff (Nov 10, 2026): S66 done, the low-share trace and the erosion of opening savings
 
 ## Step status
-S58 is **done** in one session. S7 stays held until round 2 is ready for release (PLAN.md).
+S66 is **done** in one session. No engine change. S7 stays held until round 2 is ready for release (PLAN.md).
 
 ## What shipped
-- research-update `prereg/2026-11-s58-price-rule.md` (committed before the build; Amendment 1 before the pilot: a weak pull below normal, κ₂, and one joint regression for κ, κ₂, ρ; Amendment 2 after the first run failed the nesting check: option `rs`, pilot rerun); PLAN.md (S58 done, S63 carries); this file. Pull request [79](https://github.com/BetterToBest/research-update/pull/79).
-- compassionism-simulation [PR 90](https://github.com/BetterToBest/compassionism-simulation/pull/90): switch `PRICE_RULE` (row option `pr`; off = today's rule) and study option `mf` (money-flow table, reporting only). Main values from FRED data in the rule's own form (`sources/s58_price_rule.py`, inputs `sources/s58_fred/`): κ 0.445, κ₂ 0.051, ρ 0.275, α 0.508, slack 0. Guard identical, lineage linked twice, validate, unit (282), domtest (153) pass. Report `dev/reports/s58-price-rule.md`; tables `dev/runs/s58-price/`; S39 report correction note (conversion tax).
-- compassionism-sim-results [PR 25](https://github.com/BetterToBest/compassionism-sim-results/pull/25): `s58-price-74ca1a8` (seeds 1-100, three environments, 16 rows; run.txt, SHA256SUMS, DONE).
+- research-update `prereg/2026-11-s66-low-share-trace.md` (committed before any run); PLAN.md (S66 done, findings under its section); this file. Branch `claude/laughing-bell-dqyt1v`.
+- compassionism-simulation [PR 91](https://github.com/BetterToBest/compassionism-simulation/pull/91):
+  - tool `dev/tools/s66_trace.js`: its own copy of the engine with a read-only probe; `--check` proves the copy equals the harness (7,080 row-keys);
+  - `dev/tools/s66_table.py`, tables `dev/runs/s66-trace/`, report `dev/reports/s66-low-share-trace.md`;
+  - a dated correction note in `dev/reports/s55-open-access.md`; DECISIONS (S66).
+- compassionism-sim-results [PR 26](https://github.com/BetterToBest/compassionism-sim-results/pull/26): `s66-trace-4e9d841` (seeds 1-100; run.txt, check.log, SHA256SUMS, DONE).
 
-## Findings (plain words; pilot at 100 seeds; intervals unadjusted; 500 of 540 exclude zero, 482 survive Holm)
-- No study covers new money of 30-50% of income a year; across 110 countries inflation follows money about one for one (McCandless and Weber 1995).
-- The new rule agrees: pass-through after 19 years 0.96-1.04 in every reading; programme inflation within about 2 points a year of today's rule (C2.2 Reference 37.4 → 38.2; release 31.5 → 32.2).
-- But the path comes in waves of about 9 years (C2.2 Reference: 14% in year 1, 72% in year 4, 25% in year 9, 45% in year 13), from wage and expectation persistence.
-- Basket poverty and the cost of living unchanged (under 0.1 point at the main values). Wealth poverty moves with the wave's phase at year 20: C2.2 Reference +0.7 → −1.8; sweep −17.8 (ρ 0.45) to +1.6.
-- Both rules imply demand that output cannot meet (C2.2 Reference 22.5% a year today, 11.3% new); at shadow prices C2.2's wealth-poverty effect is +11.7 and +2.5.
-- The conversion tax is withheld from each payout, so it was never in U ($12,300 per adult-year, 23% of gross conversion, C2.2 Reference); no design question.
+## Findings (plain words; seeds 1-100, 500 adults; intervals unadjusted)
+- **The low-share dip comes from the ESP surplus split.** Once the PTFs' capital account reaches full capacity, their reinvestment (counted as matched output) stops. That happens within 20 years from 15% up (year 15 at 20%), but never at 5-10%. Result at 20% against 10%: more unmatched money, +0.37 points a year of inflation, a 5% higher price level by year 20, and 1.57 points more adults under $25,000 (Reference). Gone at 40 years (−0.33), so no low-share optimum.
+- **PTF damping of inflation is off in every release row** (d86). S55's reading that named it is corrected (dated note; no figure changed).
+- **The erosion of opening savings is 90-96% of the programme's year-20 real-wealth gap**, in every design and environment: all wealth is cash, and prices reach about 400 times their start. If opening balances kept their real value, every wealth-poverty harm would be a reduction (release, Reference: +21.5 → −6.8; C2.2: +0.7 → −12.1).
+- **The `lf` wealth harm (+9.8) is the same erosion on adults with no wages.** Outside the labour force: +27.6, but −28.6 without the erosion, since their income rises and their costs fall. In it: +6.1.
+- **Model question for S62:** in fixed-share rows, the split's switch reads the PTFs' capital against full capacity, not against the share they serve.
 
 ## In flight
 - Nothing.
 
-## Audit (Nov 9, Chat, after S58)
-- `audits/2026-11-09-simulation-audit.md`: eight findings. The two that bear on every result: all wealth is held as nominal dollars with no return or revaluation (S59 amended: asset classes), and the capacity price rule's one-for-one pass-through is built in, its κ comes from a different variable, its waves are its own roots (new S67).
-- PLAN.md: new S67 (price rule), S68 (spec and cross-tests), S69 (second implementation of the round-2 main row), S70 (joint screening, specification curve), all before S63; S59, S63, S66 and S13 amended.
-
 ## Decisions waiting
-- D21: carry the C2.2 design paid for by a contribution on every round-2 outcome beside the main rows (default: yes, as a labelled reading; D14's no design change stands).
-- D22: use the stronger model on the steps marked "(or fable, ...)" even where it uses usage credits (default: today's rule, only where it uses none).
-- S63 files the main-row price-rule decision after S67, with both recommendations (the preregistration's `pr: true`; the audit's: today's rule as the main row, the capacity rule beside it).
+- D21: carry the C2.2 design paid for by a contribution on every round-2 outcome (default: yes, as a labelled reading).
+- D22: use the stronger model on steps marked "(or fable, ...)" even where it uses usage credits (default: no).
+- S63 files the main-row price-rule decision after S67.
 
 ## Next step
-**S66** (opus, high): trace the low end of S55's fixed-share curve, now with the erosion-of-opening-balances trace and the `lf` wealth harm (no engine change). Then S59 (opus, xhigh), which reads S66's trace. S67 and S60 can start too.
+**S59** (opus, xhigh): asset classes and returns. It now has a measure to beat, because S66 shows almost every wealth result is the all-cash assumption; it should rerun S66's erosion decomposition on its rows. S67 and S60 can start too.
 
 ## Pitfalls
-- The nesting point must switch off the recession's slack too (`rs: false`); only Adverse seed 39 showed it. A preregistered check caught it; the first run is unpublished.
-- Under `pr`, a year-20 wealth reading depends on the inflation wave's phase: read the yearly path.
-- A no-programme row's `pd*` keys read the previous run's PTF state (pre-existing, reporting only); after `paUnitSuite` the first study differs on them.
-- `no_figure_change.py` fails on any engine change by design; the guard test and lineage are the proof.
-- Run pilots from a clean worktree (`git worktree add`); remove `sim-pilot` afterwards.
+- The release rows have damping off: never attribute anything to PTF or PTH damping there.
+- Fixed-share rows at year 20 depend on the year the PTFs' capital account crosses full capacity: read 20 and 40 years.
+- The erosion reading is accounting, not a run: it holds each opening balance untouched for 20 years.
+- A first launch of the trace lacked the wealth bands (keys taken from year 0 only). It was stopped and its files discarded.
+- The remote branch `claude/s66-low-share-trace` in research-update was pushed by mistake and could not be deleted through the proxy. It holds only the preregistration commit; delete it by hand.
+- Run pilots from a clean worktree; remove `sim-pilot` afterwards.
