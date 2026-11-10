@@ -23,11 +23,11 @@ S66 is **done** in one session. No engine change. S7 stays held until round 2 is
 
 ## Decisions waiting
 - D21: carry the C2.2 design paid for by a contribution on every round-2 outcome (default: yes, as a labelled reading).
-- D22: use the stronger model on steps marked "(or fable, ...)" even where it uses usage credits (default: no).
+- D22 answered by Duke (ledger): use fable on the steps marked "(or fable, high)" while the intro offer lasts, otherwise opus.
 - S63 files the main-row price-rule decision after S67.
 
 ## Next step
-**S59** (opus, xhigh): asset classes and returns. It now has a measure to beat, because S66 shows almost every wealth result is the all-cash assumption; it should rerun S66's erosion decomposition on its rows. S67 and S60 can start too.
+**S59** (fable, high, under D22; opus, xhigh if fable is not available): asset classes and returns. It now has a measure to beat, because S66 shows almost every wealth result is the all-cash assumption; it should rerun S66's erosion decomposition on its rows. S67 and S60 can start too.
 
 ## Pitfalls
 - The release rows have damping off: never attribute anything to PTF or PTH damping there.
