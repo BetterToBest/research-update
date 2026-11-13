@@ -1,0 +1,79 @@
+# Preregistration: the price rule's derivation, time step and wording (S67)
+
+Committed Nov 13, 2026 by S67, before any regression below is run, before either reading is built and before any pilot row is run. Engine: compassionism-simulation at commit `81bd1fc45e20511573218434d19abcfc6d6cb528` (main). The two readings land on branch `claude/s67-price-rule` from it, off by default (guard test identical). The engine commit of the pilot, and every parameter value this text leaves to a rule, are recorded in Amendment 1 before the pilot runs.
+
+## Why
+The Nov 9 audit (`audits/2026-11-09-simulation-audit.md`, finding 2) found five weaknesses in the capacity price rule built in S58: its one-for-one long-run pass-through is built in and was reported as a finding; its response speed κ was estimated on the output gap and applied to a different variable (the gap between the money-implied price level and prices); its parameters change sign between halves of the sample; its 9-year waves are the roots of its own yearly difference equation; and it was fitted on years with inflation under 15% while the programme's inflation is 30-45% a year. S58's preregistration fixed a recommendation (the capacity rule as the main row); the audit advises the opposite (today's rule as the main row). S63 files no main-row decision on the price rule before this step reports.
+
+This study is a choice of model, not a test of the programme. Nothing here is a target: every figure from data is a reading.
+
+## Sources opened before use, and two that could not be opened
+- Hallman, Porter and Small, "Is the Price Level Tied to the M2 Monetary Aggregate in the Long Run?", *American Economic Review* 81(4), 1991, 841-858: **not openable from the session** (JSTOR paywall; the 1989 Federal Reserve staff study 157 by the same authors was not found online either). The form used below is taken from a secondary source that states it: Tatom, "The P-Star Model and Austrian Prices", Federal Reserve Bank of St. Louis Working Paper 1992-001A (PDF sha256 `34072dc245e573ebb0185e56f69d2cb9ff06c13cc560084d60b0ded6747afd69`; text read): the equilibrium price level is P* = M V*/Q* (money per unit of potential output at equilibrium velocity; Hallman, Porter and Small used M2, the GNP deflator and a constant V*), and inflation's change answers the lagged gap between P* and P (an error-correction form). No figure of the 1991 article is quoted anywhere until it is opened.
+- Cagan, "The Monetary Dynamics of Hyperinflation", in Friedman (ed.), *Studies in the Quantity Theory of Money*, 1956: **not openable** (no free copy; the Internet Archive's copies are lending-only). Opened instead: Fischer, Sahay and Végh, "Modern Hyper- and High Inflations", NBER Working Paper 8930, 2002 (sha256 `2bfa5049f7ddda4e2d48b7f3e4dba5323ab3ac34337736602c5b525b63c0d011`; later *Journal of Economic Literature*), which restates Cagan's definition and model and gives panel evidence for 1960-1996; and Ball, "The Dynamics of High Inflation", NBER Working Paper 4578, 1993 (sha256 `2055a2384e35e4c3aec48da6922a2d0b74f45a0c31f2dd065f31a621132d576a`). No figure of Cagan's is quoted until it is opened.
+- Data: FRED (`fredgraph.csv?id=`): M2SL (M2, monthly), GDP (nominal GDP), GDPC1, GDPPOT, GDPDEF (GDP deflator), CPIAUCSL; World Bank World Development Indicators through its API: FP.CPI.TOTL.ZG (consumer prices, annual %), FM.LBL.BMNY.ZG (broad money growth, annual %), NY.GDP.MKTP.KD.ZG (real GDP growth, annual %), every country, every year. Each file is kept in compassionism-simulation `sources/s67_fred/` and `sources/s67_wdi/` with its sha256.
+
+## Part A: derivation and data (no engine run)
+
+### A1. The closed form (item 2)
+With wage indexation and the basket both carrying last year's general inflation (φ = α + ρ), steady money growth m (log, a year), zero slack and prices below the money (the κ branch), the rule gives π(t) = (1 + φ − κ)π(t−1) − φπ(t−2) + κm. For every reading swept in S58 (main; κ 0.25 and 1; ρ 0 and 0.45; α 0; κ₂ 0 and 0.657; slack 0.0446) and every new reading below: the roots, whether they are complex, modulus, period in years, the steady gap (1 − φ)m/κ, and whether the gap ever turns negative on the step path (when κ₂ applies and the form changes). Check against the engine: the closed form driven by each S58 pilot row's own yearly money (U/Y, mean over seeds, Reference) against that row's yearly inflation from `plv_*` (results `s58-price-74ca1a8`): the largest yearly difference in points, and the period and damping measured on the engine's path. No tolerance is set: the form is an approximation (wage indexation below 1, essentials' own demand rule, uneven money), and the differences are printed. Tool `dev/tools/s67_closed_form.py`. The text for MODEL_SPEC is written here and placed by S68.
+
+### A2. κ on the rule's own variable (item 3)
+Annual averages, 1960-2024 (as S58). p = ln GDPDEF; v = ln(GDP/M2); price gap g = p* − p with p* = ln M2 + v* − ln GDPPOT, so g = (v* − v) + (output gap). Trend velocity v*, three readings: (i) constant, the estimation sample's mean (the 1991 form); (ii) **main:** the mean of v over the ten years before (one-sided; no future data; sample starts 1970); (iii) a two-sided Hodrick-Prescott trend (λ = 100).
+Forms, each by OLS with Newey-West standard errors (Bartlett kernel, lag floor(4(T/100)^(2/9))) and the plain OLS errors beside them:
+- F1, the rule's form: π(t) = c + φπ(t−1) + κ max(0, g(t−1)) + κ₂ min(0, g(t−1));
+- F2, two-sided: π(t) = c + φπ(t−1) + κ g(t−1);
+- F3, the error-correction form: π(t) − π(t−1) = c + κ g(t−1);
+- F4: the velocity gap and the output gap entered apart, with a Wald test that their slopes are equal (the price-gap form's restriction);
+- F0: S58's output-gap regression, rerun with the same errors.
+Inflation π is the log change of CPI-U (**main**, so that only the gap variable differs from S58's regression) and of the GDP deflator (beside it). Samples: the full sample, 1960-1983 and 1984-2024 (for reading ii: 1970-2024, 1970-1983, 1984-2024). The same forms at quarterly frequency (quarterly log changes, one-quarter lags, HP λ = 1600, trailing 40 quarters). Tool `sources/s67_pstar.py`.
+
+**The price-gap reading of the rule (`pg`)**, fixed by this rule whatever comes out: κ = F1's slope above (CPI-U, v* reading ii, full sample), κ₂ = its slope below, each floored at 0; ρ = max(0, persistence − α) with α = 0.5078 as S58. If κ floors at 0 the reading is not run (prices would never answer money) and that is the finding.
+
+### A3. Dynamics in high-inflation episodes (item 4)
+Logs throughout: π = ln(1 + inflation), μ = ln(1 + broad money growth), y = ln(1 + real growth). An episode is a run of at least three consecutive years in one country with consumer-price inflation of 20% or more and all three series present. Aggregates (regions, income groups) are dropped. Nothing else is excluded; years above 1,000% are flagged and every estimate is printed with and without them.
+- P1, persistence: π(t) on π(t−1) inside episodes, pooled and with episode fixed effects; also by band of last year's inflation (20-50%, 50-100%, over 100%).
+- P2, the rule's own form: π(t) = a(episode) + φπ(t−1) + κ x(t−1), where x is the cumulative gap between money per unit of output and prices since the episode began (the sum of μ − y − π; minus the cumulative change in log velocity); pooled and with episode fixed effects (short panels bias fixed-effect persistence downward: both are printed).
+- P3, whether inflation runs ahead of money: per episode, mean π − (μ − y) (the growth of velocity); the share of episodes where it is positive; the median; and the cross-section slope of episode-mean π on episode-mean μ − y.
+- P4, the velocity response: the change in log velocity (π + y − μ) on the change in π, inside episodes, pooled (slope β, in years: the rise in log velocity per unit of log annual inflation), and in levels with episode fixed effects.
+Standard errors clustered by country. Tool `sources/s67_panel.py`. These are readings for the sweep and for the two new options; none is a target, and none replaces a US-fitted main value by itself.
+
+## Part B: two readings behind `PRICE_RULE` options (item 5)
+
+Claude's reading of what to build (modelling assumptions, labelled as such):
+- **Option `q`, sub-steps a year (1 = today, identical; reading 4).** The year's new money arrives evenly over q sub-steps; in each, every sector's log price rises by α × the year's wage indexation / q (wages are still indexed once a year, as in the engine; spreading it stands for staggered contracts) + ρ × the general level's inflation in the last sub-step + κ × max(0, x − slack) + κ₂ × min(0, x), with x the money-implied level at that sub-step over the sector's price. κ, κ₂ and ρ are per sub-step. Next year's price level is the level after the last sub-step. The households still shop at the year's opening prices: the engine's year is not split, so this reading changes how fast prices follow money and how the shortage is counted, not the timing of spending. Reported with it: excess demand, the rationed share and the shadow ratio as means over the sub-steps, and the year-average price level over its opening level.
+- **Option `bv`, the velocity response (0 = today, identical).** People hold less money when they expect inflation: the money-implied level becomes n + bv × expected inflation, where expected inflation is the general level's log inflation over the last year (adaptive, as the rule's own expectations; the last q sub-steps when q > 1). The level pass-through can then exceed 1 under sustained money. In the closed form bv adds κ × bv to φ: the rule is stable only while φ + κ × bv < 1, which is printed for every reading.
+Neither draws a random number.
+
+**Readings (parameter values by these rules, recorded in Amendment 1):**
+- `wy` (within-year, fitted quarterly): q = 4 with κ and κ₂ = the slopes above and below potential (floored at 0) and ρ = max(0, persistence − α) from S58's own regression form (F0) rerun on quarterly data, full sample;
+- `wyroot` (within-year, same roots): q = 4 with all persistence on last quarter's inflation (α = 0 in the wage term, ρ = φ^(1/4)) and κ chosen so that the quarterly roots are the fourth roots of the annual main roots; κ₂ scaled by the same factor as κ. By construction the waves are the same; it isolates what the shorter lag does to the shortage;
+- `pg`: the price-gap parameters (A2) at q = 1;
+- `vel`: bv = P4's pooled slope β on the main annual rule; `velh`: half of it; `qtvel`: β on today's rule (κ = 1, α = ρ = 0, no slack), so the audit's main-row candidate has a velocity reading too. A reading whose closed form is explosive (modulus ≥ 1) is still run; if any of its outputs is not finite it is reported as "does not finish" with the year it failed.
+
+**Unit tests (each reading alone):** `q: 1, bv: 0` identical to today's capacity rule (every output of S58's rows); q = 4 with κ = 1, α = ρ = 0 gives today's rule's year-end levels and a smaller shortage; at q = 4 and steady money the level pass-through tends to 1 and steady inflation equals money growth; `wyroot`'s yearly inflation has the annual rule's modulus and period (from the closed form) on a step of money; bv > 0 raises the level pass-through above 1 under sustained money and leaves steady inflation equal to money growth while stable; bv = 0 identical; no new money, every term 0 under both options; no random draw (eight draws per agent-year hold). Guard test identical; lineage proved; validate, unit, domtest.
+
+## Part C: pilot (item 6; mechanism check, not a result)
+- **Yardstick:** as S58 (the frozen engine, CPS earnings, today's safety net, the manifest's common settings, `mf: true`).
+- **Rows:** no programme under today's rule and the capacity rule (identity); the release row and the C2.2 design under today's rule and the capacity rule at the main values (these four reproduce S58's rows exactly: a check); the C2.2 design under `pg`, `wy`, `wyroot`, `vel`, `velh`, `qtvel`; the release row under `pg`, `wy`, `vel`. Every programme row paired with the no-programme run.
+- **Environments:** Reference, Adverse, Stress. **Seeds 1-100**, paired; 500 adults; 20 years. Run in pieces that each save a file. Session machine (free). Tools `dev/tools/s67_price.js`, `dev/tools/s67_table.py`; outputs compassionism-simulation `dev/runs/s67-price/` and compassionism-sim-results `s67-price-<engine commit, 7 chars>` with run.txt and SHA256SUMS.
+
+## Outcomes
+- **Primary (the rule's behaviour):** programme inflation (points a year), the year-20 price level, level pass-through at years 3 and 19, the yearly inflation path, and **the wave**: the largest less the smallest yearly inflation over years 5-19 (points), geometric mean path over seeds, and per seed; the rationed share and the shadow ratio.
+- **Secondary:** the programme's paired effect on basket poverty, the cost of living, wealth poverty and median real wealth, each at year 20 **and as the average of years 1-20** (from the yearly path keys `ppov_*`, `pmedW_*`, `pf0_*`); wealth poverty and median real wealth at shadow prices.
+- **Checks:** the four S58 rows reproduce S58's published per-seed values exactly; the no-programme run is identical under every reading; the money-flow identity.
+- **Family:** exploratory (pilot); unadjusted 95% paired-bootstrap intervals (2,000 replicates over seeds); the count excluding zero and the count surviving Holm at 5% beside them.
+
+## Decision rules (fixed before any result)
+1. A reading is ready for S63 if its unit tests pass, the guard test is identical and the checks above hold. Otherwise the defect is fixed and the pilot rerun before any report.
+2. **Claude's recommendation for S63's main-row decision is set by two tests that do not look at any poverty or wealth result:**
+   - (a) *Is κ identified in the rule's own form?* Yes if, in A2's F1 (CPI-U, v* reading ii), the full-sample slope above has a 95% Newey-West interval that excludes zero **and** has the same sign in both subsamples.
+   - (b) *Do the waves survive a shorter lag?* Yes if the wave of the C2.2 design in Reference under `wy` is at least half the wave under the annual capacity rule at the main values.
+   - If (a) and (b) are both yes: the capacity rule as the main row (with the price-gap parameters), today's rule beside it. Otherwise: today's rule as the main row, the capacity rule and its readings beside it. In both cases: every wealth outcome at year 20, year 40 and as a yearly average under both rules, and the decision text carries both views (S58's preregistration and the audit) with their reasons.
+3. The velocity reading joins the readings S63 carries beside the main row if `vel` or `qtvel` moves the C2.2 design's level pass-through at year 19 by more than 0.05; otherwise it is reported here and dropped, with the reason.
+4. The dated correction notes of item 1 change no figure (`dev/tools/no_figure_change.py` where it applies).
+5. Any choice made while building that this text does not fix is a dated amendment below, before the pilot runs.
+
+## Reporting
+Every cell (every regression, every sample, every row and reading, including readings that floor at zero, are explosive or fail) is published in compassionism-simulation `dev/reports/s67-price-rule-derivation.md` (plain words) and in compassionism-sim-results. The step may take two sessions: Part A first; Parts B and C after Amendment 1.
+
+## Amendments
