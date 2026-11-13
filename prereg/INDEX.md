@@ -66,12 +66,19 @@ Every wealth result of the programme rests on the engine's price rule.
 
 Sections (line): Why 5 · 1. Evidence (opened; order-of-magnitude checks,  10 · 2. The rule (what will be built) 19 · Parameters 33 · 3. The conversion tax (S39 open item b) 45 · 4. Unit tests (each mechanism alone) 50 · 5. Pilot (mechanism check, not a result) 63 · Outcomes 69 · Decision rules 75 · Reporting 81 · Amendments 84
 
-## 2026-11-s59-asset-classes.md (63 lines)
+## 2026-11-s59-asset-classes.md (67 lines)
 Preregistration: wealth held by asset class (S59, part 1: switch RETURNS)
 
 Today every adult's wealth is one number of dollars.
 
 Sections (line): Why 7 · What will be built (switch `RETURNS`, study row  12 · Questions 25 · Design 31 · Outcomes 36 · Analysis 39 · Decision rules 42 · Reporting 48 · Amendments 51
+
+## 2026-11-s59-tail-returns.md (93 lines)
+Preregistration: a weighted top tail, business owners and the income wealth pays (S59, part 2: switch WEALTH_TAIL and RETURNS options)
+
+Part 1 (`prereg/2026-11-s59-asset-classes.md`) split a household's net worth into asset classes.
+
+Sections (line): Why 7 · Inputs, fixed now (derived before this file from 12 · What will be built (both off by default; off = i 32 · Questions 48 · Design 56 · Outcomes 61 · Analysis 64 · Decision rules 67 · Reporting 73 · Amendments 76
 
 ## 2026-11-s61-baseline-scope.md (85 lines)
 Preregistration: baseline scope, adults outside the labour force and the debt drift (S61)
