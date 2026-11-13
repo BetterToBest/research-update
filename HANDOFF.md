@@ -5,7 +5,7 @@ S67 is **done** in one session (the plan allowed two). It added no step. S7 stay
 
 ## What shipped
 - research-update: `prereg/2026-11-s67-price-rule-derivation.md` (committed before any regression or run; Amendment 1 before the pilot), PLAN.md (S67 findings; what S63, S68 and S70 must carry), PLAN-done.md, the prereg index, this file. Branch `claude/jolly-davinci-dbcv2x`.
-- compassionism-simulation [PR 96](https://github.com/BetterToBest/compassionism-simulation/pull/96): open, checks running (merged once they pass). Three dated correction notes (S58 and S57 reports; no figure changed); the closed form (`dev/tools/s67_closed_form.py`); US price-gap regressions (`sources/s67_pstar.py`) and a panel of high-inflation episodes (`sources/s67_panel.py`); options `q`, `bv`, `bd` of the capacity price rule (off identical: guard test, lineage; 7 unit tests); report `dev/reports/s67-price-rule-derivation.md`; tables `dev/runs/s67-price/`.
+- compassionism-simulation [PR 96](https://github.com/BetterToBest/compassionism-simulation/pull/96): merged (63cda96), checks green. Three dated correction notes (S58 and S57 reports; no figure changed); the closed form (`dev/tools/s67_closed_form.py`); US price-gap regressions (`sources/s67_pstar.py`) and a panel of high-inflation episodes (`sources/s67_panel.py`); options `q`, `bv`, `bd` of the capacity price rule (off identical: guard test, lineage; 7 unit tests); report `dev/reports/s67-price-rule-derivation.md`; tables `dev/runs/s67-price/`.
 - compassionism-sim-results [PR 29](https://github.com/BetterToBest/compassionism-sim-results/pull/29), merged (9f80e61): `s67-price-985f0c3` (seeds 1-100, three environments; run.txt, SHA256SUMS, DONE).
 
 ## Findings (plain words; pilot, seeds 1-100, 500 adults; intervals unadjusted)
@@ -37,5 +37,5 @@ S67 is **done** in one session (the plan allowed two). It added no step. S7 stay
 - `node domtest.js` in compassionism-simulation needs `npm install`, then `python3 dev/tools/sync_earlier.py` and the lineage proof after any engine edit; its failures before that are expected.
 - The pilot runner first failed on a quote in a description string; a `node --check` on every new tool before a run costs nothing.
 - Never quote a wealth or concentration result under `rt` without the no-debt-relief reading (`chi: 1`) beside it. With the tail on, read only weighted measures.
-- The session machine restarts: run pilots in pieces that each save a file. After `node harness.js unit`, grep the whole output for FAIL and check the exit code.
+- The session machine restarts (once more this session, after the pilot; nothing was lost): run pilots in pieces that each save a file. After `node harness.js unit`, grep the whole output for FAIL and check the exit code.
 - The remote branches `claude/s66-low-share-trace` and earlier session branches in research-update still need deleting by hand.
