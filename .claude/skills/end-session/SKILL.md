@@ -9,6 +9,7 @@ disable-model-invocation: true
 Do these in order, then stop. Start no new work.
 
 1. **Land the work.** Every repository changed this session has its PR merged (checks green), or HANDOFF.md says why it is open.
+   If the session added or changed a file in `prereg/` or `audits/`, run `python3 tools/make_index.py` first and commit the two INDEX.md files with it.
 
 2. **Rewrite `HANDOFF.md`** in this repository, under 45 lines, plain words:
    - Title line: date and the step.
