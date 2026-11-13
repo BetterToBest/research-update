@@ -1,20 +1,21 @@
-# Handoff (Nov 10, 2026): S59 part 1 done, wealth held by asset class
+# Handoff (Nov 13, 2026): S59 done, the top of the wealth distribution, business owners and capital income
 
 ## Step status
-S59 is **partly done**: part 1 (the asset classes, the Nov 9 audit's finding 1) is built, piloted and reported. Part 2 remains: the weighted top tail, returns that differ by wealth, business ownership and its income, the check against the Fed's accounts, the owners rule (PLAN.md, S59, "Part 2"). S7 stays held.
+S59 is **done** (part 1 Nov 10, part 2 Nov 12-13). It added one step to the plan: **S71**, a creditor side for debts that inflation wipes out (PLAN.md, S71). S7 stays held.
 
 ## What shipped
-- research-update `prereg/2026-11-s59-asset-classes.md` (committed before the build; Amendments 1 and 2); PLAN.md (S59 part 1, findings); this file. Branch `claude/wizardly-davinci-16utgd`.
-- compassionism-simulation [PR 92](https://github.com/BetterToBest/compassionism-simulation/pull/92): switch `RETURNS` (row option `rt`), off identical (guard test, lineage linked), 7 unit tests; sources `sources/s59_portfolio.py` (SCF 2022) and `sources/s59_real_gains.py` (Shiller); pilot tool, tables, report `dev/reports/s59-asset-classes.md`; DECISIONS (S59, part 1).
-- compassionism-sim-results [PR 27](https://github.com/BetterToBest/compassionism-sim-results/pull/27), merged (9f76000): `s59-assets-1d2cf29` (seeds 1-100, three environments; run.txt, SHA256SUMS, DONE).
+- research-update: `prereg/2026-11-s59-tail-returns.md` (committed before the build; Amendments 1 and 2), Amendment 3 to part 1's file (a correction), PLAN.md (S59 part 2 findings, S71, Order table), PLAN-done.md, the prereg index, this file. Branch `claude/eloquent-tesla-bemri3`.
+- compassionism-simulation [PR 93](https://github.com/BetterToBest/compassionism-simulation/pull/93): open, its checks running when this was written. Switch `WEALTH_TAIL` (row option `wt`), `rt` options `bo`, `ci`, `ng`, `rg`, the owners rule by equity (`own: 'eq'`), weighted measures; off identical (guard test, lineage), 8 unit tests; sources `sources/s59_tail.py`, `sources/s59_capital.py`; report `dev/reports/s59-tail-returns.md`; tables `dev/runs/s59-tail/tables.md`.
+- compassionism-sim-results [PR 28](https://github.com/BetterToBest/compassionism-sim-results/pull/28), merged (c71289c): `s59-tail-62a189b` (seeds 1-100, three environments; run.txt, SHA256SUMS, DONE).
 
 ## Findings (plain words; pilot, seeds 1-100, 500 adults; intervals unadjusted)
-- **The model treated all wealth as cash; the survey says the model's families hold little net cash.** Nominal assets are 20% of net worth, debts 18% (mostly fixed-rate mortgages); the rest is homes, shares, businesses.
-- **With wealth held by asset class the programme's wealth-poverty harm becomes a reduction** in every environment under the main reading. Reference: release +21.5 → −12.7 points; C2.2 +0.7 → −18.2.
-- **Part of that is debt relief nobody pays for** (the model has no lender). With fixed-rate debt repricing too: −6.7 and −13.3.
-- **If homes, shares and businesses follow only half of the programme's inflation, the release design raises wealth poverty in Adverse (+9.1) and Stress (+3.6).** Release: sign not established. C2.2: a reduction in 26 of 27 cells, nil in one.
-- Basket poverty, the cost of living and inflation do not move. The earlier fall in the wealth Gini and top shares was the all-cash assumption (top 1% share: −12.4 points → −1.0).
-- The top fifth by starting wealth still loses about $240,000 per adult; the other four fifths gain.
+- **The model had no very wealthy households** (its tables stopped at the 99.5th percentile). With a fitted top tail the top 1% of adults hold 30.1% of wealth at the start (28.4 to 31.8), against 20.8% before, 31.5% in the survey for the same families, and 29.3-32.5% in the Fed's accounts.
+- **Whether the programme lowers or raises concentration is not established.** Main reading: the top 1% share falls 0.9-1.8 points by year 20, in every environment and every tail reading. With no unpaid-for mortgage relief: it rises 0.1-1.2 points. The bottom half gains share and the Gini falls either way.
+- **The tail changes nothing else** (wealth poverty, basket poverty, inflation: inside their intervals). Part 1's wealth-poverty results stand with everything on (Reference: −12.5 release, −18.1 C2.2; −6.7 and −13.3 without debt relief).
+- **Wealth pays income, mostly at the top:** about $9,800 per adult at the start (survey about $8,950). 15% of adults own a business.
+- **If private owners kept the conversion premium** (not the release reading), the top 1% share of income would rise 1-5 points and basket poverty would fall about 4 points less.
+- **Correction to part 1:** the Fed re-issued its survey file in 2025 dollars on Oct 5; part 1's wealth-group edges were 9.4% too high. Rerun: no finding changes (largest move 0.11 points).
+- **What the sources said, against the plan's wording:** the "3.5 times" interest figure is the top 0.01% only; the 45.3% and 75.7% of capital gains rank people by income, not wealth; 14.6% of families hold business equity (the Bulletin's 20% counts the self-employed too).
 
 ## In flight
 - Nothing.
@@ -22,16 +23,16 @@ S59 is **partly done**: part 1 (the asset classes, the Nov 9 audit's finding 1) 
 ## Decisions waiting
 - D21: carry the C2.2 design paid for by a contribution on every round-2 outcome (default: yes, as a labelled reading).
 - S63 files the main-row price-rule decision after S67.
-- Nothing new from S59 part 1.
+- Nothing new from S59. S71 was added without a decision: it is modelling work, free to run, and S63 now waits on it.
 
 ## Next step
-**S59, part 2** (fable, high, under D22; opus, xhigh if fable is not available): preregister, then build the weighted top tail and the returns and business-ownership part. S67 and S60 can start too.
+**S67** (the price rule: derivation, time step and wording; fable, high, under D22; opus, xhigh if fable is not available): it is the first open row of the Order table. S60 and S71 can start too.
 
 ## Pitfalls
-- Never quote an `rt` wealth result without the no-debt-relief reading (`chi: 1`) beside it: inflated-away mortgages are a gain with no loser.
-- A pilot's "off" rows must carry CPS earnings (`lt: {s: 'all', m: 'all'}`) to match S66's rows; without it basket poverty is 51%, not 27%.
-- The no-programme run has no inflation in Reference but has outside inflation in Adverse and Stress.
-- A no-programme row's `pd*` keys read the previous run's PTF state: a unit test comparing two studies needs a warm-up study with the same seeds.
-- FRED refused scripted downloads this session (it worked for S58); Shiller's files and the Fed's SCF and DFA files were reachable.
-- The session's worker restarted once mid-step; clones and downloads survived, the scratchpad path changed.
+- Never quote a wealth or concentration result under `rt` without the no-debt-relief reading (`chi: 1`) beside it.
+- With the tail on, read only weighted measures (`wt*`, `dm*`, `rt*`); the engine's older Gini and top shares are not valid.
+- The Fed re-issues its SCF extracts in the newest survey's dollars: check the dollar year before any price adjustment (`FILE` in `sources/s59_capital.py`).
+- The session machine restarted twice: once mid-pilot (the run was lost; rerun in chunks that each save a file) and the scratchpad path changed. Run pilots in chunks.
+- One preregistration figure was wrong and is corrected in Amendment 2 (the Forbes 400 adds 1.81 points to the survey's top 1% share, not 1.66); a comparison only.
+- The first commit of this session in research-update (6c10ebe), like earlier sessions' commits, carries a model name in its co-author line, against the rule; history is not rewritten. Later commits use a plain co-author line.
 - The remote branch `claude/s66-low-share-trace` in research-update still needs deleting by hand.
