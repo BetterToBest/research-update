@@ -101,6 +101,13 @@ The Nov 9 audit (`audits/2026-11-09-simulation-audit.md`, finding 2) found five 
 
 Sections (line): Why 5 · Sources opened before use, and two that could no 10 · Part A: derivation and data (no engine run) 15 · A1. The closed form (item 2) 17 · A2. κ on the rule's own variable (item 3) 20 · A3. Dynamics in high-inflation episodes (item 4) 32 · Part B: two readings behind `PRICE_RULE` options 40 · Part C: pilot (item 6; mechanism check, not a re 55 · Outcomes 60 · Decision rules (fixed before any result) 66 · Reporting 76 · Amendments 79 · Amendment 1 (Nov 13, 2026; after Part A, before  81
 
+## 2026-11-s71-creditor-side.md (113 lines)
+Preregistration: a creditor side for debt that inflation wipes out (S71: option `cr` of RETURNS)
+
+The engine already pays holders of nominal assets (deposits, bonds, the non-stock part of funds) only 46% of inflation as extra interest (`phi` 0.46, Drechsler, Savov and Schnabl 2017).
+
+Sections (line): Why 5 · What is already on the books (found while readin 10 · Method (Doepke and Schneider, *Journal of Politi 13 · Sources and rules for the coefficients (fixed no 18 · The mechanism (option `cr` of `rt`; off = identi 37 · Unit tests (written with the build) 53 · Pilot (100 seeds, 500 adults, 20 years; Referenc 61 · Decision rules (fixed now) 77 · Limits known before the build 85 · Amendments 93 · Amendment 1 (Nov 13, 2026, before the pilot): th 95
+
 ## 2026-11-security-addendum.md (83 lines)
 Preregistration addendum: security outcomes beyond wealth, and the per-year series for public costs (S53, study P, for S47)
 

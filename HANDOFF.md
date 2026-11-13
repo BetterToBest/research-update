@@ -1,41 +1,41 @@
-# Handoff (Nov 13, 2026): S67 done, the price rule's derivation, time step and wording
+# Handoff (Nov 13, 2026): S71 done, a creditor side for debt that inflation wipes out
 
 ## Step status
-S67 is **done** in one session (the plan allowed two). It added no step. S7 stays held.
+S71 is **done** in one session. It added no step. S7 stays held.
 
 ## What shipped
-- research-update: `prereg/2026-11-s67-price-rule-derivation.md` (committed before any regression or run; Amendment 1 before the pilot), PLAN.md (S67 findings; what S63, S68 and S70 must carry), PLAN-done.md, the prereg index, this file. Branch `claude/jolly-davinci-dbcv2x`.
-- compassionism-simulation [PR 96](https://github.com/BetterToBest/compassionism-simulation/pull/96): merged (63cda96), checks green. Three dated correction notes (S58 and S57 reports; no figure changed); the closed form (`dev/tools/s67_closed_form.py`); US price-gap regressions (`sources/s67_pstar.py`) and a panel of high-inflation episodes (`sources/s67_panel.py`); options `q`, `bv`, `bd` of the capacity price rule (off identical: guard test, lineage; 7 unit tests); report `dev/reports/s67-price-rule-derivation.md`; tables `dev/runs/s67-price/`.
-- compassionism-sim-results [PR 29](https://github.com/BetterToBest/compassionism-sim-results/pull/29), merged (9f80e61): `s67-price-985f0c3` (seeds 1-100, three environments; run.txt, SHA256SUMS, DONE).
+- research-update: `prereg/2026-11-s71-creditor-side.md` (committed before the build and before any coefficient was computed; Amendment 1 before the pilot), PLAN.md (S71 findings; what S63, S68 and S70 must carry), PLAN-done.md, the prereg index, this file. Branch `claude/session-s71-28eecp`.
+- compassionism-simulation [PR 97](https://github.com/BetterToBest/compassionism-simulation/pull/97): merged (a00a24f), checks green. Option `cr` of `rt` (off identical: guard test, lineage; 7 unit tests); `sources/s71_creditors.py` (who holds household fixed-rate debt: the Fed's Financial Accounts, the Survey of Consumer Finances, Doepke and Schneider 2006); report `dev/reports/s71-creditor-side.md`; tables `dev/runs/s71-creditors/`; a dated wording note in the S59 report (no figure changed).
+- compassionism-sim-results [PR 30](https://github.com/BetterToBest/compassionism-sim-results/pull/30), merged (9c3b82d): `s71-creditors-f7572fd` (seeds 1-100, three environments; run.txt, SHA256SUMS, DONE).
 
 ## Findings (plain words; pilot, seeds 1-100, 500 adults; intervals unadjusted)
-- **Both price rules assume that sustained new money passes into prices one for one; neither finds it.** The S58 report said the new rule "agrees with the evidence" as a result. Corrected by dated note, with a replacement Hub sentence.
-- **The capacity rule's waves are its own arithmetic.** Yearly inflation follows a two-term formula (now written out, and within about 1 point of the engine). The size of the wave is set by one number, how much of last year's inflation carries forward, and defensible values of it give waves from 5 to 68 points.
-- **The rule's response speed is not identified.** Estimated on the variable the rule uses (the gap between the money-implied price level and prices; US, 1970-2024) it is −0.001 (standard error 0.05): 0.88 in the 1970s, 0.04 since 1984. With proper standard errors S58's own 0.445 does not exclude zero.
-- **In 77 episodes of sustained inflation above 20%** (52 countries): about two thirds of last year's inflation carries over; prices close the gap to money at 0.05-0.18 a year (not distinguishable from zero); inflation ran ahead of money in two thirds of episodes, by 4-6 points a year.
-- **A shorter time step halves the waves but does not remove them** (C2.2, Reference: 19.8 points against 39.1 with values fitted to quarterly data; unchanged with the yearly values converted to quarters). The waves come from the values, not the step.
-- **The "shortage" under today's rule was the yearly step:** run in quarters, the same results with 1.9% of demand unmet instead of 22.5%, and prices 12.6% above opening levels during the year.
-- **Basket poverty and the cost of living do not depend on the price rule** (0.3 point or less). **The year-20 wealth-poverty effect changes sign with the rule (−1.8 to +1.1); the yearly average does not (+1.9 to +3.6).** If inflation runs 13% ahead of money, as the episodes suggest, the programme's inflation is about 6 points a year higher and its wealth-poverty effect 5-7 points worse, under either rule.
-- **Recommendation for S63, set by a rule fixed before the results:** today's rule as the main row; the capacity rule, the quarterly reading and the faster-than-money reading beside it; every wealth outcome at year 20, year 40 and as a yearly average. This reverses S58's preregistered recommendation; both views are in the report's section 9.
+- **Who holds a dollar of household fixed-rate debt** (end of 2022, traced to final owners): households 32 cents (24 as deposits, 8 as bonds), businesses 32 (their shareholders), the government 27, foreigners 8.
+- **Part of the loss was already in the model:** savers are paid 46% of inflation, so 11 cents of each dollar of debt relief were already being lost by the model's savers. The option adds 2 cents on their bond-like savings and 20 on their shares. 66 cents fall outside the model (government 30, foreigners 16, households not in the model, mostly retired, 20).
+- **Wealth poverty does not change:** −12.5 points (release design, Reference) with or without the creditor side; −12.4 when every dollar falls on the model's households; −6.7 with no debt relief. The poorest fifth get $40,900 of relief each and bear $580 of the new charges.
+- **The programme still lowers the top 1% share** in all five creditor readings and all three environments (−1.02 main; −0.67 with nothing left outside; −1.14 before). By the preregistered rule the direction is established for both designs, among creditor readings.
+- **The sign turns on whether debt relief happens, not on the lender.** The no-debt-relief reading (+1.23) removes the borrower's gain; a creditor side adds the saver's loss. S59's wording is corrected by a dated note.
+- **S59's two readings are not bounds** for the top 10% share, the bottom half's share and the Gini (the creditor readings are more equalising than S59's main reading), nor for average wealth with nothing outside. Average real wealth falls further (−$96,000 per adult against −$57,700); the median adult still gains (+$31,500).
+- **Nothing else moves** (inflation, cost of living, basket poverty: 0.06 point or less).
+- **Recommendation for S63, fixed before the results:** the creditor side (main incidence) as a main-row candidate for wealth and concentration outcomes; beside it S59's main and no-debt-relief readings, holders of record, shareholders not charged, the model as all households, and nothing outside as the upper bound.
 
 ## In flight
 - Nothing.
 
 ## Decisions waiting
 - D21: carry the C2.2 design paid for by a contribution on every round-2 outcome (default: yes, as a labelled reading).
-- S63 files the main-row price-rule decision, now with S67's recommendation and both views.
-- Nothing new from S67.
+- S63 files the main-row price-rule decision (S67's recommendation, both views).
+- Nothing new from S71.
 
 ## Next step
-**S71** (a creditor side for debts that inflation wipes out): the first open row of the Order table. S60 can start too. S62 waits on S60; S68 and S70 wait on S60, S62 and S71.
+**S60** (bargaining power): the first open row of the Order table. S62 waits on S60; S68 and S70 wait on S60 and S62.
 
 ## Pitfalls
-- Two papers the step named (Hallman, Porter and Small 1991; Cagan 1956) could not be opened from the session (paywalled). Nothing is quoted from them; the forms come from papers that restate them. Anyone with access should check the report's section 1 against the originals.
-- Never quote a wealth-poverty or real-wealth figure at year 20 alone under any price rule: give the yearly average beside it. Never quote the "rationed share" or shadow-price figures on a yearly step as facts about the economy.
-- The velocity drift (0.132) is one reading of noisy data (0.101 without hyperinflation years; the cross-section slope is 1.06 or 0.84). A reading, never a main value.
-- The preregistered wave test passed by a hair in Reference (0.51 against a threshold of 0.5) and would fail in Adverse and Stress (0.31-0.32). The recommendation does not depend on it (the other test failed), but do not describe the waves as "surviving" without those figures.
-- `node domtest.js` in compassionism-simulation needs `npm install`, then `python3 dev/tools/sync_earlier.py` and the lineage proof after any engine edit; its failures before that are expected.
-- The pilot runner first failed on a quote in a description string; a `node --check` on every new tool before a run costs nothing.
-- Never quote a wealth or concentration result under `rt` without the no-debt-relief reading (`chi: 1`) beside it. With the tail on, read only weighted measures.
-- The session machine restarts (once more this session, after the pilot; nothing was lost): run pilots in pieces that each save a file. After `node harness.js unit`, grep the whole output for FAIL and check the exit code.
-- The remote branches `claude/s66-low-share-trace` and earlier session branches in research-update still need deleting by hand.
+- A commit message carrying a model name is refused by the session's safety check (and by the project's rule). Use the trailer `Co-Authored-By: Claude <noreply@anthropic.com>`.
+- The no-debt-relief reading is not "the creditor side at its strongest". Never present it as a bound for creditor readings; quote both beside any wealth result.
+- The main creditor reading charges shareholders the lenders' loss without the gain businesses make on their own fixed debt (not modelled). Always show "shareholders not charged" beside it. Lenders do not fail in the model.
+- The model's top 1% bear 26% of the new charges; the Fed's distributional accounts, for all households, suggest 46-48%. A limit, stated in the report.
+- `cr` is the one rule that reads adults' weights (through four yearly totals). With unweighted totals (`w: 0`) the `cr*` keys are not comparable in dollars with other rows.
+- Totals taken before the year's loop left a ledger gap of 3 parts in a million (a pathway exit pays equity into wealth in between); a full-run ledger test caught it. Keep such tests.
+- These rows read wealth at year 20 only; S63 must read yearly averages too (S67).
+- `node domtest.js` needs `npm install`, then `python3 dev/tools/sync_earlier.py` and the lineage proof after any engine edit. Run pilots from a clean worktree, in pieces that each save a file.
+- The remote branches `claude/s66-low-share-trace`, `claude/jolly-davinci-dbcv2x` and earlier session branches in research-update still need deleting by hand.
