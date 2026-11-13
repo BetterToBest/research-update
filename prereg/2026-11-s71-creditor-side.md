@@ -91,4 +91,22 @@ With no inflation every charge is zero. With `chi` equal to `phi` the nominal ch
 - Tested with wealth by asset class only (no ageing, capacity price rule or adults outside the labour force): S68's pairwise tests.
 
 ## Amendments
-(none yet)
+
+### Amendment 1 (Nov 13, 2026, before the pilot): the coefficients, the build, and four small departures
+Engine commit of the pilot: `f7572fd4c3efec2393df779df2d3459269cdb217` (branch `claude/s71-creditor-side`). Guard test identical; engine lineage linked; 7 unit tests (`crUnitSuite`), all passing.
+
+**Coefficients** (`sources/s71_creditors.py`, `sources/s71_creditors.json`; file hashes inside), computed after this file's first commit by the rules above:
+- One dollar of household fixed-rate debt, by final holder (2022:Q4): households' deposit-like claims 0.2393; households' bond-like claims 0.0845; businesses (their shareholders) 0.3242; government 0.2556; foreigners 0.0641; government's deposits 0.0182; foreigners' deposits 0.0141. At 2026:Q2 (check, not used): 0.2200, 0.0826, 0.3723, 0.2173, 0.0720, 0.0216, 0.0141.
+- Owners of U.S. shares: households 0.7313, government 0.0710, foreigners 0.1977.
+- The engine's families hold 79.0% of all families' fixed-rate debt, 51.8% of deposit-like assets, 47.9% of bond-like assets and 49.2% of stocks. Factors: deposits 0.6566, bonds 0.6067, shares 0.6233.
+- Bond-like fraction of nominal assets by wealth group (below zero, then up to the 25th, 50th, 75th, 90th, 99th percentile, above): 0.3805, 0.3920, 0.4977, 0.5883, 0.6648, 0.7260, 0.6624; all 0.6753.
+- So, per dollar of debt inflated away in the main reading (`phi` 0.46, `chi` 0): 11.3 cents are already on the books of the model's households, 2.4 cents are newly charged on their bond-like assets, 20.5 cents on their shares, and 65.9 cents are outside the model (government 29.7, foreigners 16.1, households outside the model 20.1). These are arithmetic from the coefficients, not results of a run.
+- Outside check (Distributional Financial Accounts, all households, 2022:Q4): the top 1% would bear 46-48% of the new charges, the next 9% 38%, the next 40% 13-15%, the bottom half under 1%.
+
+**Departures from the text above, each decided before the pilot:**
+1. The year's totals are taken at the first adult's turn in the year, not before the year's loop: a pathway exit pays equity into wealth between the two, which left a ledger gap of 3 parts in a million in the first build (found by unit test 6 on a 2-seed, 6-year run; no pilot row had run).
+2. In 338 of 22,975 survey records the stock total counts stock held inside transaction accounts; deposit-like assets are capped at the nominal total there (0.35% of the bond-like total).
+3. Money market fund shares held by private pension funds count as households' deposit-like claims; nonprofits' student loans as households' direct claims; holding companies' agency securities as banks'. None was named in the rules; each follows the nearest named rule.
+4. Shares are charged at most their own value times inflation (a cap, never reached in the tests), and the "top 1% of adults" for the share of new charges is taken by starting wealth, like the fifths.
+
+**Rows as run:** the ten rows of the table above, in each environment, by `dev/tools/s71_creditors.js`; tables by `dev/tools/s71_table.py` with S59's folder for the equality check (now also on row `r2`).
