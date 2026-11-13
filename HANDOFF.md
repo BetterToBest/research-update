@@ -1,22 +1,21 @@
-# Handoff (Nov 13, 2026): S71 done, a creditor side for debt that inflation wipes out
+# Handoff (Nov 13, 2026): S60 done, bargaining power (a worker's outside option and an employer markdown)
 
 ## Step status
-S71 is **done** in one session. It added no step. S7 stays held.
+S60 is **done** in one session. It added no step. S7 stays held.
 
 ## What shipped
-- research-update: `prereg/2026-11-s71-creditor-side.md` (committed before the build and before any coefficient was computed; Amendment 1 before the pilot), PLAN.md (S71 findings; what S63, S68 and S70 must carry), PLAN-done.md, the prereg index, this file. Branch `claude/session-s71-28eecp`.
-- compassionism-simulation [PR 97](https://github.com/BetterToBest/compassionism-simulation/pull/97): merged (a00a24f), checks green. Option `cr` of `rt` (off identical: guard test, lineage; 7 unit tests); `sources/s71_creditors.py` (who holds household fixed-rate debt: the Fed's Financial Accounts, the Survey of Consumer Finances, Doepke and Schneider 2006); report `dev/reports/s71-creditor-side.md`; tables `dev/runs/s71-creditors/`; a dated wording note in the S59 report (no figure changed).
-- compassionism-sim-results [PR 30](https://github.com/BetterToBest/compassionism-sim-results/pull/30), merged (9c3b82d): `s71-creditors-f7572fd` (seeds 1-100, three environments; run.txt, SHA256SUMS, DONE).
+- research-update: `prereg/2026-11-s60-bargaining-power.md` (committed before the build and any run; Amendment 1 before the pilot), PLAN.md (S60 findings; notes for S62, S63, S68, S70), PLAN-done.md, a dated correction in `audits/2026-11-s39-s55-review-triage.md` (C5: the US experiment is now *QJE* 2026, 4.2 points and $1,900), the indexes, this file. Branch `claude/keen-lamport-q6fs3d`.
+- compassionism-simulation [PR 98](https://github.com/BetterToBest/compassionism-simulation/pull/98): merged (8621003), checks green. Switch `BARGAIN` (row option `bg`); off identical (guard test, lineage); 7 unit tests (`bgUnitSuite`); `sources/s60_bargain.py`; report `dev/reports/s60-bargaining-power.md`; tables `dev/runs/s60-bargain/`.
+- compassionism-sim-results [PR 31](https://github.com/BetterToBest/compassionism-sim-results/pull/31), merged (356eb0c): `s60-bargain-69f69f5` (seeds 1-100, three environments, plus the validation run; run.txt, SHA256SUMS, DONE).
 
 ## Findings (plain words; pilot, seeds 1-100, 500 adults; intervals unadjusted)
-- **Who holds a dollar of household fixed-rate debt** (end of 2022, traced to final owners): households 32 cents (24 as deposits, 8 as bonds), businesses 32 (their shareholders), the government 27, foreigners 8.
-- **Part of the loss was already in the model:** savers are paid 46% of inflation, so 11 cents of each dollar of debt relief were already being lost by the model's savers. The option adds 2 cents on their bond-like savings and 20 on their shares. 66 cents fall outside the model (government 30, foreigners 16, households not in the model, mostly retired, 20).
-- **Wealth poverty does not change:** −12.5 points (release design, Reference) with or without the creditor side; −12.4 when every dollar falls on the model's households; −6.7 with no debt relief. The poorest fifth get $40,900 of relief each and bear $580 of the new charges.
-- **The programme still lowers the top 1% share** in all five creditor readings and all three environments (−1.02 main; −0.67 with nothing left outside; −1.14 before). By the preregistered rule the direction is established for both designs, among creditor readings.
-- **The sign turns on whether debt relief happens, not on the lender.** The no-debt-relief reading (+1.23) removes the borrower's gain; a creditor side adds the saver's loss. S59's wording is corrected by a dated note.
-- **S59's two readings are not bounds** for the top 10% share, the bottom half's share and the Gini (the creditor readings are more equalising than S59's main reading), nor for average wealth with nothing outside. Average real wealth falls further (−$96,000 per adult against −$57,700); the median adult still gains (+$31,500).
-- **Nothing else moves** (inflation, cost of living, basket poverty: 0.06 point or less).
-- **Recommendation for S63, fixed before the results:** the creditor side (main incidence) as a main-row candidate for wealth and concentration outcomes; beside it S59's main and no-debt-relief readings, holders of record, shareholders not charged, the model as all households, and nothing outside as the upper bound.
+- **The evidence gives about zero.** Austrian benefit reforms: under a cent of wage per dollar of fallback, more than 3 cents ruled out (Nash theory predicts 24-48). The US $1,000-a-month experiment: no rise in hourly pay or in the lowest wage people would accept. Kenya's wage gains came from demand. So the main reading (pass-through 0) is identical to off.
+- **At the 3-cent bound:** about $650 a worker-year in the release design ($910 in C2.2; $280 release under Stress), 5-9% of the programme's raises; poverty a further 0.1-0.6 points lower. **At 10 cents** (the US experiment's bound): 15-24%; poverty 0.4-1.9 points lower.
+- **The theory readings (24, 48 cents), which the evidence rejects,** would make bargaining 28-59% of the wage gains; the Nash relation cannot even produce the measured pass-throughs with the measured markdown.
+- **The programme's fallback is large** ($22,400 a worker-year, a median 33% of earnings) yet, on the evidence, moves wages little. Every reading keeps every sign.
+- **No payer:** a raise comes out of owners' markdown (at 10 cents 7-23% of adults' capital income) and lowers inflation under today's price rule.
+- **Validation:** 15.6 cents of earnings lost per transfer dollar per worker (study 16): passes. Nobody stops working in the engine (study −4.2 points): a limit for S70 and S63.
+- **For S63, fixed before the results:** `bg` at 0 in the main row, 0.03 beside every wage, income and poverty result, 0.10 as the outer reading.
 
 ## In flight
 - Nothing.
@@ -24,18 +23,15 @@ S71 is **done** in one session. It added no step. S7 stays held.
 ## Decisions waiting
 - D21: carry the C2.2 design paid for by a contribution on every round-2 outcome (default: yes, as a labelled reading).
 - S63 files the main-row price-rule decision (S67's recommendation, both views).
-- Nothing new from S71.
+- Nothing new from S60.
 
 ## Next step
-**S60** (bargaining power): the first open row of the Order table. S62 waits on S60; S68 and S70 wait on S60 and S62.
+**S62** (PTF realism): its waits (S60, S56) are done; it is the first open row of the Order table. S68 and S70 wait on S62.
 
 ## Pitfalls
-- A commit message carrying a model name is refused by the session's safety check (and by the project's rule). Use the trailer `Co-Authored-By: Claude <noreply@anthropic.com>`.
-- The no-debt-relief reading is not "the creditor side at its strongest". Never present it as a bound for creditor readings; quote both beside any wealth result.
-- The main creditor reading charges shareholders the lenders' loss without the gain businesses make on their own fixed debt (not modelled). Always show "shareholders not charged" beside it. Lenders do not fail in the model.
-- The model's top 1% bear 26% of the new charges; the Fed's distributional accounts, for all households, suggest 46-48%. A limit, stated in the report.
-- `cr` is the one rule that reads adults' weights (through four yearly totals). With unweighted totals (`w: 0`) the `cr*` keys are not comparable in dollars with other rows.
-- Totals taken before the year's loop left a ledger gap of 3 parts in a million (a pathway exit pays equity into wealth in between); a full-run ledger test caught it. Keep such tests.
-- These rows read wealth at year 20 only; S63 must read yearly averages too (S67).
-- `node domtest.js` needs `npm install`, then `python3 dev/tools/sync_earlier.py` and the lineage proof after any engine edit. Run pilots from a clean worktree, in pieces that each save a file.
+- The container restarted mid-pilot and lost every unsaved chunk: run pilots in small chunks that each save a file and skip chunks already saved (`dev/tools/s60_bargain.js --rows`).
+- A reporting leak older than S60: `PDS` is reset only where the production side acts, so a no-programme row reports the previous programme run's `pdC*` and `pdMem19`. Never read them for a no-programme row; S68 resets module state per run.
+- Unit tests comparing whole studies need an uncounted warm-up run and the same row structure each time (rows of a study share cached supply paths); they passed alone and failed inside the full suite until then.
+- `bg` needs the labour response (testbed runs set it). Never quote a pass-through above 0.03 for a wealth or price result: no one pays the raise, and it lowers inflation mechanically.
+- Commit trailers: `Co-Authored-By: Claude <noreply@anthropic.com>` (no model name).
 - The remote branches `claude/s66-low-share-trace`, `claude/jolly-davinci-dbcv2x` and earlier session branches in research-update still need deleting by hand.
