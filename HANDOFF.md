@@ -5,7 +5,7 @@ S59 is **done** (part 1 Nov 10, part 2 Nov 12-13). It added one step to the plan
 
 ## What shipped
 - research-update: `prereg/2026-11-s59-tail-returns.md` (committed before the build; Amendments 1 and 2), Amendment 3 to part 1's file (a correction), PLAN.md (S59 part 2 findings, S71, Order table), PLAN-done.md, the prereg index, this file. Branch `claude/eloquent-tesla-bemri3`.
-- compassionism-simulation [PR 93](https://github.com/BetterToBest/compassionism-simulation/pull/93): open, its checks running when this was written. Switch `WEALTH_TAIL` (row option `wt`), `rt` options `bo`, `ci`, `ng`, `rg`, the owners rule by equity (`own: 'eq'`), weighted measures; off identical (guard test, lineage), 8 unit tests; sources `sources/s59_tail.py`, `sources/s59_capital.py`; report `dev/reports/s59-tail-returns.md`; tables `dev/runs/s59-tail/tables.md`.
+- compassionism-simulation [PR 93](https://github.com/BetterToBest/compassionism-simulation/pull/93): merged (81bd1fc), guard and checks green. Switch `WEALTH_TAIL` (row option `wt`), `rt` options `bo`, `ci`, `ng`, `rg`, the owners rule by equity (`own: 'eq'`), weighted measures; off identical (guard test, lineage), 8 unit tests; sources `sources/s59_tail.py`, `sources/s59_capital.py`; report `dev/reports/s59-tail-returns.md`; tables `dev/runs/s59-tail/tables.md`.
 - compassionism-sim-results [PR 28](https://github.com/BetterToBest/compassionism-sim-results/pull/28), merged (c71289c): `s59-tail-62a189b` (seeds 1-100, three environments; run.txt, SHA256SUMS, DONE).
 
 ## Findings (plain words; pilot, seeds 1-100, 500 adults; intervals unadjusted)
@@ -33,6 +33,7 @@ S59 is **done** (part 1 Nov 10, part 2 Nov 12-13). It added one step to the plan
 - With the tail on, read only weighted measures (`wt*`, `dm*`, `rt*`); the engine's older Gini and top shares are not valid.
 - The Fed re-issues its SCF extracts in the newest survey's dollars: check the dollar year before any price adjustment (`FILE` in `sources/s59_capital.py`).
 - The session machine restarted twice: once mid-pilot (the run was lost; rerun in chunks that each save a file) and the scratchpad path changed. Run pilots in chunks.
+- Two of part 1's unit tests hard-coded the old wealth-group edges and failed in CI; a local run had been read by its last lines only. After `node harness.js unit`, grep the whole output for FAIL and check the exit code.
 - One preregistration figure was wrong and is corrected in Amendment 2 (the Forbes 400 adds 1.81 points to the survey's top 1% share, not 1.66); a comparison only.
 - The first commit of this session in research-update (6c10ebe), like earlier sessions' commits, carries a model name in its co-author line, against the rule; history is not rewritten. Later commits use a plain co-author line.
 - The remote branch `claude/s66-low-share-trace` in research-update still needs deleting by hand.
