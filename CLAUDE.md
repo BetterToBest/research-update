@@ -44,4 +44,4 @@ Linked, not edited unless a step says so: BetterToBest/portal, BetterToBest/x-ce
 Artifact https://claude.ai/artifact/F1hceP6XEfPQ1pf6Sw1Ki8, database collection `projects`: document `hub` (code H, this plan) and `neec` (code N). Read only the fields you need. `/end-session` describes the write and the fallback (`ledger-sync/`).
 
 ## Files here
-`HANDOFF.md` (start here) · `PLAN.md` (steps, order, model and effort) · `prereg/` · `audits/` · `ledger-sync/` · `.claude/skills/` (start-session, end-session)
+`HANDOFF.md` (start here) · `PLAN.md` (steps, order, model and effort; `PLAN-done.md` holds finished steps' full notes) · `prereg/` and `audits/` (each has an `INDEX.md`: grep it for section lines; rebuild with `python3 tools/make_index.py` after adding or changing a file) · `ledger-sync/` · `.claude/skills/` (start-session, end-session)
