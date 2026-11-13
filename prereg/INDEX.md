@@ -94,7 +94,7 @@ Preregistration: tracing the low end of the fixed-share curve, the erosion of op
 
 Sections (line): Why 7 · Rows (all on the frozen engine, as the batch bui 12 · What is recorded (per seed, per year, reporting  28 · Outcomes and analysis 37 · Decision rules (fixed now) 46 · Outputs 53
 
-## 2026-11-s67-price-rule-derivation.md (94 lines)
+## 2026-11-s67-price-rule-derivation.md (95 lines)
 Preregistration: the price rule's derivation, time step and wording (S67)
 
 The Nov 9 audit (`audits/2026-11-09-simulation-audit.md`, finding 2) found five weaknesses in the capacity price rule built in S58: its one-for-one long-run pass-through is built in and was reported as a finding; its res

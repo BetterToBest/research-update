@@ -1,39 +1,41 @@
-# Handoff (Nov 13, 2026): S59 done, the top of the wealth distribution, business owners and capital income
+# Handoff (Nov 13, 2026): S67 done, the price rule's derivation, time step and wording
 
 ## Step status
-S59 is **done** (part 1 Nov 10, part 2 Nov 12-13). It added one step to the plan: **S71**, a creditor side for debts that inflation wipes out (PLAN.md, S71). S7 stays held.
+S67 is **done** in one session (the plan allowed two). It added no step. S7 stays held.
 
 ## What shipped
-- research-update: `prereg/2026-11-s59-tail-returns.md` (committed before the build; Amendments 1 and 2), Amendment 3 to part 1's file (a correction), PLAN.md (S59 part 2 findings, S71, Order table), PLAN-done.md, the prereg index, this file. Branch `claude/eloquent-tesla-bemri3`.
-- compassionism-simulation [PR 93](https://github.com/BetterToBest/compassionism-simulation/pull/93): merged (81bd1fc), guard and checks green. Switch `WEALTH_TAIL` (row option `wt`), `rt` options `bo`, `ci`, `ng`, `rg`, the owners rule by equity (`own: 'eq'`), weighted measures; off identical (guard test, lineage), 8 unit tests; sources `sources/s59_tail.py`, `sources/s59_capital.py`; report `dev/reports/s59-tail-returns.md`; tables `dev/runs/s59-tail/tables.md`.
-- compassionism-sim-results [PR 28](https://github.com/BetterToBest/compassionism-sim-results/pull/28), merged (c71289c): `s59-tail-62a189b` (seeds 1-100, three environments; run.txt, SHA256SUMS, DONE).
+- research-update: `prereg/2026-11-s67-price-rule-derivation.md` (committed before any regression or run; Amendment 1 before the pilot), PLAN.md (S67 findings; what S63, S68 and S70 must carry), PLAN-done.md, the prereg index, this file. Branch `claude/jolly-davinci-dbcv2x`.
+- compassionism-simulation [PR 96](https://github.com/BetterToBest/compassionism-simulation/pull/96): open, checks running (merged once they pass). Three dated correction notes (S58 and S57 reports; no figure changed); the closed form (`dev/tools/s67_closed_form.py`); US price-gap regressions (`sources/s67_pstar.py`) and a panel of high-inflation episodes (`sources/s67_panel.py`); options `q`, `bv`, `bd` of the capacity price rule (off identical: guard test, lineage; 7 unit tests); report `dev/reports/s67-price-rule-derivation.md`; tables `dev/runs/s67-price/`.
+- compassionism-sim-results [PR 29](https://github.com/BetterToBest/compassionism-sim-results/pull/29), merged (9f80e61): `s67-price-985f0c3` (seeds 1-100, three environments; run.txt, SHA256SUMS, DONE).
 
 ## Findings (plain words; pilot, seeds 1-100, 500 adults; intervals unadjusted)
-- **The model had no very wealthy households** (its tables stopped at the 99.5th percentile). With a fitted top tail the top 1% of adults hold 30.1% of wealth at the start (28.4 to 31.8), against 20.8% before, 31.5% in the survey for the same families, and 29.3-32.5% in the Fed's accounts.
-- **Whether the programme lowers or raises concentration is not established.** Main reading: the top 1% share falls 0.9-1.8 points by year 20, in every environment and every tail reading. With no unpaid-for mortgage relief: it rises 0.1-1.2 points. The bottom half gains share and the Gini falls either way.
-- **The tail changes nothing else** (wealth poverty, basket poverty, inflation: inside their intervals). Part 1's wealth-poverty results stand with everything on (Reference: −12.5 release, −18.1 C2.2; −6.7 and −13.3 without debt relief).
-- **Wealth pays income, mostly at the top:** about $9,800 per adult at the start (survey about $8,950). 15% of adults own a business.
-- **If private owners kept the conversion premium** (not the release reading), the top 1% share of income would rise 1-5 points and basket poverty would fall about 4 points less.
-- **Correction to part 1:** the Fed re-issued its survey file in 2025 dollars on Oct 5; part 1's wealth-group edges were 9.4% too high. Rerun: no finding changes (largest move 0.11 points).
-- **What the sources said, against the plan's wording:** the "3.5 times" interest figure is the top 0.01% only; the 45.3% and 75.7% of capital gains rank people by income, not wealth; 14.6% of families hold business equity (the Bulletin's 20% counts the self-employed too).
+- **Both price rules assume that sustained new money passes into prices one for one; neither finds it.** The S58 report said the new rule "agrees with the evidence" as a result. Corrected by dated note, with a replacement Hub sentence.
+- **The capacity rule's waves are its own arithmetic.** Yearly inflation follows a two-term formula (now written out, and within about 1 point of the engine). The size of the wave is set by one number, how much of last year's inflation carries forward, and defensible values of it give waves from 5 to 68 points.
+- **The rule's response speed is not identified.** Estimated on the variable the rule uses (the gap between the money-implied price level and prices; US, 1970-2024) it is −0.001 (standard error 0.05): 0.88 in the 1970s, 0.04 since 1984. With proper standard errors S58's own 0.445 does not exclude zero.
+- **In 77 episodes of sustained inflation above 20%** (52 countries): about two thirds of last year's inflation carries over; prices close the gap to money at 0.05-0.18 a year (not distinguishable from zero); inflation ran ahead of money in two thirds of episodes, by 4-6 points a year.
+- **A shorter time step halves the waves but does not remove them** (C2.2, Reference: 19.8 points against 39.1 with values fitted to quarterly data; unchanged with the yearly values converted to quarters). The waves come from the values, not the step.
+- **The "shortage" under today's rule was the yearly step:** run in quarters, the same results with 1.9% of demand unmet instead of 22.5%, and prices 12.6% above opening levels during the year.
+- **Basket poverty and the cost of living do not depend on the price rule** (0.3 point or less). **The year-20 wealth-poverty effect changes sign with the rule (−1.8 to +1.1); the yearly average does not (+1.9 to +3.6).** If inflation runs 13% ahead of money, as the episodes suggest, the programme's inflation is about 6 points a year higher and its wealth-poverty effect 5-7 points worse, under either rule.
+- **Recommendation for S63, set by a rule fixed before the results:** today's rule as the main row; the capacity rule, the quarterly reading and the faster-than-money reading beside it; every wealth outcome at year 20, year 40 and as a yearly average. This reverses S58's preregistered recommendation; both views are in the report's section 9.
 
 ## In flight
 - Nothing.
 
 ## Decisions waiting
 - D21: carry the C2.2 design paid for by a contribution on every round-2 outcome (default: yes, as a labelled reading).
-- S63 files the main-row price-rule decision after S67.
-- Nothing new from S59. S71 was added without a decision: it is modelling work, free to run, and S63 now waits on it.
+- S63 files the main-row price-rule decision, now with S67's recommendation and both views.
+- Nothing new from S67.
 
 ## Next step
-**S67** (the price rule: derivation, time step and wording; fable, high, under D22; opus, xhigh if fable is not available): it is the first open row of the Order table. S60 and S71 can start too.
+**S71** (a creditor side for debts that inflation wipes out): the first open row of the Order table. S60 can start too. S62 waits on S60; S68 and S70 wait on S60, S62 and S71.
 
 ## Pitfalls
-- Never quote a wealth or concentration result under `rt` without the no-debt-relief reading (`chi: 1`) beside it.
-- With the tail on, read only weighted measures (`wt*`, `dm*`, `rt*`); the engine's older Gini and top shares are not valid.
-- The Fed re-issues its SCF extracts in the newest survey's dollars: check the dollar year before any price adjustment (`FILE` in `sources/s59_capital.py`).
-- The session machine restarted twice: once mid-pilot (the run was lost; rerun in chunks that each save a file) and the scratchpad path changed. Run pilots in chunks.
-- Two of part 1's unit tests hard-coded the old wealth-group edges and failed in CI; a local run had been read by its last lines only. After `node harness.js unit`, grep the whole output for FAIL and check the exit code.
-- One preregistration figure was wrong and is corrected in Amendment 2 (the Forbes 400 adds 1.81 points to the survey's top 1% share, not 1.66); a comparison only.
-- The first commit of this session in research-update (6c10ebe), like earlier sessions' commits, carries a model name in its co-author line, against the rule; history is not rewritten. Later commits use a plain co-author line.
-- The remote branch `claude/s66-low-share-trace` in research-update still needs deleting by hand.
+- Two papers the step named (Hallman, Porter and Small 1991; Cagan 1956) could not be opened from the session (paywalled). Nothing is quoted from them; the forms come from papers that restate them. Anyone with access should check the report's section 1 against the originals.
+- Never quote a wealth-poverty or real-wealth figure at year 20 alone under any price rule: give the yearly average beside it. Never quote the "rationed share" or shadow-price figures on a yearly step as facts about the economy.
+- The velocity drift (0.132) is one reading of noisy data (0.101 without hyperinflation years; the cross-section slope is 1.06 or 0.84). A reading, never a main value.
+- The preregistered wave test passed by a hair in Reference (0.51 against a threshold of 0.5) and would fail in Adverse and Stress (0.31-0.32). The recommendation does not depend on it (the other test failed), but do not describe the waves as "surviving" without those figures.
+- `node domtest.js` in compassionism-simulation needs `npm install`, then `python3 dev/tools/sync_earlier.py` and the lineage proof after any engine edit; its failures before that are expected.
+- The pilot runner first failed on a quote in a description string; a `node --check` on every new tool before a run costs nothing.
+- Never quote a wealth or concentration result under `rt` without the no-debt-relief reading (`chi: 1`) beside it. With the tail on, read only weighted measures.
+- The session machine restarts: run pilots in pieces that each save a file. After `node harness.js unit`, grep the whole output for FAIL and check the exit code.
+- The remote branches `claude/s66-low-share-trace` and earlier session branches in research-update still need deleting by hand.
