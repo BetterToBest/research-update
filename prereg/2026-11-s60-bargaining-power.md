@@ -69,4 +69,9 @@ Base row: S71's rows (frozen row, today's safety net, CPS earnings, wealth by as
 - Tested with S71's rows and `lf` only; S68's pairwise tests cover the rest.
 
 ## Amendments
-(none yet)
+**Amendment 1 (Nov 13, 2026, before the pilot).** The pilot runs on compassionism-simulation commit `69f69f5f038ef88e3b40098f0c1600be90311f8f` (branch `claude/s60-bargaining-power`, pull request 98), from a clean worktree. Departures found while building, none of them chosen with any result in view (no pilot had run; the build's two-seed smoke runs checked only that the switch works):
+1. *Unit test 8 was wrong as written.* With an income effect, the same dollars of income effect are fewer hours at a higher wage, so the hours measure is not unchanged when ε = ρ. Replaced by: with no labour response at all, the hours measure is the same with and without the raise. Tests 4 and 8 are one test (the one-elasticity test); test 1 includes test 3. Seven tests in all.
+2. *Project hours at the bargained wage.* For the hours measure to stay hours, project hours (and any wage time they displace) are valued at the bargained wage. Not in the file above; it changes nothing off.
+3. *The Nash reservation wages are computed in the tables,* from the starting share `(1 − (1 − π)/m)/π` and the reported percentiles of the outside-option rise, not as engine keys.
+4. *Validation measures.* "Adults with earnings" is the engine's share of all adults with earnings in the year (adults outside the labour force included, who neither earn nor respond); the study's sample is low-income adults aged 21 to 40. Earnings per transfer dollar are per adult.
+5. *Run order.* Inside the full unit suite a no-programme row reports production-side keys (PTF capacity by year) left by the previous programme run (`PDS` is reset only where the production side acts). Older than S60; the unit test does not compare those keys for a no-programme row, and S68 is to reset module state per run. The pilot keeps none of those keys.

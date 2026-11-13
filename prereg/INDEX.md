@@ -80,7 +80,7 @@ Part 1 (`prereg/2026-11-s59-asset-classes.md`) split a household's net worth int
 
 Sections (line): Why 7 · Inputs, fixed now (derived before this file from 12 · What will be built (both off by default; off = i 32 · Questions 48 · Design 56 · Outcomes 61 · Analysis 64 · Decision rules 67 · Reporting 73 · Amendments 76
 
-## 2026-11-s60-bargaining-power.md (73 lines)
+## 2026-11-s60-bargaining-power.md (78 lines)
 Preregistration: bargaining power, a worker's outside option and an employer markdown (S60: switch `BARGAIN`)
 
 The papers expect the programme to remove the economic desperation that makes people accept bad terms: the Citizens Internet Portal paper (6.2.1, "Corruption exploits desperation": workers threatened with job loss, whist

@@ -31,12 +31,12 @@ Paste everything below the line into an AI system that can read web pages.
 
 Sections (line): What the model is 12 · Study S55: open PTF access 30 · Study S39: an outside model of prices 45 · Inequality measures, computed from the per-seed  56 · What to review 73 · How to answer 115
 
-## 2026-11-s39-s55-review-triage.md (123 lines)
+## 2026-11-s39-s55-review-triage.md (125 lines)
 Triage: two outside reviews of S39, S55 and the inequality measures (S56, Nov 9, 2026)
 
 Two AI systems with web access answered the audit prompt (`audits/2026-11-s39-s55-audit-prompt.md`): **Grok** and **ChatGPT**.
 
-Sections (line): In plain words 5 · Checks against the reports and code 13 · A. S55's design and statistics 32 · B. S39 and the price rule 50 · C. Inequality, concentration and power 72 · D. The baseline 89 · E. The six planned improvements 97 · F. Fair presentation 101 · Ledger decisions filed (defaults proceed) 112 · Sources opened 117
+Sections (line): In plain words 5 · Checks against the reports and code 13 · A. S55's design and statistics 32 · B. S39 and the price rule 50 · C. Inequality, concentration and power 72 · D. The baseline 91 · E. The six planned improvements 99 · F. Fair presentation 103 · Ledger decisions filed (defaults proceed) 114 · Sources opened 119
 
 ## corrections-additions.md (63 lines)
 Corrections additions from the refine.ink triage (S29)
