@@ -94,6 +94,13 @@ Preregistration: tracing the low end of the fixed-share curve, the erosion of op
 
 Sections (line): Why 7 · Rows (all on the frozen engine, as the batch bui 12 · What is recorded (per seed, per year, reporting  28 · Outcomes and analysis 37 · Decision rules (fixed now) 46 · Outputs 53
 
+## 2026-11-s67-price-rule-derivation.md (95 lines)
+Preregistration: the price rule's derivation, time step and wording (S67)
+
+The Nov 9 audit (`audits/2026-11-09-simulation-audit.md`, finding 2) found five weaknesses in the capacity price rule built in S58: its one-for-one long-run pass-through is built in and was reported as a finding; its res
+
+Sections (line): Why 5 · Sources opened before use, and two that could no 10 · Part A: derivation and data (no engine run) 15 · A1. The closed form (item 2) 17 · A2. κ on the rule's own variable (item 3) 20 · A3. Dynamics in high-inflation episodes (item 4) 32 · Part B: two readings behind `PRICE_RULE` options 40 · Part C: pilot (item 6; mechanism check, not a re 55 · Outcomes 60 · Decision rules (fixed before any result) 66 · Reporting 76 · Amendments 79 · Amendment 1 (Nov 13, 2026; after Part A, before  81
+
 ## 2026-11-security-addendum.md (83 lines)
 Preregistration addendum: security outcomes beyond wealth, and the per-year series for public costs (S53, study P, for S47)
 
