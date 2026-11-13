@@ -80,6 +80,13 @@ Part 1 (`prereg/2026-11-s59-asset-classes.md`) split a household's net worth int
 
 Sections (line): Why 7 · Inputs, fixed now (derived before this file from 12 · What will be built (both off by default; off = i 32 · Questions 48 · Design 56 · Outcomes 61 · Analysis 64 · Decision rules 67 · Reporting 73 · Amendments 76
 
+## 2026-11-s60-bargaining-power.md (73 lines)
+Preregistration: bargaining power, a worker's outside option and an employer markdown (S60: switch `BARGAIN`)
+
+The papers expect the programme to remove the economic desperation that makes people accept bad terms: the Citizens Internet Portal paper (6.2.1, "Corruption exploits desperation": workers threatened with job loss, whist
+
+Sections (line): Why 5 · What the engine already does (read before this f 10 · Claude's reading of the design (the Hub papers,  14 · Sources (opened for this step; figures as read) 17 · The mechanism (switch `BARGAIN`, row option `bg` 28 · What is reported (keys `BG_KEYS`, rows with `bg` 37 · Unit tests (written with the build) 40 · Pilot (100 seeds, 500 adults, 20 years; Referenc 50 · Decision rules (fixed now) 55 · Limits known before the build 63 · Amendments 71
+
 ## 2026-11-s61-baseline-scope.md (85 lines)
 Preregistration: baseline scope, adults outside the labour force and the debt drift (S61)
 
