@@ -56,4 +56,12 @@ People who leave paid work may do work of value the market does not pay for: car
 - Hours depend on population size in the frozen engine (S68 part 2).
 
 ## Amendments
-(none yet)
+
+### Amendment 1 (Nov 14, 2026, after the build and before the pilot)
+Engine for the pilot: compassionism-simulation branch `claude/s73-participation` at commit `004ca4b`. Changes found while building, none from any result:
+1. **Adults in runs without ageing have no age or sex** (the main row has no ageing; ages and sexes are set only with ageing). The flows then use tables by household type (`pooled` in `sources/s73_lf_flows.json`: each age-sex cell weighted by the survey's adults in it, in the labour force for exits and out for that reason for returns), so each type's out share is still held. Sex enters only in runs with ageing.
+2. **The stock-holding unit test runs 100 seeds, not 20.** At 500 adults the out share of one seed wanders by about 1.7 points around its level, so 20 seeds' standard error (about 0.6 points) is too large for a 1-point test; a 60-seed check gave −0.5 points (standard error 0.4), and all-single runs at 40 seeds hold the stock within 0.4 points.
+3. **The draw-count test** checks that the flows' stream draws the same number in a no-programme and a programme run (so draws do not depend on the state) and that the count is two per adult-year; the engine passes each population through 42 adult-years per adult in a 20-year run (two passes of 21 years), so the fixed count written above was wrong.
+4. **`R2_ALT`'s S73 row is `fl 'panel'`, `pm 1`** (not `pm 0`, which runs none of the margin's code); `lf conv 'none'` keeps the main row's `fl` and `pm`.
+5. **The validation rows run without the government account** (it refuses a run with no contribution), as S60's rows did. Earnings per adult-year (`E`) are read for the validation rows only, as S60 read them; programme rows are read on hours and adults with earnings.
+6. The S68 test that counts the engine's reads of the retiree flag is raised from 39 to 44: the five new reads are S73's own handling of adults outside the labour force.
