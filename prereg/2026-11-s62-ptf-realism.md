@@ -66,3 +66,9 @@ Base row: S60's (S71's rows, adults outside the labour force) with S60's wage se
 - Tested with S60's rows, open access and `bg` only; S68's pairwise tests cover the rest.
 
 ## Amendments
+**Amendment 1 (Nov 14, 2026, before the pilot).** The pilot runs on compassionism-simulation commit `3500d0b6918df9e88849e83e5c361b10c9dce3de` (branch `claude/s62-ptf-realism`, pull request 99), from a clean worktree. Departures found while building, none of them chosen with any result in view (no pilot had run; the build's two-seed smoke run checked only that the switch works and that the identity reading is identical):
+1. *The identity reading.* `po {cost:'hub', ...}` cannot equal the engine as it stands: since plan step 5 the engine counts the PTF cut less the step-5 forgone profit as programme cost, so the Hub's costs as stated (no gap) lower programme cost. The reading that reproduces the engine is `po {cost:'full', res:0, bonus:'members', curve:'step', test:'sales'}` (full cost without the reserve is exactly step 5's accounting). Pilot row `hub0` and unit test 1 use it; the Hub's costs as stated are row `hubSt`, as planned.
+2. *Unit test 2* checks the step-5 free parts exactly under `res:0` (not "programme cost falls by the cut" under `'hub'`, which is a pilot comparison, `hubSt` against `hub0`).
+3. *`poBon`* is tallied where a participant's project conversion rate is set (and in the framework conversion when projects are off), once per participant-year; the joining reading's call is not counted.
+4. *The utilities' cut under `'price'`* uses the same running cost in the supply-shock version of the cut (`sxPtf` takes the utility ε as an argument; off unchanged).
+5. *`wtT1E`* (the weighted top 1% share in the last year) is the top-share key kept.

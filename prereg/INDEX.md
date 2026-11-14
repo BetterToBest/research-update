@@ -94,7 +94,7 @@ Every result compares Compassionism with "no programme" on the same simulated pe
 
 Sections (line): Why 5 · The criterion, fixed before anything is built or 12 · The two switches (what will be built) 21 · Questions 35 · Design 42 · Outcomes 51 · Analysis 57 · Decision rules 61 · Reporting 68 · Amendments 71
 
-## 2026-11-s62-ptf-realism.md (69 lines)
+## 2026-11-s62-ptf-realism.md (75 lines)
 Preregistration: PTF realism, sourced running costs, PTF jobs and wages, and the density tests (S62: switch `PTF_OPS`)
 
 1.
