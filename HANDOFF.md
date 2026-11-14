@@ -4,7 +4,7 @@
 S73 is **done**. Preregistered first (`prereg/2026-11-s73-participation.md`). Amendment 1 was made before the pilot: changes found while building, none from a result.
 
 ## What shipped
-- compassionism-simulation [PR 103](https://github.com/BetterToBest/compassionism-simulation/pull/103) (see its state below):
+- compassionism-simulation [PR 103](https://github.com/BetterToBest/compassionism-simulation/pull/103) (merged, 26d9b47):
   - Options `lf.fl` (yearly exits and returns; 'stock' main, 'panel') and `lf.pm` (0.43: the share of the income effect taken by leaving work).
   - `r2MainRow` carries `lf {fl: 'stock', pm: 0.43}`; `R2_ALT` gains 'lp'.
   - 8 unit tests (358 in all); guard identical; lineage linked; on-together tests 154 rows × 3 environments pass.
