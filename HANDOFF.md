@@ -1,25 +1,24 @@
-# Handoff (Nov 14, 2026): S63 part 2, round 2's engine pinned, job built, dry run dispatched
+# Handoff (Nov 14, 2026): S63 done, round 2 frozen and ready to dispatch
 
 ## Step status
-S63 is **partly done**. Parts 1 and 2 are done. Part 3 remains: read the dry run, write Amendment 2 (timings, shard sizes, the 24 dispatch lines), and rerun S69's program on the frozen main row (PLAN S63, "Part 3").
+S63 is **done** (parts 1-3). One thing remains before S64 dispatches, and only Duke can do it: update the freeze file's OSF registration so it carries Amendments 1 and 2 (ledger issue I19).
 
 ## What shipped
-- compassionism-simulation [PR 107](https://github.com/BetterToBest/compassionism-simulation/pull/107), merged as `104691f3993ac6f37d6ff1b8ccd4690120cfe949` (**the engine pin**). It builds S69's two corrections as `fx.ez` (earnings below 1e-9 dollars count as zero) and `fx.rk` (weighted measures rank on the cent), both off identical. It adds `r2FreezePair` (the frozen main row: `r2MainRow`, the two corrections, full backing) and `dev/tools/s63_ends.js` with output `dev/runs/s63/r2-ends.json`. Guard, unit (360), validate, domtest and the lineage proof all pass.
-- compassionism-sim-results [PR 38](https://github.com/BetterToBest/compassionism-sim-results/pull/38), merged: `runner/jobs/r2.js` (parts M, S, F, B; `--check`, `--selftest`, `--part=all`) and `runner/jobs/r2-ends.json`. `--check` passes: 107 Source and 126 financed points, 668 row-runs per environment, seed and horizon, plus the 10,000-adult pair. `--selftest` passes.
-- research-update, this branch: freeze file Amendment 1, run manifest Amendment 8, `prereg/checks/2026-11-s63-r2-check.txt` (every point, pair end and bound end), PLAN S63, the indexes and this file.
-- Ledger: D26 answered by Duke (today's price rule with S69's corrections); I18 marked resolved by Duke.
+- compassionism-simulation [PR 108](https://github.com/BetterToBest/compassionism-simulation/pull/108): S69's packet on the frozen main row (`dev/packets/s69-frozen-row.zip`, built with `make_s69_reference.js --frozen` from engine `104691f`). The Python program now applies `fx.ez` and `fx.rk`. Results are in `dev/reports/s69-independent-implementation/results-frozen/`: all six runs (no programme and C2.2, three environments, seeds 1-500) agree with the engine exactly, in every key and every seed. On the candidate row, up to 313 keys per run had differed through rounding; the two corrections removed all of those differences.
+- research-update, this branch: freeze file Amendment 2. It holds the dry run's timings, the shard sizes, output sizes, the cost (about 186 runner-hours, 138 shards, about 9.3 hours on 20 runners, about 340 MB compressed), the 24 dispatch lines (longest first) and S69's result. It also changes PLAN S63, the Order table and the indexes.
+- The dry run `r2dry-104691f` in compassionism-sim-results: both shards passed and every value is finite. Seed 1's main rows equal the frozen packet.
 
 ## In flight
-- The dry run: `run-study` [run 100](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/43635868201), study `r2dry`, engine `104691f`, `--part=all --procs=4`, seeds 1-2 in 2 shards (about 20-30 minutes a shard). Results land in compassionism-sim-results `r2dry-104691f/`; it is finished when `DONE` is there. Each shard file's `_meta.timings` has seconds per part, environment and horizon (`rowSeconds` per point).
+- Nothing running.
 
 ## Decisions waiting
-- None open. I18 (OSF registration): Duke marked it resolved. The file now has Amendment 1, so register (or update) the OSF copy after Amendment 2, before S64 dispatches.
+- I19 (Duke): update the OSF registration of `prereg/2026-11-s63-round2-freeze.md` with Amendments 1 and 2, so the date of the freeze is held by a third party before any batch run.
 
 ## Next step
-**S63 part 3** (opus, high): from the dry run, size shards so none runs over 2 hours (S and F at 40 years are the long ones); write Amendment 2 with the timings, the shard sizes, the output sizes (with `--gzip`) and the 24 dispatch lines (`r2-<p>-<env>-<years>`; `job_args=--part=P --env=E --years=Y --procs=4 --gzip`). Then rerun S69's program on the frozen row: `dev/packets/make_s69_reference.js` builds on `r2MainPair` (backed share 0, no corrections), so it needs a frozen-row option first. Check whether `s69_main.py` implements `o.a` 1 and the two corrections before running 500 seeds. S64 dispatches only after both.
+**S64** (opus, high). Once I19 is done, dispatch the 24 `run-study` lines in Amendment 2's table, in its order. Each line is `engine=104691f3993ac6f37d6ff1b8ccd4690120cfe949`, `job=r2.js`, `seeds=1-500`, with that row's `job_args` and `shards`. Add each workflow run's link to Amendment 2. The batch takes about 9-10 hours of wall-clock time on 20 runners, so dispatch, check that the runs started, and end the session. A later S64 session reads the folders once every one has `DONE`. Then write the tables tool (`dev/tools/`, compassionism-simulation) and the reports.
 
 ## Pitfalls
-- CI caught two things the local runs missed: the unit-test count markers (README, CONTRIBUTING; `node harness.js unit --write-counts`) and `earlier-engine.html`, which must be resynced after any engine edit (`python3 dev/tools/sync_earlier.py`). Run both before opening the pull request.
-- The engine's yearly series hold the end of year t + 1 at index t (the 20-year `pov` is `ppov_19`). r2.js reads year 20 of a 40-year run from index 19.
-- `fx.rk` also moves the weighted tail's measures (`wtB50E` and the like) by under a cent, because they share `dmSort`. This is expected and recorded.
-- Commits worked in this session's mode. Remote branches `claude/s66-low-share-trace`, `claude/jolly-davinci-dbcv2x`, `claude/stoic-hypatia-99pell` and older session branches in research-update still need deleting by hand.
+- The dry run's two runners differed by about 15% in speed. The shards are sized for 90 minutes at the slower rate, which leaves a third in hand under the 2-hour limit.
+- The workflow refuses a study id whose folder is already `DONE`. To rerun a failed dispatch, use the same arguments under a suffixed id (`-r2`) and record it in Amendment 2.
+- The Python program took 5-7 minutes per 500-seed run on 4 processes, about 37 minutes for all six. The engine's packet references took about 11 minutes per environment, run in parallel.
+- Remote branches `claude/s66-low-share-trace`, `claude/jolly-davinci-dbcv2x`, `claude/stoic-hypatia-99pell` and older session branches in research-update still need deleting by hand.
