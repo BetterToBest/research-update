@@ -5,7 +5,7 @@ S62 is **done** in one session. It added no step and no decision. S7 stays held.
 
 ## What shipped
 - research-update: `prereg/2026-11-s62-ptf-realism.md` (committed before the build and any run; Amendment 1 before the pilot), PLAN.md (S62 findings; notes for S63, S68, S70), PLAN-done.md, the indexes, this file. Branch `claude/intelligent-shannon-4w3rqh`.
-- compassionism-simulation [PR 99](https://github.com/BetterToBest/compassionism-simulation/pull/99): switch `PTF_OPS` (row option `po`; needs open access); off identical (guard test, lineage linked, `earlier-engine.html` resynced); 10 unit tests (`poUnitSuite`); `sources/s62_ptf_ops.py`; report `dev/reports/s62-ptf-realism.md`; tables `dev/runs/s62-ptf-ops/`. Merge state: see the last line of this section.
+- compassionism-simulation [PR 99](https://github.com/BetterToBest/compassionism-simulation/pull/99): switch `PTF_OPS` (row option `po`; needs open access); off identical (guard test, lineage linked, `earlier-engine.html` resynced); 10 unit tests (`poUnitSuite`); `sources/s62_ptf_ops.py`; report `dev/reports/s62-ptf-realism.md`; tables `dev/runs/s62-ptf-ops/`. Merged (3f8ae15), checks green.
 - compassionism-sim-results [PR 32](https://github.com/BetterToBest/compassionism-sim-results/pull/32), merged (113df99): `s62-ptf-ops-3500d0b` (seeds 1-100, three environments; run.txt, SHA256SUMS, DONE).
 
 ## Findings (plain words; pilot, seeds 1-100, 500 adults; intervals unadjusted)
