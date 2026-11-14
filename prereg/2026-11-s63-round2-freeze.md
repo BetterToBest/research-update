@@ -144,3 +144,56 @@ Nothing above changes: no outcome, rule, environment, seed range or horizon. Thi
 **Cost, recounted.** 668 row-runs per environment, seed and horizon at 500 adults (296 + 366 + 6), against about 690 costed in part 1, plus the 10,000-adult pair. Still below `prereg/RUNNING.md`'s 1,000 core-hour mark; Amendment 2 replaces the estimate with the dry run's timings. Shard files are compressed (`--gzip`, as S47).
 
 **Dry run dispatched (item 3), Nov 14:** `run-study`, study `r2dry`, engine `104691f3993ac6f37d6ff1b8ccd4690120cfe949`, `job=r2.js`, `job_args=--part=all --procs=4`, seeds 1-2 in 2 shards ([workflow run 100](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/43635868201)); folder `r2dry-104691f` with `DONE`. Its timings, the shard sizes and the 24 dispatch lines go in Amendment 2, before the batch.
+
+### Amendment 2 (Nov 14, 2026, S63 part 3, before any run of the batch): the dry run's timings, the shard sizes, the 24 dispatch lines, and S69's program on the frozen row
+Nothing above changes: no outcome, rule, environment, seed range or horizon. This records "Before the first run" item 3 (the dry run) and item 5 (S69's program on the full-backing main row). It replaces the cost estimate in "Where it runs, and the cost" with measured figures.
+
+**The dry run (item 3).** Folder `r2dry-104691f` in compassionism-sim-results ([workflow run 100](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/43635868201)): engine `104691f`, `job_args=--part=all --procs=4`, seeds 1 and 2, one shard each, every part, environment and horizon, on GitHub-hosted runners (4 processors). Both shards passed the workflow's checks (engine commit, clean engine, seed ranges). Every one of the 351,156 stored values is finite. Seed 1 took 1,168 seconds and seed 2 took 1,343 (different runners; the second about 15% slower), peak memory 468 MB. Seed 1's main rows (part M: the no-programme run and C2.2, Reference, 20 years) equal the frozen packet built for S69's program below on every key (958 and 990 keys).
+
+**Timings and shard sizes.** Seconds per seed are the slower of the two runners, per part, environment and horizon (each includes its processes' start-up, so they are upper bounds). Shards are sized so that the longest shard, at the slower runner's rate, takes at most 90 minutes: a third in hand under the 2-hour limit and well inside the workflow's 350-minute stop. One shard count per part and horizon, the same in all three environments.
+
+| Part | Years | Seconds per seed: Reference, Adverse, Stress | Runner-hours, 500 seeds, 3 environments | Shards per dispatch | Seeds per shard | Longest shard, minutes | Compressed output per folder, MB |
+|---|---|---|---|---|---|---|---|
+| M | 20 | 3.4, 3.8, 3.2 | 1.4 | 1 | 500 | 32 | 18-19 |
+| M | 40 | 4.8, 5.2, 4.6 | 2.0 | 1 | 500 | 44 | 21-22 |
+| S | 20 | 60.7, 61.3, 60.0 | 25.3 | 6 | 84 | 86 | 11-12 |
+| S | 40 | 118.0, 115.9, 106.2 | 47.2 | 11 | 46 | 90 | 12-13 |
+| F | 20 | 73.2, 75.3, 70.0 | 30.4 | 7 | 72 | 90 | 12-13 |
+| F | 40 | 141.8, 136.2, 130.3 | 56.7 | 14 | 36 | 85 | 13-14 |
+| B | 20 | 19.8, 20.5, 19.5 | 8.3 | 2 | 250 | 85 | 10 |
+| B | 40 | 36.6, 37.5, 34.3 | 15.1 | 4 | 125 | 78 | 11-12 |
+
+Output sizes are from the two dry-run seeds compressed together with `gzip -9`, scaled to 500 seeds (an estimate; more seeds compress somewhat better).
+
+**Cost, measured.** About 186 runner-hours in all (the estimate in part 1 was 160), 138 shards. The engine's own process time is about 285 hours (the sum of every row's seconds at the slower runner's rate, times 250); the runners' 4 processors give an upper bound of about 750 processor-hours. Both are below `prereg/RUNNING.md`'s mark of about 1,000 core-hours in one study, and no process runs 6 hours. At most 20 runners at once: about 9.3 hours of wall-clock time if the queue stays full. GitHub Actions, no cost. About 340 MB of compressed shard files in 24 folders.
+
+**The 24 dispatch lines.** Workflow `run-study` in compassionism-sim-results; for every line `engine=104691f3993ac6f37d6ff1b8ccd4690120cfe949`, `job=r2.js`, `seeds=1-500`. Study `r2-<part>-<env>-<years>`, folder `r2-<part>-<env>-<years>-104691f`. S64 dispatches them, in this order (the longest first), and adds each workflow run's link here.
+
+| # | study | job_args | shards |
+|---|---|---|---|
+| 1 | `r2-f-ref-40` | `--part=F --env=ref --years=40 --procs=4 --gzip` | 14 |
+| 2 | `r2-f-adv-40` | `--part=F --env=adv --years=40 --procs=4 --gzip` | 14 |
+| 3 | `r2-f-str-40` | `--part=F --env=str --years=40 --procs=4 --gzip` | 14 |
+| 4 | `r2-s-ref-40` | `--part=S --env=ref --years=40 --procs=4 --gzip` | 11 |
+| 5 | `r2-s-adv-40` | `--part=S --env=adv --years=40 --procs=4 --gzip` | 11 |
+| 6 | `r2-s-str-40` | `--part=S --env=str --years=40 --procs=4 --gzip` | 11 |
+| 7 | `r2-f-ref-20` | `--part=F --env=ref --years=20 --procs=4 --gzip` | 7 |
+| 8 | `r2-f-adv-20` | `--part=F --env=adv --years=20 --procs=4 --gzip` | 7 |
+| 9 | `r2-f-str-20` | `--part=F --env=str --years=20 --procs=4 --gzip` | 7 |
+| 10 | `r2-s-ref-20` | `--part=S --env=ref --years=20 --procs=4 --gzip` | 6 |
+| 11 | `r2-s-adv-20` | `--part=S --env=adv --years=20 --procs=4 --gzip` | 6 |
+| 12 | `r2-s-str-20` | `--part=S --env=str --years=20 --procs=4 --gzip` | 6 |
+| 13 | `r2-b-ref-40` | `--part=B --env=ref --years=40 --procs=4 --gzip` | 4 |
+| 14 | `r2-b-adv-40` | `--part=B --env=adv --years=40 --procs=4 --gzip` | 4 |
+| 15 | `r2-b-str-40` | `--part=B --env=str --years=40 --procs=4 --gzip` | 4 |
+| 16 | `r2-b-ref-20` | `--part=B --env=ref --years=20 --procs=4 --gzip` | 2 |
+| 17 | `r2-b-adv-20` | `--part=B --env=adv --years=20 --procs=4 --gzip` | 2 |
+| 18 | `r2-b-str-20` | `--part=B --env=str --years=20 --procs=4 --gzip` | 2 |
+| 19 | `r2-m-ref-40` | `--part=M --env=ref --years=40 --procs=4 --gzip` | 1 |
+| 20 | `r2-m-adv-40` | `--part=M --env=adv --years=40 --procs=4 --gzip` | 1 |
+| 21 | `r2-m-str-40` | `--part=M --env=str --years=40 --procs=4 --gzip` | 1 |
+| 22 | `r2-m-ref-20` | `--part=M --env=ref --years=20 --procs=4 --gzip` | 1 |
+| 23 | `r2-m-adv-20` | `--part=M --env=adv --years=20 --procs=4 --gzip` | 1 |
+| 24 | `r2-m-str-20` | `--part=M --env=str --years=20 --procs=4 --gzip` | 1 |
+
+If a shard fails or a runner is much slower than the dry run's, the dispatch is run again whole under a new study id with a suffix (`-r2`) and the same arguments; seeds are paired, so the split changes no figure. Any change of shard count is recorded here with the reason.
