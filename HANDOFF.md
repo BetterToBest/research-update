@@ -20,9 +20,12 @@ S62 is **done** in one session. It added no step and no decision. S7 stays held.
 - Nothing running.
 
 ## Decisions waiting
-- D21: carry the C2.2 design paid for by a contribution on every round-2 outcome (default: yes, as a labelled reading).
+- D23 (Nov 13 Chat audit, `audits/2026-11-13-simulation-audit.md`, finding 1): the financed C2.2 row D21 lets the Hub lead with needs a flat contribution averaging 84% of wages, at its 90% cap, and 39-52% of its cost has no payer in the engine; may the Hub still lead with it once S72 computes it consistently (default: carried beside the main rows; the Hub does not lead with it until S72's frontier is in). D21 itself was confirmed Nov 9.
 - S63 files the main-row price-rule decision (S67's recommendation, both views).
 - Nothing new from S62.
+
+## Added by the Nov 13 Chat audit
+- `audits/2026-11-13-simulation-audit.md`: seven findings; S68 amended (financing identity and the flat contribution's gap behind an `fx` part; costs at the within-year price level; checks earlier steps asked for); new steps S72 (government budget line and financing frontier) and S73 (participation margin and labour-force transitions), both after S68 and before S69, S70 and S63; D23 filed.
 
 ## Next step
 **S68** (round 2 written into MODEL_SPEC, ODD and TESTBED_SPEC; per-run module reset; pairwise tests of the round-2 switches; a new packet): its waits (S59, S60, S62, S67, S71) are done. S70 can also start now.
