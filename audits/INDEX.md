@@ -17,6 +17,13 @@ Asked for by Duke in Chat on Nov 13, after S62 and before S68: audit the most re
 
 Sections (line): What was checked, and how 7 · Summary 13 · Findings 28 · 1. The C2.2 design paid for by a flat contributi 32 · 2. There is no government budget, so deficits an 68 · 3. Nobody stops working because of the programme 84 · 4. Households shop at the year's opening prices  96 · 5. S68's scope misses items earlier steps asked  105 · 6. Clarity: the Nov 9 points are still open (C) 116 · 7. Housekeeping (C) 122 · Status of the Nov 9 findings 127 · Additions to the model, ranked 140 · What could not be checked 158
 
+## 2026-11-14-d23-backing-and-main-row.md (71 lines)
+What D23 is about, how the main row counts backing, and what the main row will show (Nov 14, 2026)
+
+Written in the S69 session, at Duke's request: "I believe there is again some version drift concerning the design and my decisions.
+
+Sections (line): In short 5 · 1. Backing (D11): how much of the payout is matc 13 · 2. Paying for it (D21, then D23): who pays for t 24 · 3. What the candidate main row does today 40 · 4. What round 2 will display (S63 preregisters i 46 · 5. Plan changes made today 61 · 6. How "full backing" is read 67
+
 ## 2026-11-engine-round-2.md (41 lines)
 Engine round 2: six improvements after S39 and S55 (Nov 9, 2026)
 
