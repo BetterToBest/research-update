@@ -101,12 +101,12 @@ Preregistration: PTF realism, sourced running costs, PTF jobs and wages, and the
 
 Sections (line): Why 5 · What the engine already does (read before this f 10 · Claude's reading of the design (the Hub papers,  15 · Sources (opened for this step; figures as read) 21 · The mechanism (switch `PTF_OPS`, row option `po` 31 · What is reported (keys `PO_KEYS`, rows with `po` 44 · Unit tests (written with the build) 47 · Pilot (100 seeds, 500 adults, 20 years; Referenc 50 · Decision rules (fixed now) 53 · Limits known before the build 60 · Amendments 68
 
-## 2026-11-s63-round2-freeze.md (147 lines)
+## 2026-11-s63-round2-freeze.md (204 lines)
 Preregistration: round 2 of the Compassionism Simulation (S63, the design freeze for S64)
 
 Round 2 rebuilt the engine's weakest parts (S57-S73): wealth by asset class with the lenders who hold household debt; a weighted top tail; adults outside the labour force who move in and out of work; a borrowing limit; b
 
-Sections (line): Why 5 · Plain-words summary 8 · Questions 16 · Design 25 · The main row (ledger decision D26, filed before  27 · Rows: the Source rows (C2.2 and the release desi 36 · Rows: the financed rows (D21, D23 as answered; S 46 · Rows: the 10,000-adult main pair 53 · Environments, seeds, horizons 56 · Outcomes 62 · Analysis 83 · Decision rules (fixed now) 90 · Structural uncertainty (what the seed intervals  100 · Where it runs, and the cost (measured Nov 14 on  105 · Before the first run (S63 part 2; each recorded  112 · Reporting 120 · Amendments 123 · Amendment 1 (Nov 14, 2026, S63 part 2, before an 126
+Sections (line): Why 5 · Plain-words summary 8 · Questions 16 · Design 25 · The main row (ledger decision D26, filed before  27 · Rows: the Source rows (C2.2 and the release desi 36 · Rows: the financed rows (D21, D23 as answered; S 46 · Rows: the 10,000-adult main pair 53 · Environments, seeds, horizons 56 · Outcomes 62 · Analysis 83 · Decision rules (fixed now) 90 · Structural uncertainty (what the seed intervals  100 · Where it runs, and the cost (measured Nov 14 on  105 · Before the first run (S63 part 2; each recorded  112 · Reporting 120 · Amendments 123 · Amendment 1 (Nov 14, 2026, S63 part 2, before an 126 · Amendment 2 (Nov 14, 2026, S63 part 3, before an 148
 
 ## 2026-11-s66-low-share-trace.md (56 lines)
 Preregistration: tracing the low end of the fixed-share curve, the erosion of opening balances, and the wealth harm with adults outside the labour force (S66)
