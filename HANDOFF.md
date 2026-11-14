@@ -6,7 +6,7 @@ S70 is **partly done**. The screen is preregistered (`prereg/2026-11-s70-screen.
 ## What shipped
 - research-update (this PR): the preregistration and Amendment 1, PLAN.md notes for S70, this file.
 - compassionism-sim-results [PR 36](https://github.com/BetterToBest/compassionism-sim-results/pull/36) (merged, e115e70): `runner/jobs/s70-screen.js`. Self-test: with every reading set to its main value, it reproduces the untouched main row on all 2,880 series exactly; 3 processes give the same bytes as 1.
-- compassionism-simulation [PR 106](https://github.com/BetterToBest/compassionism-simulation/pull/106): `dev/tools/s70_table.js`, the analysis (Morris μ*, noise check, interaction flags, the preregistration's decision rules).
+- compassionism-simulation [PR 106](https://github.com/BetterToBest/compassionism-simulation/pull/106): `dev/tools/s70_table.js`, the analysis (Morris μ*, noise check, interaction flags, the preregistration's decision rules). **Open:** its checks were still running at session end (the runners were busy with the screen's shards), and auto-merge is off for that repository. Part 2 merges it first, once its checks pass.
 
 ## What the screen is
 - Every swept reading of round 2 moved together (Morris, 12 trajectories) around `r2MainRow`. Engine 8b96cdd, unchanged. 500 adults, 20 years, Reference and Adverse, seeds 1-40.
