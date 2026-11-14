@@ -1,41 +1,36 @@
-# Handoff (Nov 14, 2026): S68 part 1 done (who pays the programme; costs at the within-year price level; per-run reset)
+# Handoff (Nov 14, 2026): S68 done (round 2 written down, tested together; the candidate main row)
 
 ## Step status
-S68 is **partly done**. Part 1 covered the items the Nov 13 audit added, (5) and (6), plus item 2's per-run reset. **Part 2 remains:** MODEL_SPEC section 14, ODD and TESTBED_SPEC with the plain-names table (item 1; add `fx.fin` and `wy`); pairwise on-together tests with item 7's pairs and the 10,000-adult checks (item 3); the packet for S69 (item 4). The Nov 13 audit's patch is applied here (it could not push from Chat).
+S68 is **done**. Part 1 (financing identity, within-year costs, per-run reset) shipped earlier today; part 2 shipped items 1, 3, 4 and 7. One change to the plan: the S69 packet's zip is built at the start of S69, after S72 and S73 add their switches to the candidate main row (PLAN S68 and S69 notes). The tools are built and checked.
 
 ## What shipped
-- research-update [PR 89](https://github.com/BetterToBest/research-update/pull/89): the Nov 13 audit (`audits/2026-11-13-simulation-audit.md`, check script, PLAN S68/S63/S70 amended, S72 and S73 added, D23); `prereg/2026-11-s68-financing-identity.md` (before the build; Amendment 1 before the pilot); PLAN notes for S68, S63, S72; this file.
-- compassionism-simulation [PR 100](https://github.com/BetterToBest/compassionism-simulation/pull/100) (merged, 24625e7): financing identity (`ACCT` id `fin`) for every financing reading; `fx: {fin: 'report' | 'money'}` (not in `fx: true`; 'debt' refused until S72); `o.wy` (reporting only); per-run reset of seven module states. Off identical (guard test), lineage linked, unit 336 (8 new), validate, domtest. Report `dev/reports/s68-financing-identity.md`.
-- compassionism-sim-results [PR 33](https://github.com/BetterToBest/compassionism-sim-results/pull/33) (merged, ae8fcb6): `s68-financing-e03aa73` (seeds 1-100, three environments; run.txt, SHA256SUMS, DONE).
+- compassionism-simulation [PR 101](https://github.com/BetterToBest/compassionism-simulation/pull/101) (merged, f910774): MODEL_SPEC section 14, ODD section 8, TESTBED_SPEC section 7 (plain names of every row option); the candidate main row `r2MainRow`; on-together tests `r2PairCheck` / `dev/tools/s68_pairs.js`; 10,000-adult checks `dev/tools/s68_big.js`; three fixes; packet tools for S69; report `dev/reports/s68-round2-spec-tests.md`; 341 unit tests, guard, validate, domtest, lineage all pass.
+- research-update: PLAN notes for S68, S63, S69, S70; this file.
 
-## Findings (plain words; pilot, seeds 1-100, 500 adults)
-- **The C2.2 design paid by a flat contribution is not paid for.**
-  - The rate averages 84% of wages and is at its 90% cap in year 20 in every seed.
-  - 38% (Reference), 51% (Adverse) and 45% (Stress) of its cost has no payer.
-  - Counted as new money, as the other taxes already are, its inflation is 21-33% a year (not 0.1%).
-  - Basket poverty still falls 8.6-17.6 points against no programme.
-  - Wealth poverty rises 37-62 points (all-cash wealth); hours fall 24-28%.
-- **The release design and C2.2 under the Source are paid for**: unpaid under 0.2% of payout, so they are carried unchanged.
-- **Smaller gaps:** the release design under the flat contribution leaves 5-7% unpaid; C2.2 under `hybrid` 3-4%.
-- **Costs at the within-year price level** (prices rise 6-15% during the year; households were charged opening prices):
-  - The release design's cut in basket poverty is 2.2-3.7 points smaller; C2.2's is 0.7-1.4 smaller.
-  - No sign changes.
-  - S63 carries this reading beside every basket-poverty headline (rule fixed before the run).
+## Findings (plain words)
+- **The switches work together.** Each round-2 switch got one other reading. Each one alone and every pair (121 rows) ran on the candidate main row in three environments at 5 seeds. All 363 runs pass: books balance, 8 draws per adult-year, no non-numbers, each switch's own checks. Run order changes nothing.
+- **Fixed:**
+  - Adults outside the labour force set not to convert gave non-numbers under a programme.
+  - When a PTH member died (ageing), the heir's home's books missed the inheritance; this was true of the published ageing reading too. New switch part `fx.pe`, on in the main row.
+  - A double count of idle capacity (price-rule slack with the spending layer's slack) is now refused.
+- **Limit:** with no debt relief, the creditor side leaves 8-11% of its ledger unplaced under high inflation, so that reading runs with the creditor side off (as S59 and S71 did).
+- **10,000 adults:**
+  - The tail moves inflation by under 0.01 points.
+  - The creditor totals agree per adult within 1.3%.
+- **Not round 2's:** the hours response depends on population size in the frozen engine (C2.2: +11% at 500 adults, +1.8% at 10,000). It must be traced before an hours figure is quoted (S63, S70).
 
 ## In flight
 - Nothing running.
 
 ## Decisions waiting
-- D23 is answered (Duke, Nov 14): the financed C2.2 row is carried beside the main rows; the Hub does not lead with it until S72's frontier is in, then Duke decides again. S68's figures confirm the audit's.
-- S63 files the main-row price-rule decision (S67's recommendation, both views).
+- None new. S63 files the main-row decision; the candidate main row is now `r2MainRow` (Claude's recommendation).
 
 ## Next step
-**S68 part 2** (`/start-session S68`; read its "Part 1 done" note first). S70 can also start now. S72 and S73 wait on S68.
+**S72** (government budget line and the financing frontier; `/start-session S72`): it waits only on S68. S73 can follow; S69, S70 and S63 wait on both. S72 adds `fx.fin 'debt'` and its switch to `R2_MAIN` and `R2_ALT`, then reruns `dev/tools/s68_pairs.js`.
 
 ## Pitfalls
-- The Chat audit's patch applied cleanly with `git apply`. A commit whose trailer carries a model name was refused here: use `Co-Authored-By: Claude <noreply@anthropic.com>`.
-- The leak S60 reported (`pdC*` in a no-programme row) was not reproduced on any row tried, even at the engine before the change. The reset makes it impossible anyway; part 2's pairwise tests should try S60's own rows.
-- Never quote inflation or wealth for a flat-contribution or `hybrid` row without `fx.fin` set. `fx: true` does not include it.
-- `o.wy` differs from the published measure only on a split year (`pr` with `q` > 1 under the capacity rule).
-- The identity's check count exceeds rows × years: taxed rows run a year-0 pre-pass.
+- A refusal inside `tbStudy`'s per-row setup must come before any switch is set; my first one threw too late, and the switches it had set leaked into every later unit test. Put new refusals in the loop at the top of `tbStudy`.
+- `crUn` is in dollars, not a share: compare it with the creditor ledger.
+- A worker restart kills background jobs; rerun them and check the result files exist.
+- Commit trailers: `Co-Authored-By: Claude <noreply@anthropic.com>` (no model name).
 - The remote branches `claude/s66-low-share-trace`, `claude/jolly-davinci-dbcv2x` and earlier session branches in research-update still need deleting by hand.
