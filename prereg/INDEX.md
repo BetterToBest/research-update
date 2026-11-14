@@ -122,12 +122,12 @@ The Nov 13 audit (`audits/2026-11-13-simulation-audit.md`, finding 1) found that
 
 Sections (line): Why 5 · What the engine does today (read before this fil 8 · What is built 18 · Tests (unit suite; before the pilot) 28 · Pilot (session machine, free) 35 · Decision rules (fixed now) 40 · Limits stated in advance 45 · Amendment 1 (Nov 14, 2026, before the pilot) 50
 
-## 2026-11-s70-screen.md (114 lines)
+## 2026-11-s70-screen.md (117 lines)
 Preregistration: S70, which assumptions move the headline (the round-2 screen)
 
 Round 2 has many readings, each tested one at a time in its own step (S55-S73).
 
-Sections (line): Why 7 · Questions 10 · Design 15 · The inputs (range; main reading; where the range 24 · Outcomes 72 · Analysis 78 · Decision rules (fixed now; applied mechanically  85 · The specification curve (item 3; designed here,  94 · Reporting 103 · Limits stated in advance 106 · Amendments 112
+Sections (line): Why 7 · Questions 10 · Design 15 · The inputs (range; main reading; where the range 24 · Outcomes 72 · Analysis 78 · Decision rules (fixed now; applied mechanically  85 · The specification curve (item 3; designed here,  94 · Reporting 103 · Limits stated in advance 106 · Amendments 112 · Amendment 1 (Nov 14, 2026, before dispatch; no r 115
 
 ## 2026-11-s71-creditor-side.md (113 lines)
 Preregistration: a creditor side for debt that inflation wipes out (S71: option `cr` of RETURNS)
