@@ -219,3 +219,17 @@ Dated, with the reason, below this line.
 | Y `prog-y` | 4 (125; was 2) | [94](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/42472411721) |
 
 - Total 103 shards (Amendment 6 said 83). Engine `0c93593e1ea502555387e42215b79f290a60f127`, seeds 1-500, `job=program.js`, `job_args=--study=<S> --env=all --procs=4`. Folders `prog-<study>-0c93593` with `DONE` when every shard is in. No row, outcome, seed or rule changed.
+
+### Amendment 8 (Nov 14, 2026, S63 part 2, before any run of these jobs): round 2's frozen batch
+- **What is added:** the batch of `prereg/2026-11-s63-round2-freeze.md` (round 2 of the engine; Amendment 1 there fixes the points). Engine: BetterToBest/compassionism-simulation at `104691f3993ac6f37d6ff1b8ccd4690120cfe949` (pull request 107). Job script `runner/jobs/r2.js` in compassionism-sim-results, with `runner/jobs/r2-ends.json` (the pair and bound ends, fixed from the S70 screen). Workflow `run-study`, GitHub Actions, no cost.
+- **Jobs:** one dispatch per part, environment and horizon (24 in all), each `job=r2.js`, `job_args=--part=<P> --env=<E> --years=<Y> --procs=4 --gzip`, seeds 1-500. Study ids `r2-<p>-<env>-<years>` (lower case), so folders `r2-<p>-<env>-<years>-<engine 7>`, each with `run.txt`, `SHA256SUMS` and `DONE`.
+
+| Part | What | Row-runs per environment, seed and horizon | Adults | Keys stored |
+|---|---|---|---|---|
+| M | the main rows: no programme, C2.2, release design; the financed no-programme run, C2.2 and release design | 6 | 500 | every key, full precision |
+| S | the Source rows: main, 32 single readings, 28 pairs, 10 bound points, backing curve (6 + 5 price readings at `a` 0), 15 named readings, 10 fixed-share rows (107 points) | 296 | 500 | 28 keys + 4 derived, 7 significant digits |
+| F | the financed rows: main, 49 single readings, 66 pairs, 10 bound points (126 points) | 366 | 500 | as S |
+| B | the main pair at 10,000 adults | 3 | 10,000 | every key, full precision |
+
+- **Shard sizes** are set from the dry run (`r2dry-<engine 7>`, seeds 1-2, every part, environment and horizon in one job: `job_args=--part=all --procs=4`), so that no shard runs over 2 hours; recorded in the freeze file's Amendment 2 with the dispatch links.
+- **Readers:** S64's tables tool (to be written in compassionism-simulation `dev/tools/`, reading the folders above); S69's program reads its own packet, rebuilt on the full-backing main row (freeze file, item 5).

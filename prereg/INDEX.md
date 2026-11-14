@@ -101,12 +101,12 @@ Preregistration: PTF realism, sourced running costs, PTF jobs and wages, and the
 
 Sections (line): Why 5 · What the engine already does (read before this f 10 · Claude's reading of the design (the Hub papers,  15 · Sources (opened for this step; figures as read) 21 · The mechanism (switch `PTF_OPS`, row option `po` 31 · What is reported (keys `PO_KEYS`, rows with `po` 44 · Unit tests (written with the build) 47 · Pilot (100 seeds, 500 adults, 20 years; Referenc 50 · Decision rules (fixed now) 53 · Limits known before the build 60 · Amendments 68
 
-## 2026-11-s63-round2-freeze.md (125 lines)
+## 2026-11-s63-round2-freeze.md (147 lines)
 Preregistration: round 2 of the Compassionism Simulation (S63, the design freeze for S64)
 
 Round 2 rebuilt the engine's weakest parts (S57-S73): wealth by asset class with the lenders who hold household debt; a weighted top tail; adults outside the labour force who move in and out of work; a borrowing limit; b
 
-Sections (line): Why 5 · Plain-words summary 8 · Questions 16 · Design 25 · The main row (ledger decision D26, filed before  27 · Rows: the Source rows (C2.2 and the release desi 36 · Rows: the financed rows (D21, D23 as answered; S 46 · Rows: the 10,000-adult main pair 53 · Environments, seeds, horizons 56 · Outcomes 62 · Analysis 83 · Decision rules (fixed now) 90 · Structural uncertainty (what the seed intervals  100 · Where it runs, and the cost (measured Nov 14 on  105 · Before the first run (S63 part 2; each recorded  112 · Reporting 120 · Amendments 123
+Sections (line): Why 5 · Plain-words summary 8 · Questions 16 · Design 25 · The main row (ledger decision D26, filed before  27 · Rows: the Source rows (C2.2 and the release desi 36 · Rows: the financed rows (D21, D23 as answered; S 46 · Rows: the 10,000-adult main pair 53 · Environments, seeds, horizons 56 · Outcomes 62 · Analysis 83 · Decision rules (fixed now) 90 · Structural uncertainty (what the seed intervals  100 · Where it runs, and the cost (measured Nov 14 on  105 · Before the first run (S63 part 2; each recorded  112 · Reporting 120 · Amendments 123 · Amendment 1 (Nov 14, 2026, S63 part 2, before an 126
 
 ## 2026-11-s66-low-share-trace.md (56 lines)
 Preregistration: tracing the low end of the fixed-share curve, the erosion of opening balances, and the wealth harm with adults outside the labour force (S66)
@@ -192,13 +192,13 @@ Q1 … (one sentence each; what would count as an answer)
 
 Sections (line): Questions 5 · Design 8 · Outcomes 15 · Analysis 20 · Decision rules 25 · Reporting 28 · Amendments 31
 
-- `checks/` (folder, 2 files)
-## run-manifest.md (222 lines)
+- `checks/` (folder, 3 files)
+## run-manifest.md (236 lines)
 Run manifest: the full study batch (S47 design freeze, for S48)
 
 Written Nov 5, 2026 by S47, before any 500-seed run.
 
-Sections (line): 1. The model being frozen 7 · 2. Who reads what (consumers) 20 · 3. The jobs 36 · 4. Rows, job by job 71 · 5. Measures kept, and how files are written 103 · 6. What must land before the dry run (S47, later 108 · 7. Dry run 120 · 8. Where it runs, and the cost 138 · Amendments 143 · Amendment 1 (Nov 5, 2026, S47 part 2, before any 146 · Amendment 2 (Nov 5, 2026, S47 part 2, before any 152 · Amendment 3 (Nov 6, 2026, S47 part 3, before any 158 · Amendment 4 (Nov 6, 2026, S47 part 5, before any 172 · Amendment 5 (Nov 8, 2026, S48 part 3, after the  179 · Amendment 6 (Nov 8, 2026, S55 part 2, before any 185 · Amendment 7 (Nov 8, 2026, S55 part 3): pilot che 205
+Sections (line): 1. The model being frozen 7 · 2. Who reads what (consumers) 20 · 3. The jobs 36 · 4. Rows, job by job 71 · 5. Measures kept, and how files are written 103 · 6. What must land before the dry run (S47, later 108 · 7. Dry run 120 · 8. Where it runs, and the cost 138 · Amendments 143 · Amendment 1 (Nov 5, 2026, S47 part 2, before any 146 · Amendment 2 (Nov 5, 2026, S47 part 2, before any 152 · Amendment 3 (Nov 6, 2026, S47 part 3, before any 158 · Amendment 4 (Nov 6, 2026, S47 part 5, before any 172 · Amendment 5 (Nov 8, 2026, S48 part 3, after the  179 · Amendment 6 (Nov 8, 2026, S55 part 2, before any 185 · Amendment 7 (Nov 8, 2026, S55 part 3): pilot che 205 · Amendment 8 (Nov 14, 2026, S63 part 2, before an 223
 
 ## s34-baseline-realism.md (56 lines)
 Preregistration: the no-programme baseline against outside data (S34)

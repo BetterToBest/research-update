@@ -1,0 +1,126 @@
+block S: 107 distinct points, 296 row-runs per environment, seed and horizon; single 32, pairs 28, bound 10, backing 6, a0price 5, named 18, fixed 10
+  carried: prK prR prA prH@0.0446 prBd sc wIdx rho paDem lfConv lfFl lfPm rtPhi rtNs rtIx rtChi bgPi bgM poCost poTest poHire poBonus poPay wtCut@p90 wtM@6
+  pairs (ends; COND readings shown with the base point):
+    rtChi x rtIx: rtChi=1, rtIx=0.5
+    rho x wIdx: rho=0.05, wIdx=0.75
+    lfFl x wIdx: lfFl=off, wIdx=0.75
+    prK x wIdx: prK=0.2, wIdx=0.75
+    poPay x wIdx: poPay=price, wIdx=0.75
+    rtIx x rtPhi: rtIx=0.5, rtPhi=1
+    prK x rtIx: prK=0.2, rtIx=0.5
+    rtIx x wIdx: rtIx=0.5, wIdx=0.75
+    rho x rtIx: rho=0.05, rtIx=0.5
+    rtIx x rtNs: rtIx=0.5, rtNs=port
+    lfFl x rtIx: lfFl=off, rtIx=0.5
+    rtIx x sc: rtIx=0.5, sc=0.593
+    prBd x rtIx: prBd=0.132, rtIx=0.5
+    prR x wIdx: prR=0.45, wIdx=0.75
+    prA x wIdx: prA=0.5078, wIdx=0.75
+    bgPi x wIdx: bgPi=0.1, wIdx=0.75
+    poCost x wIdx: poCost=sector, wIdx=0.75
+    paDem x wIdx: paDem=1, wIdx=0.75
+    poTest x wIdx: poTest=members, wIdx=0.75
+    poHire x wIdx: poHire=0.02, wIdx=0.75
+    bgM x wIdx: bgM=1, wIdx=0.75  [base {"bgPi":0.1}]
+    rtPhi x sc: rtPhi=1, sc=0.593
+    bgM x sc: bgM=0.6536, sc=0.593  [base {"bgPi":0.1}]
+    rtNs x sc: rtNs=port, sc=0.593
+    prBd x wIdx: prBd=0.132, wIdx=0.75
+    bgPi x rtIx: bgPi=0.1, rtIx=0.5
+    bgM x rtIx: bgM=0.6536, rtIx=0.5  [base {"bgPi":0.1}]
+    poBonus x wIdx: poBonus=members, wIdx=0.75
+  bound (least-favourable ends):
+    c22 bNAPy: bgM=1 lfConv=none lfPm=1 poHire=0.02 poPay=price rho=0.3 rtNs=port rtPhi=1 sc=0.593 wtM=6
+    c22 fgt0PY: bgM=1 lfConv=none lfFl=off lfPm=1 poHire=0.02 poPay=price rho=0.3 rtNs=port rtPhi=1 sc=0.593 wtM=6
+    c22 ppovA: bgM=1 lfConv=none lfFl=off lfPm=1 poHire=0.02 poPay=price rho=0.3 rtNs=port rtPhi=1 wtM=6
+    c22 wtMedE: bgM=1 lfPm=0 poHire=0.02 poPay=price rho=0.3 rtChi=1 rtIx=0.5 rtPhi=0 wIdx=0.75 wtM=6
+    c22 endoAnn: wIdx=0.75
+    rel bNAPy: bgM=1 lfConv=none lfFl=off poHire=0.02 poPay=price rho=0.3 rtPhi=0 wtM=6
+    rel fgt0PY: bgM=1 lfConv=none lfFl=off lfPm=1 poHire=0.02 poPay=price rho=0.3 wtM=6
+    rel ppovA: bgM=1 lfConv=none lfFl=off lfPm=1 poHire=0.02 poPay=price rho=0.3 rtPhi=0 wtM=6
+    rel wtMedE: bgM=1 lfPm=0 poTest=capacity rho=0.3 rtChi=1 rtIx=0.5 rtPhi=0 wtM=6
+    rel endoAnn: lfPm=0 rho=0.05 wIdx=0.75
+  every point: 0 main (= pairbase.rtChi x rtIx, pairbase.rho x wIdx, pairbase.lfFl x wIdx, pairbase.prK x wIdx, pairbase.poPay x wIdx, pairbase.rtIx x rtPhi, pairbase.prK x rtIx, pairbase.rtIx x wIdx, pairbase.rho x rtIx, pairbase.rtIx x rtNs, pairbase.lfFl x rtIx, pairbase.rtIx x sc, pairbase.prBd x rtIx, pairbase.prR x wIdx, pairbase.prA x wIdx, pairbase.bgPi x wIdx, pairbase.poCost x wIdx, pairbase.paDem x wIdx, pairbase.poTest x wIdx, pairbase.poHire x wIdx, pairbase.rtPhi x sc, pairbase.rtNs x sc, pairbase.prBd x wIdx, pairbase.bgPi x rtIx, pairbase.poBonus x wIdx) [none,c22,rel]; 1 single.prK=0.2 (= pairA.prK x wIdx, pairA.prK x rtIx) [none,c22,rel]; 2 single.prR=0.45 (= pairA.prR x wIdx) [none,c22,rel]; 3 single.prA=0.5078 (= pairA.prA x wIdx) [none,c22,rel]; 4 single.prH=0.0446 [none,c22,rel]; 5 single.prBd=0.132 (= pairA.prBd x rtIx, pairA.prBd x wIdx, named.prBd=0.132) [none,c22,rel]; 6 single.sc=0.593 (= pairB.rtIx x sc, pairB.rtPhi x sc, pairB.rtNs x sc) [none,c22,rel]; 7 single.wIdx=0.75 (= pairB.rho x wIdx, pairB.lfFl x wIdx, pairB.prK x wIdx, pairB.poPay x wIdx, pairB.rtIx x wIdx, pairB.prR x wIdx, pairB.prA x wIdx, pairB.bgPi x wIdx, pairB.poCost x wIdx, pairB.paDem x wIdx, pairB.poTest x wIdx, pairB.poHire x wIdx, pairB.prBd x wIdx, pairB.poBonus x wIdx, bound.c22.endoAnn) [none,c22,rel]; 8 single.rho=0.05 (= pairA.rho x wIdx, pairA.rho x rtIx) [none,c22,rel]; 9 single.rho=0.3 [none,c22,rel]; 10 single.paDem=1 (= pairA.paDem x wIdx) [none,c22,rel]; 11 single.lfConv=none (= named.lfConv=none) [none,c22,rel]; 12 single.lfFl=off (= pairA.lfFl x wIdx, pairA.lfFl x rtIx) [none,c22,rel]; 13 single.lfPm=0 [none,c22,rel]; 14 single.lfPm=1 [none,c22,rel]; 15 single.rtPhi=0 [none,c22,rel]; 16 single.rtPhi=1 (= pairB.rtIx x rtPhi, pairA.rtPhi x sc) [none,c22,rel]; 17 single.rtNs=port (= pairB.rtIx x rtNs, pairA.rtNs x sc) [none,c22,rel]; 18 single.rtIx=0.5 (= pairB.rtChi x rtIx, pairA.rtIx x rtPhi, pairB.prK x rtIx, pairA.rtIx x wIdx, pairB.rho x rtIx, pairA.rtIx x rtNs, pairB.lfFl x rtIx, pairA.rtIx x sc, pairB.prBd x rtIx, pairB.bgPi x rtIx) [none,c22,rel]; 19 single.rtChi=1 (= pairA.rtChi x rtIx) [none,c22,rel]; 20 single.bgPi=0.1 (= pairA.bgPi x wIdx, pairbase.bgM x wIdx, pairbase.bgM x sc, pairA.bgPi x rtIx, pairbase.bgM x rtIx, named.bgPi=0.1) [none,c22,rel]; 21 single.bgM=0.6536 (= pairA.bgM x sc, pairA.bgM x rtIx) [none,c22,rel]; 22 single.bgM=1 (= pairA.bgM x wIdx) [none,c22,rel]; 23 single.poCost=sector (= pairA.poCost x wIdx) [none,c22,rel]; 24 single.poCost=hub [none,c22,rel]; 25 single.poTest=members (= pairA.poTest x wIdx) [none,c22,rel]; 26 single.poTest=capacity [none,c22,rel]; 27 single.poHire=0.05 [none,c22,rel]; 28 single.poHire=0.02 (= pairA.poHire x wIdx) [none,c22,rel]; 29 single.poBonus=members (= pairA.poBonus x wIdx) [none,c22,rel]; 30 single.poPay=price (= pairA.poPay x wIdx) [none,c22,rel]; 31 single.wtCut=p90 [none,c22,rel]; 32 single.wtM=6 [none,c22,rel]; 33 pair.rtChi x rtIx [none,c22,rel]; 34 pair.rho x wIdx [none,c22,rel]; 35 pair.lfFl x wIdx [none,c22,rel]; 36 pair.prK x wIdx [none,c22,rel]; 37 pair.poPay x wIdx [none,c22,rel]; 38 pair.rtIx x rtPhi [none,c22,rel]; 39 pair.prK x rtIx [none,c22,rel]; 40 pair.rtIx x wIdx [none,c22,rel]; 41 pair.rho x rtIx [none,c22,rel]; 42 pair.rtIx x rtNs [none,c22,rel]; 43 pair.lfFl x rtIx [none,c22,rel]; 44 pair.rtIx x sc [none,c22,rel]; 45 pair.prBd x rtIx [none,c22,rel]; 46 pair.prR x wIdx [none,c22,rel]; 47 pair.prA x wIdx [none,c22,rel]; 48 pair.bgPi x wIdx (= pairB.bgM x wIdx) [none,c22,rel]; 49 pair.poCost x wIdx [none,c22,rel]; 50 pair.paDem x wIdx [none,c22,rel]; 51 pair.poTest x wIdx [none,c22,rel]; 52 pair.poHire x wIdx [none,c22,rel]; 53 pair.bgM x wIdx [none,c22,rel]; 54 pair.rtPhi x sc [none,c22,rel]; 55 pairB.bgM x sc [none,c22,rel]; 56 pair.bgM x sc [none,c22,rel]; 57 pair.rtNs x sc [none,c22,rel]; 58 pair.prBd x wIdx [none,c22,rel]; 59 pair.bgPi x rtIx (= pairB.bgM x rtIx) [none,c22,rel]; 60 pair.bgM x rtIx [none,c22,rel]; 61 pair.poBonus x wIdx [none,c22,rel]; 62 bound.c22.bNAPy [none,c22]; 63 bound.c22.fgt0PY [none,c22]; 64 bound.c22.ppovA [none,c22]; 65 bound.c22.wtMedE [none,c22]; 66 bound.rel.bNAPy [none,rel]; 67 bound.rel.fgt0PY [none,rel]; 68 bound.rel.ppovA [none,rel]; 69 bound.rel.wtMedE [none,rel]; 70 bound.rel.endoAnn [none,rel]; 71 back.a=0 [c22,rel]; 72 back.a=0.25 [c22,rel]; 73 back.a=0.5 [c22,rel]; 74 back.a=0.75 [c22,rel]; 75 back.bkm [c22,rel]; 76 back.bkmNc [c22,rel]; 77 a0.prK=0.2 [none,c22,rel]; 78 a0.prR=0.45 [none,c22,rel]; 79 a0.prA=0.5078 [none,c22,rel]; 80 a0.prH=0.0446 [none,c22,rel]; 81 a0.prBd=0.132 [none,c22,rel]; 82 named.rtOff [none,c22,rel]; 83 named.crOff [none,c22,rel]; 84 named.wtOff [none,c22,rel]; 85 named.lfOff [none,c22,rel]; 86 named.liq [none,c22,rel]; 87 named.floor [none,c22,rel]; 88 named.prCap [none,c22,rel]; 89 named.prQ [none,c22,rel]; 90 named.s69Off [none,c22,rel]; 91 named.drLim=0 [none,c22,rel]; 92 named.drLim=10000 [none,c22,rel]; 93 named.crInc=hold [none,c22,rel]; 94 named.crInc=hedge [none,c22,rel]; 95 named.crPop=1 [none,c22,rel]; 96 named.crOut=0 [none,c22,rel]; 97 fix.10 [c22,rel]; 98 fix.20 [c22,rel]; 99 fix.30 [c22,rel]; 100 fix.40 [c22,rel]; 101 fix.50 [c22,rel]; 102 fix.60 [c22,rel]; 103 fix.70 [c22,rel]; 104 fix.80 [c22,rel]; 105 fix.90 [c22,rel]; 106 fix.100 [c22,rel]
+block F: 126 distinct points, 366 row-runs per environment, seed and horizon; single 49, pairs 66, bound 10
+  carried: prK prR prA prH prBd sc wIdx rho paDem drLim lfConv lfFl lfPm rtPhi rtNs rtIx rtChi bgPi bgM@1 poCost poTest poHire poBonus poPay gvSh gvBase cap fin gvRr gvDk gvR gvA gvB gvRs gvIp
+  pairs (ends; COND readings shown with the base point):
+    fin x rtIx: fin=cap, rtIx=0.5
+    rtChi x rtIx: rtChi=1, rtIx=0.5
+    rtIx x wIdx: rtIx=0.5, wIdx=0.75
+    gvSh x wIdx: gvSh=0, wIdx=0.75
+    fin x gvSh: fin=money, gvSh=0
+    gvSh x rho: gvSh=0, rho=0.05
+    cap x gvSh: cap=0, gvSh=0
+    gvSh x lfFl: gvSh=0, lfFl=off
+    gvSh x rtIx: gvSh=0, rtIx=0.5
+    gvSh x lfPm: gvSh=0, lfPm=1
+    gvSh x prBd: gvSh=0, prBd=0.132
+    rtIx x rtPhi: rtIx=0.5, rtPhi=1
+    rtIx x sc: rtIx=0.5, sc=0.593
+    rho x rtIx: rho=0.05, rtIx=0.5
+    rtIx x rtNs: rtIx=0.5, rtNs=port
+    lfFl x rtIx: lfFl=off, rtIx=0.5
+    fin x sc: fin=cap, sc=0.593
+    fin x wIdx: fin=money, wIdx=0.75
+    fin x rtChi: fin=cap, rtChi=1
+    fin x rtPhi: fin=cap, rtPhi=1
+    fin x rtNs: fin=cap, rtNs=port
+    fin x gvIp: fin=cap, gvIp=borrow
+    gvBase x gvSh: gvBase=wc, gvSh=0
+    gvSh x prK: gvSh=0, prK=0.2
+    gvSh x prR: gvSh=0, prR=0.45
+    gvSh x prA: gvSh=0, prA=0.5078
+    gvDk x gvSh: gvDk=0, gvSh=0
+    gvIp x gvSh: gvIp=borrow, gvSh=0
+    gvRr x gvSh: gvRr=0.0196, gvSh=0
+    gvR x gvSh: gvR=rule, gvSh=0
+    gvSh x poHire: gvSh=0, poHire=0.02
+    gvSh x poCost: gvSh=0, poCost=hub
+    gvRs x gvSh: gvRs=0.02, gvSh=0  [base {"gvR":"rule"}]
+    gvSh x poPay: gvSh=0, poPay=price
+    gvA x gvSh: gvA=0.25, gvSh=0  [base {"gvR":"rule"}]
+    gvSh x poBonus: gvSh=0, poBonus=members
+    drLim x gvSh: drLim=0, gvSh=0
+    bgPi x gvSh: bgPi=0.1, gvSh=0
+    gvSh x prH: gvSh=0, prH=0.0446
+    gvSh x lfConv: gvSh=0, lfConv=none
+    gvSh x paDem: gvSh=0, paDem=1
+    gvSh x poTest: gvSh=0, poTest=capacity
+    gvSh x rtChi: gvSh=0, rtChi=1
+    rho x wIdx: rho=0.05, wIdx=0.75
+    lfFl x wIdx: lfFl=off, wIdx=0.75
+    gvIp x wIdx: gvIp=borrow, wIdx=0.75
+    bgPi x wIdx: bgPi=0.1, wIdx=0.75
+    gvDk x wIdx: gvDk=0, wIdx=0.75
+    gvSh x rtPhi: gvSh=0, rtPhi=1
+    gvSh x rtNs: gvSh=0, rtNs=port
+    gvSh x sc: gvSh=0, sc=0.593
+    cap x wIdx: cap=0, wIdx=0.75
+    lfPm x wIdx: lfPm=0, wIdx=0.75
+    lfConv x wIdx: lfConv=none, wIdx=0.75
+    poPay x wIdx: poPay=price, wIdx=0.75
+    prBd x wIdx: prBd=0.132, wIdx=0.75
+    prK x rtIx: prK=0.2, rtIx=0.5
+    fin x lfFl: fin=money, lfFl=off
+    fin x prBd: fin=money, prBd=0.132
+    fin x gvBase: fin=money, gvBase=wc
+    fin x rho: fin=money, rho=0.3
+    fin x prK: fin=money, prK=0.2
+    cap x fin: cap=0, fin=money
+    fin x prA: fin=money, prA=0.5078
+    fin x prR: fin=money, prR=0.45
+    bgPi x fin: bgPi=0.1, fin=money
+  bound (least-favourable ends):
+    c22 bNAPy: bgM=1 drLim=0 fin=cap gvSh=0 lfConv=none lfFl=off lfPm=1 poHire=0.02 prA=0.5078 prBd=0.132 prR=0.45 rho=0.3 rtChi=1 rtIx=0.5 rtNs=port rtPhi=0 sc=0.593 wIdx=0.75
+    c22 fgt0PY: bgM=1 drLim=10000 fin=cap gvRr=0.0196 lfConv=none lfFl=off lfPm=1 poPay=price prA=0.5078 prBd=0.132 rho=0.3 rtIx=0.5 rtPhi=0 wIdx=0.75
+    c22 ppovA: bgM=1 fin=cap gvRr=0.0196 lfConv=none lfFl=off lfPm=1 poPay=price prA=0.5078 prBd=0.132 prR=0.45 rho=0.3 rtChi=1 rtIx=0.5 rtPhi=0 wIdx=0.75
+    c22 wtMedE: bgM=1 drLim=10000 fin=cap gvA=1 gvB=0 gvRr=0.0196 lfConv=none lfFl=off lfPm=1 poHire=0.02 poPay=price prBd=0.132 rho=0.05 rtChi=1 rtIx=0.5 rtPhi=0 wIdx=0.75
+    c22 endoAnn: bgM=1 cap=0 drLim=0 fin=cap gvSh=0 lfFl=off lfPm=0 paDem=1 poTest=capacity prA=0.5078 prBd=0.132 prH=0.0446 prR=0.45 rho=0.3 rtIx=0.5 rtPhi=1 wIdx=0.75
+    rel bNAPy: bgM=1 drLim=0 fin=cap gvRr=0.0196 lfFl=off lfPm=0 poHire=0.02 poPay=price prBd=0.132 prH=0.0446 prR=0.45 rho=0.3 rtChi=1 rtIx=0.5 rtPhi=0 wIdx=0.75
+    rel fgt0PY: bgM=1 drLim=0 fin=cap gvRr=0.0196 lfConv=none lfFl=off lfPm=1 poBonus=members poHire=0.02 poPay=price prA=0.5078 prBd=0.132 prH=0.0446 prR=0.45 rho=0.3 rtIx=0.5 rtPhi=0 wIdx=0.75
+    rel ppovA: bgM=1 drLim=0 fin=cap gvRr=0.0196 gvSh=0 lfFl=off lfPm=0 poPay=price prA=0.5078 prBd=0.132 prH=0.0446 prR=0.45 rho=0.3 rtChi=1 rtIx=0.5 rtPhi=0 wIdx=0.75
+    rel wtMedE: bgM=1 cap=0 drLim=0 fin=cap gvA=0.25 gvB=0 gvRr=0.0196 gvSh=0 lfFl=off lfPm=0 paDem=1 poPay=price prA=0.5078 prBd=0.132 prH=0.0446 prR=0.45 rho=0.3 rtChi=1 rtIx=0.5 rtPhi=0 sc=0.593 wIdx=0.75
+    rel endoAnn: bgM=1 cap=0 drLim=0 fin=cap gvIp=borrow gvSh=0 lfFl=off lfPm=0 paDem=1 poBonus=members poCost=hub poTest=capacity prA=0.5078 prBd=0.132 prH=0.0446 prR=0.45 rho=0.3 wIdx=0.75
+  every point: 0 main (= pairbase.fin x rtIx, pairbase.rtChi x rtIx, pairbase.rtIx x wIdx, pairbase.gvSh x wIdx, pairbase.fin x gvSh, pairbase.gvSh x rho, pairbase.cap x gvSh, pairbase.gvSh x lfFl, pairbase.gvSh x rtIx, pairbase.gvSh x lfPm, pairbase.gvSh x prBd, pairbase.rtIx x rtPhi, pairbase.rtIx x sc, pairbase.rho x rtIx, pairbase.rtIx x rtNs, pairbase.lfFl x rtIx, pairbase.fin x sc, pairbase.fin x wIdx, pairbase.fin x rtChi, pairbase.fin x rtPhi, pairbase.fin x rtNs, pairbase.fin x gvIp, pairbase.gvBase x gvSh, pairbase.gvSh x prK, pairbase.gvSh x prR, pairbase.gvSh x prA, pairbase.gvDk x gvSh, pairbase.gvIp x gvSh, pairbase.gvRr x gvSh, pairbase.gvR x gvSh, pairbase.gvSh x poHire, pairbase.gvSh x poCost, pairbase.gvSh x poPay, pairbase.gvSh x poBonus, pairbase.drLim x gvSh, pairbase.bgPi x gvSh, pairbase.gvSh x prH, pairbase.gvSh x lfConv, pairbase.gvSh x paDem, pairbase.gvSh x poTest, pairbase.gvSh x rtChi, pairbase.rho x wIdx, pairbase.lfFl x wIdx, pairbase.gvIp x wIdx, pairbase.bgPi x wIdx, pairbase.gvDk x wIdx, pairbase.gvSh x rtPhi, pairbase.gvSh x rtNs, pairbase.gvSh x sc, pairbase.cap x wIdx, pairbase.lfPm x wIdx, pairbase.lfConv x wIdx, pairbase.poPay x wIdx, pairbase.prBd x wIdx, pairbase.prK x rtIx, pairbase.fin x lfFl, pairbase.fin x prBd, pairbase.fin x gvBase, pairbase.fin x rho, pairbase.fin x prK, pairbase.cap x fin, pairbase.fin x prA, pairbase.fin x prR, pairbase.bgPi x fin) [none,c22,rel]; 1 single.prK=0.2 (= pairB.gvSh x prK, pairA.prK x rtIx, pairB.fin x prK) [none,c22,rel]; 2 single.prR=0.45 (= pairB.gvSh x prR, pairB.fin x prR) [none,c22,rel]; 3 single.prA=0.5078 (= pairB.gvSh x prA, pairB.fin x prA) [none,c22,rel]; 4 single.prH=0.0446 (= pairB.gvSh x prH) [none,c22,rel]; 5 single.prBd=0.132 (= pairB.gvSh x prBd, pairA.prBd x wIdx, pairB.fin x prBd) [none,c22,rel]; 6 single.sc=0.593 (= pairB.rtIx x sc, pairB.fin x sc, pairB.gvSh x sc) [none,c22,rel]; 7 single.wIdx=0.75 (= pairB.rtIx x wIdx, pairB.gvSh x wIdx, pairB.fin x wIdx, pairB.rho x wIdx, pairB.lfFl x wIdx, pairB.gvIp x wIdx, pairB.bgPi x wIdx, pairB.gvDk x wIdx, pairB.cap x wIdx, pairB.lfPm x wIdx, pairB.lfConv x wIdx, pairB.poPay x wIdx, pairB.prBd x wIdx) [none,c22,rel]; 8 single.rho=0.05 (= pairB.gvSh x rho, pairA.rho x rtIx, pairA.rho x wIdx) [none,c22,rel]; 9 single.rho=0.3 (= pairB.fin x rho) [none,c22,rel]; 10 single.paDem=1 (= pairB.gvSh x paDem) [none,c22,rel]; 11 single.drLim=0 (= pairA.drLim x gvSh) [none,c22,rel]; 12 single.drLim=10000 [none,c22,rel]; 13 single.lfConv=none (= pairB.gvSh x lfConv, pairA.lfConv x wIdx) [none,c22,rel]; 14 single.lfFl=off (= pairB.gvSh x lfFl, pairA.lfFl x rtIx, pairA.lfFl x wIdx, pairB.fin x lfFl) [none,c22,rel]; 15 single.lfPm=0 (= pairA.lfPm x wIdx) [none,c22,rel]; 16 single.lfPm=1 (= pairB.gvSh x lfPm) [none,c22,rel]; 17 single.rtPhi=0 [none,c22,rel]; 18 single.rtPhi=1 (= pairB.rtIx x rtPhi, pairB.fin x rtPhi, pairB.gvSh x rtPhi) [none,c22,rel]; 19 single.rtNs=port (= pairB.rtIx x rtNs, pairB.fin x rtNs, pairB.gvSh x rtNs) [none,c22,rel]; 20 single.rtIx=0.5 (= pairB.fin x rtIx, pairB.rtChi x rtIx, pairA.rtIx x wIdx, pairB.gvSh x rtIx, pairA.rtIx x rtPhi, pairA.rtIx x sc, pairB.rho x rtIx, pairA.rtIx x rtNs, pairB.lfFl x rtIx, pairB.prK x rtIx) [none,c22,rel]; 21 single.rtChi=1 (= pairA.rtChi x rtIx, pairB.fin x rtChi, pairB.gvSh x rtChi) [none,c22,rel]; 22 single.bgPi=0.1 (= pairA.bgPi x gvSh, pairA.bgPi x wIdx, pairA.bgPi x fin) [none,c22,rel]; 23 single.bgM=1 [none,c22,rel]; 24 single.poCost=sector [none,c22,rel]; 25 single.poCost=hub (= pairB.gvSh x poCost) [none,c22,rel]; 26 single.poTest=members [none,c22,rel]; 27 single.poTest=capacity (= pairB.gvSh x poTest) [none,c22,rel]; 28 single.poHire=0.05 [none,c22,rel]; 29 single.poHire=0.02 (= pairB.gvSh x poHire) [none,c22,rel]; 30 single.poBonus=members (= pairB.gvSh x poBonus) [none,c22,rel]; 31 single.poPay=price (= pairB.gvSh x poPay, pairA.poPay x wIdx) [none,c22,rel]; 32 single.gvSh=0 (= pairA.gvSh x wIdx, pairB.fin x gvSh, pairA.gvSh x rho, pairB.cap x gvSh, pairA.gvSh x lfFl, pairA.gvSh x rtIx, pairA.gvSh x lfPm, pairA.gvSh x prBd, pairB.gvBase x gvSh, pairA.gvSh x prK, pairA.gvSh x prR, pairA.gvSh x prA, pairB.gvDk x gvSh, pairB.gvIp x gvSh, pairB.gvRr x gvSh, pairB.gvR x gvSh, pairA.gvSh x poHire, pairA.gvSh x poCost, pairA.gvSh x poPay, pairA.gvSh x poBonus, pairB.drLim x gvSh, pairB.bgPi x gvSh, pairA.gvSh x prH, pairA.gvSh x lfConv, pairA.gvSh x paDem, pairA.gvSh x poTest, pairA.gvSh x rtChi, pairA.gvSh x rtPhi, pairA.gvSh x rtNs, pairA.gvSh x sc) [none,c22,rel]; 33 single.gvBase=w [none,c22]; 34 single.gvBase=wc (= pairA.gvBase x gvSh, pairB.fin x gvBase) [none,c22,rel]; 35 single.gvBase=all [none,rel]; 36 single.cap=0 (= pairA.cap x gvSh, pairA.cap x wIdx, pairA.cap x fin) [none,c22,rel]; 37 single.fin=money (= pairA.fin x gvSh, pairA.fin x wIdx, pairA.fin x lfFl, pairA.fin x prBd, pairA.fin x gvBase, pairA.fin x rho, pairA.fin x prK, pairB.cap x fin, pairA.fin x prA, pairA.fin x prR, pairB.bgPi x fin) [none,c22,rel]; 38 single.fin=cap (= pairA.fin x rtIx, pairA.fin x sc, pairA.fin x rtChi, pairA.fin x rtPhi, pairA.fin x rtNs, pairA.fin x gvIp) [none,c22,rel]; 39 single.gvRr=0 [none,c22,rel]; 40 single.gvRr=0.0196 (= pairA.gvRr x gvSh) [none,c22,rel]; 41 single.gvDk=0 (= pairA.gvDk x gvSh, pairA.gvDk x wIdx) [none,c22,rel]; 42 single.gvR=rule (= pairA.gvR x gvSh, pairbase.gvRs x gvSh, pairbase.gvA x gvSh) [none,c22,rel]; 43 single.gvA=0.25 (= pairA.gvA x gvSh) [none,c22,rel]; 44 single.gvA=1 [none,c22,rel]; 45 single.gvB=0 [none,c22,rel]; 46 single.gvB=1 [none,c22,rel]; 47 single.gvRs=0 [none,c22,rel]; 48 single.gvRs=0.02 (= pairA.gvRs x gvSh) [none,c22,rel]; 49 single.gvIp=borrow (= pairB.fin x gvIp, pairA.gvIp x gvSh, pairA.gvIp x wIdx) [none,c22,rel]; 50 pair.fin x rtIx [none,c22,rel]; 51 pair.rtChi x rtIx [none,c22,rel]; 52 pair.rtIx x wIdx [none,c22,rel]; 53 pair.gvSh x wIdx [none,c22,rel]; 54 pair.fin x gvSh [none,c22,rel]; 55 pair.gvSh x rho [none,c22,rel]; 56 pair.cap x gvSh [none,c22,rel]; 57 pair.gvSh x lfFl [none,c22,rel]; 58 pair.gvSh x rtIx [none,c22,rel]; 59 pair.gvSh x lfPm [none,c22,rel]; 60 pair.gvSh x prBd [none,c22,rel]; 61 pair.rtIx x rtPhi [none,c22,rel]; 62 pair.rtIx x sc [none,c22,rel]; 63 pair.rho x rtIx [none,c22,rel]; 64 pair.rtIx x rtNs [none,c22,rel]; 65 pair.lfFl x rtIx [none,c22,rel]; 66 pair.fin x sc [none,c22,rel]; 67 pair.fin x wIdx [none,c22,rel]; 68 pair.fin x rtChi [none,c22,rel]; 69 pair.fin x rtPhi [none,c22,rel]; 70 pair.fin x rtNs [none,c22,rel]; 71 pair.fin x gvIp [none,c22,rel]; 72 pair.gvBase x gvSh [none,c22,rel]; 73 pair.gvSh x prK [none,c22,rel]; 74 pair.gvSh x prR [none,c22,rel]; 75 pair.gvSh x prA [none,c22,rel]; 76 pair.gvDk x gvSh [none,c22,rel]; 77 pair.gvIp x gvSh [none,c22,rel]; 78 pair.gvRr x gvSh [none,c22,rel]; 79 pair.gvR x gvSh (= pairB.gvRs x gvSh, pairB.gvA x gvSh) [none,c22,rel]; 80 pair.gvSh x poHire [none,c22,rel]; 81 pair.gvSh x poCost [none,c22,rel]; 82 pair.gvRs x gvSh [none,c22,rel]; 83 pair.gvSh x poPay [none,c22,rel]; 84 pair.gvA x gvSh [none,c22,rel]; 85 pair.gvSh x poBonus [none,c22,rel]; 86 pair.drLim x gvSh [none,c22,rel]; 87 pair.bgPi x gvSh [none,c22,rel]; 88 pair.gvSh x prH [none,c22,rel]; 89 pair.gvSh x lfConv [none,c22,rel]; 90 pair.gvSh x paDem [none,c22,rel]; 91 pair.gvSh x poTest [none,c22,rel]; 92 pair.gvSh x rtChi [none,c22,rel]; 93 pair.rho x wIdx [none,c22,rel]; 94 pair.lfFl x wIdx [none,c22,rel]; 95 pair.gvIp x wIdx [none,c22,rel]; 96 pair.bgPi x wIdx [none,c22,rel]; 97 pair.gvDk x wIdx [none,c22,rel]; 98 pair.gvSh x rtPhi [none,c22,rel]; 99 pair.gvSh x rtNs [none,c22,rel]; 100 pair.gvSh x sc [none,c22,rel]; 101 pair.cap x wIdx [none,c22,rel]; 102 pair.lfPm x wIdx [none,c22,rel]; 103 pair.lfConv x wIdx [none,c22,rel]; 104 pair.poPay x wIdx [none,c22,rel]; 105 pair.prBd x wIdx [none,c22,rel]; 106 pair.prK x rtIx [none,c22,rel]; 107 pair.fin x lfFl [none,c22,rel]; 108 pair.fin x prBd [none,c22,rel]; 109 pair.fin x gvBase [none,c22,rel]; 110 pair.fin x rho [none,c22,rel]; 111 pair.fin x prK [none,c22,rel]; 112 pair.cap x fin [none,c22,rel]; 113 pair.fin x prA [none,c22,rel]; 114 pair.fin x prR [none,c22,rel]; 115 pair.bgPi x fin [none,c22,rel]; 116 bound.c22.bNAPy [none,c22]; 117 bound.c22.fgt0PY [none,c22]; 118 bound.c22.ppovA [none,c22]; 119 bound.c22.wtMedE [none,c22]; 120 bound.c22.endoAnn [none,c22]; 121 bound.rel.bNAPy [none,rel]; 122 bound.rel.fgt0PY [none,rel]; 123 bound.rel.ppovA [none,rel]; 124 bound.rel.wtMedE [none,rel]; 125 bound.rel.endoAnn [none,rel]
+parts M and B: 6 and 3 row-runs (B at 10,000 adults). Parts S and F together: 662 row-runs per environment, seed and horizon (prereg costing: about 685, M and B apart).
+PASS  the design matches the preregistration (Amendment 1 counts)
