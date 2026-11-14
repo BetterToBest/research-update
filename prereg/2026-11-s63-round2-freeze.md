@@ -169,32 +169,34 @@ Output sizes are from the two dry-run seeds compressed together with `gzip -9`, 
 
 **The 24 dispatch lines.** Workflow `run-study` in compassionism-sim-results; for every line `engine=104691f3993ac6f37d6ff1b8ccd4690120cfe949`, `job=r2.js`, `seeds=1-500`. Study `r2-<part>-<env>-<years>`, folder `r2-<part>-<env>-<years>-104691f`. S64 dispatches them, in this order (the longest first), and adds each workflow run's link here.
 
-| # | study | job_args | shards |
-|---|---|---|---|
-| 1 | `r2-f-ref-40` | `--part=F --env=ref --years=40 --procs=4 --gzip` | 14 |
-| 2 | `r2-f-adv-40` | `--part=F --env=adv --years=40 --procs=4 --gzip` | 14 |
-| 3 | `r2-f-str-40` | `--part=F --env=str --years=40 --procs=4 --gzip` | 14 |
-| 4 | `r2-s-ref-40` | `--part=S --env=ref --years=40 --procs=4 --gzip` | 11 |
-| 5 | `r2-s-adv-40` | `--part=S --env=adv --years=40 --procs=4 --gzip` | 11 |
-| 6 | `r2-s-str-40` | `--part=S --env=str --years=40 --procs=4 --gzip` | 11 |
-| 7 | `r2-f-ref-20` | `--part=F --env=ref --years=20 --procs=4 --gzip` | 7 |
-| 8 | `r2-f-adv-20` | `--part=F --env=adv --years=20 --procs=4 --gzip` | 7 |
-| 9 | `r2-f-str-20` | `--part=F --env=str --years=20 --procs=4 --gzip` | 7 |
-| 10 | `r2-s-ref-20` | `--part=S --env=ref --years=20 --procs=4 --gzip` | 6 |
-| 11 | `r2-s-adv-20` | `--part=S --env=adv --years=20 --procs=4 --gzip` | 6 |
-| 12 | `r2-s-str-20` | `--part=S --env=str --years=20 --procs=4 --gzip` | 6 |
-| 13 | `r2-b-ref-40` | `--part=B --env=ref --years=40 --procs=4 --gzip` | 4 |
-| 14 | `r2-b-adv-40` | `--part=B --env=adv --years=40 --procs=4 --gzip` | 4 |
-| 15 | `r2-b-str-40` | `--part=B --env=str --years=40 --procs=4 --gzip` | 4 |
-| 16 | `r2-b-ref-20` | `--part=B --env=ref --years=20 --procs=4 --gzip` | 2 |
-| 17 | `r2-b-adv-20` | `--part=B --env=adv --years=20 --procs=4 --gzip` | 2 |
-| 18 | `r2-b-str-20` | `--part=B --env=str --years=20 --procs=4 --gzip` | 2 |
-| 19 | `r2-m-ref-40` | `--part=M --env=ref --years=40 --procs=4 --gzip` | 1 |
-| 20 | `r2-m-adv-40` | `--part=M --env=adv --years=40 --procs=4 --gzip` | 1 |
-| 21 | `r2-m-str-40` | `--part=M --env=str --years=40 --procs=4 --gzip` | 1 |
-| 22 | `r2-m-ref-20` | `--part=M --env=ref --years=20 --procs=4 --gzip` | 1 |
-| 23 | `r2-m-adv-20` | `--part=M --env=adv --years=20 --procs=4 --gzip` | 1 |
-| 24 | `r2-m-str-20` | `--part=M --env=str --years=20 --procs=4 --gzip` | 1 |
+| # | study | job_args | shards | workflow run |
+|---|---|---|---|---|
+| 1 | `r2-f-ref-40` | `--part=F --env=ref --years=40 --procs=4 --gzip` | 14 | [101](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/43651639762) |
+| 2 | `r2-f-adv-40` | `--part=F --env=adv --years=40 --procs=4 --gzip` | 14 | [102](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/43651661946) |
+| 3 | `r2-f-str-40` | `--part=F --env=str --years=40 --procs=4 --gzip` | 14 | [103](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/43651664636) |
+| 4 | `r2-s-ref-40` | `--part=S --env=ref --years=40 --procs=4 --gzip` | 11 | [104](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/43651672044) |
+| 5 | `r2-s-adv-40` | `--part=S --env=adv --years=40 --procs=4 --gzip` | 11 | [105](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/43651674969) |
+| 6 | `r2-s-str-40` | `--part=S --env=str --years=40 --procs=4 --gzip` | 11 | [106](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/43651677670) |
+| 7 | `r2-f-ref-20` | `--part=F --env=ref --years=20 --procs=4 --gzip` | 7 | [107](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/43651685905) |
+| 8 | `r2-f-adv-20` | `--part=F --env=adv --years=20 --procs=4 --gzip` | 7 | [108](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/43651689053) |
+| 9 | `r2-f-str-20` | `--part=F --env=str --years=20 --procs=4 --gzip` | 7 | [109](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/43651691746) |
+| 10 | `r2-s-ref-20` | `--part=S --env=ref --years=20 --procs=4 --gzip` | 6 | [110](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/43651699395) |
+| 11 | `r2-s-adv-20` | `--part=S --env=adv --years=20 --procs=4 --gzip` | 6 | [111](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/43651702056) |
+| 12 | `r2-s-str-20` | `--part=S --env=str --years=20 --procs=4 --gzip` | 6 | [112](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/43651704417) |
+| 13 | `r2-b-ref-40` | `--part=B --env=ref --years=40 --procs=4 --gzip` | 4 | [113](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/43651710994) |
+| 14 | `r2-b-adv-40` | `--part=B --env=adv --years=40 --procs=4 --gzip` | 4 | [114](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/43651713580) |
+| 15 | `r2-b-str-40` | `--part=B --env=str --years=40 --procs=4 --gzip` | 4 | [115](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/43651716499) |
+| 16 | `r2-b-ref-20` | `--part=B --env=ref --years=20 --procs=4 --gzip` | 2 | [116](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/43651723174) |
+| 17 | `r2-b-adv-20` | `--part=B --env=adv --years=20 --procs=4 --gzip` | 2 | [117](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/43651725721) |
+| 18 | `r2-b-str-20` | `--part=B --env=str --years=20 --procs=4 --gzip` | 2 | [118](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/43651728627) |
+| 19 | `r2-m-ref-40` | `--part=M --env=ref --years=40 --procs=4 --gzip` | 1 | [119](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/43651736705) |
+| 20 | `r2-m-adv-40` | `--part=M --env=adv --years=40 --procs=4 --gzip` | 1 | [120](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/43651739513) |
+| 21 | `r2-m-str-40` | `--part=M --env=str --years=40 --procs=4 --gzip` | 1 | [121](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/43651742916) |
+| 22 | `r2-m-ref-20` | `--part=M --env=ref --years=20 --procs=4 --gzip` | 1 | [122](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/43651745558) |
+| 23 | `r2-m-adv-20` | `--part=M --env=adv --years=20 --procs=4 --gzip` | 1 | [123](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/43651748769) |
+| 24 | `r2-m-str-20` | `--part=M --env=str --years=20 --procs=4 --gzip` | 1 | [124](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/43651751304) |
+
+**Dispatched Nov 14, 2026, 23:07-23:09 UTC (S64)**, as listed above: all 24 lines on main of compassionism-sim-results (commit `62d6d42`), with the arguments in the table and nothing else changed. Lines 1-3, 4-6, 7-9, 10-12, 13-15, 16-18 and 19-24 were sent in groups of equal shard count; the run numbers follow the order of sending. Within a group the run-to-study match is by order of sending; each folder's `run.txt` names its workflow run, and the session that reads the folders checks the match there and corrects this table if any pair is swapped.
 
 If a shard fails or a runner is much slower than the dry run's, the dispatch is run again whole under a new study id with a suffix (`-r2`) and the same arguments; seeds are paired, so the split changes no figure. Any change of shard count is recorded here with the reason.
 
