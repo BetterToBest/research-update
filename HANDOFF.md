@@ -4,7 +4,7 @@
 S69 is **done**. A Python program written from the S69 packet alone reproduces the candidate main row of round 2 and its no-programme run (Reference, Adverse, Stress; seeds 1-500) to rounding. The rerun on the full-backing main row (D25) is left to S63 to schedule, before S64 dispatches.
 
 ## What shipped
-- compassionism-simulation [PR 105](https://github.com/BetterToBest/compassionism-simulation/pull/105) (MERGE_COMMIT): `dev/reports/s69-independent-implementation/` with the program, REPORT.md (plain words, for Duke), GAPS.md, results/ (per-seed results gzipped, comparison tables, run.txt, SHA256SUMS), and one DECISIONS.md entry (the acceptance rule).
+- compassionism-simulation [PR 105](https://github.com/BetterToBest/compassionism-simulation/pull/105) (merged, 8b96cdd): `dev/reports/s69-independent-implementation/` with the program, REPORT.md (plain words, for Duke), GAPS.md, results/ (per-seed results gzipped, comparison tables, run.txt, SHA256SUMS), and one DECISIONS.md entry (the acceptance rule).
 - research-update (this PR): PLAN.md notes for S69 and S63, this file.
 
 ## What the check found
