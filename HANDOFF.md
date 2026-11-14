@@ -1,33 +1,40 @@
-# Handoff (Nov 14, 2026): S69 part 2, the independent program (S69 done)
+# Handoff (Nov 14, 2026): S70 part 1, the round-2 screen preregistered and dispatched
 
 ## Step status
-S69 is **done**. A Python program written from the S69 packet alone reproduces the candidate main row of round 2 and its no-programme run (Reference, Adverse, Stress; seeds 1-500) to rounding. The rerun on the full-backing main row (D25) is left to S63 to schedule, before S64 dispatches.
+S70 is **partly done**. The screen is preregistered (`prereg/2026-11-s70-screen.md`, with Amendment 1) and running on Actions. The specification curve S63 will preregister is designed in that file (its own section). Part 2 remains: read the results, write the plain-words note, and put the readings S63 must carry into PLAN S63.
 
 ## What shipped
-- compassionism-simulation [PR 105](https://github.com/BetterToBest/compassionism-simulation/pull/105) (merged, 8b96cdd): `dev/reports/s69-independent-implementation/` with the program, REPORT.md (plain words, for Duke), GAPS.md, results/ (per-seed results gzipped, comparison tables, run.txt, SHA256SUMS), and one DECISIONS.md entry (the acceptance rule).
-- research-update (this PR): PLAN.md notes for S69 and S63, this file.
+- research-update (this PR): the preregistration and Amendment 1, PLAN.md notes for S70, this file.
+- compassionism-sim-results [PR 36](https://github.com/BetterToBest/compassionism-sim-results/pull/36) (merged, e115e70): `runner/jobs/s70-screen.js`. Self-test: with every reading set to its main value, it reproduces the untouched main row on all 2,880 series exactly; 3 processes give the same bytes as 1.
+- compassionism-simulation [PR 106](https://github.com/BetterToBest/compassionism-simulation/pull/106): `dev/tools/s70_table.js`, the analysis (Morris μ*, noise check, interaction flags, the preregistration's decision rules).
 
-## What the check found
-- 948 of 958 no-programme keys, and 677-694 of 990 programme keys, are exact (relative 1e-9) in every seed. Every key and every programme effect is within two standard errors: 0 failures in 5,844 key tests and 2,874 effect tests.
-- Every non-exact value has a rounding cause in the last binary digit. V8's `Math.pow(1.02, 12)` is one digit off the correctly rounded value, which Python gives. The two causes:
-  - (a) Under `lf.pm`, a worker whose whole earnings go to the income effect earns ±1e-10, not 0. That decides "worked" and next year's EITC test. It moves dollar figures in 1-3 seeds of 500, by under 1e-5.
-  - (b) Households sit within 1e-11 of the borrowing limit, which reorders the weighted fifths and low percentiles.
-- GAPS.md:
-  - 3 contradictions. The one that matters: with `lf.fl` and no ages, the year-0 draw uses `CFG.LF_SHARES`, not the fitted stock that MODEL_SPEC 14.15 states.
-  - 18 gaps: the CPS wage reading is not described; RT_*, WT_CUTS and GV_US are missing from the config; Stress's config lacks the two supply-path captures; the reporting keys are defined only by code.
-  - Two reporting corrections are proposed to S63, behind switches.
+## What the screen is
+- Every swept reading of round 2 moved together (Morris, 12 trajectories) around `r2MainRow`. Engine 8b96cdd, unchanged. 500 adults, 20 years, Reference and Adverse, seeds 1-40.
+- Block S: 33 readings. Rows: the no-programme run, plus both designs at full backing (`o.a` 1, the main row) and at no assumed backing (`o.a` 0).
+- Block F: 41 readings (S72's financing added; it runs without the weighted tail, so the tail's 3 readings are left out). Rows: both designs paid for by a contribution.
+- The backed share is not screened; S63 carries it as its own curve.
+- Readings that cannot act at the main row are reported as inactive: the recession slack (no spending layer), the markdown (pass-through 0), and the policy-rate rule's coefficients (fixed rate).
 
 ## In flight
-- Nothing running.
+- Actions, compassionism-sim-results `run-study`:
+  - [run 98](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/43618138821) is study `s70-screen-s`; [run 99](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/43618141288) is study `s70-screen-f`.
+  - Both use engine `8b96cdd1c6c14c0bef834ccc8a0144cf86036098`, seeds 1-40, 20 shards, `--procs=4`. About 20 minutes each.
+- Results land in `s70-screen-s-8b96cdd/` and `s70-screen-f-8b96cdd/`. The study is done when each folder has a `DONE` file. A failed shard: use "Re-run failed jobs" on that run.
 
 ## Decisions waiting
 - D23 (filed again Nov 14). Default: the financed rows are carried beside the main rows with rate, base, cap and deficit, and the Hub leads with none of them.
 
 ## Next step
-**S70** (screen every swept parameter together, then design the specification curve), then S63. S63 also decides the two reporting switches. Before S64, it schedules S69's rerun on the full-backing row: a packet built on that row with `make_s69_reference.js`, then `s69_main.py` and `s69_compare.py`, about 25 minutes for the six runs (PLAN.md, S63).
+**S70 part 2.**
+1. Fetch both folders: a sparse checkout of the results repository, only the two folders.
+2. Run `node dev/tools/s70_table.js <folder> dev/runs/s70-screen` once for each block.
+3. Write `dev/reports/s70-screen.md`, in plain words, applying the preregistration's rules 1-7 as written.
+4. Fill in PLAN S63 with the readings to carry in full, carry at one reading, or hold at main.
+
+Then S63.
 
 ## Pitfalls
-- **Commits are blocked in Auto mode** ("Destructive or Unwanted Actions"), in both parts of S69. Switch the mode dropdown to "Accept edits" before the session's first commit; each command then asks for approval.
-- The S69 packet's main row is the backed share 0 (the backing curve's low end), not the full-backing row Duke chose (D25). Its figures are not the headline.
-- The engine clone was sparse (only the packet and the report folder) to keep phase 1 honest. Add paths with `.git/info/sparse-checkout` before reading anything else.
+- **Commits are blocked in Auto mode.** Switch to "Accept edits" before the first commit.
+- The results repository is large. Clone it sparse (`--filter=blob:none --sparse`, then `git sparse-checkout set --no-cone '/*' '!/*/' '/runner/' '/.github/'`) and add the study folders by name.
+- `o.a` (backing) is a row option on the programme row, not a study option. Setting `a` in `r2MainStudy()` changes nothing.
 - The remote branches `claude/s66-low-share-trace`, `claude/jolly-davinci-dbcv2x`, `claude/stoic-hypatia-99pell` and earlier session branches in research-update still need deleting by hand.
