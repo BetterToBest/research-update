@@ -129,6 +129,13 @@ The engine already pays holders of nominal assets (deposits, bonds, the non-stoc
 
 Sections (line): Why 5 · What is already on the books (found while readin 10 · Method (Doepke and Schneider, *Journal of Politi 13 · Sources and rules for the coefficients (fixed no 18 · The mechanism (option `cr` of `rt`; off = identi 37 · Unit tests (written with the build) 53 · Pilot (100 seeds, 500 adults, 20 years; Referenc 61 · Decision rules (fixed now) 77 · Limits known before the build 85 · Amendments 93 · Amendment 1 (Nov 13, 2026, before the pilot): th 95
 
+## 2026-11-s72-government-budget.md (91 lines)
+Preregistration: a government budget line, three ways of meeting a deficit, and the financing frontier (S72)
+
+The Nov 13 audit (`audits/2026-11-13-simulation-audit.md`, findings 1 and 2) found that the engine has no government account.
+
+Sections (line): Why 5 · What the engine does today (read before this fil 8 · Sources opened (Nov 14, 2026; `sources/s72_gover 14 · What is built (row option `gv`; switch `GOV`; of 24 · Unit tests (written with the build) 40 · Pilot (100 seeds; session machine, free) 50 · The frontier (20 seeds; session machine, free) 57 · Decision rules (fixed now) 61 · Limits stated in advance 69 · Amendments 77 · Amendment 1 (Nov 14, 2026, before the pilot) 80 · Amendment 2 (Nov 14, 2026, after the frontier ra 88
+
 ## 2026-11-security-addendum.md (83 lines)
 Preregistration addendum: security outcomes beyond wealth, and the per-year series for public costs (S53, study P, for S47)
 
