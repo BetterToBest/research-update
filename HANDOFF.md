@@ -1,34 +1,28 @@
-# Handoff (Nov 14, 2026): S64 part 1, round 2 dispatched
+# Handoff (Nov 14, 2026): S74 part 1 (preregistered, history data built), alongside S64's running batch
 
 ## Step status
-S64 is **partly done**. Part 1 (dispatch) is done: all 24 lines of the freeze file's Amendment 2 were sent on Nov 14, 23:07-23:09 UTC, as frozen, with nothing changed. Still to do: read the 24 folders once each has `DONE`, check them, write the tables tool and the reports.
+S74 is **partly done** (part 1 of about 3). Duke chose on Nov 14 to start S74 now, during S64's round-2 batch, instead of after release 2 (ledger D24, answered). Done: the preregistration (before any engine change or run), and the 2005-2025 history paths from opened sources. Still to do: the engine build (history environment `hx`, the policy-rate rule `cb` with purchases, refinancing, asset prices, job loss and forced sales), unit tests, the 100-seed pilot, the forward sweep and the report. S64 is still **partly done** (its batch is running; see In flight).
 
 ## What shipped
-- research-update [PR 104](https://github.com/BetterToBest/research-update/pull/104), **open, not merged**: its `links` check is queued behind the batch, which holds all 20 of the account's runners, and auto-merge is off in this repository. Part 2 merges it first, once the check passes. Its contents: freeze file Amendment 2 now has a workflow-run column (runs 101-124) and a dated "Dispatched" note. Indexes rebuilt.
-- compassionism-sim-results: no commit by this session. The runs commit their own folders to main.
+- research-update [PR 105](https://github.com/BetterToBest/research-update/pull/105), **open**: its `links` check is queued behind S64's batch, which holds all 20 runners. It holds PLAN.md (D24 answered, in the Order table and S74's section), `prereg/2026-11-s74-central-bank.md`, the rebuilt indexes and this handoff.
+- compassionism-simulation [PR 109](https://github.com/BetterToBest/compassionism-simulation/pull/109), **open**: `checks` and `guard` are queued behind the batch. It holds `sources/s74_history.py` and `.json` (the rebuild check passes locally), raw files with SHA-256 hashes in `sources/s74_history/raw/`, and `dev/plans/s74-build-map.md` (where each part enters the engine). No engine file changed.
+- PR 104 (S64 part 1) is already merged on main (`cded01f`).
 
 ## In flight
-- The round-2 batch, `run-study` workflow on GitHub Actions (free), compassionism-sim-results, runs [101](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/43651639762) to [124](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/43651751304). 138 shards in all.
-- Engine pinned at `104691f3993ac6f37d6ff1b8ccd4690120cfe949`, job `r2.js`, seeds 1-500. The workflow ran on results commit `62d6d42`.
-- Results land in `r2-<part>-<env>-<years>-104691f/` (24 folders), each with `run.txt`, `SHA256SUMS` and the shard files. A folder is finished when it has a `DONE` file.
-- Expected wall-clock time: about 9-10 hours at 20 runners at once, so done around 08:00-09:00 UTC on Nov 15.
-- Last check (about 23:11 UTC): all 24 runs had been accepted. Run 101's plan job had passed (inputs checked, seeds cut into 14 shards of about 36) and its shards were queued for runners. The other plan jobs were still checking out the repository. No shard had finished, so none had passed or failed yet.
+- S64's round-2 batch: unchanged from the S64 handoff. `run-study` on GitHub Actions in compassionism-sim-results, runs 101-124, engine `104691f`, folders `r2-<part>-<env>-<years>-104691f/`, each finished when it has `DONE`. Expected to finish about 08:00-09:00 UTC on Nov 15.
 
 ## Decisions waiting
-- Nothing.
+- Nothing new. D24 is answered (Duke, Nov 14: start S74 now). It had never been written to the ledger; this session adds it as answered.
 
 ## Next step
-**S64 part 2** (opus, high), once all 24 folders have `DONE`. Do these in order:
-0. Merge research-update PR 104 once its `links` check passes.
-1. Check every `run.txt` against Amendment 2's table. Runs in a group of equal shard count were sent at the same moment, so a pair could be swapped; correct the table if so.
-2. Check that each folder has its full shard count, that `SHA256SUMS` passes, and that every value is finite.
-3. Rerun any failed dispatch whole under `-r2`, with the same arguments, and record it in Amendment 2.
-4. Write the tables tool (compassionism-simulation `dev/tools/`) and the reports.
-5. Tabulate round 1's backing curve (`m-ce8d030`) with `dev/tools/s51_backing.py`, beside round 2's.
+- Once the batch's runners are free: merge PR 105 and PR 109 when their checks pass.
+- **S74 part 2** (opus, xhigh): build `hx` and `cb` following `dev/plans/s74-build-map.md` and the prereg's "What is built" and "Unit tests" sections. Pilots run on the session machine while Actions is busy.
+- **S64 part 2** (opus, high) as soon as all 24 folders have `DONE`, ahead of S74 if both can start: its order is in PLAN.md's S64 section and the previous handoff's list (merge, check `run.txt` against Amendment 2, shard counts, `SHA256SUMS`, finite values, reruns under `-r2`, tables tool, reports, round 1's backing curve).
+- S75's descriptive panel (item 2, no engine) can also run beside S74.
 
 ## Pitfalls
-- The results repository is large (about 4,800 files). Each job's checkout takes several minutes. 20 plan jobs at once held all 20 runners at first.
-- In this session the GitHub MCP plugin server failed to connect, but the `mcp__github__*` tools loaded through ToolSearch worked for dispatch.
-- Actions runners are shared across the account, so every other repository's checks wait until the batch frees runners.
-- The workflow refuses a study id whose folder is already `DONE`. Reruns use `-r2`.
+- bls.gov refuses this machine (HTTP 403), so R-CPI-I is not opened. Stanford's copy of Taylor (1993) fails TLS, so the Fed's page (opened in S72) is the source for the rule. FRED has no `CUSR0000SAM`; medical care is `CPIMEDSL`. FRED can return HTML instead of csv, so check the header line.
+- Shiller's Yale file ends Sep 2023, and the Wu-Xia file ends Feb 2022. Both are handled in `s74_history.py` and stated in its `_meta`.
+- `index.html` has very long lines (line 476 is about 1 MB). Grep with `-o` and a bounded context, or use line ranges from `dev/CODEMAP.md`.
+- The GitHub MCP plugin server failed to connect again, but the `mcp__github__*` tools loaded through ToolSearch worked.
 - Remote branches `claude/s66-low-share-trace`, `claude/jolly-davinci-dbcv2x`, `claude/stoic-hypatia-99pell` and older session branches in research-update still need deleting by hand.
