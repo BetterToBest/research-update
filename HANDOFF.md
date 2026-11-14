@@ -26,7 +26,7 @@ S68 is **partly done**. Part 1 covered the items the Nov 13 audit added, (5) and
 - Nothing running.
 
 ## Decisions waiting
-- D23 (Nov 13 audit, finding 1): may the Hub lead with the financed C2.2 row once S72 computes it consistently. Default: carried beside the main rows; the Hub does not lead with it until S72's frontier is in. S68's figures above confirm the audit's.
+- D23 is answered (Duke, Nov 14): the financed C2.2 row is carried beside the main rows; the Hub does not lead with it until S72's frontier is in, then Duke decides again. S68's figures confirm the audit's.
 - S63 files the main-row price-rule decision (S67's recommendation, both views).
 
 ## Next step
