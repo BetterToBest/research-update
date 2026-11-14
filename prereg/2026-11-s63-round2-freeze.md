@@ -197,3 +197,7 @@ Output sizes are from the two dry-run seeds compressed together with `gzip -9`, 
 | 24 | `r2-m-str-20` | `--part=M --env=str --years=20 --procs=4 --gzip` | 1 |
 
 If a shard fails or a runner is much slower than the dry run's, the dispatch is run again whole under a new study id with a suffix (`-r2`) and the same arguments; seeds are paired, so the split changes no figure. Any change of shard count is recorded here with the reason.
+
+**S69's program on the full-backing main row (item 5).** The packet was rebuilt on the frozen row: compassionism-simulation `dev/packets/s69-frozen-row.zip`, built by `make_s69_reference.js --frozen` from engine `104691f`, with seeds 1-500 in Reference, Adverse and Stress. The Python program now applies S69's two corrections when the row sets them. The six runs (no programme and C2.2 main row, three environments, seeds 1-500) agree with the engine exactly: every key in every seed, 958 and 990 keys, relative difference under 1e-9. No key and no effect fails the two-standard-error test. On the candidate row, 10 to 313 keys per run differed in some seeds through rounding, and the two corrections remove all of them. Results: compassionism-simulation `dev/reports/s69-independent-implementation/results-frozen/` (pull request 108). This meets S69's condition for dispatch.
+
+**What remains before S64 dispatches:** item 6. Duke updates the file's OSF registration so that it carries Amendments 1 and 2.
