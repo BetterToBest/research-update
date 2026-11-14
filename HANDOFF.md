@@ -1,40 +1,38 @@
-# Handoff (Nov 14, 2026): S72 done (the government account and the financing frontier)
+# Handoff (Nov 14, 2026): S73 done (movement in and out of the labour force, and the participation margin)
 
 ## Step status
-S72 is **done**. Preregistered first (`prereg/2026-11-s72-government-budget.md`), with Amendment 1 before the pilot and Amendment 2 after the frontier ran (a check added, nothing changed).
+S73 is **done**. Preregistered first (`prereg/2026-11-s73-participation.md`). Amendment 1 was made before the pilot: changes found while building, none from a result.
 
 ## What shipped
-- compassionism-simulation [PR 102](https://github.com/BetterToBest/compassionism-simulation/pull/102):
-  - Row option `gv`: the government account, `fx.fin 'debt'` (borrowing) and `'cap'` (a higher cap), the contribution's share, base and weighted books.
-  - `gv: {}` in the candidate main row; `R2_ALT` gains `gv`.
-  - 9 unit tests (350 in all); guard identical; lineage linked; domtest 153.
-  - On-together tests: 137 rows × 3 environments, all pass.
-  - Report `dev/reports/s72-government-budget.md`; MODEL_SPEC 14.14.
-- compassionism-sim-results [PR 34](https://github.com/BetterToBest/compassionism-sim-results/pull/34) (merged): `s72-government-df9cfbe` (pilot 100 seeds; frontier 20 seeds, with and without the weighted tail).
-- research-update: prereg and amendments; PLAN notes for S72, S70 and S63; this file.
+- compassionism-simulation [PR 103](https://github.com/BetterToBest/compassionism-simulation/pull/103) (see its state below):
+  - Options `lf.fl` (yearly exits and returns; 'stock' main, 'panel') and `lf.pm` (0.43: the share of the income effect taken by leaving work).
+  - `r2MainRow` carries `lf {fl: 'stock', pm: 0.43}`; `R2_ALT` gains 'lp'.
+  - 8 unit tests (358 in all); guard identical; lineage linked; on-together tests 154 rows × 3 environments pass.
+  - Report `dev/reports/s73-participation.md`; MODEL_SPEC 14.15.
+- compassionism-sim-results [PR 35](https://github.com/BetterToBest/compassionism-sim-results/pull/35) (merged): `s73-participation-d12fd0f` (pilot, 100 seeds).
+- research-update: prereg and Amendment 1; PLAN notes for S73, S70 and S63; this file.
 
 ## Findings (plain words)
-- **C2.2 cannot be paid for by a contribution on wages.** With the rest as new money, inflation is 32-46% a year. With the rest borrowed, debt passes the size of the economy by year 5 and explodes: 7-9 times GDP by year 20 even with no rate premium. A 99% cap raises less than 90%.
-- **The closest financed C2.2 row** taxes all money income at 69-78%, raising the whole payout:
-  - Inflation is 6.4-7.8% with the rest as new money.
-  - Borrowed instead, inflation is 0.1-0.2% and debt is 12-23% of GDP at year 20, falling.
-  - Paid this way, its basket poverty moves only −11.6 to +1.2 points, against −30 to −38 under the Source.
-- **The release design can be paid for** on wages plus conversion proceeds, or on all money income, with a cap of 70% or more (inflation 0.7-3.2%). On wages alone it cannot (12% in Adverse). Paid on wages, its basket poverty rises (+1 to +15 points).
-- **Under the Source rows**, the programme's inflation erodes nearly all of today's fixed-coupon federal debt, and the government loses about $30,500 per adult as a lender.
-- **Found:** the weighted tail's 18 adults act unweighted in decisions and prices, so any rule that charges capital income lets them distort hours and inflation. The frontier was rerun without the tail; that run is read for the wider bases.
+- **Source.** 18,937 adults interviewed in both the March 2025 and March 2026 Census surveys. Each year about 3.6 in 100 working-age adults stop working all year (care, illness, school, early retirement), and 11-44 in 100 of those out come back, depending on the reason.
+- **The flows matter.** With people moving in and out, both designs cut basket poverty by 1-2 points more, and programme inflation is 0.6-3.4 points a year lower.
+- **The margin passes the check S60 failed.** On the $12,000 test, participation falls 1.3 points (the US experiment: −4.2, interval −7.5 to −0.9; the old engine: 0.0). Expected earnings are unchanged by design.
+- **Under the programme**, 1.3-4.4% of adult-years are spent out of work because of it. Basket poverty is 0.1-1.0 point higher, and wealth poverty at most 0.14 points higher. The price rule and the flat contribution's rate (85.1% of wages) barely move.
+- **Both go to S70's screen as headline-moving** (preregistered rules C and D).
+- **Unpaid work** (Duke's note): Claude's reading is in report section 6. The model counts only the conversion the design pays for (projects). It does not value care of one's own family, community work or new ventures, and says so beside every participation figure. If Duke means family care to convert under the CCO, that is a design change (a ledger decision); none filed, default: not counted.
 
 ## In flight
 - Nothing running.
 
 ## Decisions waiting
-- None new. D23 (whether the Hub may lead with a financed row) is to be filed again by S63 with S72's figures. Claude's recommendation is written in PLAN S63.
+- None new. D23 is still to be filed again by S63.
 
 ## Next step
-**S73** (participation margin; `/start-session S73`). It waits only on S68, and adds its switch to `r2MainRow` and `R2_ALT`, then reruns `dev/tools/s68_pairs.js`. S70, S69 and S63 follow.
+**S69** (`/start-session S69`). It waits on S68, S72 and S73, all done. It starts by building the packet (about 40 minutes of 500-seed references; dev/packets/make_s69_reference.js, then build_s69_packet.py). Where possible, run it on a different model from the one that built the switches. S70 and S63 follow.
 
 ## Pitfalls
-- With the weighted tail on, sums over adults are unweighted. Check any new rule that reads capital income or wealth against a run without the tail.
-- Debt keys explode in some readings. Read medians and `gvY100`, not means.
-- Run long studies from a clean `git worktree` at the committed engine, so manifests are clean. A second worktree avoids checkout clashes while another job runs.
-- Commit trailers: `Co-Authored-By: Claude <noreply@anthropic.com>` (no model name).
+- At 500 adults, one seed's out-of-work share wanders by about 1.7 points: read it over 100 seeds.
+- Without ageing, adults have no age or sex, so the flows use tables by household type.
+- `fl 'panel'` without ageing drifts the share out toward 28%.
+- The key `E` is earnings per adult-year only in rows without a programme.
+- An apostrophe inside a single-quoted test name broke harness.js once: run `node -e "require('./harness.js')"` before committing.
 - The remote branches `claude/s66-low-share-trace`, `claude/jolly-davinci-dbcv2x`, `claude/stoic-hypatia-99pell` and earlier session branches in research-update still need deleting by hand.
