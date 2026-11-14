@@ -12,7 +12,7 @@ S64 is **partly done**. Part 1 (dispatch) is done: all 24 lines of the freeze fi
 - Engine pinned at `104691f3993ac6f37d6ff1b8ccd4690120cfe949`, job `r2.js`, seeds 1-500. The workflow ran on results commit `62d6d42`.
 - Results land in `r2-<part>-<env>-<years>-104691f/` (24 folders), each with `run.txt`, `SHA256SUMS` and the shard files. A folder is finished when it has a `DONE` file.
 - Expected wall-clock time: about 9-10 hours at 20 runners at once, so done around 08:00-09:00 UTC on Nov 15.
-- At the session's end, 20 runs were in progress and 4 were queued. The plan jobs were still checking out the large results repository. No shard had started, so none had passed or failed yet.
+- Last check (about 23:11 UTC): all 24 runs had been accepted. Run 101's plan job had passed (inputs checked, seeds cut into 14 shards of about 36) and its shards were queued for runners. The other plan jobs were still checking out the repository. No shard had finished, so none had passed or failed yet.
 
 ## Decisions waiting
 - Nothing.
