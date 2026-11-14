@@ -115,6 +115,13 @@ The Nov 9 audit (`audits/2026-11-09-simulation-audit.md`, finding 2) found five 
 
 Sections (line): Why 5 · Sources opened before use, and two that could no 10 · Part A: derivation and data (no engine run) 15 · A1. The closed form (item 2) 17 · A2. κ on the rule's own variable (item 3) 20 · A3. Dynamics in high-inflation episodes (item 4) 32 · Part B: two readings behind `PRICE_RULE` options 40 · Part C: pilot (item 6; mechanism check, not a re 55 · Outcomes 60 · Decision rules (fixed before any result) 66 · Reporting 76 · Amendments 79 · Amendment 1 (Nov 13, 2026; after Part A, before  81
 
+## 2026-11-s68-financing-identity.md (54 lines)
+Preregistration: the financing identity, the flat contribution's funding gap, and costs at the within-year price level (S68, items 5 and 6)
+
+The Nov 13 audit (`audits/2026-11-13-simulation-audit.md`, finding 1) found that the C2.2 design paid for by a flat contribution on wages (ledger D21) needs a contribution averaging 84% of wages, that the rate sits at it
+
+Sections (line): Why 5 · What the engine does today (read before this fil 8 · What is built 18 · Tests (unit suite; before the pilot) 28 · Pilot (session machine, free) 35 · Decision rules (fixed now) 40 · Limits stated in advance 45 · Amendment 1 (Nov 14, 2026, before the pilot) 50
+
 ## 2026-11-s71-creditor-side.md (113 lines)
 Preregistration: a creditor side for debt that inflation wipes out (S71: option `cr` of RETURNS)
 

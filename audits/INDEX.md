@@ -10,6 +10,13 @@ Asked for by Duke in Chat on Nov 9: audit the Simulation for clarity, rigour and
 
 Sections (line): What was checked, and how 7 · Summary 16 · Findings 30 · 1. Wealth is one nominal number; under 30-45% in 34 · 2. The capacity price rule (S58) (B) 53 · 3. Round 2 is undocumented in the spec and outsi 79 · 4. Switches are tested alone; state leaks betwee 85 · 5. Seed intervals are not the uncertainty (B) 91 · 6. The model's most defensible favourable result 97 · 7. Clarity (C) 103 · 8. Process (C, but it bears on how results shoul 111 · Improvements to the model, ranked 116 · What could not be checked 131
 
+## 2026-11-13-simulation-audit.md (166 lines)
+Audit of the Simulation after the round-2 build steps (Nov 13, 2026)
+
+Asked for by Duke in Chat on Nov 13, after S62 and before S68: audit the most recent additions to the Simulation and the general state of the project, and say what else could be added to close gaps or resolve limits.
+
+Sections (line): What was checked, and how 7 · Summary 13 · Findings 28 · 1. The C2.2 design paid for by a flat contributi 32 · 2. There is no government budget, so deficits an 68 · 3. Nobody stops working because of the programme 84 · 4. Households shop at the year's opening prices  96 · 5. S68's scope misses items earlier steps asked  105 · 6. Clarity: the Nov 9 points are still open (C) 116 · 7. Housekeeping (C) 122 · Status of the Nov 9 findings 127 · Additions to the model, ranked 140 · What could not be checked 158
+
 ## 2026-11-engine-round-2.md (41 lines)
 Engine round 2: six improvements after S39 and S55 (Nov 9, 2026)
 
