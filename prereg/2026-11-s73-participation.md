@@ -58,7 +58,7 @@ People who leave paid work may do work of value the market does not pay for: car
 ## Amendments
 
 ### Amendment 1 (Nov 14, 2026, after the build and before the pilot)
-Engine for the pilot: compassionism-simulation branch `claude/s73-participation` at commit `004ca4b`. Changes found while building, none from any result:
+Engine for the pilot: compassionism-simulation branch `claude/s73-participation` at commit `d12fd0f`. Changes found while building, none from any result:
 1. **Adults in runs without ageing have no age or sex** (the main row has no ageing; ages and sexes are set only with ageing). The flows then use tables by household type (`pooled` in `sources/s73_lf_flows.json`: each age-sex cell weighted by the survey's adults in it, in the labour force for exits and out for that reason for returns), so each type's out share is still held. Sex enters only in runs with ageing.
 2. **The stock-holding unit test runs 100 seeds, not 20.** At 500 adults the out share of one seed wanders by about 1.7 points around its level, so 20 seeds' standard error (about 0.6 points) is too large for a 1-point test; a 60-seed check gave −0.5 points (standard error 0.4), and all-single runs at 40 seeds hold the stock within 0.4 points.
 3. **The draw-count test** checks that the flows' stream draws the same number in a no-programme and a programme run (so draws do not depend on the state) and that the count is two per adult-year; the engine passes each population through 42 adult-years per adult in a 20-year run (two passes of 21 years), so the fixed count written above was wrong.
