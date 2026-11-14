@@ -4,8 +4,8 @@
 S69 is **partly done**. Part 1, the packet, is built. Part 2, the independent program, goes to a fresh session that reads only the zip. This session cannot write it: it read the engine's reports to answer Duke's D23 question, and the S69 brief bars that before phase 1 is committed.
 
 ## What shipped
-- research-update [PR 94](https://github.com/BetterToBest/research-update/pull/94): note `audits/2026-11-14-d23-backing-and-main-row.md`; PLAN notes for S63, S64, S69 and S70; this file.
-- compassionism-simulation [PR 104](https://github.com/BetterToBest/compassionism-simulation/pull/104): `dev/packets/s69-main-row.zip` (engine 26d9b47, clean; references at 500 seeds × 3 environments; config; coverage 20).
+- research-update [PR 94](https://github.com/BetterToBest/research-update/pull/94) (merged, b5ec9fb): note `audits/2026-11-14-d23-backing-and-main-row.md`; PLAN notes for S63, S64, S69 and S70; this file.
+- compassionism-simulation [PR 104](https://github.com/BetterToBest/compassionism-simulation/pull/104) (merged, 707cb9f): `dev/packets/s69-main-row.zip` (engine 26d9b47, clean; references at 500 seeds × 3 environments; config; coverage 20).
 - Ledger (version 152): D23 filed again with S72's figures; D25 recorded as answered; S69 set to "doing".
 
 ## D23, in plain words
@@ -21,7 +21,7 @@ S69 is **partly done**. Part 1, the packet, is built. Part 2, the independent pr
 - D23 (filed again Nov 14). Default: the financed rows are carried beside the main rows with rate, base, cap and deficit, and the Hub leads with none of them.
 
 ## Next step
-**S69 part 2** (`/start-session S69`). If PR 104 is not merged, merge it first. Then unzip `dev/packets/s69-main-row.zip` into the scratchpad and read **only** its files until the phase-1 program and its results are committed and pushed: not HANDOFF.md's figures, not `dev/`, not the results repository. Work in `dev/reports/s69-independent-implementation/`. S50's program (`dev/reports/s50-independent-implementation/`) is outside the packet: open it only in phase 2. Then S70 and S63.
+**S69 part 2** (`/start-session S69`). Unzip `dev/packets/s69-main-row.zip` into the scratchpad and read **only** its files until the phase-1 program and its results are committed and pushed: not HANDOFF.md's figures, not `dev/`, not the results repository. Work in `dev/reports/s69-independent-implementation/`. S50's program (`dev/reports/s50-independent-implementation/`) is outside the packet: open it only in phase 2. Then S70 and S63.
 
 ## Pitfalls
 - **Commits were blocked.** In Auto mode the session's safety check refused `git commit` five times ("Destructive or Unwanted Actions", once "Undermining Oversight"), even after Duke approved; the "Always allow" button did not override it. Switching the mode dropdown to "Accept edits" makes each command ask, so it can be approved.
