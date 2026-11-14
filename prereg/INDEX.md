@@ -94,6 +94,13 @@ Every result compares Compassionism with "no programme" on the same simulated pe
 
 Sections (line): Why 5 · The criterion, fixed before anything is built or 12 · The two switches (what will be built) 21 · Questions 35 · Design 42 · Outcomes 51 · Analysis 57 · Decision rules 61 · Reporting 68 · Amendments 71
 
+## 2026-11-s62-ptf-realism.md (69 lines)
+Preregistration: PTF realism, sourced running costs, PTF jobs and wages, and the density tests (S62: switch `PTF_OPS`)
+
+1.
+
+Sections (line): Why 5 · What the engine already does (read before this f 10 · Claude's reading of the design (the Hub papers,  15 · Sources (opened for this step; figures as read) 21 · The mechanism (switch `PTF_OPS`, row option `po` 31 · What is reported (keys `PO_KEYS`, rows with `po` 44 · Unit tests (written with the build) 47 · Pilot (100 seeds, 500 adults, 20 years; Referenc 50 · Decision rules (fixed now) 53 · Limits known before the build 60 · Amendments 68
+
 ## 2026-11-s66-low-share-trace.md (56 lines)
 Preregistration: tracing the low end of the fixed-share curve, the erosion of opening balances, and the wealth harm with adults outside the labour force (S66)
 
