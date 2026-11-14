@@ -46,3 +46,8 @@ Seeds 1-100, 500 adults, 20 years, Reference, Adverse and Stress, CPS earnings (
 - Wealth poverty under the gap-as-money reading uses the frozen engine's all-cash wealth (S59 showed it overstates erosion); `rt` is not run here.
 - The contribution's labour response is the engine's one elasticity (Chetty's 0.33), far outside the changes it was measured on at rates of 84-90%; avoidance and informal work are not modelled.
 - `wy` does not split the engine's year: spending, saving and wealth are still at opening prices.
+
+## Amendment 1 (Nov 14, 2026, before the pilot)
+- Engine for the pilot: compassionism-simulation `e03aa73` (branch `claude/s68-financing-identity`; guard test identical, unit 336 passed, validate and domtest passed, lineage linked). Command: `node dev/tools/s68_pilot.js ENV 100` for ENV ref, adv, st; tables `node dev/tools/s68_table.js`.
+- Rows added to (A), for the decision rule on the release design: the release design under the flat contribution, `fx.fin` 'report' and 'money'. Every row in (A) carries `fx.fin 'report'` or 'money' (the no-programme row 'report').
+- Found while building (no run read): the year-0 pre-pass of the taxed readings runs the identity too, so the check count exceeds rows × years; the unit test reads "at least". The leak S60 reported was not reproduced on the rows tried; the reset is kept (it makes the leak impossible by construction) and the run-order test checks every output of a no-programme row.
