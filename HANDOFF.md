@@ -4,7 +4,7 @@
 S64 is **partly done**. Part 1 (dispatch) is done: all 24 lines of the freeze file's Amendment 2 were sent on Nov 14, 23:07-23:09 UTC, as frozen, with nothing changed. Still to do: read the 24 folders once each has `DONE`, check them, write the tables tool and the reports.
 
 ## What shipped
-- research-update, this branch: freeze file Amendment 2 now has a workflow-run column (runs 101-124) and a dated "Dispatched" note. Indexes rebuilt.
+- research-update [PR 104](https://github.com/BetterToBest/research-update/pull/104), **open, not merged**: its `links` check is queued behind the batch, which holds all 20 of the account's runners, and auto-merge is off in this repository. Part 2 merges it first, once the check passes. Its contents: freeze file Amendment 2 now has a workflow-run column (runs 101-124) and a dated "Dispatched" note. Indexes rebuilt.
 - compassionism-sim-results: no commit by this session. The runs commit their own folders to main.
 
 ## In flight
@@ -19,6 +19,7 @@ S64 is **partly done**. Part 1 (dispatch) is done: all 24 lines of the freeze fi
 
 ## Next step
 **S64 part 2** (opus, high), once all 24 folders have `DONE`. Do these in order:
+0. Merge research-update PR 104 once its `links` check passes.
 1. Check every `run.txt` against Amendment 2's table. Runs in a group of equal shard count were sent at the same moment, so a pair could be swapped; correct the table if so.
 2. Check that each folder has its full shard count, that `SHA256SUMS` passes, and that every value is finite.
 3. Rerun any failed dispatch whole under `-r2`, with the same arguments, and record it in Amendment 2.
@@ -28,5 +29,6 @@ S64 is **partly done**. Part 1 (dispatch) is done: all 24 lines of the freeze fi
 ## Pitfalls
 - The results repository is large (about 4,800 files). Each job's checkout takes several minutes. 20 plan jobs at once held all 20 runners at first.
 - In this session the GitHub MCP plugin server failed to connect, but the `mcp__github__*` tools loaded through ToolSearch worked for dispatch.
+- Actions runners are shared across the account, so every other repository's checks wait until the batch frees runners.
 - The workflow refuses a study id whose folder is already `DONE`. Reruns use `-r2`.
 - Remote branches `claude/s66-low-share-trace`, `claude/jolly-davinci-dbcv2x`, `claude/stoic-hypatia-99pell` and older session branches in research-update still need deleting by hand.
