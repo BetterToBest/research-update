@@ -5,8 +5,8 @@ S68 is **partly done**. Part 1 covered the items the Nov 13 audit added, (5) and
 
 ## What shipped
 - research-update [PR 89](https://github.com/BetterToBest/research-update/pull/89): the Nov 13 audit (`audits/2026-11-13-simulation-audit.md`, check script, PLAN S68/S63/S70 amended, S72 and S73 added, D23); `prereg/2026-11-s68-financing-identity.md` (before the build; Amendment 1 before the pilot); PLAN notes for S68, S63, S72; this file.
-- compassionism-simulation [PR 100](https://github.com/BetterToBest/compassionism-simulation/pull/100): financing identity (`ACCT` id `fin`) for every financing reading; `fx: {fin: 'report' | 'money'}` (not in `fx: true`; 'debt' refused until S72); `o.wy` (reporting only); per-run reset of seven module states. Off identical (guard test), lineage linked, unit 336 (8 new), validate, domtest. Report `dev/reports/s68-financing-identity.md`.
-- compassionism-sim-results [PR 33](https://github.com/BetterToBest/compassionism-sim-results/pull/33): `s68-financing-e03aa73` (seeds 1-100, three environments; run.txt, SHA256SUMS, DONE).
+- compassionism-simulation [PR 100](https://github.com/BetterToBest/compassionism-simulation/pull/100) (merged, 24625e7): financing identity (`ACCT` id `fin`) for every financing reading; `fx: {fin: 'report' | 'money'}` (not in `fx: true`; 'debt' refused until S72); `o.wy` (reporting only); per-run reset of seven module states. Off identical (guard test), lineage linked, unit 336 (8 new), validate, domtest. Report `dev/reports/s68-financing-identity.md`.
+- compassionism-sim-results [PR 33](https://github.com/BetterToBest/compassionism-sim-results/pull/33) (merged, ae8fcb6): `s68-financing-e03aa73` (seeds 1-100, three environments; run.txt, SHA256SUMS, DONE).
 
 ## Findings (plain words; pilot, seeds 1-100, 500 adults)
 - **The C2.2 design paid by a flat contribution is not paid for.**
