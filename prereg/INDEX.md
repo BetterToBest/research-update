@@ -136,6 +136,13 @@ The Nov 13 audit (`audits/2026-11-13-simulation-audit.md`, findings 1 and 2) fou
 
 Sections (line): Why 5 · What the engine does today (read before this fil 8 · Sources opened (Nov 14, 2026; `sources/s72_gover 14 · What is built (row option `gv`; switch `GOV`; of 24 · Unit tests (written with the build) 40 · Pilot (100 seeds; session machine, free) 50 · The frontier (20 seeds; session machine, free) 57 · Decision rules (fixed now) 61 · Limits stated in advance 69 · Amendments 77 · Amendment 1 (Nov 14, 2026, before the pilot) 80 · Amendment 2 (Nov 14, 2026, after the frontier ra 88
 
+## 2026-11-s73-participation.md (68 lines)
+Preregistration: the participation margin and yearly movement in and out of the labour force (S73)
+
+The Nov 13 audit (`audits/2026-11-13-simulation-audit.md`, finding 3) and S60's validation found two gaps.
+
+Sections (line): Why 5 · What the engine does today (read before this fil 8 · Sources opened (Nov 14, 2026; `sources/s73_lf_fl 12 · What is built (options of `lf`; off by default) 21 · Unit tests (written with the build) 27 · Pilot (100 seeds; session machine, free) 30 · Decision rules (fixed now) 39 · Unpaid work (Duke's note, ledger Nov 13) 47 · Limits stated in advance 50 · Amendments 58 · Amendment 1 (Nov 14, 2026, after the build and b 60
+
 ## 2026-11-security-addendum.md (83 lines)
 Preregistration addendum: security outcomes beyond wealth, and the per-year series for public costs (S53, study P, for S47)
 
