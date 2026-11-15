@@ -5,13 +5,13 @@ S64 is **partly done**. Parts 1 (dispatch) and 2 (checks, tables, reports) are d
 
 ## What shipped
 - compassionism-simulation [PR 110](https://github.com/BetterToBest/compassionism-simulation/pull/110): `dev/tools/s64_tables.py` (the tables tool), `dev/runs/s64-round2/` (tables, 144 curve CSVs, summary JSON, round 1's backing curve `m-ce8d030` tabulated with `s51_backing.py`), and the reports `dev/reports/s64-round2-overview.md` and `s64-round2-q1` to `q7`.
-- compassionism-sim-results: `r2-tables-104691f/` (the same tables, the replay of the two mechanism points, `analysis.txt`, `SHA256SUMS`).
+- compassionism-sim-results [PR 39](https://github.com/BetterToBest/compassionism-sim-results/pull/39), merged: `r2-tables-104691f/` (the same tables, the replay of the two mechanism points, `analysis.txt`, `SHA256SUMS`).
 - research-update (this PR): freeze file Amendment 3 (the checks; five points of reading), PLAN.md S64 row and section, indexes.
 
 ## What the batch shows (plain words; the overview report has the rule-1 sentences)
 - All 24 runs succeeded; every check passed; no rerun.
 - At the main row (full backing, a design parameter), both designs lower basic-living, basket and wealth poverty in every environment and horizon; robust across all 62 preregistered readings (48 of 48 curves). Inflation 0.0-0.2 points a year.
-- The model's own backing mechanism reaches about 1% (about 20% with no ceiling); inflation passes 5% a year below 74-90% backing. Rule 4: the findings page says so beside any inflation headline.
+- The model's own backing mechanism reaches 0.2-1.9% (14-20% with no ceiling); inflation passes 5% a year below 74-90% backing. Rule 4: the findings page says so beside any inflation headline.
 - Paid for by a contribution (never led with): rates 46-77%, much smaller poverty effects, the release design raises basket poverty; fragile at every curve.
 
 ## In flight
