@@ -41,6 +41,7 @@ Finished rows are shortened here; their full notes (dates, pull requests, result
 | 22 | S39 | Outside engine cross-check: **done** (full note in PLAN-done.md) | opus | high | S48; part 2: `DONE` in both folders |
 | 22a | S55 | Open PTF access: anyone buys at PTF prices: **done** (full note in PLAN-done.md) | opus | xhigh | S38, D16 (answered Nov 7) |
 | 23 | S7 | Simulation release (tag, hashes, changelog, findings page); **held** (Duke, Nov 9): waits until round 2 is ready for release, then runs just before S65; round 2 is ready (S64 done Nov 15), so S7 is next | sonnet | medium | S36, S38, S5, S55; S64 (Duke, Nov 9) |
+| 23 bis | S3 | OEIAS as the umbrella name; moved up (Duke, Nov 15), runs right after S7 | sonnet | medium | |
 | 23a | S56 | Outside reviews of S39, S55 and the inequality measures, pasted back and triaged: **done** (full note in PLAN-done.md) | opus | high | your pasted reviews |
 | 23b | S57 | Engine round 2: distribution measures: **done** (full note in PLAN-done.md) | sonnet | high | S56 (was S7; S7 held, Nov 9) |
 | 23b2 | S66 | Engine round 2: trace why wealth is better at a 10% fixed PTF share than at 20-30%: **done** (full note in PLAN-done.md) | opus | high | S56 |
@@ -66,7 +67,6 @@ Finished rows are shortened here; their full notes (dates, pull requests, result
 | 26 | S24 | Corrections package landed on the Hub, PDFs rebuilt | sonnet | medium | S2, S23, S29, S30; simulation figures wait for S65 (D18) |
 | 27 | S25 | Abstracts, then paper bodies, on corrected figures (several sessions) | opus | high | S24, S46, S7; S65 for every simulation figure (D18) |
 | 28 | S40 | Hub figures generated from the release data, with a check | sonnet | high | S7; figures by release 2's tag, so S65 (D18) |
-| 29 | S3 | OEIAS as the umbrella name | sonnet | medium | |
 | 30 | S4 | X-cents folded into the CCO architecture | sonnet | medium | |
 | 31 | S41 | Site and wiki design refresh | sonnet | high | S40 |
 | 32 | S43 | Links and publications: portal, x-cents, NEEC, Academia papers | sonnet | medium | D3 (answered in the ledger's message box, Nov 1) |
