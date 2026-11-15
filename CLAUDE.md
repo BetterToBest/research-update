@@ -29,7 +29,6 @@ Linked, not edited unless a step says so: BetterToBest/portal, BetterToBest/x-ce
 - If GitHub refuses a workflow file, put its full text in the PR description and add a ledger decision asking Duke to create it by hand.
 - What only Duke can decide goes to the ledger as a decision (`/end-session`). Carry on with the default meanwhile unless the step says to stop.
 - **Money:** nothing that costs money (Runpod) runs before the S47 design freeze, its ledger decision, and Duke adding the Runpod key. Pilots and tests use GitHub Actions (free) or the session machine. A full study is run once, as frozen; a redesign is a preregistration amendment and a new freeze.
-- Sessions may chain themselves (`AUTOCHAIN.md`); every gate above stops the chain.
 
 ## Research rules (every step)
 1. **Preregister, then run.** Every study has a file in `prereg/` (questions, design, outcomes, analysis, decision rules, engine commit), committed before its first run. Later changes are dated amendments with the reason.

@@ -91,7 +91,6 @@ Repos: research-update, compassionism-simulation, research-hub, NormativeEvaluat
 7. S18: map `dev/packets/` (s118 → S10, s119 → S15, s148 → S13); close S18 if nothing else remains.
 8. Find the corrections package (C1-C30, ledger S24) and the claims-ledger draft (S23) in these repositories (grep "C23", "claims ledger", "Corpus metadata"). If they are not here, add a ledger decision asking Duke to bring them over from the other account.
 9. Try to add `.github/workflows/links.yml` here (a link check of the Markdown files). Record in HANDOFF.md whether GitHub accepted a workflow file from the session; S33 depends on it.
-10. Chaining test: with AUTOCHAIN.md on, `/end-session` creates the scheduled task for S2. Record in HANDOFF.md whether the tool was available, whether the first lines `/model` and `/effort` of a chained prompt took effect (the S2 session checks and records its own model), and whether the chained session opened this repository.
 Done when: the PRs are merged; S9, S17, S18 resolved or explained; steps 8 and 9 recorded.
 
 ### S2 · Tag Hub v1 and the cited Simulation release; build the /v1/ archive
@@ -128,7 +127,7 @@ Repos: research-update, compassionism-simulation (history), research-hub.
 Done when: every early headline figure has a provenance line.
 
 ### S31 · Chat-history provenance (D2: export)
-Duke exports chat data from both accounts (claude.ai Settings, Privacy, Export data), creates a private repository BetterToBest/research-provenance (sessions cannot create repositories) and uploads the zips there. Until they are there, this step is skipped and the chain moves on. Search `conversations.json` for each figure S30 found no code for: first appearance, who wrote it, and whether a run or a source stood behind it. Keep chat text in the private repository only; copy just the table (figure, first date, basis yes or no) into `audits/early-figures.md`.
+Duke exports chat data from both accounts (claude.ai Settings, Privacy, Export data), creates a private repository BetterToBest/research-provenance (sessions cannot create repositories) and uploads the zips there. Until they are there, this step is skipped. Search `conversations.json` for each figure S30 found no code for: first appearance, who wrote it, and whether a run or a source stood behind it. Keep chat text in the private repository only; copy just the table (figure, first date, basis yes or no) into `audits/early-figures.md`.
 Done Oct 30 (D2 answered: the five zips in research-provenance suffice; `audits/early-figures.md` section "Chat-history provenance (S31)", `audits/early/provenance_scan.py`): Claude, not Duke, wrote each figure first, in drafts dated Aug 1-26 and Sep 5, 2025; no code ran for any (the export's 41 shell calls are all Nov 4-8, 2025); five figures appear in no chat before the Hub (65% inflation, elasticity table, $64,000-$103,000 interval, 75% minimum viable participation, 88% work participation).
 
 ### S46 · Repair the formal model
@@ -255,7 +254,7 @@ Done Nov 5 (third session): stage 3 analysed (compassionism-simulation #72): che
    For coverage and adequacy (S6): add study K (`runner/jobs/c22.js --env=all --procs=2`, seeds 1-500, about 6 runner-hours) to the batch, with the design Duke chose in the S6 ledger decision (if he changed the design, the release row itself changes: a dated amendment to both preregistrations before the freeze).
 3. Dry-run every job at 2 seeds on Actions; confirm each output file exists and loads in its consumer's script.
 4. Estimate Runpod hours and cost per job from S33's benchmarks; put the cheapest split (Actions vs Runpod) in the manifest.
-5. Add a ledger decision: "Design frozen; add the Runpod key to the Claude Code environment to start S48" with the cost estimate. The chain stops here. (Nov 5: Duke chose Actions, manifest Amendment 1; the decision becomes a record that the design is frozen and S48 runs on Actions.)
+5. Add a ledger decision: "Design frozen; add the Runpod key to the Claude Code environment to start S48" with the cost estimate. (Nov 5: Duke chose Actions, manifest Amendment 1; the decision becomes a record that the design is frozen and S48 runs on Actions.)
 
 Part 1 (Nov 5): step 1 done in `prereg/run-manifest.md` and study programme Amendment 9 (choices recorded there). What remains is the manifest's section 6 (engine fx part `sp` and reporting keys, the 0.593 share, MODEL_SPEC and TESTBED_SPEC, the job scripts), then steps 3-5. The first estimate (manifest section 8) puts the whole batch on Actions at no cost. If the dry run confirms it, step 5's decision asks Duke to choose Actions (default, free) or Runpod for the largest pieces, instead of asking only for the key.
 
@@ -649,7 +648,7 @@ As ledger S3 and S4.
 One shared stylesheet, header and footer across the Hub, the wiki (index, glossary, FAQ, implementation roadmap, international adaptation guide) and the papers index; light and dark; mobile; keyboard, focus and contrast (axe, no serious or critical findings); wiki search kept. Front page: what Compassionism is; findings (S40 blocks); papers; tools (Simulation, CIP portal, x-cents, NEEC); how to help. Prose unchanged beyond navigation labels. Screenshots in light, dark and mobile in the PR.
 
 ### S43 · Links and publications
-Link the CIP portal (bettertobest.github.io/portal/), x-cents (bettertobest.github.io/x-cents/), NEEC (bettertobest.github.io/NormativeEvaluation/) and the Simulation from the front page and wiki. A publications page: every Academia paper (D3: Duke pastes the links into D3's note in the ledger; until then the chain skips this step) with title, year, link, the Hub page it matches, and a note where the Hub corrected its figures.
+Link the CIP portal (bettertobest.github.io/portal/), x-cents (bettertobest.github.io/x-cents/), NEEC (bettertobest.github.io/NormativeEvaluation/) and the Simulation from the front page and wiki. A publications page: every Academia paper (D3: Duke pastes the links into D3's note in the ledger; until then this step is skipped) with title, year, link, the Hub page it matches, and a note where the Hub corrected its figures.
 
 ### S42 · Machine-readable files
 `data/site-manifest.json` in research-hub becomes the one source; a script with `--check` generates ai-index.json, research-index.json and llms.txt (bettertobest.github.io), JSON-LD on Hub pages, sitemap.xml and CITATION.cff. Include the release, NEEC, the portal, x-cents, the Academia papers and `/v1/` (marked archived). Validate the JSON and JSON-LD.

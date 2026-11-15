@@ -45,15 +45,4 @@ NEXT SESSION (start a new session on research-update, then paste these three lin
 /start-session <next step ID>
 ```
 
-5. **Chain the next session** (only when `AUTOCHAIN.md` says `status: on`). Skip it, and say why under the block, if any stop condition in AUTOCHAIN.md holds. Otherwise load the scheduling tool (ToolSearch "create_trigger") and create one one-shot scheduled task:
-   - `run_once_at`: now plus `delay_minutes`; `name`: "Research update <next ID>"; `initiation`: "human_schedule"; leave `permission_mode` unset; no local device.
-   - `prompt`, exactly these lines:
-     ```
-     /model <model>
-     /effort <effort>
-     /start-session <next ID>
-     This is a chained session started by the previous step's /end-session (research-update AUTOCHAIN.md). First record in HANDOFF.md which model this session is actually running on.
-     ```
-   Append one line to AUTOCHAIN.md's log (date and time UTC, from, to, model, effort) and commit it. In the reply, add "Chained: <next ID> at <time>" under the block, and say whether the scheduled task's runs ask for approval (if they do, Duke can switch it to "Automatically approve" in the task's settings). If the tool is missing, write "Chain: not available here" and leave the three lines for Duke.
-
 Take model and effort from the Order table row of the next step. If the table says "(or fable, high)", write `/model fable` and `/effort high` only when fable uses no usage credits on this account; otherwise use the first model and effort. When nothing can start until Duke decides, replace the three lines with "Waiting on <decision IDs>".
