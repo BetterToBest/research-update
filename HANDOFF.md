@@ -6,7 +6,7 @@ S64 is **partly done**. Parts 1 (dispatch) and 2 (checks, tables, reports) are d
 ## What shipped
 - compassionism-simulation [PR 110](https://github.com/BetterToBest/compassionism-simulation/pull/110): `dev/tools/s64_tables.py` (the tables tool), `dev/runs/s64-round2/` (tables, 144 curve CSVs, summary JSON, round 1's backing curve `m-ce8d030` tabulated with `s51_backing.py`), and the reports `dev/reports/s64-round2-overview.md` and `s64-round2-q1` to `q7`.
 - compassionism-sim-results [PR 39](https://github.com/BetterToBest/compassionism-sim-results/pull/39), merged: `r2-tables-104691f/` (the same tables, the replay of the two mechanism points, `analysis.txt`, `SHA256SUMS`).
-- research-update (this PR): freeze file Amendment 3 (the checks; five points of reading), PLAN.md S64 row and section, indexes.
+- research-update [PR 106](https://github.com/BetterToBest/research-update/pull/106): freeze file Amendment 3 (the checks; five points of reading), PLAN.md S64 row and section, indexes.
 
 ## What the batch shows (plain words; the overview report has the rule-1 sentences)
 - All 24 runs succeeded; every check passed; no rerun.
