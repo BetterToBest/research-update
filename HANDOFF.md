@@ -1,7 +1,13 @@
-# Handoff (Nov 15, 2026): S7 part 2, third session
+# Handoff (Nov 15, 2026): S7 part 2, third session; S74 part 1 also done
 
 ## Step status
 S64 is **done**. **S7 is partly done.** Part 1 merged earlier. Part 2: the Studies section (PR 113) and the first method notes and glossary (PR 114) are merged. This session wrote items 5 (inflation wording) and 8 (Holm families) in an open PR. Still to write: items 2, 3, 6, 7, 9, 10 and the S55/S56 wording. Part 3 (notes, version, checks, merge) not started. S3 runs right after S7, then S65.
+
+## S74 (central bank), part 1 of about 3: done
+Duke chose on Nov 14 to start S74 now, not after release 2 (ledger D24, answered; it had never been written to the ledger, so a session should add it as answered). Done: the preregistration `prereg/2026-11-s74-central-bank.md` (before any engine change or run), PLAN.md's Order table and S74 section updated, indexes rebuilt, and the 2005-2025 history paths from opened sources. Still to do: the engine build (history environment `hx`, policy-rate rule `cb` with purchases, refinancing, asset prices, job loss and forced sales), unit tests, the 100-seed pilot, the forward sweep and the report. Every part sits behind a switch that is off by default.
+- research-update [PR 105](https://github.com/BetterToBest/research-update/pull/105): this handoff's PR; merge it once its checks pass.
+- compassionism-simulation [PR 109](https://github.com/BetterToBest/compassionism-simulation/pull/109), **open when last checked**: `sources/s74_history.py` and `.json` (rebuild check passes), raw files with SHA-256 hashes in `sources/s74_history/raw/`, and `dev/plans/s74-build-map.md` (where each part enters the engine). No engine file changed. Merge it when its checks pass.
+- **S74 part 2** (opus, xhigh): build `hx` and `cb` following `dev/plans/s74-build-map.md` and the prereg's "What is built" and "Unit tests" sections. S75's descriptive panel (item 2, no engine) can also run beside S74.
 
 ## What shipped
 - [compassionism-simulation PR 114](https://github.com/BetterToBest/compassionism-simulation/pull/114): merged (580abab on main at session start).
@@ -28,6 +34,8 @@ Pattern: study numbers as a file in `data/studies/` (generator `dev/tools/study_
 **S7 part 2, continued** (sonnet, medium): merge PR 115, then the items above, then part 3, then **S3**, then **S65**.
 
 ## Pitfalls
+- S74 sources: bls.gov refuses this machine (HTTP 403), so R-CPI-I is not opened. Stanford's copy of Taylor (1993) fails TLS, so the Fed's page (opened in S72) is the source. FRED has no `CUSR0000SAM`; medical care is `CPIMEDSL`. FRED can return HTML instead of csv, so check the header line. Shiller's Yale file ends Sep 2023 and the Wu-Xia file ends Feb 2022 (both handled in `s74_history.py`'s `_meta`).
+- `index.html` has very long lines (line 476 is about 1 MB). Grep with `-o` and bounded context, or use line ranges from `dev/CODEMAP.md`.
 - Auto-mode commit fix (Nov 15) worked: this session's commit with no URL line and a `Co-Authored-By:` line went through, push too. Not yet known whether the session ran in Auto mode; if the next Auto session is refused, the cause is something else.
 - `npm install --no-audit --no-fund` in compassionism-simulation before `check_figures.js` or `domtest.js`. `node domtest.js` takes over 5 minutes; run it in the background. It loads only `site/charts.js` and `site/findings.js`.
 - The `mcp__github__*` tools work; the github plugin MCP server fails to connect (400). `pull_request_read` with method `get_check_runs` shows CI; `get_status` shows nothing for Actions.
