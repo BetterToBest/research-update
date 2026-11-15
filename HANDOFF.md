@@ -1,20 +1,20 @@
-# Handoff (Nov 15, 2026): S7 part 1 built, PR open
+# Handoff (Nov 15, 2026): S7 part 1 done and merged
 
 ## Step status
-S64 is done. **S7 part 1 is built; its pull request is open, checks running when the session ended (not merged).** S3 (OEIAS) runs right after S7.
+S64 is done. **S7 part 1 is done: PR 112 merged (all checks green).** S3 (OEIAS) runs right after S7.
 
 ## What shipped
-- compassionism-simulation [PR 112](https://github.com/BetterToBest/compassionism-simulation/pull/112), branch `claude/s7-part1-study-data`, commit 394f0c5: `dev/tools/study_files.py` (`--check`) writes `data/studies/` files for S34, S36, S38, S5, S55, S6, S14 (each study's own estimates copied, not recomputed); frozen C2.2 panels in `dev/runs/`; release entry v5.7 (no headline figure changes, `figuresFrom` 5.6; Duke confirmed v5.7). `check_figures.js`: 22 of 22 pass locally. `validate`, `unit` and `domtest` are left to CI.
+- compassionism-simulation [PR 112](https://github.com/BetterToBest/compassionism-simulation/pull/112), merged as 30bb232 (branch `claude/s7-part1-study-data`): `dev/tools/study_files.py` (`--check`) writes `data/studies/` files for S34, S36, S38, S5, S55, S6, S14 (each study's own estimates copied, not recomputed); frozen C2.2 panels in `dev/runs/`; release entry v5.7 (no headline figure changes, `figuresFrom` 5.6; Duke confirmed v5.7). `check_figures.js`: 22 of 22 pass locally. CI (`checks`, `guard`) passed.
 - No change in compassionism-sim-results (the data files point at the existing folders).
 
 ## In flight
-- PR 112 checks (`checks`, `guard`). This session subscribed to the PR; a new session must check them first, then merge it (CLAUDE.md, Landing work). If they fail and cannot be fixed, leave it open and say so here.
+- Nothing running.
 
 ## Decisions waiting
 - None. Release 2 stays v6.0.0 unless Duke says otherwise.
 
 ## Next step
-**Merge PR 112, then S7 part 2** (sonnet, medium): findings-page sections for ledger checklist items 1-11 (`findings.html`, `site/findings.js`, `dev/tools/release_data.py`), printing study figures from `data/studies/` and labelling S6 and S14 as pilots; then part 3 (notes in CONTRIBUTING.md and CHANGELOG.md, `set_version.py 5.7`, replication timeline panel, the three checks, merge); then **S3**, then **S65**.
+**S7 part 2** (sonnet, medium): findings-page sections for ledger checklist items 1-11 (`findings.html`, `site/findings.js`, `dev/tools/release_data.py`), printing study figures from `data/studies/` and labelling S6 and S14 as pilots; then part 3 (notes in CONTRIBUTING.md and CHANGELOG.md, `set_version.py 5.7`, replication timeline panel, the three checks, merge); then **S3**, then **S65**.
 
 ## Pitfalls
 - S66's `s66_trace.js` no longer runs on `104691f` (its price-cut probe patch matches 0 times). Use `s64_erosion.js`: no text patches, a read-only hook.
