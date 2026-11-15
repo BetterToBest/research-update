@@ -26,3 +26,4 @@ Text and tables still to add, each from a study or release file, never typed: (1
 - The real-holdings check is entirely the creditor charge on shares (S71); per-adult means are unweighted, so the weighted-tail adults dominate the top fifth.
 - Remote branches `claude/s66-low-share-trace`, `claude/jolly-davinci-dbcv2x`, `claude/stoic-hypatia-99pell` and older session branches in research-update still need deleting by hand.
 - The github plugin MCP server fails to connect (400, authorization header); the built-in `mcp__github__*` tools work.
+- `study_files.py` copies each study's `estimates.csv` (dev/runs/<study>/) as columns; S6 (`pilot-k-395dd5b`) and S14 (`pilot-l-f66dc67`) are 100-seed PILOTS and the page must label them so. `s14-lw-pilot.json` has seeds null (the report says 100).
