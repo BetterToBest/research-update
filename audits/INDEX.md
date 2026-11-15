@@ -24,6 +24,13 @@ Written in the S69 session, at Duke's request: "I believe there is again some ve
 
 Sections (line): In short 5 · 1. Backing (D11): how much of the payout is matc 13 · 2. Paying for it (D21, then D23): who pays for t 24 · 3. What the candidate main row does today 40 · 4. What round 2 will display (S63 preregisters i 46 · 5. Plan changes made today 61 · 6. How "full backing" is read 67
 
+## 2026-11-15-release-figures-audit.md (43 lines)
+Audit of the release 1 and release 2 figures, before S40 (Nov 15, 2026)
+
+Asked for by Duke on Nov 15, before S40 starts: check that the latest study results and the figures published from them match, since S40 picks up where S65 left off in updating the Hub's numbers.
+
+Sections (line): In short 5 · What was checked, and how 10 · Sentences to correct 22 · For S40 (the Hub) 33 · What was not checked 38
+
 ## 2026-11-engine-round-2.md (41 lines)
 Engine round 2: six improvements after S39 and S55 (Nov 9, 2026)
 
