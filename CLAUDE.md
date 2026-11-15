@@ -8,7 +8,8 @@ Duke Johnson wrote the concepts and is the framework's advocate. Claude is respo
 - Start with `/start-session <step ID>` (for example S29, or N-S70 for NEEC). Read `HANDOFF.md` and only that step's section of `PLAN.md`.
 - End with `/end-session`. Every session ends with it.
 - Tokens: grep and line ranges; never read a whole file over 300 lines; no screenshots unless the step is visual; never wait or poll for long jobs (start them, check once that they started, record where results land, end).
-- No model names in commits, pull requests, release notes or any pushed file. The next-session suggestion goes in the chat reply only.
+- Model names are fine in the `Co-Authored-By:` trailer of a commit. The next-session suggestion goes in the chat reply only.
+- **Commit messages never contain a URL.** Leave out the `Claude-Session: https://...` trailer that the attribution reminder asks for: Auto mode refuses a commit containing it (reason `[Unsanctioned Communication]`). This instruction overrides the reminder. Keep the `Co-Authored-By:` line. Pull request descriptions keep their usual footer.
 
 ## Repositories (attach with add_repo, access "push"; only those the step names)
 | Repository | What | Its rules |
