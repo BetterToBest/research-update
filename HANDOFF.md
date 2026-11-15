@@ -1,27 +1,20 @@
-# Handoff (Nov 15, 2026): S7 scoped
+# Handoff (Nov 15, 2026): S7 part 1 built, PR open
 
 ## Step status
-S64 is **done** (Nov 15). **S7 has started: scoping only, no release work landed.** Duke moved S3 (OEIAS) up in the order: it now runs right after S7 (row "23 bis" in PLAN.md).
+S64 is done. **S7 part 1 is built; its pull request is open, checks running when the session ended (not merged).** S3 (OEIAS) runs right after S7.
 
-## S7 scoping (Nov 15)
-- The S48 merged published panel (compassionism-sim-results `panel-merged-ce8d030`, engine ce8d030) equals the v5.6 panel (`dev/runs/release-panel.json`, engine 5bf5bcc) in all 47,466 values. So release 1 changes no published headline figure; it adds the frozen C2.2 panel (`release-panel-frozen.json`, `-40-frozen.json`) and the studies S36, S38, S5, S55, S34, S6, S14 as new data and findings-page sections.
-- The findings page (`findings.html`, `site/findings.js`, `dev/tools/release_data.py`) has none of the ledger's 11 checklist items yet (saving-rate target wording, group tables, Holm families, glossary entries and so on), and `data/studies/` holds no files for S36-S55.
-- Release path (`dev/ADDING-A-RELEASE.md`): "a release that changes no figure" (LATEST entry) for the headline; new studies as `data/studies/*.json` written by a `study_data.py`-style generator, as for s137 and s57.
-- Proposed version labels (Duke may change): v5.7.0 for release 1, v6.0.0 for release 2 (S65).
-- Proposed split: S7 part 1 data files and release entry; part 2 findings-page sections for checklist items 1-11; part 3 notes, version, checks, merge.
+## What shipped
+- compassionism-simulation [PR 112](https://github.com/BetterToBest/compassionism-simulation/pull/112), branch `claude/s7-part1-study-data`, commit 394f0c5: `dev/tools/study_files.py` (`--check`) writes `data/studies/` files for S34, S36, S38, S5, S55, S6, S14 (each study's own estimates copied, not recomputed); frozen C2.2 panels in `dev/runs/`; release entry v5.7 (no headline figure changes, `figuresFrom` 5.6; Duke confirmed v5.7). `check_figures.js`: 22 of 22 pass locally. `validate`, `unit` and `domtest` are left to CI.
+- No change in compassionism-sim-results (the data files point at the existing folders).
 
 ## In flight
-- Nothing running.
+- PR 112 checks (`checks`, `guard`). This session subscribed to the PR; a new session must check them first, then merge it (CLAUDE.md, Landing work). If they fail and cannot be fixed, leave it open and say so here.
 
 ## Decisions waiting
-- None. Duke confirmed v5.7 for release 1 (Nov 15); release 2 stays v6.0.0 unless he says otherwise.
+- None. Release 2 stays v6.0.0 unless Duke says otherwise.
 
 ## Next step
-**S7 part 1** (sonnet, medium: the data files and the release entry), then S7 parts 2-3, then **S3**, then **S65**.
-
-## Session start (Nov 15, later session)
-- S7 part 1 started: compassionism-simulation (f601474) and compassionism-sim-results (9c46288) attached and cloned. Result folders for S36, S38, S5, S55, S6, S14 are named by letter and engine commit (`prog-*`, `pilot55-*`, `panel-*`), not by step; part 1 begins by mapping each study to its folders.
-- Landing check: commit, push and pull request worked in Auto mode in this session; see the end-of-session note for the result.
+**Merge PR 112, then S7 part 2** (sonnet, medium): findings-page sections for ledger checklist items 1-11 (`findings.html`, `site/findings.js`, `dev/tools/release_data.py`), printing study figures from `data/studies/` and labelling S6 and S14 as pilots; then part 3 (notes in CONTRIBUTING.md and CHANGELOG.md, `set_version.py 5.7`, replication timeline panel, the three checks, merge); then **S3**, then **S65**.
 
 ## Pitfalls
 - S66's `s66_trace.js` no longer runs on `104691f` (its price-cut probe patch matches 0 times). Use `s64_erosion.js`: no text patches, a read-only hook.
@@ -31,3 +24,5 @@ S64 is **done** (Nov 15). **S7 has started: scoping only, no release work landed
 - Remote branches `claude/s66-low-share-trace`, `claude/jolly-davinci-dbcv2x`, `claude/stoic-hypatia-99pell` and older session branches in research-update still need deleting by hand.
 - Start S7 sessions in Accept edits, not Auto: Auto's classifier refused `git commit` four times on Nov 15 (also noted early in S64). Commits and pushes worked at once in Accept edits.
 - The github plugin MCP server failed to connect (400, authorization header); the built-in `mcp__github__*` tools worked.
+- Nov 15 (part 1): Auto mode refused `git add && commit && push` and a plain `git commit`; after Duke said go, a plain `git commit` and a separate `git push` went through. The `mcp__github__*` tools are loaded with ToolSearch.
+- study_files.py copies each study's `estimates.csv` (dev/runs/<study>/) as columns; S6 (`pilot-k-395dd5b`) and S14 (`pilot-l-f66dc67`) are 100-seed PILOTS and the findings page must label them so. `s14-lw-pilot.json` has seeds null (the report says 100).
