@@ -1,29 +1,24 @@
-# Handoff (Nov 15, 2026): S3 done; S7 done (release v5.7.0)
+# Handoff (Nov 15, 2026): S65 part 1 done (release v5.8.0)
 
 ## Step status
-**S7 is done:** compassionism-simulation PR 119 is merged, tag `v5.7.0` exists and its release (with the v5.7.0 notes and the reproduce zip) was published by the workflow. **S3 is done.** Next: **S65** (release 2), which waits on S64's results; check the Order table. S4 (X-cents) was not part of this session.
+**S65 is partly done.** Release 2 is published as v5.8.0 (tag, release notes, reproduce zip); the findings page has its Release 2 section beside release 1. **Remaining (part 2):** the Hub's inflation and wealth sentences, to what round 2 shows. They sit in about ten Hub pages (new-frame-and-lens, economic-modeling-simulation, research-summary, cco-ptf-integrated-framework, dual-currency-inflation and others). They overlap S24 (corrections) and S40 (generated figures), so part 2 is best done as the first move of S40, which needs `data/studies/r2-effects.json` and the manifest's `round2` entry. S40's generator does not exist yet in research-hub.
 
 ## What shipped
-- [compassionism-simulation PR 119](https://github.com/BetterToBest/compassionism-simulation/pull/119): merged (a3f687b), checks and guard green, tag `v5.7.0`.
-- [research-hub PR 12](https://github.com/BetterToBest/research-hub/pull/12): OEIAS glossary entry (term card, quick-reference link, JSON-LD DefinedTerm). Merged (7a3e84d). No checks are configured there.
-- [bettertobest.github.io PR 1](https://github.com/BetterToBest/bettertobest.github.io/pull/1): OEIAS in ai-index.json and llms.txt. Merged (19d8ea9).
-- S3 is a name only: it defines OEIAS as the umbrella for CCO, PTF, PTH, SZH and CIP with X-cents and says it adds no mechanism or result. I did not gloss the words of the name, because the text is silent on them.
+- [compassionism-simulation PR 120](https://github.com/BetterToBest/compassionism-simulation/pull/120): merged, checks and guard green, tag `v5.8.0`. New: `site/round2.js`, six `data/studies/r2-*.json` files with `dev/tools/r2_study_files.py --check`, 24 charts in `data/studies/r2-charts/`, `dev/tools/check_round2.js` (every printed number tied to its file row; run it after any change to the section).
+- Engine and release 1's figures unchanged (guard green). Version 5.8.0 changes only labels in `index.html`.
 
 ## In flight
 - Nothing.
 
 ## Decisions waiting
-- None open. D68 (OEIAS scored as a 24th entry on Hub v2) was already confirmed.
+- None open.
 
 ## Next step
-1. **S65** (release 2 and findings page; sonnet, medium) once S64's results are in. 2. **S74 part 2** (opus, xhigh, engine build) can run beside it. S4 (X-cents) and S40 follow.
+1. **S40** (sonnet, high): research-hub's `tools/build_figures.py` reading `r2-effects` by tag v5.8.0; do S65 part 2's Hub sentences with it. 2. **S74 part 2** (opus, xhigh, engine build) can run beside it. S4 (X-cents) follows.
 
 ## Pitfalls
-- Old remote branches still need deleting by hand: research-update `claude/s66-low-share-trace`, `claude/jolly-davinci-dbcv2x`, `claude/stoic-hypatia-99pell`; compassionism-simulation `claude/s7-part2-saving-groups` if it still exists.
-- research-hub's `.gitattributes` prints "text/xml is not a valid attribute name" on every git command; harmless.
-- The research-hub and root-site repositories have no CI, so a merge there is not checked by anything; read the diff.
-- The release workflow reads notes from CONTRIBUTING.md's exact heading `## v<version> Release Notes`; no date in the heading.
-- Commits with no URL line and a `Co-Authored-By:` line go through.
-- `index.html` in compassionism-simulation has very long lines; use `dev/CODEMAP.md` line ranges.
-- `compassionism-sim-results` clones with `GIT_LFS_SKIP_SMUDGE=1 git clone --depth 1 --filter=blob:none --sparse`, then `git sparse-checkout set <folder>`.
-- S74 sources: bls.gov refuses this machine (HTTP 403); FRED can return HTML instead of csv.
+- S64's page text said inflation at the model's own mechanism is "15 to 53 points a year"; the data's range is 14.9 to 53.3 over both mechanism readings (with and without the ceiling). The page prints the data's figures.
+- `check_figures.js` now lets a superseded "latest" release take the figures of a "current" one; if a later release adds its own figures, re-read that rule.
+- The data file's erosion share is already in percent; the mechanism's backed share was in percent in the summary and is a fraction in `r2-backing`.
+- Old remote branches still need deleting by hand: research-update `claude/s66-low-share-trace`, `claude/jolly-davinci-dbcv2x`, `claude/stoic-hypatia-99pell`, `claude/admiring-fermi-p13aus`; compassionism-simulation `claude/s7-part2-saving-groups` if it still exists.
+- research-hub's `.gitattributes` prints "text/xml is not a valid attribute name" on every git command; harmless. Research-hub and the root site have no CI.
