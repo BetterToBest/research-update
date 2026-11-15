@@ -1,9 +1,11 @@
-# Handoff (Nov 15, 2026): S7 part 2, third session
+# Handoff (Nov 15, 2026): S7 part 2, fourth session (short)
 
 ## Step status
 S64 is **done**. **S7 is partly done.** Part 1 merged earlier. Part 2: the Studies section (PR 113) and the first method notes and glossary (PR 114) are merged. This session wrote items 5 (inflation wording) and 8 (Holm families) in an open PR. Still to write: items 2, 3, 6, 7, 9, 10 and the S55/S56 wording. Part 3 (notes, version, checks, merge) not started. S3 runs right after S7, then S65.
 
 ## What shipped
+- research-update: auto-chain removed (AUTOCHAIN.md deleted; CLAUDE.md, PLAN.md and `/end-session` step 5 cleaned). Duke no longer uses chaining. Pushed on `claude/nice-feynman-yt9p7f`; no PR yet.
+- This session wrote no S7 content: PR 115's `checks` jobs (two runs) were still running (`guard` green), and the rule is not to wait.
 - [compassionism-simulation PR 114](https://github.com/BetterToBest/compassionism-simulation/pull/114): merged (580abab on main at session start).
 - [compassionism-simulation PR 115](https://github.com/BetterToBest/compassionism-simulation/pull/115), **open, checks (checks, guard) were still running at session end**: new `data/studies/s39-crosscheck.json` (added to `CSV_STUDIES` in `dev/tools/study_files.py`), and two notes in `site/notes.js` ("What the programme does to prices", "Which tests form a family"). Local: figure check 22/22, `study_files.py --check` 9 files match, notes render in jsdom with no NaN. Next session: merge PR 115 once its checks pass.
 
