@@ -19,6 +19,10 @@ S64 is **done** (Nov 15). **S7 has started: scoping only, no release work landed
 ## Next step
 **S7 part 1** (sonnet, medium: the data files and the release entry), then S7 parts 2-3, then **S3**, then **S65**.
 
+## Session start (Nov 15, later session)
+- S7 part 1 started: compassionism-simulation (f601474) and compassionism-sim-results (9c46288) attached and cloned. Result folders for S36, S38, S5, S55, S6, S14 are named by letter and engine commit (`prog-*`, `pilot55-*`, `panel-*`), not by step; part 1 begins by mapping each study to its folders.
+- Landing check: commit, push and pull request worked in Auto mode in this session; see the end-of-session note for the result.
+
 ## Pitfalls
 - S66's `s66_trace.js` no longer runs on `104691f` (its price-cut probe patch matches 0 times). Use `s64_erosion.js`: no text patches, a read-only hook.
 - Each row makes two full-length runs per seed (the supply path); the hook keeps the last and the key check proves it is the reported one.
