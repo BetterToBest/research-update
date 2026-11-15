@@ -66,7 +66,7 @@ Finished rows are shortened here; their full notes (dates, pull requests, result
 | 25 | S13 | Outside audits of the release (second round), in a session that did not build round 2 and is given only the spec, reports and results (Nov 9 audit, finding 8) | opus | high (or fable, high) | S7 |
 | 26 | S24 | Corrections package landed on the Hub, PDFs rebuilt | sonnet | medium | S2, S23, S29, S30; simulation figures wait for S65 (D18) |
 | 27 | S25 | Abstracts, then paper bodies, on corrected figures (several sessions) | opus | high | S24, S46, S7; S65 for every simulation figure (D18) |
-| 28 | S40 | Hub figures generated from the release data, with a check | sonnet | high | S7; figures by release 2's tag, so S65 (D18) |
+| 28 | S40 | Hub figures generated from the release data, with a check | sonnet | high | S7; figures by release 2's tag, so S65 (D18); **part 1 done Nov 15** (research-hub PR 13: `tools/build_figures.py`, snapshot of v5.8.0, `optimal-transfer-design.html` generated); part 2 left: place block `r2-inflation` and replace the inflation and wealth sentences on the other pages, with S24 |
 | 30 | S4 | X-cents folded into the CCO architecture | sonnet | medium | |
 | 31 | S41 | Site and wiki design refresh | sonnet | high | S40 |
 | 32 | S43 | Links and publications: portal, x-cents, NEEC, Academia papers | sonnet | medium | D3 (answered in the ledger's message box, Nov 1) |
