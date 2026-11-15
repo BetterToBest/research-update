@@ -17,6 +17,7 @@
 1. **S40** (sonnet, high): research-hub's `tools/build_figures.py` reading `r2-effects` by tag v5.8.0; do S65 part 2's Hub sentences with it. 2. **S74 part 2** (opus, xhigh, engine build) can run beside it. S4 (X-cents) follows.
 
 ## Pitfalls
+- **Read `audits/2026-11-15-release-figures-audit.md` before S40.** Release 2's numbers reproduce from the raw results, but five sentences in the S64 reports and on the findings page overstate the data ("every financed result is fragile": two financed curves are robust; "15 to 53 points a year without backing": 18.2 to 53.3 at no backing). Take Hub numbers from the `r2-*.json` files, not the report prose.
 - S64's page text said inflation at the model's own mechanism is "15 to 53 points a year"; the data's range is 14.9 to 53.3 over both mechanism readings (with and without the ceiling). The page prints the data's figures.
 - `check_figures.js` now lets a superseded "latest" release take the figures of a "current" one; if a later release adds its own figures, re-read that rule.
 - The data file's erosion share is already in percent; the mechanism's backed share was in percent in the summary and is a fraction in `r2-backing`.
