@@ -1,26 +1,23 @@
-# Handoff (Nov 15, 2026): S64 done (part 3: erosion share, charts, findings-page text)
+# Handoff (Nov 15, 2026): S7 scoped
 
 ## Step status
-S64 is **done**. Part 3 finished the two outputs the batch could not give (the erosion share of every wealth figure, and basket poverty by labour-force reason), the findings-page charts and the findings-page text for S65.
+S64 is **done** (Nov 15). **S7 has started: scoping only, no release work landed.** Duke moved S3 (OEIAS) up in the order: it now runs right after S7 (row "23 bis" in PLAN.md).
 
-## What shipped
-- research-update PR (branch `claude/vigilant-noether-3a68vj`): freeze file Amendment 4, committed before the trace ran (the erosion term under asset classes; basket poverty by status). PLAN.md S64 row and section; this handoff.
-- compassionism-simulation [PR 111](https://github.com/BetterToBest/compassionism-simulation/pull/111): `dev/tools/s64_erosion.js` (the trace), `s64_erosion_table.py`, `dev/runs/s64-erosion/` (tables, summary), the erosion share added to the q1 (new section), q2 and q6 reports, q6's erosion by fifth and basket poverty by status, the overview, `dev/tools/s64_charts.py` with 24 charts in `dev/runs/s64-round2/charts/` (`index.html` previews them), and `dev/reports/s64-findings-page-text.md`. No engine change.
-- compassionism-sim-results [PR 40](https://github.com/BetterToBest/compassionism-sim-results/pull/40), merged (9c46288): `r2-erosion-104691f/` (raw trace, tables, run.txt, SHA256SUMS, DONE).
-
-## What part 3 shows (plain words)
-- Erosion of the balances adults held at the start is 0.0-2.9% of every wealth figure, and it helps the programme: at full backing prices rise 0.0-0.2 points a year faster, which lowers what net debtors (the lowest four fifths, on average) owe. Creditors at the top lose. S66's all-cash term, as a bound, has the opposite sign and stays within 5.3%.
-- Adults outside the labour force stay far more often below the basket: C2.2 8.5-16.6% of their adult-years against 1.8% in the labour force; the release design 28.8-58.5% against 9.5% (no programme 54-82% against 29%; Reference, 20 years).
-- Checks: the trace reproduced the engine's keys in every run; every seed equals the batch's part M; the published effects equal the batch's tables to 2.1e-8.
+## S7 scoping (Nov 15)
+- The S48 merged published panel (compassionism-sim-results `panel-merged-ce8d030`, engine ce8d030) equals the v5.6 panel (`dev/runs/release-panel.json`, engine 5bf5bcc) in all 47,466 values. So release 1 changes no published headline figure; it adds the frozen C2.2 panel (`release-panel-frozen.json`, `-40-frozen.json`) and the studies S36, S38, S5, S55, S34, S6, S14 as new data and findings-page sections.
+- The findings page (`findings.html`, `site/findings.js`, `dev/tools/release_data.py`) has none of the ledger's 11 checklist items yet (saving-rate target wording, group tables, Holm families, glossary entries and so on), and `data/studies/` holds no files for S36-S55.
+- Release path (`dev/ADDING-A-RELEASE.md`): "a release that changes no figure" (LATEST entry) for the headline; new studies as `data/studies/*.json` written by a `study_data.py`-style generator, as for s137 and s57.
+- Proposed version labels (Duke may change): v5.7.0 for release 1, v6.0.0 for release 2 (S65).
+- Proposed split: S7 part 1 data files and release entry; part 2 findings-page sections for checklist items 1-11; part 3 notes, version, checks, merge.
 
 ## In flight
 - Nothing running.
 
 ## Decisions waiting
-- Nothing new.
+- Nothing new (version labels above default as proposed).
 
 ## Next step
-**S7** (sonnet, medium): the release, held until round 2 was ready (Duke, Nov 9); it runs just before S65 so that release 1 and release 2 land together. Then **S65** (release 2 and findings page), which takes its text and charts from `dev/reports/s64-findings-page-text.md` and `dev/runs/s64-round2/charts/`.
+**S7 part 1** (sonnet, medium), then S7 parts 2-3, then **S3**, then **S65**.
 
 ## Pitfalls
 - S66's `s66_trace.js` no longer runs on `104691f` (its price-cut probe patch matches 0 times). Use `s64_erosion.js`: no text patches, a read-only hook.
