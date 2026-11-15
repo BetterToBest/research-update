@@ -13,7 +13,7 @@ S64 is **done**. **S7 is done except one merge:** part 2 is finished and merged 
 - PR 119's checks (checks, guard). To merge: confirm both pass (`get_check_runs`; if `checks` fails, `get_job_logs` first), then squash-merge; then confirm the `release` workflow created tag `v5.7.0` and its release notes show the v5.7.0 section.
 
 ## Decisions waiting
-- None open. The version 5.7.0 is ledger D28's default; D28 is added to the ledger this session (answered by default; Duke may change the number only before PR 119 merges).
+- None open. D28 (the version number) was confirmed by Duke as v5.7.0 (Nov 15); tags cannot be moved.
 
 ## Next step
 1. Merge PR 119 (above). 2. **S3** (sonnet, medium): OEIAS as the umbrella name. 3. **S65** (release 2). **S74 part 2** (opus, xhigh, engine build) can run beside them.
