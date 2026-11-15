@@ -14,10 +14,10 @@ S64 is **done** (Nov 15). **S7 has started: scoping only, no release work landed
 - Nothing running.
 
 ## Decisions waiting
-- Nothing new (version labels above default as proposed).
+- None. Duke confirmed v5.7 for release 1 (Nov 15); release 2 stays v6.0.0 unless he says otherwise.
 
 ## Next step
-**S7 part 1** (sonnet, medium), then S7 parts 2-3, then **S3**, then **S65**.
+**S7 part 1** (sonnet, medium: the data files and the release entry), then S7 parts 2-3, then **S3**, then **S65**.
 
 ## Pitfalls
 - S66's `s66_trace.js` no longer runs on `104691f` (its price-cut probe patch matches 0 times). Use `s64_erosion.js`: no text patches, a read-only hook.
@@ -25,3 +25,5 @@ S64 is **done** (Nov 15). **S7 has started: scoping only, no release work landed
 - The real-holdings check is not near zero in the means: it is entirely the creditor charge on shares (S71); the asset index equals the basket deflator exactly. The per-adult means are unweighted, so the weighted-tail adults dominate the top fifth.
 - The auto-mode permission classifier refused several `git commit` and `commit && push` commands early in the session; separate commit and push commands went through after the stop hook asked for them.
 - Remote branches `claude/s66-low-share-trace`, `claude/jolly-davinci-dbcv2x`, `claude/stoic-hypatia-99pell` and older session branches in research-update still need deleting by hand.
+- Start S7 sessions in Accept edits, not Auto: Auto's classifier refused `git commit` four times on Nov 15 (also noted early in S64). Commits and pushes worked at once in Accept edits.
+- The github plugin MCP server failed to connect (400, authorization header); the built-in `mcp__github__*` tools worked.
