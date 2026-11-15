@@ -1,28 +1,29 @@
-# Handoff (Nov 15, 2026): S7 part 1 done and merged
+# Handoff (Nov 15, 2026): S7 part 2 started
 
 ## Step status
-S64 is done. **S7 part 1 is done: PR 112 merged (all checks green).** S3 (OEIAS) runs right after S7.
+S64 is **done**. **S7 is partly done.** Part 1 (data files, frozen C2.2 panels, v5.7 release entry) merged earlier today (compassionism-simulation PR 112). Part 2 (findings-page sections for the ledger's 11 checklist items) has its first piece open; items 1-11 are not yet written. Part 3 (notes, version, checks, merge) not started. S3 runs right after S7, then S65.
 
 ## What shipped
-- compassionism-simulation [PR 112](https://github.com/BetterToBest/compassionism-simulation/pull/112), merged as 30bb232 (branch `claude/s7-part1-study-data`): `dev/tools/study_files.py` (`--check`) writes `data/studies/` files for S34, S36, S38, S5, S55, S6, S14 (each study's own estimates copied, not recomputed); frozen C2.2 panels in `dev/runs/`; release entry v5.7 (no headline figure changes, `figuresFrom` 5.6; Duke confirmed v5.7). `check_figures.js`: 22 of 22 pass locally. CI (`checks`, `guard`) passed.
-- No change in compassionism-sim-results (the data files point at the existing folders).
+- [compassionism-simulation PR 113](https://github.com/BetterToBest/compassionism-simulation/pull/113), **open, checks were still running at session end**: `site/studies.js` and a "Studies" section on `findings.html`. Each file in `data/studies/` (S36, S38, S5, S55, S6, S14, S34) opens on demand, filterable, with CSV and JSON downloads; no typed numbers. Local: figure check 22/22, domtest 153/153. Next session: merge it once its checks pass (CLAUDE.md, Landing work).
+
+## Part 2: what remains (ledger S7 checklist; read it with ArtifactData, collection `projects`, doc `hub`, step S7)
+Text and tables still to add, each from a study or release file, never typed: (1) saving-rate target wording (BEA NIPA 2.1 line 35, 5.4% for 2025; 0.877 an aggregate calibration); (2) saving and spending by income group; (3) wealth poverty with ordinary and inflation-protected savings side by side; (4) the 0.593 rows as a bridge; (5) inflation mechanism, with the placeholder-price-rule wording (S39 report section 6, item 4); (6) participants and non-participants table; (7) levers; (8) the Holm families exactly; (9) variance reduction from paired seeds; (10) tax-financed C2.2 from study N; (11) glossary entries. Also the S55 and S56 findings-page wording in PLAN.md's S7 section. The studies P, N, and the study-D sweep live in compassionism-sim-results `prog-*` folders, not yet in `data/studies/`: part 2 starts by checking which items need a new data file (add them to `dev/tools/study_files.py`).
 
 ## In flight
 - Nothing running.
 
 ## Decisions waiting
-- None. Release 2 stays v6.0.0 unless Duke says otherwise.
+- None. Release 1 is v5.7 (Duke, Nov 15); release 2 stays v6.0.0.
 
 ## Next step
-**S7 part 2** (sonnet, medium): findings-page sections for ledger checklist items 1-11 (`findings.html`, `site/findings.js`, `dev/tools/release_data.py`), printing study figures from `data/studies/` and labelling S6 and S14 as pilots; then part 3 (notes in CONTRIBUTING.md and CHANGELOG.md, `set_version.py 5.7`, replication timeline panel, the three checks, merge); then **S3**, then **S65**.
+**S7 part 2, continued** (sonnet, medium), then part 3, then **S3**, then **S65**.
 
 ## Pitfalls
-- S66's `s66_trace.js` no longer runs on `104691f` (its price-cut probe patch matches 0 times). Use `s64_erosion.js`: no text patches, a read-only hook.
-- Each row makes two full-length runs per seed (the supply path); the hook keeps the last and the key check proves it is the reported one.
-- The real-holdings check is not near zero in the means: it is entirely the creditor charge on shares (S71); the asset index equals the basket deflator exactly. The per-adult means are unweighted, so the weighted-tail adults dominate the top fifth.
-- The auto-mode permission classifier refused several `git commit` and `commit && push` commands early in the session; separate commit and push commands went through after the stop hook asked for them.
+- Run `npm install --no-audit --no-fund` in compassionism-simulation before `check_figures.js` or `domtest.js` (jsdom). domtest loads only `site/charts.js` and `site/findings.js`: any new page script must be optional in the page code.
+- `node domtest.js` takes over 5 minutes; start it in the background and read its output file.
+- Auto mode refused `git commit` twice on Nov 15 (reason `[Unsanctioned Communication]`; first as a chained add/commit command, then as a plain commit with the four-line message). Likely trigger: the `Claude-Session: https://claude.ai/...` URL line in the message (untested). Accept Edits commits and pushes worked at once. Duke is resolving it in another chat; keep starting S7 sessions in Accept Edits until it is.
+- S66's `s66_trace.js` no longer runs on `104691f`; use `s64_erosion.js`.
+- The real-holdings check is entirely the creditor charge on shares (S71); per-adult means are unweighted, so the weighted-tail adults dominate the top fifth.
 - Remote branches `claude/s66-low-share-trace`, `claude/jolly-davinci-dbcv2x`, `claude/stoic-hypatia-99pell` and older session branches in research-update still need deleting by hand.
-- Start S7 sessions in Accept edits, not Auto: Auto's classifier refused `git commit` four times on Nov 15 (also noted early in S64). Commits and pushes worked at once in Accept edits.
-- The github plugin MCP server failed to connect (400, authorization header); the built-in `mcp__github__*` tools worked.
-- Nov 15 (part 1): Auto mode refused `git add && commit && push` and a plain `git commit`; after Duke said go, a plain `git commit` and a separate `git push` went through. The `mcp__github__*` tools are loaded with ToolSearch.
-- study_files.py copies each study's `estimates.csv` (dev/runs/<study>/) as columns; S6 (`pilot-k-395dd5b`) and S14 (`pilot-l-f66dc67`) are 100-seed PILOTS and the findings page must label them so. `s14-lw-pilot.json` has seeds null (the report says 100).
+- The github plugin MCP server fails to connect (400, authorization header); the built-in `mcp__github__*` tools work.
+- `study_files.py` copies each study's `estimates.csv` (dev/runs/<study>/) as columns; S6 (`pilot-k-395dd5b`) and S14 (`pilot-l-f66dc67`) are 100-seed PILOTS and the page must label them so. `s14-lw-pilot.json` has seeds null (the report says 100).
