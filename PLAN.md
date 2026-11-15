@@ -40,7 +40,7 @@ Finished rows are shortened here; their full notes (dates, pull requests, result
 | 21 | S5 | Participation threshold: one figure, papers corrected: **done** (full note in PLAN-done.md) | sonnet | medium | S48 |
 | 22 | S39 | Outside engine cross-check: **done** (full note in PLAN-done.md) | opus | high | S48; part 2: `DONE` in both folders |
 | 22a | S55 | Open PTF access: anyone buys at PTF prices: **done** (full note in PLAN-done.md) | opus | xhigh | S38, D16 (answered Nov 7) |
-| 23 | S7 | Simulation release (tag, hashes, changelog, findings page); **held** (Duke, Nov 9): waits until round 2 is ready for release, then runs just before S65; round 2 is ready (S64 done Nov 15), so S7 is next; **part 2 done Nov 15** (all checklist items on the findings page; compassionism-simulation PR 117 merged, PR 118 open); **part 3 left**: version (D28, default 5.7.0), release notes, tag | sonnet | medium | S36, S38, S5, S55; S64 (Duke, Nov 9) |
+| 23 | S7 | Simulation release (tag, hashes, changelog, findings page); **held** (Duke, Nov 9): waits until round 2 is ready for release, then runs just before S65; round 2 is ready (S64 done Nov 15); parts 1-2 done and merged, part 3 (v5.7.0) in compassionism-simulation PR 119, merge pending (Nov 15) | sonnet | medium | S36, S38, S5, S55; S64 (Duke, Nov 9) |
 | 23 bis | S3 | OEIAS as the umbrella name; moved up (Duke, Nov 15), runs right after S7 | sonnet | medium | |
 | 23a | S56 | Outside reviews of S39, S55 and the inequality measures, pasted back and triaged: **done** (full note in PLAN-done.md) | opus | high | your pasted reviews |
 | 23b | S57 | Engine round 2: distribution measures: **done** (full note in PLAN-done.md) | sonnet | high | S56 (was S7; S7 held, Nov 9) |
