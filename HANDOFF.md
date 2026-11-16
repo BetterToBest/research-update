@@ -40,4 +40,5 @@ S24 (sonnet, medium): the corrections package on the Hub, then PDFs rebuilt.
 - A sweep file stores values to 6 significant digits, so compare at a relative 1e-5, not exactly.
 - The results repository is a sparse clone: run `git sparse-checkout add <folder>` before `git add`, or the files are silently skipped.
 - Eight jobs on 4 cores roughly doubles each run's time. S75 alone takes about 45 min on 4 cores.
+- The root site (bettertobest.github.io, S75's indexes PR 2) may describe S75 as "keeps its direction in every era"; it was not attached this session, so check it in S24 and align it with the corrected Hub page.
 - Old remote branches still need deleting by hand: research-update `claude/s66-low-share-trace`, `claude/jolly-davinci-dbcv2x`, `claude/stoic-hypatia-99pell`, `claude/admiring-fermi-p13aus`.
