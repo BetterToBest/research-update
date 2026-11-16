@@ -1,35 +1,31 @@
-# Handoff (Nov 16, 2026): S74 done (part 3, plus Amendment 3: R-CPI-I and the forced-sale discount from Duke's sources)
+# Handoff (Nov 16, 2026): S75 part 1 done (the descriptive panel of US policy eras)
 
 ## Step status
-**S74 is done** (three sessions). Part 3 built the spending reading `cb.dm`, added reporting by wealth group, reran the pilot's rows at 100 seeds with it, ran the 20-seed forward sweep and wrote the report: compassionism-simulation `dev/reports/s74-central-bank.md`.
+**S75 is partly done.** Part 1 (preregistration, then the descriptive panel from published data, no engine) is done. Still to do: part 2, the engine readings (prereg Part B), and part 3, a separate Hub page for the findings. Duke's instruction (Nov 16): Claude names the page, and it is linked from the simulation and wiki pages once complete.
 
 ## What shipped
-- **Amendment 3 (after the report, Nov 16):** Duke supplied R-CPI-I and Campbell, Giglio and Pathak 2011. [compassionism-simulation PR 127](https://github.com/BetterToBest/compassionism-simulation/pull/127): the R-CPI-I check (`dev/tools/s74_rcpi.py`) and two source-based forced-sale discount readings (0.034, 0.062); report updated. [compassionism-sim-results PR 43](https://github.com/BetterToBest/compassionism-sim-results/pull/43): `s74-fd-a60ecd1`, `s74-rcpi-a60ecd1`. research-update: prereg Amendment 3.
-- [compassionism-simulation PR 124](https://github.com/BetterToBest/compassionism-simulation/pull/124) (merged, 918bf44; engine a60ecd1 for the runs; checks and guard green): `cb.dm`; who gains and who pays by fifth of starting real wealth and the top 1% (the rule's channels and the change in real wealth), P2 as a share of income, own inflation in History, yearly paths; 2 unit tests (377 in all); tools `s74_sweep.js`, `s74_sweep_table.js`, `s74_repro.js`; the report and tables (`dev/runs/s74-final/`, `dev/runs/s74-sweep/`). Off identical: guard test, round-2 main pair signatures, and all 542,000 values the pilot saved reproduce exactly.
-- [compassionism-sim-results PR 42](https://github.com/BetterToBest/compassionism-sim-results/pull/42) (merged, 3cfe94a): `s74-final-a60ecd1` (100 seeds) and `s74-sweep-a60ecd1` (20 seeds, 33 settings; History 35), each with run.txt and SHA256SUMS.
-- research-update: prereg Amendment 2 (Nov 16, before any part-3 run); PLAN.md S74 done.
-- [compassionism-simulation PR 122](https://github.com/BetterToBest/compassionism-simulation/pull/122) (the parallel session's audit wording) merged once green, as the last handoff asked.
+- research-update: `prereg/2026-11-s75-deep-history.md` (committed before any figure), with Amendment 1 (after the downloads, before any figure: Holm over all 14 measures, series coverage and splices, the sources that did not open); PLAN.md S75 part 1 note.
+- [compassionism-simulation PR 128](https://github.com/BetterToBest/compassionism-simulation/pull/128) (c5759be): `sources/s75_eras.py` -> `sources/s75_eras.json` and `dev/runs/s75-panel/tables.md`; raw files in `sources/s75_eras/raw/` (SHA-256 in `_meta`; `check` mode rebuilds identically); note `dev/reports/s75-panel.md`. No engine change.
+- [compassionism-sim-results PR 44](https://github.com/BetterToBest/compassionism-sim-results/pull/44): `s75-panel-c5759be` (JSON, tables, run.txt, SHA256SUMS).
 
-## Findings (plain words; the report has the intervals)
-- The programme steadies households at the bottom: both designs cut the share pushed below the basket line in a recession year (C2.2 about 10% to 1%; the release design to 5-7%) and the median household's largest wealth fall. Both make the basket's price level and dollar incomes less steady. As a share of income, C2.2 steadies incomes in History and Adverse.
-- The damping claim (the PTF and PTH share of essentials damps what the central bank and shocks do to the cost of basic living) is not supported for either design: the rule has no channel to essential prices (a model limit, stated).
-- The rule moves wealth up: in History, without the programme, the top 1% share +0.43 points and the bottom half -0.43; gains go to the top through asset prices, deposits and buying in forced sales; the middle fifths lose through forced sales and job loss. The programme shrinks this. Forced sales move real assets from households worth $37,000-$665,000 to those worth over $1.9 million; C2.2 nearly ends them.
-- The sweep changes no conclusion: the programme's effects keep their sign in every setting but one small case. The rule's own effect on wealth poverty turns on two design parameters (forced sales and the floating-debt spread).
-- Own inflation: BLS's R-CPI-I (Dec 2005-Dec 2025) rose 2.69% a year for the lowest-income fifth and 2.43% for the highest (CPI-U 2.52%). The engine's measure cannot see that gap, even given BLS's own shares (0.01 points), and its 2.77% is confirmed as an upper bound.
-- Forced-sale discount, now from its source: 3.4-6.2% for a house (bankruptcy-related), with 27% (foreclosure) as an upper bound. The main reading stays 0. In History the rule's effect on wealth poverty without the programme is 3.5 / 3.7 / 3.9 points at discounts of 0 / 0.034 / 0.062. No conclusion changes.
+## Findings (plain words; the note has every cell)
+- Duke's view that 2005-2025 was less stable than the decades before it: supported on 0 of 14 measures, against it on 5 (mostly because 1973-1983 was worse), mixed on 9. Unemployment swings (2.0 points, against 1.1 in 1947-1972 and 1.0 in 1984-2007), home-price swings (against 1947-1972) and food-price swings (against 1984-2007) lean his way, but they do not pass Holm's correction.
+- 1973-1983 was the unstable era: higher inflation, essentials prices and unemployment than the eras on either side.
+- Top shares fell in 1947-1972 and rose from 1984 (top 1% of income 11.0% in 1972, 19.1% in 2019). Tax rates actually paid were far more progressive in the 1950s (PSZ: top 0.1% 57.3%, top 1% 45.5%, bottom half about 20%). The planning figures (42% and 50.6% for the 1950s; 36.4% and 39.8% in 2014) do not match the file; the file's are used.
+- The fitted rate rule: phi 0.45-0.65 before 1984 (below one for one), 1.3 in 1984-2007, about 0 in 2008-2025 (the floor, then a late rise).
 
 ## In flight
-- Nothing.
+- Nothing running. PR 128's checks (checks, guard) were running when the session ended; merge both PRs once green.
 
 ## Decisions waiting
-- None.
+- New (default proceeds): Duke to supply hospital ownership counts by year (Health, United States 2017 Table 82, or AHA Hospital Statistics, or the Historical Statistics' "Hospitals and beds, by ownership" table). cdc.gov and ssa.gov refuse this machine. Default: the gap stays stated, and nothing is estimated in its place.
 
 ## Next step
-1. **S75** (opus, high; may take 2 sessions): deep history from 1947, on S74's history environment and rule. Read S74's report first.
-2. S24 (sonnet, medium) can run beside it.
+1. **S75 part 2** (opus, high): the engine readings. Extend `hx` with era paths (`hx.era` e1-e4: 26, 11, 24, 18 years). HX is a 21-year array copied into `index.html` by `dev/tools/s74_hx_copy.py`; `hxT` caps years at HX.n. Add the era's fitted rule to `cb` (B5 fits in `s75_eras.json`), plus tax setting T (PSZ group rates, revenue-neutral by default) and health setting H (the basket's medical line grows at the era's medical minus CPI). Write Amendment 2 with the mechanics and the substitute series before any engine run; then unit tests and 100 seeds; then the full report.
+2. S75 part 3: the Hub page (attach research-hub and bettertobest.github.io). S24 (sonnet, medium) can run beside it.
 
 ## Pitfalls
-- `dev/tools/s74_table.js` with no folder writes over the committed `dev/runs/s74-pilot/tables.md` with an empty table (the pilot JSONs live in compassionism-sim-results). Always pass the folder.
-- Forced sales exist only with the rule on, and the rule charges a 3-point floating-debt spread the no-central-bank reading does not: "rule minus off" carries both (the sweep's readings size them).
-- bls.gov refuses this machine; BLS files come from Duke (R-CPI-I is now in compassionism-simulation `sources/s74_history/raw/`).
+- FRED's CSV endpoint fails intermittently (HTTP/2 stream errors, empty replies). Retrying without a user agent works.
+- PSZ's 2022 appendix ends in 2019. The CPI file is missing October 2025 (the shutdown), so 2025's unemployment mean uses 11 months and the rule's fit ends in 2025Q3.
+- The 2008-2025 fitted rule has phi of about 0, so a = -1.05 in S74's terms. Part 2 must state that the engine has no expectations channel wherever arm R is read.
 - Old remote branches still need deleting by hand: research-update `claude/s66-low-share-trace`, `claude/jolly-davinci-dbcv2x`, `claude/stoic-hypatia-99pell`, `claude/admiring-fermi-p13aus`.
