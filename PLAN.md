@@ -663,7 +663,7 @@ First pass (before S47): triage the Grok audit (I5) and run an outside-style aud
 ### S24 · Corrections package
 As ledger S24, plus S29's valid items, S30's provenance actions and S46's patch. Rebuild every PDF from corrected sources (32 audit passages survive only in PDFs on Oct 28). Start `corrections.html` (the corrections log), linked from every corrected page and from `/v1/`.
 
-*Nov 16, part 1 done (Hub PR 18, root site PR 3): C23-C30, the log, PDFs. Part 2 done (Hub PR 19, root site PR 4): C01-C22 except C08, C09, C11, C13 (held: engine claims written against v4.21). Part 3 done (Hub PR 20, root PR 5): the four held items. Part 4 done (Hub PR 21): paper bodies for C23, C24, C26, C27. Part 5 done (Hub PRs 22, 23): BLEI Month 0 sensitivity, claims.csv. Part 6 done (Hub PR 24): S29 headline items. Remaining: S29 derivation items, B022, B028, S30 actions. See HANDOFF.md.*
+*Nov 16, part 1 done (Hub PR 18, root site PR 3): C23-C30, the log, PDFs. Part 2 done (Hub PR 19, root site PR 4): C01-C22 except C08, C09, C11, C13 (held: engine claims written against v4.21). Part 3 done (Hub PR 20, root PR 5): the four held items. Part 4 done (Hub PR 21): paper bodies for C23, C24, C26, C27. Part 5 done (Hub PRs 22, 23): BLEI Month 0 sensitivity, claims.csv. Part 6 done (Hub PR 24): S29 headline items. Part 7 done (Hub PR 25): B022, B028 (qualified; source unreachable). Remaining: S29 derivation items, S30 actions. See HANDOFF.md.*
 
 ### S25 · Abstracts, then bodies
 As ledger S25. Every figure either comes from the release (S40 block), is a sourced calculation, or is labelled an illustrative projection. One paper per session if needed.
