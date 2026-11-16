@@ -20,7 +20,7 @@ Duke's review notes (below) are done in research-hub PR 31 and compassionism-sim
   - Space beneath each front-page section is about half (124 px to about 60 px).
   - OEIAS added: front page, Architectural Index, wiki index and FAQ, glossary usage note. It supplements Compassionism and CCO-PTF-PTH-CIP-SZH (NEEC: old label for the earlier simulation, OEIAS for the latest).
   - Wiki banner: November 2026, Simulation Apache 2.0. The shared footer (all seven pages) says the same and now gives BetterToBestResearch@gmail.com instead of Duke's address.
-- compassionism-simulation [PR 134](https://github.com/BetterToBest/compassionism-simulation/pull/134): OEIAS in the simulation, findings and replication glossaries (pages only; no version bump). Open: checks (including the 3-minute guard test) were still running; I will merge it when they pass. If it is still open, merge it once checks are green.
+- compassionism-simulation [PR 134](https://github.com/BetterToBest/compassionism-simulation/pull/134): OEIAS in the simulation, findings and replication glossaries (pages only; no version bump). Merged (297ef98; checks and guard green). Nothing else open.
 
 ## In flight
 Nothing.
