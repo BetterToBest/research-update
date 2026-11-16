@@ -1,35 +1,33 @@
-# Handoff (Nov 16, 2026): S74 part 2 done (central-bank engine build and pilot); S40 and S65 done (parallel session, Nov 15)
+# Handoff (Nov 16, 2026): S74 done (part 3: the central bank's report, the sweep, who gains and who pays)
 
 ## Step status
-**S74 is partly done: parts 1 and 2 of 3.** Part 2 built the engine, tested it and ran the 100-seed pilot. **Part 3 remains:** build `cb.dm` (refused until built), run the forward sweep (20 seeds, fans) with the new reading `th`, split who gains and who pays by group, run the stability test, write the report (`dev/reports/s74-central-bank.md`), and describe the Fed's governance as the plan says.
-**S40 and S65 are done** (parallel session). The Hub's other made-up results belong to S24 and S25.
+**S74 is done** (three sessions). Part 3 built the spending reading `cb.dm`, added reporting by wealth group, reran the pilot's rows at 100 seeds with it, ran the 20-seed forward sweep and wrote the report: compassionism-simulation `dev/reports/s74-central-bank.md`.
 
 ## What shipped
-- [compassionism-simulation PR 123](https://github.com/BetterToBest/compassionism-simulation/pull/123) (merged, 1102b9c): History environment `hx` (`HISTORY_ENV`, `var HX` from `sources/s74_history.json`; `hx.rp 'infl'` is History with no central bank), the policy-rate rule `cb`, forced sales `cb.fs`, and stability measures (study option `stab`, `ST74_KEYS`). 15 unit tests (`s74UnitSuite`). Guard test identical; round-2 main pair identical (`dev/tools/s74_offsig.js`); on-together tests 172 rows x 4 environments pass; engine lineage linked. Decisions are in `dev/DECISIONS.md` (S74). Notes: `dev/reports/s74-design-reading.md` and `dev/reports/s74-pilot.md`.
-- [compassionism-sim-results PR 41](https://github.com/BetterToBest/compassionism-sim-results/pull/41) (merged): `s74-cb-5f11ceb`, the pilot (100 seeds, four environments, both designs).
-- research-update: prereg Amendment 1 (Nov 15, before the pilot).
-- S40 (parallel): research-hub PRs 13 and 14 (merged; generator and withdrawn figures); compassionism-simulation PR 121 (merged) and PR 122 (audit wording; merge once green).
+- [compassionism-simulation PR 124](https://github.com/BetterToBest/compassionism-simulation/pull/124) (engine a60ecd1 for the runs): `cb.dm`; who gains and who pays by fifth of starting real wealth and the top 1% (the rule's channels and the change in real wealth), P2 as a share of income, own inflation in History, yearly paths; 2 unit tests (377 in all); tools `s74_sweep.js`, `s74_sweep_table.js`, `s74_repro.js`; the report and tables (`dev/runs/s74-final/`, `dev/runs/s74-sweep/`). Off identical: guard test, round-2 main pair signatures, and all 542,000 values the pilot saved reproduce exactly.
+- [compassionism-sim-results PR 42](https://github.com/BetterToBest/compassionism-sim-results/pull/42) (merged, 3cfe94a): `s74-final-a60ecd1` (100 seeds) and `s74-sweep-a60ecd1` (20 seeds, 33 settings; History 35), each with run.txt and SHA256SUMS.
+- research-update: prereg Amendment 2 (Nov 16, before any part-3 run); PLAN.md S74 done.
+- [compassionism-simulation PR 122](https://github.com/BetterToBest/compassionism-simulation/pull/122) (the parallel session's audit wording) merged once green, as the last handoff asked.
 
-## Pilot findings (plain words; part 3 confirms them)
-- Both designs cut the share of households pushed below the basket line in a recession year: C2.2 from about 10% to about 1%; the release design to about 5.5%. C2.2 also cuts the median household's largest wealth fall. Both raise year-to-year income swings in dollars.
-- The design's claim that its share of essentials damps what the central bank does to the cost of basic living is **not supported**. The rule has no channel to essential prices in this engine (a model limit, stated).
-- Without the programme the rule raises wealth poverty (by 3.4 points in History). With the programme its effect is near zero. Forced sales move real assets from lower-middle wealth groups to the top two.
-- History checks: top 1% share matches the DFA; the bottom 50% share has the right direction but a different size; basket and wealth poverty rise where official poverty fell (does not match; reported, nothing tuned).
+## Findings (plain words; the report has the intervals)
+- The programme steadies households at the bottom: both designs cut the share pushed below the basket line in a recession year (C2.2 about 10% to 1%; the release design to 5-7%) and the median household's largest wealth fall. Both make the basket's price level and dollar incomes less steady. As a share of income, C2.2 steadies incomes in History and Adverse.
+- The damping claim (the PTF and PTH share of essentials damps what the central bank and shocks do to the cost of basic living) is not supported for either design: the rule has no channel to essential prices (a model limit, stated).
+- The rule moves wealth up: in History, without the programme, the top 1% share +0.43 points and the bottom half -0.43; gains go to the top through asset prices, deposits and buying in forced sales; the middle fifths lose through forced sales and job loss. The programme shrinks this. Forced sales move real assets from households worth $37,000-$665,000 to those worth over $1.9 million; C2.2 nearly ends them.
+- The sweep changes no conclusion: the programme's effects keep their sign in every setting but one small case. The rule's own effect on wealth poverty turns on two design parameters (forced sales and the floating-debt spread).
+- Own inflation by household type is close to CPI-U (2.77% a year against 2.54%, an upper bound). R-CPI-I was not opened: bls.gov refuses this machine (HTTP 403).
 
 ## In flight
-- Nothing. (Simulation PR 122, the parallel session's audit wording, was still open at the end of this session: merge it once green.)
+- Nothing.
 
 ## Decisions waiting
 - None.
 
 ## Next step
-1. **S74 part 3** (opus, xhigh): the sweep, who gains, the stability test, the report. Start from Amendment 1 and `dev/runs/s74-pilot/tables.md`.
+1. **S75** (opus, high; may take 2 sessions): deep history from 1947, on S74's history environment and rule. Read S74's report first.
 2. S24 (sonnet, medium) can run beside it.
 
 ## Pitfalls
-- The page had a global `STAB_KEYS` (the v4.19 stabiliser list) outside the engine block. A new engine name that collides with a page-only name breaks only domtest, never the harness. Grep index.html for every new global.
-- Part 1's branch `claude/s74-central-bank` was already merged, and force-pushing is off-limits, so part 2 used `claude/s74-cb-build`.
-- `dev/tools/s68_pairs.js` writes over S68's files unless given `--out`.
-- History's anchored SPM in `sources/history` ends in 2012.
-- Release 2's main rows use 500 adults; never set one release's wealth figure beside the other's. `data/claims.csv` (research-hub) uses CRLF.
+- `dev/tools/s74_table.js` with no folder writes over the committed `dev/runs/s74-pilot/tables.md` with an empty table (the pilot JSONs live in compassionism-sim-results). Always pass the folder.
+- Forced sales exist only with the rule on, and the rule charges a 3-point floating-debt spread the no-central-bank reading does not: "rule minus off" carries both (the sweep's readings size them).
+- Downloading from bls.gov with browser-like headers is refused by the session's safety rules; R-CPI-I needs another route (Duke, or a source that mirrors it).
 - Old remote branches still need deleting by hand: research-update `claude/s66-low-share-trace`, `claude/jolly-davinci-dbcv2x`, `claude/stoic-hypatia-99pell`, `claude/admiring-fermi-p13aus`.
