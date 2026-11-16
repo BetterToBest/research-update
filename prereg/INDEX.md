@@ -157,12 +157,19 @@ The Nov 13 audit (`audits/2026-11-13-simulation-audit.md`, finding 3) and S60's 
 
 Sections (line): Why 5 · What the engine does today (read before this fil 8 · Sources opened (Nov 14, 2026; `sources/s73_lf_fl 12 · What is built (options of `lf`; off by default) 21 · Unit tests (written with the build) 27 · Pilot (100 seeds; session machine, free) 30 · Decision rules (fixed now) 39 · Unpaid work (Duke's note, ledger Nov 13) 47 · Limits stated in advance 50 · Amendments 58 · Amendment 1 (Nov 14, 2026, after the build and b 60
 
-## 2026-11-s74-central-bank.md (123 lines)
+## 2026-11-s74-central-bank.md (128 lines)
 Preregistration: the central bank in both runs, a 2005-2025 history environment, and the stability test (S74)
 
 Neither run has a central bank.
 
-Sections (line): Why 5 · What the engine does today (read before this fil 8 · Sources opened (Nov 14, 2026) 14 · What is built (switches off by default; off = id 24 · Unit tests (written with the build) 46 · Pilot (100 seeds; session machine, free) 56 · Outcomes 60 · Analysis 73 · Decision rules (fixed now) 78 · Limits stated in advance 84 · Amendments 90 · Amendment 1 (Nov 15, 2026, S74 part 2: after the 93 · Amendment 2 (Nov 16, 2026, S74 part 3: after the 114
+Sections (line): Why 5 · What the engine does today (read before this fil 8 · Sources opened (Nov 14, 2026) 14 · What is built (switches off by default; off = id 24 · Unit tests (written with the build) 46 · Pilot (100 seeds; session machine, free) 56 · Outcomes 60 · Analysis 73 · Decision rules (fixed now) 78 · Limits stated in advance 84 · Amendments 90 · Amendment 1 (Nov 15, 2026, S74 part 2: after the 93 · Amendment 2 (Nov 16, 2026, S74 part 3: after the 114 · Amendment 3 (Nov 16, 2026, after S74's report: t 124
+
+## 2026-11-s75-deep-history.md (97 lines)
+Preregistration: deep history: US policy eras and their stability (S75)
+
+Duke's view (planning chat, Nov 13): 2005-2025 was less stable than the decades before it, and earlier eras had different policy settings worth comparing (much higher statutory top tax rates in the 1950s; health care fin
+
+Sections (line): Why 5 · Plain-words summary 8 · Questions 14 · Eras (fixed now) 20 · Sources to open (opened before use, research rul 25 · Part A: the descriptive panel (no engine) 36 · Part B: engine readings (part 2; built behind sw 63 · Reporting 82 · Limits stated in advance 87 · Amendments 95
 
 ## 2026-11-security-addendum.md (83 lines)
 Preregistration addendum: security outcomes beyond wealth, and the per-year series for public costs (S53, study P, for S47)
