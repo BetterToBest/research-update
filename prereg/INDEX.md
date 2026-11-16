@@ -192,6 +192,13 @@ The Hub says PTF and PTH give stable, affordable access to the basics, and that 
 
 Sections (line): Why 5 · Plain-words summary 8 · Design 15 · Outcomes 48 · Analysis 54 · Decision rules 61 · Reporting 69 · Amendments 72 · Amendment 1 (Nov 2, 2026, after the pilot, seeds 75 · Amendment 2 (Nov 5, 2026, S47, before any 500-se 88
 
+## 2026-11-x2-series-addendum.md (49 lines)
+Preregistration addendum: job X2, the visual suite's year-by-year series for release 2 (S11)
+
+The visual suite (`suite.html`, ledger I1) draws the BLEI tiers, the median BLEI and its parts, and the share taking part, year by year.
+
+Sections (line): Why this run 5 · Questions 8 · Design 14 · Outcomes 21 · Checks (a failed check stops the shard; nothing  30 · Analysis 36 · Decision rules 39 · Reporting 44 · Amendments 47
+
 ## RUNNING.md (56 lines)
 Running a study: Actions first, Runpod only for what does not fit
 

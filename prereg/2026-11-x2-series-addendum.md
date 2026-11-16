@@ -1,6 +1,6 @@
 # Preregistration addendum: job X2, the visual suite's year-by-year series for release 2 (S11)
 
-Committed Nov 16, 2026 by S11, before any run. Engine: compassionism-simulation at commit `ENGINE_HASH` (the merge of compassionism-simulation PR 135, which adds `dev/tools/explore_export.js --r2`; `harness.js` and `index.html` as at that commit). Job script: compassionism-sim-results `runner/jobs/series-r2.js` (PR 50). Decision D30 (Duke, Nov 16): a new run of release 2's main row on GitHub Actions, free; not Runpod.
+Committed Nov 16, 2026 by S11, before any run. Engine: compassionism-simulation at commit `5b62481326f3b82cc714e20e4cd4ec3726357dd2` (the merge of compassionism-simulation PR 135, which adds `dev/tools/explore_export.js --r2`; `harness.js` and `index.html` as at that commit). Job script: compassionism-sim-results `runner/jobs/series-r2.js` (PR 50, merged as results commit 52f8f0d). Decision D30 (Duke, Nov 16): a new run of release 2's main row on GitHub Actions, free; not Runpod.
 
 ## Why this run
 The visual suite (`suite.html`, ledger I1) draws the BLEI tiers, the median BLEI and its parts, and the share taking part, year by year. Release 2's stored results (`r2-*-104691f`) hold yearly poverty and median wealth but only end-of-run totals for BLEI poverty, and none of the suite's other series. Job X (`x-ce8d030`) has every series, but for the frozen round-1 rows, a different model. So the series for release 2 need a run of their own. This is a reporting run: it adds no new setting, row or claim; it re-runs release 2's main row and records more of what happens in it.
@@ -16,7 +16,7 @@ These are descriptive: what counts as an answer is the series with its spread ac
 - Environments: Reference, Adverse and Stress (`ref`, `adv`, `st`; part M's `str`).
 - Horizons: 20 and 40 years, each its own run (as part M).
 - Seeds: 1-500, paired across rows (common random numbers). Life seed (one seed's adults, for the "lives" panels): seed 1.
-- Where and how: GitHub Actions, compassionism-sim-results' run-study workflow; study `x2`; engine `ENGINE_HASH`; job `series-r2.js`; arguments `--env=all --years=20,40 --n=500`; seed range `1-6`, 6 shards (shard I runs environment and horizon I, each over seeds 1-500 in one process). Per shard: `node dev/tools/explore_export.js ENV YEARS 500 1 --r2 --suite --panel=RESULTS/r2-m-ENV-YEARS-104691f/shard-0000.json.gz`. Results folder: `x2-<engine, 7 characters>/` with `run.txt` and `SHA256SUMS`. Expected time: about 25-50 minutes for a 20-year shard and 50-100 minutes for a 40-year shard (local test: 2.8 seconds per seed for the three rows at 20 years).
+- Where and how: GitHub Actions, compassionism-sim-results' run-study workflow; study `x2`; engine `5b62481326f3b82cc714e20e4cd4ec3726357dd2`; job `series-r2.js`; arguments `--env=all --years=20,40 --n=500`; seed range `1-6`, 6 shards (shard I runs environment and horizon I, each over seeds 1-500 in one process). Per shard: `node dev/tools/explore_export.js ENV YEARS 500 1 --r2 --suite --panel=RESULTS/r2-m-ENV-YEARS-104691f/shard-0000.json.gz`. Results folder: `x2-5b62481/` with `run.txt` and `SHA256SUMS`. Expected time: about 25-50 minutes for a 20-year shard and 50-100 minutes for a 40-year shard (local test: 2.8 seconds per seed for the three rows at 20 years).
 
 ## Outcomes
 All descriptive. For each row and year: the mean over seeds and the 10th and 90th percentile across seeds of
@@ -42,7 +42,7 @@ No tests, no intervals on differences: the output holds the spread across seeds 
 - A shard fails for time or a runner fault: rerun that whole study under a new id with an amendment saying why; no shard is patched in.
 
 ## Reporting
-Every series above goes to compassionism-sim-results (`x2-<engine 7>/`), all three environments and both horizons, and to the rebuilt visual suite, the Adverse and Stress environments included. Each suite panel is labelled with its engine (release 2: engine 104691f, re-run at `ENGINE_HASH`, checked equal); job X's round-1 series are not mixed onto the same panel.
+Every series above goes to compassionism-sim-results (`x2-5b62481/`), all three environments and both horizons, and to the rebuilt visual suite, the Adverse and Stress environments included. Each suite panel is labelled with its engine (release 2: engine 104691f, re-run at `5b62481326f3b82cc714e20e4cd4ec3726357dd2`, checked equal); job X's round-1 series are not mixed onto the same panel.
 
 ## Amendments
 Dated, with the reason, below this line. Nothing above changes after the first run.
