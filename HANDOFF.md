@@ -1,23 +1,26 @@
-# Handoff (Nov 16, 2026): S11 (BLEI visuals), checked and re-planned; no build yet
+# Handoff (Nov 16, 2026): S11 (BLEI visuals), sub-steps 1-3 done; the release 2 series run is on Actions
 
 ## Step status
-**S11 partly done; nothing in the engine, results or suite changed.** Checked what exists: job X (`x-ce8d030`, engine ce8d030) has every series I1 asks for but is not release 2. Release 2's stored shards (`r2-*-104691f`, parts b, f, m, s, three environments, 20 and 40 years, 500 seeds) hold yearly poverty and median wealth, but BLEI poverty only as end totals: no tier shares, no median BLEI or its three parts, no share taking part by year. `explore_export.js` has no mode for release 2's main row (`r2FreezePair`).
-Duke chose a **new run of release 2's main row on GitHub Actions (free)** to get the full series on the current engine (D30). The plan's S11 section now lists the four sub-steps; they need about two sessions, so S11 moved to opus, high.
+**S11 partly done.** The tool, the preregistration and the runner job are landed, and the 500-seed run of release 2's main row is running on GitHub Actions (free). Left: sub-step 4, rebuilding `suite.html` from the new series once the run is done.
 
 ## What shipped
-This handoff and the PLAN.md edit (PR in this repository). No other repository changed.
+- compassionism-simulation PR 135 (merged, engine commit `5b62481`): `dev/tools/explore_export.js --r2`. It runs release 2's three main rows (no programme, C2.2, release design) the way the round-2 batch's part M ran them, and stops unless every engine output key, row by row and seed by seed, equals release 2's stored part M values. So the new run is release 2 exactly, even on today's engine (round-3 switches present, off). Reporting only; old modes give identical output; decision in `dev/DECISIONS.md`.
+- compassionism-sim-results PR 50 (merged, `52f8f0d`): `runner/jobs/series-r2.js`.
+- research-update PR 152: `prereg/2026-11-x2-series-addendum.md` (job X2), committed before the run; this handoff; the PLAN.md S11 note.
 
 ## In flight
-Nothing running. Shallow clones of compassionism-simulation and a sparse compassionism-sim-results sit in the session machine only.
+- run-study workflow run 125 in compassionism-sim-results (dispatched 21:03 UTC): study `x2`, engine `5b62481326f3b82cc714e20e4cd4ec3726357dd2`, job `series-r2.js --env=all --years=20,40 --n=500`, seeds 1-6, 6 shards (one per environment and horizon, 500 seeds each). Plan job passed; shards were queued when checked. Expected 0.5-1.5 hours a shard.
+- Results land in `x2-5b62481/` on compassionism-sim-results main; finished when `x2-5b62481/DONE` exists. A shard that fails the release 2 comparison exits with an error and the folder is never written.
 
 ## Decisions waiting
-- D30: answered by Duke (new run, release 2 main row, Actions). Nothing else waiting.
+Nothing new. D30 answered (new run on Actions). S12 (which visuals go on which page) stays Duke's.
 
 ## Next step
-S11 again: sub-steps 1-3 (an `--r2` mode in `dev/tools/explore_export.js`, a short prereg addendum, a runner job and a workflow run on the pinned commit; folder `x2-<commit 7>`). Start the run, record where it lands, end. A later session does sub-step 4 (rebuild `suite.html` as a new release data folder; v5.6's files stay untouched). S12 stays Duke's.
+S11 again, sub-step 4: check `x2-5b62481/` (`run.txt`, `SHA256SUMS`, each shard's `_meta.selfCheck` says "every engine key ... equals release 2's part M"), then rebuild `suite.html` as a new release data folder, keeping v5.6's files untouched. If run 125 failed, read the failing shard's log first; the prereg's decision rules say what to do (new study id `x2b`, dated amendment).
 
 ## Pitfalls
-- Do not mix engines on one page: job X (ce8d030) and release 2 (104691f or the new commit) are different models. Label each panel with its engine.
-- explore_export's self-checks compare with a merged panel; for release 2 use the r2 results (`r2-tables-104691f`) as the panel, and say which.
-- Clone one repository at a time; fetch a pinned commit with `git fetch --depth=1 origin <sha>`.
-- JSON-LD carries Duke's personal email (S42 fixes); X-Cents ontology entries in the machine-readable files belong to S42; old remote branches to delete by hand: research-update `claude/s66-low-share-trace`, `claude/jolly-davinci-dbcv2x`, `claude/stoic-hypatia-99pell`, `claude/admiring-fermi-p13aus`.
+- Do not mix engines on one page: job X (`x-ce8d030`, frozen round-1 rows) and X2 (release 2, engine 104691f re-run at 5b62481) are different models. Label each panel.
+- The suite files hold levels with the 10th-90th percentile spread across seeds, not paired differences: any statement comparing rows quotes release 2's published effects (`r2-tables-104691f`).
+- The engine's `dev/CODEMAP.md` is stale (rebuilding it changes about 700 lines unrelated to this step); left as it was.
+- The GitHub plugin server failed to connect at session start; the deferred `mcp__github__*` tools worked.
+- Old remote branches to delete by hand: research-update `claude/s66-low-share-trace`, `claude/jolly-davinci-dbcv2x`, `claude/stoic-hypatia-99pell`, `claude/admiring-fermi-p13aus`. JSON-LD carries Duke's personal email (S42 fixes).
