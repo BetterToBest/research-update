@@ -66,7 +66,7 @@ Finished rows are shortened here; their full notes (dates, pull requests, result
 | 23n | S77 | Rerun S74's sweep and discount readings and S75's engine readings with the release's global settings: **done Nov 16** (full note in the S77 section; also v5.9.1, the sticky-bar fixes Duke reported) | opus | high | S76 |
 | 24 | S11 | BLEI visual series exported, visual suite rebuilt (S12 is yours) | sonnet | medium | S7 |
 | 25 | S13 | Outside audits of the release (second round), in a session that did not build round 2 and is given only the spec, reports and results (Nov 9 audit, finding 8) | opus | high (or fable, high) | S7 |
-| 26 | S24 | Corrections package landed on the Hub, PDFs rebuilt | sonnet | medium | S2, S23, S29, S30; simulation figures wait for S65 (D18) |
+| 26 | S24 | Corrections package landed on the Hub, PDFs rebuilt (**part 1 done Nov 16**; paper bodies, S29/S30 items remain) | sonnet | medium | S2, S23, S29, S30; simulation figures wait for S65 (D18) |
 | 27 | S25 | Abstracts, then paper bodies, on corrected figures (several sessions) | opus | high | S24, S46, S7; S65 for every simulation figure (D18) |
 | 28 | S40 | Hub figures generated from the release data, with a check: **done Nov 15** (research-hub PR 13 and 14: `tools/build_figures.py` reads `data/releases/current.json`; five blocks; inflation and wealth sentences on the named pages withdrawn or generated; simulation PR 122: audit wording. Temporary: engine round 3 needs the same treatment, `--fetch` with a new tag and label) | sonnet | high | S7; S65 (D18) |
 | 30 | S4 | X-cents folded into the CCO architecture | sonnet | medium | |
@@ -662,6 +662,8 @@ First pass (before S47): triage the Grok audit (I5) and run an outside-style aud
 
 ### S24 · Corrections package
 As ledger S24, plus S29's valid items, S30's provenance actions and S46's patch. Rebuild every PDF from corrected sources (32 audit passages survive only in PDFs on Oct 28). Start `corrections.html` (the corrections log), linked from every corrected page and from `/v1/`.
+
+*Nov 16, part 1 done (Hub PR 18, root site PR 3): C23-C30, the log, PDFs. Remaining: paper bodies, S29's other items, S30's actions, claims.csv; C01-C22 missing (D29). See HANDOFF.md.*
 
 ### S25 · Abstracts, then bodies
 As ledger S25. Every figure either comes from the release (S40 block), is a sourced calculation, or is labelled an illustrative projection. One paper per session if needed.
