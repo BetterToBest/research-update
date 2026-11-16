@@ -1,5 +1,0 @@
-{"doc":"hub","set":{"updated":"Nov 16"},
-"step_note":"S24 part 2 done Nov 16: C01-C22 landed (research-hub PR 19, bettertobest.github.io PR 4); S24 stays 'doing'.",
-"resolve_decisions":["D29 (package placed in audits/corrections-package.md)"],
-"add_decisions":[{"q":"C08, C09, C11, C13 (engine statements: theta gate, gamma ramp, EDC profile, $2.75 per food BU) were held; they describe the engine at v4.21. Apply as written after checking against the current engine?","opts":["Check against v5.9.x then apply or rewrite","Drop them","Apply as written"],"def":"Check against v5.9.x then apply or rewrite","why":"Default: the next S24 session checks each against the current engine and lands the true version."}],
-"log":"S24 part 2: corrections C01-C22 landed on Hub and root site (PRs 19, 4); ontology 2.4"}
