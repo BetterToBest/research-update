@@ -3,6 +3,10 @@
 ## Step status
 **S11 done.** Sub-step 4 finished: release 2's year-by-year series (job X2) are checked, stored in a new data folder, and the visual suite page opens on release 2, with release 1's view unchanged behind a switch.
 
+## Late addition (Nov 16, after S11)
+- **S78 done:** the cards and charts below the headline on the simulation's main page were blank on the live site (a start-up race: `site/simpage.js` started on a timer before the page had parsed its release data). Fixed in compassionism-simulation v5.9.3, PR 137, merged (all four checks passed; domtest count now 159). Reproduced in a browser before and after. The live site may take a few minutes to redeploy; if the cards are still blank after that, check that the page loads `simpage.js?v=5.9.3`.
+- **S79 added** (PLAN.md, after S11 in the Order table): release 2's own series for EDC, EPPM, FBS, CSI, IPBI and the measures study, so the release 2 view stops saying "release 1 only". Starts with a no-run check of what the engine can report; then a preregistered job X3 on Actions (free); then the suite page. The engine repository's own `HANDOFF.md` was not updated for v5.9.3.
+
 ## What shipped
 - compassionism-simulation PR 136 (v5.9.2): `data/releases/r2/` (suite-20.json, suite-40.json, index.json) written by `dev/tools/suite_r2.py` from `x2-5b62481`; `suite.html` gets a Release switch (release 2 default, at 40 years on C2.2; release 1 at `?rel=1`, unchanged). The release 2 view states differences between rows only as release 2's published effects with 95% intervals (copied from `data/studies/r2-effects.json`, checked equal). The five other BLEI-paper measures and the measures study say they are release 1's only. v5.6's files untouched.
 - compassionism-sim-results `x2-5b62481/` (run-study run 125, finished 21:39 UTC): six shards, each passed the release 2 check (2,931 row-keys, 1,465,500 values); `run.txt`, `SHA256SUMS` (verified), `DONE`.
