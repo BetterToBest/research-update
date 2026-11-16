@@ -17,7 +17,7 @@
 - Add every landed item to `corrections.html` (it lists C23-C30, the NPV, GDP share, S75 and S46 so far).
 
 ## In flight
-- Hub [PR 17](https://github.com/BetterToBest/research-hub/pull/17) (corrected eras page) is still open, mergeable, no checks. S77 said to merge it once compassionism-simulation PR 133 passes; this session could not see that repository's checks. Merge it first thing next session, after confirming PR 133. Until then the Hub page still says 226 of 240 and "correction pending", while the root site already says 107 of 120.
+- None. Every S77 PR is merged (compassionism-simulation 132 and 133, compassionism-sim-results 48 and 49, research-hub 17, research-update 133).
 
 ## Decisions waiting
 - D29: the corrections package C01-C22 (and its handoff) is not in the repositories; please place `corrections-package.md` in `audits/`. Default: S24 goes on without it.
