@@ -9,14 +9,14 @@
 - Ledger written (log only).
 
 ## Remains for S24
-- Draft Act section 102: "shall be automatic" vs the opt-in wording in the transfer-design paper, and whether D8 changes who receives the BU. Waits on D8 (default: keep the design as written, so nothing to do unless Duke answers).
+- Draft Act section 102: done. Duke (Nov 16): opt-in or opt-out is a policymakers' choice, and the amount follows the cost of basics, adjusted yearly. Act and transfer-design paper now say so (Hub PR 28). The yearly adjustment rule is not written into the Act; check the simulation's rule before stating it.
 - PTH financing section 8 has no figures, so nothing was changed there; the handoff item likely meant section 9 (done).
 - Check `data/optimal-parameters.json` is fully labelled per S30's table (its provenance note exists; per-value labels do not).
 - The simulation page's `CFG.TARGET_*` constants (S40 or the next engine release). Simulation figures wait for S65 (D18).
 - After any edit rebuild the PDFs (the roadmap page has none) and rerun `tools/class_claims.py`.
 
 ## Decisions waiting
-None new. D8 (who receives the BU) still gates the Draft Act's last item; the default proceeds.
+None. (D8 is the C2.2 coverage design choice, not this question; the earlier handoff cited it wrongly.)
 
 ## Next step
 S24 can be closed after the parameter-file labels; otherwise the next startable step in PLAN.md's Order table.
