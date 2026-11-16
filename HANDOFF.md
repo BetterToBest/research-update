@@ -1,33 +1,27 @@
-# Handoff (Nov 16, 2026): S24 part 5 (BLEI sensitivity, claims.csv)
+# Handoff (Nov 16, 2026): S24 part 6 (S29 headline items)
 
 ## Step status
-**S24 is partly done.** Landed: C23-C30, C01-C22, the four held items, the paper bodies for C23, C24, C26, C27, the BLEI sensitivity recompute and claims.csv. **Remains** below.
+**S24 is partly done.** Parts 1-6 landed. **Remains** below.
 
 ## What shipped
-- research-hub [PR 22](https://github.com/BetterToBest/research-hub/pull/22) (merged, cfd21df): BLEI Table 2 Month 0 column recomputed from 70.7 (`tools/blei_month0_sensitivity.py`); r_a and h_AE have no Month 0 effect (AE = 0); one prose 71.3 fixed; PDF rebuilt. Month 12 column not recomputed (needs the unstated cash-saving rate).
-- research-hub [PR 23](https://github.com/BetterToBest/research-hub/pull/23) (merged, 2aee8cc): `data/claims.csv` and summary regenerated: 10,928 figures, 2,873 no basis found.
-- research-hub [PR 21](https://github.com/BetterToBest/research-hub/pull/21) (merged, 17c8c10; the repository has no checks):
-  - Drug policy: $1.5T and $847B retired in the metadata, JSON-LD, abstract, sections 1, 4.1, 10 and the conclusions; the paper's own totals ($4,616B; $3,870B and $5,044B) are used and labelled unsourced.
-  - Real estate: penetration claim replaced by the 200,000-400,000 household rollout; $70,000 labelled a 20-year projection; the 40-60 threshold labelled an assumed break-even.
-  - PTH financing: $85,000, $68,000, 1.8-year and 10-year claims marked unsupported, with a correction note under section 2.3 (about 18.3 years, about $900 saved at the example's own payments). Homeowner C's years corrected to 19.3, average to 18.5 (the package said 18.4; the table's own numbers give 18.46).
-  - BLEI: entry 70.7 days; month 33 qualified by the saving assumption; note that Appendix B.3's EDC 0.744 would give EPPM about 8.5x.
-  - corrections.html updated; corrections link added to three papers; four PDFs rebuilt.
+- research-hub [PR 24](https://github.com/BetterToBest/research-hub/pull/24) (merged, e129ab6; the repository has no checks): of the 30 S29 headline items, 14 were already handled by earlier parts and S46 (A01, B001, B003, B005, B009, B016, B018, B033, B053, B061, B097, B098, B103, B127; B066 by C24). The rest are now labelled, qualified or withdrawn: B004, B026, B028, B036, B044, B048, B052/B096, B058, B062, B071, B075, B084, B093 (parameter file notes). Corrections log entry added; five PDFs rebuilt; `tools/class_claims.py` rerun (10,983 figures, 2,926 no basis; the rise is the new notes' own figures).
 - Ledger written (log only).
 
 ## Remains for S24
-- BLEI: Month 12 column of Table 2 and the month 60 figure.
-- PTH financing's second example (section 8: $92,000, 10 years) is only labelled unverified.
-- S29's items (`audits/corrections-additions.md`, 30 headline items first); S30's actions (`audits/early-figures.md`); rebuild PDFs and rerun `tools/class_claims.py` afterwards. Simulation figures wait for S65 (D18).
-- The real estate pay-in $168,000 vs $70,000 reconciliation and the Draft Act section 102 items (child allowance, D8) are untouched.
+- B022 (cco-ptf 5.4 "proves optimal": only the octave-doubling sentence at line 349 matches; check and restate) and B028 (Portugal: source Greenwald 2009 could not be opened, cato.org returned 403; try another copy, then restore the correct figures).
+- The 23 derivation and table items in `audits/corrections-additions.md` (A04, A06, B002, B007 ... B108) are untouched; S46 may have covered A04, A06, B013, B019, B035, B067, B070 (check the pages first).
+- S30's actions (`audits/early-figures.md`), the BLEI Month 12 column and month 60, PTH financing section 8, real estate $168,000 vs $70,000, Draft Act section 102 (D8).
+- After any edit rebuild the PDFs and rerun `tools/class_claims.py`. Simulation figures wait for S65 (D18).
 
 ## Decisions waiting
 None.
 
 ## Next step
-S24 again (sonnet, medium): apply the S29/S30 items.
+S24 again (sonnet, medium): the derivation items, then S30's actions.
 
 ## Pitfalls
-- Clone research-hub and the root site one at a time (proxy cap); both are shallow.
+- Clone research-hub one at a time (proxy cap); it is shallow.
 - `/v1/` stays frozen.
 - The GitHub plugin server failed to connect; the `mcp__github__*` tools worked.
+- Many S29 "live" rows were stale (fixed by earlier parts); grep the page before editing.
 - Old remote branches still need deleting by hand: research-update `claude/s66-low-share-trace`, `claude/jolly-davinci-dbcv2x`, `claude/stoic-hypatia-99pell`, `claude/admiring-fermi-p13aus`.
