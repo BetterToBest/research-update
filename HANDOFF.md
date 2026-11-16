@@ -5,7 +5,7 @@
 
 ## What shipped
 - research-update: `prereg/2026-11-s75-deep-history.md` (committed before any figure), with Amendment 1 (after the downloads, before any figure: Holm over all 14 measures, series coverage and splices, the sources that did not open); PLAN.md S75 part 1 note.
-- [compassionism-simulation PR 128](https://github.com/BetterToBest/compassionism-simulation/pull/128) (c5759be): `sources/s75_eras.py` -> `sources/s75_eras.json` and `dev/runs/s75-panel/tables.md`; raw files in `sources/s75_eras/raw/` (SHA-256 in `_meta`; `check` mode rebuilds identically); note `dev/reports/s75-panel.md`. No engine change.
+- [compassionism-simulation PR 128](https://github.com/BetterToBest/compassionism-simulation/pull/128) (merged, 8c38995; commits c5759be and 54e88bc): `sources/s75_eras.py` -> `sources/s75_eras.json` and `dev/runs/s75-panel/tables.md`; raw files in `sources/s75_eras/raw/` (SHA-256 in `_meta`; `check` mode rebuilds identically); note `dev/reports/s75-panel.md`. No engine change.
 - [compassionism-sim-results PR 44](https://github.com/BetterToBest/compassionism-sim-results/pull/44) (merged): `s75-panel-c5759be`. [PR 45](https://github.com/BetterToBest/compassionism-sim-results/pull/45) (merged): `s75-panel-54e88bc`, which supersedes it (adds hospital ownership and SCF+; every earlier figure unchanged).
 - Later the same day, Duke supplied the missing sources: the Historical Statistics' hospitals by ownership (1946-1997), Health, United States 2017 Table 82, the November 1973 Social Security Bulletin (Pettengill), and the SCF+ working paper (Kuhn, Schularick and Steins 2018). Prereg Amendments 2 and 3 were written before any figure from them (with a dated correction: 1968, not 1970, is Pettengill's estimated year). They are in the panel at 54e88bc (PR 128).
 
@@ -18,7 +18,7 @@
 - The fitted rate rule: phi 0.45-0.65 before 1984 (below one for one), 1.3 in 1984-2007, about 0 in 2008-2025 (the floor, then a late rise).
 
 ## In flight
-- Nothing running. PR 128 (now at 54e88bc) had its checks running at the end of the session; this session is subscribed, and merges it with a merge commit once green.
+- Nothing. compassionism-simulation PR 128 merged once its checks (checks, guard) passed on 54e88bc (merge commit 8c38995, so c5759be and 54e88bc stay on main).
 
 ## Decisions waiting
 - None. D28 (hospital ownership file) is answered: Duke supplied the sources.
