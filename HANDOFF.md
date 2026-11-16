@@ -1,28 +1,31 @@
-# Handoff (Nov 16, 2026): S24 part 3 (held engine statements landed)
+# Handoff (Nov 16, 2026): S24 part 4 (paper bodies landed)
 
 ## Step status
-**S24 is partly done.** Landed: C23-C30, C01-C22, and now the four held items (C08, C09, C11, C13) and the AI files' `features` list. **Remains** below.
+**S24 is partly done.** Landed: C23-C30, C01-C22, the four held items, and now the paper bodies for C23, C24, C26, C27. **Remains** below.
 
 ## What shipped
-- research-hub [PR 20](https://github.com/BetterToBest/research-hub/pull/20) (merged, 141b2ec): C08, C09, C11, C13 on `index.html` and `research-summary.html`, log entries in `corrections.html`. Each was checked against simulation v5.9.1 (engine c890ba3):
-  - C08: the shipped engine gates θ on the SZH zone-coherence slider; the harness has an off-by-default `THETA_GATE='density'` switch for the restudy. Text says both.
-  - C09: engine gives γ 0.20 to CCO participants from enrollment, 0.12 to others (`index.html` line 2770). Package text is right.
-  - C11: 0.025 is an engine input (`FBS_EDC_RESIDUAL_PTH`); 0.62 is the paper's profile, not a measured baseline. Package text is right.
-  - C13: engine credits $990 (BU x 990/1200); $2.75 stays labelled an assumption differing from ε_food 2.64. Package text is right.
-- bettertobest.github.io [PR 5](https://github.com/BetterToBest/bettertobest.github.io/pull/5) (merged, 6b648b7): C17 `features` list (validation suite is six checks; "13-source" count dropped, not re-verified).
-- Neither repository has checks. Ledger written (D29 resolved, log, left); `ledger-sync/` emptied.
+- research-hub [PR 21](https://github.com/BetterToBest/research-hub/pull/21) (merged, 17c8c10; the repository has no checks):
+  - Drug policy: $1.5T and $847B retired in the metadata, JSON-LD, abstract, sections 1, 4.1, 10 and the conclusions; the paper's own totals ($4,616B; $3,870B and $5,044B) are used and labelled unsourced.
+  - Real estate: penetration claim replaced by the 200,000-400,000 household rollout; $70,000 labelled a 20-year projection; the 40-60 threshold labelled an assumed break-even.
+  - PTH financing: $85,000, $68,000, 1.8-year and 10-year claims marked unsupported, with a correction note under section 2.3 (about 18.3 years, about $900 saved at the example's own payments). Homeowner C's years corrected to 19.3, average to 18.5 (the package said 18.4; the table's own numbers give 18.46).
+  - BLEI: entry 70.7 days; month 33 qualified by the saving assumption; note that Appendix B.3's EDC 0.744 would give EPPM about 8.5x.
+  - corrections.html updated; corrections link added to three papers; four PDFs rebuilt.
+- Ledger written (log only).
 
 ## Remains for S24
-- Paper bodies: C23, C26, C24, C27, BLEI worked examples (the $2.75 / 0.625 figures may also sit in the BLEI paper); S29's items (`audits/corrections-additions.md`); S30's actions; regenerate `data/claims.csv` (`tools/class_claims.py`); rebuild PDFs for any paper changed.
-- The package's ledger CSVs were offered by Duke; not needed yet.
+- BLEI: the Month 0 sensitivity entries (Table 2) were computed from 71.3 and still need recomputing from 70.7. The paper's other 71.3 mentions (grep) and month 60 figure were not touched.
+- PTH financing's second example (section 8: $92,000, 10 years) is only labelled unverified.
+- S29's items (`audits/corrections-additions.md`); S30's actions; regenerate `data/claims.csv` (`tools/class_claims.py`); rebuild PDFs for any paper changed.
+- The real estate pay-in $168,000 vs $70,000 reconciliation and the Draft Act section 102 items (child allowance, D8) are untouched.
 
 ## Decisions waiting
-None. (The held-items question was answered by checking, so it was not added.)
+None.
 
 ## Next step
-S24 again (sonnet, medium): paper bodies first, then S29/S30 items and claims.csv.
+S24 again (sonnet, medium): S29/S30 items and claims.csv.
 
 ## Pitfalls
 - Clone research-hub and the root site one at a time (proxy cap); both are shallow.
 - `/v1/` stays frozen.
+- The GitHub plugin server failed to connect; the `mcp__github__*` tools worked.
 - Old remote branches still need deleting by hand: research-update `claude/s66-low-share-trace`, `claude/jolly-davinci-dbcv2x`, `claude/stoic-hypatia-99pell`, `claude/admiring-fermi-p13aus`.
