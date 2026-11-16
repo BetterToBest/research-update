@@ -1,26 +1,29 @@
-# Handoff (Nov 16, 2026): S11 (BLEI visuals), sub-steps 1-3 done; the release 2 series run is on Actions
+# Handoff (Nov 16, 2026): S11 (BLEI visuals) done; the visual suite opens on release 2
 
 ## Step status
-**S11 partly done.** The tool, the preregistration and the runner job are landed, and the 500-seed run of release 2's main row is running on GitHub Actions (free). Left: sub-step 4, rebuilding `suite.html` from the new series once the run is done.
+**S11 done.** Sub-step 4 finished: release 2's year-by-year series (job X2) are checked, stored in a new data folder, and the visual suite page opens on release 2, with release 1's view unchanged behind a switch.
 
 ## What shipped
-- compassionism-simulation PR 135 (merged, engine commit `5b62481`): `dev/tools/explore_export.js --r2`. It runs release 2's three main rows (no programme, C2.2, release design) the way the round-2 batch's part M ran them, and stops unless every engine output key, row by row and seed by seed, equals release 2's stored part M values. So the new run is release 2 exactly, even on today's engine (round-3 switches present, off). Reporting only; old modes give identical output; decision in `dev/DECISIONS.md`.
-- compassionism-sim-results PR 50 (merged, `52f8f0d`): `runner/jobs/series-r2.js`.
-- research-update PR 152: `prereg/2026-11-x2-series-addendum.md` (job X2), committed before the run; this handoff; the PLAN.md S11 note.
+- compassionism-simulation PR 136 (v5.9.2): `data/releases/r2/` (suite-20.json, suite-40.json, index.json) written by `dev/tools/suite_r2.py` from `x2-5b62481`; `suite.html` gets a Release switch (release 2 default, at 40 years on C2.2; release 1 at `?rel=1`, unchanged). The release 2 view states differences between rows only as release 2's published effects with 95% intervals (copied from `data/studies/r2-effects.json`, checked equal). The five other BLEI-paper measures and the measures study say they are release 1's only. v5.6's files untouched.
+- compassionism-sim-results `x2-5b62481/` (run-study run 125, finished 21:39 UTC): six shards, each passed the release 2 check (2,931 row-keys, 1,465,500 values); `run.txt`, `SHA256SUMS` (verified), `DONE`.
+- research-update: PLAN.md S11 note and Order row; this handoff.
+
+## Checks
+validate; unit (384); domtest 158/158 (counts written); the figure check covers the release 2 view (3,648 numbers in 12 views) and `suite_r2.py --check`. One more cross-check: the year-average same-rules share under 30 days in the new series equals release 2's published basic-living figure in all 18 row-environment-horizon cells. Looked at 390 px light and 1280 px dark.
 
 ## In flight
-- run-study workflow run 125 in compassionism-sim-results (dispatched 21:03 UTC): study `x2`, engine `5b62481326f3b82cc714e20e4cd4ec3726357dd2`, job `series-r2.js --env=all --years=20,40 --n=500`, seeds 1-6, 6 shards (one per environment and horizon, 500 seeds each). Plan job passed; shards were queued when checked. Expected 0.5-1.5 hours a shard.
-- Results land in `x2-5b62481/` on compassionism-sim-results main; finished when `x2-5b62481/DONE` exists. A shard that fails the release 2 comparison exits with an error and the folder is never written.
+Nothing, unless PR 136's CI was still running at session end (see the last line of the LEDGER NOTE in the chat; if it is open, merge it once checks pass).
 
 ## Decisions waiting
-Nothing new. D30 answered (new run on Actions). S12 (which visuals go on which page) stays Duke's.
+S12 (which visuals go on which page) stays Duke's. Nothing new.
 
 ## Next step
-S11 again, sub-step 4: check `x2-5b62481/` (`run.txt`, `SHA256SUMS`, each shard's `_meta.selfCheck` says "every engine key ... equals release 2's part M"), then rebuild `suite.html` as a new release data folder, keeping v5.6's files untouched. If run 125 failed, read the failing shard's log first; the prereg's decision rules say what to do (new study id `x2b`, dated amendment).
+S13 (outside audits of the release, second round): next in the Order table; S7 is done.
 
 ## Pitfalls
-- Do not mix engines on one page: job X (`x-ce8d030`, frozen round-1 rows) and X2 (release 2, engine 104691f re-run at 5b62481) are different models. Label each panel.
-- The suite files hold levels with the 10th-90th percentile spread across seeds, not paired differences: any statement comparing rows quotes release 2's published effects (`r2-tables-104691f`).
-- The engine's `dev/CODEMAP.md` is stale (rebuilding it changes about 700 lines unrelated to this step); left as it was.
-- The GitHub plugin server failed to connect at session start; the deferred `mcp__github__*` tools worked.
+- Release 1 and release 2 are different models: the page never draws them on one chart; release 1's `release` row and release 2's `release` row mean different things (backing reading vs. design). Switching release resets the design to that release's default.
+- Wealth effects are not quoted on the suite page: release 2's rule puts the erosion share beside every wealth figure, and the findings page carries it.
+- On a phone the sticky bar is now four rows (Release, Environment, Years, Compassionism); fine at 390 px but tall. A candidate for S41-style tidying if Duke finds it heavy.
+- PLAN.md's Order table still said S7's PR 119 was "merge pending"; it merged Nov 15 (fixed here), so S13 can start.
+- The engine's `dev/CODEMAP.md` is still stale (left as it was).
 - Old remote branches to delete by hand: research-update `claude/s66-low-share-trace`, `claude/jolly-davinci-dbcv2x`, `claude/stoic-hypatia-99pell`, `claude/admiring-fermi-p13aus`. JSON-LD carries Duke's personal email (S42 fixes).
