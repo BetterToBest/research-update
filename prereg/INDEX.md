@@ -157,12 +157,12 @@ The Nov 13 audit (`audits/2026-11-13-simulation-audit.md`, finding 3) and S60's 
 
 Sections (line): Why 5 · What the engine does today (read before this fil 8 · Sources opened (Nov 14, 2026; `sources/s73_lf_fl 12 · What is built (options of `lf`; off by default) 21 · Unit tests (written with the build) 27 · Pilot (100 seeds; session machine, free) 30 · Decision rules (fixed now) 39 · Unpaid work (Duke's note, ledger Nov 13) 47 · Limits stated in advance 50 · Amendments 58 · Amendment 1 (Nov 14, 2026, after the build and b 60
 
-## 2026-11-s74-central-bank.md (113 lines)
+## 2026-11-s74-central-bank.md (123 lines)
 Preregistration: the central bank in both runs, a 2005-2025 history environment, and the stability test (S74)
 
 Neither run has a central bank.
 
-Sections (line): Why 5 · What the engine does today (read before this fil 8 · Sources opened (Nov 14, 2026) 14 · What is built (switches off by default; off = id 24 · Unit tests (written with the build) 46 · Pilot (100 seeds; session machine, free) 56 · Outcomes 60 · Analysis 73 · Decision rules (fixed now) 78 · Limits stated in advance 84 · Amendments 90 · Amendment 1 (Nov 15, 2026, S74 part 2: after the 93
+Sections (line): Why 5 · What the engine does today (read before this fil 8 · Sources opened (Nov 14, 2026) 14 · What is built (switches off by default; off = id 24 · Unit tests (written with the build) 46 · Pilot (100 seeds; session machine, free) 56 · Outcomes 60 · Analysis 73 · Decision rules (fixed now) 78 · Limits stated in advance 84 · Amendments 90 · Amendment 1 (Nov 15, 2026, S74 part 2: after the 93 · Amendment 2 (Nov 16, 2026, S74 part 3: after the 114
 
 ## 2026-11-security-addendum.md (83 lines)
 Preregistration addendum: security outcomes beyond wealth, and the per-year series for public costs (S53, study P, for S47)
