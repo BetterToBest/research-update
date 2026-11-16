@@ -24,5 +24,6 @@ S13 (outside audits of the release, second round): next in the Order table; S7 i
 - Release 1 and release 2 are different models: the page never draws them on one chart; release 1's `release` row and release 2's `release` row mean different things (backing reading vs. design). Switching release resets the design to that release's default.
 - Wealth effects are not quoted on the suite page: release 2's rule puts the erosion share beside every wealth figure, and the findings page carries it.
 - On a phone the sticky bar is now four rows (Release, Environment, Years, Compassionism); fine at 390 px but tall. A candidate for S41-style tidying if Duke finds it heavy.
+- PLAN.md's Order table still said S7's PR 119 was "merge pending"; it merged Nov 15 (fixed here), so S13 can start.
 - The engine's `dev/CODEMAP.md` is still stale (left as it was).
 - Old remote branches to delete by hand: research-update `claude/s66-low-share-trace`, `claude/jolly-davinci-dbcv2x`, `claude/stoic-hypatia-99pell`, `claude/admiring-fermi-p13aus`. JSON-LD carries Duke's personal email (S42 fixes).
