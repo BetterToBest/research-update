@@ -1,29 +1,23 @@
-# Handoff (Nov 16, 2026): S4 revised (X-Cents in the AI section; Findings section removed)
+# Handoff (Nov 16, 2026): S11 (BLEI visuals), checked only; build waits on one basis choice
 
 ## Step status
-**S4 is done** in the Hub. The x-cents site's own link back to the Hub (x-cents ledger S7) is not done; see Decisions waiting.
+**S11 is partly done (no code or data changed).** Done: I1's list is confirmed. The frozen-engine series (job X, result folder `x-ce8d030` in compassionism-sim-results, engine ce8d030, 500 seeds, 20 and 40 years, Reference/Adverse/Stress; SHA256SUMS verify) already holds every series I1 asks for: BLEI tier shares (all adults, participants, non-participants), median BLEI and its three parts (medians and means), relative income poverty, extreme poverty, share taking part, by year with 10th/90th percentiles. Nothing new needs exporting from `explore_export.js`.
+Not done: rebuilding the visual suite (`suite.html`) from them. Reason: the series do not fit the page as it stands (see Decisions waiting). S7 is confirmed done (compassionism-simulation PR 119 merged Nov 15; manifest now at 5.9).
 
 ## What shipped
-- research-hub [PR 32](https://github.com/BetterToBest/research-hub/pull/32) (merged, bd557d2): X-Cents glossary entry, quick-reference link, wiki search entry (the front-page article from this PR was removed again in PR 33).
-- research-hub [PR 33](https://github.com/BetterToBest/research-hub/pull/33) (merged, 2d9d39d; no CI; `apply_site_shell.py --check` and `build_figures.py --check` pass), Duke's revision:
-  - Front page: X-Cents article gone, X-Cents card in Tools kept. X-Cents is now a system definition in the "For AI systems" section (currency assurance system, low-tech, CIP as proposed steward, proposal not simulated). Its summary line now reads v2.4 to match the ontology version below it, which already said 2.4 (updated 2026-11-16).
-  - Findings section, nav link and hero button removed (nav entry removed in `tools/apply_site_shell.py`, so all seven pages lost it). The Wiki & Documentation list's Simulation link now goes to the Simulation Findings page. `build_figures.py` now finds 5 blocks (none on the front page).
+Nothing merged except this handoff.
 
 ## In flight
 Nothing.
 
 ## Decisions waiting
-None. S43 is blocked by Duke in the ledger. Not done: `ai-index.json`, `research-index.json` and `llms.txt` (bettertobest.github.io) do not yet list X-Cents in the ontology; S42 owns that (it needs ontology v2.4 and the x-cents definition). The x-cents site's link back to the Hub is also not done (CLAUDE.md: linked, not edited).
+- D30 (new): which engine and rows the rebuilt suite shows. Default proceeds: the frozen series as they are (job X, no programme / C2.2 design / release design), no new run.
 
 ## Next step
-S11 (BLEI visuals, sonnet, medium; S7 is done). S43 is skipped (blocked). Then S42 (waits on S43 in the plan; ask Duke), S44.
+S11 again once D30 is answered or its default is taken, as the next session's first act (default needs no new run: add the three-row frozen series as a new release data folder, adapt `suite.html`'s reading selector and its panel paths, keep v5.6's files untouched, then S12 is yours). Otherwise S42 (waits on S43, blocked; ask Duke), S44.
 
 ## Pitfalls
-- The page JSON-LD blocks still carry Duke's personal email (front page, wiki index); S42 generates them from the manifest, so change it there.
-- OEIAS is not yet in the machine-readable files' front-page JSON-LD or the sitemap (S42 owns those).
-- Clone research-hub one at a time (proxy cap); it is shallow.
-- Pages in scope now load `assets/site.css`; do not add inline header or footer markup, run `python3 tools/apply_site_shell.py` instead. A new page needs an entry in that script's PAGES table and the three SHELL marker blocks.
-- The Hub front page's figures block is owned by `tools/build_figures.py`.
-- The GitHub plugin server failed to connect again; `mcp__github__*` tools worked (load them with ToolSearch).
-- The Draft Act's yearly adjustment rule is not written into the Act; check the simulation's rule before stating it.
-- Old remote branches still need deleting by hand: research-update `claude/s66-low-share-trace`, `claude/jolly-davinci-dbcv2x`, `claude/stoic-hypatia-99pell`, `claude/admiring-fermi-p13aus`.
+- X's `selfCheck` says "NOT COMPARED WITH A PANEL"; S48 compared it with the merged frozen panel afterwards (`panel-frz-ce8d030`). Re-run `--panel` comparison when rebuilding.
+- `suite.html` reads rows release/mid/h1 and pairs each with the release panel (v5.6, not frozen); X has rows base/c22/release on the frozen model. Mixing them would put unlike figures side by side. Use the frozen panel for the page's panel paths.
+- X does not cover release 2's main row (engine 104691f); the Hub and simulation page now lead with release 2.
+- Hub and other pitfalls from the earlier handoff stand: JSON-LD carries Duke's personal email (S42 fixes), clone one repository at a time, X-Cents ontology entries in the machine-readable files belong to S42; old remote branches still to delete by hand: research-update `claude/s66-low-share-trace`, `claude/jolly-davinci-dbcv2x`, `claude/stoic-hypatia-99pell`, `claude/admiring-fermi-p13aus`.
