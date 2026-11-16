@@ -1,35 +1,22 @@
-# Handoff (Nov 16, 2026): S41 follow-ups after Duke's review of the front page and wiki
+# Handoff (Nov 16, 2026): S4 X-cents folded into the CCO architecture
 
 ## Step status
-**S41 is done.** One shared stylesheet, header and footer now serve the Hub front page, the papers index and the five wiki pages. The 20 paper pages still use the old `styles.css` (not in the step); `/v1/` is untouched.
-Duke's review notes (below) are done in research-hub PR 31 and compassionism-simulation PR 134.
+**S4 is done** in the Hub. The x-cents site's own link back to the Hub (x-cents ledger S7) is not done; see Decisions waiting.
 
 ## What shipped
-- research-hub [PR 30](https://github.com/BetterToBest/research-hub/pull/30) (merged, ced5cdf; the repository has no checks).
-  - `assets/site.css`, `assets/site.js`: light and dark (system setting plus a header button), mobile menu, focus rings, wiki header search kept and now shown on phones.
-  - `tools/apply_site_shell.py` (`--check` passes) owns the header, footer and head links in the seven pages; edit its template, never the blocks.
-  - Front page order: what Compassionism is, findings (the generated `r2-inflation` block; `build_figures.py --check` passes), papers, key concepts, tools (Simulation, CIP portal, X-Cents, NEEC), documentation, authors, how to help.
-  - axe-core (WCAG A/AA plus best practice), seven pages, light and dark, 1280 and 390 wide: no serious or critical findings, no horizontal scroll.
-  - Screenshots (light, dark, mobile) in `docs/s41-screenshots/`.
-- Prose changes, all navigation or link blurbs: front page heading "About The Research Initiative" is now "What Compassionism Is"; one intro line above the findings block; card blurbs copied from the portal, X-Cents and NEEC pages' own descriptions; emoji dropped from the two wiki guide titles.
-
-- Follow-ups, research-hub [PR 31](https://github.com/BetterToBest/research-hub/pull/31) (merged, 0b9f5a1):
-  - The Economic System Comparison section is gone (NEEC has its Tools card; the Medium article link went with it).
-  - Each of the five architecture cards jumps to its own concept. Findings now follows Key Concepts; nav, hero buttons and page order agree (Papers, Findings, Tools, Wiki, Get involved). Duke was unsure it belonged: kept, one block, easy to drop.
-  - Findings block read from v5.9.1 (Release 2's data files are byte-identical to v5.8.0's, same SHA-256), so the label changed and no figure did. The four papers carrying the block have rebuilt PDFs.
-  - Space beneath each front-page section is about half (124 px to about 60 px).
-  - OEIAS added: front page, Architectural Index, wiki index and FAQ, glossary usage note. It supplements Compassionism and CCO-PTF-PTH-CIP-SZH (NEEC: old label for the earlier simulation, OEIAS for the latest).
-  - Wiki banner: November 2026, Simulation Apache 2.0. The shared footer (all seven pages) says the same and now gives BetterToBestResearch@gmail.com instead of Duke's address.
-- compassionism-simulation [PR 134](https://github.com/BetterToBest/compassionism-simulation/pull/134): OEIAS in the simulation, findings and replication glossaries (pages only; no version bump). Merged (297ef98; checks and guard green). Nothing else open.
+- research-hub [PR 32](https://github.com/BetterToBest/research-hub/pull/32) (merged, bd557d2; the repository has no checks; `apply_site_shell.py --check` and `build_figures.py --check` pass).
+  - Front page, Key Concepts: a new X-Cents article after CCO. It says what Duke asked: X-Cents was designed as a currency assurance system for places where the monetary system has failed and the government will not introduce CCO or a similar reform; it is low-tech (cash and coins) and can be supported by high-tech systems such as CIP. Checked against the x-cents page (the #portal section's caveat is kept: CIP integrations are proposals, still to be specified and piloted).
+  - Glossary entry and quick-reference link; wiki search entry.
+  - Labelled a proposal; the Simulation does not model it, so no figure is claimed (basis class: none needed).
 
 ## In flight
 Nothing.
 
 ## Decisions waiting
-None.
+None. Small follow-up, no decision needed: x-cents is "linked, not edited" in CLAUDE.md, so I did not edit it. A one-line link from its page to `research-hub/wiki/glossary.html#x-cents` (x-cents ledger S7) needs Duke's go-ahead or a plan line that names the x-cents repository.
 
 ## Next step
-S4 (X-cents folded into the CCO architecture, sonnet, medium; first in the Order table), then S43 (links and publications, sonnet, medium; D3 was answered Nov 1). The front page already links the portal, X-Cents, NEEC and the Simulation; S43 adds the publications page and the wiki links. Then S42, S44 (S44 also needs S65, done).
+S43 (links and publications, sonnet, medium; D3 answered Nov 1): the publications page and wiki links. Then S42 (add the new glossary entry to the manifest), S44.
 
 ## Pitfalls
 - The page JSON-LD blocks still carry Duke's personal email (front page, wiki index); S42 generates them from the manifest, so change it there.
