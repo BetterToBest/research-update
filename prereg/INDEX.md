@@ -164,7 +164,7 @@ Neither run has a central bank.
 
 Sections (line): Why 5 · What the engine does today (read before this fil 8 · Sources opened (Nov 14, 2026) 14 · What is built (switches off by default; off = id 24 · Unit tests (written with the build) 46 · Pilot (100 seeds; session machine, free) 56 · Outcomes 60 · Analysis 73 · Decision rules (fixed now) 78 · Limits stated in advance 84 · Amendments 90 · Amendment 1 (Nov 15, 2026, S74 part 2: after the 93 · Amendment 2 (Nov 16, 2026, S74 part 3: after the 114 · Amendment 3 (Nov 16, 2026, after S74's report: t 124
 
-## 2026-11-s75-deep-history.md (120 lines)
+## 2026-11-s75-deep-history.md (122 lines)
 Preregistration: deep history: US policy eras and their stability (S75)
 
 Duke's view (planning chat, Nov 13): 2005-2025 was less stable than the decades before it, and earlier eras had different policy settings worth comparing (much higher statutory top tax rates in the 1950s; health care fin
