@@ -73,6 +73,13 @@ Sep 27, 2026 · Compassionism Simulation, next round, workstream B · hub repos 
 
 Sections (line): What was checked 9 · C23. Drug policy blurb: retire both figures 29 · C24. Real estate blurb: restate 46 · C25. Development blurb: retire the ROI figure 64 · C26. PTH financing blurb: retire $85,000, restat 80 · C27. BLEI table row: correct the entry figure, q 99 · C28. Flourishing-entry horizon: label as illustr 114 · C29. FBS $2,281: keep, and say what it assumes 124 · C30. Gini targets: name the measure (d20, decide 132 · Found, for the paper-body pass (no summary chang 153
 
+## corrections-package.md (195 lines)
+Corrections package: AI-facing files, front page and research summary
+
+**C01.
+
+Sections (line): How to use it 7 · Items 13 · Why, and the options for each decision 40 · List 1: AI-facing files 86 · List 2: Pages for readers 169 · Not in this package 192
+
 - `early/` (folder, 11 files)
 ## early-figures.md (172 lines)
 Where the early figures came from (S30)
