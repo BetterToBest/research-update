@@ -5,7 +5,7 @@
 **S40 and S65 are done** (parallel session). The Hub's other made-up results belong to S24 and S25.
 
 ## What shipped
-- [compassionism-simulation PR 123](https://github.com/BetterToBest/compassionism-simulation/pull/123): History environment `hx` (`HISTORY_ENV`, `var HX` from `sources/s74_history.json`; `hx.rp 'infl'` is History with no central bank), the policy-rate rule `cb`, forced sales `cb.fs`, and stability measures (study option `stab`, `ST74_KEYS`). 15 unit tests (`s74UnitSuite`). Guard test identical; round-2 main pair identical (`dev/tools/s74_offsig.js`); on-together tests 172 rows x 4 environments pass; engine lineage linked. Decisions are in `dev/DECISIONS.md` (S74). Notes: `dev/reports/s74-design-reading.md` and `dev/reports/s74-pilot.md`.
+- [compassionism-simulation PR 123](https://github.com/BetterToBest/compassionism-simulation/pull/123) (merged, 1102b9c): History environment `hx` (`HISTORY_ENV`, `var HX` from `sources/s74_history.json`; `hx.rp 'infl'` is History with no central bank), the policy-rate rule `cb`, forced sales `cb.fs`, and stability measures (study option `stab`, `ST74_KEYS`). 15 unit tests (`s74UnitSuite`). Guard test identical; round-2 main pair identical (`dev/tools/s74_offsig.js`); on-together tests 172 rows x 4 environments pass; engine lineage linked. Decisions are in `dev/DECISIONS.md` (S74). Notes: `dev/reports/s74-design-reading.md` and `dev/reports/s74-pilot.md`.
 - [compassionism-sim-results PR 41](https://github.com/BetterToBest/compassionism-sim-results/pull/41) (merged): `s74-cb-5f11ceb`, the pilot (100 seeds, four environments, both designs).
 - research-update: prereg Amendment 1 (Nov 15, before the pilot).
 - S40 (parallel): research-hub PRs 13 and 14 (merged; generator and withdrawn figures); compassionism-simulation PR 121 (merged) and PR 122 (audit wording; merge once green).
@@ -17,7 +17,7 @@
 - History checks: top 1% share matches the DFA; the bottom 50% share has the right direction but a different size; basket and wealth poverty rise where official poverty fell (does not match; reported, nothing tuned).
 
 ## In flight
-- PR 123's checks (`checks`, `guard`) on 8cbfbd8. Merge once green. If they fail, the PR stays open (see Pitfalls).
+- Nothing. (Simulation PR 122, the parallel session's audit wording, was still open at the end of this session: merge it once green.)
 
 ## Decisions waiting
 - None.
