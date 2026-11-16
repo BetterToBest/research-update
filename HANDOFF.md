@@ -1,22 +1,22 @@
-# Handoff (Nov 16, 2026): S4 X-cents folded into the CCO architecture
+# Handoff (Nov 16, 2026): S4 revised (X-Cents in the AI section; Findings section removed)
 
 ## Step status
 **S4 is done** in the Hub. The x-cents site's own link back to the Hub (x-cents ledger S7) is not done; see Decisions waiting.
 
 ## What shipped
-- research-hub [PR 32](https://github.com/BetterToBest/research-hub/pull/32) (merged, bd557d2; the repository has no checks; `apply_site_shell.py --check` and `build_figures.py --check` pass).
-  - Front page, Key Concepts: a new X-Cents article after CCO. It says what Duke asked: X-Cents was designed as a currency assurance system for places where the monetary system has failed and the government will not introduce CCO or a similar reform; it is low-tech (cash and coins) and can be supported by high-tech systems such as CIP. Checked against the x-cents page (the #portal section's caveat is kept: CIP integrations are proposals, still to be specified and piloted).
-  - Glossary entry and quick-reference link; wiki search entry.
-  - Labelled a proposal; the Simulation does not model it, so no figure is claimed (basis class: none needed).
+- research-hub [PR 32](https://github.com/BetterToBest/research-hub/pull/32) (merged, bd557d2): X-Cents glossary entry, quick-reference link, wiki search entry (the front-page article from this PR was removed again in PR 33).
+- research-hub [PR 33](https://github.com/BetterToBest/research-hub/pull/33) (merged, 2d9d39d; no CI; `apply_site_shell.py --check` and `build_figures.py --check` pass), Duke's revision:
+  - Front page: X-Cents article gone, X-Cents card in Tools kept. X-Cents is now a system definition in the "For AI systems" section (currency assurance system, low-tech, CIP as proposed steward, proposal not simulated). Its summary line now reads v2.4 to match the ontology version below it, which already said 2.4 (updated 2026-11-16).
+  - Findings section, nav link and hero button removed (nav entry removed in `tools/apply_site_shell.py`, so all seven pages lost it). The Wiki & Documentation list's Simulation link now goes to the Simulation Findings page. `build_figures.py` now finds 5 blocks (none on the front page).
 
 ## In flight
 Nothing.
 
 ## Decisions waiting
-None. Small follow-up, no decision needed: x-cents is "linked, not edited" in CLAUDE.md, so I did not edit it. A one-line link from its page to `research-hub/wiki/glossary.html#x-cents` (x-cents ledger S7) needs Duke's go-ahead or a plan line that names the x-cents repository.
+None. S43 is blocked by Duke in the ledger. Not done: `ai-index.json`, `research-index.json` and `llms.txt` (bettertobest.github.io) do not yet list X-Cents in the ontology; S42 owns that (it needs ontology v2.4 and the x-cents definition). The x-cents site's link back to the Hub is also not done (CLAUDE.md: linked, not edited).
 
 ## Next step
-S43 (links and publications, sonnet, medium; D3 answered Nov 1): the publications page and wiki links. Then S42 (add the new glossary entry to the manifest), S44.
+S11 (BLEI visuals, sonnet, medium; S7 is done). S43 is skipped (blocked). Then S42 (waits on S43 in the plan; ask Duke), S44.
 
 ## Pitfalls
 - The page JSON-LD blocks still carry Duke's personal email (front page, wiki index); S42 generates them from the manifest, so change it there.
