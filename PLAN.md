@@ -70,7 +70,7 @@ Finished rows are shortened here; their full notes (dates, pull requests, result
 | 27 | S25 | Abstracts, then paper bodies, on corrected figures (several sessions) | opus | high | S24, S46, S7; S65 for every simulation figure (D18) |
 | 28 | S40 | Hub figures generated from the release data, with a check: **done Nov 15** (research-hub PR 13 and 14: `tools/build_figures.py` reads `data/releases/current.json`; five blocks; inflation and wealth sentences on the named pages withdrawn or generated; simulation PR 122: audit wording. Temporary: engine round 3 needs the same treatment, `--fetch` with a new tag and label) | sonnet | high | S7; S65 (D18) |
 | 30 | S4 | X-cents folded into the CCO architecture | sonnet | medium | |
-| 31 | S41 | Site and wiki design refresh | sonnet | high | S40 |
+| 31 | S41 | Site and wiki design refresh: **done Nov 16** (research-hub PR 30: `assets/site.css`, `assets/site.js`, `tools/apply_site_shell.py`; front page now has findings and tools sections with the portal, X-Cents and NEEC cards, so S43 only adds the publications page and the wiki links) | sonnet | high | S40 |
 | 32 | S43 | Links and publications: portal, x-cents, NEEC, Academia papers | sonnet | medium | D3 (answered in the ledger's message box, Nov 1) |
 | 33 | S42 | Machine-readable files regenerated from one manifest | sonnet | medium | S43 |
 | 34 | S44 | Hub v2 fresh-eyes review | opus | high | S40-S43; S65 (D18) |
