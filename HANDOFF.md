@@ -1,40 +1,37 @@
-# Handoff (Nov 17, 2026): S80 part 1 done (reader-facing wording on the pages, the Hub and the root site)
+# Handoff (Nov 17, 2026): S80 done (reader-facing wording, part 2), and the suite chart fix (v5.9.8)
 
 ## Step status
-**S80 partly done.** Everything a reader sees on the Simulation's pages, the Research Hub and the root site now uses versions by number, plain design names and no step codes. **Part 2 remains:** CHANGELOG.md (130 occurrences) and the 95 reports in `dev/reports/` (about 1,400).
-
-## Names (compassionism-simulation `dev/DECISIONS.md`, "reader-facing names")
-- Release 1 is **v5.6**; its panel was published Oct 14.
-- Release 2 is **v5.9**: frozen Nov 14, first shown in v5.8, leading since v5.9. "Round 2 of the engine" is the v5.9 model.
-- "C2.2" is **the full-coverage design**. NEEC's criterion C2.2 is named once, where the design is introduced.
-- "The release design" is **the opt-in design**.
-- Studies are named by subject (the central-bank study, …).
-- Kept as they were: anchors, `?rel=1`, file and folder names, and the labels stored in data files. The pages map stored labels when they print them.
+**S80 done.** Part 2 reworded CHANGELOG.md and the reports in `dev/reports/`: 1,516 occurrences, now none. The check covers every file a reader opens, with nothing pending. Duke also reported a one-colour chart on the suite page. It is fixed in v5.9.8, and the weighted follow-up is a new step, S81.
 
 ## What shipped
-- compassionism-simulation PR 141 (v5.9.6, merged `c515d4e`):
-  - the pages, `site/*.js`, glossary, manifest summaries (with `release_data.py`), study text (with `study_data.py`) and CONTRIBUTING;
-  - inventory `dev/reports/reader-wording.md`;
-  - checks `dev/tools/reader_check.js` (every page rendered with its data, 10 views) and `dev/tools/reader_codes.py --check` (static text and Markdown), both run as domtest Phase 17;
-  - domtest 162 checks passed locally.
-- research-hub PR 34 (merged `3685f3c`): figure blocks (`build_figures.py`; `--check` ok), the US policy eras page, wiki card and corrections log; four paper PDFs rebuilt.
-- bettertobest.github.io PR 6 (merged `6688dc3`): llms.txt, ai-index.json, research-index.json.
-- research-update: PLAN.md S80 note and Order row; this handoff.
+- compassionism-simulation PR 142 (v5.9.7, merged `16bda48`):
+  - CHANGELOG.md and 95 reports use the page names: v5.6/v5.9, the full-coverage and opt-in designs, studies by subject.
+  - A rule pass did most of it; every change was read, and the rest were reworded by hand.
+  - Ledger codes now read "Duke's decision"; session numbers became dates or "the first v5.0 candidate".
+  - Each report names NEEC's criterion C2.2 once.
+  - `reader_codes.py` has no `pending` list for the simulation. It now also catches "release 2." at the end of a sentence and pairs like "S47/S7".
+  - Local labels (03a's S1-S6, s52's X1-X9, s66's Parts A-C, the pilots' D10, a v4 table's deciles D1-D10) are in `dev/tools/reader_codes_allow.txt`.
+- compassionism-simulation PR 143 (v5.9.8): suite page, "What the days are made of".
+  - The old chart drew shares of the average adult's days. Savings were over 99% of every column, so it looked all blue.
+  - v5.9's stored averages (`meanSav` etc.) count the 18 top-tail adults unweighted: 550,000-730,000 days from savings, against medians of 1,500-3,800.
+  - The section now shows median days, one bar chart per part, each on its own scale. The v5.9 view shows no averages and says why.
+  - Dated corrections in reports `v5-33-visual-suite.md` and `s11-suite-release2.md`.
+- research-update: PLAN.md (S80 note and Order row; new step S81); this handoff.
 
 ## In flight
-Nothing. PR 141 merged (`c515d4e`) with checks and guard green.
+Nothing.
 
 ## Decisions waiting
-S12 (which visuals go on which page) stays Duke's. No new decision: the names describe what each design does and claim nothing new.
+S12 (which visuals go on which page) stays Duke's. Nothing new: the chart fix is presentation, and the names claim nothing new.
 
 ## Next step
-S80 part 2: reword CHANGELOG.md and `dev/reports/`, then remove the `pending` list in `reader_codes.py` so CI covers them. `python3 dev/tools/reader_codes.py --check --all` lists every remaining occurrence. After that, S13 (outside audits, second round), in a session that did not build the v5.9 model.
+S81 (v5.9 suite averages by weight). It is small and free: add weighted means to the suite export, rerun v5.9's main rows on Actions after an addendum to the visual-suite rerun's preregistration, then show the weighted averages beside the medians. After that, S13 (outside audits, second round), in a session that did not build the v5.9 model.
 
 ## Pitfalls
-- The figure check fails on any typed % or $ in the new sections. "100% of basic needs" in a sentence tripped it, so the page says "all basic needs".
-- Some domtest checks match page text. A wording change needs the test's expected text changed too (three did here).
-- `RL = 'release design'` and `C = 'C2.2'` in `site/cb.js` and `round2.js` are data keys. Never reword them; reword only what is printed.
-- In a shell heredoc with an unquoted delimiter, backticks run as commands. Use `<<'EOF'`.
-- The scanner skips JEL codes (D60, I32 …), the draft Act's "Part I", and the formula symbol D0. The allow-list is `dev/tools/reader_codes_allow.txt`.
-- Hub `data/claims-summary.md` still quotes old wording. It is generated from the claims ledger, so it changes when that ledger is next rebuilt.
-- Earlier pitfalls still stand. Release 2's (v5.9's) wealth measures must use the weighted keys. The engine's `cost` is gross. The engine's `dev/CODEMAP.md` is stale. JSON-LD carries Duke's personal email (S42 fixes it).
+- **`set_version.py` has no `--help`.** Any argument is taken as the version, and `--help` wrote "--help" into every version field. Restore with `git checkout` on the touched files, then run it with the real number.
+- The old scanner missed "release 2." at the end of a sentence and "S47/S7" pairs; both are fixed. The Hub and root site were not re-scanned with the stricter patterns. Run `reader_codes.py --root <repo> --preset hub|root --check` when either is next touched.
+- In `dev/reports/c22-coverage-adequacy.md`, "C2.2" means NEEC's criterion, not the design. Write "criterion C2.2" there: the scanner allows that form.
+- The reports in subfolders of `dev/reports/` (for example `s50-independent-implementation/`) are outside the scanner's glob.
+- Any plain mean over v5.9's adults mixes in the unweighted top tail (the wealth Gini in v5.9.5, the parts of BLEI in v5.9.8). Use weighted keys or medians.
+- The suite page now has 13 charts. domtest and `check_figures.js` both count them.
+- Earlier pitfalls still stand: v5.9 wealth measures need the weighted keys, the engine's `cost` is gross, `dev/CODEMAP.md` is stale, and the JSON-LD carries Duke's personal email (S42 fixes it).
