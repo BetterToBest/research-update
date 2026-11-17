@@ -171,7 +171,7 @@ Duke's view (planning chat, Nov 13): 2005-2025 was less stable than the decades 
 
 Sections (line): Why 5 · Plain-words summary 8 · Questions 14 · Eras (fixed now) 20 · Sources to open (opened before use, research rul 25 · Part A: the descriptive panel (no engine) 36 · Part B: engine readings (part 2; built behind sw 63 · Reporting 82 · Limits stated in advance 87 · Amendments 95 · Amendment 1 (Nov 16, 2026, S75 part 1: after the 98 · Amendment 2 (Nov 16, 2026, S75 part 1: Duke supp 110 · Amendment 3 (Nov 16, 2026, S75 part 1: Duke supp 118 · Amendment 4 (Nov 16, 2026, S75 part 2: the engin 123 · Amendment 5 (Nov 16, 2026, S77: the error found  132
 
-## 2026-11-s82-v6-supply-indexing.md (175 lines)
+## 2026-11-s82-v6-supply-indexing.md (182 lines)
 Preregistration: limits on supply and on indexing, read along the backing curve (S82, the v6 engine)
 
 The release reviews (triage `audits/2026-11-release-review-triage.md`, theme 1; in-house finding 1; Nemotron B2-B3) found that below full backing the model has no limit on what the economy can supply: wages, the Basic Un

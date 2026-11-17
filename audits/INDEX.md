@@ -73,6 +73,11 @@ Saved word for word below the line; not edited.
 
 Sections (line): Part A: Nov 9 audit findings – status in this re 25 · Part B: Full backing and what the headline means 40 · B1 42 · B2 50 · B3 58 · B4 69 · B5 77 · Part C: The model’s mechanisms 90 · C1 92 · C2 100 · C3 108 · C4 116 · C5 124 · C6 132 · Part D: Statistics and robustness 142 · D1 144 · D2 152 · D3 160 · D4 168 · Part E: Fair presentation 178 · E1 180 · E2 204 · E3 212 · Ranked improvements to the model 221 · What I could not check (and why) 236 · Files actually opened (from the pasted set) 250
 
+## 2026-11-17-s82-prereg-reading-mistral-partial.md (69 lines)
+S82 preregistration, outside reading by mistralai/mistral-large-4-1t-a52b (NVIDIA API catalogue), Nov 17, 2026: partial
+
+Request: `audits/nvidia-2026-11-17-s82/build_packet.py` (the preregistration as first committed, `5bae20b`, with Claude's reading note and MODEL_SPEC sections 5, 6.1, 6.3, 6.4, 6.12, 9 and 14.3), sent with streaming, tem
+
 ## 2026-11-engine-round-2.md (41 lines)
 Engine round 2: six improvements after S39 and S55 (Nov 9, 2026)
 
@@ -152,6 +157,6 @@ Grok found no correctness bug ("No critical correctness bugs jumped out").
 Sections (line): Items 7 · What changes now 30
 
 - `nvidia-2026-11-17/` (folder, 1 files)
-- `nvidia-2026-11-17-s82/` (folder, 5 files)
+- `nvidia-2026-11-17-s82/` (folder, 7 files)
 - `refine/` (folder, 9 files)
 - `s46-followup/` (folder, 3 files)
