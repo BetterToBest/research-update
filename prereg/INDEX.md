@@ -199,6 +199,13 @@ The visual suite (`suite.html`, ledger I1) draws the BLEI tiers, the median BLEI
 
 Sections (line): Why this run 5 · Questions 8 · Design 14 · Outcomes 21 · Checks (a failed check stops the shard; nothing  30 · Analysis 36 · Decision rules 39 · Reporting 44 · Amendments 47
 
+## 2026-11-x3-measures-addendum.md (50 lines)
+Preregistration addendum: job X3, the BLEI paper's other measures and the measures study for release 2 (S79)
+
+The visual suite (`suite.html`) has a release 2 view with the BLEI series from job X2 (`x2-5b62481`).
+
+Sections (line): Why this run 5 · Questions 8 · Design 17 · Outcomes 24 · Checks (a failed check stops the shard; nothing  31 · Analysis 37 · Decision rules 40 · Reporting 45 · Amendments 48
+
 ## RUNNING.md (56 lines)
 Running a study: Actions first, Runpod only for what does not fit
 
