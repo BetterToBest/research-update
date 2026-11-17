@@ -31,6 +31,13 @@ Asked for by Duke on Nov 15, before S40 starts: check that the latest study resu
 
 Sections (line): In short 5 · What was checked, and how 10 · Sentences to correct 22 · For S40 (the Hub) 33 · What was not checked 38
 
+## 2026-11-17-chatgpt-general-audit.md (584 lines)
+ChatGPT, general audit of the Simulation (v5.9.9), Nov 17, 2026
+
+Pasted by Duke at the start of the S13 part 2 session as "the reply from the general audit from GPT".
+
+Sections (line): **1. Important distinction: what V5.9.9 actually 13 · **2. Overall assessment** 45 · **3. Findings requiring attention** 62 · **P1 — The research documentation no longer prov 64 · **P1 — Full backing is an assumption, not a demo 98 · **P1 — The spending calibration change materiall 147 · **P1 — A configuration omission has already prod 189 · **4. Statistical and measurement findings** 221 · **P1/P2 — The wealth-tail correction is necessar 223 · **P2 — The wealth-tail calibration needs uncerta 295 · **5. Household, child, and demographic additions 329 · **P2 — The primary long-horizon configuration st 331 · **6. Economic measurement and internal consisten 374 · **P2 — BLEI is a composite capacity measure, not 376 · **P2 — PTH's 25% housing-saving allocation does  413 · **P2 — The creditor-side debt analysis needs an  434 · **7. Auxiliary studies: interpretation and sampl 459 · **P2 — The central-bank study does not yet test  461 · **P2 — The deep-history study is a historical-se 479 · **8. Technical improvements for the next release 517 · **9. What I would put in V5.9.10** 551 · **10. Final verdict** 571
+
 ## 2026-11-17-grok-general-audit.md (105 lines)
 Grok, general audit of the Simulation (v5.9.9), Nov 17, 2026
 
@@ -79,6 +86,13 @@ Who can buy at PTF prices, and what the 40% test counts (Nov 7, 2026)
 Raised by Duke in Chat after the community-layer report (S38), before the Simulation release (S7).
 
 Sections (line): The question 5 · What the engine does (engine `ce8d030`, read in  11 · What the Hub says 22 · Claude's reading of the design (each a modelling 30 · What this changes, and what it does not 39 · Plan: S55 · Open PTF access (opus, xhigh; may ta 46 · Duke's answers (ledger D16, Nov 7) 57
+
+## 2026-11-release-review-triage.md (78 lines)
+Triage of the release reviews of the Simulation (v5.9.9), Nov 17, 2026
+
+S13, second pass, part 2.
+
+Sections (line): In short 16 · The triage, by theme 24 · What changed this session (v5.9.11, wording and  57 · New steps (PLAN.md) 66 · Not done here 73
 
 ## 2026-11-s39-s55-audit-prompt.md (122 lines)
 Audit prompt: the Compassionism Simulation's S39 and S55 studies, and how it measures inequality
