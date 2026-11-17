@@ -5,8 +5,8 @@
 **S87 partly done** (another session). Items 1-3 and the case for and against metal backing are done; items 4-8 are left (the page's "Still being checked" section lists them).
 
 ## What shipped
-- compassionism-simulation PR 152 (v5.9.17; see "In flight" if not merged): `SL_SRC` from opened sources (`sources/s82_supply.py`); `fx.eb` (the PTH equity base from the basket); `WT_CUTS.p95`; `acctDrawCheck`; `fs` not built. Guard test identical; lineage proof recorded; 390 unit tests.
-- compassionism-sim-results PR 52: `runner/jobs/s82.js` (137 rows a folder; `--check`, `--selftest` = checks 1-8, `--dry`). Merge after PR 152.
+- compassionism-simulation PR 152 (v5.9.17, merged `7a5408c`; CI green): `SL_SRC` from opened sources (`sources/s82_supply.py`); `fx.eb` (the PTH equity base from the basket); `WT_CUTS.p95`; `acctDrawCheck`; `fs` not built. Guard test identical; lineage proof recorded; 390 unit tests.
+- compassionism-sim-results PR 52 (merged `2ffeb79`): `runner/jobs/s82.js` (137 rows a folder; `--check`, `--selftest` = checks 1-8, `--dry`).
 - research-update: Amendment 2 in `prereg/2026-11-s82-v6-supply-indexing.md`; PLAN.md (S82 row and section; Duke's S85 note on automation).
 - Earlier the same day (S87): research-hub PR 35 (`us-money-history.html`), bettertobest.github.io PR 7, `audits/2026-11-17-s87-reading.md`.
 
@@ -17,7 +17,7 @@ In 2025 no sector has idle capacity beyond normal use: vacancy below its long-ru
 AI and automation raise output per hour but cut hours, and may displace workers in the near term; the programme can prevent much distress if well run. It is recorded in PLAN.md S85 with Claude's plan: output per hour and hours as separate inputs; displacement on both sides of each pair, from sourced ranges. Whether the programme prevents the distress is measured, not assumed.
 
 ## In flight
-- None (no study run). If engine PR 152 or sim-results PR 52 shows as open, merge 152 once its checks pass, then 52 (the job's selftest needs 152).
+- None (no study run).
 
 ## Decisions waiting
 - D33 (do the headline cards' headings name the full-backing condition? default: no change).
