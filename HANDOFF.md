@@ -4,7 +4,7 @@
 **S83 done.** Documentation and page wording only. No engine change and no stored figure changed.
 
 ## What shipped
-- compassionism-simulation PR 147 (`claude/s83-docs-v59`), v5.9.12:
+- compassionism-simulation PR 147 (`claude/s83-docs-v59`), **merged** as `c8a04f9` (checks and guard green), v5.9.12:
   - **ODD.md** rewritten for v5.9. The v5.2 parameter table is kept as written, under a table of what v5.9 changes. New: "what the model is not".
   - **MODEL_SPEC.md**: a v5.9 title and reading guide; v5.9's main row in section 10; new sections 15 (the central bank) and 16 (the US policy eras).
   - **TESTBED_SPEC.md**: section 0 sets out v5.9's main row option by option, beside v5.6's; the `a = 0` "main" lines are now marked as v5.6's.
@@ -14,7 +14,7 @@
   - **Weighting labels** on the v5.9 and central-bank cards and tables; every central-bank figure names its 100 paired runs; BLEI's wording.
   - **The manifest's `docs` field**, for S84's check. `reader_codes.py` now covers ODD, the review checklist and the card.
   - Decisions recorded in `dev/DECISIONS.md` ("S83").
-- research-update: PLAN.md (the S83 note, Order row 25b) and this file.
+- research-update PR 166: PLAN.md (the S83 note, Order row 25b) and this file.
 
 ## Weighting (what the code does, now labelled)
 - **Unweighted** (each of the 500 simulated adults counted once): basket poverty, below 30 days, wealth poverty, employment, hours, inflation, cost.
@@ -22,7 +22,7 @@
 - **Weighted in the accounts**: the government's contribution and the creditor totals are weighted; the payout and prices are not.
 
 ## In flight
-- None. PR 147's merge state is recorded in the session's final message; if it is still open, merge it once CI (checks, guard) is green.
+- None.
 
 ## Decisions waiting
 - D33 (do the headline cards' headings name the full-backing condition? default: no change). D31 is confirmed (default kept; weighted headline effects can come with v6). S12 is unchanged.
