@@ -25,7 +25,7 @@
 - None. PR 147's merge state is recorded in the session's final message; if it is still open, merge it once CI (checks, guard) is green.
 
 ## Decisions waiting
-- D33 (do the headline cards' headings name the full-backing condition? default: no change), D31 and S12 are unchanged.
+- D33 (do the headline cards' headings name the full-backing condition? default: no change). D31 is confirmed (default kept; weighted headline effects can come with v6). S12 is unchanged.
 
 ## Next step
 **S84** (sonnet, high): one start for every study runner, a baseline check, effective settings recorded, and CI checks. The checks are that the specification, the test bed and the manifest's new `docs` field agree, plus weight tests. It waits on nothing. Then S82 (preregister first). S13 part 3 starts when Grok's reply arrives.
