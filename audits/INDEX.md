@@ -157,6 +157,6 @@ Grok found no correctness bug ("No critical correctness bugs jumped out").
 Sections (line): Items 7 · What changes now 30
 
 - `nvidia-2026-11-17/` (folder, 1 files)
-- `nvidia-2026-11-17-s82/` (folder, 7 files)
+- `nvidia-2026-11-17-s82/` (folder, 3 files)
 - `refine/` (folder, 9 files)
 - `s46-followup/` (folder, 3 files)

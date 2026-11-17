@@ -179,3 +179,44 @@ Dated, with the reason, below this line. Nothing above changes after the first r
 3. *The market rule ranks by current cash income, not savings or credit* (confirmed, as a limit). A household with savings but a low income is ranked as less able to pay. This is kept as preregistered (transparent and monotone) and stated as a limit in the report.
 4. *A capped cut leaves the rest unallocated* (confirmed). When a household's cut reaches its whole spending on the sector, the remainder is not passed to others, so the realised cut falls short of the target. This is the gap reported as `slCutSh` (item 3 of the build notes above).
 5. *The headroom terms are not derived from one market-clearing model* (already a stated limit; no change). The reading's source suggestions (Census Survey of Construction and Building Permits; USDA NASS acreage reports; AHA hospital beds; Census construction spending for health care buildings) are added to the list for Amendment 2. Each is opened before use.
+
+### Amendment 2 (Nov 17, 2026, after the sources were opened and before the dry run; no run for results has been made)
+
+**The sourced values** (compassionism-simulation v5.9.17, branch `claude/s82-part2-sources`, pull request 152; script `sources/s82_supply.py`, output `sources/s82_supply.json`, FRED files in `sources/s82_fred/` with their hashes; decisions in `dev/DECISIONS.md`, "S82 part 2"). The year is 2025, the last complete year and the year of the engine's other inputs. Every value is a share of the sector's no-programme needs consumption (Amendment 1, item 1).
+
+| Sector | v, idle capacity | m, above-needs use | η | λ |
+|---|---|---|---|---|
+| Housing | 0: rental vacancy 7.10% and homeowner vacancy 1.15% are below their 1956-2025 means (7.27%, 1.52%; Census Housing Vacancy Survey) | 0.7914: BEA consumer spending on housing and utilities (rents and owners' rental value), $3,814 billion over 134.8 million households = $28,296, against the model population's needs, $15,796 a household (the engine's line, basket share and household ratios) | 0.697: Albouy, Ehrlich and Liu (2016, NBER w22816), their preferred column; their table's range 0.49-0.83 | 0.2: Wheaton, Chervachidze and Nechayev (2014, MIT), housing markets close about 20% a year of the gap to their long-run price-stock relation (68 metro areas). They find the correction runs mainly through prices, not the stock, so this is the generous side for building |
+| Medical care | 0: hospital occupancy 75.3% (May 2023-April 2024) against 63.9% in 2009-2019 (Leuchter et al. 2025, JAMA Network Open, CDC data) | 0: the CE's household health spending, $6,470 a unit, against MIT's medical line for the model population, $6,544 (both the household's own payments) | 0.2: the RAND Health Insurance Experiment (Keeler and Rolph 1988, as summarised by Aron-Dine, Einav and Finkelstein 2013, NBER w18642) | 0.25: design parameter (no source opened) |
+| Food | 0: food-manufacturing utilisation 84.9% against its 1972-2025 mean, 82.2% (Federal Reserve G.17) | 0: the CE's food at home, $6,491, against MIT's food plan, $7,508 (not used: θ food is 0) | 0.5: design parameter (not used: θ food is 0) | 0.25: design parameter (no source opened) |
+
+What these choices mean, in plain words:
+1. **Idle capacity is measured beyond normal use**, as the price-rule study measured slack. In 2025 the economy runs at or above its normal use of housing, food manufacturing and hospital beds, so nothing is met "at once" from idle capacity in any sector. Headroom to a practical maximum (85% hospital occupancy, Leuchter et al.'s shortage line: 13%; the lowest rental vacancy since 1980: 2%) is printed in the output, not used. Drawing on it is a price-driven response of supply, which the engine's form does not have, and the cautious reading leaves it out.
+2. **Above-needs use is measured on matching coverage.** Housing is the one sector with large headroom: the economy's housing services are about 1.8 times the needs baskets' housing. The CE's housing outlays (owners' costs, not their homes' rental value) give 0.43, printed as the low end. The spending covers every US household, while the needs are the working-age model population's, which has more children and higher needs. So m is, if anything, understated.
+3. **Consequence, stated before any run.** Under the sourced reading, medical care and food are met only by new capacity, and housing also by the use better-off households give up as rents rise. So the sourced reading is closer to the strict bound than the design-parameter middles (v 0.02, m 0.3 in every sector) were. Nothing here was chosen to move a figure. No outcome of any S82 reading has been seen at more than two seeds (Amendment 1).
+4. **Sources named in Amendment 1 and not opened**: the Census Survey of Construction and Building Permits, USDA NASS acreage reports, AHA hospital beds, and Census construction spending for health care buildings. The measures used cover the same quantities: hospital occupancy from the CDC's staffed-bed data, and the speed of housing supply from the error-correction estimates. The idle cropland of the Conservation Reserve Program is not counted as idle capacity. Food manufacturing, not land, runs above its normal use, and food's price does not move in today's engine.
+
+**`fs` is dropped** (Amendment 1, item 4). A cut is shared out in the poverty accounting, which runs after the year's wealth and money accounts are settled, so keeping the cut as savings would move those accounts and the reporting that reads them. Its two rows (Design, part A) are dropped. The batch has **137 rows** per environment and horizon. The main reading (the money is spent on other goods) is the cautious one for the wealth results, and the report says so.
+
+**The smaller readings, as built.**
+- E2: the tail exponent at 1.218 and 1.762 is `wt.a` at the main cut. The other cutoff is the 95th percentile, `wt.cut` 'p95' (`sources/s59_tail.py`, one line added; every stored fit reproduces; exponent 1.265, s.e. 0.092; threshold $3.59 million in 2025 dollars; the tail's weight is 5.1% of all against 2.6% at the main cut).
+- E4: the PTH equity base from the basket is `fx.eb`. It is named `eb` because `fx.pe` (the PTH books when a member dies) is taken and is on in the main row.
+- E3: ageing is row option `ag {}` with `lf.fl` 'panel'.
+
+**The job.** compassionism-sim-results `runner/jobs/s82.js` (pull request 52).
+- Its `--check` confirms the 137 rows against this file's counts.
+- Its `--selftest` runs checks 1-8: every new option at its off value; nesting; inactive at full backing; the no-programme run unchanged; `wc` with `wIdx` 1 and `bl` 0 identical; the money accounts; eight draws per adult-year; the release start's baseline check.
+- All eight passed on engine v5.9.17 (Reference, 500 adults, 20 years, seeds 1-2, equality tests only; no outcome value was printed), and every row runs.
+- Results folders: one per environment and horizon, `s82-v6-<env>-<years>-<engine 7>`, holding every part's rows, named by part. This replaces "one per part", to keep the dispatches to six. The rows are the same.
+
+**What remains before the dry run** (no change to the questions, readings, grids, outcomes or rules):
+1. **Section D's reporting keys** are not yet built: the real BU and real wage at year 20; the no-programme run's unmet need by fifth; the weighted share of adult-years below 30 days; wages over factor income; wealth poverty at 50% of the same seed's no-programme median, for both runs; and the corrected weights comment. They come as a study option `s82` (reporting only) in the next engine version. The job stores every key with the prefix `s82` without a change.
+2. **Question 7 (the screen).** `runner/jobs/s70-screen.js` runs Reference and Adverse only, and its financed block removes the weighted tail (S72 Amendment 2: two of the contribution's bases are not read with the tail on). Running it in Stress and with the tail on the financed block needs an environment and a tail flag in that job. Where a base is not read with the tail, a dated note here will say what is run in its place, before the screen runs.
+3. **The full outside reading** of this file with both amendments (the Mistral reading stopped before its answer).
+4. **The dry run** at seeds 1-2 on the final engine commit. Its timings, the shard counts and the dispatch lines will be recorded here, dated, before the batch.
+
+**Seen while building this amendment** (no outcome read for a decision):
+- A 200-adult, 1-seed probe printed the base programme row's median real wealth with and without `fx.eb` (457,903 against 457,514), to confirm that the option acts.
+- The same probe printed the tail weight at the two cutoffs.
+- A 200-adult, 1-seed accounts check printed only identity counts.
+Nothing was changed after any of them.
