@@ -47,3 +47,6 @@ Every outcome above goes to compassionism-sim-results (`x3-6d095a1/`) for all th
 
 ## Amendments
 Dated, with the reason, below this line. Nothing above changes after the first run.
+
+### Amendment 1 (Nov 17, 2026, after the run): the wealth Gini is reported weighted
+The outcomes listed `giniW`, `giniWN`, `giniWnet` and `giniWnetN`, the plain per-adult wealth Ginis. Release 2's main rows carry the weighted top tail (S59 part 2): 18 of the 500 adults stand for rare, very rich families at small weights, and the engine's own notes say the unweighted Gini is not valid with the tail on. Counted once each, those adults put the plain Gini near 0.99 in every row from Year 0, and the first report (v5.9.4) wrongly called that a null result. The plain Ginis stay in the published data (`x3-6d095a1/`, `data/releases/r2/study-*.json`), labelled not valid. The page and the report now quote release 2's stored weighted wealth Gini at the end of the run (`wtGzE` debts as zero, `wtGnE` debts kept; part M, every seed) with the 10th-90th percentile and the paired change with its 95% interval. No weighted version of the net-of-drain Gini exists, so it is not reported for release 2. Nothing is re-run; no other outcome changes. Compassionism-simulation v5.9.5.
