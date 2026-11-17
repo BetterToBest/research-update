@@ -1,6 +1,6 @@
 # Preregistration addendum: job X4, the visual suite's series for release 2 counted by weight (S81)
 
-Committed Nov 17, 2026 by S81, before any run. Engine: compassionism-simulation at commit `ENGINE_SHA` (the merge of compassionism-simulation PR 144, which adds weighted keys to `dev/tools/explore_export.js --suite`; `harness.js` and `index.html` as at that commit, unchanged from release 2's engine block). Job script: compassionism-sim-results `runner/jobs/series-r2.js` (unchanged since job X3). Like jobs X2 and X3, it runs on GitHub Actions (free), not Runpod.
+Committed Nov 17, 2026 by S81, before any run. Engine: compassionism-simulation at commit `a60bd3ecc54743427578ae2d8c81111137ca4133` (the merge of compassionism-simulation PR 144, which adds weighted keys to `dev/tools/explore_export.js --suite`; `harness.js` and `index.html` as at that commit, unchanged from release 2's engine block). Job script: compassionism-sim-results `runner/jobs/series-r2.js` (unchanged since job X3). Like jobs X2 and X3, it runs on GitHub Actions (free), not Runpod.
 
 ## Why this run
 Release 2's main rows give 18 of the 500 simulated adults the place of rare, very rich families and count each at its share of the population (a weight, `a._w`). Job X2's series (`x2-5b62481`) took plain means, shares and medians over the 500 adults, so those 18 count once each. For the average days of basic living from savings this is decisive: 550,000-730,000 days against medians of 1,500-3,800, a figure that describes the 18, not the average adult. The suite page therefore shows no averages for release 2 (v5.9.8). The shares and medians are affected less, but they too count the 18 at the wrong weight. This run records the same series counted by weight, so the page can show weighted averages beside the medians. It is a reporting run: it adds no setting, row or claim. It re-runs release 2's main row and records the same quantities a second way.
@@ -12,7 +12,7 @@ All descriptive: an answer is the series with its spread across seeds, not a tes
 
 ## Design
 - Rows, environments (`ref`, `adv`, `st`), horizons (20 and 40 years), seeds (1-500, paired; life seed 1), checks' panel: exactly as job X2's (`prereg/2026-11-x2-series-addendum.md`, Design), and the same command `node dev/tools/explore_export.js ENV YEARS 500 1 --r2 --suite --panel=RESULTS/r2-m-ENV-YEARS-104691f/shard-0000.json.gz` per shard.
-- Where and how: GitHub Actions, compassionism-sim-results' run-study workflow; study `x4`; engine `ENGINE_SHA`; job `series-r2.js`; arguments `--env=all --years=20,40 --n=500`; seed range `1-6`, 6 shards. Results folder: `x4-ENGINE7/` with `run.txt` and `SHA256SUMS`.
+- Where and how: GitHub Actions, compassionism-sim-results' run-study workflow; study `x4`; engine `a60bd3ecc54743427578ae2d8c81111137ca4133`; job `series-r2.js`; arguments `--env=all --years=20,40 --n=500`; seed range `1-6`, 6 shards. Results folder: `x4-a60bd3e/` with `run.txt` and `SHA256SUMS`.
 
 ## Outcomes
 All descriptive; for each row and year the mean over seeds and the 10th and 90th percentile across seeds of
@@ -37,7 +37,7 @@ No tests. The suite page shows weighted averages beside the medians, labelled by
 - A shard fails for time or a runner fault: rerun the whole study under a new id with an amendment saying why; no shard is patched in.
 
 ## Reporting
-Every outcome goes to compassionism-sim-results (`x4-ENGINE7/`) for all three environments and both horizons, and to the suite page's release 2 view, the Adverse and Stress environments included. Each is labelled release 2 (engine 104691f, re-run at `ENGINE_SHA`, checked equal).
+Every outcome goes to compassionism-sim-results (`x4-a60bd3e/`) for all three environments and both horizons, and to the suite page's release 2 view, the Adverse and Stress environments included. Each is labelled release 2 (engine 104691f, re-run at `a60bd3ecc54743427578ae2d8c81111137ca4133`, checked equal).
 
 ## Amendments
 Dated, with the reason, below this line. Nothing above changes after the first run.
