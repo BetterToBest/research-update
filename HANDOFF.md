@@ -1,39 +1,44 @@
-# Handoff (Nov 17, 2026): S13 second pass, part 1 (release audit, v5.9.9)
+# Handoff (Nov 17, 2026): S13 second pass, part 2 (release reviews triaged, v5.9.11)
 
 ## Step status
-**S13 partly done.** Part 1 is done: the in-house pass and the outside prompt. Parts 2 and 3 wait on Duke pasting the Grok and ChatGPT or Gemini replies into a fresh S13 session. The NVIDIA reading is done (Duke's key is saved on the Default environment for integrate.api.nvidia.com): `audits/2026-11-17-release-review-nemotron.md`, untriaged. Duke also pasted a general Grok audit (not from the prompt): `audits/2026-11-17-grok-general-audit.md`, untriaged.
+**S13 partly done.** Part 2 is done: ChatGPT's general audit is saved word for word, and all four readings (the in-house note, Nemotron, Grok's general audit, ChatGPT's general audit) are triaged together, each item checked against the files. **Part 3** waits on Grok's reply to the prompt (Duke pastes it into a fresh S13 session). It gets saved, a part 3 section goes at the end of the triage, and S82-S85 are adjusted.
 
 ## What shipped
-- research-update (PR 162 merged `fe6d481`, PR 163 merged `3dc08d1`; then a third PR, branch `claude/eloquent-clarke-zhszqj`):
-  - `audits/2026-11-17-release-audit-s13.md`: the in-house audit, done in a fresh session from the spec, reports and results.
-  - `audits/2026-11-17-release-audit-prompt.md`: the outside prompt. It has a role line to swap per system: Grok is a sceptical macroeconomist; ChatGPT or Gemini is a methods reviewer.
-  - `audits/2026-11-17-nvidia-setup.md`: the NVIDIA steps.
-  - `audits/2026-11-17-release-review-nemotron.md` and `audits/nvidia-2026-11-17/build_packet.py`: the NVIDIA reading.
-  - `audits/2026-11-17-grok-general-audit.md`: Grok's general audit, word for word.
-  - PLAN.md: the S13 note and its Order-table row.
-- No engine change. The Simulation and results repositories were read at `1d50b19` and `c732c7f`.
+- research-update, branch `claude/vigilant-euler-5ind8l`: `audits/2026-11-17-chatgpt-general-audit.md`, `audits/2026-11-release-review-triage.md` (28 themes), and PLAN.md (S13 note, the versions rule, new steps S82-S85 with Order rows 25a-25d).
+- compassionism-simulation PR 146 (`claude/s13-review-notes`), v5.9.11, wording and documentation only:
+  - a dated note that poverty effects below full backing hold because the model has no limit on supply;
+  - "rests on today's price rule" corrected to "rests on full backing" (findings and central-bank cards, four reports);
+  - the fixed population named;
+  - the second implementation described as written with the code and results to check against;
+  - a "which release this describes" line on ODD, TESTBED_SPEC, MODEL_SPEC and REPRODUCE;
+  - CITATION's sample sizes.
+- Ledger synced (version 227): S13 note, S82-S85, D33, next, left, log.
 
-## What the in-house pass found
-- Nov 9 findings: 1, 2, 4 and 6 are closed; 3, 5 and 8 are partly closed; 7 (clarity: the README) is still open.
-- **B (A before Duke's reply):** the model has no limit on the economy's total supply (the no-programme run has the same structure). At full backing this matches the design's reading. Below full backing, poverty still falls with no new output, so "poverty effects barely depend on backing" needs a note saying why.
-- **C (B before Duke's reply):** full backing has no inputs; the design's intent is more output per hour, which the model assumes and does not model.
-- **B:** S69 was given the engine's code excerpts and its results, so its exact agreement checks the translation, not the model.
-- **C:** ECONOMIST-REVIEW.md still describes v5.6.
-- Duke replied the same day (amendment at the end of the note): finding 1 narrowed to readings below full backing (B), finding 2 is a model limit (C), finding 3 is wording only. The prompt was revised before sending to state the design's reading (part B, items 3-4). No wording or engine change yet.
-- Nemotron's reply recommends replacing the full-backing main row with a range of backing. That is a design question (D23, D26 are Duke's); the triage weighs it, and does not change the main row on its own.
+## What the triage found (short)
+- All four readings agree: the headlines are conditional on full backing, and below it the model has no supply limit (in-house finding 1, confirmed).
+- Already met, though the reviewers missed it: the backing grid 0/25/50/75/100% with break-even shares; the creditor boundary; the central-bank and history studies' scope; 0.593 as a reading.
+- Confirmed and new:
+  - the documentation is behind the release (ODD says v5.2; TESTBED_SPEC's main row is `a = 0`; REPRODUCE has no v5.6 or v5.9 section);
+  - 43 of 71 study tools repeat the global-settings lines, which caused the central-bank and history studies' error;
+  - the main row has no ageing;
+  - smaller items: the tail fit, the PTH base, weights read by two rules.
+- Not confirmed: Nemotron's point on the participation margin (`pm` only splits the income effect; it does not set its size).
 
 ## In flight
-Nothing.
+- compassionism-simulation PR 146: CI (checks, guard) was running at session end. If it is green, merge it. If not, fix it or leave it open (see below).
 
 ## Decisions waiting
-- D32 answered by Duke (Nov 17): the main row's headlines stay as they are; a dated note goes only on the sentences and figures below full backing.
-- D31 (the default goes ahead) and S12 (Duke's) are unchanged.
+- **D33 (new):** should the headline cards' heading name the full-backing condition? Default: no change (D32 stands).
+- D31 (the default proceeds) and S12 (Duke's) are unchanged.
+
+## Versions (Duke, Nov 17)
+A change that leaves every output identical stays in v5.9: v5.9.11 is next and v5.9.10 is skipped. The first change to the engine's behaviour is v6 (S82).
 
 ## Next step
-S13 parts 2-3, when Duke brings the replies. The S13 section of PLAN.md lists what to do: save each reply word for word, triage them with the Nemotron reply and Grok's general audit into `audits/2026-11-release-review-triage.md`, add dated wording notes in a Simulation PR, and add new steps. Until then, S25, S42 and S44 can start.
+**S83** (the v5.9 documentation rebuilt; opus, high): it is what an outside economist would read first, and it waits on nothing. Then S84 (sonnet, high) and S82 (preregister first). S13 part 3 starts when Grok's reply arrives. S25, S42 and S44 can also start.
 
 ## Pitfalls
-- A shallow clone of compassionism-simulation came out at `a60bd3e`, not main's `1d50b19`. Run `git fetch --depth 1 origin main` and check out `FETCH_HEAD`, and check the version in CONTRIBUTING.md.
-- `register_repo_root` failed once for compassionism-simulation ("internal error reading session"). Its CLAUDE.md was read directly.
-- The NVIDIA models cannot browse, so a reading there needs a packet of the files' text (see the setup note).
-- Earlier pitfalls still apply: `set_version.py` treats any argument as the version; `reader_codes.py --check` rejects step codes in reports; the Hub and root site have not been re-scanned with the stricter patterns.
+- `register_repo_root` gave no system-reminder for compassionism-simulation, so its CLAUDE.md was read directly.
+- `reader_codes.py --check` rejects "round-2" in REPRODUCE.md; write "the parts added for v5.9".
+- `site/round2.js` and `site/cb.js` use curly apostrophes (today’s); the reports use straight ones.
+- Earlier pitfalls still apply: shallow clones can land on an older commit (check CONTRIBUTING.md's version); `set_version.py` treats any argument as the version.
