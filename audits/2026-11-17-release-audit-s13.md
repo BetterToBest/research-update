@@ -62,3 +62,20 @@ D31 (default proceeds) leaves the engine's own share below 30 days unweighted; b
 - Whether the capacity rule's rationed share enters consumption anywhere: the spec does not say it does; the code was not read.
 - The question 1-3 and 5-7 reports in full; the live findings page beyond a grep.
 - No figure was recomputed: the Nov 15 audit recomputed every main-row effect from the raw files and found them right.
+
+## Amendment (Nov 17, 2026, the same day): Duke's reply, and what it changes
+
+Duke answered findings 1-3 in Chat. His points, and how each changes the note.
+
+**Finding 1.** Duke: households get what they need, not everything they want; a luxury car or a mansion still has to be earned. Goods and services are not limited by design: anyone can provide them through the Creative Collectives and the PTFs and PTH, so the economy could grow to two or three times today's output or more. He sees the poverty and wealth gains as the effect of a foundation that people build on, without the baseline's extraction, and asked whether the no-programme run has the same absence of a limit.
+
+- *Wording corrected.* The chat summary's "every household gets everything it wants to buy" was wrong. Each household buys what its income and BU allow. What has no limit in the model is the economy's total supply: demand never runs into what can be produced, and nothing is rationed.
+- *The no-programme run has the same structure.* Its essentials supply is defined as its own demand, so its prices never move. The two runs therefore differ only in what the programme adds.
+- *At full backing the model and the design agree.* There, output is assumed to rise with the payout, which is how the model represents the growth Duke expects. The model does not produce that growth itself (its own mechanism reaches 0.2-1.9% of the payout), and the page already says so.
+- *The finding narrows.* It does not bear on the main row's headlines. It bears on the readings below full backing, and on the sentence that the poverty effects "barely depend on backing". With no new output at all, the poverty gains in the model are paid for by no one except holders of nominal savings and lenders, because the model has no supply limit to run into. That sentence should say so. Severity falls from A to B, for that sentence and the no-backing figures only.
+
+**Finding 2.** Duke: "This is the point. Work is worth more for less, instead of the current less for more." That is the design's intent: more output per hour. The model assumes the result (full backing) without modelling the productivity gain. It is a model limit, not a contradiction. Severity falls from B to C. A later engine step could model output per hour in PTF, collective and project work, so the growth is shown rather than assumed. The outside reviews are asked for the evidence (prompt, part B, item 4).
+
+**Finding 3.** Duke left this to Claude. S69 was worth doing and stands: it found three gaps between the description and the code, and it proved the code does what the description says, to the last digit. The only change is how it is described: "a second program written from the description, with the engine's code and results to check against", not an independent model. Severity B, for wording only.
+
+**Decision D32, narrowed with Duke's answer.** The main row's headlines stay as they are. A dated note goes on the sentences and figures below full backing (question 4's report, the findings-page paragraph on backing), saying the model has no limit on total supply there. The prompt for the outside reviews was revised the same day, before it was sent, to state the design's reading beside the questions (part B, items 3 and 4).

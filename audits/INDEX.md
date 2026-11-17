@@ -45,12 +45,19 @@ Written Nov 17, 2026 (S13, second pass, part 1).
 
 Sections (line): What the model is 22 · Headline results of release 2 (Reference, 20 yea 32 · Files (please read the reports, not only this su 43 · What to review 61 · How to answer 108
 
-## 2026-11-17-release-audit-s13.md (65 lines)
+## 2026-11-17-release-audit-s13.md (82 lines)
 Second-pass audit of the Simulation's release (v5.9.9), in-house part (Nov 17, 2026)
 
 S13, second pass, part 1.
 
-Sections (line): In short 7 · The Nov 9 findings, checked against the release 13 · New findings 26 · 1. No limit on real goods (A, for any sentence t 30 · 2. Full backing has no inputs (B) 38 · 3. The second implementation's independence (B,  42 · 4. ECONOMIST-REVIEW.md is out of date (C) 46 · 5. Weighted figures (C) 50 · Plan 54 · What could not be checked 60
+Sections (line): In short 7 · The Nov 9 findings, checked against the release 13 · New findings 26 · 1. No limit on real goods (A, for any sentence t 30 · 2. Full backing has no inputs (B) 38 · 3. The second implementation's independence (B,  42 · 4. ECONOMIST-REVIEW.md is out of date (C) 46 · 5. Weighted figures (C) 50 · Plan 54 · What could not be checked 60 · Amendment (Nov 17, 2026, the same day): Duke's r 66
+
+## 2026-11-17-release-review-nemotron.md (271 lines)
+Release review by nvidia/nemotron-3-ultra-550b-a55b (NVIDIA API catalogue), Nov 17, 2026
+
+Saved word for word below the line; not edited.
+
+Sections (line): Part A: Nov 9 audit findings – status in this re 25 · Part B: Full backing and what the headline means 40 · B1 42 · B2 50 · B3 58 · B4 69 · B5 77 · Part C: The model’s mechanisms 90 · C1 92 · C2 100 · C3 108 · C4 116 · C5 124 · C6 132 · Part D: Statistics and robustness 142 · D1 144 · D2 152 · D3 160 · D4 168 · Part E: Fair presentation 178 · E1 180 · E2 204 · E3 212 · Ranked improvements to the model 221 · What I could not check (and why) 236 · Files actually opened (from the pasted set) 250
 
 ## 2026-11-engine-round-2.md (41 lines)
 Engine round 2: six improvements after S39 and S55 (Nov 9, 2026)
@@ -123,5 +130,6 @@ Grok found no correctness bug ("No critical correctness bugs jumped out").
 
 Sections (line): Items 7 · What changes now 30
 
+- `nvidia-2026-11-17/` (folder, 1 files)
 - `refine/` (folder, 9 files)
 - `s46-followup/` (folder, 3 files)
