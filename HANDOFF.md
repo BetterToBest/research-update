@@ -1,44 +1,38 @@
-# Handoff (Nov 17, 2026): S13 second pass, part 2 (release reviews triaged, v5.9.11)
+# Handoff (Nov 17, 2026): S83, the v5.9 documentation rebuilt (v5.9.12)
 
 ## Step status
-**S13 partly done.** Part 2 is done: ChatGPT's general audit is saved word for word, and all four readings (the in-house note, Nemotron, Grok's general audit, ChatGPT's general audit) are triaged together, each item checked against the files. **Part 3** waits on Grok's reply to the prompt (Duke pastes it into a fresh S13 session). It gets saved, a part 3 section goes at the end of the triage, and S82-S85 are adjusted.
+**S83 done.** Documentation and page wording only. No engine change and no stored figure changed.
 
 ## What shipped
-- research-update, branch `claude/vigilant-euler-5ind8l`: `audits/2026-11-17-chatgpt-general-audit.md`, `audits/2026-11-release-review-triage.md` (28 themes), and PLAN.md (S13 note, the versions rule, new steps S82-S85 with Order rows 25a-25d).
-- compassionism-simulation PR 146 (`claude/s13-review-notes`), v5.9.11, wording and documentation only:
-  - a dated note that poverty effects below full backing hold because the model has no limit on supply;
-  - "rests on today's price rule" corrected to "rests on full backing" (findings and central-bank cards, four reports);
-  - the fixed population named;
-  - the second implementation described as written with the code and results to check against;
-  - a "which release this describes" line on ODD, TESTBED_SPEC, MODEL_SPEC and REPRODUCE;
-  - CITATION's sample sizes.
-- Ledger synced (version 227): S13 note, S82-S85, D33, next, left, log.
+- compassionism-simulation PR 147 (`claude/s83-docs-v59`), **merged** as `c8a04f9` (checks and guard green), v5.9.12:
+  - **ODD.md** rewritten for v5.9. The v5.2 parameter table is kept as written, under a table of what v5.9 changes. New: "what the model is not".
+  - **MODEL_SPEC.md**: a v5.9 title and reading guide; v5.9's main row in section 10; new sections 15 (the central bank) and 16 (the US policy eras).
+  - **TESTBED_SPEC.md**: section 0 sets out v5.9's main row option by option, beside v5.6's; the `a = 0` "main" lines are now marked as v5.6's.
+  - **REPRODUCE.md**: a v5.9 section with commands, a fingerprint per results folder (the SHA-256 of its `SHA256SUMS`), the scripts that take results to the pages, and headline values.
+  - **README's first screen**, CITATION.cff's abstract, and ECONOMIST-REVIEW.md for v5.9 (the four assumptions first).
+  - **`model-card.html`**, linked from the headers of both pages.
+  - **Weighting labels** on the v5.9 and central-bank cards and tables; every central-bank figure names its 100 paired runs; BLEI's wording.
+  - **The manifest's `docs` field**, for S84's check. `reader_codes.py` now covers ODD, the review checklist and the card.
+  - Decisions recorded in `dev/DECISIONS.md` ("S83").
+- research-update PR 166: PLAN.md (the S83 note, Order row 25b) and this file.
 
-## What the triage found (short)
-- All four readings agree: the headlines are conditional on full backing, and below it the model has no supply limit (in-house finding 1, confirmed).
-- Already met, though the reviewers missed it: the backing grid 0/25/50/75/100% with break-even shares; the creditor boundary; the central-bank and history studies' scope; 0.593 as a reading.
-- Confirmed and new:
-  - the documentation is behind the release (ODD says v5.2; TESTBED_SPEC's main row is `a = 0`; REPRODUCE has no v5.6 or v5.9 section);
-  - 43 of 71 study tools repeat the global-settings lines, which caused the central-bank and history studies' error;
-  - the main row has no ageing;
-  - smaller items: the tail fit, the PTH base, weights read by two rules.
-- Not confirmed: Nemotron's point on the participation margin (`pm` only splits the income effect; it does not set its size).
+## Weighting (what the code does, now labelled)
+- **Unweighted** (each of the 500 simulated adults counted once): basket poverty, below 30 days, wealth poverty, employment, hours, inflation, cost.
+- **Weighted**: median wealth, the distribution measures, participation and programme leavers, and the central-bank study's stability and who-gains measures.
+- **Weighted in the accounts**: the government's contribution and the creditor totals are weighted; the payout and prices are not.
 
 ## In flight
-- compassionism-simulation PR 146: CI (checks, guard) was running at session end. If it is green, merge it. If not, fix it or leave it open (see below).
+- None.
 
 ## Decisions waiting
-- **D33 (new):** should the headline cards' heading name the full-backing condition? Default: no change (D32 stands).
-- D31 (the default proceeds) and S12 (Duke's) are unchanged.
-
-## Versions (Duke, Nov 17)
-A change that leaves every output identical stays in v5.9: v5.9.11 is next and v5.9.10 is skipped. The first change to the engine's behaviour is v6 (S82).
+- D33 (do the headline cards' headings name the full-backing condition? default: no change). D31 is confirmed (default kept; weighted headline effects can come with v6). S12 is unchanged.
 
 ## Next step
-**S83** (the v5.9 documentation rebuilt; opus, high): it is what an outside economist would read first, and it waits on nothing. Then S84 (sonnet, high) and S82 (preregister first). S13 part 3 starts when Grok's reply arrives. S25, S42 and S44 can also start.
+**S84** (sonnet, high): one start for every study runner, a baseline check, effective settings recorded, and CI checks. The checks are that the specification, the test bed and the manifest's new `docs` field agree, plus weight tests. It waits on nothing. Then S82 (preregister first). S13 part 3 starts when Grok's reply arrives.
 
 ## Pitfalls
-- `register_repo_root` gave no system-reminder for compassionism-simulation, so its CLAUDE.md was read directly.
-- `reader_codes.py --check` rejects "round-2" in REPRODUCE.md; write "the parts added for v5.9".
-- `site/round2.js` and `site/cb.js` use curly apostrophes (today’s); the reports use straight ones.
-- Earlier pitfalls still apply: shallow clones can land on an older commit (check CONTRIBUTING.md's version); `set_version.py` treats any argument as the version.
+- ECONOMIST-REVIEW.md and the issue template are generated by `dev/tools/review_rows.py` (domtest checks it): edit the rows there, not the Markdown. The first domtest run failed on this.
+- `register_repo_root` again gave no system reminder for compassionism-simulation; its CLAUDE.md was read directly.
+- The results repository is large. A blob-less, sparse clone (`--filter=blob:none --no-checkout`, then `git sparse-checkout set` on `run.txt` and `SHA256SUMS`) reads the folders in seconds.
+- `reader_codes.py` does not check MODEL_SPEC.md or TESTBED_SPEC.md; their older sections still use project codes.
+- Simulation outcomes in `data/studies/*.json` are matched by their full outcome strings. Page scripts look them up by those strings, so do not rename them.
