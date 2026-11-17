@@ -38,12 +38,19 @@ Written in S13, second pass, part 1, at Duke's request.
 
 Sections (line): What was checked today 5 · Duke's steps (about 5 minutes) 11 · What the session then does 18
 
-## 2026-11-17-release-audit-prompt.md (113 lines)
+## 2026-11-17-release-audit-prompt.md (115 lines)
 Audit prompt: the Compassionism Simulation's release (v5.9.9), second outside round
 
 Written Nov 17, 2026 (S13, second pass, part 1).
 
-Sections (line): What the model is 22 · Headline results of release 2 (Reference, 20 yea 32 · Files (please read the reports, not only this su 43 · What to review 61 · How to answer 106
+Sections (line): What the model is 22 · Headline results of release 2 (Reference, 20 yea 32 · Files (please read the reports, not only this su 43 · What to review 61 · How to answer 108
+
+## 2026-11-17-release-audit-s13.md (65 lines)
+Second-pass audit of the Simulation's release (v5.9.9), in-house part (Nov 17, 2026)
+
+S13, second pass, part 1.
+
+Sections (line): In short 7 · The Nov 9 findings, checked against the release 13 · New findings 26 · 1. No limit on real goods (A, for any sentence t 30 · 2. Full backing has no inputs (B) 38 · 3. The second implementation's independence (B,  42 · 4. ECONOMIST-REVIEW.md is out of date (C) 46 · 5. Weighted figures (C) 50 · Plan 54 · What could not be checked 60
 
 ## 2026-11-engine-round-2.md (41 lines)
 Engine round 2: six improvements after S39 and S55 (Nov 9, 2026)
