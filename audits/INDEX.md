@@ -31,6 +31,13 @@ Asked for by Duke on Nov 15, before S40 starts: check that the latest study resu
 
 Sections (line): In short 5 · What was checked, and how 10 · Sentences to correct 22 · For S40 (the Hub) 33 · What was not checked 38
 
+## 2026-11-17-grok-general-audit.md (105 lines)
+Grok, general audit of the Simulation (v5.9.9), Nov 17, 2026
+
+Pasted by Duke in the S13 part 1 session.
+
+Sections (line): Clarity 20 · Rigor 34 · Technical 53 · Suggestions for improvements (prioritized for a  67 · Overall assessment 101
+
 ## 2026-11-17-nvidia-setup.md (24 lines)
 A third outside reading on NVIDIA's free API catalogue: setup (Nov 17, 2026)
 
