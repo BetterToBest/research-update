@@ -206,6 +206,13 @@ The visual suite (`suite.html`) has a release 2 view with the BLEI series from j
 
 Sections (line): Why this run 5 · Questions 8 · Design 17 · Outcomes 24 · Checks (a failed check stops the shard; nothing  31 · Analysis 37 · Decision rules 40 · Reporting 45 · Amendments 48 · Amendment 1 (Nov 17, 2026, after the run): the w 51
 
+## 2026-11-x4-weighted-addendum.md (44 lines)
+Preregistration addendum: job X4, the visual suite's series for release 2 counted by weight (S81)
+
+Release 2's main rows give 18 of the 500 simulated adults the place of rare, very rich families and count each at its share of the population (a weight, `a._w`).
+
+Sections (line): Why this run 5 · Questions 8 · Design 13 · Outcomes 17 · Checks (a failed check stops the shard; nothing  25 · Analysis 31 · Decision rules 34 · Reporting 39 · Amendments 42
+
 ## RUNNING.md (56 lines)
 Running a study: Actions first, Runpod only for what does not fit
 
