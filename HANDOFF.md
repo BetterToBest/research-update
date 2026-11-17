@@ -4,17 +4,18 @@
 **S13 partly done.** Part 1 is done: the in-house pass and the outside prompt. Parts 2 and 3 wait on Duke pasting the Grok and ChatGPT or Gemini replies into a fresh S13 session. The NVIDIA reading is done (Duke's key is saved on the Default environment for integrate.api.nvidia.com): `audits/2026-11-17-release-review-nemotron.md`, untriaged.
 
 ## What shipped
-- research-update (this PR, branch `claude/eloquent-clarke-zhszqj`):
+- research-update (PR 162 merged `fe6d481`; then a second PR, branch `claude/eloquent-clarke-zhszqj`):
   - `audits/2026-11-17-release-audit-s13.md`: the in-house audit, done in a fresh session from the spec, reports and results.
   - `audits/2026-11-17-release-audit-prompt.md`: the outside prompt. It has a role line to swap per system: Grok is a sceptical macroeconomist; ChatGPT or Gemini is a methods reviewer.
   - `audits/2026-11-17-nvidia-setup.md`: the NVIDIA steps.
+  - `audits/2026-11-17-release-review-nemotron.md` and `audits/nvidia-2026-11-17/build_packet.py`: the NVIDIA reading.
   - PLAN.md: the S13 note and its Order-table row.
 - No engine change. The Simulation and results repositories were read at `1d50b19` and `c732c7f`.
 
 ## What the in-house pass found
 - Nov 9 findings: 1, 2, 4 and 6 are closed; 3, 5 and 8 are partly closed; 7 (clarity: the README) is still open.
-- **A:** the model has no limit on real goods. Wages, the BU and the basket all follow prices, essentials prices rise with demand but demand is always met, and food has no price response at all. So with no backing at all the programme still lowers basket poverty by 31 points and raises median wealth by $86,800. "Poverty effects barely depend on backing" comes from how the model is built; it says nothing about the design.
-- **B:** full backing has no inputs: the matching output needs no work, capital or time, while participation falls.
+- **B (A before Duke's reply):** the model has no limit on the economy's total supply (the no-programme run has the same structure). At full backing this matches the design's reading. Below full backing, poverty still falls with no new output, so "poverty effects barely depend on backing" needs a note saying why.
+- **C (B before Duke's reply):** full backing has no inputs; the design's intent is more output per hour, which the model assumes and does not model.
 - **B:** S69 was given the engine's code excerpts and its results, so its exact agreement checks the translation, not the model.
 - **C:** ECONOMIST-REVIEW.md still describes v5.6.
 - Duke replied the same day (amendment at the end of the note): finding 1 narrowed to readings below full backing (B), finding 2 is a model limit (C), finding 3 is wording only. The prompt was revised before sending to state the design's reading (part B, items 3-4). No wording or engine change yet.
