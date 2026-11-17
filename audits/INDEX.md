@@ -87,6 +87,13 @@ Raised by Duke in Chat after the community-layer report (S38), before the Simula
 
 Sections (line): The question 5 · What the engine does (engine `ce8d030`, read in  11 · What the Hub says 22 · Claude's reading of the design (each a modelling 30 · What this changes, and what it does not 39 · Plan: S55 · Open PTF access (opus, xhigh; may ta 46 · Duke's answers (ledger D16, Nov 7) 57
 
+## 2026-11-release-review-triage.md (78 lines)
+Triage of the release reviews of the Simulation (v5.9.9), Nov 17, 2026
+
+S13, second pass, part 2.
+
+Sections (line): In short 16 · The triage, by theme 24 · What changed this session (v5.9.11, wording and  57 · New steps (PLAN.md) 66 · Not done here 73
+
 ## 2026-11-s39-s55-audit-prompt.md (122 lines)
 Audit prompt: the Compassionism Simulation's S39 and S55 studies, and how it measures inequality
 
