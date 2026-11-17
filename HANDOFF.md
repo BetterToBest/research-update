@@ -1,14 +1,15 @@
 # Handoff (Nov 17, 2026): S13 second pass, part 1 (release audit, v5.9.9)
 
 ## Step status
-**S13 partly done.** Part 1 is done: the in-house pass and the outside prompt. Parts 2 and 3 wait on Duke pasting the Grok and ChatGPT or Gemini replies into a fresh S13 session. The NVIDIA reading is done (Duke's key is saved on the Default environment for integrate.api.nvidia.com): `audits/2026-11-17-release-review-nemotron.md`, untriaged.
+**S13 partly done.** Part 1 is done: the in-house pass and the outside prompt. Parts 2 and 3 wait on Duke pasting the Grok and ChatGPT or Gemini replies into a fresh S13 session. The NVIDIA reading is done (Duke's key is saved on the Default environment for integrate.api.nvidia.com): `audits/2026-11-17-release-review-nemotron.md`, untriaged. Duke also pasted a general Grok audit (not from the prompt): `audits/2026-11-17-grok-general-audit.md`, untriaged.
 
 ## What shipped
-- research-update (PR 162 merged `fe6d481`; then a second PR, branch `claude/eloquent-clarke-zhszqj`):
+- research-update (PR 162 merged `fe6d481`, PR 163 merged `3dc08d1`; then a third PR, branch `claude/eloquent-clarke-zhszqj`):
   - `audits/2026-11-17-release-audit-s13.md`: the in-house audit, done in a fresh session from the spec, reports and results.
   - `audits/2026-11-17-release-audit-prompt.md`: the outside prompt. It has a role line to swap per system: Grok is a sceptical macroeconomist; ChatGPT or Gemini is a methods reviewer.
   - `audits/2026-11-17-nvidia-setup.md`: the NVIDIA steps.
   - `audits/2026-11-17-release-review-nemotron.md` and `audits/nvidia-2026-11-17/build_packet.py`: the NVIDIA reading.
+  - `audits/2026-11-17-grok-general-audit.md`: Grok's general audit, word for word.
   - PLAN.md: the S13 note and its Order-table row.
 - No engine change. The Simulation and results repositories were read at `1d50b19` and `c732c7f`.
 
@@ -29,7 +30,7 @@ Nothing.
 - D31 (the default goes ahead) and S12 (Duke's) are unchanged.
 
 ## Next step
-S13 parts 2-3, when Duke brings the replies. The S13 section of PLAN.md lists what to do: save each reply word for word, triage them with the Nemotron reply into `audits/2026-11-release-review-triage.md`, add dated wording notes in a Simulation PR, and add new steps. Until then, S25, S42 and S44 can start.
+S13 parts 2-3, when Duke brings the replies. The S13 section of PLAN.md lists what to do: save each reply word for word, triage them with the Nemotron reply and Grok's general audit into `audits/2026-11-release-review-triage.md`, add dated wording notes in a Simulation PR, and add new steps. Until then, S25, S42 and S44 can start.
 
 ## Pitfalls
 - A shallow clone of compassionism-simulation came out at `a60bd3e`, not main's `1d50b19`. Run `git fetch --depth 1 origin main` and check out `FETCH_HEAD`, and check the version in CONTRIBUTING.md.
