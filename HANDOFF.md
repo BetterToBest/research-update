@@ -12,7 +12,7 @@
 - Kept as they were: anchors, `?rel=1`, file and folder names, and the labels stored in data files. The pages map stored labels when they print them.
 
 ## What shipped
-- compassionism-simulation PR 141 (v5.9.6), branch `claude/s80-reader-wording`:
+- compassionism-simulation PR 141 (v5.9.6, merged `c515d4e`):
   - the pages, `site/*.js`, glossary, manifest summaries (with `release_data.py`), study text (with `study_data.py`) and CONTRIBUTING;
   - inventory `dev/reports/reader-wording.md`;
   - checks `dev/tools/reader_check.js` (every page rendered with its data, 10 views) and `dev/tools/reader_codes.py --check` (static text and Markdown), both run as domtest Phase 17;
@@ -22,7 +22,7 @@
 - research-update: PLAN.md S80 note and Order row; this handoff.
 
 ## In flight
-PR 141's checks were running at handoff; see the line below.
+Nothing. PR 141 merged (`c515d4e`) with checks and guard green.
 
 ## Decisions waiting
 S12 (which visuals go on which page) stays Duke's. No new decision: the names describe what each design does and claim nothing new.
