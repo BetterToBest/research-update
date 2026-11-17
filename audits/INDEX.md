@@ -78,6 +78,13 @@ S82 preregistration, outside reading by mistralai/mistral-large-4-1t-a52b (NVIDI
 
 Request: `audits/nvidia-2026-11-17-s82/build_packet.py` (the preregistration as first committed, `5bae20b`, with Claude's reading note and MODEL_SPEC sections 5, 6.1, 6.3, 6.4, 6.12, 9 and 14.3), sent with streaming, tem
 
+## 2026-11-17-s87-reading.md (23 lines)
+An outside reading of "Money, metals and wages in the US, 1792-2025" (S87, Nov 17, 2026)
+
+Before publishing the Hub page `us-money-history.html` (deep history, part 2), its draft was read by a language model from a different maker, as the plan asks.
+
+Sections (line): What it said, and what was done 9 · Still open 21
+
 ## 2026-11-engine-round-2.md (41 lines)
 Engine round 2: six improvements after S39 and S55 (Nov 9, 2026)
 
@@ -157,6 +164,7 @@ Grok found no correctness bug ("No critical correctness bugs jumped out").
 Sections (line): Items 7 · What changes now 30
 
 - `nvidia-2026-11-17/` (folder, 1 files)
-- `nvidia-2026-11-17-s82/` (folder, 7 files)
+- `nvidia-2026-11-17-s82/` (folder, 3 files)
 - `refine/` (folder, 9 files)
 - `s46-followup/` (folder, 3 files)
+- `s87-reading/` (folder, 4 files)
