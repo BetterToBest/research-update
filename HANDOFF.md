@@ -1,29 +1,31 @@
-# Handoff (Nov 16, 2026): S11 (BLEI visuals) done; the visual suite opens on release 2
+# Handoff (Nov 17, 2026): S79 (release 2's other BLEI-paper measures), sub-steps 1-2 done, run X3 in flight
 
 ## Step status
-**S11 done.** Sub-step 4 finished: release 2's year-by-year series (job X2) are checked, stored in a new data folder, and the visual suite page opens on release 2, with release 1's view unchanged behind a switch.
+**S79 partly done.** (1) The check: every one of the five measures (EDC, EPPM, FBS, CSI, IPBI) and the measures study can be reported for release 2 without changing the engine, so nothing keeps "release 1 only". (2) Job X3 is preregistered, its tool is merged, and it is running on GitHub Actions (free). (3) The suite page work is written and tested on 2-seed files, on a branch without a PR. It is waiting for X3's results.
 
 ## What shipped
-- compassionism-simulation PR 136 (v5.9.2): `data/releases/r2/` (suite-20.json, suite-40.json, index.json) written by `dev/tools/suite_r2.py` from `x2-5b62481`; `suite.html` gets a Release switch (release 2 default, at 40 years on C2.2; release 1 at `?rel=1`, unchanged). The release 2 view states differences between rows only as release 2's published effects with 95% intervals (copied from `data/studies/r2-effects.json`, checked equal). The five other BLEI-paper measures and the measures study say they are release 1's only. v5.6's files untouched.
-- compassionism-sim-results `x2-5b62481/` (run-study run 125, finished 21:39 UTC): six shards, each passed the release 2 check (2,931 row-keys, 1,465,500 values); `run.txt`, `SHA256SUMS` (verified), `DONE`.
-- research-update: PLAN.md S11 note and Order row; this handoff.
-
-## Checks
-validate; unit (384); domtest 158/158 (counts written); the figure check covers the release 2 view (3,648 numbers in 12 views) and `suite_r2.py --check`. One more cross-check: the year-average same-rules share under 30 days in the new series equals release 2's published basic-living figure in all 18 row-environment-horizon cells. Looked at 390 px light and 1280 px dark.
+- compassionism-simulation PR 138, merged as engine commit `6d095a1`: `dev/tools/explore_export.js --r2 --study` (tool only; harness.js and index.html unchanged; old modes byte-identical). It adds two reporting switches (measured EDC `em`; FBS50 tally `fb {dist 'lambda', scale 1}`, the rule unchanged). Each seed's three rows run in turn. The check compares every one of the 2,931 engine keys of every row and seed with release 2's part M and allows only the switches' own new keys. Note: `dev/reports/s79-r2-measures-check.md`; `dev/DECISIONS.md` S79.
+- compassionism-sim-results PR 51, merged as `e88585d`: `runner/jobs/series-r2.js --study`.
+- research-update: `prereg/2026-11-x3-measures-addendum.md`, committed before the run (`3521671`); PLAN.md S79 note and Order row; this handoff.
 
 ## In flight
-Nothing, unless PR 136's CI was still running at session end (see the last line of the LEDGER NOTE in the chat; if it is open, merge it once checks pass).
+- run-study **run 126** (compassionism-sim-results, dispatched Nov 17 00:02 UTC): study `x3`, engine `6d095a1eefe71abbb025b82e8942cd80cfe9a34a`, job `series-r2.js --env=all --years=20,40 --n=500 --study`, seeds 1-6, 6 shards (one per environment and horizon). Results land in `x3-6d095a1/`; done when `x3-6d095a1/DONE` exists. X2 took 37 minutes; X3 should take about 1-2 hours (3.3 s a seed at 20 years and 6.5 at 40, locally).
+- compassionism-simulation branch `claude/s79-suite-measures` (2 commits, **no PR yet**, because it needs X3's data): `suite_r2.py --study RESULTS/x3-6d095a1` writes `data/releases/r2/study-20.json` and `study-40.json` and lists them in `index.json` as `studyFiles`/`studyFrom`. `--check` also ties each row's share below the cost of living to release 2's published basket poverty (verified exact on release 2's own shards). `suite.html` fills the five cards and the measures study from them, with EDC's paired change and its 95% interval, and keeps the old wording without them. domtest 159/159 on the branch.
+
+## To finish S79 (next session)
+1. Check run 126: `run.txt`, `SHA256SUMS`, and each shard's `_meta.selfCheck` (must say "every engine key of every row equals release 2's part M") and `_meta.study.acct.failures` (empty).
+2. In `suite_r2.py`, set `STUDY_RERUN = '6d095a1eefe71abbb025b82e8942cd80cfe9a34a'` and `STUDY_RUN` (e.g. "run-study run 126, Nov 17, 2026 (GitHub Actions)"). Run `--study` on the folder, then `--check`.
+3. Extend `dev/tools/check_figures.js` (suite views) and domtest Phase 15 to cover the release 2 cards and the measures study. Write the report `dev/reports/s79-r2-measures.md`, with every outcome, nulls and Adverse/Stress included. Bump the version (`set_version.py 5.9.4`, CHANGELOG). Open the PR and merge it once checks pass.
 
 ## Decisions waiting
 S12 (which visuals go on which page) stays Duke's. Nothing new.
 
 ## Next step
-S13 (outside audits of the release, second round): next in the Order table; S7 is done.
+S79 again (sub-step 3), once `x3-6d095a1/DONE` exists; it is next in the Order table. If the run failed a check, follow the prereg's decision rules (amendment, new id `x3b`). S13 comes after.
 
 ## Pitfalls
-- Release 1 and release 2 are different models: the page never draws them on one chart; release 1's `release` row and release 2's `release` row mean different things (backing reading vs. design). Switching release resets the design to that release's default.
-- Wealth effects are not quoted on the suite page: release 2's rule puts the erosion share beside every wealth figure, and the findings page carries it.
-- On a phone the sticky bar is now four rows (Release, Environment, Years, Compassionism); fine at 390 px but tall. A candidate for S41-style tidying if Duke finds it heavy.
-- PLAN.md's Order table still said S7's PR 119 was "merge pending"; it merged Nov 15 (fixed here), so S13 can start.
-- The engine's `dev/CODEMAP.md` is still stale (left as it was).
-- Old remote branches to delete by hand: research-update `claude/s66-low-share-trace`, `claude/jolly-davinci-dbcv2x`, `claude/stoic-hypatia-99pell`, `claude/admiring-fermi-p13aus`. JSON-LD carries Duke's personal email (S42 fixes).
+- The previous session's S78/S79 commits were on an unmerged branch (`claude/affectionate-maxwell-tetjkz`); they are merged into this session's branch.
+- `index.json` already uses `study` for the job id ("x2"), so the measures files are listed as `studyFiles`.
+- Under C2.2 everyone takes part, so non-participant cells and "starts in Crisis" transitions are null ("–"). The page shows them as missing, not zero; the report should say why.
+- Release 1's own `explore_export.js --study` (no `--r2`) fails its accounting check ("equity" identity) on today's engine, before and after this change. It is not used now; it matters if release 1's study is ever re-run.
+- Earlier pitfalls still stand: the engine's `dev/CODEMAP.md` is stale; old remote branches to delete by hand (see git history of this file); JSON-LD carries Duke's personal email (S42 fixes).
