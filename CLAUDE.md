@@ -41,6 +41,7 @@ Linked, not edited unless a step says so: BetterToBest/portal, BetterToBest/x-ce
 6. **Concept questions:** read the Hub papers first, write "Claude's reading of the design" in a short note, take the most cautious reading where the text is silent, and label it a modelling assumption. A change to the design itself (not to the model of it) is Duke's call: ledger decision.
 7. Reports and notes make sense on their own, in plain words; ledger IDs may follow in parentheses.
 8. Attribution: the text in compassionism-simulation's CLAUDE.md.
+9. **Engine additions (Duke's rule of thumb, Nov 18, 2026):** "source, measure, sweep test, inspect, verify, if correct validate, if not modify and repeat. The sweep is key." In practice: values are sourced, or labelled design parameters and swept across their range (rule 3); every new mechanism is measured and inspected through off-equals-identical proofs, unit tests and the preregistered checks; validation is the preregistered run, read under its decision rules. "Modify and repeat" means fixing a defect, or a dated amendment and a full rerun. It never means moving a constant toward a figure.
 
 ## The ledger
 Artifact https://claude.ai/artifact/F1hceP6XEfPQ1pf6Sw1Ki8, database collection `projects`: document `hub` (code H, this plan) and `neec` (code N). Read only the fields you need. `/end-session` describes the write and the fallback (`ledger-sync/`).

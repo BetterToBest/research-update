@@ -1,36 +1,42 @@
-# Handoff (Nov 18, 2026): S87 part 2 (money history: crypto to other changes)
+# Handoff (Nov 18, 2026): S82 part 2b (the strict-bound sweep, the reporting keys, the batch dispatched)
 
 ## Step status
-**S87 done.** Part 2 added items 4-8 to the Hub page `us-money-history.html`, replacing its "Still being checked" section.
-**S82 partly done** (unchanged since Nov 17): part 2b and part 3 are left (see Next step).
+**S82 partly done.** Part 2b is done and the batch is running. Part 3 is left: once all nine result folders show `DONE`, the analysis as preregistered, the plain-words report and the findings-page text.
+**S87 done** (Nov 18, another session: research-hub PR 37, root site PR 8).
 
 ## What shipped
-- research-hub PR 37 (merged `4082912`): five sections (Bitcoin and other crypto; offshore money and corporate tax; college costs and student debt; who owns the news; other changes), with 2 charts and 5 tables. New `tools/build_s87_part2.py`, `tools/fetch_s87_part2.sh`, `data/s87-part2.json`, `data/s87/part2-*.csv`; `data/s87/SOURCES.md` part 2 (54 files with checksums, plus the sources not opened). Wiki card and policy-eras link updated. Part 1's build and data unchanged.
-- bettertobest.github.io PR 8 (merged `3f4ae67`): ai-index.json, research-index.json, llms.txt, sitemap.
-- research-update: `audits/2026-11-18-s87-part2-reading.md` and `audits/s87-part2-reading/` (packet, request, reply, script); PLAN.md S87 row and section.
+- compassionism-simulation [PR 154](https://github.com/BetterToBest/compassionism-simulation/pull/154) (v5.9.18, merged `eb0969c`; CI green): `sl.lam` (the building speed by sector) and study option `s82` (section D's keys). After the outside reading, the real BU now divides by the needs' price. Also: the weights comment corrected, `earlier-engine.html` resynced. Guard test identical, lineage links recorded, 393 unit tests.
+- compassionism-sim-results [PR 53](https://github.com/BetterToBest/compassionism-sim-results/pull/53) (merged `4881a84`): `s82.js` (231 rows, checks 1-10 pass); `s70-screen.js` (Stress, `--env=all`, block FT: the financed rows with the tail, the base held at wages).
+- research-update: Amendments 3 and 4, and the dry run and dispatch section, in `prereg/2026-11-s82-v6-supply-indexing.md`; `audits/2026-11-18-s82-prereg-reading-nemotron.md` (the reply word for word, with its triage) and `audits/nvidia-2026-11-18-s82/`; research rule 9 in CLAUDE.md; PLAN.md.
 
-## What the page says (plain words)
-Bitcoin's swings, 2015-2025: 59% a year against gold 11%, shares 15% and the dollar 4%. Corporate income tax was 27.6% of federal receipts in the 1950s and 8.2% in 2018-2025; against profits it went from about 40% to about 11%. Student loans have been dischargeable only on "undue hardship" since 1998 (federal) and 2005 (qualifying private loans). Every claim comes from an opened source; where a source refused (the Justice Department, EPI, the full Medill report, the Ayash and Rastad paper), the page uses an opened report and names it, or leaves the claim out (Bagdikian's media counts; small firms' actual tax rate).
+## Duke's requests this session (Nov 18)
+- "A sweep on the strictest bound": Amendment 3.
+  - For medical care and food, the sourced reading differs from the strict bound only by an unsourced building speed (0.25). It is swept at 0, 0.1, 0.5 and 1; at 0, those two sectors are at the strict bound.
+  - The strict bound also runs on backed shares 0.125-0.875.
+  - Every "holds under the sourced limit" statement must name the slowest building speed at which it still holds.
+- His rule of thumb for engine additions ("source, measure, sweep test, inspect, verify, if correct validate, if not modify and repeat; the sweep is key") is research rule 9, recorded with how it maps onto the guardrails. Modify means fixing a defect, or an amendment and a rerun; never tuning toward a figure.
+- From the outside reading, Amendment 4 sweeps the unsourced essentials price response θ at half and double.
 
-## Outside reading
-Nemotron Ultra (NVIDIA catalogue) found no factual errors. Of its five presentation points, four led to changes: the July 1 minimum-wage rule stated; volatility defined as log changes; the monthly and daily falls labelled; the fixed $7.25 column labelled. The IC3 figures it could not confirm were already from the opened report. With a 6,000-token limit it returned no text (all spent on reasoning); 20,000 worked.
-
-## In flight
-- None.
+## In flight (GitHub Actions, run-study runs 128-136, dispatched 01:45 UTC Nov 18)
+- Engine `eb0969cc56615d3c268c7a9dd17951be0b8d3d37`. Results land in compassionism-sim-results `main`:
+  - `s82-v6-{ref,adv,str}-{20,40}-eb0969c/` (seeds 1-500, 20 shards each);
+  - `s82-screen-s-str-eb0969c/`, `s82-screen-ft-eb0969c/`, `s82-screen-f-str-eb0969c/` (seeds 1-40).
+- Done when each folder has `DONE` beside `run.txt` and `SHA256SUMS`. Expected within about 4-5 hours: 180 jobs at 20 at a time.
+- If a run failed, rerun only that study id. A folder that is already `DONE` cannot be overwritten.
 
 ## Decisions waiting
 - D33 (do the headline cards' headings name the full-backing condition? default: no change).
 
 ## Next step
-**S82 part 2b** (opus, xhigh). Do in this order:
-1. Build study option `s82` (reporting only): the real BU and real wage at year 20; the no-programme run's unmet need by fifth; the weighted share below 30 days; wages over factor income; wealth poverty at half the same seed's no-programme median, for both runs (the programme row needs the no-programme median, for example from the supply-path run); the weights comment near `index.html` 4237. Add `s82: true` to the job's study options.
-2. Give `s70-screen.js` an `str` environment and a tail flag for its financed block, with a dated note in the preregistration on the two bases not read with the tail.
-3. Get the full outside reading (Mistral with streaming).
-4. Run the dry run (`s82.js --dry --seeds=1-2 --procs=4`) and record its timings and dispatch lines in Amendment 2.
-5. Dispatch six runs of `run-study` (study `s82-v6-<env>-<years>`, job `s82.js`) and the screen.
+**S82 part 3** (opus, xhigh), once the nine folders show `DONE`. Analysis exactly as in the preregistration's Analysis section and Amendments 3-4:
+- paired effects with bootstrap intervals; break-even shares, the strict bound also on its 9-point grid;
+- the slowest building speed; the θ check; Holm adjustment;
+- the Q4 factorial; Q5 by fifth (`s82Uq`, `s82Xq`); Q7 by S70's screen method.
+
+Then the report (`dev/reports/s82-supply-indexing.md`) and the findings-page text (decision rule 5). If the folders are not done, S85's preregistration can start (it needs S82's limit only for its readings).
 
 ## Pitfalls
-- Sites that refuse scripted reads: justice.gov, epi.org, bls.gov, sec.gov, fcc.gov, congress.gov (WebFetch reads BLS; not DOJ or EPI). Do not route around a refusal through an archive copy; use another opened source and say so.
-- FRED's `fredgraph.csv` returns only the last year of SP500 (licensing) and TDSP from 2005; add `&cosd=...` for long series. Sending a browser user-agent to FRED timed out; the plain request worked.
-- openpyxl's read-only mode returned no rows for the OMB tables; open them normally.
-- `domtest.js` takes over 15 minutes locally (S82 note); CI's guard job takes about 2 minutes.
+- A container restart cut both outside-reading streams. Nemotron Ultra answers in about 6 minutes (32,000 tokens, streaming). Mistral Large was too slow for a 228,000-character packet.
+- `earlier-engine.html` must be resynced after any engine edit (`python3 dev/tools/sync_earlier.py`), or domtest's source-parity and earlier-engine checks fail.
+- The packet builder's code slice started at the first S82 comment in `index.html` (line 5568), not at the supply limit. Harmless, but it makes the packet large.
+- The job runs one row at a time, so a programme row cannot see the no-programme row. The half-median wealth line reads the supply-path run (`fx.sp`) instead.
