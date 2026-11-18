@@ -3,6 +3,7 @@
 ## Step status
 **S82 partly done.** Part 2b is done and the batch is running. Part 3 is left: once all nine result folders show `DONE`, the analysis as preregistered, the plain-words report and the findings-page text.
 **S87 done** (Nov 18, another session: research-hub PR 37, root site PR 8).
+**S88 done** (Nov 18, unplanned, Duke's edits): research-hub [PR 38](https://github.com/BetterToBest/research-hub/pull/38) (merged `a7603ad`: money-history page wording, "media", average house price, 2026 metals note, clarity pass); compassionism-simulation [PR 155](https://github.com/BetterToBest/compassionism-simulation/pull/155) (the central-bank aim note off the findings page; text only; checks were queued, merge it once they pass). House tile checked: 2023 median 58,952 hours is right; Duke's book figure of about 8,000 hours for a 1970s house cannot be reproduced (Census gives 14,600 to 24,800). **S89 is Duke's:** find his old Reddit posts on gold and crypto.
 
 ## What shipped
 - compassionism-simulation [PR 154](https://github.com/BetterToBest/compassionism-simulation/pull/154) (v5.9.18, merged `eb0969c`; CI green): `sl.lam` (the building speed by sector) and study option `s82` (section D's keys). After the outside reading, the real BU now divides by the needs' price. Also: the weights comment corrected, `earlier-engine.html` resynced. Guard test identical, lineage links recorded, 393 unit tests.
