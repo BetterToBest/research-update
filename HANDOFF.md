@@ -5,7 +5,7 @@
 
 ## What shipped
 - compassionism-sim-results [PR 55](https://github.com/BetterToBest/compassionism-sim-results/pull/55) (merged `fb4e92c`): `s82-tables-aa2a4e0/`, the batch's tables with `analysis.txt` and `SHA256SUMS`. Checks 1-12 pass in all six environment-horizons.
-- compassionism-simulation [PR 158](https://github.com/BetterToBest/compassionism-simulation/pull/158) (MERGE_LINE). No engine change; version unchanged. It carries:
+- compassionism-simulation [PR 158](https://github.com/BetterToBest/compassionism-simulation/pull/158) (merged `babf033`). No engine change; version unchanged. It carries:
   - the report `dev/reports/s82-supply-indexing.md` and the tables `dev/runs/s82-batch/`;
   - the findings page's dated backing note, replaced by the curve under the v6 readings with break-even shares (`site/round2.js`; `data/studies/s82-supply.json` and `s82-breakeven.json`, from `dev/tools/s82_page_data.py`);
   - `dev/DECISIONS.md` "S82 part 3b".
