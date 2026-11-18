@@ -4,8 +4,8 @@
 **S91 done.** Parts 1 and 2 are both finished. **S90** (the BU's two-year relief cycle) is next. **S89 is Duke's.**
 
 ## What shipped
-- research-update: Amendment 7 to `prereg/2026-11-s82-v6-supply-indexing.md` (check 13 corrected before the ageing outcomes were read); PLAN.md S91 notes.
-- compassionism-simulation [PR 162](https://github.com/BetterToBest/compassionism-simulation/pull/162): `s82_tables.py --age`, `dev/runs/s82-batch/` regenerated, report section 9, DECISIONS "S91 part 2". No engine change.
+- research-update [PR 180](https://github.com/BetterToBest/research-update/pull/180) (merged `3a56e53`): Amendment 7 to `prereg/2026-11-s82-v6-supply-indexing.md` (check 13 corrected before the ageing outcomes were read); PLAN.md S91 notes.
+- compassionism-simulation [PR 162](https://github.com/BetterToBest/compassionism-simulation/pull/162) (merged `73b2b50`): `s82_tables.py --age`, `dev/runs/s82-batch/` regenerated, report section 9, DECISIONS "S91 part 2". No engine change.
 - compassionism-sim-results [PR 57](https://github.com/BetterToBest/compassionism-sim-results/pull/57) (merged `63af352`): `s82-tables-ab11c05/`; `SUPERSEDED-AGEING.txt` in `s82-tables-aa2a4e0/` and the six `s82-v6-*-aa2a4e0/` folders.
 
 ## What was found
