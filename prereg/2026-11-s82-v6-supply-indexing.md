@@ -399,3 +399,25 @@ The release's ageing rows (findings page "Aging", v5.3) have no flows. The on-to
 | s82-v6-age-str-40 | `--env=str --years=40 --procs=4 --rows=134-136` |
 
 The participation pilot's ageing rows were rerun the same day on the session machine (compassionism-sim-results `s73-ageing-b362152`, pull request 56) and its report corrected (compassionism-simulation pull request 161).
+
+### Amendment 7 (Nov 18, 2026, after the ageing rerun's checks and before its outcomes were read): check 13 corrected
+
+**What the check found.** The six folders `s82-v6-age-<env>-<years>-ab11c05` are complete (10 shards each, seeds 1-500, engine `ab11c05` in a clean checkout, the release start's baseline check passed, SHA256SUMS match). Check 13 as written (E.age.none equals the batch `aa2a4e0` in every key and seed):
+- **Reference, 20 and 40 years: passes.** E.age.none is identical in every key and seed.
+- **Adverse and Stress, 20 and 40 years: fails.** E.age.none moved in all 500 seeds and in 40-43 of its 61-63 keys. At 20 years the moves are small (wealth poverty at the last year 30.45 to 30.55 points; median real wealth $142,100 to $141,900); at 40 years larger (wealth poverty 39.67 to 41.09 points; median real wealth $68,110 to $62,300; mean wage over the general price level at year 40 $53,200 to $47,860). Programme inflation is 0 in every seed of that row, as it must be.
+
+**Why.** Adverse and Stress have outside inflation, so the price level moves with no programme. The defect needs ageing, the yearly flows and a moved price level, not programme inflation, so the batch's no-programme ageing rows in those environments carried it too, in proportion to outside inflation. The addendum's statement that E.age.none is unchanged rested on the 231-row comparison at seeds 1-2, which was run in Reference only. The participation pilot's rerun on the same day had already found this (its no-programme rows agP and agS moved in Adverse and Stress, and its correction note says so); the addendum's "Reach beyond S82", which says the pilot's no-programme rows cannot move, is wrong in the same way and is corrected here. The pilot's published correction (`s73-ageing-b362152`) reran and replaced those rows, so its figures are right.
+
+**The engine change between the two runs is the fix alone.** The engine files (`index.html`, `harness.js`) differ between `aa2a4e0` and `ab11c05` by one changed line (`lfDraw` stores `_lfP = DR_PL`) and one added unit test, nothing else. So every difference in the rerun is the fix.
+
+**Check 13, corrected.**
+- (a) Reference: E.age.none equals the batch in every key and seed (as before).
+- (b) Adverse and Stress: E.age.none's programme inflation is 0 in every seed (no programme), and the engine files differ from the batch's only by the fix (above). Its moves are then the fix acting through outside inflation, and are reported (in the checks file, with the levels before and after), not hidden.
+Both parts pass. If either had failed, nothing would be read.
+
+**What it changes in the reading.**
+1. In every environment and horizon the three ageing rows (E.age.none, E.age.a0, E.age.a1) all come from the rerun, so each ageing effect pairs a programme run with its own no-programme run on the same engine. In Reference E.age.none is the same either way. Mixing the batch's E.age.none with the rerun's programme runs in Adverse and Stress would put the defect back into the effect.
+2. Question 6's ageing "change" (the reading's effect minus the base effect at the same share) still uses the batch's base rows, which have no ageing and are identical on the fixed engine (check 11's argument; the 231-row comparison).
+3. The batch's no-programme ageing rows in Adverse and Stress are not quoted. The `aa2a4e0` folders get a note that every E.age row there is superseded by `s82-v6-age-*-ab11c05`.
+
+**What was seen before this amendment.** Only the checks above and, as the addendum's inspection, the mean wage over the general price level at year 20 for the three rows (E.age.a0 at no backing: $94,826 Reference, $64,796 Adverse, $63,693 Stress, against $926,708, $1,963,880 and $2,825,831 before the fix). No primary outcome of an ageing row on the fixed engine was read. Nothing in the design, the rows or the decision rules changes.
