@@ -1,10 +1,18 @@
-# Handoff (Nov 18, 2026): S87 part 2 (money history: crypto to other changes)
+# Handoff (Nov 18, 2026): S88 (money-history edits and the findings page's central-bank note)
 
 ## Step status
-**S87 done.** Part 2 added items 4-8 to the Hub page `us-money-history.html`, replacing its "Still being checked" section.
-**S82 partly done** (unchanged since Nov 17): part 2b and part 3 are left (see Next step).
+**S88 done** (unplanned, Duke's request): edits listed below. **S87 done** (part 2, earlier today). **S82 partly done** (part 2b and part 3 are left; see Next step). **S89 is Duke's**: find his old Reddit posts and comments on gold and crypto (ledger step).
 
-## What shipped
+## What shipped (S88)
+- research-hub PR 38 (merged `a7603ad`): `us-money-history.html`: intro box and tile wording as Duke asked ("does not advocate for a metal-backed currency"; "$7.25/hour US Federal minimum wage"; "media" for "news"); gold section sentence; the old-minimum-wage-in-silver note removed; new `house_avg` series (average new-house price, same Census file) beside the median; limits notes (hours of work, house size, prices after 2025); clarity pass. Build script, data JSON, items.csv, SOURCES.md updated.
+- compassionism-simulation PR 155: the central-bank design's-aim note removed from `findings.html`; `dev/reports/s74-central-bank.md` keeps it with a dated line. No engine or figure change. See In flight for merge state.
+- Not changed: the root-site indexes (they already say "media ownership").
+
+## Facts checked for Duke
+- The house tile's median (58,952 hours = $427,400 / $7.25 for 2023) is right. The average price gives 70,497 hours (2023) and 16,783 (1963). For the 1970s, Census prices give about 14,600 to 21,700 hours (median) and 16,600 to 24,800 (average). The book's 8,000 hours would need a house price of $12,800 to $23,200 at that decade's wage; it could not be reproduced (put to Duke in S89).
+- Gold and silver in early 2026: opened Reuters reports (Kitco, ARY News) confirm silver above $100 on Jan 23 and gold above $5,000 on Jan 26; later peaks were not opened and are not on the page.
+
+## What shipped earlier (S87 part 2)
 - research-hub PR 37 (merged `4082912`): five sections (Bitcoin and other crypto; offshore money and corporate tax; college costs and student debt; who owns the news; other changes), with 2 charts and 5 tables. New `tools/build_s87_part2.py`, `tools/fetch_s87_part2.sh`, `data/s87-part2.json`, `data/s87/part2-*.csv`; `data/s87/SOURCES.md` part 2 (54 files with checksums, plus the sources not opened). Wiki card and policy-eras link updated. Part 1's build and data unchanged.
 - bettertobest.github.io PR 8 (merged `3f4ae67`): ai-index.json, research-index.json, llms.txt, sitemap.
 - research-update: `audits/2026-11-18-s87-part2-reading.md` and `audits/s87-part2-reading/` (packet, request, reply, script); PLAN.md S87 row and section.
@@ -16,7 +24,7 @@ Bitcoin's swings, 2015-2025: 59% a year against gold 11%, shares 15% and the dol
 Nemotron Ultra (NVIDIA catalogue) found no factual errors. Of its five presentation points, four led to changes: the July 1 minimum-wage rule stated; volatility defined as log changes; the monthly and daily falls labelled; the fixed $7.25 column labelled. The IC3 figures it could not confirm were already from the opened report. With a 6,000-token limit it returned no text (all spent on reasoning); 20,000 worked.
 
 ## In flight
-- None.
+- compassionism-simulation PR 155 (text only): checks were still queued when the session ended and the repository does not allow auto-merge. If its checks pass, merge it; it changes `findings.html` and one report, nothing else.
 
 ## Decisions waiting
 - D33 (do the headline cards' headings name the full-backing condition? default: no change).
