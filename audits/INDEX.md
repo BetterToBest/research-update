@@ -92,6 +92,13 @@ S82: an outside reading of the preregistration with Amendments 1-3, before the d
 
 Sections (line): Triage 11 · The reply, word for word (second attempt) 29
 
+## 2026-11-18-s82-results-reading-nemotron.md (37 lines)
+S82: an outside reading of the results, the report and the findings-page text (Nov 18, 2026)
+
+**What was sent.** `audits/nvidia-2026-11-18-s82-results/build_packet.py` builds the packet (164,258 characters):
+
+Sections (line): Triage 17
+
 ## 2026-11-18-s87-part2-reading.md (24 lines)
 An outside reading of the later sections of "Money, metals and wages in the US" (S87 part 2, Nov 18, 2026)
 
@@ -180,6 +187,7 @@ Sections (line): Items 7 · What changes now 30
 - `nvidia-2026-11-17/` (folder, 1 files)
 - `nvidia-2026-11-17-s82/` (folder, 3 files)
 - `nvidia-2026-11-18-s82/` (folder, 7 files)
+- `nvidia-2026-11-18-s82-results/` (folder, 5 files)
 - `refine/` (folder, 9 files)
 - `s46-followup/` (folder, 3 files)
 - `s87-part2-reading/` (folder, 4 files)

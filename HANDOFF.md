@@ -1,36 +1,34 @@
-# Handoff (Nov 18, 2026): S82 part 3a (the batch read, a defect fixed, the batch rerun)
+# Handoff (Nov 18, 2026): S82 part 3b (the rerun read, the report, the findings page)
 
 ## Step status
-**S82 partly done.** Part 3a is done: the first batch was read, and inspection found a defect in the design's sharing rule. It is fixed (v5.9.19) and the batch is rerun (Amendment 5). **Part 3b is left:** once the six rerun folders show `DONE`, the tables, the plain-words report and the findings-page text.
-**S88 done** (other session). **S89 is Duke's** (his old Reddit posts on gold and crypto). **S90 added** (the BU-relief cycle, below).
+**S82 done** (parts 1-3b). One reading is withheld: ageing at no backing measures a defect (Amendment 6). Its fix and the rerun of the ageing rows are step **S91**. **S90** (the BU's two-year relief cycle) is still open. **S89 is Duke's.**
 
 ## What shipped
-- compassionism-simulation [PR 156](https://github.com/BetterToBest/compassionism-simulation/pull/156) (v5.9.19, merged `aa2a4e0`): the design's sharing rule (`sh` 'bu') now cuts exactly the sector's share. Under that rule only, the year's poverty accounting is queued and run with this year's totals (`slFlush`). Guard test identical, lineage recorded, 394 unit tests. At seeds 1-2, 179 of 231 job rows are identical to the first batch; only the rule's 52 rows below full backing moved. Release notes v5.9.19; v5.9.17 moved to CHANGELOG with a v5.9.18 entry.
-- compassionism-simulation [PR 157](https://github.com/BetterToBest/compassionism-simulation/pull/157) (tools, merged `ed0e766`): `dev/tools/s82_tables.py` (every table the preregistration fixes; checks 11-12 with `--first eb0969c`); `dev/tools/s70_table.js` reads Stress and block FT; `dev/runs/s82-screen/`.
-- compassionism-sim-results [PR 54](https://github.com/BetterToBest/compassionism-sim-results/pull/54) (merged `7b40b05`): the screen's analysis in its three folders (question 7 stands); `SUPERSEDED.txt` in the six first-batch folders.
-- research-update: Amendment 5 in `prereg/2026-11-s82-v6-supply-indexing.md`; PLAN.md (S82 part 3a note with the screen's reading; new step S90).
+- compassionism-sim-results [PR 55](https://github.com/BetterToBest/compassionism-sim-results/pull/55) (merged `fb4e92c`): `s82-tables-aa2a4e0/`, the batch's tables with `analysis.txt` and `SHA256SUMS`. Checks 1-12 pass in all six environment-horizons.
+- compassionism-simulation [PR 158](https://github.com/BetterToBest/compassionism-simulation/pull/158) (merged `babf033`). No engine change; version unchanged. It carries:
+  - the report `dev/reports/s82-supply-indexing.md` and the tables `dev/runs/s82-batch/`;
+  - the findings page's dated backing note, replaced by the curve under the v6 readings with break-even shares (`site/round2.js`; `data/studies/s82-supply.json` and `s82-breakeven.json`, from `dev/tools/s82_page_data.py`);
+  - `dev/DECISIONS.md` "S82 part 3b".
+- research-update: Amendment 6 in `prereg/2026-11-s82-v6-supply-indexing.md`; PLAN.md (S82 note, new step S91); the outside reading and its triage (`audits/2026-11-18-s82-results-reading-nemotron.md`).
 
-## What was found (Amendment 5)
-- Every preregistered check passed on the first batch (engine `eb0969c`). Then inspection: the design's rule cut two to four times its target. It divided this year's cut by last year's totals, and the share bought with cash swings yearly. Decision rule 1: whole batch rerun, only the rerun reported. The first batch's figures are not to be quoted.
-- The swing comes from a damped two-year cycle in the BU's relief to the cost of living, even in the main row. It predates S82 and is listed as step S90.
-- Duke (Nov 18): after v5.9.19 the next version is v5.9.21 (v5.9.20 skipped, as v5.9.10 was).
+## What was found
+- **Supply limit:** costs at most 0.54 points of basket poverty (sourced) and 3.7 (strict bound), at 20 years. Basket poverty's effect holds everywhere, but it is the only real test, since the limit moves only basket poverty (unspent money goes to other goods and no price moves). The report and page say so.
+- **Wages:** at half of programme inflation, never made up, the programme with no backing is worse than no programme on basket poverty. Break-even backed share 0.08-0.26 (20 years), 0.30-0.49 (40 years). Made up a year later: 0.3-1.5 points.
+- **The BU's delay** at no backing: monthly 0.7-1.3 points, quarterly 1.5-2.7, yearly 7-11.
+- **Ageing defect:** with programme inflation, wages outrun prices (real wage 7-20 times normal at year 20). One seed isolates it to `ag`. Fully noted in PLAN.md S91.
 
-## In flight (GitHub Actions, run-study runs 137-142, dispatched 10:39 UTC Nov 18)
-- Engine `aa2a4e0c5b4a2b425596f4728051bd2d3cbcbdde` (the merge of PR 156). Job `s82.js` at `4881a84`, unchanged. Results land in compassionism-sim-results `main`: `s82-v6-{ref,adv,str}-{20,40}-aa2a4e0/` (seeds 1-500, 20 shards each).
-- Done when each folder has `DONE`. About 4-5 hours (120 jobs).
-- The screen is not rerun (no supply limit in it).
+## In flight
+- Nothing on GitHub Actions.
+- Nothing else. The outside reading of the results is done and triaged: `audits/2026-11-18-s82-results-reading-nemotron.md`. No figure changed; six wording points were fixed.
 
 ## Decisions waiting
-- D33 (do the headline cards' headings name the full-backing condition? default: no change).
+- D33 (the headline cards' headings and the full-backing condition; default: no change).
 
 ## Next step
-**S82 part 3b** (opus, xhigh), once the six folders show `DONE`:
-- `python3 dev/tools/s82_tables.py <results> <out> --engine aa2a4e0 --first eb0969c`; checks 11 and 12 must pass.
-- Then the report `dev/reports/s82-supply-indexing.md` (questions 1-7; the screen's reading is in PLAN.md's S82 note) and the findings-page text (decision rule 5).
-- If not done yet: S90 (engine reading only) or S85's preregistration can start.
+**S91** (opus, high): find and fix the ageing defect behind the guardrails, then rerun the S82 job's ageing rows (`--rows=134-136`, six environment-horizons) under a dated addendum. It completes S82's record. Then S90; S85 after both (it builds on the engine they inspect).
 
 ## Pitfalls
-- Never switch branches in a checkout while a test is reading from it. The guard test was rerun cleanly after this happened once.
-- `slCutSh` (realised) runs about (T−1)/T of `slR*` (target) even for an exact rule: year 0 has no cut, and the last target is for a year never run.
-- Under the supply limit, basket poverty counts a household as short only when its income, less the money a shortage left unspendable on needs, falls below its cost. A better-off household can be cut without being counted. The shortfall-by-fifth table (question 5) counts every cut. Say so in the report.
-- The unit suite takes about 45 minutes on the session machine; CI's checks job about 15.
+- The tables tool printed a NOTE that the supply rows equal the base row in wealth, basic-living and inflation keys. That is the limit's design (money respent, no price moves), not a defect. Do not read "holds" for those outcomes as evidence.
+- The findings page prints no typed figure. New figures go through a data file and `snum()`. Run `node dev/tools/check_round2.js` and `node domtest.js` (162 checks). `python3 dev/tools/reader_codes.py --check` refuses step codes (S82, S70...) in reports and page text.
+- `dev/tools/set_version.py` runs only when Duke says "release". The next version label is v5.9.21.
+- The outside reading's reply lands in the container that sent it. Commit it before the session ends, or it is lost.
