@@ -85,6 +85,13 @@ Before publishing the Hub page `us-money-history.html` (deep history, part 2), i
 
 Sections (line): What it said, and what was done 9 · Still open 21
 
+## 2026-11-18-s87-part2-reading.md (24 lines)
+An outside reading of the later sections of "Money, metals and wages in the US" (S87 part 2, Nov 18, 2026)
+
+Before the Hub page `us-money-history.html` gained its sections on crypto, offshore money and corporate tax, college costs and student debt, media ownership and other changes (S87 items 4-8), a language model from a diff
+
+Sections (line): What it said, and what was done 9 · Checked by this session before the reading (not  22
+
 ## 2026-11-engine-round-2.md (41 lines)
 Engine round 2: six improvements after S39 and S55 (Nov 9, 2026)
 
@@ -167,4 +174,5 @@ Sections (line): Items 7 · What changes now 30
 - `nvidia-2026-11-17-s82/` (folder, 3 files)
 - `refine/` (folder, 9 files)
 - `s46-followup/` (folder, 3 files)
+- `s87-part2-reading/` (folder, 4 files)
 - `s87-reading/` (folder, 4 files)
