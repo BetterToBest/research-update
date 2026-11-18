@@ -294,3 +294,32 @@ The no-programme run is shared: its supply path is its own demand, so no essenti
 **The job:** 231 rows (rows 0-196 keep their numbers). `--check` confirms the counts. `--selftest` adds check 10: θ at the engine's own values given explicitly equals the base row; doubled, it moves the programme run and leaves the no-programme run unchanged.
 
 **Cost:** 231 rows × 3 environments × 500 seeds, at the dry run's rate (recorded below).
+
+### The dry run and the dispatch (Nov 18, 2026, before the batch)
+
+**The engine is pinned** at compassionism-simulation `eb0969cc56615d3c268c7a9dd17951be0b8d3d37`, the merge of pull request 154 (v5.9.18; CI green). Its tree is identical to `3e345eb`, the commit the dry run ran on (the diff between the two is empty). The job is compassionism-sim-results `runner/jobs/s82.js` at `4881a84` (pull request 53).
+
+**The dry run.** `node runner/jobs/s82.js --dry --seeds=1-2 --procs=4` on the session machine (4 cores; Node 22.23.5, where the workflow uses 22.22.0) ran every environment and horizon: 1,386 rows (231 × 6), in 599 s.
+- No output is missing or non-finite.
+- The engine checkout was clean, and the release start's baseline check passed in every run.
+- The job's `--selftest` (checks 1-10) passed on the same commit.
+- Processor time per seed for all 231 rows: about 127 s at 20 years and 240 s at 40, in each environment. The batch is therefore about 153 core-hours.
+- An earlier dry run (197 rows, on `ef15c3e`, before the fix of Amendment 4) printed its timings only.
+
+*Seen in it* (no decision read from it): what a month of the BU buys at the needs' price, in the base row at no backing. It is the same in both seeds and at every θ (1,788 Year-0 dollars), and it falls to about 975 with the two-year delay, as the fix intends.
+
+**The dispatch** (the `run-study` workflow of compassionism-sim-results, `prereg/RUNNING.md`; engine `eb0969cc56615d3c268c7a9dd17951be0b8d3d37`; each shard 4 vCPU; seeds are paired, so the cut changes no figure):
+
+| Study (folder `<study>-eb0969c`) | Job | Job arguments | Seeds | Shards |
+|---|---|---|---|---|
+| s82-v6-ref-20 | s82.js | `--env=ref --years=20 --procs=4` | 1-500 | 20 |
+| s82-v6-adv-20 | s82.js | `--env=adv --years=20 --procs=4` | 1-500 | 20 |
+| s82-v6-str-20 | s82.js | `--env=str --years=20 --procs=4` | 1-500 | 20 |
+| s82-v6-ref-40 | s82.js | `--env=ref --years=40 --procs=4` | 1-500 | 20 |
+| s82-v6-adv-40 | s82.js | `--env=adv --years=40 --procs=4` | 1-500 | 20 |
+| s82-v6-str-40 | s82.js | `--env=str --years=40 --procs=4` | 1-500 | 20 |
+| s82-screen-s-str | s70-screen.js | `--block=S --env=str --procs=4` | 1-40 | 20 |
+| s82-screen-ft | s70-screen.js | `--block=FT --env=all --procs=4` | 1-40 | 20 |
+| s82-screen-f-str | s70-screen.js | `--block=F --env=str --procs=4` | 1-40 | 20 |
+
+At the dry run's rate, a batch shard runs about 13 minutes at 20 years and 25 minutes at 40 years (25 seeds), well inside the workflow's 350-minute limit. S70's screen shards took 14-34 minutes. Each folder gets `run.txt`, `SHA256SUMS` and `DONE` from the workflow's last job. The batch is run once, as frozen here.

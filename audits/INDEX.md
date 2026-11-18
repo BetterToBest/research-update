@@ -179,7 +179,7 @@ Sections (line): Items 7 · What changes now 30
 
 - `nvidia-2026-11-17/` (folder, 1 files)
 - `nvidia-2026-11-17-s82/` (folder, 3 files)
-- `nvidia-2026-11-18-s82/` (folder, 8 files)
+- `nvidia-2026-11-18-s82/` (folder, 7 files)
 - `refine/` (folder, 9 files)
 - `s46-followup/` (folder, 3 files)
 - `s87-part2-reading/` (folder, 4 files)
