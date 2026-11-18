@@ -5,7 +5,7 @@
 
 ## What shipped
 - compassionism-simulation [PR 160](https://github.com/BetterToBest/compassionism-simulation/pull/160) (merged `ab11c05`): `lfDraw` stores `_lfP = DR_PL`. Guard test identical, 395 unit tests, domtest 162/162, lineage link recorded, `earlier-engine.html` resynced. Decisions: `dev/DECISIONS.md` "S91". No version change.
-- compassionism-simulation [PR 161](https://github.com/BetterToBest/compassionism-simulation/pull/161): the participation report's dated correction and `dev/runs/s73-participation/tables-ageing-corrected.md` (see "In flight" if not merged).
+- compassionism-simulation [PR 161](https://github.com/BetterToBest/compassionism-simulation/pull/161) (merged `f862884`): the participation report's dated correction and `dev/runs/s73-participation/tables-ageing-corrected.md`.
 - compassionism-sim-results [PR 56](https://github.com/BetterToBest/compassionism-sim-results/pull/56) (merged `9264ebe`): `s73-ageing-b362152/` (the pilot's ageing rows rerun at 100 seeds, spliced in) and `s73-participation-d12fd0f/CORRECTED.txt`.
 - research-update: the addendum to Amendment 6 in `prereg/2026-11-s82-v6-supply-indexing.md` (cause, fix, proofs, check 13, reach, dispatch table); PLAN.md S91 note.
 
@@ -16,7 +16,6 @@
 
 ## In flight
 - GitHub Actions, run-study runs 143-148 (dispatched 21:31 UTC), engine `ab11c05`, job `s82.js --rows=134-136`, seeds 1-500, 10 shards each. Results land in compassionism-sim-results `s82-v6-age-{ref,adv,str}-{20,40}-ab11c05/`; each is done when it has `DONE`.
-- PR 161 was waiting on CI at the end of this session; merge it if green.
 
 ## Decisions waiting
 - D33 (the headline cards' headings and the full-backing condition; default: no change).
