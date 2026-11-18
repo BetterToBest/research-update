@@ -344,3 +344,23 @@ At the dry run's rate, a batch shard runs about 13 minutes at 20 years and 25 mi
 2. The realised cut (`slCutSh`) averages the cuts applied in years 0 to T−1, and year 0 has none. The target (`slR*`) averages the targets set at the ends of years 0 to T−1, and the last of them is for a year never run. So a rule that cuts its target exactly shows a realised share of about (T−1)/T of the target's mean: 12.25% against 12.88% at the strict bound, share 0, 20 years. The report says so beside both.
 
 **The rerun's dispatch** (Nov 18, 2026, 10:39 UTC; run-study runs 137-142). The engine is pinned at compassionism-simulation `aa2a4e0c5b4a2b425596f4728051bd2d3cbcbdde`, the merge of pull request 156 (v5.9.19; CI green). Its engine files equal the tested head `bd384db`; the merge also carries pull request 157's tools. The job is unchanged (`runner/jobs/s82.js` at `4881a84`). The six lines are the dispatch table's first six, with the new engine: `s82-v6-<env>-<years>` with `--env=<env> --years=<years> --procs=4`, seeds 1-500, 20 shards. Results land in `s82-v6-<env>-<years>-aa2a4e0/`. The rerun is read with `python3 dev/tools/s82_tables.py <results> <out> --engine aa2a4e0 --first eb0969c`; checks 11 and 12 must pass before any table is read.
+
+### Amendment 6 (Nov 18, 2026, after the rerun's checks and before any report): the ageing reading at no backing measures a defect
+
+**The rerun's checks.** The six folders `s82-v6-<env>-<years>-aa2a4e0` are complete. Every check passed in every environment and horizon, checks 11 and 12 included, before any table was read (compassionism-sim-results `s82-tables-aa2a4e0/s82-checks.md`, compassionism-sim-results pull request 55).
+
+**What was found while reading question 6.** The ageing reading (rows E.age: `ag` with `lf.fl` 'panel', each its own pair at shares 0 and 1) at no backing showed a median real wealth averaging about $1.7 million at 40 years (Reference), four times the same reading at full backing. Inspection:
+- The mean wage over the general price level at year 20 (`s82WgG20`, medians over seeds 1-100) is $655,202 in Reference, $1,103,514 in Adverse and $1,370,973 in Stress, against $61,000-102,000 in every other row. At 40 years (Reference) it reaches about $2.6e11.
+- What a month of the BU buys at the needs' price is unchanged ($1,788). It is built on the same price level, so the deflator is right and the nominal wages are not.
+- One seed (Reference, 500 adults, 20 years, share 0) puts the cause on ageing: $891,492 with `ag` alone, $95,429 with `lf.fl` 'panel' alone, $94,891 with neither. With both at full backing it is $99,495.
+- With no programme, or at full backing (programme inflation about 0.15 points a year), the ageing rows read normally.
+
+Wages that outrun prices many times over within 20 years are not a reading of the design. They are a defect in how the engine's ageing (v5.2 step 4) meets programme inflation. It predates S82 and is not one of its switches.
+
+**Applied:**
+1. The ageing reading at no backing is not reported as a finding. Its figures stay in the published tables (research rule 2), marked in `analysis.txt`, in the tables' README and in the report.
+2. The ageing reading at full backing is reported, labelled provisional until the rerun.
+3. Ageing is off in every other row, so no other figure can be reached by the defect. Questions 1-5, 7 and question 6's other readings stand as run.
+4. Once the defect is fixed (research-update PLAN.md step S91), the three ageing rows per environment and horizon (E.age.none, E.age.a0, E.age.a1) are rerun on the fixed engine. That is a dated addendum to this file, before the run. Every other row must be identical on the fixed engine (as check 11), and only the ageing rows are rerun.
+
+Nothing in the design, the rows or the rules was changed after seeing the outcomes.
