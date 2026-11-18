@@ -85,6 +85,13 @@ Before publishing the Hub page `us-money-history.html` (deep history, part 2), i
 
 Sections (line): What it said, and what was done 9 · Still open 21
 
+## 2026-11-18-s82-prereg-reading-nemotron.md (82 lines)
+S82: an outside reading of the preregistration with Amendments 1-3, before the dry run (Nov 18, 2026)
+
+**What was sent.** `audits/nvidia-2026-11-18-s82/build_packet.py` builds the packet (227,907 characters).
+
+Sections (line): Triage 11 · The reply, word for word (second attempt) 29
+
 ## 2026-11-18-s87-part2-reading.md (24 lines)
 An outside reading of the later sections of "Money, metals and wages in the US" (S87 part 2, Nov 18, 2026)
 
@@ -172,6 +179,7 @@ Sections (line): Items 7 · What changes now 30
 
 - `nvidia-2026-11-17/` (folder, 1 files)
 - `nvidia-2026-11-17-s82/` (folder, 3 files)
+- `nvidia-2026-11-18-s82/` (folder, 8 files)
 - `refine/` (folder, 9 files)
 - `s46-followup/` (folder, 3 files)
 - `s87-part2-reading/` (folder, 4 files)

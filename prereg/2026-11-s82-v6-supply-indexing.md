@@ -273,3 +273,24 @@ No share-1 rows are needed: at full backing nothing is cut (check 3). Food's λ 
 - Nothing in the design, the grids or the rules was changed after seeing them.
 
 **What remains before the batch:** the full outside reading of this file with its three amendments; the dry run at seeds 1-2 on the final engine commit, its timings and the dispatch lines, recorded below, dated.
+
+### Amendment 4 (Nov 18, 2026, after the outside reading and before the dry run; no run for results has been made)
+
+**The outside reading** (`audits/2026-11-18-s82-prereg-reading-nemotron.md`: Nemotron 3 Ultra on the NVIDIA catalogue, word for word, with its triage; a Mistral Large attempt was cut before it answered). Of its points, three are confirmed and change the study. The rest are agreed as stated limits or not confirmed, with the reasons in the audit file.
+
+1. **The real BU, fixed.** The key divided the BU by the whole basket's price. Section D asks for the BU over the needs' price, and the BU follows the C2.2 needs' price. On the basket's price the key would move with the needs' relative price even with no delay, so the cost of a delay could not be read from it. Fixed in compassionism-simulation `3e345eb` (v5.9.18, pull request 154; guard test identical, lineage link recorded, a unit test added).
+2. **The essentials price response θ is swept.** θ (housing 0.6, medical care 0.5, food 0) is an unsourced engine value. It sets the essentials' price rise in every programme run and scales housing's above-needs give-up in the supply limit (`m·η·θ·e`). Research rule 3 asks that it be swept.
+
+| Part | Rows | Count |
+|---|---|---|
+| Th | θ for housing and medical care at half (0.3, 0.25) and double (1.2, 1.0) the engine's own, food 0. At each: the programme run at shares 0-1, and the sourced limit × 3 rules × shares 0-0.75. | 34 |
+
+The no-programme run is shared: its supply path is its own demand, so no essentials price moves in it (check 10). *Analysis:* at each θ, the programme's effect on the four primary outcomes at every share, base and sourced; the change the sourced limit makes against the base row at the same θ; the break-even shares. *Decision rule:* every statement that a result holds under the sourced reading also says whether it holds at half and at double θ. θ stays a design parameter, labelled wherever it is shown.
+
+3. **"The slowest building speed at which a result holds" (Amendment 3, analysis item 2), defined for any pattern.** It is the smallest λ on the grid from which the test passes at that λ and at every larger λ on the grid. If the test passes at some λ and fails at a larger one, the whole pattern is reported instead, and the result is said not to hold steadily in the building speed.
+
+**Units, stated** (the reading's item 5 was not confirmed, but the wording can be clearer). Every term of section A is a share of sector k's own no-programme needs consumption: `e`, `eu`, `v_k`, `m_k`, `c_k` and `r_k`. `e` is the same proportional excess in every sector, because the extra need is spread over the sectors in the basket's proportions (a stated limit). `R_k` is applied to each household's own spending on sector k.
+
+**The job:** 231 rows (rows 0-196 keep their numbers). `--check` confirms the counts. `--selftest` adds check 10: θ at the engine's own values given explicitly equals the base row; doubled, it moves the programme run and leaves the no-programme run unchanged.
+
+**Cost:** 231 rows × 3 environments × 500 seeds, at the dry run's rate (recorded below).
