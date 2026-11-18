@@ -220,3 +220,56 @@ What these choices mean, in plain words:
 - The same probe printed the tail weight at the two cutoffs.
 - A 200-adult, 1-seed accounts check printed only identity counts.
 Nothing was changed after any of them.
+
+### Amendment 3 (Nov 18, 2026, before the dry run; no run for results has been made): the strict-bound sweep, section D as built, and question 7 as run
+
+**Why the sweep.** Duke asked on Nov 18 for a sweep on the strictest bound. Amendment 2 found that in medical care and food the sourced reading has no idle capacity and no above-needs use to give up. So in those two sectors it differs from the strict bound only by the building speed λ, 0.25 a year, a design parameter: no source was opened for it. Research rule 3 asks that design parameters be swept, and the design above did not sweep λ. Without the sweep, a statement that a result "holds under the sourced supply limit" would rest, for medical care and food, on one unsourced value. Duke gave a rule of thumb for engine additions at the same time: "source, measure, sweep test, inspect, verify, if correct validate, if not modify and repeat"; "the sweep is key." This amendment is that sweep for the supply limit.
+
+**Rows added** (per environment and horizon; the batch has **197 rows**; rows 0-136 keep their numbers):
+
+| Part | Rows | Count |
+|---|---|---|
+| Slam | The building speed of medical care and food, λ = 0, 0.1, 0.5 and 1 (the sourced row is 0.25), every other value sourced (housing m 0.7914, η 0.697, λ 0.2), × 3 rules × shares 0-0.75. At λ = 0, medical care and food are exactly at the strict bound and housing at its sourced reading. | 48 |
+| Sgrid | The strict bound at shares 0.125, 0.375, 0.625 and 0.875 × 3 rules: the strict bound on a backing grid twice as fine. | 12 |
+
+No share-1 rows are needed: at full backing nothing is cut (check 3). Food's λ is swept with medical care's. Food's price does not move (θ food 0), so new capacity is food's only headroom in today's engine as well.
+
+**Analysis added** (nothing above changes):
+1. For each primary outcome, share, rule and environment: the effect at each building speed (0, 0.1, 0.25, 0.5, 1), with intervals, and the change from the sourced row (paired by seed; Holm across the four primary outcomes as in Analysis).
+2. **The slowest building speed at which a result holds:** per primary outcome and share, the smallest λ on the grid at which decision rule 2's test passes (the effect keeps its sign and its 95% interval excludes zero under all three rules). If λ = 0 passes, the result "holds at the strict bound for medical care and food". If λ = 1 fails, it "does not hold at any building speed on the grid". Read on the grid, never interpolated.
+3. **Break-even backed shares at the strict bound** on the 9-point grid (0, 0.125, ..., 1), published beside the 5-point grid's as preregistered.
+4. Break-even backed shares at each building speed (5-point grid).
+
+**Decision rules added:**
+- The sweep is a sensitivity reading of one design parameter. Decision rule 2 stays judged on the sourced reading. Every statement that a result holds under the sourced reading names, for medical care and food, the slowest building speed at which it still holds (item 2).
+- Decision rule 4 (the strict bound's label; no headline from it alone) applies to the Sgrid rows and to the λ = 0 rows.
+- No building speed is chosen after the run. The swept values are design parameters, labelled as such wherever they are shown.
+
+**The engine** (compassionism-simulation v5.9.18, branch `claude/s82-part2b-strict-sweep`, pull request 154; decisions in `dev/DECISIONS.md`, "S82 part 2b"). It is off = identical: guard test identical, lineage link recorded, 392 unit tests.
+- `sl.lam`: the building speed by sector over the reading's own value (a number, or `{sector: λ}`, in [0, 1]; refused with the full reading).
+- Study option `s82`: section D's reporting keys (item 1 of Amendment 2's "what remains"). As built:
+  - The unpaid need by fifth (`s82U`, `s82Uq1-5`, `s82UP`, `s82UN`) on both runs. The fifths rank the year's own adults by cash income over the cost of living. The supply cut is tallied again on the same fifths (`s82Xq1-5`), because the cut's own fifths (`slXq`) use last year's ranks and question 5 needs one ranking for both.
+  - The share of adult-years below 30 days of basic living, weighted (`s82B30w`), beside the unweighted (`s82B30`, equal to `bNAPy`).
+  - What a month of the BU buys at the needs' price (`s82BuR20`, `s82BuRE`).
+  - The mean wage over the general price level (`s82WgG20`, `s82WgGE`). The engine's other real-wage figures divide by the basket's price.
+  - Wages over factor income (`s82WF`, `s82WFPY`), beside labour's share of money income (`s82LS`, `s82LSPY`).
+  - Wealth poverty at half the same seed's no-programme median real wealth (`s82Wp50`, the yearly average `s82Wp50A`, and weighted versions). The median is read from the supply-path run, which is that same no-programme run with the row's other options. In the no-programme run it is the run's own median (a check).
+  - The weights comment corrected: the creditor side's totals and the contribution's books do read the weights.
+- **The job** (compassionism-sim-results `runner/jobs/s82.js`): rows 137-196 added, and the study option `s82` on every run. `--check` confirms 197 rows. `--selftest` adds check 9: the building speed given at the sourced values equals the sourced row, at 0 it moves the limit; `s82` moves no other key; every run reads the no-programme median, and the no-programme run reads its own.
+
+**Question 7, as run** (the dated note promised in Amendment 2, item 2). The screen job (`runner/jobs/s70-screen.js`) gains the Stress environment and a block FT, run with the frozen design's inputs, ranges, trajectories, outcomes and rules (`prereg/2026-11-s70-screen.md`):
+- Block S in Stress: S70's design, unchanged (seed 70001, 408 points × 5 rows).
+- Block FT, the financed rows with the weighted tail on, in Reference, Adverse and Stress. It is block F's design with the tail kept and its three inputs added, and the contribution's base held at wages: 43 inputs, 528 points × 3 rows, its own trajectories (seed 70003).
+- **In place of the two bases not read with the tail:** block F (no tail) in Stress. S70 ran it in Reference and Adverse. Why: S72's Amendment 2 found that the tail's 18 adults, counted as ordinary adults in every decision, distort the bases "wages plus capital income" and "all money income": hours +143% with the tail against +21% without. That is a property of the engine's unweighted decisions, not of the contribution. On the wages base the tail changes nothing material.
+
+**Cost.** 197 rows × 3 environments × 500 seeds × about 1.86 s (both horizons) ≈ 153 core-hours, plus the screen's five environment-blocks (measured in the dry run). Free on GitHub Actions, below `prereg/RUNNING.md`'s 1,000 core-hour mark.
+
+**Seen before this amendment** (no outcome read for a decision; the sweep's grid was fixed before any of it was printed):
+- A 200-adult, 1-seed smoke test of v5.9.18 (Reference, 20 years) printed the `s82` keys for the no-programme run, the base programme row at share 0, and the strict market-rule row at share 0:
+  - unpaid need: 12.0% of the basket with no programme (51% in the poorest fifth) and 0.6% at share 0;
+  - the strict cut: 7.9% of the basket in the poorest fifth, 0.9% in the richest;
+  - wealth poverty at half the no-programme median: 36% with no programme and 24% at share 0.
+- The unit test printed the same no-programme median twice (its check).
+- Nothing in the design, the grids or the rules was changed after seeing them.
+
+**What remains before the batch:** the full outside reading of this file with its three amendments; the dry run at seeds 1-2 on the final engine commit, its timings and the dispatch lines, recorded below, dated.
