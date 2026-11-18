@@ -386,3 +386,16 @@ Nothing in the design, the rows or the rules was changed after seeing the outcom
 1. S82's ageing rows (above).
 2. The participation study's pilot (`s73-participation-d12fd0f`; a 100-seed mechanism check), rows agP and agS (ageing with the flows and the participation margin), programme runs only. Its no-programme rows and agL0 (ageing without flows) cannot move. Those rows are rerun on the fixed engine and the pilot's tables get a dated correction note (compassionism-simulation `dev/reports/s73-participation.md`).
 The release's ageing rows (findings page "Aging", v5.3) have no flows. The on-together tests run ageing with the flows, but they are pass or fail checks on the accounts and draws, not figures.
+
+**The rerun's dispatch** (Nov 18, 2026, 21:31 UTC; run-study runs 143-148). The engine is pinned at compassionism-simulation `ab11c05377739e563b15d4d63bd3ef2ee6f4090a`, the merge of pull request 160 (CI green; its engine files equal the tested head `b362152`). The job is unchanged (`runner/jobs/s82.js`; the results repository's main at `fb4e92c`). Seeds 1-500 in 10 shards per line; seeds are paired, so the cut changes no figure.
+
+| Study (folder `<study>-ab11c05`) | Job arguments |
+|---|---|
+| s82-v6-age-ref-20 | `--env=ref --years=20 --procs=4 --rows=134-136` |
+| s82-v6-age-adv-20 | `--env=adv --years=20 --procs=4 --rows=134-136` |
+| s82-v6-age-str-20 | `--env=str --years=20 --procs=4 --rows=134-136` |
+| s82-v6-age-ref-40 | `--env=ref --years=40 --procs=4 --rows=134-136` |
+| s82-v6-age-adv-40 | `--env=adv --years=40 --procs=4 --rows=134-136` |
+| s82-v6-age-str-40 | `--env=str --years=40 --procs=4 --rows=134-136` |
+
+The participation pilot's ageing rows were rerun the same day on the session machine (compassionism-sim-results `s73-ageing-b362152`, pull request 56) and its report corrected (compassionism-simulation pull request 161).
