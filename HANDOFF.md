@@ -1,43 +1,36 @@
-# Handoff (Nov 18, 2026): S82 part 2b (the strict-bound sweep, the reporting keys, the batch dispatched)
+# Handoff (Nov 18, 2026): S82 part 3a (the batch read, a defect fixed, the batch rerun)
 
 ## Step status
-**S82 partly done.** Part 2b is done and the batch is running. Part 3 is left: once all nine result folders show `DONE`, the analysis as preregistered, the plain-words report and the findings-page text.
-**S87 done** (Nov 18, another session: research-hub PR 37, root site PR 8).
-**S88 done** (Nov 18, unplanned, Duke's edits): research-hub [PR 38](https://github.com/BetterToBest/research-hub/pull/38) (merged `a7603ad`: money-history page wording, "media", average house price, 2026 metals note, clarity pass); compassionism-simulation [PR 155](https://github.com/BetterToBest/compassionism-simulation/pull/155) (the central-bank aim note off the findings page; text only; checks were queued, merge it once they pass). House tile checked: 2023 median 58,952 hours is right; Duke's book figure of about 8,000 hours for a 1970s house cannot be reproduced (Census gives 14,600 to 24,800). **S89 is Duke's:** find his old Reddit posts on gold and crypto.
+**S82 partly done.** Part 3a is done: the first batch was read, and inspection found a defect in the design's sharing rule. It is fixed (v5.9.19) and the batch is rerun (Amendment 5). **Part 3b is left:** once the six rerun folders show `DONE`, the tables, the plain-words report and the findings-page text.
+**S88 done** (other session). **S89 is Duke's** (his old Reddit posts on gold and crypto). **S90 added** (the BU-relief cycle, below).
 
 ## What shipped
-- compassionism-simulation [PR 154](https://github.com/BetterToBest/compassionism-simulation/pull/154) (v5.9.18, merged `eb0969c`; CI green): `sl.lam` (the building speed by sector) and study option `s82` (section D's keys). After the outside reading, the real BU now divides by the needs' price. Also: the weights comment corrected, `earlier-engine.html` resynced. Guard test identical, lineage links recorded, 393 unit tests.
-- compassionism-sim-results [PR 53](https://github.com/BetterToBest/compassionism-sim-results/pull/53) (merged `4881a84`): `s82.js` (231 rows, checks 1-10 pass); `s70-screen.js` (Stress, `--env=all`, block FT: the financed rows with the tail, the base held at wages).
-- research-update: Amendments 3 and 4, and the dry run and dispatch section, in `prereg/2026-11-s82-v6-supply-indexing.md`; `audits/2026-11-18-s82-prereg-reading-nemotron.md` (the reply word for word, with its triage) and `audits/nvidia-2026-11-18-s82/`; research rule 9 in CLAUDE.md; PLAN.md.
+- compassionism-simulation [PR 156](https://github.com/BetterToBest/compassionism-simulation/pull/156) (v5.9.19, merged `aa2a4e0`): the design's sharing rule (`sh` 'bu') now cuts exactly the sector's share. Under that rule only, the year's poverty accounting is queued and run with this year's totals (`slFlush`). Guard test identical, lineage recorded, 394 unit tests. At seeds 1-2, 179 of 231 job rows are identical to the first batch; only the rule's 52 rows below full backing moved. Release notes v5.9.19; v5.9.17 moved to CHANGELOG with a v5.9.18 entry.
+- compassionism-simulation [PR 157](https://github.com/BetterToBest/compassionism-simulation/pull/157) (tools, merged `ed0e766`): `dev/tools/s82_tables.py` (every table the preregistration fixes; checks 11-12 with `--first eb0969c`); `dev/tools/s70_table.js` reads Stress and block FT; `dev/runs/s82-screen/`.
+- compassionism-sim-results [PR 54](https://github.com/BetterToBest/compassionism-sim-results/pull/54) (merged `7b40b05`): the screen's analysis in its three folders (question 7 stands); `SUPERSEDED.txt` in the six first-batch folders.
+- research-update: Amendment 5 in `prereg/2026-11-s82-v6-supply-indexing.md`; PLAN.md (S82 part 3a note with the screen's reading; new step S90).
 
-## Duke's requests this session (Nov 18)
-- "A sweep on the strictest bound": Amendment 3.
-  - For medical care and food, the sourced reading differs from the strict bound only by an unsourced building speed (0.25). It is swept at 0, 0.1, 0.5 and 1; at 0, those two sectors are at the strict bound.
-  - The strict bound also runs on backed shares 0.125-0.875.
-  - Every "holds under the sourced limit" statement must name the slowest building speed at which it still holds.
-- His rule of thumb for engine additions ("source, measure, sweep test, inspect, verify, if correct validate, if not modify and repeat; the sweep is key") is research rule 9, recorded with how it maps onto the guardrails. Modify means fixing a defect, or an amendment and a rerun; never tuning toward a figure.
-- From the outside reading, Amendment 4 sweeps the unsourced essentials price response θ at half and double.
+## What was found (Amendment 5)
+- Every preregistered check passed on the first batch (engine `eb0969c`). Then inspection: the design's rule cut two to four times its target. It divided this year's cut by last year's totals, and the share bought with cash swings yearly. Decision rule 1: whole batch rerun, only the rerun reported. The first batch's figures are not to be quoted.
+- The swing comes from a damped two-year cycle in the BU's relief to the cost of living, even in the main row. It predates S82 and is listed as step S90.
+- Duke (Nov 18): after v5.9.19 the next version is v5.9.21 (v5.9.20 skipped, as v5.9.10 was).
 
-## In flight (GitHub Actions, run-study runs 128-136, dispatched 01:45 UTC Nov 18)
-- Engine `eb0969cc56615d3c268c7a9dd17951be0b8d3d37`. Results land in compassionism-sim-results `main`:
-  - `s82-v6-{ref,adv,str}-{20,40}-eb0969c/` (seeds 1-500, 20 shards each);
-  - `s82-screen-s-str-eb0969c/`, `s82-screen-ft-eb0969c/`, `s82-screen-f-str-eb0969c/` (seeds 1-40).
-- Done when each folder has `DONE` beside `run.txt` and `SHA256SUMS`. Expected within about 4-5 hours: 180 jobs at 20 at a time.
-- If a run failed, rerun only that study id. A folder that is already `DONE` cannot be overwritten.
+## In flight (GitHub Actions, run-study runs 137-142, dispatched 10:39 UTC Nov 18)
+- Engine `aa2a4e0c5b4a2b425596f4728051bd2d3cbcbdde` (the merge of PR 156). Job `s82.js` at `4881a84`, unchanged. Results land in compassionism-sim-results `main`: `s82-v6-{ref,adv,str}-{20,40}-aa2a4e0/` (seeds 1-500, 20 shards each).
+- Done when each folder has `DONE`. About 4-5 hours (120 jobs).
+- The screen is not rerun (no supply limit in it).
 
 ## Decisions waiting
 - D33 (do the headline cards' headings name the full-backing condition? default: no change).
 
 ## Next step
-**S82 part 3** (opus, xhigh), once the nine folders show `DONE`. Analysis exactly as in the preregistration's Analysis section and Amendments 3-4:
-- paired effects with bootstrap intervals; break-even shares, the strict bound also on its 9-point grid;
-- the slowest building speed; the θ check; Holm adjustment;
-- the Q4 factorial; Q5 by fifth (`s82Uq`, `s82Xq`); Q7 by S70's screen method.
-
-Then the report (`dev/reports/s82-supply-indexing.md`) and the findings-page text (decision rule 5). If the folders are not done, S85's preregistration can start (it needs S82's limit only for its readings).
+**S82 part 3b** (opus, xhigh), once the six folders show `DONE`:
+- `python3 dev/tools/s82_tables.py <results> <out> --engine aa2a4e0 --first eb0969c`; checks 11 and 12 must pass.
+- Then the report `dev/reports/s82-supply-indexing.md` (questions 1-7; the screen's reading is in PLAN.md's S82 note) and the findings-page text (decision rule 5).
+- If not done yet: S90 (engine reading only) or S85's preregistration can start.
 
 ## Pitfalls
-- A container restart cut both outside-reading streams. Nemotron Ultra answers in about 6 minutes (32,000 tokens, streaming). Mistral Large was too slow for a 228,000-character packet.
-- `earlier-engine.html` must be resynced after any engine edit (`python3 dev/tools/sync_earlier.py`), or domtest's source-parity and earlier-engine checks fail.
-- The packet builder's code slice started at the first S82 comment in `index.html` (line 5568), not at the supply limit. Harmless, but it makes the packet large.
-- The job runs one row at a time, so a programme row cannot see the no-programme row. The half-median wealth line reads the supply-path run (`fx.sp`) instead.
+- Never switch branches in a checkout while a test is reading from it. The guard test was rerun cleanly after this happened once.
+- `slCutSh` (realised) runs about (T−1)/T of `slR*` (target) even for an exact rule: year 0 has no cut, and the last target is for a year never run.
+- Under the supply limit, basket poverty counts a household as short only when its income, less the money a shortage left unspendable on needs, falls below its cost. A better-off household can be cut without being counted. The shortfall-by-fifth table (question 5) counts every cut. Say so in the report.
+- The unit suite takes about 45 minutes on the session machine; CI's checks job about 15.
