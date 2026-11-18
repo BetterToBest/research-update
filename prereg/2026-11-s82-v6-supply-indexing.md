@@ -364,3 +364,25 @@ Wages that outrun prices many times over within 20 years are not a reading of th
 4. Once the defect is fixed (research-update PLAN.md step S91), the three ageing rows per environment and horizon (E.age.none, E.age.a0, E.age.a1) are rerun on the fixed engine. That is a dated addendum to this file, before the run. Every other row must be identical on the fixed engine (as check 11), and only the ageing rows are rerun.
 
 Nothing in the design, the rows or the rules was changed after seeing the outcomes.
+
+### Addendum to Amendment 6 (Nov 18, 2026, before the ageing rows' rerun): the defect located and fixed
+
+**The cause.** With ageing, a new adult replaces each adult who dies and is drawn in or out of the labour force at entry. A newcomer's wage is set in that year's prices: the starting distribution scaled by the mean wage over its year-0 mean. For a newcomer drawn out of the labour force, the engine stored that wage but not the price level of the draw. When the adult later returned to work, the engine moved the stored wage by the price level since the draw, and with the price level of the draw missing it used the whole price level since year 0. Prices were counted twice. Returners' wages then entered the mean that sets later newcomers' wages, so the error compounded. Starting adults were right, because at year 0 the price level is 1. The defect needs all three: ageing, the yearly labour-force flows (`lf.fl`), and a price level that has moved by the newcomer's entry. With no programme, or at full backing, prices barely move, which is why those rows read normally. (Compassionism-simulation `dev/DECISIONS.md`, "S91".)
+
+**A correction to Amendment 6.** Its one-seed isolation said "with `ag` alone". That run kept the main row's flows (`lf.fl` 'stock', in the main row since the participation study), so it isolated the cause to ageing together with the flows, not to ageing alone.
+
+**The fix.** The price level of the draw is stored at entry, so a return moves the wage by the prices since entry. At year 0 that price level is 1, so every run without ageing is unchanged.
+- Guard test identical (25 rows × 20 seeds × 483 outputs, three environments); `validate`, `unit` (a new test: an adult drawn out at entry at price level 1.5 who returns at 1.8 gets the wage at entry × 1.2; the old engine gives × 1.8) and `domtest`.
+- Full-output comparison, the S82 job's 231 rows at seeds 1-2 (Reference, 20 years), the old engine against the fixed one: 229 rows identical in every key. The two that moved are the ageing reading's programme runs (E.age.a0, E.age.a1). Its no-programme run (E.age.none) is identical.
+- On the traced seed (Reference, seed 1, share 0) the wage over the general price level at year 20 goes from $929,458 to $93,763; the same row without ageing gives $94,891. At full backing (seed 1) it goes from $99,495 to $99,374.
+- The fix was decided on the mechanism (the price level counted twice), before any outcome on the fixed engine was read beyond the traced wage.
+
+**The rerun.** As Amendment 6 item 4: the three ageing rows (`--rows=134-136`: E.age.none, E.age.a0, E.age.a1) in all six environment-horizons, seeds 1-500, on the fixed engine, with the job unchanged (`runner/jobs/s82.js`). Results land in `s82-v6-age-<env>-<years>-<engine, 7>`.
+- **Check 13:** E.age.none equals the batch's stored values (`s82-v6-<env>-<years>-aa2a4e0`) in every key and seed. It must pass before the rows are read.
+- The rerun's E.age.a0 and E.age.a1 replace the batch's in question 6. The wage over the general price level at year 20 is printed beside them as an inspection, with no threshold.
+- The ageing reading at full backing loses its "provisional" label once the rerun is read. Everything else from the batch stands as run.
+
+**Reach beyond S82.** Searched: every tool in compassionism-simulation `dev/tools/` and every job in compassionism-sim-results `runner/jobs/` that sets ageing. Only two studies combine ageing with the labour-force flows:
+1. S82's ageing rows (above).
+2. The participation study's pilot (`s73-participation-d12fd0f`; a 100-seed mechanism check), rows agP and agS (ageing with the flows and the participation margin), programme runs only. Its no-programme rows and agL0 (ageing without flows) cannot move. Those rows are rerun on the fixed engine and the pilot's tables get a dated correction note (compassionism-simulation `dev/reports/s73-participation.md`).
+The release's ageing rows (findings page "Aging", v5.3) have no flows. The on-together tests run ageing with the flows, but they are pass or fail checks on the accounts and draws, not figures.
