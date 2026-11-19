@@ -1,27 +1,31 @@
-# Handoff (Nov 19, 2026): S92 part 1 done (the at-sale rerun is running; the swing is gone)
+# Handoff (Nov 19, 2026): S92 done (the private price at the sale is the corrected model)
 
 ## Step status
-**S92 partly done.** Steps 1-4 are finished. Step 5, reading the six result folders under the decision rules and publishing every cell, is **S92 part 2**. **S89 is Duke's.**
+**S92 done.** The rerun passed every check. Setting the private businesses' BU price at the sale makes every poverty and wealth effect of the main rows slightly larger in the programme's favour, and changes no sign. **S89 is Duke's.**
 
 ## What shipped
-- compassionism-sim-results [PR 58](https://github.com/BetterToBest/compassionism-sim-results/pull/58) (merged `c2a0970`): `runner/jobs/s90.js` with five rows: no programme, and the full-coverage and opt-in designs, each late and at the sale. Part M's financed rows are left out.
-- compassionism-sim-results [PR 59](https://github.com/BetterToBest/compassionism-sim-results/pull/59) (merged `7b25594`): folder `s90-swing-b8ccd8d` (the swing measure, check 3, run.txt, SHA256SUMS).
-- compassionism-simulation [PR 164](https://github.com/BetterToBest/compassionism-simulation/pull/164) (**open**: CI was queued behind the study shards, and this repo has auto-merge off): `s90_swing.js`, `s90_acct.js`, `s90_tables.py`, `s90_trace.js --from`, and the report section "The rerun, part 1". No engine change. Merge it once green.
-- research-update [PR 183](https://github.com/BetterToBest/research-update/pull/183) (**open**: its link check was queued; merge once green): HANDOFF's Standing rules, `/end-session` told to keep them, preregistration Amendment 1 (clarifications only), PLAN.md S92 notes.
+- compassionism-sim-results [PR 60](https://github.com/BetterToBest/compassionism-sim-results/pull/60) (merged `e831444`): folder `s90-tables-b8ccd8d`, with every cell and its interval, the findings-page reading, run.txt and SHA256SUMS.
+- compassionism-simulation [PR 165](https://github.com/BetterToBest/compassionism-simulation/pull/165) (**open**: its CI was still running at session end, and auto-merge is off). It holds the report section "The rerun, part 2", `dev/tools/s90_page_check.py`, dated notes on the findings page (v5.9 and v5.6 sections) and in eight reports, and `dev/DECISIONS.md` "S92 part 2". Locally domtest (162), `check_round2.js`, `reader_codes.py --check` and glossary passed. **Merge it once green** (merge commit, not squash: run.txt cites commit `8897f34`).
+- research-update (this PR): PLAN.md S92 notes, this handoff.
+- Earlier this step: compassionism-simulation PR 164 and research-update PR 183, both merged.
 
 ## What was found
-- Swing measure (seeds 1-20, per seed then averaged), at the sale over late: Reference 0.124, Adverse 0.201, Stress 0.224. All are below 0.5, so decision rule 2 holds.
-- Check 3 passes: no accounting identity fails on the at-sale rows (seeds 1-5, three environments).
-- Two-seed trial of check 1: the no-programme and late rows equal `r2-m-ref-20-104691f` on all 5,862 values.
+- Checks 1 and 2 pass in all six folders: the no-programme and late-price rows equal the published rows on 1,465,500 values each. Check 3 passed in part 1. So under decision rule 3, the price at the sale is the corrected model.
+- Every poverty and wealth effect grows in all 24 cells, each interval excluding zero after Holm. Basket poverty is 0.28-0.59 points lower (full coverage) and 0.04-0.26 lower (opt-in). Median real wealth is $110-1,525 higher. Programme inflation moves by under 0.001 points a year. The 40-year changes are about half the 20-year ones. No secondary reading changes sign.
+- Findings page, at its printed precision: 45 of 60 main-row effects change in the last digit. None changes sign or falls outside the printed range across readings, and the prose holds. The cards would read 0.8%, 3.2%, 5.7% and $432,879 (now 0.9%, 3.7%, 6.0% and $432,297). An inspection of 180 distribution and work effects found no sign change.
+- The page gets dated notes, not new figures: rule 3 replaces the figures at the release. The other reached studies are not rerun now; each rerun is its own amendment, best done on the release engine.
+
+## For the next release (Duke sets the version)
+Make `sp.vAt: 'sale'` the default, regenerate the main rows' page data from the at-sale rows, and add a Hub corrections-log entry. The readings, financed rows and erosion shares stay late-price until rerun.
 
 ## In flight
-- Six `run-study` runs on GitHub Actions in compassionism-sim-results, dispatched Nov 19 01:02 UTC (runs 149-154). Pinned to engine `b8ccd8d`, seeds 1-500, 20 shards each. Results land in `s90-sale-<ref|adv|str>-<20|40>-b8ccd8d`; each run is done when its folder has a `DONE` file. Expected within about an hour.
+Nothing.
 
 ## Decisions waiting
 - D33 (the headline cards' headings and the full-backing condition; default: no change).
 
 ## Next step
-**S92 part 2** (opus, high): merge compassionism-simulation PR 164 and research-update PR 183 once green, check that the six folders have `DONE`, then run `python3 dev/tools/s90_tables.py ../compassionism-sim-results OUT --swing ../compassionism-sim-results/s90-swing-b8ccd8d/swing.json --acct ../compassionism-sim-results/s90-swing-b8ccd8d/acct.json` (it stops if check 1 or 2 fails). Read under the decision rules, publish the tables to sim-results and the report, read Q3 against the findings page, and add dated notes on the other reached studies (rule 5). Then S85.
+**S85** (opus, xhigh): output per hour, modelled. First merge compassionism-simulation PR 165 if it is green.
 
 ## Standing rules (permanent: copy this section word for word on every rewrite)
 **Reader text carries no internal labels. Write it right the first time; don't wait for the reader-codes check to catch it.** Fixing each failure afterwards has slowed every step that touches a report.
@@ -36,3 +40,6 @@
 - compassionism-simulation has auto-merge off, and its CI queues behind running study shards. Don't wait: leave the PR open and say so here.
 - In the plain framework run (no open access), ESP payroll BU are returned every year, even with no worker cap, so the residual there is not zero. Test it against the returned premium, not against zero.
 - After adding tests: `node harness.js unit --write-counts`. domtest needs `npm install` in a fresh clone (jsdom).
+- `s90_tables.py` flags a "rounding" change at 2 decimals, so it flags nearly every cell. The findings page prints 1 decimal. Read the page with `s90_page_check.py`.
+- This clone's `origin/main` can be stale at session start. Run `git fetch origin main` before branching.
+- compassionism-sim-results is large: clone with `--filter=blob:none --no-checkout`, then `git sparse-checkout set --no-cone` on the folders you need.
