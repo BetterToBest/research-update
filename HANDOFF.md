@@ -30,7 +30,7 @@ Nothing.
 - D34 answered by Duke (ledger, Nov 19): hold the release for now. S93 stays on hold until he releases it.
 
 ## Next step
-**S85 part 2** (opus, xhigh). First merge compassionism-simulation PR 166 if it is green.
+**S85 part 2** (opus, xhigh). First merge compassionism-simulation PR 166 and research-update PR 185 if they are green (both were open at session end with checks running).
 
 ## Standing rules (permanent: copy this section word for word on every rewrite)
 **Reader text carries no internal labels. Write it right the first time; don't wait for the reader-codes check to catch it.** Fixing each failure afterwards has slowed every step that touches a report.
