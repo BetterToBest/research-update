@@ -6,7 +6,8 @@
 ## What shipped
 - compassionism-simulation [PR 167](https://github.com/BetterToBest/compassionism-simulation/pull/167) (merged `503fa48`, v5.9.21): row option `oh` (displacement as lost jobs or shorter hours, output per hour, the dividend to owners; programme-only `kp` and `bk`), MODEL_SPEC section 17, `sources/s85_values.py` with extracts, `sources/s85_output.md` updated, 8 unit tests (408 in all), `dev/DECISIONS.md` "S85 part 2", the lineage link (all six panels' fingerprints unchanged). Guard test identical.
 - compassionism-sim-results [PR 61](https://github.com/BetterToBest/compassionism-sim-results/pull/61) (merged `0a7c264`): `runner/jobs/s85.js`, 179 rows per environment and horizon.
-- research-update (this PR): `prereg/2026-11-s85-output-per-hour.md` Amendment 2 (items 1-14), PLAN.md S85 notes, this handoff.
+- compassionism-simulation [PR 168](https://github.com/BetterToBest/compassionism-simulation/pull/168) (**open**: the engine repository's HANDOFF.md line for v5.9.21; its CI queues behind the study's 120 shards). Merge it once green.
+- research-update PRs 186 and this one: `prereg/2026-11-s85-output-per-hour.md` Amendment 2 (items 1-14), PLAN.md S85 notes, this handoff.
 
 ## What was found
 - Sourced values: `own` 0.541 (Rosenthal and Burke 2020, Table 4: US households' share of US corporate equity), s_L 0.542 (BLS nonfarm business labour share, 2025), yK 0.164 (BEA 2024, capital income per dollar of capital in the essentials industries, basket-weighted); `vk` 0.421 capped at 0.32.
