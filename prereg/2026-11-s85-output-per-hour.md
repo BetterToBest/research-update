@@ -149,3 +149,37 @@ Every cell above is published, null and unfavourable results included, in compas
 The outside reading of this preregistration (NVIDIA catalogue) is saved in `audits/` and any change it prompts is an amendment below.
 
 ## Amendments
+
+### Amendment 1 (Nov 19, 2026, after the outside reading, before any build or run)
+
+Reason: the outside reading (`audits/2026-11-19-s85-prereg-reading-nemotron.md`; Nemotron 3 Ultra on the file as committed, `bd7905f`) found three choices that favour the programme without a source, one source used beyond its horizon, and two gaps in the rules. Nothing has been built or run. The sourced values, names, engine commit and job that the text above assigns to Amendment 1 now go in **Amendment 2** (after the build, before the dry run).
+
+1. **The backing produced (section F), main reading.** M_t = m × H^P_t × (pay_t / s_L) + Σ_s K_s × (1 − δ)^(t − s − 1) × y_K.
+   - Only project hours count. They are the engine's only observed hours of programme work.
+   - There is no forecast gain on programme output (G_t = 1 in M_t). The gains in the sources are economy-wide or for one task.
+   - y_K is capital's share of output per dollar of net capital in the essentials industries: (1 − s_L,ess) × value added / net capital stock, BEA by industry, weighted by the basket's shares. The full output per dollar would count the labour the capital needs, which no programme hour supplies.
+   - **Labelled readings:** `conv` adds H^C_t, the hours behind participants' own conversions of their expired BU, at face value over the contract pay. It never includes ESP conversions or payroll BU. `gain` multiplies both terms by G_t. `vk` uses the full value added per dollar of capital (capped at 0.32).
+   - Block E becomes: D ∈ {0, 0.3, 0.5, 0.7} jobs × gain ∈ {low, high} × m ∈ {0.25, 0.5, 1} (48 rows, main reading). Then `acct: 'growth'` at m 1 × gain ∈ {low, high} × D ∈ {0, 0.5} (8). The floor, a = 0 with nothing produced, at D ∈ {0, 0.5} (4). Then at m ∈ {0.5, 1} × D ∈ {0, 0.5} with the high gain: `conv` (8), `gain` (8), `conv` and `gain` together (8), and `vk` at m 1 only (4). That is 88 rows, so the study has 152 rows per environment and horizon. Block F uses the main reading.
+2. **The gain's path (sections A and C).** Goldman Sachs' 1.5 points a year is a boost over ten years, so it is not run for 20 or 40.
+   - *Low:* Penn Wharton's published levels. G is 1 at year 0, 1.015 at year 10, 1.03 at year 30 ("nearly 3%") and 1.037 at year 50, linear between. That gives 1.0225 at year 20 and 1.0335 at year 40. Acemoglu's 1.1% at ten years agrees.
+   - *High:* a decade of 1.5 points, a level of 1.015^10 = 1.161. It is reached along the S-path at T and held.
+   - The rows' "u 0.1" and "u 1.5" read *low* and *high*; "u 0" is no gain.
+3. **Multiple comparisons for the headlines.** Statements that the programme offsets displacement's cost use Holm across the four primary outcomes × the eight block-A cells (D 0.1-0.7 × two forms), within each environment and horizon (32 tests). Other blocks keep Holm within each reading. Findings-page headlines come only from block A (displacement) and block F (together). Every other block is reported in full as a reading.
+4. **The backing produced: categories.** Each produced-backing row is put in one of three categories by its yearly programme inflation, using the 95% interval:
+   - *backs enough:* the interval's upper end is at most 5 points a year;
+   - *uncertain:* the interval straddles 5;
+   - *does not back enough:* the lower end is above 5.
+   M_t is linear in m in the main reading. So the report also gives the m at which the produced share would reach the inflation break-even (linear between the grid's m, never extrapolated): the share of programme work that would have to be goods sold in shops. Every Q4 sentence names m.
+5. **The sources, named now.**
+   - `own`: the share of US corporate equity held by US households, directly or through funds and retirement accounts, from Rosenthal and Burke (2020). If that cannot be opened, the Federal Reserve's Financial Accounts, L.223, with fund and pension holdings attributed to households. The sourced value is the main reading; 0.5 and 1 are its bounds.
+   - s_L: BLS, the labour share of the nonfarm business sector (level, latest full year). s_L,ess and y_K: BEA, compensation and value added by industry, and the net stock of fixed assets by industry, for food services and grocers (retail food), utilities, housing and health care, weighted by the basket's shares.
+   - If a source cannot be opened, the value stays a labelled design parameter at the bounds above, and the report says so.
+6. **Clarifications.**
+   - The reading note's 1.8%, 3.5% and 6.2% a year are the floor with no added gain. Each row reports its own implied output per remaining hour, with its gain.
+   - The IMF's "negatively affected" covers lower pay and fewer hours as well as lost jobs, so it anchors the 30% reading only loosely.
+   - New diagnostic, reported per row: aggregate cash income in the price rule, with and without displacement, and the part of it that is the dividend paid to the model's households (the part kept outside them is not in it).
+7. **Further limits stated in advance.**
+   - Pencavel's sample (British munitions workers in the First World War) limits how far "no per-hour gain below 49 hours" carries. The design's maintained take-home reading is the counterpoint.
+   - The dividend raises no investment, so there is no capital deepening in either run (against both runs, most at 40 years).
+   - One pass-through for every wage level. Production workers' 0.4-0.7 suggests less for the low-paid, so the main reading may overstate their gain.
+   - Contract pay values a project hour below many workers' own wage, the cautious side for the backing.
