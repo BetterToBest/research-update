@@ -44,3 +44,11 @@ Every cell above is published in compassionism-sim-results and in the plain-word
 
 ## Amendments
 Dated, with the reason, below this line. Nothing above changes after the first run.
+
+### Amendment 1 (Nov 19, 2026): readings fixed before the six result folders existed
+Clarifies only, so no design changes. Each reading was fixed in code before its results were run or read: the swing driver before the swing measure was run, and the tables script before any folder of the full rerun existed.
+- **Rows.** "The main rows as `r2.js --part=M` builds them (no programme; the full-coverage design; the opt-in design)" is read as those three rows plus the two at-sale copies, five in all. Part M's financed rows are left out. They are among the other reached studies of decision rule 5, so they get a dated note.
+- **Swing measure (Q1).** The measure is computed for each seed and then averaged over seeds 1-20, so swings in different seeds cannot cancel. The same measure on the series pooled over the seeds is published beside it. BU spent per programme adult is the trace tool's BU spent at face value, summed over programme adults, over their number, for each year (`dev/tools/s90_swing.js`).
+- **Secondary outcomes.** The engine stores no mean real income key, so real wage earnings per adult-year (`Er`) and the median real disposable income at the last year (`dmYp50E`, weighted) stand for it. BU spent is `mfBU` (face value per adult-year, the run's mean), and BU expired is `mfIss − mfBU` (issued and not spent). Both are per adult-year over all adults, not per programme adult; under full coverage these are the same adults. Programme cost is `cost`. The weighted primaries are `wtF0E` and `wtPovE` (the last year; the published tables give no weighted yearly versions).
+- **Check 3** is run by `dev/tools/s90_acct.js` with the unit suite's method.
+- **Q3.** The tables mark each primary effect whose sign or REPRODUCE.md rounding (2 decimals; whole dollars) changes. The findings-page statements are then read against the page itself.

@@ -178,12 +178,12 @@ The release reviews (triage `audits/2026-11-release-review-triage.md`, theme 1; 
 
 Sections (line): Why 7 · What the engine does today (read in the code bef 13 · Questions 22 · What is built (each behind its own switch; off = 34 · A. Essentials supply (`SUPPLY_LIMIT`, row option 36 · B. Wages that follow programme inflation in part 62 · C. The BU's delay (`BU_LAG`, row option `bl`, in 66 · D. Reporting keys (study option `s82`; reporting 70 · E. The triage's smaller readings (existing optio 74 · Design 82 · Outcomes 104 · Analysis 118 · Checks (before any table is read; each must pass 125 · Decision rules (fixed now) 136 · Reporting 147 · Limits stated in advance 151 · Amendments 161 · Amendment 1 (Nov 17, 2026, after the build and b 165 · Amendment 2 (Nov 17, 2026, after the sources wer 183 · Amendment 3 (Nov 18, 2026, before the dry run; n 224 · Amendment 4 (Nov 18, 2026, after the outside rea 277 · The dry run and the dispatch (Nov 18, 2026, befo 298 · Amendment 5 (Nov 18, 2026, after the first batch 327 · Amendment 6 (Nov 18, 2026, after the rerun's che 348 · Addendum to Amendment 6 (Nov 18, 2026, before th 368 · Amendment 7 (Nov 18, 2026, after the ageing reru 403
 
-## 2026-11-s90-private-price-at-sale.md (47 lines)
+## 2026-11-s90-private-price-at-sale.md (55 lines)
 Preregistration: the private businesses' BU price at the sale (S90's fix), rerun of the v5.9 main rows
 
 S90 traced the damped two-year swing in the BU each adult spends (main row, Reference, seed 1: $22,838 in years 0-1, then $10,969, $21,452, $13,819, $19,472, $16,202) to the private businesses' lower BU price.
 
-Sections (line): Why 5 · Questions 8 · Design 13 · Checks (before any outcome is read) 19 · Outcomes 24 · Analysis 29 · Decision rules 35 · Reporting 42 · Amendments 45
+Sections (line): Why 5 · Questions 8 · Design 13 · Checks (before any outcome is read) 19 · Outcomes 24 · Analysis 29 · Decision rules 35 · Reporting 42 · Amendments 45 · Amendment 1 (Nov 19, 2026): readings fixed befor 48
 
 ## 2026-11-security-addendum.md (83 lines)
 Preregistration addendum: security outcomes beyond wealth, and the per-year series for public costs (S53, study P, for S47)
