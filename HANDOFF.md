@@ -1,36 +1,29 @@
-# Handoff (Nov 19, 2026): S85 part 1 done (output per hour and automation: reading, sources, preregistration)
+# Handoff (Nov 19, 2026): S85 part 2 done (output per hour and automation built, sourced, dry-run and dispatched)
 
 ## Step status
-**S85 partly done.** Part 1 is done: Claude's reading of the design, the sources opened, the preregistration with Amendment 1, and an outside reading, all before any build or run. **Part 2 is next:** open the sources Amendment 1 item 5 names and record them in Amendment 2, build row option `oh` behind its switch (off = identical), dry run, job, dispatch on Actions. Part 3: checks, tables, report, findings-page text.
+**S85 parts 1 and 2 done; part 3 is next** once the six result folders show `DONE`. Part 2: Duke's four sources opened and the three values fixed, row option `oh` built behind its switch (off = identical), preregistration Amendment 2, dry run (every check passes), six runs dispatched on Actions.
 
 ## What shipped
-- compassionism-simulation [PR 166](https://github.com/BetterToBest/compassionism-simulation/pull/166) (**open**: its CI was still running at session end; auto-merge is off). It holds `dev/reports/s85-output-reading.md`, `sources/s85_output.md`, `sources/s85_hours.py` with `sources/s85_owid/us_hours.csv`, and the engine HANDOFF. No engine change. **Merge it once green** (merge commit).
-- research-update [PR 185](https://github.com/BetterToBest/research-update/pull/185) (this PR): `prereg/2026-11-s85-output-per-hour.md` (committed `bd7905f` before any build; Amendment 1 items 1-8), `audits/2026-11-19-s85-prereg-reading-nemotron.md` with the packet and reply in `audits/nvidia-2026-11-19-s85/`, PLAN.md (S85 notes; new steps S94 and S95), this handoff.
-- Earlier this session: compassionism-simulation PR 165 (S92's notes), merged `353662e`.
+- compassionism-simulation [PR 167](https://github.com/BetterToBest/compassionism-simulation/pull/167) (merged `503fa48`, v5.9.21): row option `oh` (displacement as lost jobs or shorter hours, output per hour, the dividend to owners; programme-only `kp` and `bk`), MODEL_SPEC section 17, `sources/s85_values.py` with extracts, `sources/s85_output.md` updated, 8 unit tests (408 in all), `dev/DECISIONS.md` "S85 part 2", the lineage link (all six panels' fingerprints unchanged). Guard test identical.
+- compassionism-sim-results [PR 61](https://github.com/BetterToBest/compassionism-sim-results/pull/61) (merged `0a7c264`): `runner/jobs/s85.js`, 179 rows per environment and horizon.
+- research-update (this PR): `prereg/2026-11-s85-output-per-hour.md` Amendment 2 (items 1-14), PLAN.md S85 notes, this handoff.
 
 ## What was found
-- Pencavel (2015), which the Hub's corporate transformation paper cites for falling output per hour at 35-40 hours, finds output proportional to hours below 49 a week. So shorter weeks alone bring no gain per hour. The Hub correction note is S95.
-- Since 1950, US hours per worker fell 0.17% a year while output per hour grew about 2.2%: about 8% of the gain was taken as shorter hours.
-- Duke's 50% and 70% displacement at 20 years need output per remaining hour to grow 3.5% and 6.2% a year above trend. That is beyond every forecast opened (0.1 points a year from Acemoglu and Penn Wharton; 1.5 for a decade from Goldman Sachs, as Acemoglu quotes it), so they are labelled stress readings.
-- The outside reading found three choices that favoured the programme without a source (hours behind conversions, the gain on programme work, and a decade's forecast run for 20-40 years). All three were fixed in Amendment 1 before any build.
-- Duke asked "what about services?": m counts goods and services alike, plus work that replaces a purchase (Amendment 1 item 8).
-
-## Sources Duke offered to collect (pages that refused automated fetches; paste the passages into the part 2 session)
-- McKinsey 2023, generative AI: https://www.mckinsey.com/capabilities/mckinsey-digital/our-insights/the-economic-potential-of-generative-ai-the-next-productivity-frontier (the share of work activities automatable, the midpoint year, the 60-70% technical potential, the productivity ranges).
-- McKinsey 2017, jobs lost and gained: https://www.mckinsey.com/featured-insights/future-of-work/jobs-lost-jobs-gained-what-the-future-of-work-will-mean-for-jobs-skills-and-wages (share of hours automatable by 2030; US figures).
-- Goldman Sachs 2023: https://www.goldmansachs.com/insights/articles/generative-ai-could-raise-global-gdp-by-7-percent (the productivity boost and its years; occupations exposed).
-- UK four-day week pilot: https://autonomy.work/portfolio/uk4dwpilotresults/ (companies, hours cut, revenue, how many kept it).
-- Rosenthal and Burke 2020: https://www.taxpolicycenter.org/publications/whos-left-tax-us-taxation-corporations-and-their-shareholders (the share of US corporate equity US households hold). The session tries this one, the Fed's L.223, BLS and BEA itself first.
+- Sourced values: `own` 0.541 (Rosenthal and Burke 2020, Table 4: US households' share of US corporate equity), s_L 0.542 (BLS nonfarm business labour share, 2025), yK 0.164 (BEA 2024, capital income per dollar of capital in the essentials industries, basket-weighted); `vk` 0.421 capped at 0.32.
+- McKinsey and Goldman Sachs read in the original change no reading. The four-day week pilot (hours 38 to 34, revenue +1.4%, volunteers, no comparison group) is context only.
+- The preregistration's check 6 could not hold as written (the a = 0 row counts the project payout at market value; the produced backing replaces that valuation). Corrected in Amendment 2 before any run.
+- `conv` adds nothing in the main row (every expired BU goes to the project pool); its rows equal their counterparts.
+- Dry run: every check passes; about 100 core-hours. A one-seed unit test suggests the produced backing covers about a sixth of the payout, with programme inflation near 50% a year at D 0.5. Not a result.
 
 ## In flight
-Nothing.
+Six `run-study` runs on compassionism-sim-results (dispatched Nov 19, 22:07 UTC; engine `503fa483f9711900054842e75fc0edc01eba8dc9`; job `s85.js`; 20 shards of 25 seeds; `--procs=4`). Runs 155-160: [155](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/44625486750), [156](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/44625492284), [157](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/44625498538), [158](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/44625502788), [159](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/44625507182), [160](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/44625512672) (dispatched in the order ref-20, adv-20, str-20, ref-40, adv-40, str-40 at the same second, so match each run to its study by its inputs, not its number). Results land in `s85-<env>-<years>-503fa48/` (`run.txt`, `SHA256SUMS`, `DONE`). A failed shard: "Re-run failed jobs" on its run.
 
 ## Decisions waiting
 - D33 (the headline cards' headings and the full-backing condition; default: no change).
-- D34 answered by Duke (ledger, Nov 19): hold the release for now. S93 stays on hold until he releases it.
+- D34 answered by Duke (Nov 19): hold the release. S93 stays on hold.
 
 ## Next step
-**S85 part 2** (opus, xhigh). First merge compassionism-simulation PR 166 and research-update PR 185 if they are green (both were open at session end with checks running).
+**S85 part 3** (opus, xhigh), once all six folders show `DONE`: the preregistered checks on the batch (1-9; the dry-run checks in `/tmp` are gone, rebuild from Amendment 2 items 7 and 13), the tables (offsets with Holm across the 32 block-A tests, Q4's categories and break-even m, free time split), the plain-words report `dev/reports/s85-output-per-hour.md`, the findings-page text, an outside reading of the results. If a folder is not `DONE`, re-run its failed jobs and end.
 
 ## Standing rules (permanent: copy this section word for word on every rewrite)
 **Reader text carries no internal labels. Write it right the first time; don't wait for the reader-codes check to catch it.** Fixing each failure afterwards has slowed every step that touches a report.
@@ -41,6 +34,9 @@ Nothing.
 - `dev/tools/reader_codes_allow.txt` is only for labels that are not ours (a formula symbol such as D0, a report's own numbering), each with a reason. Never use it to let a step code through.
 
 ## Pitfalls
+- `expectedHeadSha` in a merge call must be the exact 40-character head; take it from `git ls-remote origin refs/heads/<branch>`, never guess the tail.
+- BLS refuses direct requests and its API key's daily quota is shared: fetch BLS files through the fetch tool (it saves binaries in `tool-results/`), then parse them with `openpyxl`.
+- The `oh` rows' no-programme runs are shared by both-run settings (`none.<key>` rows in `s85.js`): pair each programme row with the `none` row its `rowSpec` names, not with `none.off`.
 - `/end-session` cannot be started by Claude (the Skill tool refuses it); Duke types it. Land PRs as you go so little is left for it.
 - McKinsey, Goldman Sachs, OECD and Autonomy refuse automated fetches; open a paper's own PDF or a paper that quotes it, and label a quoted figure as context only. PDFs the fetch tool saves can be read with `pdftotext`.
 - The GitHub tools failed to connect at session start; a ToolSearch for them reconnected.
