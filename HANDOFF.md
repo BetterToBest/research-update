@@ -23,6 +23,7 @@ Nothing.
 
 ## Decisions waiting
 - D33 (the headline cards' headings and the full-backing condition; default: no change).
+- D34 (the version of the release that makes the price at the sale the default; default: a v5.9.x patch at the next engine session). Step S93 waits on it.
 
 ## Next step
 **S85** (opus, xhigh): output per hour, modelled. First merge compassionism-simulation PR 165 if it is green.
