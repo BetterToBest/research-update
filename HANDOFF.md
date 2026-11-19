@@ -27,7 +27,7 @@ Nothing.
 
 ## Decisions waiting
 - D33 (the headline cards' headings and the full-backing condition; default: no change).
-- D34 (the version of the release that makes the price at the sale the default; default: a v5.9.x patch at the next engine session). S93 waits on it.
+- D34 answered by Duke (ledger, Nov 19): hold the release for now. S93 stays on hold until he releases it.
 
 ## Next step
 **S85 part 2** (opus, xhigh). First merge compassionism-simulation PR 166 if it is green.
