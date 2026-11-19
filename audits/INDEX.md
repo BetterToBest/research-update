@@ -106,6 +106,13 @@ Before the Hub page `us-money-history.html` gained its sections on crypto, offsh
 
 Sections (line): What it said, and what was done 9 · Checked by this session before the reading (not  22
 
+## 2026-11-18-s90-reading.md (22 lines)
+S90: an outside reading of the finding, the fix and the rerun's preregistration (Nov 18, 2026)
+
+**What was sent.** `audits/nvidia-2026-11-18-s90/build_packet.py` builds the packet.
+
+Sections (line): What it confirmed 9 · Triage of its three changes 15
+
 ## 2026-11-engine-round-2.md (41 lines)
 Engine round 2: six improvements after S39 and S55 (Nov 9, 2026)
 
@@ -188,6 +195,7 @@ Sections (line): Items 7 · What changes now 30
 - `nvidia-2026-11-17-s82/` (folder, 3 files)
 - `nvidia-2026-11-18-s82/` (folder, 7 files)
 - `nvidia-2026-11-18-s82-results/` (folder, 5 files)
+- `nvidia-2026-11-18-s90/` (folder, 4 files)
 - `refine/` (folder, 9 files)
 - `s46-followup/` (folder, 3 files)
 - `s87-part2-reading/` (folder, 4 files)
