@@ -1,32 +1,36 @@
-# Handoff (Nov 19, 2026): S92 done (the private price at the sale is the corrected model)
+# Handoff (Nov 19, 2026): S85 part 1 done (output per hour and automation: reading, sources, preregistration)
 
 ## Step status
-**S92 done.** The rerun passed every check. Setting the private businesses' BU price at the sale makes every poverty and wealth effect of the main rows slightly larger in the programme's favour, and changes no sign. **S89 is Duke's.**
+**S85 partly done.** Part 1 is done: Claude's reading of the design, the sources opened, the preregistration with Amendment 1, and an outside reading, all before any build or run. **Part 2 is next:** open the sources Amendment 1 item 5 names and record them in Amendment 2, build row option `oh` behind its switch (off = identical), dry run, job, dispatch on Actions. Part 3: checks, tables, report, findings-page text.
 
 ## What shipped
-- compassionism-sim-results [PR 60](https://github.com/BetterToBest/compassionism-sim-results/pull/60) (merged `e831444`): folder `s90-tables-b8ccd8d`, with every cell and its interval, the findings-page reading, run.txt and SHA256SUMS.
-- compassionism-simulation [PR 165](https://github.com/BetterToBest/compassionism-simulation/pull/165) (**open**: its CI was still running at session end, and auto-merge is off). It holds the report section "The rerun, part 2", `dev/tools/s90_page_check.py`, dated notes on the findings page (v5.9 and v5.6 sections) and in eight reports, and `dev/DECISIONS.md` "S92 part 2". Locally domtest (162), `check_round2.js`, `reader_codes.py --check` and glossary passed. **Merge it once green** (merge commit, not squash: run.txt cites commit `8897f34`).
-- research-update (this PR): PLAN.md S92 notes, this handoff.
-- Earlier this step: compassionism-simulation PR 164 and research-update PR 183, both merged.
+- compassionism-simulation [PR 166](https://github.com/BetterToBest/compassionism-simulation/pull/166) (**open**: its CI was still running at session end; auto-merge is off). It holds `dev/reports/s85-output-reading.md`, `sources/s85_output.md`, `sources/s85_hours.py` with `sources/s85_owid/us_hours.csv`, and the engine HANDOFF. No engine change. **Merge it once green** (merge commit).
+- research-update [PR 185](https://github.com/BetterToBest/research-update/pull/185) (this PR): `prereg/2026-11-s85-output-per-hour.md` (committed `bd7905f` before any build; Amendment 1 items 1-8), `audits/2026-11-19-s85-prereg-reading-nemotron.md` with the packet and reply in `audits/nvidia-2026-11-19-s85/`, PLAN.md (S85 notes; new steps S94 and S95), this handoff.
+- Earlier this session: compassionism-simulation PR 165 (S92's notes), merged `353662e`.
 
 ## What was found
-- Checks 1 and 2 pass in all six folders: the no-programme and late-price rows equal the published rows on 1,465,500 values each. Check 3 passed in part 1. So under decision rule 3, the price at the sale is the corrected model.
-- Every poverty and wealth effect grows in all 24 cells, each interval excluding zero after Holm. Basket poverty is 0.28-0.59 points lower (full coverage) and 0.04-0.26 lower (opt-in). Median real wealth is $110-1,525 higher. Programme inflation moves by under 0.001 points a year. The 40-year changes are about half the 20-year ones. No secondary reading changes sign.
-- Findings page, at its printed precision: 45 of 60 main-row effects change in the last digit. None changes sign or falls outside the printed range across readings, and the prose holds. The cards would read 0.8%, 3.2%, 5.7% and $432,879 (now 0.9%, 3.7%, 6.0% and $432,297). An inspection of 180 distribution and work effects found no sign change.
-- The page gets dated notes, not new figures: rule 3 replaces the figures at the release. The other reached studies are not rerun now; each rerun is its own amendment, best done on the release engine.
+- Pencavel (2015), which the Hub's corporate transformation paper cites for falling output per hour at 35-40 hours, finds output proportional to hours below 49 a week. So shorter weeks alone bring no gain per hour. The Hub correction note is S95.
+- Since 1950, US hours per worker fell 0.17% a year while output per hour grew about 2.2%: about 8% of the gain was taken as shorter hours.
+- Duke's 50% and 70% displacement at 20 years need output per remaining hour to grow 3.5% and 6.2% a year above trend. That is beyond every forecast opened (0.1 points a year from Acemoglu and Penn Wharton; 1.5 for a decade from Goldman Sachs, as Acemoglu quotes it), so they are labelled stress readings.
+- The outside reading found three choices that favoured the programme without a source (hours behind conversions, the gain on programme work, and a decade's forecast run for 20-40 years). All three were fixed in Amendment 1 before any build.
+- Duke asked "what about services?": m counts goods and services alike, plus work that replaces a purchase (Amendment 1 item 8).
 
-## For the next release (Duke sets the version)
-Make `sp.vAt: 'sale'` the default, regenerate the main rows' page data from the at-sale rows, and add a Hub corrections-log entry. The readings, financed rows and erosion shares stay late-price until rerun.
+## Sources Duke offered to collect (pages that refused automated fetches; paste the passages into the part 2 session)
+- McKinsey 2023, generative AI: https://www.mckinsey.com/capabilities/mckinsey-digital/our-insights/the-economic-potential-of-generative-ai-the-next-productivity-frontier (the share of work activities automatable, the midpoint year, the 60-70% technical potential, the productivity ranges).
+- McKinsey 2017, jobs lost and gained: https://www.mckinsey.com/featured-insights/future-of-work/jobs-lost-jobs-gained-what-the-future-of-work-will-mean-for-jobs-skills-and-wages (share of hours automatable by 2030; US figures).
+- Goldman Sachs 2023: https://www.goldmansachs.com/insights/articles/generative-ai-could-raise-global-gdp-by-7-percent (the productivity boost and its years; occupations exposed).
+- UK four-day week pilot: https://autonomy.work/portfolio/uk4dwpilotresults/ (companies, hours cut, revenue, how many kept it).
+- Rosenthal and Burke 2020: https://www.taxpolicycenter.org/publications/whos-left-tax-us-taxation-corporations-and-their-shareholders (the share of US corporate equity US households hold). The session tries this one, the Fed's L.223, BLS and BEA itself first.
 
 ## In flight
 Nothing.
 
 ## Decisions waiting
 - D33 (the headline cards' headings and the full-backing condition; default: no change).
-- D34 (the version of the release that makes the price at the sale the default; default: a v5.9.x patch at the next engine session). Step S93 waits on it.
+- D34 answered by Duke (ledger, Nov 19): hold the release for now. S93 stays on hold until he releases it.
 
 ## Next step
-**S85** (opus, xhigh): output per hour, modelled. First merge compassionism-simulation PR 165 if it is green.
+**S85 part 2** (opus, xhigh). First merge compassionism-simulation PR 166 and research-update PR 185 if they are green (both were open at session end with checks running).
 
 ## Standing rules (permanent: copy this section word for word on every rewrite)
 **Reader text carries no internal labels. Write it right the first time; don't wait for the reader-codes check to catch it.** Fixing each failure afterwards has slowed every step that touches a report.
@@ -37,10 +41,11 @@ Nothing.
 - `dev/tools/reader_codes_allow.txt` is only for labels that are not ours (a formula symbol such as D0, a report's own numbering), each with a reason. Never use it to let a step code through.
 
 ## Pitfalls
-- `s90_trace.js --seed=N` alone pools seeds 1 to N into one series. Use `--from=K --seed=K` for one seed.
+- `/end-session` cannot be started by Claude (the Skill tool refuses it); Duke types it. Land PRs as you go so little is left for it.
+- McKinsey, Goldman Sachs, OECD and Autonomy refuse automated fetches; open a paper's own PDF or a paper that quotes it, and label a quoted figure as context only. PDFs the fetch tool saves can be read with `pdftotext`.
+- The GitHub tools failed to connect at session start; a ToolSearch for them reconnected.
+- The Hub is cloned read-only at `/home/user/bettertobest/research-hub` for reading its papers (S95 needs it attached with push).
 - compassionism-simulation has auto-merge off, and its CI queues behind running study shards. Don't wait: leave the PR open and say so here.
-- In the plain framework run (no open access), ESP payroll BU are returned every year, even with no worker cap, so the residual there is not zero. Test it against the returned premium, not against zero.
 - After adding tests: `node harness.js unit --write-counts`. domtest needs `npm install` in a fresh clone (jsdom).
-- `s90_tables.py` flags a "rounding" change at 2 decimals, so it flags nearly every cell. The findings page prints 1 decimal. Read the page with `s90_page_check.py`.
 - This clone's `origin/main` can be stale at session start. Run `git fetch origin main` before branching.
 - compassionism-sim-results is large: clone with `--filter=blob:none --no-checkout`, then `git sparse-checkout set --no-cone` on the folders you need.
