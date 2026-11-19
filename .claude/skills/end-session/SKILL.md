@@ -18,6 +18,7 @@ Do these in order, then stop. Start no new work.
    - **In flight:** long jobs: where they run, pinned commit, where results land, how to tell they are done (`DONE` file).
    - **Decisions waiting:** ledger decision IDs and one line each.
    - **Next step:** its ID and why it is next (the Order table in PLAN.md, skipping blocked steps).
+   - **Standing rules:** copy the existing section word for word (it is permanent; change it only when Duke asks or a rule is added on purpose). It does not count toward the 45 lines.
    - **Pitfalls:** what went wrong or nearly did.
    If the step changed the plan, edit PLAN.md too (its section and the Order table). Commit and merge.
 

@@ -22,8 +22,16 @@
 ## Next step
 **S92** (opus, high): add `runner/jobs/s90.js` to compassionism-sim-results, then dispatch the main rows (lagged and at the sale; 500 seeds; three environments; 20 and 40 years) on GitHub Actions. Then S85.
 
+## Standing rules (permanent: copy this section word for word on every rewrite)
+**Reader text carries no internal labels. Write it right the first time; don't wait for the reader-codes check to catch it.** Fixing each failure afterwards has slowed every step that touches a report.
+- Reader text: the pages (HTML outside `<code>`/`<pre>`, plus title/alt/aria-label), prose in `site/*.js`, the JSON text fields the pages show, and Markdown outside code. In compassionism-simulation that includes README, CHANGELOG, REPRODUCE, ODD, ECONOMIST-REVIEW and **every `dev/reports/*.md`**, so a new report is checked like a page. The Hub and the root site are checked too.
+- Never in reader text: step and ledger codes (S90, D33, N-S72, H-S29, pairs like S47/S7), "session 12", "part M", job ids (X3), "round 2", "release 1/2", "C2.2" (write "the full-coverage design" and name NEEC's criterion once), and row ids, key or option names in plain prose.
+- Name things by subject: "the report on the private price at the sale", not "the S90 report"; "the preregistered rerun", not "S92". A file path, option or command goes in backticks or `<code>`, which is where a reader looks something up, so it is allowed there. Step codes belong in DECISIONS.md, PLAN.md, prereg/, audits/ and commit messages, which readers don't open.
+- Before committing an edit to any reader file, run the check on it: `python3 dev/tools/reader_codes.py --list` (compassionism-simulation), or `--root ../research-hub --preset hub` / `--root ../bettertobest.github.io --preset root`. Then `--check`, which is what CI (domtest Phase 17) runs.
+- `dev/tools/reader_codes_allow.txt` is only for labels that are not ours (a formula symbol such as D0, a report's own numbering), each with a reason. Never use it to let a step code through.
+
 ## Pitfalls
 - In the plain framework run (no open access), ESP payroll BU are returned every year, even with no worker cap, so the residual there is not zero. Test it against the returned premium, not against zero.
 - Setting a flag with `process.argv.push` after `require` has no effect if the tool reads it at load time.
-- After any edit to a report: `python3 dev/tools/reader_codes.py --check` (no step codes in reader-visible prose). After adding tests: `node harness.js unit --write-counts`.
+- After adding tests: `node harness.js unit --write-counts`.
 - domtest needs `npm install` in a fresh clone (jsdom).
