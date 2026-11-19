@@ -1,17 +1,17 @@
-# Handoff (Nov 18, 2026): S91 done (the ageing rerun read; S82 report updated)
+# Handoff (Nov 19, 2026): S90 done (the BU's two-year swing traced to a defect; fix built behind an option; rerun preregistered)
 
 ## Step status
-**S91 done.** Parts 1 and 2 are both finished. **S90** (the BU's two-year relief cycle) is next. **S89 is Duke's.**
+**S90 done.** Steps 1-3 are finished: the term was found, it is a defect, and the fix is built with its rerun preregistered. The rerun itself is the new step **S92**. **S89 is Duke's.**
 
 ## What shipped
-- research-update [PR 180](https://github.com/BetterToBest/research-update/pull/180) (merged `3a56e53`): Amendment 7 to `prereg/2026-11-s82-v6-supply-indexing.md` (check 13 corrected before the ageing outcomes were read); PLAN.md S91 notes.
-- compassionism-simulation [PR 162](https://github.com/BetterToBest/compassionism-simulation/pull/162) (merged `73b2b50`): `s82_tables.py --age`, `dev/runs/s82-batch/` regenerated, report section 9, DECISIONS "S91 part 2". No engine change.
-- compassionism-sim-results [PR 57](https://github.com/BetterToBest/compassionism-sim-results/pull/57) (merged `63af352`): `s82-tables-ab11c05/`; `SUPERSEDED-AGEING.txt` in `s82-tables-aa2a4e0/` and the six `s82-v6-*-aa2a4e0/` folders.
+- compassionism-simulation [PR 163](https://github.com/BetterToBest/compassionism-simulation/pull/163) (merged `b8ccd8d`): option `sp.vAt: 'sale'` (off by default; guard test identical; lineage linked), `bizTaxRates`/`bizPremPerBU`, five tests in `privUnitSuite`, trace tool `dev/tools/s90_trace.js`, report `dev/reports/s90-private-price-at-sale.md`, DECISIONS "S90"; unit count 400 in README/CONTRIBUTING.
+- research-update [PR RU_PR](https://github.com/BetterToBest/research-update/pull/RU_PR) (merged `RU_MERGE`): `prereg/2026-11-s90-private-price-at-sale.md` (engine `b8ccd8d`), outside reading `audits/2026-11-18-s90-reading.md`, PLAN.md S90 notes and S92.
 
 ## What was found
-- Check 13 (the rerun's no-programme ageing row matches the batch's) passed in Reference and **failed in Adverse and Stress**: outside inflation moves prices with no programme, so the defect had reached those runs too. The engine diff is the fix alone. Amendment 7 corrected the check and pairs every ageing effect on the fixed engine.
-- Corrected ageing (Reference, 20 years, no backing / full): basket poverty −8.67 / −8.81 points beyond the base effect; median real wealth +$20,783 / −$1,102. At 40 years: −14.6 / −15.4 points; +$63,639 / −$160,053 (new adults start with little, so they have had fewer years of the BU).
-- Every other S82 table is identical (diffed). The findings page has no ageing figure, and its S82 data are unaffected.
+- BU budget (about $24,900) < essentials bill (about $30,000), so the BU spent move one for one with the price cuts paid before them. The private businesses' lower BU price (plan step 14) was paid from **last year's** premium shared by last year's BU: a big cut means fewer BU spent, so less premium and a smaller cut the next year. That is the swing. With it off the swing goes; with the community cut off it stays (all three environments).
+- Duke's design sets that price at the sale ("$9 menu becomes $3 in BU" at 3x), so it is a defect. Under `vAt: 'sale'`, a BU spent there buys 1 + vK dollars (vK about 0.90, then 0.81; Stress 0.79, then 0.71), paid as an advance that next year's premium repays exactly. The premium on payroll BU returned a year later is still shared by last year's BU.
+- Reach: every programme figure since v5.0. On seeds 1-2 (inspection only), the main row's cut in basket poverty grows by 0.6-0.7 points.
+- Outside reading (Nemotron 3 Ultra) confirmed the diagnosis, the defect call and the algebra. Two wording fixes were made: the fix is a candidate until the rerun passes, and the community split's yearly timing is labelled a modelling assumption.
 
 ## In flight
 - Nothing running.
@@ -20,10 +20,10 @@
 - D33 (the headline cards' headings and the full-backing condition; default: no change).
 
 ## Next step
-**S90** (opus, high): find which term drives the BU's damped two-year cycle in the main row, and say whether it is a reading of the design or a defect. Then S85.
+**S92** (opus, high): add `runner/jobs/s90.js` to compassionism-sim-results, then dispatch the main rows (lagged and at the sale; 500 seeds; three environments; 20 and 40 years) on GitHub Actions. Then S85.
 
 ## Pitfalls
-- A "this run cannot move" check proved in Reference alone can fail in Adverse and Stress, which have outside inflation. Prove such checks in all three environments.
-- domtest fails after any engine edit until `python3 dev/tools/sync_earlier.py` is run and the lineage link is recorded (`node dev/tools/engine_lineage.js prove "..."`, ~10 minutes).
-- Any script that loops over a run file's keys must skip `_settings` and `_meta`.
-- `dev/tools/set_version.py` runs only when Duke says "release". The next version label is v5.9.21.
+- In the plain framework run (no open access), ESP payroll BU are returned every year, even with no worker cap, so the residual there is not zero. Test it against the returned premium, not against zero.
+- Setting a flag with `process.argv.push` after `require` has no effect if the tool reads it at load time.
+- After any edit to a report: `python3 dev/tools/reader_codes.py --check` (no step codes in reader-visible prose). After adding tests: `node harness.js unit --write-counts`.
+- domtest needs `npm install` in a fresh clone (jsdom).
