@@ -7,7 +7,7 @@
 - compassionism-sim-results [PR 58](https://github.com/BetterToBest/compassionism-sim-results/pull/58) (merged `c2a0970`): `runner/jobs/s90.js` with five rows: no programme, and the full-coverage and opt-in designs, each late and at the sale. Part M's financed rows are left out.
 - compassionism-sim-results [PR 59](https://github.com/BetterToBest/compassionism-sim-results/pull/59) (merged `7b25594`): folder `s90-swing-b8ccd8d` (the swing measure, check 3, run.txt, SHA256SUMS).
 - compassionism-simulation [PR 164](https://github.com/BetterToBest/compassionism-simulation/pull/164) (**open**: CI was queued behind the study shards, and this repo has auto-merge off): `s90_swing.js`, `s90_acct.js`, `s90_tables.py`, `s90_trace.js --from`, and the report section "The rerun, part 1". No engine change. Merge it once green.
-- research-update (this PR, branch `claude/s92-reader-rule`): HANDOFF's Standing rules, `/end-session` told to keep them, preregistration Amendment 1 (clarifications only), PLAN.md S92 notes.
+- research-update [PR 183](https://github.com/BetterToBest/research-update/pull/183) (**open**: its link check was queued; merge once green): HANDOFF's Standing rules, `/end-session` told to keep them, preregistration Amendment 1 (clarifications only), PLAN.md S92 notes.
 
 ## What was found
 - Swing measure (seeds 1-20, per seed then averaged), at the sale over late: Reference 0.124, Adverse 0.201, Stress 0.224. All are below 0.5, so decision rule 2 holds.
@@ -21,7 +21,7 @@
 - D33 (the headline cards' headings and the full-backing condition; default: no change).
 
 ## Next step
-**S92 part 2** (opus, high): merge PR 164, check that the six folders have `DONE`, then run `python3 dev/tools/s90_tables.py ../compassionism-sim-results OUT --swing ../compassionism-sim-results/s90-swing-b8ccd8d/swing.json --acct ../compassionism-sim-results/s90-swing-b8ccd8d/acct.json` (it stops if check 1 or 2 fails). Read under the decision rules, publish the tables to sim-results and the report, read Q3 against the findings page, and add dated notes on the other reached studies (rule 5). Then S85.
+**S92 part 2** (opus, high): merge compassionism-simulation PR 164 and research-update PR 183 once green, check that the six folders have `DONE`, then run `python3 dev/tools/s90_tables.py ../compassionism-sim-results OUT --swing ../compassionism-sim-results/s90-swing-b8ccd8d/swing.json --acct ../compassionism-sim-results/s90-swing-b8ccd8d/acct.json` (it stops if check 1 or 2 fails). Read under the decision rules, publish the tables to sim-results and the report, read Q3 against the findings page, and add dated notes on the other reached studies (rule 5). Then S85.
 
 ## Standing rules (permanent: copy this section word for word on every rewrite)
 **Reader text carries no internal labels. Write it right the first time; don't wait for the reader-codes check to catch it.** Fixing each failure afterwards has slowed every step that touches a report.
