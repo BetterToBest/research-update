@@ -1,27 +1,26 @@
-# Handoff (Nov 20, 2026): S85 part 4 done (supplement read, opt-in worsening traced); part 5 (findings-page section) next
+# Handoff (Nov 20, 2026): S85 done (part 5, the findings-page section); next S94
 
 ## Step status
-**S85 part 4 done; part 5 next.** Part 5 is the findings-page section only: nothing else of S85 is open. All pull requests are merged.
+**S85 is done.** Part 5 (the findings-page section) is in compassionism-simulation [PR 171](https://github.com/BetterToBest/compassionism-simulation/pull/171): see "In flight" for whether it merged.
 
 ## What shipped
-- compassionism-sim-results [PR 64](https://github.com/BetterToBest/compassionism-sim-results/pull/64) (merged `257b6c1`): `s85-tables2-503fa48` (the tables with the real savings measure; check 10 passes in all six folders; the first folder kept as published). [PR 65](https://github.com/BetterToBest/compassionism-sim-results/pull/65) (merged `327200b`): `s85-trace-503fa48` (the trace; all checks pass).
-- compassionism-simulation [PR 170](https://github.com/BetterToBest/compassionism-simulation/pull/170) (merged `79eca05`; both checks passed): the report's savings lines, counts, section 4 row and category grid, the trace subsection, `dev/tools/s85_trace.py`, DECISIONS "S85 part 4". No engine change.
-- research-update (branch `claude/tender-rubin-w7xl7i`): prereg Amendment 4 (committed before the trace was computed), `audits/2026-11-20-openrouter-setup.md` and a CLAUDE.md line (the OpenRouter route), the outside-reading packet and reply (`audits/2026-11-20-s85-part4-reading.md`: Nemotron on OpenRouter answered; Gemma was rate-limited upstream on every try, so there is no Google reading; no figure moved, four wording fixes in the report), PLAN.md notes.
+- compassionism-simulation PR 171 (branch `claude/s85-part5-page`): `dev/tools/s85_page_data.py` writes `data/studies/s85-automation.json` (block A, 576 rows), `s85-backing.json` (block E, 528 rows) and `s85-free-time.json` (144 rows) from `s85-tables2-503fa48/s85-summary.json`. `s85Section()` in `site/round2.js` comes after the supply study's section, with every figure read from the files, plus an automation line in the page's unfavourable results. The report's section 14 now names the horizon of the produced share. DECISIONS "S85 part 5". CODEMAP regenerated. No engine change.
+- research-update [PR 191](https://github.com/BetterToBest/research-update/pull/191) (branch `claude/intelligent-johnson-wsgq57`): PLAN.md (the S85 row and a part 5 note), this file. Ledger synced (S85 done, next S94).
 
 ## What was found
-- Savings, on the preregistered measure: with full coverage the programme offsets 66-94% of displacement's rise (the stand-in read 97-102%); opt-in 3-47% with shorter hours and -7% to 19% with lost jobs, and it worsens the rise in Stress at 50% and 70% lost jobs. Counts at 20 years: full coverage 142 in part, 2 fully; opt-in 88 in part, 39 do not offset, 17 worsen (40 years: 75, 32, 37). At the produced backing: 7-48% (full coverage), 0-23% (opt-in).
-- The trace: where the opt-in design makes the rise in basket poverty larger with lost jobs (9 of 12 cells, at 20 and at 40 years), the adults who would take part carry 71-89% of it (62-87% at 40); it is a head count, not depth; enrolment does not fall; the contribution's rise is as large with full coverage, where nothing worsens; the adults who would not take part carry 11-29% (contribution and programme inflation together, not separated).
+- The report's section 14 gave the produced share as "5-18% of the payout" under "figures are for 20 years". At 20 years the main reading's rows give 6-17% with full coverage and 3-7% opt-in; 5-18% and 3-8% hold only with the 40-year runs counted. The page and the report now both name the horizon. No figure moved.
+- One no-programme cost is exactly 2.05 points (Reference, 10% lost jobs, 20 years). The report prints it as 2.0 and the page as 2.1 (round half up). Both are correct roundings; neither was changed.
+- Every other figure in section 14 matches the data: 80-100%, 59-93%, 66-94%, 13-40%; free time 4-10% against 76-81%; opt-in 88, 39 and 17 at 20 years; 48-69 points a year of inflation (Reference 48-63); all 528 backing rows have an inflation interval above 5 points a year.
 
 ## In flight
-- Nothing is running. All three repositories' work for this part is merged.
-- Gemma (Google, via OpenRouter) was never served: try it again for the part 5 text if a different maker's reading is wanted; 4 of the day's 50 free requests were used.
+- PR 171's CI (guard, checks) was running when the session ended. Local runs all passed: `check_round2.js` (1,433 printed numbers), domtest (162 of 162), reader codes, glossary, docs-agree. If the PR is still open, merge it once both checks pass (`expectedHeadSha` from `git ls-remote`).
 
 ## Decisions waiting
 - D33 (headline cards' headings and the full-backing condition; default: no change).
-- D34 answered (Nov 19): hold the release; S93 on hold. It covers the version and the main rows' default, not a study section on the findings page.
+- D34 answered (Nov 19): hold the release; S93 on hold.
 
 ## Next step
-**S85 part 5** (opus, high): the findings-page section. Attach compassionism-simulation (push). Write `dev/tools/s85_page_data.py` (pattern: `dev/tools/s82_page_data.py`) to make `data/studies/s85-automation.json` (block A, six readings, by environment, horizon, design, form and D: costs, offset share with interval, category) and `s85-backing.json` (every non-floor backing row: programme inflation and produced share with intervals) from `s85-tables2-503fa48/s85-summary.json`; add `s85Section()` to `site/round2.js` after the supply study's (add the files to `FILES`), with the words of report section 14 and every figure read from the data; keep the page's rules (no wealth figure without its price rule, every inflation figure with the backing statement beside it, unfavourable cells named beside favourable ones). Run `node domtest.js`-level checks the CI runs and `python3 dev/tools/reader_codes.py --check` before pushing. Landing: pull request, merge once checks pass.
+**S94** (opus, high): the Creative Collectives' lending to start-ups where banks will not lend. Claude's reading of the design (read the Hub papers first), sources, preregistration, then a switch. It waited on S85, which is now done. Duke left a note on S94's ledger step (Nov 19): for small essential providers, support with premises, logistics and setup costs; for large utility and transport projects, usually financed by municipal bonds and public debt, Claude's research, with public operators as a possible move to Collective charters. Read it before the reading note. Attach compassionism-simulation (push). Also open and short: **S95** (sonnet, medium): a dated correction note in the Hub's corporate transformation paper on Pencavel (attach research-hub with push).
 
 ## Standing rules (permanent: copy this section word for word on every rewrite)
 **Reader text carries no internal labels. Write it right the first time; don't wait for the reader-codes check to catch it.** Fixing each failure afterwards has slowed every step that touches a report.
@@ -51,3 +50,4 @@
 - A `SHA256SUMS` made with `ls | xargs sha256sum > SHA256SUMS` lists itself and cannot match: leave it out (`ls | grep -v '^SHA256SUMS$'`), then `sha256sum -c`.
 - The page's figures are read from `data/studies/*.json` by `site/round2.js` (`show`, `find`, `snum`; no figure typed there); the supply study's tool `dev/tools/s82_page_data.py` is the pattern. The report's backing ranges (5-18%, 3-8%, 18-71 points a year) are over every non-floor backing row (main readings and variants); the 72 main-reading rows alone give 6-17%.
 - The results clone's sparse checkout needs `s90-sale-*-b8ccd8d` (check 1) as well as `s85-*` and `s85sec-*`; the tables tool took about 12 minutes for six folders this time, the trace tool about 2.
+- `node dev/tools/check_round2.js` (every printed number on the v5.9 findings section is tied to a row of its file) is not run by CI: run it by hand after editing `site/round2.js`. A share printed as a percent must be stored as a percent in the data file, or the check fails.
