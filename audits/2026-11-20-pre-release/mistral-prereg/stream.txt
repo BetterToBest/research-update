@@ -9222,3 +9222,13 @@ data: {"id":"chatcmpl-e8878b59-8ccc-4ead-8397-5affcef19305","choices":[{"index":
 
 data: {"id":"chatcmpl-e8878b59-8ccc-4ead-8397-5affcef19305","choices":[{"index":0,"delta":{"reasoning_content":" and asset"},"finish_reason":null,"logprobs":null}],"created":1795214830,"model":"mistralai/mistral-large-4-1t-a52b","object":"chat.completion.chunk"}
 
+data: {"id":"chatcmpl-e8878b59-8ccc-4ead-8397-5affcef19305","choices":[{"index":0,"delta":{"reasoning_content":". Need state"},"finish_reason":null,"logprobs":null}],"created":1795214830,"model":"mistralai/mistral-large-4-1t-a52b","object":"chat.completion.chunk"}
+
+data: {"id":"chatcmpl-e8878b59-8ccc-4ead-8397-5affcef19305","choices":[{"index":0,"delta":{"reasoning_content":".\n- Pace"},"finish_reason":null,"logprobs":null}],"created":1795214830,"model":"mistralai/mistral-large-4-1t-a52b","object":"chat.completion.chunk"}
+
+data: {"id":"chatcmpl-e8878b59-8ccc-4ead-8397-5affcef19305","choices":[{"index":0,"delta":{"reasoning_content":" limit"},"finish_reason":null,"logprobs":null}],"created":1795214830,"model":"mistralai/mistral-large-4-1t-a52b","object":"chat.completion.chunk"}
+
+data: {"id":"chatcmpl-e8878b59-8ccc-4ead-8397-5affcef19305","choices":[{"index":0,"delta":{"reasoning_content":": f_t ="},"finish_reason":null,"logprobs":null}],"created":1795214830,"model":"mistralai/mistral-large-4-1t-a52b","object":"chat.completion.chunk"}
+
+data: {"id":"chatcmpl-e8878b59-8ccc-4ead-8397-5affcef19305","choices":[{"index":0,"delta":{"reasoning_content":" min(Δ"},"finish_reason":null,"logprobs":null}],"created":1795214830,"model":"mistralai/mistral-large-4-1t-a52b","object":"chat.completion.chunk"}
+

@@ -6,7 +6,7 @@ Written in S94. Two packets, built from public files only by `audits/2026-11-20-
 
 Readers (other makers' models; free; readings, never results): ERNIE 5.5 Flash (Baidu, OpenRouter) and Nemotron 3 Ultra (NVIDIA, OpenRouter) and Kimi K3.1 Pro (Moonshot, NVIDIA catalogue) on the gaps; Nemotron 3 Ultra (OpenRouter) and Mistral Large 4 (NVIDIA catalogue) on the preregistration. Replies word for word in the folder beside this file, one subfolder per reader (`status.txt` gives the finish reason). Every point below was checked against the files before it was accepted.
 
-## The preregistration (Nemotron; Mistral below when it lands)
+## The preregistration (Nemotron; Mistral stopped before answering)
 Accepted, in Amendment 1 of `prereg/2026-11-s94-collectives-lending.md`:
 - The pace should limit all new capacity, not only the fund's additions (the rate counts every new establishment): main 'total'.
 - The charter share is for electricity customers; applied to gas and water it overstates. Now electricity only (55.35% of household utilities, BEA 2.4.5U, opened for this).
@@ -22,7 +22,7 @@ Not accepted, with the reason (Amendment 1, item 9):
 - Dropping the all-grants, pace × 2 and no-limit rows: they are labelled bounds and cost nothing (GitHub Actions).
 - A "money rule" check: the money rule is the project's rule on paid computing, not a model quantity.
 - It read 0.814 as a price; it is the utilities' full running cost. The text was unclear, so Amendment 1 item 3 states the subsidy exactly.
-- Mistral asked how $18,862 per adult follows from the BEA stock: the sources script now prints it ($5,088,349m over 269.8 million adults, the engine's Census count).
+- Mistral (stopped after about 45,000 characters of reasoning and no answer; partial reasoning saved, not otherwise used) asked how $18,862 per adult follows from the BEA stock: the sources script now prints it ($5,088,349m over 269.8 million adults, the engine's Census count).
 
 ## The gaps before the release (ERNIE, Nemotron and Kimi)
 Checked against the live page (`site/round2.js`) as well as the text file the readers saw.

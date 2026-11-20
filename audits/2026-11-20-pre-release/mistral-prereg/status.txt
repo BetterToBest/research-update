@@ -1,0 +1,1 @@
+stopped by Claude on Nov 20 before an answer (reasoning only, 44946 characters; content 0). Not used except the K derivation point, which the sources script now prints.
