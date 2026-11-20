@@ -127,7 +127,7 @@ Written in S85 part 4, after Duke added an OpenRouter key to this environment be
 
 Sections (line): What was checked on Nov 20 5 · How Claude chooses 11 · How a reading is requested 18 · What may be sent 22 · What an outside reading is 26
 
-- `2026-11-20-pre-release/` (folder, 7 files)
+- `2026-11-20-pre-release/` (folder, 8 files)
 ## 2026-11-20-release-gaps.md (36 lines)
 Gaps and limitations open before the next release (inventory, Nov 20, 2026)
 
