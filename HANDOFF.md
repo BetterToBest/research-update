@@ -1,32 +1,28 @@
-# Handoff (Nov 20, 2026): S85 part 3 done (the batch read: checks, tables, report, outside reading); the savings supplement in flight
+# Handoff (Nov 20, 2026): S85 part 3 done (automation batch read: checks, tables, report, outside reading); part 4 next
 
 ## Step status
-**S85 part 3 done; part 4 is next** once the six supplement folders `s85sec-<env>-<years>-503fa48` show `DONE`. Part 3: Amendment 3 before any table was read, checks 1-9 pass in all six folders, the tables, the plain-words report with the findings-page text, and an outside reading acted on.
+**S85 part 3 done; part 4 next.** All PRs merged. Part 4 needs the six supplement folders `s85sec-<env>-<years>-503fa48` to show `DONE` (running at session end).
 
 ## What shipped
-- research-update (this branch's PR): `prereg/2026-11-s85-output-per-hour.md` Amendment 3 (items 1-11: the savings outcome's supplementary run, Holm over 48, the D 0 references, signs, rebuilt checks, check 7 read as an inspection); `audits/2026-11-20-s85-results-reading-nemotron.md` with its packet and reply; PLAN.md S85 notes.
-- compassionism-sim-results [PR 62](https://github.com/BetterToBest/compassionism-sim-results/pull/62) (merged `f260054`): `s85.js --sec` (blocks A and F with the security measures on, 48 rows; without the flag the job is unchanged). [PR 63](https://github.com/BetterToBest/compassionism-sim-results/pull/63) (merged `020c4b1`): `s85-tables-503fa48` (checks, tables at 20 and 40 years, `s85-summary.json`, `analysis.txt`).
-- compassionism-simulation [PR 169](https://github.com/BetterToBest/compassionism-simulation/pull/169) (branch `claude/s85-tables`; see In flight): `dev/reports/s85-output-per-hour.md` (section 14 is the findings-page text), `dev/tools/s85_tables.py`, `dev/DECISIONS.md` "S85 part 3", CODEMAP, its HANDOFF line. No engine change.
+- research-update [PR 188](https://github.com/BetterToBest/research-update/pull/188) (merged `f83a608`): prereg Amendment 3 (items 1-11), `audits/2026-11-20-s85-results-reading-nemotron.md` (+ packet, reply), PLAN.md S85 notes.
+- compassionism-sim-results [PR 62](https://github.com/BetterToBest/compassionism-sim-results/pull/62) (merged `f260054`): `s85.js --sec`; [PR 63](https://github.com/BetterToBest/compassionism-sim-results/pull/63) (merged `020c4b1`): `s85-tables-503fa48`.
+- compassionism-simulation [PR 169](https://github.com/BetterToBest/compassionism-simulation/pull/169) (merged `171a27d`): `dev/reports/s85-output-per-hour.md` (section 14 = findings-page text), `dev/tools/s85_tables.py`, DECISIONS "S85 part 3". No engine change.
 
 ## What was found
-- Checks: all pass. Check 1 is strong: the main rows with the option off equal the published main rows at the sale in every key and seed.
-- Displacement with no programme raises basket poverty 2.0-12.6 points by year 20 (Reference; 1.6-9.6 Adverse and Stress) and lowers median wealth $7,158-$48,326.
-- Full coverage at full backing: offsets 80-100% of the rise in basket poverty, 59-97% of wealth poverty's, 97-100% of the basic-living measure's, 13-40% of the fall in median wealth; all 144 tests significant (136 in part, 8 fully).
-- Opt-in: offsets far less; with lost jobs it worsens the rise in basket poverty in 9 of 12 cells (98 in part, 31 do not offset, 15 worsen at 20 years; 80/32/32 at 40). Inspection (Adverse, seeds 1-100): a head-count effect (participants held just above the line by their wage) and the flat contribution rising 3.5% to 4.5% as wages shrink. On poverty severity the opt-in programme offsets part of the rise in every lost-jobs cell (0.4-9.9 points), which fits the head-count reading.
-- The backing produced: 5-18% of the payout (full coverage), 3-8% (opt-in); inflation 18-71 points a year at 20 years, up to 82 at 40; all 44 rows "do not back enough" in every cell; no break-even m. Decision rule 5 binds every full-backing headline.
-- Free time at 50% lost jobs: 494 freed hours a year; insecure 76-81% with no programme, 4-10% full coverage, 55-77% opt-in.
-- The fourth primary reading is `bNAPy` (below 30 days of basic living) until the supplement is read; the preregistered `secM3A` was never switched on in the batch.
+- Checks 1-9 pass in all six folders; the main rows (option off) equal the published main rows at the sale in every key and seed.
+- No programme: displacement raises basket poverty 2.0-12.6 points by year 20 (Reference). Full coverage at full backing offsets 80-100% of it and 13-40% of the median-wealth fall (all 144 tests significant). Opt-in offsets far less and, with lost jobs, worsens the rise in 9 of 12 cells (head-count effect + rising contribution; severity still offset).
+- Produced backing 5-18% (full coverage), 3-8% (opt-in); inflation 18-71 points/yr at 20 years, up to 82 at 40; no break-even m. Rule 5 binds every full-backing headline.
+- Savings is read on `bNAPy` until the supplement's `secM3A` lands.
 
 ## In flight
-- Six supplement runs on compassionism-sim-results (dispatched Nov 20, 02:23 UTC; engine `503fa48`; job `s85.js --sec`; 20 shards of 25 seeds): runs [161](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/44660461514) to 166, in the order ref-20, adv-20, str-20, ref-40, adv-40, str-40. Their shards were still queued for runners when this session ended. Results land in `s85sec-<env>-<years>-503fa48/`. A failed shard: "Re-run failed jobs".
-- compassionism-simulation PR 169 and research-update PR 188: their checks queue behind the supplement's shards. Merge each once green (`expectedHeadSha` from `git ls-remote origin refs/heads/<branch>`); if this handoff is not on main, read it from branch `claude/compassionate-franklin-c9ginb`.
+- Supplement runs 161-166 on compassionism-sim-results (Actions; engine `503fa48`; `s85.js --sec`; 20 shards each). At 03:25 UTC run 161's shards had all succeeded and its finish job was queued. Results: `s85sec-<env>-<years>-503fa48/` with `DONE`. A failed shard: "Re-run failed jobs".
 
 ## Decisions waiting
-- D33 (the headline cards' headings and the full-backing condition; default: no change).
-- D34 answered by Duke (Nov 19): hold the release. S93 stays on hold.
+- D33 (headline cards' headings and the full-backing condition; default: no change).
+- D34 answered (Nov 19): hold the release; S93 on hold.
 
 ## Next step
-**S85 part 4** (opus, xhigh), once the six `s85sec-*` folders show `DONE`: rerun `python3 dev/tools/s85_tables.py <results> <out>` into a new folder (`s85-tables2-503fa48`; the tool merges `secM3A` for blocks A and F once check 10 passes), update the report's savings lines and section 4's table; trace why the opt-in design worsens displacement's cost with lost jobs (decompose the head-count effect, the contribution and who takes part); the findings-page section from the report's section 14, as the supply study's part 3b did (`site/round2.js`, `data/studies/`), unless D34's hold covers it. If a folder is not `DONE`, re-run its failed jobs and end.
+**S85 part 4** (opus, xhigh): rerun `python3 dev/tools/s85_tables.py <results> <out>` into `s85-tables2-503fa48` (merges `secM3A` for blocks A and F after check 10), update the report's savings lines and section 4 table; full trace of the opt-in worsening; findings-page section from report section 14 (as the supply study's part 3b), unless D34's hold covers it.
 
 ## Standing rules (permanent: copy this section word for word on every rewrite)
 **Reader text carries no internal labels. Write it right the first time; don't wait for the reader-codes check to catch it.** Fixing each failure afterwards has slowed every step that touches a report.
@@ -48,6 +44,7 @@
 - After adding tests: `node harness.js unit --write-counts`. domtest needs `npm install` in a fresh clone (jsdom).
 - This clone's `origin/main` can be stale at session start. Run `git fetch origin main` before branching.
 - compassionism-sim-results is large: clone with `--filter=blob:none --no-checkout`, then `git sparse-checkout set --no-cone` on the folders you need.
-- An NVIDIA reasoning model can spend its whole `max_tokens` on reasoning and return no answer (`finish_reason` "length", content empty): give it 40,000 for a long packet.
-- `s85_tables.py` takes about 25 minutes for the six folders (10,000 replicates): run it in the background.
-- `mfChk` is the Source-financing identity, not 0 on the flat-contribution main rows: never read it as a pass/fail check there.
+- An NVIDIA reasoning model can spend its whole `max_tokens` on reasoning and return no answer: give it 40,000 for a long packet.
+- `s85_tables.py` takes about 25 minutes for six folders: run it in the background.
+- `mfChk` is not 0 on flat-contribution main rows: never a pass/fail check there.
+- Each push to a PR branch queues new CI runs; cancel the stale ones (runners are shared with study shards).
