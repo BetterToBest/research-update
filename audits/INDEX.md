@@ -219,6 +219,7 @@ Sections (line): Items 7 · What changes now 30
 - `nvidia-2026-11-18-s90/` (folder, 4 files)
 - `nvidia-2026-11-19-s85/` (folder, 4 files)
 - `nvidia-2026-11-20-s85-results/` (folder, 4 files)
+- `openrouter-2026-11-20-s85-part4/` (folder, 5 files)
 - `refine/` (folder, 9 files)
 - `s46-followup/` (folder, 3 files)
 - `s87-part2-reading/` (folder, 4 files)
