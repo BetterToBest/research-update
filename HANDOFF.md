@@ -1,28 +1,27 @@
-# Handoff (Nov 20, 2026): S85 part 3 done (automation batch read: checks, tables, report, outside reading); part 4 next
+# Handoff (Nov 20, 2026): S85 part 4 done (supplement read, opt-in worsening traced); part 5 (findings-page section) next
 
 ## Step status
-**S85 part 3 done; part 4 next.** All PRs merged. Part 4 needs the six supplement folders `s85sec-<env>-<years>-503fa48` to show `DONE` (running at session end).
+**S85 part 4 done; part 5 next.** Part 5 is the findings-page section only: nothing else of S85 is open. All pull requests are merged.
 
 ## What shipped
-- research-update [PR 188](https://github.com/BetterToBest/research-update/pull/188) (merged `f83a608`): prereg Amendment 3 (items 1-11), `audits/2026-11-20-s85-results-reading-nemotron.md` (+ packet, reply), PLAN.md S85 notes.
-- compassionism-sim-results [PR 62](https://github.com/BetterToBest/compassionism-sim-results/pull/62) (merged `f260054`): `s85.js --sec`; [PR 63](https://github.com/BetterToBest/compassionism-sim-results/pull/63) (merged `020c4b1`): `s85-tables-503fa48`.
-- compassionism-simulation [PR 169](https://github.com/BetterToBest/compassionism-simulation/pull/169) (merged `171a27d`): `dev/reports/s85-output-per-hour.md` (section 14 = findings-page text), `dev/tools/s85_tables.py`, DECISIONS "S85 part 3". No engine change.
+- compassionism-sim-results [PR 64](https://github.com/BetterToBest/compassionism-sim-results/pull/64) (merged `257b6c1`): `s85-tables2-503fa48` (the tables with the real savings measure; check 10 passes in all six folders; the first folder kept as published). [PR 65](https://github.com/BetterToBest/compassionism-sim-results/pull/65) (merged `327200b`): `s85-trace-503fa48` (the trace; all checks pass).
+- compassionism-simulation [PR 170](https://github.com/BetterToBest/compassionism-simulation/pull/170) (merged `79eca05`; both checks passed): the report's savings lines, counts, section 4 row and category grid, the trace subsection, `dev/tools/s85_trace.py`, DECISIONS "S85 part 4". No engine change.
+- research-update (branch `claude/tender-rubin-w7xl7i`): prereg Amendment 4 (committed before the trace was computed), `audits/2026-11-20-openrouter-setup.md` and a CLAUDE.md line (the OpenRouter route), the outside-reading packet and reply (`audits/2026-11-20-s85-part4-reading.md`: Nemotron on OpenRouter answered; Gemma was rate-limited upstream on every try, so there is no Google reading; no figure moved, four wording fixes in the report), PLAN.md notes.
 
 ## What was found
-- Checks 1-9 pass in all six folders; the main rows (option off) equal the published main rows at the sale in every key and seed.
-- No programme: displacement raises basket poverty 2.0-12.6 points by year 20 (Reference). Full coverage at full backing offsets 80-100% of it and 13-40% of the median-wealth fall (all 144 tests significant). Opt-in offsets far less and, with lost jobs, worsens the rise in 9 of 12 cells (head-count effect + rising contribution; severity still offset).
-- Produced backing 5-18% (full coverage), 3-8% (opt-in); inflation 18-71 points/yr at 20 years, up to 82 at 40; no break-even m. Rule 5 binds every full-backing headline.
-- Savings is read on `bNAPy` until the supplement's `secM3A` lands.
+- Savings, on the preregistered measure: with full coverage the programme offsets 66-94% of displacement's rise (the stand-in read 97-102%); opt-in 3-47% with shorter hours and -7% to 19% with lost jobs, and it worsens the rise in Stress at 50% and 70% lost jobs. Counts at 20 years: full coverage 142 in part, 2 fully; opt-in 88 in part, 39 do not offset, 17 worsen (40 years: 75, 32, 37). At the produced backing: 7-48% (full coverage), 0-23% (opt-in).
+- The trace: where the opt-in design makes the rise in basket poverty larger with lost jobs (9 of 12 cells, at 20 and at 40 years), the adults who would take part carry 71-89% of it (62-87% at 40); it is a head count, not depth; enrolment does not fall; the contribution's rise is as large with full coverage, where nothing worsens; the adults who would not take part carry 11-29% (contribution and programme inflation together, not separated).
 
 ## In flight
-- Supplement runs 161-166 on compassionism-sim-results (Actions; engine `503fa48`; `s85.js --sec`; 20 shards each). At 03:25 UTC run 161's shards had all succeeded and its finish job was queued. Results: `s85sec-<env>-<years>-503fa48/` with `DONE`. A failed shard: "Re-run failed jobs".
+- Nothing is running. All three repositories' work for this part is merged.
+- Gemma (Google, via OpenRouter) was never served: try it again for the part 5 text if a different maker's reading is wanted; 4 of the day's 50 free requests were used.
 
 ## Decisions waiting
 - D33 (headline cards' headings and the full-backing condition; default: no change).
-- D34 answered (Nov 19): hold the release; S93 on hold.
+- D34 answered (Nov 19): hold the release; S93 on hold. It covers the version and the main rows' default, not a study section on the findings page.
 
 ## Next step
-**S85 part 4** (opus, xhigh): rerun `python3 dev/tools/s85_tables.py <results> <out>` into `s85-tables2-503fa48` (merges `secM3A` for blocks A and F after check 10), update the report's savings lines and section 4 table; full trace of the opt-in worsening; findings-page section from report section 14 (as the supply study's part 3b), unless D34's hold covers it.
+**S85 part 5** (opus, high): the findings-page section. Attach compassionism-simulation (push). Write `dev/tools/s85_page_data.py` (pattern: `dev/tools/s82_page_data.py`) to make `data/studies/s85-automation.json` (block A, six readings, by environment, horizon, design, form and D: costs, offset share with interval, category) and `s85-backing.json` (every non-floor backing row: programme inflation and produced share with intervals) from `s85-tables2-503fa48/s85-summary.json`; add `s85Section()` to `site/round2.js` after the supply study's (add the files to `FILES`), with the words of report section 14 and every figure read from the data; keep the page's rules (no wealth figure without its price rule, every inflation figure with the backing statement beside it, unfavourable cells named beside favourable ones). Run `node domtest.js`-level checks the CI runs and `python3 dev/tools/reader_codes.py --check` before pushing. Landing: pull request, merge once checks pass.
 
 ## Standing rules (permanent: copy this section word for word on every rewrite)
 **Reader text carries no internal labels. Write it right the first time; don't wait for the reader-codes check to catch it.** Fixing each failure afterwards has slowed every step that touches a report.
@@ -48,3 +47,7 @@
 - `s85_tables.py` takes about 25 minutes for six folders: run it in the background.
 - `mfChk` is not 0 on flat-contribution main rows: never a pass/fail check there.
 - Each push to a PR branch queues new CI runs; cancel the stale ones (runners are shared with study shards).
+- OpenRouter's free tier (`openrouter.ai`, ids ending `:free` only; 50 free-model requests a day; free providers may keep prompts, so send only public text, with the author's name turned into a role) is a second route for outside readings: `audits/2026-11-20-openrouter-setup.md`. Google's Gemma was rate-limited upstream (429, a shared pool) on every try; Nemotron on OpenRouter answers. `audits/openrouter-2026-11-20-s85-part4/ask.py` sends a packet and saves the reply.
+- A `SHA256SUMS` made with `ls | xargs sha256sum > SHA256SUMS` lists itself and cannot match: leave it out (`ls | grep -v '^SHA256SUMS$'`), then `sha256sum -c`.
+- The page's figures are read from `data/studies/*.json` by `site/round2.js` (`show`, `find`, `snum`; no figure typed there); the supply study's tool `dev/tools/s82_page_data.py` is the pattern. The report's backing ranges (5-18%, 3-8%, 18-71 points a year) are over every non-floor backing row (main readings and variants); the 72 main-reading rows alone give 6-17%.
+- The results clone's sparse checkout needs `s90-sale-*-b8ccd8d` (check 1) as well as `s85-*` and `s85sec-*`; the tables tool took about 12 minutes for six folders this time, the trace tool about 2.

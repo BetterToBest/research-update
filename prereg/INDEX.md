@@ -178,12 +178,12 @@ The release reviews (triage `audits/2026-11-release-review-triage.md`, theme 1; 
 
 Sections (line): Why 7 · What the engine does today (read in the code bef 13 · Questions 22 · What is built (each behind its own switch; off = 34 · A. Essentials supply (`SUPPLY_LIMIT`, row option 36 · B. Wages that follow programme inflation in part 62 · C. The BU's delay (`BU_LAG`, row option `bl`, in 66 · D. Reporting keys (study option `s82`; reporting 70 · E. The triage's smaller readings (existing optio 74 · Design 82 · Outcomes 104 · Analysis 118 · Checks (before any table is read; each must pass 125 · Decision rules (fixed now) 136 · Reporting 147 · Limits stated in advance 151 · Amendments 161 · Amendment 1 (Nov 17, 2026, after the build and b 165 · Amendment 2 (Nov 17, 2026, after the sources wer 183 · Amendment 3 (Nov 18, 2026, before the dry run; n 224 · Amendment 4 (Nov 18, 2026, after the outside rea 277 · The dry run and the dispatch (Nov 18, 2026, befo 298 · Amendment 5 (Nov 18, 2026, after the first batch 327 · Amendment 6 (Nov 18, 2026, after the rerun's che 348 · Addendum to Amendment 6 (Nov 18, 2026, before th 368 · Amendment 7 (Nov 18, 2026, after the ageing reru 403
 
-## 2026-11-s85-output-per-hour.md (227 lines)
+## 2026-11-s85-output-per-hour.md (245 lines)
 Preregistration: output per hour and automation, with the backing produced (S85, the v6 engine)
 
 The main row assumes full backing.
 
-Sections (line): Why 7 · What the engine does today (read in the code bef 15 · Questions 27 · What is built (one switch, row option `oh`; off  38 · Design 69 · Outcomes 85 · Analysis 99 · Checks (before any table is read; each must pass 106 · Decision rules (fixed now) 118 · Reporting 129 · Limits stated in advance 133 · To open before the dry run (Amendment 1) 142 · Amendments 151 · Amendment 1 (Nov 19, 2026, after the outside rea 153 · Amendment 2 (Nov 19, 2026, after the build, befo 188 · Amendment 3 (Nov 20, 2026, after the batch finis 210
+Sections (line): Why 7 · What the engine does today (read in the code bef 15 · Questions 27 · What is built (one switch, row option `oh`; off  38 · Design 69 · Outcomes 85 · Analysis 99 · Checks (before any table is read; each must pass 106 · Decision rules (fixed now) 118 · Reporting 129 · Limits stated in advance 133 · To open before the dry run (Amendment 1) 142 · Amendments 151 · Amendment 1 (Nov 19, 2026, after the outside rea 153 · Amendment 2 (Nov 19, 2026, after the build, befo 188 · Amendment 3 (Nov 20, 2026, after the batch finis 210 · Amendment 4 (Nov 20, 2026, after the supplement  228
 
 ## 2026-11-s90-private-price-at-sale.md (55 lines)
 Preregistration: the private businesses' BU price at the sale (S90's fix), rerun of the v5.9 main rows

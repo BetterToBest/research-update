@@ -120,6 +120,20 @@ S85: an outside reading of the preregistration, before the build (Nov 19, 2026)
 
 Sections (line): Triage 9
 
+## 2026-11-20-openrouter-setup.md (29 lines)
+Outside readings through OpenRouter's free tier: setup and choice of model (Nov 20, 2026)
+
+Written in S85 part 4, after Duke added an OpenRouter key to this environment because NVIDIA's daily allowance may run out.
+
+Sections (line): What was checked on Nov 20 5 · How Claude chooses 11 · How a reading is requested 18 · What may be sent 22 · What an outside reading is 26
+
+## 2026-11-20-s85-part4-reading.md (26 lines)
+S85 part 4: an outside reading of the trace and the savings change, before publication (Nov 20, 2026)
+
+**What was sent.** `audits/openrouter-2026-11-20-s85-part4/build_packet.py` builds the packet (41,614 characters, about 14,600 tokens): seven questions, the preregistration's questions, Amendments 3 and 4, report section
+
+Sections (line): Triage 9 · What the reading did not change 23
+
 ## 2026-11-20-s85-results-reading-nemotron.md (28 lines)
 S85: an outside reading of the results, before publication (Nov 20, 2026)
 
@@ -212,6 +226,7 @@ Sections (line): Items 7 · What changes now 30
 - `nvidia-2026-11-18-s90/` (folder, 4 files)
 - `nvidia-2026-11-19-s85/` (folder, 4 files)
 - `nvidia-2026-11-20-s85-results/` (folder, 4 files)
+- `openrouter-2026-11-20-s85-part4/` (folder, 5 files)
 - `refine/` (folder, 9 files)
 - `s46-followup/` (folder, 3 files)
 - `s87-part2-reading/` (folder, 4 files)
