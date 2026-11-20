@@ -5,7 +5,7 @@
 
 ## What shipped
 - compassionism-simulation PR 171 (branch `claude/s85-part5-page`): `dev/tools/s85_page_data.py` writes `data/studies/s85-automation.json` (block A, 576 rows), `s85-backing.json` (block E, 528 rows) and `s85-free-time.json` (144 rows) from `s85-tables2-503fa48/s85-summary.json`. `s85Section()` in `site/round2.js` comes after the supply study's section, with every figure read from the files, plus an automation line in the page's unfavourable results. The report's section 14 now names the horizon of the produced share. DECISIONS "S85 part 5". CODEMAP regenerated. No engine change.
-- research-update (branch `claude/intelligent-johnson-wsgq57`): PLAN.md (the S85 row and a part 5 note), this file.
+- research-update [PR 191](https://github.com/BetterToBest/research-update/pull/191) (branch `claude/intelligent-johnson-wsgq57`): PLAN.md (the S85 row and a part 5 note), this file. Ledger synced (S85 done, next S94).
 
 ## What was found
 - The report's section 14 gave the produced share as "5-18% of the payout" under "figures are for 20 years". At 20 years the main reading's rows give 6-17% with full coverage and 3-7% opt-in; 5-18% and 3-8% hold only with the 40-year runs counted. The page and the report now both name the horizon. No figure moved.
@@ -20,7 +20,7 @@
 - D34 answered (Nov 19): hold the release; S93 on hold.
 
 ## Next step
-**S94** (opus, high): the Creative Collectives' lending to start-ups where banks will not lend. Claude's reading of the design (read the Hub papers first), sources, preregistration, then a switch. It waited on S85, which is now done. Attach compassionism-simulation (push). Also open and short: **S95** (sonnet, medium): a dated correction note in the Hub's corporate transformation paper on Pencavel (attach research-hub with push).
+**S94** (opus, high): the Creative Collectives' lending to start-ups where banks will not lend. Claude's reading of the design (read the Hub papers first), sources, preregistration, then a switch. It waited on S85, which is now done. Duke left a note on S94's ledger step (Nov 19): for small essential providers, support with premises, logistics and setup costs; for large utility and transport projects, usually financed by municipal bonds and public debt, Claude's research, with public operators as a possible move to Collective charters. Read it before the reading note. Attach compassionism-simulation (push). Also open and short: **S95** (sonnet, medium): a dated correction note in the Hub's corporate transformation paper on Pencavel (attach research-hub with push).
 
 ## Standing rules (permanent: copy this section word for word on every rewrite)
 **Reader text carries no internal labels. Write it right the first time; don't wait for the reader-codes check to catch it.** Fixing each failure afterwards has slowed every step that touches a report.
