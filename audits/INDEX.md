@@ -120,6 +120,13 @@ S85: an outside reading of the preregistration, before the build (Nov 19, 2026)
 
 Sections (line): Triage 9
 
+## 2026-11-20-openrouter-setup.md (29 lines)
+Outside readings through OpenRouter's free tier: setup and choice of model (Nov 20, 2026)
+
+Written in S85 part 4, after Duke added an OpenRouter key to this environment because NVIDIA's daily allowance may run out.
+
+Sections (line): What was checked on Nov 20 5 · How Claude chooses 11 · How a reading is requested 18 · What may be sent 22 · What an outside reading is 26
+
 ## 2026-11-20-s85-results-reading-nemotron.md (28 lines)
 S85: an outside reading of the results, before publication (Nov 20, 2026)
 
