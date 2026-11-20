@@ -127,6 +127,13 @@ Written in S85 part 4, after Duke added an OpenRouter key to this environment be
 
 Sections (line): What was checked on Nov 20 5 · How Claude chooses 11 · How a reading is requested 18 · What may be sent 22 · What an outside reading is 26
 
+## 2026-11-20-s85-part4-reading.md (26 lines)
+S85 part 4: an outside reading of the trace and the savings change, before publication (Nov 20, 2026)
+
+**What was sent.** `audits/openrouter-2026-11-20-s85-part4/build_packet.py` builds the packet (41,614 characters, about 14,600 tokens): seven questions, the preregistration's questions, Amendments 3 and 4, report section
+
+Sections (line): Triage 9 · What the reading did not change 23
+
 ## 2026-11-20-s85-results-reading-nemotron.md (28 lines)
 S85: an outside reading of the results, before publication (Nov 20, 2026)
 

@@ -6,7 +6,7 @@
 ## What shipped
 - compassionism-sim-results [PR 64](https://github.com/BetterToBest/compassionism-sim-results/pull/64) (merged `257b6c1`): `s85-tables2-503fa48` (the tables with the real savings measure; check 10 passes in all six folders; the first folder kept as published). [PR 65](https://github.com/BetterToBest/compassionism-sim-results/pull/65) (merged `327200b`): `s85-trace-503fa48` (the trace; all checks pass).
 - compassionism-simulation [PR 170](https://github.com/BetterToBest/compassionism-simulation/pull/170): the report's savings lines, counts, section 4 row and category grid, the trace subsection, `dev/tools/s85_trace.py`, DECISIONS "S85 part 4". No engine change.
-- research-update (branch `claude/tender-rubin-w7xl7i`): prereg Amendment 4 (committed before the trace was computed), `audits/2026-11-20-openrouter-setup.md` and a CLAUDE.md line (the OpenRouter route), the outside-reading packet and reply (sent to Gemma and to Nemotron through OpenRouter; replies and triage pending at this commit: `audits/openrouter-2026-11-20-s85-part4/<model>/reply_content.md`), PLAN.md notes.
+- research-update (branch `claude/tender-rubin-w7xl7i`): prereg Amendment 4 (committed before the trace was computed), `audits/2026-11-20-openrouter-setup.md` and a CLAUDE.md line (the OpenRouter route), the outside-reading packet and reply (`audits/2026-11-20-s85-part4-reading.md`: Nemotron on OpenRouter answered; Gemma was rate-limited upstream on every try, so there is no Google reading; no figure moved, four wording fixes in the report), PLAN.md notes.
 
 ## What was found
 - Savings, on the preregistered measure: with full coverage the programme offsets 66-94% of displacement's rise (the stand-in read 97-102%); opt-in 3-47% with shorter hours and -7% to 19% with lost jobs, and it worsens the rise in Stress at 50% and 70% lost jobs. Counts at 20 years: full coverage 142 in part, 2 fully; opt-in 88 in part, 39 do not offset, 17 worsen (40 years: 75, 32, 37). At the produced backing: 7-48% (full coverage), 0-23% (opt-in).
@@ -14,7 +14,7 @@
 
 ## In flight
 - compassionism-simulation PR 170: checks running; merge it once they pass (auto-merge is off). If they fail and cannot be fixed, leave it open and say so here.
-- Outside readings of the trace and the savings change (OpenRouter free tier): replies land in `audits/openrouter-2026-11-20-s85-part4/gemma-4-31b/` and `nemotron-3-ultra/` (`status.txt`, `reply_content.md`); triage them in `audits/2026-11-20-s85-part4-reading.md` before the page section.
+- Gemma (Google, via OpenRouter) was never served: try it again for the part 5 text if a different maker's reading is wanted; 4 of the day's 50 free requests were used.
 
 ## Decisions waiting
 - D33 (headline cards' headings and the full-backing condition; default: no change).
