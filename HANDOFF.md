@@ -1,27 +1,28 @@
-# Handoff (Nov 20, 2026): S85 done (part 5, the findings-page section); next S94
+# Handoff (Nov 20, 2026): S95 done; next S94
 
 ## Step status
-**S85 is done.** Part 5 (the findings-page section) is in compassionism-simulation [PR 171](https://github.com/BetterToBest/compassionism-simulation/pull/171): see "In flight" for whether it merged.
+**S95 is done**, with an added correction (Duke, Nov 20): the model frozen and registered on OSF is v5.8 (engine 104691f, no central bank), not v5.9. S85 part 5 is also merged.
 
 ## What shipped
-- compassionism-simulation PR 171 (branch `claude/s85-part5-page`): `dev/tools/s85_page_data.py` writes `data/studies/s85-automation.json` (block A, 576 rows), `s85-backing.json` (block E, 528 rows) and `s85-free-time.json` (144 rows) from `s85-tables2-503fa48/s85-summary.json`. `s85Section()` in `site/round2.js` comes after the supply study's section, with every figure read from the files, plus an automation line in the page's unfavourable results. The report's section 14 now names the horizon of the produced share. DECISIONS "S85 part 5". CODEMAP regenerated. No engine change.
-- research-update [PR 191](https://github.com/BetterToBest/research-update/pull/191) (branch `claude/intelligent-johnson-wsgq57`): PLAN.md (the S85 row and a part 5 note), this file. Ledger synced (S85 done, next S94).
+- research-hub [PR 39](https://github.com/BetterToBest/research-hub/pull/39), merged `4f7a32a`: dated note on Pencavel (2015) in the corporate transformation paper, corrections log entry, PDF rebuilt. The root-site indexes do not quote the figure.
+- compassionism-simulation [PR 172](https://github.com/BetterToBest/compassionism-simulation/pull/172), merged `3835242`: "frozen and registered" now names v5.8 on the findings page, simulation page, README, replication page, manifest summary, round-2 basis line, CHANGELOG and the findings-page text report. Wording only; local checks and CI passed.
+- compassionism-simulation [PR 171](https://github.com/BetterToBest/compassionism-simulation/pull/171), merged `e9fd0a3` (S85 part 5, the automation section on the findings page).
+- This file and PLAN.md: research-update PR 192.
 
 ## What was found
-- The report's section 14 gave the produced share as "5-18% of the payout" under "figures are for 20 years". At 20 years the main reading's rows give 6-17% with full coverage and 3-7% opt-in; 5-18% and 3-8% hold only with the 40-year runs counted. The page and the report now both name the horizon. No figure moved.
-- One no-programme cost is exactly 2.05 points (Reference, 10% lost jobs, 20 years). The report prints it as 2.0 and the page as 2.1 (round half up). Both are correct roundings; neither was changed.
-- Every other figure in section 14 matches the data: 80-100%, 59-93%, 66-94%, 13-40%; free time 4-10% against 76-81%; opt-in 88, 39 and 17 at 20 years; 48-69 points a year of inflation (Reference 48-63); all 528 backing rows have an inflation interval above 5 points a year.
+- Left as history on purpose: DECISIONS.md entries, earlier release notes, and the `prereg` fields in the round-2 data files (they name the registration, not a version). The Hub and root site never made the mistake.
+- The Hub claims table (`data/claims.csv`, R297) still marks the Pencavel sentence "keep"; not edited (surgical).
+- The Hub's reader-codes check shows one existing hit ("Part B", `us-money-history.html`), not from this step.
 
 ## In flight
-- **S95 done in part:** research-hub PR 39 (Pencavel note) merged. compassionism-simulation [PR 172](https://github.com/BetterToBest/compassionism-simulation/pull/172) (the OSF-frozen model is v5.8, not v5.9, on the pages) passed its checks locally (release data, reader codes, round-2 numbers, docs-agree, domtest) but its CI was still running: merge it once guard and checks pass (`expectedHeadSha` from `git ls-remote`). Left as history: DECISIONS.md entries and the data files' prereg fields (they name the registration, not a version). The Hub claims table (`data/claims.csv` R297) still says "keep" for the Pencavel sentence; not edited (surgical).
-- PR 171's CI (guard, checks) was running when the session ended. Local runs all passed: `check_round2.js` (1,433 printed numbers), domtest (162 of 162), reader codes, glossary, docs-agree. If the PR is still open, merge it once both checks pass (`expectedHeadSha` from `git ls-remote`).
+- Nothing running.
 
 ## Decisions waiting
 - D33 (headline cards' headings and the full-backing condition; default: no change).
 - D34 answered (Nov 19): hold the release; S93 on hold.
 
 ## Next step
-**S94** (opus, high): the Creative Collectives' lending to start-ups where banks will not lend. Claude's reading of the design (read the Hub papers first), sources, preregistration, then a switch. It waited on S85, which is now done. Duke left a note on S94's ledger step (Nov 19): for small essential providers, support with premises, logistics and setup costs; for large utility and transport projects, usually financed by municipal bonds and public debt, Claude's research, with public operators as a possible move to Collective charters. Read it before the reading note. Attach compassionism-simulation (push). Also open and short: **S95** (sonnet, medium): a dated correction note in the Hub's corporate transformation paper on Pencavel (attach research-hub with push).
+**S94** (opus, high): the Creative Collectives' lending to start-ups where banks will not lend. Claude's reading of the design (read the Hub papers first), sources, preregistration, then a switch. Read Duke's Nov 19 note on S94's ledger step first: small essential providers get support with premises, logistics and setup costs; large utility and transport projects are usually financed by municipal bonds and public debt (Claude's research), with public operators as a possible move to Collective charters. Attach compassionism-simulation (push).
 
 ## Standing rules (permanent: copy this section word for word on every rewrite)
 **Reader text carries no internal labels. Write it right the first time; don't wait for the reader-codes check to catch it.** Fixing each failure afterwards has slowed every step that touches a report.
@@ -52,3 +53,5 @@
 - The page's figures are read from `data/studies/*.json` by `site/round2.js` (`show`, `find`, `snum`; no figure typed there); the supply study's tool `dev/tools/s82_page_data.py` is the pattern. The report's backing ranges (5-18%, 3-8%, 18-71 points a year) are over every non-floor backing row (main readings and variants); the 72 main-reading rows alone give 6-17%.
 - The results clone's sparse checkout needs `s90-sale-*-b8ccd8d` (check 1) as well as `s85-*` and `s85sec-*`; the tables tool took about 12 minutes for six folders this time, the trace tool about 2.
 - `node dev/tools/check_round2.js` (every printed number on the v5.9 findings section is tied to a row of its file) is not run by CI: run it by hand after editing `site/round2.js`. A share printed as a percent must be stored as a percent in the data file, or the check fails.
+- PR 172 was merged after PR 171 landed, on checks that ran before it; wording only, so accepted.
+- The GitHub tools disconnect after a worker restart; a ToolSearch for them reconnects.
