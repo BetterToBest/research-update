@@ -1,11 +1,11 @@
 # Handoff (Nov 20, 2026): S85 part 4 done (supplement read, opt-in worsening traced); part 5 (findings-page section) next
 
 ## Step status
-**S85 part 4 done; part 5 next.** Part 5 is the findings-page section only: nothing else of S85 is open. The pull request below (compassionism-simulation PR 170) is open at this commit (its guard check passed; the main check was still running).
+**S85 part 4 done; part 5 next.** Part 5 is the findings-page section only: nothing else of S85 is open. All pull requests are merged.
 
 ## What shipped
 - compassionism-sim-results [PR 64](https://github.com/BetterToBest/compassionism-sim-results/pull/64) (merged `257b6c1`): `s85-tables2-503fa48` (the tables with the real savings measure; check 10 passes in all six folders; the first folder kept as published). [PR 65](https://github.com/BetterToBest/compassionism-sim-results/pull/65) (merged `327200b`): `s85-trace-503fa48` (the trace; all checks pass).
-- compassionism-simulation [PR 170](https://github.com/BetterToBest/compassionism-simulation/pull/170): the report's savings lines, counts, section 4 row and category grid, the trace subsection, `dev/tools/s85_trace.py`, DECISIONS "S85 part 4". No engine change.
+- compassionism-simulation [PR 170](https://github.com/BetterToBest/compassionism-simulation/pull/170) (merged `79eca05`; both checks passed): the report's savings lines, counts, section 4 row and category grid, the trace subsection, `dev/tools/s85_trace.py`, DECISIONS "S85 part 4". No engine change.
 - research-update (branch `claude/tender-rubin-w7xl7i`): prereg Amendment 4 (committed before the trace was computed), `audits/2026-11-20-openrouter-setup.md` and a CLAUDE.md line (the OpenRouter route), the outside-reading packet and reply (`audits/2026-11-20-s85-part4-reading.md`: Nemotron on OpenRouter answered; Gemma was rate-limited upstream on every try, so there is no Google reading; no figure moved, four wording fixes in the report), PLAN.md notes.
 
 ## What was found
@@ -13,7 +13,7 @@
 - The trace: where the opt-in design makes the rise in basket poverty larger with lost jobs (9 of 12 cells, at 20 and at 40 years), the adults who would take part carry 71-89% of it (62-87% at 40); it is a head count, not depth; enrolment does not fall; the contribution's rise is as large with full coverage, where nothing worsens; the adults who would not take part carry 11-29% (contribution and programme inflation together, not separated).
 
 ## In flight
-- compassionism-simulation PR 170: checks running; merge it once they pass (auto-merge is off). If they fail and cannot be fixed, leave it open and say so here.
+- Nothing is running. All three repositories' work for this part is merged.
 - Gemma (Google, via OpenRouter) was never served: try it again for the part 5 text if a different maker's reading is wanted; 4 of the day's 50 free requests were used.
 
 ## Decisions waiting
