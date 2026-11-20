@@ -192,6 +192,13 @@ S90 traced the damped two-year swing in the BU each adult spends (main row, Refe
 
 Sections (line): Why 5 · Questions 8 · Design 13 · Checks (before any outcome is read) 19 · Outcomes 24 · Analysis 29 · Decision rules 35 · Reporting 42 · Amendments 45 · Amendment 1 (Nov 19, 2026): readings fixed befor 48
 
+## 2026-11-s94-collectives-lending.md (97 lines)
+Preregistration: the Creative Collectives' lending to start-ups where banks will not lend, and charters of public operators
+
+Duke (Nov 17): the Creative Collectives can lend to or support start-ups where banks will not.
+
+Sections (line): Why 7 · Questions 12 · The switch (`cl`, row option; off is the engine  19 · Design 34 · Outcomes 47 · Analysis 56 · Checks (before any table is read; each must pass 61 · Decision rules (fixed now) 74 · Reporting 83 · Limits stated in advance 86 · Amendments 95
+
 ## 2026-11-security-addendum.md (83 lines)
 Preregistration addendum: security outcomes beyond wealth, and the per-year series for public costs (S53, study P, for S47)
 

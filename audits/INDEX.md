@@ -127,6 +127,14 @@ Written in S85 part 4, after Duke added an OpenRouter key to this environment be
 
 Sections (line): What was checked on Nov 20 5 · How Claude chooses 11 · How a reading is requested 18 · What may be sent 22 · What an outside reading is 26
 
+- `2026-11-20-pre-release/` (folder, 7 files)
+## 2026-11-20-release-gaps.md (36 lines)
+Gaps and limitations open before the next release (inventory, Nov 20, 2026)
+
+Written in S94 at Duke's request: "address all gaps and limitations that we can prior to S93" (the release with the private price at the sale as the default).
+
+Sections (line): A. What the headline rests on 7 · B. Engine and model gaps 12 · C. The Hub and its figures 26 · D. Process before a release 34
+
 ## 2026-11-20-s85-part4-reading.md (26 lines)
 S85 part 4: an outside reading of the trace and the savings change, before publication (Nov 20, 2026)
 
