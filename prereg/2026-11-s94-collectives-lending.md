@@ -110,3 +110,15 @@ Readings by other makers' models of the reading, sources and this file: Nemotron
 10. **What the model cannot represent of the request** (Nemotron 6), stated in the reading and the report. Duke's Nov 17 note covers start-ups in general, including private ones; the model has no private firms, so only community-business capacity is funded. Transport charters change nothing (no community-business price). Collectives issuing or managing bonds is not modelled.
 
 Block A is now: main ('total'); pace × 0.5; pace × 2; no pace limit; `paceOn` 'lent'; `haz` 'mature'; `haz` none; `grant` 0; `grant` 1. Still 9 rows; 31 in all.
+
+### Amendment 2 (Nov 20, 2026): choices made in the build, before any dry run or study run
+Recorded in compassionism-simulation `dev/DECISIONS.md` (the build's section). Nothing has been run beyond the unit tests and a one-seed smoke run of the main fund row (no outcome read for any decision). Changes and clarifications:
+
+1. **The switch is row option `lend`, not `cl`.** Row option `cl` is already the community layer. The reported keys keep the names above. One reporting key is added: `clChk`, the largest relative miss of check 4's identity in the run.
+2. **The fund needs the Source paying conversion** (fin 'source', as in the main row) and the production side's capital rule. Other financing readings are refused: only 'source' has a payout the outlay can join as new money.
+3. **Funded capacity counts in the membership capacity.** The production side's membership limit reads the same capacity c (owned plus funded), so the membership borrowing charge is not paid on capacity the fund already financed. The surplus split's switch to its second phase still reads owned capital only (cautious: reinvestment continues).
+4. **Timing of failures.** A cohort's k-th-year hazard is applied at the start of the year after its k-th year (so a cohort serves its first year at its lent size); check 5's five-year survival is unchanged (0.454).
+5. **Interest, once.** The loan charge is counted as conversion paid, as the membership borrowing charge is; its depreciation part as matched output and money spent; its interest part goes back to the programme as a negative part of the fund's net outlay. Programme cost therefore falls by the interest exactly once, and `clNet` = outlay − interest.
+6. **The outlay enters** programme cost, the Source's payout (matched by the backing share as every payout dollar is), the financing identity, the Source's account check and the multiplier's push (the net Source payout), each once.
+7. **Charters need po** (the running-cost gap is po's), and are refused under the supply shock (not built there).
+8. **Engine commit:** recorded in a further dated note below when the build is merged, before the dry run.
