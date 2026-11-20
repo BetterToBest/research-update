@@ -13,6 +13,7 @@
 - Every other figure in section 14 matches the data: 80-100%, 59-93%, 66-94%, 13-40%; free time 4-10% against 76-81%; opt-in 88, 39 and 17 at 20 years; 48-69 points a year of inflation (Reference 48-63); all 528 backing rows have an inflation interval above 5 points a year.
 
 ## In flight
+- **S95 done in part:** research-hub PR 39 (Pencavel note) merged. compassionism-simulation [PR 172](https://github.com/BetterToBest/compassionism-simulation/pull/172) (the OSF-frozen model is v5.8, not v5.9, on the pages) passed its checks locally (release data, reader codes, round-2 numbers, docs-agree, domtest) but its CI was still running: merge it once guard and checks pass (`expectedHeadSha` from `git ls-remote`). Left as history: DECISIONS.md entries and the data files' prereg fields (they name the registration, not a version). The Hub claims table (`data/claims.csv` R297) still says "keep" for the Pencavel sentence; not edited (surgical).
 - PR 171's CI (guard, checks) was running when the session ended. Local runs all passed: `check_round2.js` (1,433 printed numbers), domtest (162 of 162), reader codes, glossary, docs-agree. If the PR is still open, merge it once both checks pass (`expectedHeadSha` from `git ls-remote`).
 
 ## Decisions waiting
