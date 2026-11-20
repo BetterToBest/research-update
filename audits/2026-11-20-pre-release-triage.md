@@ -24,7 +24,7 @@ Not accepted, with the reason (Amendment 1, item 9):
 - It read 0.814 as a price; it is the utilities' full running cost. The text was unclear, so Amendment 1 item 3 states the subsidy exactly.
 - Mistral asked how $18,862 per adult follows from the BEA stock: the sources script now prints it ($5,088,349m over 269.8 million adults, the engine's Census count).
 
-## The gaps before the release (ERNIE; Nemotron and Kimi below when they land)
+## The gaps before the release (ERNIE and Nemotron; Kimi below if it lands)
 Checked against the live page (`site/round2.js`) as well as the text file the readers saw.
 
 | Reader's point | Checked | Goes to |
@@ -43,6 +43,10 @@ Checked against the live page (`site/round2.js`) as well as the text file the re
 | "1.4 to 7.1 times" has no derivation | Found only in the v5.9 text file, in no report | S98 item 5 |
 | The 10,000-adult check covers only hours and the top of wealth | True (overview, question 7) | S98 item 6 |
 | Two answers for the model's own backing (0.2-1.9% and 6-17%) | True; different mechanisms and sections | S98 item 2 |
+| Nemotron: "adults" in headlines should be "working-age adults" | Ledger I15 says so | S98 item 7 |
+| Nemotron: undefined "families in debt"; unnamed 1.8% referent; inflation 18-53 against 40-49; 48 robust against 46 fragile; the financed rows' missing tail; the automation section's two savings measures and its trace's scope; "its ceiling" unexplained | Not checked one by one this session; each is checked on the live page in the step | S98 item 8 |
+| Nemotron: charts regenerated at the release; dated notes replaced | Not in the release step | S97 checklist |
+| Nemotron: the supply study's capacity costs nothing in the accounts; the Collectives' lending is what could make backing produced | The lending study funds capacity as programme cost (Amendment 1, item 5) | S94 report |
 | Acceptable as stated limits: Collectives' lending (in progress), MODEL_SPEC debt, scope, whole-population capacity, no banks, capital income, displaced outcomes by fifth, unsourced health and security effects, unopened non-headline citations, θ (if no calibration claim) | Agreed | stated limits |
 
 Closed by this session's check: ledger I2 (the BLEI page's poverty line is not inverted: Tier 2, "Threshold 30–120 days: BLEI-defined poverty line", matches the simulation's below-30-days measure).
