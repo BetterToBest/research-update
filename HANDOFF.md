@@ -1,28 +1,26 @@
-# Handoff (Nov 20, 2026): S95 done; next S94
+# Handoff (Nov 20, 2026): S94 part 1 done; pre-release steps added; next S94 part 2
 
 ## Step status
-**S95 is done**, with an added correction (Duke, Nov 20): the model frozen and registered on OSF is v5.8 (engine 104691f, no central bank), not v5.9. S85 part 5 is also merged.
+**S94 partly done.** Part 1 is done: Claude's reading, sources, preregistration, and Amendment 1 from outside readings, all before any build. Remaining: part 2 (build switch `cl`), part 3 (job, dry run, dispatch), part 4 (tables, report, decision rule 6). Also this session, at Duke's request: a gap audit before the release, with six new pre-release steps (S96-S101). S93 waits on them (D35, confirmed).
 
 ## What shipped
-- research-hub [PR 39](https://github.com/BetterToBest/research-hub/pull/39), merged `4f7a32a`: dated note on Pencavel (2015) in the corporate transformation paper, corrections log entry, PDF rebuilt. The root-site indexes do not quote the figure.
-- compassionism-simulation [PR 172](https://github.com/BetterToBest/compassionism-simulation/pull/172), merged `3835242`: "frozen and registered" now names v5.8 on the findings page, simulation page, README, replication page, manifest summary, round-2 basis line, CHANGELOG and the findings-page text report. Wording only; local checks and CI passed.
-- compassionism-simulation [PR 171](https://github.com/BetterToBest/compassionism-simulation/pull/171), merged `e9fd0a3` (S85 part 5, the automation section on the findings page).
-- This file and PLAN.md: research-update PR 192.
+- compassionism-simulation [PR 173](https://github.com/BetterToBest/compassionism-simulation/pull/173), merged `821b139`: `dev/reports/s94-collectives-lending-reading.md`, `sources/s94_lending.py` and `sources/s94_lending/` (Census BDS, BEA 3.1ESI and 2.4.5U, Fed credit survey, Reinvestment Fund, APPA, EPA, SIFMA). No engine change.
+- research-update [PR 193](https://github.com/BetterToBest/research-update/pull/193), merged `f7841f8`: `prereg/2026-11-s94-collectives-lending.md` (31 rows per environment and horizon; Amendment 1), `audits/2026-11-20-release-gaps.md` (22 items), `audits/2026-11-20-pre-release/` (packets, `ask.py` for NVIDIA or OpenRouter, the replies), `audits/2026-11-20-pre-release-triage.md`, PLAN sections S94 and S96-S101.
+- This file and PLAN.md (D33 and D35 answered): research-update PR for `claude/s94-handoff`.
 
 ## What was found
-- Left as history on purpose: DECISIONS.md entries, earlier release notes, and the `prereg` fields in the round-2 data files (they name the registration, not a version). The Hub and root site never made the mistake.
-- The Hub claims table (`data/claims.csv`, R297) still marks the Pencavel sentence "keep"; not edited (surgical).
-- The Hub's reader-codes check shows one existing hit ("Part B", `us-money-history.html`), not from this step.
+- In the main row the PTF share of sales is capped by owned capital: binding in 21-32% of adult-years in Reference and Adverse, and in every year under Stress in the opt-in design. The fund acts there.
+- Readers: Nemotron (OpenRouter) answered both packets in minutes; ERNIE (OpenRouter) and Kimi (NVIDIA) answered the gap packet; Mistral (NVIDIA) was stopped with no answer. Amendment 1 took six of Nemotron's points (pace on all new capacity, charters on electricity only, outlays unmatched, no double count of write-offs, new checks, robustness rule on the strict side) and states why the rest were rejected.
+- Ledger I2 closed: the BLEI page's poverty line is not inverted.
 
 ## In flight
 - Nothing running.
 
 ## Decisions waiting
-- D33 (headline cards' headings and the full-backing condition; default: no change).
-- D34 answered (Nov 19): hold the release; S93 on hold.
+- None open. D35 confirmed (the release waits for S94 and S96-S101). D33 answered by Duke Nov 20: the full-backing condition goes on the headline cards (S98 item 9).
 
 ## Next step
-**S94** (opus, high): the Creative Collectives' lending to start-ups where banks will not lend. Claude's reading of the design (read the Hub papers first), sources, preregistration, then a switch. Read Duke's Nov 19 note on S94's ledger step first: small essential providers get support with premises, logistics and setup costs; large utility and transport projects are usually financed by municipal bonds and public debt (Claude's research), with public operators as a possible move to Collective charters. Attach compassionism-simulation (push).
+**S94 part 2** (opus, high): build switch `cl` per the preregistration with Amendment 1. Code anchors are in PLAN.md's S94 section: `paYear`, `ptfsCut`/`poPtfsCut`, `tbAccount`, the premium charge ~6344, row wiring ~8090. Get the outlay into programme cost and unmatched money exactly once. Then `clUnitSuite`, the guard test, and an amendment naming the engine commit. Attach compassionism-simulation (push). S96-S101 can run in any order after it, or between its parts. S96, S98, S99 and S101 are sonnet steps.
 
 ## Standing rules (permanent: copy this section word for word on every rewrite)
 **Reader text carries no internal labels. Write it right the first time; don't wait for the reader-codes check to catch it.** Fixing each failure afterwards has slowed every step that touches a report.
@@ -31,6 +29,7 @@
 - Name things by subject: "the report on the private price at the sale", not "the S90 report"; "the preregistered rerun", not "S92". A file path, option or command goes in backticks or `<code>`, which is where a reader looks something up, so it is allowed there. Step codes belong in DECISIONS.md, PLAN.md, prereg/, audits/ and commit messages, which readers don't open.
 - Before committing an edit to any reader file, run the check on it: `python3 dev/tools/reader_codes.py --list` (compassionism-simulation), or `--root ../research-hub --preset hub` / `--root ../bettertobest.github.io --preset root`. Then `--check`, which is what CI (domtest Phase 17) runs.
 - `dev/tools/reader_codes_allow.txt` is only for labels that are not ours (a formula symbol such as D0, a report's own numbering), each with a reason. Never use it to let a step code through.
+
 
 ## Pitfalls
 - `expectedHeadSha` in a merge call must be the exact 40-character head; take it from `git ls-remote origin refs/heads/<branch>`, never guess the tail.
@@ -55,3 +54,9 @@
 - `node dev/tools/check_round2.js` (every printed number on the v5.9 findings section is tied to a row of its file) is not run by CI: run it by hand after editing `site/round2.js`. A share printed as a percent must be stored as a percent in the data file, or the check fails.
 - PR 172 was merged after PR 171 landed, on checks that ran before it; wording only, so accepted.
 - The GitHub tools disconnect after a worker restart; a ToolSearch for them reconnects.
+
+- NVIDIA's Mistral Large 4 and Kimi K3.1 Pro stream reasoning very slowly: Kimi took most of an hour, and Mistral gave no answer after about 45,000 characters. Nemotron 3 Ultra on OpenRouter (`:free`) answers a 30,000-character packet in a few minutes: send to it first.
+- Hiding in-flight files from git (`git update-index --assume-unchanged`) is refused, rightly. Commit a reader's files when it finishes, or stop it.
+- The outside readers saw the v5.9 findings text file (`dev/reports/s64-findings-page-text.md`), not the live page (`site/round2.js`). Check every claim on the live page first: several are already fixed there.
+- Census BDS CSVs (www2.census.gov) and BEA XLSX tables (apps.bea.gov) download with curl. The Census API needs a key. BLS still refuses curl (the fetch tool reads its .txt tables).
+- Check `date -u` and the process's elapsed time before deciding a job is stuck. This session misjudged elapsed time twice.
