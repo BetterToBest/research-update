@@ -12,14 +12,14 @@
 - Checks: all pass. Check 1 is strong: the main rows with the option off equal the published main rows at the sale in every key and seed.
 - Displacement with no programme raises basket poverty 2.0-12.6 points by year 20 (Reference; 1.6-9.6 Adverse and Stress) and lowers median wealth $7,158-$48,326.
 - Full coverage at full backing: offsets 80-100% of the rise in basket poverty, 59-97% of wealth poverty's, 97-100% of the basic-living measure's, 13-40% of the fall in median wealth; all 144 tests significant (136 in part, 8 fully).
-- Opt-in: offsets far less; with lost jobs it worsens the rise in basket poverty in 9 of 12 cells (98 in part, 31 do not offset, 15 worsen at 20 years; 80/32/32 at 40). Inspection (Adverse, seeds 1-100): a head-count effect (participants held just above the line by their wage) and the flat contribution rising 3.5% to 4.5% as wages shrink.
+- Opt-in: offsets far less; with lost jobs it worsens the rise in basket poverty in 9 of 12 cells (98 in part, 31 do not offset, 15 worsen at 20 years; 80/32/32 at 40). Inspection (Adverse, seeds 1-100): a head-count effect (participants held just above the line by their wage) and the flat contribution rising 3.5% to 4.5% as wages shrink. On poverty severity the opt-in programme offsets part of the rise in every lost-jobs cell (0.4-9.9 points), which fits the head-count reading.
 - The backing produced: 5-18% of the payout (full coverage), 3-8% (opt-in); inflation 18-71 points a year at 20 years, up to 82 at 40; all 44 rows "do not back enough" in every cell; no break-even m. Decision rule 5 binds every full-backing headline.
 - Free time at 50% lost jobs: 494 freed hours a year; insecure 76-81% with no programme, 4-10% full coverage, 55-77% opt-in.
 - The fourth primary reading is `bNAPy` (below 30 days of basic living) until the supplement is read; the preregistered `secM3A` was never switched on in the batch.
 
 ## In flight
 - Six supplement runs on compassionism-sim-results (dispatched Nov 20, 02:23 UTC; engine `503fa48`; job `s85.js --sec`; 20 shards of 25 seeds): runs [161](https://github.com/BetterToBest/compassionism-sim-results/actions/runs/44660461514) to 166, in the order ref-20, adv-20, str-20, ref-40, adv-40, str-40. Their shards were still queued for runners when this session ended. Results land in `s85sec-<env>-<years>-503fa48/`. A failed shard: "Re-run failed jobs".
-- compassionism-simulation PR 169: checks were running at the end (they queue behind study shards). Merge it once green (`expectedHeadSha` from `git ls-remote origin refs/heads/claude/s85-tables`).
+- compassionism-simulation PR 169 and research-update PR 188: their checks queue behind the supplement's shards. Merge each once green (`expectedHeadSha` from `git ls-remote origin refs/heads/<branch>`); if this handoff is not on main, read it from branch `claude/compassionate-franklin-c9ginb`.
 
 ## Decisions waiting
 - D33 (the headline cards' headings and the full-backing condition; default: no change).
