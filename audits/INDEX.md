@@ -120,6 +120,13 @@ S85: an outside reading of the preregistration, before the build (Nov 19, 2026)
 
 Sections (line): Triage 9
 
+## 2026-11-20-s85-results-reading-nemotron.md (28 lines)
+S85: an outside reading of the results, before publication (Nov 20, 2026)
+
+**What was sent.** `audits/nvidia-2026-11-20-s85-results/build_packet.py` builds the packet (119,191 characters).
+
+Sections (line): Triage 9
+
 ## 2026-11-engine-round-2.md (41 lines)
 Engine round 2: six improvements after S39 and S55 (Nov 9, 2026)
 
@@ -204,6 +211,7 @@ Sections (line): Items 7 · What changes now 30
 - `nvidia-2026-11-18-s82-results/` (folder, 5 files)
 - `nvidia-2026-11-18-s90/` (folder, 4 files)
 - `nvidia-2026-11-19-s85/` (folder, 4 files)
+- `nvidia-2026-11-20-s85-results/` (folder, 4 files)
 - `refine/` (folder, 9 files)
 - `s46-followup/` (folder, 3 files)
 - `s87-part2-reading/` (folder, 4 files)
