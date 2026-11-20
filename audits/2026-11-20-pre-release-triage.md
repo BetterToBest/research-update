@@ -24,7 +24,7 @@ Not accepted, with the reason (Amendment 1, item 9):
 - It read 0.814 as a price; it is the utilities' full running cost. The text was unclear, so Amendment 1 item 3 states the subsidy exactly.
 - Mistral asked how $18,862 per adult follows from the BEA stock: the sources script now prints it ($5,088,349m over 269.8 million adults, the engine's Census count).
 
-## The gaps before the release (ERNIE and Nemotron; Kimi below if it lands)
+## The gaps before the release (ERNIE, Nemotron and Kimi)
 Checked against the live page (`site/round2.js`) as well as the text file the readers saw.
 
 | Reader's point | Checked | Goes to |
@@ -47,6 +47,10 @@ Checked against the live page (`site/round2.js`) as well as the text file the re
 | Nemotron: undefined "families in debt"; unnamed 1.8% referent; inflation 18-53 against 40-49; 48 robust against 46 fragile; the financed rows' missing tail; the automation section's two savings measures and its trace's scope; "its ceiling" unexplained | Not checked one by one this session; each is checked on the live page in the step | S98 item 8 |
 | Nemotron: charts regenerated at the release; dated notes replaced | Not in the release step | S97 checklist |
 | Nemotron: the supply study's capacity costs nothing in the accounts; the Collectives' lending is what could make backing produced | The lending study funds capacity as programme cost (Amendment 1, item 5) | S94 report |
+| Kimi: verify the price fix below full backing too; reproduce a sample of archived commands; call the rerun corrective, since the corrected rows were read | Agreed; S92's tables were read before any rerun preregistration | S97 item 2b |
+| Kimi: shortages outside the money measures; financed bases differ; 62 readings against 48 curves; "who gains" without ranges; outside-the-labour-force poverty not in the unfavourable list; labour share as a denominator effect; negative baselines; the NEEC criterion's basis; "cautious side" claims; "robust" undefined | Not checked one by one this session | S98 item 8b |
+| Kimi: the θ calibration claim has no run record | Ledger I7 open | S101 |
+| Kimi: card headings conditional on full backing | Same advice as ERNIE and Nemotron | D33 |
 | Acceptable as stated limits: Collectives' lending (in progress), MODEL_SPEC debt, scope, whole-population capacity, no banks, capital income, displaced outcomes by fifth, unsourced health and security effects, unopened non-headline citations, θ (if no calibration claim) | Agreed | stated limits |
 
 Closed by this session's check: ledger I2 (the BLEI page's poverty line is not inverted: Tier 2, "Threshold 30–120 days: BLEI-defined poverty line", matches the simulation's below-30-days measure).
