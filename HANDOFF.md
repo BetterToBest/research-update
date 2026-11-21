@@ -1,28 +1,21 @@
-# Handoff (Nov 21, 2026): S94 part 4 done (the lending study read; the main row unchanged); next S94 part 5
+# Handoff (Nov 21, 2026): S94 part 5 built, its pull request open awaiting checks; next S96-S101
 
 ## Step status
-**S94 parts 1-4 done.** Remaining: part 5, the study's findings-page section (sonnet, medium). S96-S101 can run in any order meanwhile; S93 waits on all of them (D35).
+**S94 parts 1-5 built.** compassionism-simulation [PR 176](https://github.com/BetterToBest/compassionism-simulation/pull/176) (`claude/s94-findings-page`) is open: CI takes about 12 minutes and was not waited for. **First action next session: check its checks and merge it yourself if they pass** (fix and push if not). S94 is then done. S96-S101 in any order; S93 waits on all of them (D35).
 
 ## What shipped
-- compassionism-sim-results [PR 67](https://github.com/BetterToBest/compassionism-sim-results/pull/67), merged `fb774d2`: `s94-tables-c5682f9` (checks, tables at 20 and 40 years, decision rule 6, `s94-summary.json`, `analysis.txt`, `SHA256SUMS`).
-- compassionism-simulation [PR 175](https://github.com/BetterToBest/compassionism-simulation/pull/175), merged `dfda580`: `dev/tools/s94_tables.py`, the report `dev/reports/s94-collectives-lending.md` (reader codes clean; section 10 is the findings-page text), a DECISIONS.md entry, HANDOFF.md, CODEMAP.
-- research-update (this branch's PR): the preregistration's dated note on the analysis (three readings fixed in the tool before any table was read; no design change), PLAN S94 section and Order row, this file.
-
-## What was found
-- Every check passes in all six folders; the main rows and the no-programme run equal the published at-sale rows (`s90-sale-*-b8ccd8d`) in every key and seed.
-- **The fund helps in no cell** (decision rule 3: 0 of 12) and worsens at least two of the six readings in every cell. In five cells the community businesses' share reaches its 49% ceiling by year 10 without it; the fund only brings growth forward, at $37-63 per adult a year. Under Stress opt-in it lifts the share at year 20 from 34% to 48%, but programme cost rises $412 a year (running-cost subsidy $291, fund net $142), the contribution $261, and all six readings worsen (basket poverty +0.07 points, median wealth -$391). No other fund reading passes anywhere.
-- **Charters** at 1/3 and 2/3 improve basket poverty, yearly wealth poverty and savings in every cell and worsen nothing (2/3: all six readings); at 1/7, public power's actual share, they act only in Stress. The fund-charter interaction is negligible.
-- **Decision rule 6 does not hold:** the fund is a reading beside the main row; no ledger decision.
-- For S97: this study ran on `c5682f9`, so its rerun-or-label entry belongs in the release amendment's list (the S97 note says "if it lands first": it has).
+- `dev/tools/s94_page_data.py` writes `data/studies/s94-{fund,charters,interaction,levels}.json`; `s94Section()` in `site/round2.js` prints every figure from them, with the report's section 10 as its text, the fund's tables at 20 and 40 years, and the lending result in the unfavourable list. Reader codes clean; reader_check passes on all views; the full domtest was still running when the PR opened (not read).
+- **Report error corrected** (report section 8, DECISIONS): the interaction of the fund and charters at 1/7 excludes zero for at least one reading in 12 of 12 cells (not nine), 47 of 72 readings: 41 unfavourable, 4 favourable (tiny), 2 zero. Verdict unchanged.
+- Page wording differs from report section 10 in one place: charters "improve basket poverty, yearly wealth poverty and savings wherever they act" (at 1/3 only those three improve in every cell).
 
 ## In flight
-- Nothing.
+- compassionism-simulation PR 176 (checks running).
 
 ## Decisions waiting
 - None open.
 
 ## Next step
-**S94 part 5** (sonnet, medium): the lending study's findings-page section, following the automation study's (`dev/tools/s85_page_data.py`, `s85Section()` in `site/round2.js`): a tool writing `data/studies/s94-lending.json` from compassionism-sim-results `s94-tables-c5682f9/s94-summary.json`; a section printing every figure from that file, with the report's section 10 as its text and every unfavourable cell named; reader-codes check and domtest. Then S96-S101 in any order.
+Merge PR 176 once green, then S96-S101 in any order (S96 first suggested: the simulation page's targets).
 
 ## Standing rules (permanent: copy this section word for word on every rewrite)
 **Reader text carries no internal labels. Write it right the first time; don't wait for the reader-codes check to catch it.** Fixing each failure afterwards has slowed every step that touches a report.
