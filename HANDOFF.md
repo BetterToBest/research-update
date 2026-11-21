@@ -1,13 +1,11 @@
-# Handoff (Nov 21, 2026): S98 done; next S97, S99-S101
+# Handoff (Nov 21, 2026): S97 done; next S99, S100, S101
 
 ## Step status
-**S96 done:** compassionism-simulation PR 177 merged (`f180986`).
-**S98 done (text only):** compassionism-simulation [PR 178](https://github.com/BetterToBest/compassionism-simulation/pull/178), merged (`3fda4b9`, checks and guard green). S97, S99-S101 remain, in any order; S93 waits on all of them (D35).
+**S97 done (text only):** the release's reruns and checks are preregistered as Amendment 2 of `prereg/2026-11-s90-private-price-at-sale.md`, before the release engine exists. S99-S101 remain, in any order; S93 waits on all of them (D35).
 
-## What shipped (S98)
-- Findings page (`site/round2.js`) and its text file (`dev/reports/s64-findings-page-text.md`): every headline card carries the full-backing condition and the opt-in figure; the poverty-effects sentence is conditional on wages following prices, with the supply study's wage figure beside it; one reconciled statement of the model's own new output (mechanism 0.2-1.9%, 14-20% without its ceiling; automation study 6-17%, 3-7% opt-in; they count output differently); every below-full-backing inflation figure labelled as the size of unbacked money, not a forecast; 18-53 against 40-49 reconciled (same rows, different subsets); ratio between designs removed; the 10,000-adult check's scope; who is simulated; definitions (families in debt, robust, the 48 curves against 62 readings); the financed rows' missing tail and different income bases; the labour share as partly a denominator effect; which savings measure; shortages not in the money measures.
-- CHANGELOG entry and DECISIONS entry ("S98") in compassionism-simulation. Reader-codes check: 0.
-- Not on the page or text file, so unchanged: "cautious side" claims, a NEEC criterion statement. Left: a reading-by-screening-group map of the curves. The Hub's copies of these sentences belong to S101.
+## What shipped (S97)
+- [research-update PR 203](https://github.com/BetterToBest/research-update/pull/203), merged (`67b96a9`): Amendment 2; outside reading triage `audits/2026-11-21-s97-amendment-reading.md` (Nemotron 3 Ultra, OpenRouter; nine points taken in full or part, one needed no change); PLAN.md S97 note and S93 now points to the amendment.
+- What the amendment fixes for S93: rerun on the release engine (r2 parts M, S, F, B, erosion, r2 tables; central bank; history; supply, all 231 rows; suite x2-x4, whose `series-r2.js` hard-codes the `r2-m-*-104691f` path); the automation and lending studies reproduced (seeds 1-10, every row), not rerun; a list kept as record; engine conditions (`vAt: 'lag'` reproduces the guard test); below-full-backing swing and books at a = 0, 0.5 (`s90_trace.js`/`s90_acct.js` need a backed-share option); checks D1-D5; eight archived shards plus history era e2 reproduced (drawn with seed 9797); checklist F1-F10; release text G.
 
 ## In flight
 - Nothing.
@@ -16,7 +14,7 @@
 - None open.
 
 ## Next step
-S97 (the other first-listed pre-release step that needs no runs; S99 and S101 are also text only and start now; S100 needs a preregistration).
+S99 (text only; first in the Order table of the remaining pre-release steps). S100 needs a preregistration; S101 is text only.
 
 ## Standing rules (permanent: copy this section word for word on every rewrite)
 **Reader text carries no internal labels. Write it right the first time; don't wait for the reader-codes check to catch it.** Fixing each failure afterwards has slowed every step that touches a report.
@@ -51,3 +49,4 @@ S97 (the other first-listed pre-release step that needs no runs; S99 and S101 ar
 - In a sparse `--filter=blob:none` clone of compassionism-sim-results, add folders with `git sparse-checkout add '/<pattern>/'`; the six study folders (about 1.6 GB) and the `s90-sale-*` folders checked out in a few minutes.
 - `rev` on PLAN.md's long table rows hung the shell; use `python3 -c` to print the end of a long line.
 - The interactive tiles, milestones and insight cards are drawn only on `earlier-engine.html` (`index.html` carries the same script but not the markup): check them there, after `python3 dev/tools/sync_earlier.py`.
+- The NVIDIA catalogue answered "upstream request failed" within two minutes for a 25,000-character packet (Nov 21); OpenRouter's free Nemotron answered the same request.
