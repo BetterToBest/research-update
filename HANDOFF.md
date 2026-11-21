@@ -1,22 +1,24 @@
-# Handoff (Nov 21, 2026): S93 part 1 done (the release engine)
+# Handoff (Nov 21, 2026): S93 part 2 done in part (dry run, dispatch, section C, reproductions)
 
 ## Step status
-**S93 part 1 done:** the release engine v5.9.22 is built, proved and merged (`69e8953`). Duke adopted pay by household type and the care credit (D36), so the release main row carries both. Next: S93 part 2, the dry runs and the dispatch of every rerun.
+**S93 part 2 done in part.** The dry run on the release engine passed for every rerun job except r2 part F and the supply study, which fail the BU stock identity in runaway runs (the engine before fails the same). 570 shards are dispatched; part F and the supply study are held. Next: S93 part 2b (the BU identity; then part F, the supply study and the visual suite). Full record: `audits/2026-11-21-s93-dispatch.md`.
 
 ## What shipped
-- research-update PR 211: Amendment 3 of `prereg/2026-11-s90-private-price-at-sale.md` (D36 adopted; version v5.9.22 by D34's default; the automation and lending studies rerun in full; D2/D3 against the yardstick study's `both` rows; F1 split) and Amendment 4 (a defect found by proof A3, its fix and reach), both committed before the engine change; PLAN notes; S103 added.
-- compassionism-simulation PR 182 (branch `claude/s93-release-engine`): `SURP_DEFAULTS.vAt 'sale'` (other values refused); `r2FreezePair` adds `eh {}` and `sn.cdc true` in both runs (`r2FreezePair(P, d, true)` = the v5.9 row); `rowKeyS93` keys the stored no-programme supply path on the settings it missed; guard reference rewritten by design (previous kept in `dev/runs/guard/v5.9.21/`, `guard_test.js --lag --ref=...` reproduces it); `dev/tools/s93_release_proof.js` (A2, A3); a lineage link marked as keeping the v5.6 panels as the record (domtest prints it); one unit test (424); release notes; dated notes on the yardstick report and findings section.
-- compassionism-sim-results PR 70 (merged `40f2c74`): `s100.js` builds its rows from the v5.9 row, for its rerun.
-- **Found:** the engine's stored no-programme supply path ignored pay by household type, the price rule's settings, bargaining, the government account and PTF running costs. The yardstick study's `eh` and `both` readings took the path of the rows before them (its decision-rule rows did not, so D36 stands); the study is rerun. Record studies: audit in S103.
+- compassionism-sim-results PR 71 (`runner/jobs/s93-dry.js`, the dry-run job: `acctDrawCheck` around every `tbStudy` call through `NODE_OPTIONS=--require`; `series-r2.js --panel=ENGINE7`), PR 72 (`runner/compare-shards.js`), PRs 73-74 (`s93-belowfull-69e8953`, section C), PR 75 (`s74-final-69e8953`, `s75-eras-69e8953`, `s93e-s75-eras-e2-e5649ef`). The workflow also committed `s93dry-69e8953` and seven `s93e-*` reproduction folders.
+- compassionism-simulation PR 183 (merged `244b249`; tools only): `s90_trace.js --a=X --lag`, `s90_swing.js --a=X --s92=FILE`, `s90_acct.js --a=X`, `s90_swing_growth.js`.
+- research-update (this PR): Amendment 5 of `prereg/2026-11-s90-private-price-at-sale.md` (section C1 failed on its measure; the growth-change measure, committed before computing; changes from the outside reading), `audits/2026-11-21-s93-amendment5-reading.md`, `audits/2026-11-21-s93-dispatch.md`, PLAN notes.
+- **Found:** (1) the BU stock identity (`acctYearEnd`, index.html about line 3643) fails by 0.5-1.7% of its scale in runs where the BU price level explodes: r2 part F's least-favourable bound points (points 116, 120, 123-125) and supply rows 47-48 at 40 years; present on `a33c59d` too, so the published part F and supply folders carry it. (2) Below full backing the preregistered swing measure counts the price level's steady growth as swing; the at-sale fix still removes the swing (growth-change measure 0.05-0.11 of lagged; detrended measure agrees).
 
 ## In flight
-- Nothing running. compassionism-simulation PR 182 merged as **`69e89533d0aed26f9c3e3ccc5523e0df72192786`, the release engine (v5.9.22)**: the full hash for every rerun's dispatch and `run.txt`; folders end `-69e8953`. compassionism-sim-results PR 70 merged (`40f2c74`).
+- **Workflow runs 188-229** (compassionism-sim-results `run-study.yml`, runner `fcf9029`, engine `69e89533d0aed26f9c3e3ccc5523e0df72192786`): r2 parts M (1 shard per cell), S (6/11), B (2/4); `s100.js` (10/20); `s85.js`, `s85.js --sec`, `s94.js` (20 each); six cells each; folders `<id>-69e8953`. GitHub's free concurrency is 20 jobs, so expect about a day.
+- **Workflow run 181:** the section E reproduction of `r2-s-ref-40-104691f` shard 0000 (folder `s93e-r2-s-ref-40-104691f`); compare with `node runner/compare-shards.js r2-s-ref-40-104691f/shard-0000.json.gz s93e-r2-s-ref-40-104691f/shard-0000.json.gz`.
 
 ## Decisions waiting
-- None open. D34 (version): v5.9.22 by default (Duke held the release on Nov 19 without naming a number; renaming is one `set_version.py` call if he prefers another). D36: adopted.
+- For `/end-session`, a ledger decision with a default: section C1's preregistered swing measure failed below full backing for a reason found (it counts steady growth); Amendment 5 replaced it after the failure with a growth-change measure (holds) and a detrended check (agrees). Default: the below-full-backing figures are published from the release engine with both measures and the post-hoc label. Duke may instead hold them (section C4).
+- D34 (version): v5.9.22 by default, as before.
 
 ## Next step
-S93 part 2 (opus, high): dry runs on the release engine (`69e89533d0aed26f9c3e3ccc5523e0df72192786`) (seeds 1-2, every row and cell, `acctDrawCheck` and each job's own checks, the two readings beside every switch), then dispatch every rerun (list and shard counts in PLAN's S93 part 2 note), record the run numbers, end. Do not read any figure before checks D1-D5.
+S93 part 2b (opus, high): (1) read the part S reproduction (run 181); (2) find the BU identity's missing flow in runaway runs (one point: `s93-dry.js --seeds=13-13` is part F Reference 20 years; or run the one bound point with `acctDrawCheck`); a defect is fixed by Amendment 6 (its reach: published part F bound rows, supply rows, any exploding run) under the engine guardrails; then dry-run and dispatch part F (7/14 shards) and the supply study's both batches (20; 10 for `--rows=134-136`, ids `s82-v6-…` and `s82-v6-age-…`); (3) once part M lands, the visual suite (`series-r2.js --panel=69e8953`: x2 `--env=all --years=20,40 --n=500`, x3 with `--study`, x4 as x2; seeds 1-6, 6 shards). Do not read any figure before checks D1-D5 (part 3).
 
 ## Standing rules (permanent: copy this section word for word on every rewrite)
 **Reader text carries no internal labels. Write it right the first time; don't wait for the reader-codes check to catch it.** Fixing each failure afterwards has slowed every step that touches a report.
@@ -57,3 +59,8 @@ S93 part 2 (opus, high): dry runs on the release engine (`69e89533d0aed26f9c3e3c
 - OpenRouter's free Gemma is often refused upstream (429, Google's shared pool). NVIDIA's catalogue serves the same model (`google/gemma-4-31b-it`), but stream it (`"stream": true`, `curl -N`): unstreamed, the gateway returns 502 after about 160 seconds.
 - `dev/tools/check_round2.js` is not in CI; run it after any change to `site/round2.js`. It needs at least 400 number spans and checks each against its file.
 - Report tables: generate them from the summary file; do not type figures (a typed inflation column was wrong here and was caught before commit).
+- The dry-run job `runner/jobs/s93-dry.js` (results repo): seed I is a unit (1-54 job x cell, in the order of its header; 55 the `--check`s; 56-57 the selftests); run it locally in an engine checkout with `--seeds=I-I --out=FILE` for one unit. A shard exits 0 whatever its checks find: read `_meta.pass` in each `shard-*.json`, not the job's colour.
+- The run-study workflow's checkout of the results repository takes about 20 minutes for the plan job and about 5 per shard; a dispatch shows "queued" for a long time before shards start.
+- To reproduce an archived shard on its own runner commit, push a branch at that commit (`git fetch --depth=1 origin SHA; git push origin SHA:refs/heads/claude/<name>`) and dispatch with that ref and a new study id (the old id's folder is DONE).
+- `git ls-tree -l` in the partial (blob:none) results clone fetches every blob: never ask it for sizes.
+- Since v5.9.22 `s90_trace.js` without a flag runs the sale (the default): name the lagged rule with `--lag`.
