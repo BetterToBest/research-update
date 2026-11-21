@@ -122,3 +122,5 @@ Recorded in compassionism-simulation `dev/DECISIONS.md` (the build's section). N
 6. **The outlay enters** programme cost, the Source's payout (matched by the backing share as every payout dollar is), the financing identity, the Source's account check and the multiplier's push (the net Source payout), each once.
 7. **Charters need po** (the running-cost gap is po's), and are refused under the supply shock (not built there).
 8. **Engine commit:** recorded in a further dated note below when the build is merged, before the dry run.
+
+*Note (Nov 21, 2026), the engine commit:* the build merged as compassionism-simulation `c5682f93fe25ea8f926e12141ea1831a16fa2bd2` (main, PR 174). Every study run of this preregistration uses that commit; results folders are `s94-<env>-<years>-c5682f9`.
