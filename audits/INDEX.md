@@ -156,7 +156,14 @@ S85: an outside reading of the results, before publication (Nov 20, 2026)
 
 Sections (line): Triage 9
 
-- `2026-11-21-s100-results-reading/` (folder, 9 files)
+- `2026-11-21-s100-results-reading/` (folder, 13 files)
+## 2026-11-21-s100-results-reading.md (31 lines)
+The yardstick study (pay by household type, the care credit): two outside readings before publication (Nov 21, 2026)
+
+No figure changes.
+
+Sections (line): Triage 11 · What this means 28
+
 ## 2026-11-21-s97-amendment-reading.md (21 lines)
 Outside reading of the release-rerun amendment (Nov 21, 2026)
 
