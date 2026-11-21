@@ -1,11 +1,14 @@
-# Handoff (Nov 21, 2026): S97 done; next S99, S100, S101
+# Handoff (Nov 21, 2026): S99 done (PR awaiting checks); next S100, S101
 
 ## Step status
-**S97 done (text only):** the release's reruns and checks are preregistered as Amendment 2 of `prereg/2026-11-s90-private-price-at-sale.md`, before the release engine exists. S99-S101 remain, in any order; S93 waits on all of them (D35).
+**S99 done (text and labels only).** compassionism-simulation [PR 179](https://github.com/BetterToBest/compassionism-simulation/pull/179) is **open: its `checks` jobs were still running when the session ended** (`guard` passed; locally domtest 162/162, validate passes, reader-codes clean). Next session: check it once, then merge it with the head from `git ls-remote origin refs/heads/claude/s99-validation-presets-text` (75b9bd7 at the time). S100 and S101 remain; S93 waits on both (D35).
 
-## What shipped (S97)
-- [research-update PR 203](https://github.com/BetterToBest/research-update/pull/203), merged (`67b96a9`): Amendment 2; outside reading triage `audits/2026-11-21-s97-amendment-reading.md` (Nemotron 3 Ultra, OpenRouter; nine points taken in full or part, one needed no change); PLAN.md S97 note and S93 now points to the amendment.
-- What the amendment fixes for S93: rerun on the release engine (r2 parts M, S, F, B, erosion, r2 tables; central bank; history; supply, all 231 rows; suite x2-x4, whose `series-r2.js` hard-codes the `r2-m-*-104691f` path); the automation and lending studies reproduced (seeds 1-10, every row), not rerun; a list kept as record; engine conditions (`vAt: 'lag'` reproduces the guard test); below-full-backing swing and books at a = 0, 0.5 (`s90_trace.js`/`s90_acct.js` need a backed-share option); checks D1-D5; eight archived shards plus history era e2 reproduced (drawn with seed 9797); checklist F1-F10; release text G.
+## What shipped (S99)
+- PR 179 (open): the earlier engine's "Gini" renamed net-wealth Gini (page tile, chart, table, milestone, export, `harness.js validate`); MODEL_SPEC Appendix B says what `validate` compares and that the seed-42 changelog figures come from the earlier path, with a label for validation figures; Appendix C opens with the status of every gap and contradiction (nothing undescribed; the four `fx` fixes stay a release-engine question); ODD paragraph on the presets; changelog entry.
+- Most of S99 was already done by earlier sessions (Appendices A and C, the four contradictions corrected in the text).
+
+## For S101
+- The Hub's "EDC-adjusted Gini 0.518 (v4.4)" is the net-wealth Gini of the validation preset, set against income-Gini targets (0.25, 0.22) and the Nordic range. Claims rows: BLEI paper (4 rows, 2 PDF-only), `research-summary.html` and `index.html` ("engine measures 0.518", 10 rows). Relabel or withdraw the comparison there; not edited in S99.
 
 ## In flight
 - Nothing.
@@ -14,7 +17,7 @@
 - None open.
 
 ## Next step
-S99 (text only; first in the Order table of the remaining pre-release steps). S100 needs a preregistration; S101 is text only.
+S100 (needs a preregistration; opus, high) or S101 (text only; sonnet, high). S101 is the cheaper one to start; either order.
 
 ## Standing rules (permanent: copy this section word for word on every rewrite)
 **Reader text carries no internal labels. Write it right the first time; don't wait for the reader-codes check to catch it.** Fixing each failure afterwards has slowed every step that touches a report.
@@ -50,3 +53,6 @@ S99 (text only; first in the Order table of the remaining pre-release steps). S1
 - `rev` on PLAN.md's long table rows hung the shell; use `python3 -c` to print the end of a long line.
 - The interactive tiles, milestones and insight cards are drawn only on `earlier-engine.html` (`index.html` carries the same script but not the markup): check them there, after `python3 dev/tools/sync_earlier.py`.
 - The NVIDIA catalogue answered "upstream request failed" within two minutes for a 25,000-character packet (Nov 21); OpenRouter's free Nemotron answered the same request.
+- compassionism-simulation's `reader_codes.py --list` prints many old report lines even when `--check` passes: trust `--check`.
+- The repository's CLAUDE.md asks for `/handoff`; research-update's `/end-session` is the one to run.
+- The Hub claims ledger is research-hub `data/claims.csv` (a read-only clone is enough to grep it).
