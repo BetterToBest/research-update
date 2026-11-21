@@ -10,7 +10,7 @@
 - **Found:** the engine's stored no-programme supply path ignored pay by household type, the price rule's settings, bargaining, the government account and PTF running costs. The yardstick study's `eh` and `both` readings took the path of the rows before them (its decision-rule rows did not, so D36 stands); the study is rerun. Record studies: audit in S103.
 
 ## In flight
-- compassionism-simulation PR 182: CI (about 12 minutes) was running at the session's end. If green, merge it (expectedHeadSha from `git ls-remote`); the merge commit is **the release engine** (its full hash goes in every rerun's dispatch and in Amendment 3's terms). If red, fix on the branch.
+- compassionism-simulation PR 182: the first CI run failed two start tests (the baseline check against the v5.9 file; the proof tool's hand-set start), fixed in `8436ed6`; its CI was running at the session's end. If green, merge it (expectedHeadSha from `git ls-remote`); the merge commit is **the release engine** (its full hash goes in every rerun's dispatch and in Amendment 3's terms). If red, fix on the branch.
 - compassionism-sim-results PR 70: merged (`40f2c74`).
 
 ## Decisions waiting
@@ -30,6 +30,7 @@ S93 part 2 (opus, high): dry runs on the release engine (seeds 1-2, every row an
 ## Pitfalls
 - The engine's stored no-programme supply path (`tbBaseS`, `s3BaseS`) is keyed by hand: a new row option that acts on a no-programme run must be added to `rowKeyS93`, or rows run after others in one process take the wrong path. Test: a no-programme row has programme inflation exactly 0 on its own path.
 - A unit test that sets engine state by hand and then calls `tbStudy` must clear that state first (`PTFS`, `PTF_OPS`, `POS`, `PAS`, `PA`, `PFS`, `CMS`, `PRICE`, `LEND`, `LDS`).
+- The release baseline check (every study job's start) reads `data/baseline.json`, the v5.9 no-programme run, so since v5.9.22 it runs the v5.9 row. When the rerun part M lands: `dev/tools/make_baseline.js` from it, with `release: 'v5.9.22'` in the file, and the check runs the release row (S93 part 3).
 - Since v5.9.22 the guard reference hashes the v5.9.21 output list (483 keys): rewrite it with `--write --keys-from=dev/runs/guard/v5.9.21`, or unchanged rows get new hashes.
 - `expectedHeadSha` in a merge call must be the exact 40-character head; take it from `git ls-remote origin refs/heads/<branch>`.
 - A pushed branch name whose PR merged cannot be reused without a force-push: use a new branch name (this session: `claude/s94-lending-build`).
