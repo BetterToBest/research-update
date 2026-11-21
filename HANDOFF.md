@@ -10,7 +10,8 @@
 
 ## Not done
 - `data/claims.csv` and `claims-summary.md` not regenerated (a rebuild for S40/S25).
-- The economic modeling paper's WIR Bank "62,000 businesses, $4.5 billion annually" has no cited source (ledger issue added).
+- The economic modeling paper's WIR Bank "62,000 businesses, $4.5 billion annually" has no cited source (ledger I20).
+- Both are step S102 (sonnet, medium; not blocking S93; run the claims rebuild after S93).
 
 ## In flight
 - Nothing.
