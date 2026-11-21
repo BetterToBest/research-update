@@ -2,7 +2,7 @@
 
 ## Step status
 **S96 done:** compassionism-simulation PR 177 merged (`f180986`).
-**S98 done (text only):** compassionism-simulation [PR 178](https://github.com/BetterToBest/compassionism-simulation/pull/178), see "In flight" for whether it has merged. S97, S99-S101 remain, in any order; S93 waits on all of them (D35).
+**S98 done (text only):** compassionism-simulation [PR 178](https://github.com/BetterToBest/compassionism-simulation/pull/178), merged (`3fda4b9`, checks and guard green). S97, S99-S101 remain, in any order; S93 waits on all of them (D35).
 
 ## What shipped (S98)
 - Findings page (`site/round2.js`) and its text file (`dev/reports/s64-findings-page-text.md`): every headline card carries the full-backing condition and the opt-in figure; the poverty-effects sentence is conditional on wages following prices, with the supply study's wage figure beside it; one reconciled statement of the model's own new output (mechanism 0.2-1.9%, 14-20% without its ceiling; automation study 6-17%, 3-7% opt-in; they count output differently); every below-full-backing inflation figure labelled as the size of unbacked money, not a forecast; 18-53 against 40-49 reconciled (same rows, different subsets); ratio between designs removed; the 10,000-adult check's scope; who is simulated; definitions (families in debt, robust, the 48 curves against 62 readings); the financed rows' missing tail and different income bases; the labour share as partly a denominator effect; which savings measure; shortages not in the money measures.
@@ -10,7 +10,7 @@
 - Not on the page or text file, so unchanged: "cautious side" claims, a NEEC criterion statement. Left: a reading-by-screening-group map of the curves. The Hub's copies of these sentences belong to S101.
 
 ## In flight
-- compassionism-simulation PR 178: CI (checks, guard) was running at the end of the session. If it is still open, merge it once both checks pass (`expectedHeadSha` from `git ls-remote origin refs/heads/claude/s98-findings-wording`).
+- Nothing.
 
 ## Decisions waiting
 - None open.
