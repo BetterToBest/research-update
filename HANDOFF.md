@@ -4,7 +4,7 @@
 **S93 part 2b done.** The dry run's BU identity failure was a defect: with no ESP wage the year before, the payroll pool went nowhere. It is fixed in v5.9.23 (compassionism-simulation PR 184), with a reporting-only fix to the household check's scale. The v5.9.22 dispatch (runs 188-229) was cancelled before any shard finished, and every rerun job is dispatched on v5.9.23, part F and the supply study included. Next: S93 part 3 once the runs land (checks D1-D5, tables), with the visual suite and the session-machine reruns first. Record: `audits/2026-11-21-s93-part2b.md`.
 
 ## What shipped
-- compassionism-simulation PR 184 (v5.9.23, merged as the release engine `@@ENGINE@@`):
+- compassionism-simulation PR 184 (v5.9.23, merged as the release engine `50bc51d1d551697232fdaa74421325ce66432de6`):
   - When no ESP worker had a wage the year before, the payroll pool is returned to the ESP (`esRet`; tally `retNoW`).
   - The household check's scale counts the amount the wealth floor removed.
   - Proofs: the guard test is identical; the lineage panels equal v5.9.22's (link marked `record`); dry-run units of parts M, S and B and the yardstick study are EQUAL; part F's unreached points are equal; unit 424, domtest 162, validate.
@@ -12,7 +12,8 @@
 - **Found:** (1) the cause above: every failing year's gap equals that year's zero-weight pool (44 of 44 checked). (2) The household check failed four times in part F at Adverse, 40 years: one rounding step of a 1e23-1e36 debt reset to the floor. (3) The part S reproduction (run 181) is exact: 435,160 values. (4) The v5.9.22 dispatch was 525 shards, not 570.
 
 ## In flight
-@@INFLIGHT@@
+- **Workflow runs 230-289** (compassionism-sim-results `run-study.yml`, runner `ed7f35b`, engine `50bc51d1d551697232fdaa74421325ce66432de6`): every rerun job, six cells each, 768 shards, folders `<id>-50bc51d`. They are r2 parts M (1 shard per cell), S (6/11), F (7/14) and B (2/4); the supply study (20; age batch `--rows=134-136`, 10); the yardstick study (10/20); automation and its supplement, and lending (20 each). Table: `audits/2026-11-21-s93-part2b.md`. About a day.
+- Cancelled: runs 188-229 (on v5.9.22; no shard finished).
 
 ## Decisions waiting
 - For `/end-session`, a ledger decision with a default: section C1's preregistered swing measure failed below full backing for a reason found (it counts steady growth). Amendment 5 replaced it after the failure with a growth-change measure (holds) and a detrended check (agrees). Default: the below-full-backing figures are published from the release engine with both measures and the post-hoc label. Duke may instead hold them (section C4).
