@@ -1,8 +1,8 @@
-# Handoff (Nov 21, 2026): S94 merged; S96 built, its pull request open awaiting checks; next S97-S101
+# Handoff (Nov 21, 2026): S96 done; next S97-S101
 
 ## Step status
 **S94 done:** compassionism-simulation PR 176 merged at session start (checks green).
-**S96 built:** compassionism-simulation [PR 177](https://github.com/BetterToBest/compassionism-simulation/pull/177) (`claude/s96-page-targets`) is open; CI (about 12 minutes) was not waited for. **First action next session: check its checks and merge it yourself if they pass** (fix and push if not). S96 is then done. S97-S101 remain, in any order; S93 waits on all of them (D35).
+**S96 done:** compassionism-simulation [PR 177](https://github.com/BetterToBest/compassionism-simulation/pull/177) merged (`f180986`, checks green). S97-S101 remain, in any order; S93 waits on all of them (D35).
 
 ## What shipped (S96)
 - The targets lived on the earlier engine page (`earlier-engine.html`, whose script is `index.html`'s, copied by `sync_earlier.py`); the KPI, chart, milestone and insight functions sit outside the release engine block, so the engine's hash and lineage are unchanged.
@@ -13,13 +13,13 @@
 - Workbench: PLAN S96 note and Order row, the S24 row's note closed, `audits/early-figures.md` marked fixed.
 
 ## In flight
-- compassionism-simulation PR 177 (checks running).
+- Nothing.
 
 ## Decisions waiting
 - None open.
 
 ## Next step
-Merge PR 177 once green, then S97-S101 in any order (S98 suggested: the findings page's wording, text only).
+S98 (the findings page's wording, text only; first open row of the Order table's S97-S101 group that needs no runs). S97, S99-S101 also start.
 
 ## Standing rules (permanent: copy this section word for word on every rewrite)
 **Reader text carries no internal labels. Write it right the first time; don't wait for the reader-codes check to catch it.** Fixing each failure afterwards has slowed every step that touches a report.
