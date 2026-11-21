@@ -172,12 +172,19 @@ What was read: section C of Amendment 2 and Amendment 5 of `prereg/2026-11-s90-p
 
 Sections (line): Triage (Claude, with what was checked) 5
 
-## 2026-11-21-s93-dispatch.md (43 lines)
+## 2026-11-21-s93-dispatch.md (45 lines)
 The release reruns: dry run, dispatch and the checks run so far (Nov 21, 2026)
 
-Under `prereg/2026-11-s90-private-price-at-sale.md` (Amendment 2 with Amendments 3-5).
+*Note (Nov 21, 22:55 UTC): superseded in part by `audits/2026-11-21-s93-part2b.md`.
 
-Sections (line): Dry run (Amendment 3, D2) 5 · Dispatched (workflow runs 188-229 of `run-study. 12 · Session machine (compassionism-sim-results, merg 26 · Section E: archived commands reproduced from scr 30
+Sections (line): Dry run (Amendment 3, D2) 7 · Dispatched (workflow runs 188-229 of `run-study. 14 · Session machine (compassionism-sim-results, merg 28 · Section E: archived commands reproduced from scr 32
+
+## 2026-11-21-s93-part2b.md (104 lines)
+The release reruns, part 2b: two defects found by the dry run, fixed in v5.9.23, and the dispatch (Nov 21, 2026)
+
+Under `prereg/2026-11-s90-private-price-at-sale.md` (Amendment 2 with Amendments 3-6).
+
+Sections (line): The part S reproduction (section E) 5 · Defect 1: the ESP payroll pool with no wage weig 8 · Defect 2: the household transfer check's scale ( 18 · Dry run of what the defects reached, on the fixe 25 · The cancelled dispatch 34 · Dispatched (workflow runs 230-289 of `run-study. 37
 
 ## 2026-11-21-s97-amendment-reading.md (21 lines)
 Outside reading of the release-rerun amendment (Nov 21, 2026)
