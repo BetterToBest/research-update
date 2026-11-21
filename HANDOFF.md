@@ -1,21 +1,25 @@
-# Handoff (Nov 21, 2026): S94 part 5 built, its pull request open awaiting checks; next S96-S101
+# Handoff (Nov 21, 2026): S94 merged; S96 built, its pull request open awaiting checks; next S97-S101
 
 ## Step status
-**S94 parts 1-5 built.** compassionism-simulation [PR 176](https://github.com/BetterToBest/compassionism-simulation/pull/176) (`claude/s94-findings-page`) is open: CI takes about 12 minutes and was not waited for. **First action next session: check its checks and merge it yourself if they pass** (fix and push if not). S94 is then done. S96-S101 in any order; S93 waits on all of them (D35).
+**S94 done:** compassionism-simulation PR 176 merged at session start (checks green).
+**S96 built:** compassionism-simulation [PR 177](https://github.com/BetterToBest/compassionism-simulation/pull/177) (`claude/s96-page-targets`) is open; CI (about 12 minutes) was not waited for. **First action next session: check its checks and merge it yourself if they pass** (fix and push if not). S96 is then done. S97-S101 remain, in any order; S93 waits on all of them (D35).
 
-## What shipped
-- `dev/tools/s94_page_data.py` writes `data/studies/s94-{fund,charters,interaction,levels}.json`; `s94Section()` in `site/round2.js` prints every figure from them, with the report's section 10 as its text, the fund's tables at 20 and 40 years, and the lending result in the unfavourable list. Reader codes clean; reader_check passes on all views; the full domtest was still running when the PR opened (not read).
-- **Report error corrected** (report section 8, DECISIONS): the interaction of the fund and charters at 1/7 excludes zero for at least one reading in 12 of 12 cells (not nine), 47 of 72 readings: 41 unfavourable, 4 favourable (tiny), 2 zero. Verdict unchanged.
-- Page wording differs from report section 10 in one place: charters "improve basket poverty, yearly wealth poverty and savings wherever they act" (at 1/3 only those three improve in every cell).
+## What shipped (S96)
+- The targets lived on the earlier engine page (`earlier-engine.html`, whose script is `index.html`'s, copied by `sync_earlier.py`); the KPI, chart, milestone and insight functions sit outside the release engine block, so the engine's hash and lineage are unchanged.
+- Tiles: the baseline (no-programme run, same seed) beside each, coloured by the sign of the paired difference (`vsBase()`; grey `.kdelta.flat` within display rounding). Wealth and Gini charts: baseline lines replace "$82K target" and "Nordic (0.28)" (an income Gini against the model's wealth Gini). Milestones: "Gini below baseline", "Median wealth above baseline"; "Poverty < 5%" kept as a ladder step. Insights: three cards against the baseline; untested claims ("cost offset confirmed", BU $1,200, "entrepreneurial horizon unlocked", the automation card's) removed.
+- `CFG.TARGET_*`, `CCO_OPTIMAL_BU`, `NORDIC_GINI` removed; `harness.js headline` prints the no-programme median wealth. `_settings.cfgSha256` changes for future runs (a settings record; nothing compares it).
+- Kept on purpose: the release page's table of the Hub's own Year 7 targets (`relTargets`).
+- A reading to know: the stability tile shows red in the default run (89% against 99%), because the baseline's median wealth sits at the floor and barely moves.
+- Workbench: PLAN S96 note and Order row, the S24 row's note closed, `audits/early-figures.md` marked fixed.
 
 ## In flight
-- compassionism-simulation PR 176 (checks running).
+- compassionism-simulation PR 177 (checks running).
 
 ## Decisions waiting
 - None open.
 
 ## Next step
-Merge PR 176 once green, then S96-S101 in any order (S96 first suggested: the simulation page's targets).
+Merge PR 177 once green, then S97-S101 in any order (S98 suggested: the findings page's wording, text only).
 
 ## Standing rules (permanent: copy this section word for word on every rewrite)
 **Reader text carries no internal labels. Write it right the first time; don't wait for the reader-codes check to catch it.** Fixing each failure afterwards has slowed every step that touches a report.
@@ -49,3 +53,4 @@ Merge PR 176 once green, then S96-S101 in any order (S96 first suggested: the si
 - `ppovA` and `pmedWA` are derived by the job scripts, not reported by the engine: a script that calls `tbStudy` directly must average `ppov_1..ppov_{T-1}` itself.
 - In a sparse `--filter=blob:none` clone of compassionism-sim-results, add folders with `git sparse-checkout add '/<pattern>/'`; the six study folders (about 1.6 GB) and the `s90-sale-*` folders checked out in a few minutes.
 - `rev` on PLAN.md's long table rows hung the shell; use `python3 -c` to print the end of a long line.
+- The interactive tiles, milestones and insight cards are drawn only on `earlier-engine.html` (`index.html` carries the same script but not the markup): check them there, after `python3 dev/tools/sync_earlier.py`.

@@ -122,7 +122,7 @@ Created Sep 18, 2025 (`ce3a737`), titled "Optimal parameters ... achieving 98% p
 |---|---|---|
 | Unseeded runs (`Math.random`); no two runs comparable | May 21 - June 10, 2026 | v3.3 (Mulberry32, seed box) |
 | "System Stability" = random 88-96% if poverty fell in the last quarter, else 60-75%; "work incentive" = random 82-92% | first engines | v4.2 (structural stability measure) |
-| Hub figures used as targets: "$82K target", "Nordic benchmark 0.28", Gini target ≤0.25; KPI colours set by distance from them | from May 21, 2026 | **not fixed**: labelled "pre-v4.3 calibration, not yet reconsidered" from v4.19, and the current page (v5.6.0) still holds `CFG.TARGET_WEALTH` 82000, `TARGET_GINI` 0.25, `TARGET_POVERTY` 0.05 and `TARGET_STABILITY` 0.90 and prints "Target $82K" on its median-wealth tile. Research rule 3 says earlier figures are not targets: remove them (S40) |
+| Hub figures used as targets: "$82K target", "Nordic benchmark 0.28", Gini target ≤0.25; KPI colours set by distance from them | from May 21, 2026 | **fixed Nov 21, 2026** (compassionism-simulation PR 177): every tile, milestone, insight card and chart line now reads against the no-programme run of the same seed, and `CFG.TARGET_*`, `CCO_OPTIMAL_BU` and `NORDIC_GINI` are removed (S96). Before: labelled "pre-v4.3 calibration, not yet reconsidered" from v4.19, and the current page (v5.6.0) still holds `CFG.TARGET_WEALTH` 82000, `TARGET_GINI` 0.25, `TARGET_POVERTY` 0.05 and `TARGET_STABILITY` 0.90 and prints "Target $82K" on its median-wealth tile. Research rule 3 says earlier figures are not targets: remove them (S40) |
 | Undocumented ×0.85 cut to the no-program run's starting wealth | from May 21, 2026 | v4.4 |
 | Wage in model units (lognormal(3.5, 0.5), about 35 a month) added to dollar wealth | to v4.2 | v4.3 (`WAGE_TO_USD`), v4.4 (one scale everywhere) |
 | Gamma sampler returned the constant 1 at a = 1 (automation risk draws) | to v4.3 | v4.4 |
@@ -167,5 +167,5 @@ Oct 30, 2026. Source: the claude.ai export of Duke's account (139 conversations,
 
 - `data/claims.csv` (S23) already classes these figures "no basis found" (811 rows claimed as simulation results). This report confirms it: none was produced by code. S24 removes or relabels them per the claims ledger; S25 replaces them with results from the preregistered studies.
 - S31 (chat-history provenance, done Oct 30, 2026): see the section above.
-- The simulation page still shows the Hub's $82K, Gini 0.25, 5% poverty and 90% stability as targets (`CFG.TARGET_*`). They should go (S40, or the next engine release).
+- The simulation page still shows the Hub's $82K, Gini 0.25, 5% poverty and 90% stability as targets (`CFG.TARGET_*`). They should go (S40, or the next engine release). *Done Nov 21, 2026 (S96, compassionism-simulation PR 177): replaced by the no-programme comparison.*
 - The papers' printed code should be removed or marked "illustrative pseudo-code, not run" (S24). The `SystemStability` block in particular presents a typed-in constant as a test result.
