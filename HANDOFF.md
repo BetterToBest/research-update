@@ -1,24 +1,22 @@
-# Handoff (Nov 21, 2026): S101 done; next S100, then S93
+# Handoff (Nov 21, 2026): S100 part 1 done; part 2 reads the batch
 
 ## Step status
-**S101 done (Hub text only; no engine or figure change).** Every figure on ledger I9's list was checked on the pages, PDFs, data files and root site. Six were already corrected by S24; the rest are corrected or withdrawn with dated notes. S99's PR 179 had already merged. S100 is the last pre-release step; S93 waits on it (D35).
+**S100 partly done.** Part 1 (reading, sources, preregistration, switch, runs started) is done. Part 2 remains: read the batch, have outside readers check it, then the main-row decision. S93 waits on S100 (D35).
 
 ## What shipped
-- research-hub [PR 40](https://github.com/BetterToBest/research-hub/pull/40), merged `d44606b`: paper index descriptions; dated notes on the economic modeling paper's table, conclusion and thresholds; the integrated digital governance paper's $82,000 / $37,000 withdrawn; θ called a design parameter with no calibration; the BLEI paper's 0.518 comparison withdrawn; downloads README; corrections log `#s101`; three PDFs rebuilt. Reader codes: Hub and root site 0.
-- research-update: PLAN.md (S101 section note, S99 and S101 rows marked done).
-- Root site: already matched; no change.
-
-## Not done
-- `data/claims.csv` and `claims-summary.md` not regenerated; and the WIR Bank figures (62,000 businesses, $4.5 billion) have no cited source (I20). Both are S102 (sonnet, medium; not blocking S93; rebuild after S93).
+- compassionism-simulation [PR 180](https://github.com/BetterToBest/compassionism-simulation/pull/180), merged `e50a3b3`. Row option `eh` gives pay by household type (CPS ASEC 2026; partners correlated 0.22; no draw). `sn.cdc` is the child and dependent care credit (tax year 2025, Publication 503; paid only to the CPS share of families who pay for care; claimed before the CTC). `sn.rep` adds reporting keys. Also: reading `dev/reports/s100-part-time-reading.md`, `sources/s100_earnings_by_household.py`, 7 unit tests, `dev/tools/s100_tables.py` (written before any result). Guard identical; main pair identical on 5,862 series; unit 423/423, validate, domtest 162/162, lineage proved.
+- compassionism-sim-results [PR 68](https://github.com/BetterToBest/compassionism-sim-results/pull/68): `runner/jobs/s100.js` (22 rows; `--check` passes).
+- research-update [PR 208](https://github.com/BetterToBest/research-update/pull/208): `prereg/2026-11-s100-part-time-dcc.md` (engine recorded before the run); PLAN note.
+- Finding: the old EITC gap (11.9% against 15.3%) was mostly a measurement mismatch. The US figure counted other tax units in the poverty unit and assumed full take-up. Like for like: 10.9% against 11.8%.
 
 ## In flight
-- Nothing.
+- Six runs on compassionism-sim-results `run-study.yml` (runs 173-178, started Nov 21 13:35 UTC), engine `e50a3b3`. Folders `s100-{ref,adv,str}-{20,40}-e50a3b3`; a folder is done when it has `DONE`.
 
 ## Decisions waiting
-- None open.
+- The main-row change. Duke, Nov 21: decide after the study completes and outside audit reviews verify the findings. Part 2 runs the tables, gets the outside readings (NVIDIA / OpenRouter free tier, public text only), then writes the ledger decision. Default meanwhile: the release keeps today's main row.
 
 ## Next step
-S100 (opus, high; needs a preregistration): the last pre-release step. After it, S93 (needs D34, Duke's version).
+S100 part 2 (opus, high). Run `python3 dev/tools/s100_tables.py <results> <out> --engine e50a3b3` and publish the tables folder. Read Q1-Q4 under the decision rules. Write the report and the findings-page text. Send it for outside reading. Add the ledger decision. Then S93.
 
 ## Standing rules (permanent: copy this section word for word on every rewrite)
 **Reader text carries no internal labels. Write it right the first time; don't wait for the reader-codes check to catch it.** Fixing each failure afterwards has slowed every step that touches a report.
@@ -50,3 +48,5 @@ S100 (opus, high; needs a preregistration): the last pre-release step. After it,
 - A `SHA256SUMS` made with `ls | xargs sha256sum > SHA256SUMS` lists itself: leave it out (`ls | grep -v '^SHA256SUMS$'`), then `sha256sum -c`.
 - The Hub has no CI: run `reader_codes.py --preset hub` and `--preset root` (from compassionism-simulation) before merging. Do not rerun `tools/class_claims.py` as a side effect: it rewrites `data/claims.csv` wholesale (about 20,000 rows against 11,173).
 - `add_repo` clones must run one at a time (proxy cap). The Hub's pattern for a withdrawn figure: keep the sentence, add an italic dated note, add a `corrections.html` entry, rebuild the PDF (`node tools/build_pdf.js <page>`).
+- The run's report hook fires twice per row (the supply reference run too): a test hook must replace, not append.
+- The US "EITC reach" in the CPS is the SPM unit's and the Census tax model's (full take-up): compare with own tax unit and `sn.taxTake 1`.
