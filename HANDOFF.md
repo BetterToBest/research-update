@@ -1,7 +1,7 @@
 # Handoff (Nov 21, 2026): S93 part 1 done (the release engine)
 
 ## Step status
-**S93 part 1 done:** the release engine v5.9.22 is built and proved; its PR merges once checks pass (see "In flight"). Duke adopted pay by household type and the care credit (D36), so the release main row carries both. Next: S93 part 2, the dry runs and the dispatch of every rerun.
+**S93 part 1 done:** the release engine v5.9.22 is built, proved and merged (`69e8953`). Duke adopted pay by household type and the care credit (D36), so the release main row carries both. Next: S93 part 2, the dry runs and the dispatch of every rerun.
 
 ## What shipped
 - research-update PR 211: Amendment 3 of `prereg/2026-11-s90-private-price-at-sale.md` (D36 adopted; version v5.9.22 by D34's default; the automation and lending studies rerun in full; D2/D3 against the yardstick study's `both` rows; F1 split) and Amendment 4 (a defect found by proof A3, its fix and reach), both committed before the engine change; PLAN notes; S103 added.
@@ -10,14 +10,13 @@
 - **Found:** the engine's stored no-programme supply path ignored pay by household type, the price rule's settings, bargaining, the government account and PTF running costs. The yardstick study's `eh` and `both` readings took the path of the rows before them (its decision-rule rows did not, so D36 stands); the study is rerun. Record studies: audit in S103.
 
 ## In flight
-- compassionism-simulation PR 182: the first CI run failed two start tests (the baseline check against the v5.9 file; the proof tool's hand-set start), fixed in `8436ed6`; its CI was running at the session's end. If green, merge it (expectedHeadSha from `git ls-remote`); the merge commit is **the release engine** (its full hash goes in every rerun's dispatch and in Amendment 3's terms). If red, fix on the branch.
-- compassionism-sim-results PR 70: merged (`40f2c74`).
+- Nothing running. compassionism-simulation PR 182 merged as **`69e89533d0aed26f9c3e3ccc5523e0df72192786`, the release engine (v5.9.22)**: the full hash for every rerun's dispatch and `run.txt`; folders end `-69e8953`. compassionism-sim-results PR 70 merged (`40f2c74`).
 
 ## Decisions waiting
 - None open. D34 (version): v5.9.22 by default (Duke held the release on Nov 19 without naming a number; renaming is one `set_version.py` call if he prefers another). D36: adopted.
 
 ## Next step
-S93 part 2 (opus, high): dry runs on the release engine (seeds 1-2, every row and cell, `acctDrawCheck` and each job's own checks, the two readings beside every switch), then dispatch every rerun (list and shard counts in PLAN's S93 part 2 note), record the run numbers, end. Do not read any figure before checks D1-D5.
+S93 part 2 (opus, high): dry runs on the release engine (`69e89533d0aed26f9c3e3ccc5523e0df72192786`) (seeds 1-2, every row and cell, `acctDrawCheck` and each job's own checks, the two readings beside every switch), then dispatch every rerun (list and shard counts in PLAN's S93 part 2 note), record the run numbers, end. Do not read any figure before checks D1-D5.
 
 ## Standing rules (permanent: copy this section word for word on every rewrite)
 **Reader text carries no internal labels. Write it right the first time; don't wait for the reader-codes check to catch it.** Fixing each failure afterwards has slowed every step that touches a report.
