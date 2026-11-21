@@ -1,16 +1,13 @@
-# Handoff (Nov 21, 2026): S96 done; next S97-S101
+# Handoff (Nov 21, 2026): S98 done; next S97, S99-S101
 
 ## Step status
-**S94 done:** compassionism-simulation PR 176 merged at session start (checks green).
-**S96 done:** compassionism-simulation [PR 177](https://github.com/BetterToBest/compassionism-simulation/pull/177) merged (`f180986`, checks green). S97-S101 remain, in any order; S93 waits on all of them (D35).
+**S96 done:** compassionism-simulation PR 177 merged (`f180986`).
+**S98 done (text only):** compassionism-simulation [PR 178](https://github.com/BetterToBest/compassionism-simulation/pull/178), merged (`3fda4b9`, checks and guard green). S97, S99-S101 remain, in any order; S93 waits on all of them (D35).
 
-## What shipped (S96)
-- The targets lived on the earlier engine page (`earlier-engine.html`, whose script is `index.html`'s, copied by `sync_earlier.py`); the KPI, chart, milestone and insight functions sit outside the release engine block, so the engine's hash and lineage are unchanged.
-- Tiles: the baseline (no-programme run, same seed) beside each, coloured by the sign of the paired difference (`vsBase()`; grey `.kdelta.flat` within display rounding). Wealth and Gini charts: baseline lines replace "$82K target" and "Nordic (0.28)" (an income Gini against the model's wealth Gini). Milestones: "Gini below baseline", "Median wealth above baseline"; "Poverty < 5%" kept as a ladder step. Insights: three cards against the baseline; untested claims ("cost offset confirmed", BU $1,200, "entrepreneurial horizon unlocked", the automation card's) removed.
-- `CFG.TARGET_*`, `CCO_OPTIMAL_BU`, `NORDIC_GINI` removed; `harness.js headline` prints the no-programme median wealth. `_settings.cfgSha256` changes for future runs (a settings record; nothing compares it).
-- Kept on purpose: the release page's table of the Hub's own Year 7 targets (`relTargets`).
-- A reading to know: the stability tile shows red in the default run (89% against 99%), because the baseline's median wealth sits at the floor and barely moves.
-- Workbench: PLAN S96 note and Order row, the S24 row's note closed, `audits/early-figures.md` marked fixed.
+## What shipped (S98)
+- Findings page (`site/round2.js`) and its text file (`dev/reports/s64-findings-page-text.md`): every headline card carries the full-backing condition and the opt-in figure; the poverty-effects sentence is conditional on wages following prices, with the supply study's wage figure beside it; one reconciled statement of the model's own new output (mechanism 0.2-1.9%, 14-20% without its ceiling; automation study 6-17%, 3-7% opt-in; they count output differently); every below-full-backing inflation figure labelled as the size of unbacked money, not a forecast; 18-53 against 40-49 reconciled (same rows, different subsets); ratio between designs removed; the 10,000-adult check's scope; who is simulated; definitions (families in debt, robust, the 48 curves against 62 readings); the financed rows' missing tail and different income bases; the labour share as partly a denominator effect; which savings measure; shortages not in the money measures.
+- CHANGELOG entry and DECISIONS entry ("S98") in compassionism-simulation. Reader-codes check: 0.
+- Not on the page or text file, so unchanged: "cautious side" claims, a NEEC criterion statement. Left: a reading-by-screening-group map of the curves. The Hub's copies of these sentences belong to S101.
 
 ## In flight
 - Nothing.
@@ -19,7 +16,7 @@
 - None open.
 
 ## Next step
-S98 (the findings page's wording, text only; first open row of the Order table's S97-S101 group that needs no runs). S97, S99-S101 also start.
+S97 (the other first-listed pre-release step that needs no runs; S99 and S101 are also text only and start now; S100 needs a preregistration).
 
 ## Standing rules (permanent: copy this section word for word on every rewrite)
 **Reader text carries no internal labels. Write it right the first time; don't wait for the reader-codes check to catch it.** Fixing each failure afterwards has slowed every step that touches a report.
