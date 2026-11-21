@@ -31,33 +31,23 @@ S100 (opus, high; needs a preregistration): the last pre-release step. After it,
 
 ## Pitfalls
 - `expectedHeadSha` in a merge call must be the exact 40-character head; take it from `git ls-remote origin refs/heads/<branch>`.
-- Row option names collide: grep `c\.<name>` in `index.html` before naming a switch (`cl` was taken).
 - A pushed branch name whose PR merged cannot be reused without a force-push: use a new branch name (this session: `claude/s94-lending-build`).
 - After an engine change, run `python3 dev/tools/sync_earlier.py` (earlier-engine.html carries the same script) and `node dev/tools/engine_lineage.js prove "..."` (about 10 minutes); otherwise domtest fails four checks.
 - The guard test's rows predate open access: for a switch on the main row, also hash every key of `r2MainPair`'s rows against the old engine (`git show HEAD:index.html` and `harness.js` into a scratch folder with `node_modules`).
-- Engine globals are not harness exports unless listed in `module.exports`; use `H.STRESS_TEST`, `H.ADVERSE_REFERENCE`, `H.FULL_INTEGRATION`.
 - `/end-session` cannot be started by Claude (the Skill tool refuses it); Duke types it. Land PRs as you go.
 - compassionism-simulation CI takes about 12 minutes and queues behind study shards; each push runs it twice (push and pull_request).
 - After adding tests: `node harness.js unit --write-counts`. domtest needs `npm install` in a fresh clone (jsdom).
 - This clone's `origin/main` can be stale at session start. Run `git fetch origin main` before branching.
 - compassionism-sim-results is large: clone with `--filter=blob:none --no-checkout`, then `git sparse-checkout set --no-cone` on the folders you need.
 - The `oh` rows' no-programme runs are shared by both-run settings (`none.<key>` rows in `s85.js`): pair each programme row with the `none` row its `rowSpec` names.
-- `mfChk` is not 0 on flat-contribution main rows: never a pass/fail check there.
-- A `SHA256SUMS` made with `ls | xargs sha256sum > SHA256SUMS` lists itself: leave it out (`ls | grep -v '^SHA256SUMS$'`), then `sha256sum -c`.
 - OpenRouter's free tier (ids ending `:free`, 50 requests a day, public text only) and NVIDIA: `audits/2026-11-20-openrouter-setup.md`, `audits/2026-11-17-nvidia-setup.md`. Nemotron 3 Ultra on OpenRouter answers fastest; NVIDIA's Mistral and Kimi stream reasoning very slowly. Give a reasoning model 40,000 `max_tokens`.
 - BLS refuses direct requests (use the fetch tool); Census BDS and BEA download with curl. McKinsey, Goldman Sachs, OECD and Autonomy refuse automated fetches.
 - The GitHub tools can fail to connect at session start or after a restart; a ToolSearch for them reconnects.
-- Check `date -u` and a process's elapsed time before deciding a job is stuck.
-- In a `--filter=blob:none` clone, `git ls-tree -l` downloads every blob to report sizes (it ran for minutes on compassionism-sim-results): get file sizes from the GitHub contents tool (`get_file_contents` on the folder, fields name and size).
 - `ppovA` and `pmedWA` are derived by the job scripts, not reported by the engine: a script that calls `tbStudy` directly must average `ppov_1..ppov_{T-1}` itself.
-- In a sparse `--filter=blob:none` clone of compassionism-sim-results, add folders with `git sparse-checkout add '/<pattern>/'`; the six study folders (about 1.6 GB) and the `s90-sale-*` folders checked out in a few minutes.
-- `rev` on PLAN.md's long table rows hung the shell; use `python3 -c` to print the end of a long line.
 - The interactive tiles, milestones and insight cards are drawn only on `earlier-engine.html` (`index.html` carries the same script but not the markup): check them there, after `python3 dev/tools/sync_earlier.py`.
-- The NVIDIA catalogue answered "upstream request failed" within two minutes for a 25,000-character packet (Nov 21); OpenRouter's free Nemotron answered the same request.
-- compassionism-simulation's `reader_codes.py --list` prints many old report lines even when `--check` passes: trust `--check`.
-- The repository's CLAUDE.md asks for `/handoff`; research-update's `/end-session` is the one to run.
-- The Hub claims ledger is research-hub `data/claims.csv` (a read-only clone is enough to grep it).
-- The Hub (research-hub) has no CI checks: a PR merges at once; run `reader_codes.py --preset hub` and `--preset root` from compassionism-simulation beforehand.
-- Rerunning research-hub `tools/class_claims.py` rewrites `data/claims.csv` and the summary wholesale (about 20,000 rows against 11,173): do not commit it as a side effect of a text fix.
-- `add_repo` clones must run one at a time (the proxy caps concurrent clones per repository); `build_pdf.js` works as is (Playwright is installed).
-- The Hub's pattern for a withdrawn figure: leave the sentence, add an italic dated note ("Nov 21, 2026: ... came from no run and is withdrawn"), and add an entry to `corrections.html`.
+- Row option names collide: grep `c\.<name>` in `index.html` before naming a switch (`cl` was taken).
+- Engine globals are not harness exports unless listed in `module.exports`; use `H.STRESS_TEST`, `H.ADVERSE_REFERENCE`, `H.FULL_INTEGRATION`.
+- `mfChk` is not 0 on flat-contribution main rows: never a pass/fail check there.
+- A `SHA256SUMS` made with `ls | xargs sha256sum > SHA256SUMS` lists itself: leave it out (`ls | grep -v '^SHA256SUMS$'`), then `sha256sum -c`.
+- The Hub has no CI: run `reader_codes.py --preset hub` and `--preset root` (from compassionism-simulation) before merging. Do not rerun `tools/class_claims.py` as a side effect: it rewrites `data/claims.csv` wholesale (about 20,000 rows against 11,173).
+- `add_repo` clones must run one at a time (proxy cap). The Hub's pattern for a withdrawn figure: keep the sentence, add an italic dated note, add a `corrections.html` entry, rebuild the PDF (`node tools/build_pdf.js <page>`).
