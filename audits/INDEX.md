@@ -128,12 +128,12 @@ Written in S85 part 4, after Duke added an OpenRouter key to this environment be
 Sections (line): What was checked on Nov 20 5 · How Claude chooses 11 · How a reading is requested 18 · What may be sent 22 · What an outside reading is 26
 
 - `2026-11-20-pre-release/` (folder, 9 files)
-## 2026-11-20-pre-release-triage.md (49 lines)
+## 2026-11-20-pre-release-triage.md (57 lines)
 Outside readings before the release, Nov 20, 2026: Claude's triage
 
 Written in S94.
 
-Sections (line): The preregistration (Nemotron; Mistral below whe 9 · The gaps before the release (ERNIE; Nemotron and 27
+Sections (line): The preregistration (Nemotron; Mistral stopped b 9 · The gaps before the release (ERNIE, Nemotron and 27
 
 ## 2026-11-20-release-gaps.md (36 lines)
 Gaps and limitations open before the next release (inventory, Nov 20, 2026)
