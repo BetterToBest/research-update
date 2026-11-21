@@ -47,5 +47,6 @@ Only no-programme runs (the yardstick), at 20 to 500 seeds, Reference, 20 years,
 Every row, environment and horizon goes to compassionism-sim-results (six folders and a tables folder) and to the findings page's section on the yardstick, including null and unfavourable results, the Adverse and Stress environments, and the bounds.
 
 ## Engine commit
+compassionism-simulation `e50a3b359018e2be1929d700b49630f07f337473` (main, the merge of PR 180; guard test, unit 423 of 423, validate, domtest 162 of 162, lineage proved). Recorded Nov 21, 2026, before the first run. Results folders: `s100-<env>-<years>-e50a3b3`. 20-year cells 10 shards, 40-year cells 20 shards (the number of shards changes no figure).
 
 ## Amendments
