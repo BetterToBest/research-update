@@ -45,7 +45,7 @@ In the design anyone may shop at a Public Trust Foundation (PTF) business, in do
 
 Sections (line): Why 5 · Plain-words summary 8 · Checks made before writing this (no outcome valu 18 · Questions 24 · Design 31 · Rows 33 · Studies 45 · Where it runs 62 · Pilot first 65 · Outcomes 68 · Analysis 71 · Decision rules 74 · Reporting 83 · Amendments 86
 
-## 2026-11-s100-part-time-dcc.md (53 lines)
+## 2026-11-s100-part-time-dcc.md (54 lines)
 Preregistration: part-time work and the child and dependent care credit in the no-programme yardstick
 
 Claude's reading: compassionism-simulation `dev/reports/s100-part-time-reading.md`.

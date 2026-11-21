@@ -1,22 +1,22 @@
-# Handoff (Nov 21, 2026): S100 part 1 done; part 2 reads the batch
+# Handoff (Nov 21, 2026): S100 done
 
 ## Step status
-**S100 partly done.** Part 1 (reading, sources, preregistration, switch, runs started) is done. Part 2 remains: read the batch, have outside readers check it, then the main-row decision. S93 waits on S100 (D35).
+**S100 done** (both parts). The main-row change waits on Duke (D36); its default proceeds. Next: S93, the release.
 
 ## What shipped
-- compassionism-simulation [PR 180](https://github.com/BetterToBest/compassionism-simulation/pull/180), merged `e50a3b3`. Row option `eh` gives pay by household type (CPS ASEC 2026; partners correlated 0.22; no draw). `sn.cdc` is the child and dependent care credit (tax year 2025, Publication 503; paid only to the CPS share of families who pay for care; claimed before the CTC). `sn.rep` adds reporting keys. Also: reading `dev/reports/s100-part-time-reading.md`, `sources/s100_earnings_by_household.py`, 7 unit tests, `dev/tools/s100_tables.py` (written before any result). Guard identical; main pair identical on 5,862 series; unit 423/423, validate, domtest 162/162, lineage proved.
-- compassionism-sim-results [PR 68](https://github.com/BetterToBest/compassionism-sim-results/pull/68): `runner/jobs/s100.js` (22 rows; `--check` passes).
-- research-update [PR 208](https://github.com/BetterToBest/research-update/pull/208): `prereg/2026-11-s100-part-time-dcc.md` (engine recorded before the run); PLAN note.
-- Finding: the old EITC gap (11.9% against 15.3%) was mostly a measurement mismatch. The US figure counted other tax units in the poverty unit and assumed full take-up. Like for like: 10.9% against 11.8%.
+- compassionism-sim-results [PR 69](https://github.com/BetterToBest/compassionism-sim-results/pull/69), merged `1b0ab2e`: `s100-tables-e50a3b3` (tables, summary, `run.txt`, `SHA256SUMS`). Checks 1-2 pass in all six folders.
+- compassionism-simulation [PR 181](https://github.com/BetterToBest/compassionism-simulation/pull/181), merged `a33c59d` (checks green): report `dev/reports/s100-part-time-dcc.md`; `dev/tools/s100_page_data.py` and `data/studies/s100-yardstick.json`, `s100-effects.json`; findings section and an unfavourable-results line in `site/round2.js`; `check_round2.js` fixed (it failed on main: the weighting note says "not reported" in prose); DECISIONS entry.
+- research-update (this session's PR): the preregistration's dated reading note; outside readings `audits/2026-11-21-s100-results-reading.md` (Gemma 4 via NVIDIA, Nemotron 3 Ultra on OpenRouter; no figure changed, five wording fixes, one limit); PLAN notes.
+- Findings: decision rule 2 holds (EITC 11.32% against 11.77%, all four household types within 3 points, summed gap 5.15 against 19.04). Effects move under a point: opt-in, the cut in basket poverty is 0.32-0.91 points smaller in every cell; full coverage, the cut below 30 days of basic living is 0.41-0.73 larger. Credit alone and the interaction are negligible. Gaps reported: care credit reach 18.3% against 21.4%, mean $835 against $606.
 
 ## In flight
-- Six runs on compassionism-sim-results `run-study.yml` (runs 173-178, started Nov 21 13:35 UTC), engine `e50a3b3`. Folders `s100-{ref,adv,str}-{20,40}-e50a3b3`; a folder is done when it has `DONE`.
+Nothing.
 
 ## Decisions waiting
-- The main-row change. Duke, Nov 21: decide after the study completes and outside audit reviews verify the findings. Part 2 runs the tables, gets the outside readings (NVIDIA / OpenRouter free tier, public text only), then writes the ledger decision. Default meanwhile: the release keeps today's main row.
+- D36: pay by household type and the care credit in the release main row. Claude recommends adopting both (decision rule 2 holds; outside readings found no figure wrong). Default: keep today's main row and state the measured changes as a limit (the report's section 8 and the findings section say so).
 
 ## Next step
-S100 part 2 (opus, high). Run `python3 dev/tools/s100_tables.py <results> <out> --engine e50a3b3` and publish the tables folder. Read Q1-Q4 under the decision rules. Write the report and the findings-page text. Send it for outside reading. Add the ledger decision. Then S93.
+S93 (opus, high): the release with the private price at the sale as the default. Every pre-release step is done; D34 is answered; D36's default proceeds. If Duke adopts both before S93 starts, S93's main rows become the `both` rows (`eh` and `sn.cdc`) and the guard and lineage proofs change by design.
 
 ## Standing rules (permanent: copy this section word for word on every rewrite)
 **Reader text carries no internal labels. Write it right the first time; don't wait for the reader-codes check to catch it.** Fixing each failure afterwards has slowed every step that touches a report.
@@ -50,3 +50,6 @@ S100 part 2 (opus, high). Run `python3 dev/tools/s100_tables.py <results> <out> 
 - `add_repo` clones must run one at a time (proxy cap). The Hub's pattern for a withdrawn figure: keep the sentence, add an italic dated note, add a `corrections.html` entry, rebuild the PDF (`node tools/build_pdf.js <page>`).
 - The run's report hook fires twice per row (the supply reference run too): a test hook must replace, not append.
 - The US "EITC reach" in the CPS is the SPM unit's and the Census tax model's (full take-up): compare with own tax unit and `sn.taxTake 1`.
+- OpenRouter's free Gemma is often refused upstream (429, Google's shared pool). NVIDIA's catalogue serves the same model (`google/gemma-4-31b-it`), but stream it (`"stream": true`, `curl -N`): unstreamed, the gateway returns 502 after about 160 seconds.
+- `dev/tools/check_round2.js` is not in CI; run it after any change to `site/round2.js`. It needs at least 400 number spans and checks each against its file.
+- Report tables: generate them from the summary file; do not type figures (a typed inflation column was wrong here and was caught before commit).
