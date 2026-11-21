@@ -192,12 +192,12 @@ The main row assumes full backing.
 
 Sections (line): Why 7 · What the engine does today (read in the code bef 15 · Questions 27 · What is built (one switch, row option `oh`; off  38 · Design 69 · Outcomes 85 · Analysis 99 · Checks (before any table is read; each must pass 106 · Decision rules (fixed now) 118 · Reporting 129 · Limits stated in advance 133 · To open before the dry run (Amendment 1) 142 · Amendments 151 · Amendment 1 (Nov 19, 2026, after the outside rea 153 · Amendment 2 (Nov 19, 2026, after the build, befo 188 · Amendment 3 (Nov 20, 2026, after the batch finis 210 · Amendment 4 (Nov 20, 2026, after the supplement  228
 
-## 2026-11-s90-private-price-at-sale.md (172 lines)
+## 2026-11-s90-private-price-at-sale.md (187 lines)
 Preregistration: the private businesses' BU price at the sale (S90's fix), rerun of the v5.9 main rows
 
 S90 traced the damped two-year swing in the BU each adult spends (main row, Reference, seed 1: $22,838 in years 0-1, then $10,969, $21,452, $13,819, $19,472, $16,202) to the private businesses' lower BU price.
 
-Sections (line): Why 5 · Questions 8 · Design 13 · Checks (before any outcome is read) 19 · Outcomes 24 · Analysis 29 · Decision rules 35 · Reporting 42 · Amendments 45 · Amendment 1 (Nov 19, 2026): readings fixed befor 48 · Amendment 2 (Nov 21, 2026, S97): the release's r 56 · Amendment 3 (Nov 21, 2026, S93): the release mai 130 · Amendment 4 (Nov 21, 2026, S93): a defect found  159
+Sections (line): Why 5 · Questions 8 · Design 13 · Checks (before any outcome is read) 19 · Outcomes 24 · Analysis 29 · Decision rules 35 · Reporting 42 · Amendments 45 · Amendment 1 (Nov 19, 2026): readings fixed befor 48 · Amendment 2 (Nov 21, 2026, S97): the release's r 56 · Amendment 3 (Nov 21, 2026, S93): the release mai 130 · Amendment 4 (Nov 21, 2026, S93): a defect found  159 · Amendment 5 (Nov 21, 2026, S93): section C1 fail 173
 
 ## 2026-11-s94-collectives-lending.md (131 lines)
 Preregistration: the Creative Collectives' lending to start-ups where banks will not lend, and charters of public operators

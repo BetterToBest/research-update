@@ -1,0 +1,23 @@
+nvidia/nemotron-3-ultra-550b-a55b:free {'prompt_tokens': 4201, 'completion_tokens': 3657, 'total_tokens': 7858, 'cost': 0, 'is_byok': False, 'prompt_tokens_details': {'cached_tokens': 0, 'cache_write_tokens': 0, 'audio_tokens': 0, 'video_tokens': 0}, 'cost_details': {'upstream_inference_cost': 0, 'upstream_inference_prompt_cost': 0, 'upstream_inference_completions_cost': 0}, 'completion_tokens_details': {'reasoning_tokens': 2565, 'image_tokens': 0, 'audio_tokens': 0}}
+1. **Diagnosis partially supported but evidence is thin** — *should fix*  
+   The claim that “at no backing about 40–50% a year in every run” is backed only by seed 1 for two environments (Reference, Stress) at a=0. No data are shown for a=0.5, for the Adverse environment at a=0, or for seeds 2–20. The mechanism (steady growth inflates the original |ΔBU|/BU measure) is correct and visible in the seed-1 series, but the generality of the 40–50% figure across all 20 seeds × 3 environments × 2 backed shares is not demonstrated. Before using these results, the amendment should either show the growth-rate distributions for all seeds or weaken the claim to “in the runs examined.”
+
+2. **Replacement measure changes the target construct; a fix that doesn’t work could pass** — *must fix*  
+   The original measure captures *dollar-amount volatility* (|BUₜ − BUₜ₋₁|/BUₜ), which is the economically relevant quantity for agents’ spending. The new “growth-change” measure captures *volatility of the growth rate* (mean |gₜ − gₜ₋₁|). A scenario where at-sale timing stabilizes the growth rate but leaves large dollar swings (e.g., steady 40% growth ±5 pp) would pass the new measure (|Δg| ≈ 0.05) while the original measure would still show large swing (|ΔBU|/BU ≈ 0.4). The condition “at-sale < ½ lagged” is also easier to satisfy on the new measure because the lagged growth-change values (24–39%) are far larger than the original lagged swing at full backing (14–18%), making the 0.5 threshold less stringent in absolute terms. The amendment must either justify why growth-rate volatility is the correct target or run a sensitivity check showing the conclusion holds under the original (dollar) measure after detrending.
+
+3. **Post-hoc disclosure is honest but incomplete; needs pre-registration of the alternative and a sensitivity requirement** — *must fix*  
+   The amendment admirably labels itself post-hoc, discloses the “Seen” seeds, and commits to publishing both measures side by side. However, it does not:  
+   (a) pre-specify *why* this particular alternative (mean |Δg|) was chosen over others (e.g., std(g), max |Δg|, detrended original measure);  
+   (b) require any sensitivity analysis across alternative swing definitions;  
+   (c) justify using S92’s full-backing at-sale value on the *new* measure for the fallback condition (S92 was calibrated on the original measure);  
+   (d) adjust inference for the researcher degree of freedom (measure selection after seeing failure).  
+   Before results are used, the amendment should add a mandatory sensitivity appendix (at least two other plausible swing measures) and explicitly flag the fallback threshold as unvalidated for the new metric.
+
+4. **Fallback condition uses an uncalibrated threshold from S92** — *should fix*  
+   The fallback (“where lagged measure ≤ S92 at-sale full backing, require at-sale ≤ lagged”) now compares the new growth-change lagged measure (24–39%) against S92’s at-sale *on the new measure* (2.3–3.9%). Since the new measure’s scale is different, the “no swing to remove” logic is untested: S92’s original at-sale values (2.3–3.3%) were small *on the original measure*; the new measure’s at-sale values (2.3–3.9%) happen to be numerically similar but represent growth-rate volatility, not dollar swing. The condition should either be re-calibrated for the new measure or dropped until validated.
+
+5. **No verification of the new measure at full backing (where it was originally designed)** — *should fix*  
+   Check F2 uses the original measure at full backing. The tool output shows the new measure at full backing (S92 row: lagged 36–46%, at-sale 2.3–3.9%), but the amendment does not require the new measure to pass the same C1 condition at full backing. If the new measure is the “correct” one, it should also be checked where the original S92 applied it; if it behaves differently there, that discrepancy must be explained.
+
+6. **Minor: “Seen” data covers only 2 of 60 seed–environment–backing cells** — *minor*  
+   The growth-rate printouts are for seed 1 only, at a=0, for Reference and Stress. Adverse a=0, both backed shares for seeds 2–20, and all half-backing runs are unseen. The amendment should note this limitation explicitly in the release text.

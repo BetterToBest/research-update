@@ -164,6 +164,21 @@ No figure changes.
 
 Sections (line): Triage 11 · What this means 28
 
+- `2026-11-21-s93-amendment5-reading/` (folder, 2 files)
+## 2026-11-21-s93-amendment5-reading.md (17 lines)
+Outside reading of the swing-measure amendment (Nov 21, 2026)
+
+What was read: section C of Amendment 2 and Amendment 5 of `prereg/2026-11-s90-private-price-at-sale.md`, as committed (public), with the tool `dev/tools/s90_swing_growth.js` (compassionism-simulation, first version) and
+
+Sections (line): Triage (Claude, with what was checked) 5
+
+## 2026-11-21-s93-dispatch.md (43 lines)
+The release reruns: dry run, dispatch and the checks run so far (Nov 21, 2026)
+
+Under `prereg/2026-11-s90-private-price-at-sale.md` (Amendment 2 with Amendments 3-5).
+
+Sections (line): Dry run (Amendment 3, D2) 5 · Dispatched (workflow runs 188-229 of `run-study. 12 · Session machine (compassionism-sim-results, merg 26 · Section E: archived commands reproduced from scr 30
+
 ## 2026-11-21-s97-amendment-reading.md (21 lines)
 Outside reading of the release-rerun amendment (Nov 21, 2026)
 
