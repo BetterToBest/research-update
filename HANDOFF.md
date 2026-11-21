@@ -5,7 +5,7 @@
 
 ## What shipped
 - compassionism-sim-results [PR 67](https://github.com/BetterToBest/compassionism-sim-results/pull/67), merged `fb774d2`: `s94-tables-c5682f9` (checks, tables at 20 and 40 years, decision rule 6, `s94-summary.json`, `analysis.txt`, `SHA256SUMS`).
-- compassionism-simulation [PR 175](https://github.com/BetterToBest/compassionism-simulation/pull/175): `dev/tools/s94_tables.py`, the report `dev/reports/s94-collectives-lending.md` (reader codes clean; section 10 is the findings-page text), a DECISIONS.md entry, HANDOFF.md, CODEMAP. See "In flight" for its merge.
+- compassionism-simulation [PR 175](https://github.com/BetterToBest/compassionism-simulation/pull/175), merged `dfda580`: `dev/tools/s94_tables.py`, the report `dev/reports/s94-collectives-lending.md` (reader codes clean; section 10 is the findings-page text), a DECISIONS.md entry, HANDOFF.md, CODEMAP.
 - research-update (this branch's PR): the preregistration's dated note on the analysis (three readings fixed in the tool before any table was read; no design change), PLAN S94 section and Order row, this file.
 
 ## What was found
@@ -16,7 +16,7 @@
 - For S97: this study ran on `c5682f9`, so its rerun-or-label entry belongs in the release amendment's list (the S97 note says "if it lands first": it has).
 
 ## In flight
-- compassionism-simulation PR 175's CI (about 12 minutes) was running at the end of the session. If it is not merged when the next session starts: check its checks, merge it (`expectedHeadSha` from `git ls-remote`), or fix and say so here.
+- Nothing.
 
 ## Decisions waiting
 - None open.
