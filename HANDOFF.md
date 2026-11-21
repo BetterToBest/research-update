@@ -6,12 +6,12 @@
 ## What shipped
 - research-update PR 211: Amendment 3 of `prereg/2026-11-s90-private-price-at-sale.md` (D36 adopted; version v5.9.22 by D34's default; the automation and lending studies rerun in full; D2/D3 against the yardstick study's `both` rows; F1 split) and Amendment 4 (a defect found by proof A3, its fix and reach), both committed before the engine change; PLAN notes; S103 added.
 - compassionism-simulation PR 182 (branch `claude/s93-release-engine`): `SURP_DEFAULTS.vAt 'sale'` (other values refused); `r2FreezePair` adds `eh {}` and `sn.cdc true` in both runs (`r2FreezePair(P, d, true)` = the v5.9 row); `rowKeyS93` keys the stored no-programme supply path on the settings it missed; guard reference rewritten by design (previous kept in `dev/runs/guard/v5.9.21/`, `guard_test.js --lag --ref=...` reproduces it); `dev/tools/s93_release_proof.js` (A2, A3); a lineage link marked as keeping the v5.6 panels as the record (domtest prints it); one unit test (424); release notes; dated notes on the yardstick report and findings section.
-- compassionism-sim-results PR 70 (branch `claude/s93-release-jobs`): `s100.js` builds its rows from the v5.9 row, for its rerun.
+- compassionism-sim-results PR 70 (merged `40f2c74`): `s100.js` builds its rows from the v5.9 row, for its rerun.
 - **Found:** the engine's stored no-programme supply path ignored pay by household type, the price rule's settings, bargaining, the government account and PTF running costs. The yardstick study's `eh` and `both` readings took the path of the rows before them (its decision-rule rows did not, so D36 stands); the study is rerun. Record studies: audit in S103.
 
 ## In flight
 - compassionism-simulation PR 182: CI (about 12 minutes) was running at the session's end. If green, merge it (expectedHeadSha from `git ls-remote`); the merge commit is **the release engine** (its full hash goes in every rerun's dispatch and in Amendment 3's terms). If red, fix on the branch.
-- compassionism-sim-results PR 70: merge once checks pass (no study runs from it).
+- compassionism-sim-results PR 70: merged (`40f2c74`).
 
 ## Decisions waiting
 - None open. D34 (version): v5.9.22 by default (Duke held the release on Nov 19 without naming a number; renaming is one `set_version.py` call if he prefers another). D36: adopted.
