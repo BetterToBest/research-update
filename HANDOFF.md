@@ -9,9 +9,7 @@
 - Root site: already matched; no change.
 
 ## Not done
-- `data/claims.csv` and `claims-summary.md` not regenerated (a rebuild for S40/S25).
-- The economic modeling paper's WIR Bank "62,000 businesses, $4.5 billion annually" has no cited source (ledger I20).
-- Both are step S102 (sonnet, medium; not blocking S93; run the claims rebuild after S93).
+- `data/claims.csv` and `claims-summary.md` not regenerated; and the WIR Bank figures (62,000 businesses, $4.5 billion) have no cited source (I20). Both are S102 (sonnet, medium; not blocking S93; rebuild after S93).
 
 ## In flight
 - Nothing.
