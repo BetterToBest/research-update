@@ -45,6 +45,13 @@ In the design anyone may shop at a Public Trust Foundation (PTF) business, in do
 
 Sections (line): Why 5 · Plain-words summary 8 · Checks made before writing this (no outcome valu 18 · Questions 24 · Design 31 · Rows 33 · Studies 45 · Where it runs 62 · Pilot first 65 · Outcomes 68 · Analysis 71 · Decision rules 74 · Reporting 83 · Amendments 86
 
+## 2026-11-s100-part-time-dcc.md (52 lines)
+Preregistration: part-time work and the child and dependent care credit in the no-programme yardstick
+
+Claude's reading: compassionism-simulation `dev/reports/s100-part-time-reading.md`.
+
+Sections (line): What was read before this was written 7 · Questions 10 · Design 16 · Checks (before any outcome is read) 22 · Outcomes 27 · Analysis 33 · Decision rules 39 · Reporting 46 · Engine commit 49 · Amendments 51
+
 ## 2026-11-s39-outside-crosscheck.md (61 lines)
 Preregistration: outside engine cross-check of the price level (S39)
 
