@@ -1,14 +1,16 @@
-# Handoff (Nov 21, 2026): S99 done (PR awaiting checks); next S100, S101
+# Handoff (Nov 21, 2026): S101 done; next S100, then S93
 
 ## Step status
-**S99 done (text and labels only).** compassionism-simulation [PR 179](https://github.com/BetterToBest/compassionism-simulation/pull/179) is **open: its `checks` jobs were still running when the session ended** (`guard` passed; locally domtest 162/162, validate passes, reader-codes clean). Next session: check it once, then merge it with the head from `git ls-remote origin refs/heads/claude/s99-validation-presets-text` (75b9bd7 at the time). S100 and S101 remain; S93 waits on both (D35).
+**S101 done (Hub text only; no engine or figure change).** Every figure on ledger I9's list was checked on the pages, PDFs, data files and root site. Six were already corrected by S24; the rest are corrected or withdrawn with dated notes. S99's PR 179 had already merged. S100 is the last pre-release step; S93 waits on it (D35).
 
-## What shipped (S99)
-- PR 179 (open): the earlier engine's "Gini" renamed net-wealth Gini (page tile, chart, table, milestone, export, `harness.js validate`); MODEL_SPEC Appendix B says what `validate` compares and that the seed-42 changelog figures come from the earlier path, with a label for validation figures; Appendix C opens with the status of every gap and contradiction (nothing undescribed; the four `fx` fixes stay a release-engine question); ODD paragraph on the presets; changelog entry.
-- Most of S99 was already done by earlier sessions (Appendices A and C, the four contradictions corrected in the text).
+## What shipped
+- research-hub [PR 40](https://github.com/BetterToBest/research-hub/pull/40), merged `d44606b`: paper index descriptions; dated notes on the economic modeling paper's table, conclusion and thresholds; the integrated digital governance paper's $82,000 / $37,000 withdrawn; θ called a design parameter with no calibration; the BLEI paper's 0.518 comparison withdrawn; downloads README; corrections log `#s101`; three PDFs rebuilt. Reader codes: Hub and root site 0.
+- research-update: PLAN.md (S101 section note, S99 and S101 rows marked done).
+- Root site: already matched; no change.
 
-## For S101
-- The Hub's "EDC-adjusted Gini 0.518 (v4.4)" is the net-wealth Gini of the validation preset, set against income-Gini targets (0.25, 0.22) and the Nordic range. Claims rows: BLEI paper (4 rows, 2 PDF-only), `research-summary.html` and `index.html` ("engine measures 0.518", 10 rows). Relabel or withdraw the comparison there; not edited in S99.
+## Not done
+- `data/claims.csv` and `claims-summary.md` not regenerated (a rebuild for S40/S25).
+- The economic modeling paper's WIR Bank "62,000 businesses, $4.5 billion annually" has no cited source (ledger issue added).
 
 ## In flight
 - Nothing.
@@ -17,7 +19,7 @@
 - None open.
 
 ## Next step
-S100 (needs a preregistration; opus, high) or S101 (text only; sonnet, high). S101 is the cheaper one to start; either order.
+S100 (opus, high; needs a preregistration): the last pre-release step. After it, S93 (needs D34, Duke's version).
 
 ## Standing rules (permanent: copy this section word for word on every rewrite)
 **Reader text carries no internal labels. Write it right the first time; don't wait for the reader-codes check to catch it.** Fixing each failure afterwards has slowed every step that touches a report.
@@ -26,7 +28,6 @@ S100 (needs a preregistration; opus, high) or S101 (text only; sonnet, high). S1
 - Name things by subject: "the report on the private price at the sale", not "the S90 report"; "the preregistered rerun", not "S92". A file path, option or command goes in backticks or `<code>`, which is where a reader looks something up, so it is allowed there. Step codes belong in DECISIONS.md, PLAN.md, prereg/, audits/ and commit messages, which readers don't open.
 - Before committing an edit to any reader file, run the check on it: `python3 dev/tools/reader_codes.py --list` (compassionism-simulation), or `--root ../research-hub --preset hub` / `--root ../bettertobest.github.io --preset root`. Then `--check`, which is what CI (domtest Phase 17) runs.
 - `dev/tools/reader_codes_allow.txt` is only for labels that are not ours (a formula symbol such as D0, a report's own numbering), each with a reason. Never use it to let a step code through.
-
 
 ## Pitfalls
 - `expectedHeadSha` in a merge call must be the exact 40-character head; take it from `git ls-remote origin refs/heads/<branch>`.
@@ -56,3 +57,7 @@ S100 (needs a preregistration; opus, high) or S101 (text only; sonnet, high). S1
 - compassionism-simulation's `reader_codes.py --list` prints many old report lines even when `--check` passes: trust `--check`.
 - The repository's CLAUDE.md asks for `/handoff`; research-update's `/end-session` is the one to run.
 - The Hub claims ledger is research-hub `data/claims.csv` (a read-only clone is enough to grep it).
+- The Hub (research-hub) has no CI checks: a PR merges at once; run `reader_codes.py --preset hub` and `--preset root` from compassionism-simulation beforehand.
+- Rerunning research-hub `tools/class_claims.py` rewrites `data/claims.csv` and the summary wholesale (about 20,000 rows against 11,173): do not commit it as a side effect of a text fix.
+- `add_repo` clones must run one at a time (the proxy caps concurrent clones per repository); `build_pdf.js` works as is (Playwright is installed).
+- The Hub's pattern for a withdrawn figure: leave the sentence, add an italic dated note ("Nov 21, 2026: ... came from no run and is withdrawn"), and add an entry to `corrections.html`.
