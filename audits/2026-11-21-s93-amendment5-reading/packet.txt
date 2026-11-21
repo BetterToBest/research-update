@@ -1,0 +1,84 @@
+You are an independent methods reviewer. Below is part of a public preregistration for an agent-based economic simulation: section C of Amendment 2 (a check fixed before the run) and Amendment 5 (written after section C1 failed). Then the tool that computes the new measure and its output. Read critically. Questions: (1) Is the diagnosis (the original measure counts steady growth of the price level as swing below full backing) supported by the evidence given? (2) Is the replacement measure a fair test of the same question, or could it pass a fix that does not work? Name any failure mode. (3) Is the amendment honest and adequate about being post hoc: what else should it disclose or require (for example a second measure, a sensitivity check, wording for readers)? (4) Anything that should change before these results are used. Give numbered points, each with a severity (must fix / should fix / minor).
+
+=== Amendment 2, section C ===
+#### C. Below full backing (from Kimi's reading, Nov 20)
+Full backing barely tests the price rule, because the price level hardly moves there. So the fix is also verified where it does:
+1. **Swing.** The swing measure (`s90_swing.js`, seeds 1-20, 500 adults, 20 years, three environments), extended by a backed-share option in `s90_trace.js` (tool only, written before it is run), at no backing (a = 0) and half backing (a = 0.5), full-coverage design, lagged (`vAt: 'lag'`) and at the sale (the default), on the release engine. The fix works below full backing if, in every environment and at both backed shares, the at-sale measure is below half the lagged one. Where the lagged measure is itself no larger than S92's at-sale measure at full backing in that environment (no swing to remove), the condition is instead that the at-sale measure is no larger than the lagged one. (The premium per BU comes from the conversion rate and taxes, not from the backed share, so the rule is expected to act at every backed share.)
+2. **Books.** `s90_acct.js`, extended the same way, at a = 0 and 0.5: no accounting identity fails, the premium identity included (the advance is repaid exactly by next year's premium), seeds 1-5, three environments.
+3. **Paired change.** On the supply study's rerun, the base rows at a = 0, 0.25, 0.5, 0.75, 1 against the same rows published (`s82-v6-*-aa2a4e0`), same seeds 1-500: the paired change (release minus published) on the five primary outcomes, with a 95% paired bootstrap interval (2,000 resamples, generator seed 9001), per cell; a cell is one base row (one backed share) in one environment and horizon, so 5 × 3 × 2 = 30 cells per outcome. It is valid only if the no-programme rows equal the published ones per seed on every key (check D2). Published whichever way it moves.
+4. If 1 or 2 fails: stop and report. The release's figures below full backing (supply study, the automation study's produced backing, the central bank's no-backing arms) are not published from the release engine until the cause is found and fixed by a dated amendment; the full-backing figures go ahead.
+
+=== Amendment 5 ===
+### Amendment 5 (Nov 21, 2026, S93): section C1 failed on its measure; a measure of the swing that does not count steady growth
+Committed after section C1 was run and failed, before the measure below was computed on any seed beyond those named under "Seen", and before any rerun of section B was read. This amendment is made after seeing a result, and is labelled so wherever it is used.
+
+**What was run** (release engine `69e8953`, tools at compassionism-simulation `58f0a31`: `s90_swing.js --a=0` and `--a=0.5`, seeds 1-20, 500 adults, 20 years, the full-coverage main row; `s90_acct.js --a=0` and `--a=0.5`, seeds 1-5). **C2 (books) passes** at both backed shares in all three environments, both designs, the premium identity checked. **C1 fails** at both: the measure (mean over years 2-12 of |BU spent this year − last year| / this year, per seed, then averaged) is, lagged against at the sale: no backing 30.35% / 28.94% (Reference), 33.60% / 32.00% (Adverse), 34.56% / 33.04% (Stress); half backing 19.51% / 17.09%, 21.65% / 19.95%, 21.77% / 20.81%. Ratios 0.88-0.96, not below 0.5. The fallback does not apply (every lagged figure is far above S92's at-sale figure at full backing, 2.3-3.3%). These figures are published as they are (rule 2 of the research rules).
+
+**Cause found.** Below full backing the BU's price level rises, so the BU each adult spends, in dollars, grows every year: at no backing about 40-50% a year in every run. The measure divides each year's change by that year's level, so it counts steady growth as swing. At full backing the price level is flat, so the measure saw only the swing; below full backing it is mostly the growth. The swing itself is visible in the growth rates. **Seen** before this amendment (Reference and Stress, no backing, seed 1 only): yearly growth of BU spent, years 2-12, lagged 104, 19, 65, 30, 51, 38, 44, 25, 48, 29, 43% (Reference) and 99, 30, 67, 39, 54, 46, 52, 46, 48, 49, 40% (Stress); at the sale 49, 44, 43, 42, 42, 37, 40, 38, 28, 39, 34% and 53, 49, 48, 46, 46, 48, 49, 47, 42, 47, 49%. Nothing else of the measure below was computed before this was committed.
+
+**The measure for section C1 from now on (growth-change measure).** Per seed: g(t) = BU spent in year t / BU spent in year t − 1 − 1, for t = 1-12; the measure is the mean over t = 2-12 of |g(t) − g(t − 1)|. A steady growth rate gives 0 whatever its size; a two-year swing gives a large value. Averaged over seeds 1-20, as before; the same on the series pooled over the seeds printed beside it. Computed from the series the C1 run already saved (`swing-a0.json`, `swing-a0.5.json`; no new run), and, for the fallback, from S92's saved series (`s90-swing-b8ccd8d/swing.json`, at the sale, full backing). **Condition (unchanged in form):** in every environment and at both backed shares, the at-sale measure is below half the lagged one; where the lagged measure is no larger than S92's at-sale measure at full backing in that environment, the at-sale measure must be no larger than the lagged one.
+
+**If it holds:** section C1 passes on this measure, and the release text says so: the original measure failed below full backing because it counts steady growth, and the growth-change measure, chosen after that failure, shows the swing removed. Both measures are published side by side. **If it fails:** section C4 stands (the figures below full backing are not published from the release engine until the cause is found and fixed by a further dated amendment).
+
+**Unchanged:** the full-backing checks (F2 uses the original measure, where it was designed and where S92 applied it), sections B, D, E, F and G, and the decision rules. Rerun dispatch is not held: section C4 holds back publication, not runs.
+=== tool dev/tools/s90_swing_growth.js ===
+#!/usr/bin/env node
+/* S93 (Nov 21, 2026; research-update prereg/2026-11-s90-private-price-at-sale.md, Amendment 5): the growth-change measure of the BU's swing, for
+ * section C1 below full backing, computed from the series dev/tools/s90_swing.js already saved (no run). Per seed: g(t) = BU spent in year t / BU
+ * spent in year t - 1 - 1, t = 1-12; the measure is the mean over t = 2-12 of |g(t) - g(t - 1)| (a steady growth rate gives 0, a two-year swing a
+ * large value); then averaged over the seeds, and the same on the pooled series beside it. Condition (as section C1): in every environment, at the
+ * sale below half of lagged; where the lagged measure is no larger than S92's at-sale measure at full backing (--s92, its series), at the sale no
+ * larger than lagged. Chosen after the original measure failed below full backing (Amendment 5), and labelled so.
+ * Usage: node dev/tools/s90_swing_growth.js SWING.json [SWING.json ...] --s92=FILE [--out=FILE] */
+'use strict';
+const fs = require('fs');
+const arg = (k, d) => { const a = process.argv.find(x => x.startsWith('--' + k + '=')); return a ? a.slice(k.length + 3) : d; };
+const files = process.argv.slice(2).filter(x => !x.startsWith('--')), T1 = 12;
+if (!files.length || !arg('s92', '')) { console.error('usage: s90_swing_growth.js SWING.json [...] --s92=FILE [--out=FILE]'); process.exit(1); }
+const gm = bu => { const g = []; for (let t = 1; t <= T1; t++) g[t] = bu[t]/bu[t - 1] - 1; let s = 0, k = 0; for (let t = 2; t <= T1; t++) { s += Math.abs(g[t] - g[t - 1]); k++; } return s/k; };
+const cell = c => ({perSeed: c.perSeed.reduce((a, r) => a + gm(r.bu), 0)/c.perSeed.length, pooled: gm(c.pooledBU)});
+const S92 = JSON.parse(fs.readFileSync(arg('s92', ''), 'utf8')), ENVS = ['ref', 'adv', 'st'], p = x => (100*x).toFixed(2) + '%';
+const res = {what: 'growth-change measure of the BU swing (prereg 2026-11-s90, Amendment 5; chosen after the original measure failed below full backing)', years: [2, T1], s92: {}, runs: []};
+ENVS.forEach(e => { res.s92[e] = {sale: cell(S92.cells[e].sale), lagged: cell(S92.cells[e].lagged)}; });
+let all = true;
+files.forEach(f => {
+  const d = JSON.parse(fs.readFileSync(f, 'utf8')), r = {file: f.replace(/.*\//, ''), backedShare: d.backedShare, seeds: d.seeds, cells: {}};
+  console.log('backed share ' + d.backedShare + ' (' + r.file + ', seeds ' + d.seeds.join('-') + ')');
+  console.log('environment  lagged    at the sale  ratio   | pooled: lagged  at the sale  ratio   | S92 at the sale, full backing  | condition');
+  ENVS.forEach(e => {
+    const L = cell(d.cells[e].lagged), S = cell(d.cells[e].sale), s92 = res.s92[e].sale.perSeed, noSwing = L.perSeed <= s92;
+    const pass = noSwing ? S.perSeed <= L.perSeed : S.perSeed < 0.5*L.perSeed; if (!pass) all = false;
+    r.cells[e] = {lagged: L, sale: S, ratio: S.perSeed/L.perSeed, ratioPooled: S.pooled/L.pooled, s92sale: s92, noSwing, pass};
+    console.log(e.padEnd(11) + '  ' + p(L.perSeed).padStart(7) + '  ' + p(S.perSeed).padStart(11) + '  ' + (S.perSeed/L.perSeed).toFixed(3).padStart(5) + '   |  ' + p(L.pooled).padStart(13) + '  ' +
+      p(S.pooled).padStart(11) + '  ' + (S.pooled/L.pooled).toFixed(3).padStart(5) + '   |  ' + p(s92).padStart(28) + '  | ' + (pass ? 'passes' : 'FAILS') + (noSwing ? ' (no lagged swing: fallback)' : ''));
+  });
+  res.runs.push(r);
+});
+res.pass = all;
+console.log('S92 at full backing on this measure (v5.9 row): ' + ENVS.map(e => e + ' lagged ' + p(res.s92[e].lagged.perSeed) + ', at the sale ' + p(res.s92[e].sale.perSeed)).join('; '));
+console.log('section C1 on the growth-change measure: ' + (all ? 'holds' : 'does NOT hold'));
+if (arg('out', '')) fs.writeFileSync(arg('out', ''), JSON.stringify(res, null, 1));
+process.exit(all ? 0 : 1);
+=== its output ===
+backed share 0 (swing-a0.json, seeds 1-20)
+environment  lagged    at the sale  ratio   | pooled: lagged  at the sale  ratio   | S92 at the sale, full backing  | condition
+ref           32.90%        3.49%  0.106   |         29.02%        1.46%  0.050   |                         3.92%  | passes
+adv           31.85%        3.44%  0.108   |         27.60%        1.38%  0.050   |                         3.89%  | passes
+st            24.63%        1.62%  0.066   |         24.31%        0.83%  0.034   |                         2.31%  | passes
+backed share 0.5 (swing-a0.5.json, seeds 1-20)
+environment  lagged    at the sale  ratio   | pooled: lagged  at the sale  ratio   | S92 at the sale, full backing  | condition
+ref           39.38%        3.39%  0.086   |         36.49%        1.66%  0.045   |                         3.92%  | passes
+adv           37.47%        3.37%  0.090   |         34.12%        1.61%  0.047   |                         3.89%  | passes
+st            29.97%        1.39%  0.046   |         29.42%        0.79%  0.027   |                         2.31%  | passes
+S92 at full backing on this measure (v5.9 row): ref lagged 46.14%, at the sale 3.92%; adv lagged 43.45%, at the sale 3.89%; st lagged 36.06%, at the sale 2.31%
+section C1 on the growth-change measure: holds
+=== the original measure's output at full backing (check F2) ===
+environment  lagged (per seed)  at the sale  ratio   | pooled: lagged  at the sale  ratio
+ref                     18.30%        2.27%  0.124   |         16.24%        1.58%  0.097
+adv                     16.54%        3.33%  0.202   |         14.77%        2.50%  0.169
+st                      14.22%        3.19%  0.224   |         13.21%        2.44%  0.185
+ref          S92 at the sale (full backing, v5.9 row): 2.27%: passes
+adv          S92 at the sale (full backing, v5.9 row): 3.33%: passes
+st           S92 at the sale (full backing, v5.9 row): 3.19%: passes
+section C1 condition: holds
+decision rule 2 (at the sale below half of lagged in every environment): holds; 155 s
