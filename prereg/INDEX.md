@@ -192,7 +192,7 @@ S90 traced the damped two-year swing in the BU each adult spends (main row, Refe
 
 Sections (line): Why 5 · Questions 8 · Design 13 · Checks (before any outcome is read) 19 · Outcomes 24 · Analysis 29 · Decision rules 35 · Reporting 42 · Amendments 45 · Amendment 1 (Nov 19, 2026): readings fixed befor 48
 
-## 2026-11-s94-collectives-lending.md (129 lines)
+## 2026-11-s94-collectives-lending.md (131 lines)
 Preregistration: the Creative Collectives' lending to start-ups where banks will not lend, and charters of public operators
 
 Duke (Nov 17): the Creative Collectives can lend to or support start-ups where banks will not.

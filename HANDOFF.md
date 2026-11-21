@@ -1,25 +1,28 @@
-# Handoff (Nov 21, 2026): S94 part 3 done (the job, dry run, six folders dispatched); next S94 part 4
+# Handoff (Nov 21, 2026): S94 part 4 done (the lending study read; the main row unchanged); next S94 part 5
 
 ## Step status
-**S94 partly done.** Parts 1-3 are done: reading, sources, preregistration with Amendments 1 and 2, the build, and now the job, its dry run and the six study runs dispatched. Remaining: part 4 (confirm the folders, tables, report, decision rule 6). S96-S101 can run in any order meanwhile; S93 waits on all of them (D35).
+**S94 parts 1-4 done.** Remaining: part 5, the study's findings-page section (sonnet, medium). S96-S101 can run in any order meanwhile; S93 waits on all of them (D35).
 
 ## What shipped
-- compassionism-sim-results [PR 66](https://github.com/BetterToBest/compassionism-sim-results/pull/66), merged `35c8401`: `runner/jobs/s94.js` (31 rows per environment and horizon: M, the fund's 9 readings, charters 1/7, 1/3, 2/3, fund and charters together, D, in both designs, plus one shared no-programme run; every key at full precision plus derived `ppovA`, `pmedWA`, and `ppov20`, `pmedW20` at 40 years).
-- research-update (this branch's PR): the preregistration's dated note on the job and dry run (no design change), the PLAN S94 section and Order row, this file.
+- compassionism-sim-results [PR 67](https://github.com/BetterToBest/compassionism-sim-results/pull/67), merged `fb774d2`: `s94-tables-c5682f9` (checks, tables at 20 and 40 years, decision rule 6, `s94-summary.json`, `analysis.txt`, `SHA256SUMS`).
+- compassionism-simulation [PR 175](https://github.com/BetterToBest/compassionism-simulation/pull/175): `dev/tools/s94_tables.py`, the report `dev/reports/s94-collectives-lending.md` (reader codes clean; section 10 is the findings-page text), a DECISIONS.md entry, HANDOFF.md, CODEMAP. See "In flight" for its merge.
+- research-update (this branch's PR): the preregistration's dated note on the analysis (three readings fixed in the tool before any table was read; no design change), PLAN S94 section and Order row, this file.
 
 ## What was found
-- The `ppovA` = 0 from part 2's smoke script came from the script, not the engine: `ppovA` is not an engine key. Earlier jobs (`r2.js`, `s82.js`) average `ppov_1..ppov_{T-1}`, and `s94.js` now does the same.
-- Dry run (seeds 1-2, Stress 20 years, Adverse 40 years; only rows and keys checked, no outcome used for any choice): `--check` passes; every primary key is present with no nulls; D equals M on every shared key in both designs; the no-programme run is identical with `lend` set on it (all three environments); `clChk` is about 1e-16; `clUnitSuite` passes 8 of 8 on `c5682f9`.
-- Cost: about 1 CPU-second per row and seed at 20 years and 2 at 40. A 25-seed shard is about 19 MB uncompressed (the output-per-hour study's savings folders were stored the same way).
+- Every check passes in all six folders; the main rows and the no-programme run equal the published at-sale rows (`s90-sale-*-b8ccd8d`) in every key and seed.
+- **The fund helps in no cell** (decision rule 3: 0 of 12) and worsens at least two of the six readings in every cell. In five cells the community businesses' share reaches its 49% ceiling by year 10 without it; the fund only brings growth forward, at $37-63 per adult a year. Under Stress opt-in it lifts the share at year 20 from 34% to 48%, but programme cost rises $412 a year (running-cost subsidy $291, fund net $142), the contribution $261, and all six readings worsen (basket poverty +0.07 points, median wealth -$391). No other fund reading passes anywhere.
+- **Charters** at 1/3 and 2/3 improve basket poverty, yearly wealth poverty and savings in every cell and worsen nothing (2/3: all six readings); at 1/7, public power's actual share, they act only in Stress. The fund-charter interaction is negligible.
+- **Decision rule 6 does not hold:** the fund is a reading beside the main row; no ledger decision.
+- For S97: this study ran on `c5682f9`, so its rerun-or-label entry belongs in the release amendment's list (the S97 note says "if it lands first": it has).
 
 ## In flight
-- run-study runs 167-172 in compassionism-sim-results, dispatched Nov 21 00:57 UTC: ref 20, adv 20, str 20, ref 40, adv 40, str 40 (study ids `s94-<env>-<years>`; 20 shards of 25 seeds; `--procs=4`; engine `c5682f93fe25ea8f926e12141ea1831a16fa2bd2`). Each run commits its folder `s94-<env>-<years>-c5682f9/` to main when it finishes. The 40-year runs need roughly twice as long as the 20-year ones.
+- compassionism-simulation PR 175's CI (about 12 minutes) was running at the end of the session. If it is not merged when the next session starts: check its checks, merge it (`expectedHeadSha` from `git ls-remote`), or fix and say so here.
 
 ## Decisions waiting
 - None open.
 
 ## Next step
-**S94 part 4** (opus, high): check that the six folders are on main, each with DONE, run.txt and SHA256SUMS, and that `sha256sum -c` passes (check 9). If a run failed, read its log and rerun that folder as frozen. Then the tables: paired seed differences row − M per design; 10,000-replicate paired bootstrap; Holm across the six primary measures; Q5's interaction (C − M) − (A main − M) − (B 1/7 − M). Then the report (`dev/reports/`, reader-codes check), the findings record, and decision rule 6 (rule 4 reads the pace × 0.5 and all-grants rows, per Amendment 1 item 8). If the fund passes, add a ledger decision (default: the fund joins the main row at the release, with charters off).
+**S94 part 5** (sonnet, medium): the lending study's findings-page section, following the automation study's (`dev/tools/s85_page_data.py`, `s85Section()` in `site/round2.js`): a tool writing `data/studies/s94-lending.json` from compassionism-sim-results `s94-tables-c5682f9/s94-summary.json`; a section printing every figure from that file, with the report's section 10 as its text and every unfavourable cell named; reader-codes check and domtest. Then S96-S101 in any order.
 
 ## Standing rules (permanent: copy this section word for word on every rewrite)
 **Reader text carries no internal labels. Write it right the first time; don't wait for the reader-codes check to catch it.** Fixing each failure afterwards has slowed every step that touches a report.
@@ -51,3 +54,5 @@
 - Check `date -u` and a process's elapsed time before deciding a job is stuck.
 - In a `--filter=blob:none` clone, `git ls-tree -l` downloads every blob to report sizes (it ran for minutes on compassionism-sim-results): get file sizes from the GitHub contents tool (`get_file_contents` on the folder, fields name and size).
 - `ppovA` and `pmedWA` are derived by the job scripts, not reported by the engine: a script that calls `tbStudy` directly must average `ppov_1..ppov_{T-1}` itself.
+- In a sparse `--filter=blob:none` clone of compassionism-sim-results, add folders with `git sparse-checkout add '/<pattern>/'`; the six study folders (about 1.6 GB) and the `s90-sale-*` folders checked out in a few minutes.
+- `rev` on PLAN.md's long table rows hung the shell; use `python3 -c` to print the end of a long line.
