@@ -1,26 +1,25 @@
-# Handoff (Nov 21, 2026): S94 part 2 done (the lending fund built); next S94 part 3
+# Handoff (Nov 21, 2026): S94 part 3 done (the job, dry run, six folders dispatched); next S94 part 4
 
 ## Step status
-**S94 partly done.** Parts 1 and 2 are done: reading, sources, preregistration with Amendments 1 and 2, and the build. Remaining: part 3 (the job `runner/jobs/s94.js`, dry run, six folders on GitHub Actions) and part 4 (tables, report, decision rule 6). S96-S101 can run in any order meanwhile; S93 waits on all of them (D35).
+**S94 partly done.** Parts 1-3 are done: reading, sources, preregistration with Amendments 1 and 2, the build, and now the job, its dry run and the six study runs dispatched. Remaining: part 4 (confirm the folders, tables, report, decision rule 6). S96-S101 can run in any order meanwhile; S93 waits on all of them (D35).
 
 ## What shipped
-- compassionism-simulation [PR 174](https://github.com/BetterToBest/compassionism-simulation/pull/174), merged `c5682f9`: row option `lend` (the fund and charters; `cl` is the community layer), `clUnitSuite` (8 tests, checks 2-8), DECISIONS.md section, lineage link, earlier-engine page synced.
-- research-update [PR 195](https://github.com/BetterToBest/research-update/pull/195), merged `72cdadb`: preregistration Amendment 2 (the build's choices) and the engine-commit note (folders `s94-<env>-<years>-c5682f9`); PLAN S94 section.
-- This file and the PLAN Order row: research-update PR for `claude/wonderful-ritchie-nwu7yz`.
+- compassionism-sim-results [PR 66](https://github.com/BetterToBest/compassionism-sim-results/pull/66), merged `35c8401`: `runner/jobs/s94.js` (31 rows per environment and horizon: M, the fund's 9 readings, charters 1/7, 1/3, 2/3, fund and charters together, D, in both designs, plus one shared no-programme run; every key at full precision plus derived `ppovA`, `pmedWA`, and `ppov20`, `pmedW20` at 40 years).
+- research-update (this branch's PR): the preregistration's dated note on the job and dry run (no design change), the PLAN S94 section and Order row, this file.
 
 ## What was found
-- Off = identical: guard test; the main row without `lend` matches the old engine on every key (3 environments, 20 and 40 years, both designs, 2 seeds); six release panels unchanged. unit 416, domtest 162, validate, all CI steps green.
-- One-seed smoke (Stress, full coverage, no choice made from it): the PTF share at year 19 rose from 34% to 49%, cost about +$490 per adult-year. Not a result.
-- In the smoke script built straight from `r2MainPair`, `ppovA` read 0: the job's rows must be checked to produce every primary key before dispatch.
+- The `ppovA` = 0 from part 2's smoke script came from the script, not the engine: `ppovA` is not an engine key. Earlier jobs (`r2.js`, `s82.js`) average `ppov_1..ppov_{T-1}`, and `s94.js` now does the same.
+- Dry run (seeds 1-2, Stress 20 years, Adverse 40 years; only rows and keys checked, no outcome used for any choice): `--check` passes; every primary key is present with no nulls; D equals M on every shared key in both designs; the no-programme run is identical with `lend` set on it (all three environments); `clChk` is about 1e-16; `clUnitSuite` passes 8 of 8 on `c5682f9`.
+- Cost: about 1 CPU-second per row and seed at 20 years and 2 at 40. A 25-seed shard is about 19 MB uncompressed (the output-per-hour study's savings folders were stored the same way).
 
 ## In flight
-- Nothing running.
+- run-study runs 167-172 in compassionism-sim-results, dispatched Nov 21 00:57 UTC: ref 20, adv 20, str 20, ref 40, adv 40, str 40 (study ids `s94-<env>-<years>`; 20 shards of 25 seeds; `--procs=4`; engine `c5682f93fe25ea8f926e12141ea1831a16fa2bd2`). Each run commits its folder `s94-<env>-<years>-c5682f9/` to main when it finishes. The 40-year runs need roughly twice as long as the 20-year ones.
 
 ## Decisions waiting
 - None open.
 
 ## Next step
-**S94 part 3** (opus, high): attach compassionism-sim-results (push) and compassionism-simulation; write `runner/jobs/s94.js` on `s85.js` block A's `off` rows (`o.sec` on, `sp.vAt 'sale'`, both designs, one shared no-programme run; 15 rows x 2 + 1 per environment and horizon, as in the preregistration's Design table with Amendment 1's block A); keys `LEND_KEYS` (harness export). Dry run on a few seeds: every primary key present, row D equal to M, checks 3-8 hold. Then dispatch six folders, 20 pieces of 25 seeds, pinned to `c5682f9`.
+**S94 part 4** (opus, high): check that the six folders are on main, each with DONE, run.txt and SHA256SUMS, and that `sha256sum -c` passes (check 9). If a run failed, read its log and rerun that folder as frozen. Then the tables: paired seed differences row − M per design; 10,000-replicate paired bootstrap; Holm across the six primary measures; Q5's interaction (C − M) − (A main − M) − (B 1/7 − M). Then the report (`dev/reports/`, reader-codes check), the findings record, and decision rule 6 (rule 4 reads the pace × 0.5 and all-grants rows, per Amendment 1 item 8). If the fund passes, add a ledger decision (default: the fund joins the main row at the release, with charters off).
 
 ## Standing rules (permanent: copy this section word for word on every rewrite)
 **Reader text carries no internal labels. Write it right the first time; don't wait for the reader-codes check to catch it.** Fixing each failure afterwards has slowed every step that touches a report.
@@ -50,3 +49,5 @@
 - BLS refuses direct requests (use the fetch tool); Census BDS and BEA download with curl. McKinsey, Goldman Sachs, OECD and Autonomy refuse automated fetches.
 - The GitHub tools can fail to connect at session start or after a restart; a ToolSearch for them reconnects.
 - Check `date -u` and a process's elapsed time before deciding a job is stuck.
+- In a `--filter=blob:none` clone, `git ls-tree -l` downloads every blob to report sizes (it ran for minutes on compassionism-sim-results): get file sizes from the GitHub contents tool (`get_file_contents` on the folder, fields name and size).
+- `ppovA` and `pmedWA` are derived by the job scripts, not reported by the engine: a script that calls `tbStudy` directly must average `ppov_1..ppov_{T-1}` itself.
