@@ -156,6 +156,13 @@ S85: an outside reading of the results, before publication (Nov 20, 2026)
 
 Sections (line): Triage 9
 
+## 2026-11-21-s97-amendment-reading.md (21 lines)
+Outside reading of the release-rerun amendment (Nov 21, 2026)
+
+What was read: Amendment 2 of `prereg/2026-11-s90-private-price-at-sale.md` (the release's reruns and checks), with the whole preregistration and the plan's S97 text, as committed on branch `claude/s97-release-reruns` (p
+
+Sections (line): Triage (Claude, with what was checked) 5
+
 ## 2026-11-engine-round-2.md (41 lines)
 Engine round 2: six improvements after S39 and S55 (Nov 9, 2026)
 
