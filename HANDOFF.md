@@ -1,22 +1,22 @@
-# Handoff (Nov 21, 2026): S100 done
+# Handoff (Nov 21, 2026): S93 part 1 done (the release engine)
 
 ## Step status
-**S100 done** (both parts). The main-row change waits on Duke (D36); its default proceeds. Next: S93, the release.
+**S93 part 1 done:** the release engine v5.9.22 is built, proved and merged (`69e8953`). Duke adopted pay by household type and the care credit (D36), so the release main row carries both. Next: S93 part 2, the dry runs and the dispatch of every rerun.
 
 ## What shipped
-- compassionism-sim-results [PR 69](https://github.com/BetterToBest/compassionism-sim-results/pull/69), merged `1b0ab2e`: `s100-tables-e50a3b3` (tables, summary, `run.txt`, `SHA256SUMS`). Checks 1-2 pass in all six folders.
-- compassionism-simulation [PR 181](https://github.com/BetterToBest/compassionism-simulation/pull/181), merged `a33c59d` (checks green): report `dev/reports/s100-part-time-dcc.md`; `dev/tools/s100_page_data.py` and `data/studies/s100-yardstick.json`, `s100-effects.json`; findings section and an unfavourable-results line in `site/round2.js`; `check_round2.js` fixed (it failed on main: the weighting note says "not reported" in prose); DECISIONS entry.
-- research-update (this session's PR): the preregistration's dated reading note; outside readings `audits/2026-11-21-s100-results-reading.md` (Gemma 4 via NVIDIA, Nemotron 3 Ultra on OpenRouter; no figure changed, five wording fixes, one limit); PLAN notes.
-- Findings: decision rule 2 holds (EITC 11.32% against 11.77%, all four household types within 3 points, summed gap 5.15 against 19.04). Effects move under a point: opt-in, the cut in basket poverty is 0.32-0.91 points smaller in every cell; full coverage, the cut below 30 days of basic living is 0.41-0.73 larger. Credit alone and the interaction are negligible. Gaps reported: care credit reach 18.3% against 21.4%, mean $835 against $606.
+- research-update PR 211: Amendment 3 of `prereg/2026-11-s90-private-price-at-sale.md` (D36 adopted; version v5.9.22 by D34's default; the automation and lending studies rerun in full; D2/D3 against the yardstick study's `both` rows; F1 split) and Amendment 4 (a defect found by proof A3, its fix and reach), both committed before the engine change; PLAN notes; S103 added.
+- compassionism-simulation PR 182 (branch `claude/s93-release-engine`): `SURP_DEFAULTS.vAt 'sale'` (other values refused); `r2FreezePair` adds `eh {}` and `sn.cdc true` in both runs (`r2FreezePair(P, d, true)` = the v5.9 row); `rowKeyS93` keys the stored no-programme supply path on the settings it missed; guard reference rewritten by design (previous kept in `dev/runs/guard/v5.9.21/`, `guard_test.js --lag --ref=...` reproduces it); `dev/tools/s93_release_proof.js` (A2, A3); a lineage link marked as keeping the v5.6 panels as the record (domtest prints it); one unit test (424); release notes; dated notes on the yardstick report and findings section.
+- compassionism-sim-results PR 70 (merged `40f2c74`): `s100.js` builds its rows from the v5.9 row, for its rerun.
+- **Found:** the engine's stored no-programme supply path ignored pay by household type, the price rule's settings, bargaining, the government account and PTF running costs. The yardstick study's `eh` and `both` readings took the path of the rows before them (its decision-rule rows did not, so D36 stands); the study is rerun. Record studies: audit in S103.
 
 ## In flight
-Nothing.
+- Nothing running. compassionism-simulation PR 182 merged as **`69e89533d0aed26f9c3e3ccc5523e0df72192786`, the release engine (v5.9.22)**: the full hash for every rerun's dispatch and `run.txt`; folders end `-69e8953`. compassionism-sim-results PR 70 merged (`40f2c74`).
 
 ## Decisions waiting
-- D36: pay by household type and the care credit in the release main row. Claude recommends adopting both (decision rule 2 holds; outside readings found no figure wrong). Default: keep today's main row and state the measured changes as a limit (the report's section 8 and the findings section say so).
+- None open. D34 (version): v5.9.22 by default (Duke held the release on Nov 19 without naming a number; renaming is one `set_version.py` call if he prefers another). D36: adopted.
 
 ## Next step
-S93 (opus, high): the release with the private price at the sale as the default. Every pre-release step is done; D34 is answered; D36's default proceeds. If Duke adopts both before S93 starts, S93's main rows become the `both` rows (`eh` and `sn.cdc`) and the guard and lineage proofs change by design.
+S93 part 2 (opus, high): dry runs on the release engine (`69e89533d0aed26f9c3e3ccc5523e0df72192786`) (seeds 1-2, every row and cell, `acctDrawCheck` and each job's own checks, the two readings beside every switch), then dispatch every rerun (list and shard counts in PLAN's S93 part 2 note), record the run numbers, end. Do not read any figure before checks D1-D5.
 
 ## Standing rules (permanent: copy this section word for word on every rewrite)
 **Reader text carries no internal labels. Write it right the first time; don't wait for the reader-codes check to catch it.** Fixing each failure afterwards has slowed every step that touches a report.
@@ -27,6 +27,10 @@ S93 (opus, high): the release with the private price at the sale as the default.
 - `dev/tools/reader_codes_allow.txt` is only for labels that are not ours (a formula symbol such as D0, a report's own numbering), each with a reason. Never use it to let a step code through.
 
 ## Pitfalls
+- The engine's stored no-programme supply path (`tbBaseS`, `s3BaseS`) is keyed by hand: a new row option that acts on a no-programme run must be added to `rowKeyS93`, or rows run after others in one process take the wrong path. Test: a no-programme row has programme inflation exactly 0 on its own path.
+- A unit test that sets engine state by hand and then calls `tbStudy` must clear that state first (`PTFS`, `PTF_OPS`, `POS`, `PAS`, `PA`, `PFS`, `CMS`, `PRICE`, `LEND`, `LDS`).
+- The release baseline check (every study job's start) reads `data/baseline.json`, the v5.9 no-programme run, so since v5.9.22 it runs the v5.9 row. When the rerun part M lands: `dev/tools/make_baseline.js` from it, with `release: 'v5.9.22'` in the file, and the check runs the release row (S93 part 3).
+- Since v5.9.22 the guard reference hashes the v5.9.21 output list (483 keys): rewrite it with `--write --keys-from=dev/runs/guard/v5.9.21`, or unchanged rows get new hashes.
 - `expectedHeadSha` in a merge call must be the exact 40-character head; take it from `git ls-remote origin refs/heads/<branch>`.
 - A pushed branch name whose PR merged cannot be reused without a force-push: use a new branch name (this session: `claude/s94-lending-build`).
 - After an engine change, run `python3 dev/tools/sync_earlier.py` (earlier-engine.html carries the same script) and `node dev/tools/engine_lineage.js prove "..."` (about 10 minutes); otherwise domtest fails four checks.
