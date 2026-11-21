@@ -192,7 +192,7 @@ The main row assumes full backing.
 
 Sections (line): Why 7 · What the engine does today (read in the code bef 15 · Questions 27 · What is built (one switch, row option `oh`; off  38 · Design 69 · Outcomes 85 · Analysis 99 · Checks (before any table is read; each must pass 106 · Decision rules (fixed now) 118 · Reporting 129 · Limits stated in advance 133 · To open before the dry run (Amendment 1) 142 · Amendments 151 · Amendment 1 (Nov 19, 2026, after the outside rea 153 · Amendment 2 (Nov 19, 2026, after the build, befo 188 · Amendment 3 (Nov 20, 2026, after the batch finis 210 · Amendment 4 (Nov 20, 2026, after the supplement  228
 
-## 2026-11-s90-private-price-at-sale.md (185 lines)
+## 2026-11-s90-private-price-at-sale.md (187 lines)
 Preregistration: the private businesses' BU price at the sale (S90's fix), rerun of the v5.9 main rows
 
 S90 traced the damped two-year swing in the BU each adult spends (main row, Reference, seed 1: $22,838 in years 0-1, then $10,969, $21,452, $13,819, $19,472, $16,202) to the private businesses' lower BU price.
