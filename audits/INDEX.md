@@ -214,6 +214,21 @@ Release checklist of `prereg/2026-11-s90-private-price-at-sale.md` (Amendment 2 
 
 Sections (line): The data, regenerated (compassionism-simulation  5 · F1, the page part (compassionism-simulation `dev 20 · Statements rewritten (commit 2) 32 · Left for the next session of part 4 46
 
+## 2026-11-23-s93-part4b.md (95 lines)
+The release, part 4 (second session): checklist, release text, outside reading (Nov 23, 2026)
+
+Release checklist of `prereg/2026-11-s90-private-price-at-sale.md` (Amendment 2 F and G, with Amendment 3).
+
+Sections (line): The automation trace on the release engine (resu 5 · The wage reading's sign change, decomposed (resu 27 · Checklist items 37 · The release text (G) 60 · F9: two outside readings 73 · State at the end of the session 78
+
+- `2026-11-23-s93-release-reading/` (folder, 13 files)
+## 2026-11-23-s93-release-reading.md (52 lines)
+The release figures and the release text: two outside readings before publication (Nov 23, 2026)
+
+No figure changes.
+
+Sections (line): Triage 22 · What this means 49
+
 ## 2026-11-engine-round-2.md (41 lines)
 Engine round 2: six improvements after S39 and S55 (Nov 9, 2026)
 
