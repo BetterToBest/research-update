@@ -207,6 +207,13 @@ Under `prereg/2026-11-s90-private-price-at-sale.md` (Amendment 2 with Amendments
 
 Sections (line): What landed 5 · Checks before reading, on the late folders 8 · The tables 13 · The main rows: what changed, and why (F1) 31 · Below full backing (C3) 49 · The backing curve's replay 52 · What is left for the release (S93's next part) 55
 
+## 2026-11-23-s93-part4.md (53 lines)
+The release, part 4 (first session): the findings page on the release figures (Nov 23, 2026)
+
+Release checklist of `prereg/2026-11-s90-private-price-at-sale.md` (Amendment 2 F with Amendment 3).
+
+Sections (line): The data, regenerated (compassionism-simulation  5 · F1, the page part (compassionism-simulation `dev 20 · Statements rewritten (commit 2) 32 · Left for the next session of part 4 46
+
 ## 2026-11-engine-round-2.md (41 lines)
 Engine round 2: six improvements after S39 and S55 (Nov 9, 2026)
 
