@@ -8,7 +8,7 @@
 - the release text (G);
 - the outside readings (F9), triaged.
 
-compassionism-simulation PR 188 is marked ready. See "In flight" for whether it merged. Record: `audits/2026-11-23-s93-part4b.md`. **Next: S93 part 5, F10 (the Hub and the root site).**
+compassionism-simulation PR 188 is merged (`d1f5bf4`). Record: `audits/2026-11-23-s93-part4b.md`. **Next: S93 part 5, F10 (the Hub and the root site).**
 
 ## What shipped
 - compassionism-sim-results:
@@ -31,7 +31,7 @@ compassionism-simulation PR 188 is marked ready. See "In flight" for whether it 
   - bettertobest.github.io branch `claude/s93-release-indexes`: version 5.9.1 to 5.9.23 in `ai-index.json` and `ai-manifest.json`.
 
 ## In flight
-PR 188's CI (guard passed; checks running at 20:50 UTC). If it is not merged when you start, check its runs, merge it with the 40-character head from `git ls-remote origin refs/heads/claude/s93-pages`, and only then do F10.
+Nothing. PR 188 merged Nov 23 20:59 UTC as `d1f5bf4b486791c9517a833f29de5491fb79f8e0` (all four checks green): use that commit for the Hub snapshot (`--tag d1f5bf4... --release v5.9.23`).
 
 ## Decisions waiting
 - Carried from part 3, a ledger decision with a default: section C1's preregistered swing measure failed below full backing for a known reason (it counts steady growth). Amendment 5 replaced it after the failure. Default: the figures below full backing are published from the release engine with both measures and the post-hoc label. The page now carries that label. Duke may instead hold them (section C4).
