@@ -4,10 +4,10 @@
 **S93 part 3 in progress.** 47 of the 60 rerun folders landed on the release engine. Checks D1-D5 pass on everything that can be checked yet. The central-bank, history and below-full-backing reruns equal their `-69e8953` folders in every value. The release baseline now checks the release row. The other 13 runs and the visual suite are queued. No figure has been read. Record: `audits/2026-11-23-s93-part3.md`.
 
 ## What shipped
-- compassionism-sim-results PR 76 (merged): `runner/s93-checks.js` (`d1`, `d23`, `d5`, `scan`; it prints names and counts only).
-- compassionism-sim-results PR 77 (merged): `s74-final-50bc51d`, `s75-eras-50bc51d` and `s93-belowfull-50bc51d`, all equal to `-69e8953` (only the version string differs). D4 passes for both studies.
-- compassionism-simulation PR 185 (**open; merge it once checks pass**; guard passed, `checks` were running at handoff): `data/baseline.json` from `r2-m-*-20-50bc51d` with `release: 'v5.9.23'` (passes in all three environments; fails if marked v5.9); `make_baseline.js --release`, `s77_check_start.js --engine`, `s76_cb_data.py --r2-engine --check-only`; DECISIONS entry.
-- research-update (this PR): `audits/2026-11-23-s93-part3.md` and the PLAN note.
+- compassionism-sim-results PR 76 (merged, `f5937dc`): `runner/s93-checks.js` (`d1`, `d23`, `d5`, `scan`; it prints names and counts only).
+- compassionism-sim-results PR 77 (merged, `4a82704`): `s74-final-50bc51d`, `s75-eras-50bc51d` and `s93-belowfull-50bc51d`, all equal to `-69e8953` (only the version string differs). D4 passes for both studies.
+- compassionism-simulation PR 185 (merged, `0e8c616`): `data/baseline.json` from `r2-m-*-20-50bc51d` with `release: 'v5.9.23'` (passes in all three environments; fails if marked v5.9); `make_baseline.js --release`, `s77_check_start.js --engine`, `s76_cb_data.py --r2-engine --check-only`; DECISIONS entry.
+- research-update PR 214 (merged, `3ba3da7`): `audits/2026-11-23-s93-part3.md` and the PLAN note.
 - **Checks:** D1 passes in all 47 folders; D2/D3 pass in Reference 20, Adverse 40 and Stress 20 and 40 years; the lending study's rows equal part M's (Adverse 20 and 40); D5 passes in all six cells.
 
 ## In flight
@@ -20,11 +20,10 @@
 
 ## Next step
 S93 part 3 continued (opus, high).
-1. Merge compassionism-simulation PR 185 if it is still open (checks green).
-2. Check which of the 13 runs and 3 visual suite runs landed (`git ls-tree -d --name-only origin/main | grep -- -50bc51d$`: 63 expected with the session folders and the suite). Rerun failed jobs again on any that failed before Nov 25.
-3. On the new folders: `node runner/s93-checks.js d1 --engine=50bc51d1d551697232fdaa74421325ce66432de6 DIR...` plus `sha256sum -c`; `d23 --engine7=50bc51d ref-40 adv-20`; `scan --engine7=50bc51d s94-*-50bc51d` (each must list `none`, `M.*.main`, `D.*.zero`).
-4. Then the tables, generated from the summary files.
-Do not read any figure before step 3 passes.
+1. Check which of the 13 runs and 3 visual suite runs landed (`git ls-tree -d --name-only origin/main | grep -- -50bc51d$`: 63 expected with the session folders and the suite). Rerun failed jobs again on any that failed before Nov 25.
+2. On the new folders: `node runner/s93-checks.js d1 --engine=50bc51d1d551697232fdaa74421325ce66432de6 DIR...` plus `sha256sum -c`; `d23 --engine7=50bc51d ref-40 adv-20`; `scan --engine7=50bc51d s94-*-50bc51d` (each must list `none`, `M.*.main`, `D.*.zero`).
+3. Then the tables, generated from the summary files.
+Do not read any figure before step 2 passes.
 
 ## Standing rules (permanent: copy this section word for word on every rewrite)
 **Reader text carries no internal labels. Write it right the first time; don't wait for the reader-codes check to catch it.** Fixing each failure afterwards has slowed every step that touches a report.
