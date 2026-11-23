@@ -200,6 +200,13 @@ Under `prereg/2026-11-s90-private-price-at-sale.md` (Amendment 2 with Amendments
 
 Sections (line): What landed, and what did not 5 · Dispatched this session 29 · Checks D1-D5 (section D with Amendment 3's D) 32 · The session-machine reruns (Amendment 6, What it 43 · The release baseline 53 · Next 56
 
+## 2026-11-23-s93-part3b.md (54 lines)
+The release reruns, part 3 (second session): the late folders' checks, and the tables (Nov 23, 2026)
+
+Under `prereg/2026-11-s90-private-price-at-sale.md` (Amendment 2 with Amendments 3-6).
+
+Sections (line): What landed 5 · Checks before reading, on the late folders 8 · The tables 13 · The main rows: what changed, and why (F1) 31 · Below full backing (C3) 49 · Running when this was written 52
+
 ## 2026-11-engine-round-2.md (41 lines)
 Engine round 2: six improvements after S39 and S55 (Nov 9, 2026)
 
