@@ -1,30 +1,30 @@
-# Handoff (Nov 21, 2026): S93 part 2b done (two dry-run defects fixed in v5.9.23; every rerun job dispatched on it)
+# Handoff (Nov 23, 2026): S93 part 3 begun (checks before reading pass on what landed; 13 runs requeued)
 
 ## Step status
-**S93 part 2b done.** The dry run's BU identity failure was a defect: with no ESP wage the year before, the payroll pool went nowhere. It is fixed in v5.9.23 (compassionism-simulation PR 184), with a reporting-only fix to the household check's scale. The v5.9.22 dispatch (runs 188-229) was cancelled before any shard finished, and every rerun job is dispatched on v5.9.23, part F and the supply study included. Next: S93 part 3 once the runs land (checks D1-D5, tables), with the visual suite and the session-machine reruns first. Record: `audits/2026-11-21-s93-part2b.md`.
+**S93 part 3 in progress.** 47 of the 60 rerun folders landed on the release engine. Checks D1-D5 pass on everything that can be checked yet. The central-bank, history and below-full-backing reruns equal their `-69e8953` folders in every value. The release baseline now checks the release row. The other 13 runs and the visual suite are queued. No figure has been read. Record: `audits/2026-11-23-s93-part3.md`.
 
 ## What shipped
-- compassionism-simulation PR 184 (v5.9.23, merged as the release engine `50bc51d1d551697232fdaa74421325ce66432de6`):
-  - When no ESP worker had a wage the year before, the payroll pool is returned to the ESP (`esRet`; tally `retNoW`).
-  - The household check's scale counts the amount the wealth floor removed.
-  - Proofs: the guard test is identical; the lineage panels equal v5.9.22's (link marked `record`); dry-run units of parts M, S and B and the yardstick study are EQUAL; part F's unreached points are equal; unit 424, domtest 162, validate.
-- research-update (this PR): Amendment 6 and its addendum (`prereg/2026-11-s90-private-price-at-sale.md`), `audits/2026-11-21-s93-part2b.md`, and the ESP-pool audit added to S103.
-- **Found:** (1) the cause above: every failing year's gap equals that year's zero-weight pool (44 of 44 checked). (2) The household check failed four times in part F at Adverse, 40 years: one rounding step of a 1e23-1e36 debt reset to the floor. (3) The part S reproduction (run 181) is exact: 435,160 values. (4) The v5.9.22 dispatch was 525 shards, not 570.
+- compassionism-sim-results PR 76 (merged): `runner/s93-checks.js` (`d1`, `d23`, `d5`, `scan`; it prints names and counts only).
+- compassionism-sim-results PR 77 (merged): `s74-final-50bc51d`, `s75-eras-50bc51d` and `s93-belowfull-50bc51d`, all equal to `-69e8953` (only the version string differs). D4 passes for both studies.
+- compassionism-simulation PR 185 (**open; merge it once checks pass**; guard passed, `checks` were running at handoff): `data/baseline.json` from `r2-m-*-20-50bc51d` with `release: 'v5.9.23'` (passes in all three environments; fails if marked v5.9); `make_baseline.js --release`, `s77_check_start.js --engine`, `s76_cb_data.py --r2-engine --check-only`; DECISIONS entry.
+- research-update (this PR): `audits/2026-11-23-s93-part3.md` and the PLAN note.
+- **Checks:** D1 passes in all 47 folders; D2/D3 pass in Reference 20, Adverse 40 and Stress 20 and 40 years; the lending study's rows equal part M's (Adverse 20 and 40); D5 passes in all six cells.
 
 ## In flight
-- **Workflow runs 230-289** (compassionism-sim-results `run-study.yml`, runner `ed7f35b`, engine `50bc51d1d551697232fdaa74421325ce66432de6`): every rerun job, six cells each, 768 shards, folders `<id>-50bc51d`. They are r2 parts M (1 shard per cell), S (6/11), F (7/14) and B (2/4); the supply study (20; age batch `--rows=134-136`, 10); the yardstick study (10/20); automation and its supplement, and lending (20 each). Table: `audits/2026-11-21-s93-part2b.md`. About a day.
-- Cancelled: runs 188-229 (on v5.9.22; no shard finished).
+- **13 runs requeued** with "re-run failed jobs" (attempt 2 of each; same runner `ed7f35b`): 248 `r2-b-ref-20`, 264 `s82-v6-age-str-20`, 267 `s100-ref-40`, 268 `s100-adv-20`, 275 `s85-adv-40`, 283 `s85sec-str-40`, 284/285/288/289 `s94-ref-20/-ref-40/-str-20/-str-40` (147 shards had been cancelled after 24 hours in the queue); 272/273/274 `s85-ref-20/-ref-40/-adv-20` (finish job only: every shard passed, the commit lost a push race). **The successful shards' artifacts expire Nov 25 (about 20:00-24:00 UTC).** If a run has not landed by then, dispatch it again in full (table in `audits/2026-11-21-s93-part2b.md`).
+- **Visual suite** runs 290-292 (`x2`, `x3 --study`, `x4`; `--panel=50bc51d`; 6 shards each): folders `x2-50bc51d`, `x3-50bc51d`, `x4-50bc51d`.
 
 ## Decisions waiting
-- For `/end-session`, a ledger decision with a default: section C1's preregistered swing measure failed below full backing for a reason found (it counts steady growth). Amendment 5 replaced it after the failure with a growth-change measure (holds) and a detrended check (agrees). Default: the below-full-backing figures are published from the release engine with both measures and the post-hoc label. Duke may instead hold them (section C4).
-- D34 (version): the default, a v5.9 patch, now names **v5.9.23** (v5.9.22 plus the two fixes above). Record it on D34 at `/end-session`.
+- For `/end-session`, a ledger decision with a default: section C1's preregistered swing measure failed below full backing for a known reason (it counts steady growth). Amendment 5 replaced it after the failure with a growth-change measure (holds) and a detrended check (agrees). Both are unchanged on v5.9.23. Default: the below-full-backing figures are published from the release engine with both measures and the post-hoc label. Duke may instead hold them (section C4).
+- D34 (version): the default, a v5.9 patch, names **v5.9.23**. Record it on D34 at `/end-session` if not yet done.
 
 ## Next step
-S93 part 3 (opus, high). The reruns land in about a day (20 concurrent jobs).
-1. Once part M lands, dispatch the visual suite: `series-r2.js --panel=<engine 7>` with x2 `--env=all --years=20,40 --n=500`, x3 with `--study`, x4 as x2; seeds 1-6, 6 shards.
-2. On the session machine, from a clean worktree of the release engine, rerun the central-bank (`s74_pilot.js ENV 100`), history (`s75_eras.js ERA 100`) and section C (`s90_acct.js`, `s90_swing.js`, `s90_swing_growth.js`) folders, and compare value by value with the `-69e8953` folders (equal expected: they passed the dry run's identity).
-3. Checks D1-D5, then the tables.
-Do not read any figure before checks D1-D5.
+S93 part 3 continued (opus, high).
+1. Merge compassionism-simulation PR 185 if it is still open (checks green).
+2. Check which of the 13 runs and 3 visual suite runs landed (`git ls-tree -d --name-only origin/main | grep -- -50bc51d$`: 63 expected with the session folders and the suite). Rerun failed jobs again on any that failed before Nov 25.
+3. On the new folders: `node runner/s93-checks.js d1 --engine=50bc51d1d551697232fdaa74421325ce66432de6 DIR...` plus `sha256sum -c`; `d23 --engine7=50bc51d ref-40 adv-20`; `scan --engine7=50bc51d s94-*-50bc51d` (each must list `none`, `M.*.main`, `D.*.zero`).
+4. Then the tables, generated from the summary files.
+Do not read any figure before step 3 passes.
 
 ## Standing rules (permanent: copy this section word for word on every rewrite)
 **Reader text carries no internal labels. Write it right the first time; don't wait for the reader-codes check to catch it.** Fixing each failure afterwards has slowed every step that touches a report.
@@ -73,3 +73,7 @@ Do not read any figure before checks D1-D5.
 - A lineage link after a by-design change (since v5.9.22) never equals the v5.6 base: `engine_lineage.js prove` records it as not reproducing, and domtest fails audits E2 and E5 until the link carries `record {version, prereg, why}`. Check first that its fingerprints equal the previous link's.
 - An `acctDrawCheck` log written by a job with `--procs>1` is in append order, not point order: run `--procs=1` (or one point) to map a failing call to its point.
 - The scratch-engine way to trace an accounting failure: copy `index.html`, `harness.js`, `package.json` and `data/` to the scratchpad, add an env-guarded `require('fs').appendFileSync` in the engine where the check fails, and run the job from that folder with the `s93-dry.js` wrapper (ACCT is on only under `acctDrawCheck`).
+- GitHub cancels a workflow job that waits 24 hours in the queue. With 20 concurrent jobs, dispatch at most about 400 shards at once. "Re-run failed jobs" reruns only the cancelled or failed jobs and reuses the other shards' artifacts, but only until they expire (3 days).
+- Large folders (the automation study, about 1.1 GB) finishing together lose the commit step's push race. Dispatch them in different hours, or rerun the finish job alone.
+- The full release folder set is about 6.5 GB. The sparse download of all of them takes about 10 minutes here, and the disk allowance holds it.
+- The supply study's row names carry a three-digit index (`ref.042.Achk.full.a0`); `s93-checks.js` strips it.
