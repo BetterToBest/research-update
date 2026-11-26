@@ -229,12 +229,12 @@ No figure changes.
 
 Sections (line): Triage 22 · What this means 49
 
-## 2026-11-26-s103-audit.md (38 lines)
+## 2026-11-26-s103-audit.md (44 lines)
 Audit record: two defects fixed before the release, in the studies kept as the record
 
 **Reach (structure, from the store's log).** Every study listed had rows that took a path stored for different settings: the price rule, 13 of 16 rows on every seed (each capacity-rule row took the no-programme row's pat
 
-Sections (line): 1. The stored no-programme supply path (fixed in 5 · 2. The recession-slack reading 23 · 3. A second carry-over between runs, found by th 27 · 4. The ESP pool with no wage weight (fixed in v5 31 · 5. Not audited in this session 35
+Sections (line): 1. The stored no-programme supply path (fixed in 5 · 2. The recession-slack reading 23 · 3. A second carry-over between runs, found by th 33 · 4. The ESP pool with no wage weight (fixed in v5 37 · 5. Not audited in this session 41
 
 ## 2026-11-26-s103-plan.md (41 lines)
 Audit plan: two defects fixed before the release, in the studies kept as the record
@@ -337,7 +337,7 @@ Sections (line): Items 7 · What changes now 30
 - `nvidia-2026-11-20-s85-results/` (folder, 4 files)
 - `openrouter-2026-11-20-s85-part4/` (folder, 5 files)
 - `refine/` (folder, 9 files)
-- `s103/` (folder, 9 files)
+- `s103/` (folder, 12 files)
 - `s46-followup/` (folder, 3 files)
 - `s87-part2-reading/` (folder, 4 files)
 - `s87-reading/` (folder, 4 files)
