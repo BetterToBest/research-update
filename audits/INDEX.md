@@ -229,6 +229,13 @@ No figure changes.
 
 Sections (line): Triage 22 · What this means 49
 
+## 2026-11-26-s93-part5.md (105 lines)
+The release on the Hub and the root site (Nov 23-26, 2026)
+
+The last part of the release step (S93 part 5, checklist item F10).
+
+Sections (line): What landed 5 · 1. The Hub's generated blocks 15 · 2. The history page (US policy eras) 28 · 3. The corrections log 70 · 4. The root indexes 74 · 5. The findings page's history note 83 · Checks run 93 · The history study's report 97 · Left for later steps 101
+
 ## 2026-11-engine-round-2.md (41 lines)
 Engine round 2: six improvements after S39 and S55 (Nov 9, 2026)
 
