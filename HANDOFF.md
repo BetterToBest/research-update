@@ -1,39 +1,37 @@
-# Handoff (Nov 26, 2026): S93 done (part 5, F10: the Hub and the root site on the release)
+# Handoff (Nov 26, 2026): S103 part 1 done (the record studies' audit for the defects fixed before the release)
 
 ## Step status
-**S93 is done.** Part 5 landed:
-- the Hub's figures on the release v5.9.23;
-- the history page rerun;
-- the root indexes;
-- the findings page's history note.
+**S103 part 1 is done; part 2 waits for compassionism-sim-results**, which GitHub has disabled (Duke, Nov 26: a terms-of-service matter; his ticket to restore it is open). `add_repo` refuses it, and anonymous reads return 404. **S102** (sonnet, medium) can start now.
 
-Record: `audits/2026-11-26-s93-part5.md`. **Next: S103** (opus, high: the audit of the folders kept as the record for the two fixed engine defects) **or S102** (sonnet, medium: the Hub claims ledger rebuild, which now classes the release figures once). Neither waits on the other.
+Record: `audits/2026-11-26-s103-audit.md`. Plan with two dated changes: `audits/2026-11-26-s103-plan.md`. Tools: `audits/s103/`.
+
+## What part 1 found (the six studies whose jobs are in compassionism-simulation `dev/tools/`)
+Studies: the price rule, its derivation, bargaining, PTF realism, the government account, participation.
+- **The stored supply path** (v5.9.22). Every study had rows that took another row's stored path. With the key backported to each study's own engine and every seed rerun, every published table is unchanged. None of these studies uses the setting that moves a no-programme path (pay by household type).
+- **The ESP pool with no wage** (v5.9.23). No year reached in any study (seeds 1-2, every environment; the detector was checked against a control).
+- **The recession-slack reading.** On the price-rule study's engine it binds only in Adverse seed 39 and Stress seeds 39 and 70 (at most 0.28% on the year-20 level), as its report says. On the release engine it binds nowhere. A bisect shows the cause is the private price at the sale (`69e8953`), not the store; the v5.9.22 test note said otherwise. The unit test asserts the reading again at the lagged price.
+- **A third defect, found by the audit.** Before `df9cfbe` the mechanisms' per-run state was not emptied between runs. It moves PTF realism's capacity-test row (`tCap`) slightly: food factor 2.59 to 2.61, cost +$4 to +$7 per adult-year, no sign or rule changes. Corrected tables sit beside the published ones. The other three studies on engines before the reset are identical.
 
 ## What shipped
-- research-hub PR 41 (merged `2911aa5`):
-  - **Generated blocks.** Rebuilt from the snapshot `data/releases/v5.9.23-release2.json`, fetched at `d1f5bf4` with `--release v5.9.23`. `--check` passes. Full backing 0.00-0.19; mechanism 0.2-19.5% backed and 15.5-50.3 points a year; break-even 75-90%; opt-in −20.3 points (36.4% to 16.0%). Four PDFs rebuilt.
-  - **The history page** (`us-policy-eras.html`), from `s75-eras-50bc51d`. `tools/build_s75_eras.py SIM [TABLES]` now builds the settings table too. **One finding changed:** the full-coverage design lengthens recovery from an income shock in every era (0.22-0.83 years). That gives 210 of 240 cells kept and 30 reversals (6 favourable, 24 not). The central-bank study's release rerun agrees (+0.36 years), so this is a change between engines, not eras. A dated note lists every changed figure.
-  - The θ note on the front page and the research summary names v5.9.23.
-  - A corrections-log entry.
-- bettertobest.github.io PR 10 (merged `1d450f0`): the four entries PR 9 left at 5.9.1 now say 5.9.23.
-- compassionism-simulation PR 189 (branch `claude/s93-history-sentence`, head `564986f`):
-  - the findings page's "being rerun" sentence (it was in `index.html:453`, not `site/cb.js`);
-  - a dated note on `dev/reports/s75-deep-history.md`.
-- research-update (this session's PR): the record, the PLAN note and this handoff.
+- compassionism-simulation PR 189 (the history-page note from S93) merged (`084cdd9`).
+- compassionism-simulation PR 190 (branch `claude/s103-record-notes`):
+  - dated notes on the six reports;
+  - `dev/runs/s62-ptf-ops/tables-run-state-corrected.md`;
+  - the slack unit test;
+  - a DECISIONS.md entry.
+- research-update PR 221 (branch `claude/s103-record-audit`): the plan, the record, the tools, the PLAN note and this handoff.
 
 ## In flight
-PR 189's CI was running (about 12 minutes, started 15:22 and restarted after the second push). If it is not merged when you start, check its runs, then merge it with the 40-character head from `git ls-remote origin refs/heads/claude/s93-history-sentence`.
+PR 190's CI was running at the end of the session. Local: domtest 162/162, reader codes 0, price-rule suite 17/17. If it is not merged when you start, check its runs, then merge with the 40-character head from `git ls-remote origin refs/heads/claude/s103-record-notes`.
 
 ## Decisions waiting
-- Carried from part 3, a ledger decision with a default: section C1's preregistered swing measure failed below full backing for a known reason (it counts steady growth). Amendment 5 replaced it after the failure. Default: the figures below full backing are published from the release engine with both measures and the post-hoc label. The page carries that label. Duke may instead hold them (section C4).
+- Carried from S93 part 3, a ledger decision with a default: section C1's preregistered swing measure failed below full backing for a known reason (it counts steady growth). Amendment 5 replaced it after the failure. Default: the figures below full backing are published from the release engine with both measures and the post-hoc label. The page carries that label. Duke may instead hold them (section C4).
 - D34 (version): **v5.9.23**. Record it on D34 at `/end-session` if not yet done.
+- New, not a decision: the results repository must be restored before S103 part 2 (and any step that reads or writes results).
 
 ## Next step
-**S103** (PLAN.md section "S103"). It audits two defects fixed before the release, in the studies kept as the record:
-- the stored no-programme supply path (v5.9.22);
-- the payroll pool with no wage weight (v5.9.23).
-
-It also covers the capacity rule's recession-slack reading on its own path. **S102** can run in any session: `tools/class_claims.py` rewrites `data/claims.csv` wholesale, so review the new rows' classes.
+- **S102** (PLAN.md section "S102"): the Hub claims ledger rebuild. `tools/class_claims.py` rewrites `data/claims.csv` wholesale, so review the new rows' classes.
+- **S103 part 2**, once the results repository is back: PLAN.md section "S103", paragraph "Part 2". Order: the round-2 readings on `104691f`, the supply study's folders, part F's bound points, the round-2 screen, then the round-1 and v5.x studies (which also need the per-run reset).
 
 ## Standing rules (permanent: copy this section word for word on every rewrite)
 **Reader text carries no internal labels. Write it right the first time; don't wait for the reader-codes check to catch it.** Fixing each failure afterwards has slowed every step that touches a report.
@@ -96,3 +94,10 @@ It also covers the capacity rule's recession-slack reading on its own path. **S1
 - `s93_page_check.js` pairs only figures printed in both renders; a cell the published page did not print (the wage reading at 40 years) appears in its section 7, not in the sign-change list.
 - After merging a results PR, the local `origin/main` of the shallow results clone is stale: `git fetch --depth=1 origin main` before branching from it.
 - A remote branch delete through the proxy can fail ("remote end hung up"); the stray branch `claude/s93-part4-continued` in research-update is this session's and points at a merged commit.
+- compassionism-sim-results was disabled by GitHub on or before Nov 26 (Duke: a terms-of-service matter; ticket open). `list_repos` shows `"disabled": true`; `add_repo` says "not found"; raw files return 404. Wait for it; do not reconstruct its contents.
+- A public repository can be cloned anonymously through the git proxy without attaching it (`add_repo` with access "read" says so; `GIT_LFS_SKIP_SMUDGE=1`). Pushing still needs access "push".
+- An old engine in a scratch folder (`git archive COMMIT index.html harness.js package.json data dev/tools`) runs its own job scripts, but `runManifest()` has no commit there. Table tools that print it fail; `audits/s103/setcommit.py SHA FILES` writes it in.
+- The S103 patches (`audits/s103/patch.py`, `patch_esp.py`, `patch_reset.py`) are reporting-only switches; with every switch off the engine reproduced the price-rule study's tables byte for byte. Apply them to a scratch copy, never to a checkout.
+- Before `df9cfbe` (Nov 14) the mechanisms' per-run state carried over between runs in one process. A row's year-0 reads (PTF's capacity test reads `PDS`) can depend on the run before it, even with the store key fixed. Use `S103_RESET=1` when comparing.
+- A shell wait loop `while pgrep -f 'PATTERN'` inside `bash -c "...PATTERN..."` matches itself and never ends. Wait on a pid (`kill -0 PID`) instead.
+- The government study's published `tables.md` includes the frontier without the weighted tail, which only the current `dev/tools/s72_table.js` prints (the engines' own copies do not). The bargaining study's published tables renamed twelve row labels after its engine.
