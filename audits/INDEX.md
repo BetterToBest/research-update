@@ -229,12 +229,12 @@ No figure changes.
 
 Sections (line): Triage 22 · What this means 49
 
-## 2026-11-26-s103-plan.md (39 lines)
+## 2026-11-26-s103-plan.md (41 lines)
 Audit plan: two defects fixed before the release, in the studies kept as the record
 
 1.
 
-Sections (line): The two defects 5 · Which studies (kept as the record, not rerun at  9 · Method 23 · What follows 34
+Sections (line): The two defects 5 · Which studies (kept as the record, not rerun at  9 · Method 23 · What follows 36
 
 ## 2026-11-26-s93-part5.md (105 lines)
 The release on the Hub and the root site (Nov 23-26, 2026)
@@ -330,7 +330,7 @@ Sections (line): Items 7 · What changes now 30
 - `nvidia-2026-11-20-s85-results/` (folder, 4 files)
 - `openrouter-2026-11-20-s85-part4/` (folder, 5 files)
 - `refine/` (folder, 9 files)
-- `s103/` (folder, 3 files)
+- `s103/` (folder, 9 files)
 - `s46-followup/` (folder, 3 files)
 - `s87-part2-reading/` (folder, 4 files)
 - `s87-reading/` (folder, 4 files)
