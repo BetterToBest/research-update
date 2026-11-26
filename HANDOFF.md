@@ -14,15 +14,15 @@ Studies: the price rule, its derivation, bargaining, PTF realism, the government
 
 ## What shipped
 - compassionism-simulation PR 189 (the history-page note from S93) merged (`084cdd9`).
-- compassionism-simulation PR 190 (branch `claude/s103-record-notes`):
+- compassionism-simulation PR 190 (merged `e8da605`):
   - dated notes on the six reports;
   - `dev/runs/s62-ptf-ops/tables-run-state-corrected.md`;
   - the slack unit test;
   - a DECISIONS.md entry.
-- research-update PR 221 (branch `claude/s103-record-audit`): the plan, the record, the tools, the PLAN note and this handoff.
+- research-update PR 221 (merged): the plan, the record, the tools, the PLAN note and this handoff.
 
 ## In flight
-PR 190's CI was running at the end of the session. Local: domtest 162/162, reader codes 0, price-rule suite 17/17. If it is not merged when you start, check its runs, then merge with the 40-character head from `git ls-remote origin refs/heads/claude/s103-record-notes`.
+Nothing. compassionism-simulation PR 190 merged (`e8da605`; CI passed); research-update PR 221 merged.
 
 ## Decisions waiting
 - Carried from S93 part 3, a ledger decision with a default: section C1's preregistered swing measure failed below full backing for a known reason (it counts steady growth). Amendment 5 replaced it after the failure. Default: the figures below full backing are published from the release engine with both measures and the post-hoc label. The page carries that label. Duke may instead hold them (section C4).
