@@ -229,6 +229,13 @@ No figure changes.
 
 Sections (line): Triage 22 · What this means 49
 
+## 2026-11-26-s103-audit.md (38 lines)
+Audit record: two defects fixed before the release, in the studies kept as the record
+
+**Reach (structure, from the store's log).** Every study listed had rows that took a path stored for different settings: the price rule, 13 of 16 rows on every seed (each capacity-rule row took the no-programme row's pat
+
+Sections (line): 1. The stored no-programme supply path (fixed in 5 · 2. The recession-slack reading 23 · 3. A second carry-over between runs, found by th 27 · 4. The ESP pool with no wage weight (fixed in v5 31 · 5. Not audited in this session 35
+
 ## 2026-11-26-s103-plan.md (41 lines)
 Audit plan: two defects fixed before the release, in the studies kept as the record
 
