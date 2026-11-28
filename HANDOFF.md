@@ -1,7 +1,7 @@
-# Handoff (Nov 28, 2026): S106 part 3 (the results home): Zenodo published; OSF copy waits for Duke
+# Handoff (Nov 28, 2026): S106 done: Zenodo published and copied to OSF
 
 ## Step status
-**S106 parts 1-2 done; the record is published.** Zenodo record 10.5281/zenodo.24615619 (concept DOI 10.5281/zenodo.24615618) was published Nov 28 (checked on zenodo.org: status published, 60 files). Verified before: every archive and every folder's own `SHA256SUMS`. Tool, manifest and CI check merged. **Remains (part 3):** the OSF copy (OSF read works; a write is untested), then the DOI into the reports and dated notes (S110). Kaggle write untested.
+**S106 parts 1-2 done; the record is published.** Zenodo record 10.5281/zenodo.24615619 (concept DOI 10.5281/zenodo.24615618) was published Nov 28 (checked on zenodo.org: status published, 60 files). Verified before: every archive and every folder's own `SHA256SUMS`. Tool, manifest and CI check merged. **OSF copy done:** all 60 files are in public project `7v5ur` (folder `zenodo-24615619`, https://osf.io/7v5ur/), each checked (OSF MD5 equals Zenodo's); OSF's file host needed its own credential (saved on the environment); OSF's API cannot create projects. The manifest entry is compassionism-simulation [PR 192](https://github.com/BetterToBest/compassionism-simulation/pull/192) (**open: merge when `checks` pass**). **Remains:** the DOI into the reports (S110).
 **The job scripts were recovered** (`runner.tar.gz` in the record): the Nov 27 note was wrong. 55 results folders are in; 47 of the 60 release folders. Missing: 13 release folders, the visual suite, the table folders, 95 older cited names (`audits/2026-11-28-s106-inventory.md`). Later folders go in as new versions (`deposit.py newversion`, `upload`).
 
 ## What shipped
@@ -16,7 +16,7 @@ Nothing computing.
 - I22: reopen old sessions for the 13 missing release folders (optional: they can be rebuilt).
 
 ## Next step
-**S108** (opus, high): unpack `runner.tar.gz` (from the record) into compassionism-simulation `runner/`, check each script on seeds 1-5 against the published tables, fix what fails. Free. Also open: S106 part 3, S110, S102, S109.
+**S108** (opus, high): unpack `runner.tar.gz` (from the record) into compassionism-simulation `runner/`, check each script on seeds 1-5 against the published tables, fix what fails. Free. Also open: S110, S102, S109.
 
 ## Standing rules (permanent: copy this section word for word on every rewrite)
 **Reader text carries no internal labels. Write it right the first time; don't wait for the reader-codes check to catch it.** Fixing each failure afterwards has slowed every step that touches a report.
