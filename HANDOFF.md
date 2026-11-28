@@ -1,23 +1,22 @@
 # Handoff (Nov 28, 2026): S106 part 3 (the results home): Zenodo published; OSF copy waits for Duke
 
 ## Step status
-**S106 mostly done.** Duke published the Zenodo record (D42 answered by doing it): DOI [10.5281/zenodo.24615619](https://doi.org/10.5281/zenodo.24615619) (concept DOI 10.5281/zenodo.24615618), CC BY 4.0, 60 files, Nov 28. The manifest now says `published` (compassionism-simulation PR 191, pushed Nov 28; its CI restarted after the push). **Remains:** the OSF copy and DOI into the reports (S110). **OSF refuses new projects and components through its API** ("Project creation is currently disabled", HTTP 405, tested on a new project and a component of project 7v5ur); an upload into an existing project was not tried. Decision D43 (below).
-**The job scripts were recovered** (`runner.tar.gz` in the record): 55 results folders are in; 47 of the 60 release folders. Missing: 13 release folders, the visual suite, the table folders, 95 older cited names (`audits/2026-11-28-s106-inventory.md`).
+**S106 parts 1-2 done; the record is published.** Zenodo record 10.5281/zenodo.24615619 (concept DOI 10.5281/zenodo.24615618) was published Nov 28 (checked on zenodo.org: status published, 60 files). Verified before: every archive and every folder's own `SHA256SUMS`. Tool, manifest and CI check merged. **Remains (part 3):** the OSF copy (OSF read works; a write is untested), then the DOI into the reports and dated notes (S110). Kaggle write untested.
+**The job scripts were recovered** (`runner.tar.gz` in the record): the Nov 27 note was wrong. 55 results folders are in; 47 of the 60 release folders. Missing: 13 release folders, the visual suite, the table folders, 95 older cited names (`audits/2026-11-28-s106-inventory.md`). Later folders go in as new versions (`deposit.py newversion`, `upload`).
 
 ## What shipped
-- research-update PR 226 (merged): inventory, plan, handoff.
-- compassionism-simulation [PR 191](https://github.com/BetterToBest/compassionism-simulation/pull/191): deposit tool, manifest (record now published), CI check. **Open at session end; merge it when `checks` pass** (the last push restarted them; `deposit.py check` passes locally). If red, the new step is `deposit.py check` in `checks.yml`.
+- research-update PRs [226](https://github.com/BetterToBest/research-update/pull/226) `3f03433`, [227](https://github.com/BetterToBest/research-update/pull/227) `efd6ac0`: inventory, plan, handoff.
+- compassionism-simulation [PR 191](https://github.com/BetterToBest/compassionism-simulation/pull/191), merged `6c5d72c`: `dev/tools/deposit.py`, `data/results-manifest.json`, CI check. A second commit on it (manifest status "published") was not made by this session; Zenodo confirmed the record is published, so it stands.
 
 ## In flight
 Nothing computing.
 
 ## Decisions waiting
-- **D43 (new):** the OSF copy. Claude cannot create an OSF project (API disabled). Either Duke creates an empty public project on osf.io (title "Compassionism Simulation: study results (copy of Zenodo 10.5281/zenodo.24615619)") and gives its id, or approves uploading into the existing private project `7v5ur` (Simulation Replication). Default: no OSF copy; Zenodo alone is the record.
 - D40 (where big studies run; Kaggle, Oracle, RunPod candidates; ledger I22). S107 waits.
 - I22: reopen old sessions for the 13 missing release folders (optional: they can be rebuilt).
 
 ## Next step
-**S108** (opus, high): unpack `runner.tar.gz` from the draft into compassionism-simulation `runner/`, check each script on seeds 1-5 against the published tables, fix what fails. Free; the session machine. Also open: S106's OSF copy (D43), S110 (DOI into the reports; can start now), S102, S109.
+**S108** (opus, high): unpack `runner.tar.gz` (from the record) into compassionism-simulation `runner/`, check each script on seeds 1-5 against the published tables, fix what fails. Free. Also open: S106 part 3, S110, S102, S109.
 
 ## Standing rules (permanent: copy this section word for word on every rewrite)
 **Reader text carries no internal labels. Write it right the first time; don't wait for the reader-codes check to catch it.** Fixing each failure afterwards has slowed every step that touches a report.
@@ -87,5 +86,5 @@ Nothing computing.
 - Before `df9cfbe` (Nov 14) the mechanisms' per-run state carried over between runs in one process. A row's year-0 reads (PTF's capacity test reads `PDS`) can depend on the run before it, even with the store key fixed. Use `S103_RESET=1` when comparing.
 - A shell wait loop `while pgrep -f 'PATTERN'` inside `bash -c "...PATTERN..."` matches itself and never ends. Wait on a pid (`kill -0 PID`) instead.
 - The government study's published `tables.md` includes the frontier without the weighted tail, which only the current `dev/tools/s72_table.js` prints (the engines' own copies do not). The bargaining study's published tables renamed twelve row labels after its engine.
-- The Zenodo draft's `runner.tar.gz` is not in either `SHA256SUMS` list; its hash is in the manifest. Publishing through `deposit.py publish --yes` was refused by the auto-mode classifier: Duke publishes on the web page.
+- The Zenodo draft's `runner.tar.gz` is not in either `SHA256SUMS` list; its hash is in the manifest. Publishing through `deposit.py publish --yes` was refused by the auto-mode classifier; Duke published on the web page.
 - `deposit.py check` scans `data/`, reports, README-type docs and pages for names like `r2-m-ref-20-50bc51d`; a new citation of a folder not in the manifest fails CI. Record deliberate gaps with `check --record-missing`.
