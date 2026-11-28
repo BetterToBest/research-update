@@ -1,23 +1,23 @@
-# Handoff (Nov 28, 2026): S106 parts 1-2 (the results home); Zenodo publish waits for Duke
+# Handoff (Nov 28, 2026): S106 part 3 (the results home): Zenodo published; OSF copy waits for Duke
 
 ## Step status
-**S106 partly done.** Done: the recovered Zenodo draft 24615619 verified (every archive and every folder's own `SHA256SUMS`), inventory, `dev/tools/deposit.py`, `data/results-manifest.json`, CI check, draft metadata (CC BY 4.0, creator Duke Johnson), README and manifest uploaded to the draft. **Remains:** Duke presses Publish (the permission classifier refused Claude's publish call; DOI reserved 10.5281/zenodo.24615619), then part 3: OSF copy, manifest status `published`, DOI into the reports (S110). OSF read and Zenodo write work; an OSF write and Kaggle write are untested.
-**The job scripts were recovered** (`runner.tar.gz` in the draft): the Nov 27 note was wrong. 55 results folders are in; 47 of the 60 release folders. Missing: 13 release folders, the visual suite, the table folders, 95 older cited names (`audits/2026-11-28-s106-inventory.md`).
+**S106 mostly done.** Duke published the Zenodo record (D42 answered by doing it): DOI [10.5281/zenodo.24615619](https://doi.org/10.5281/zenodo.24615619) (concept DOI 10.5281/zenodo.24615618), CC BY 4.0, 60 files, Nov 28. The manifest now says `published` (compassionism-simulation PR 191, pushed Nov 28; its CI restarted after the push). **Remains:** the OSF copy and DOI into the reports (S110). **OSF refuses new projects and components through its API** ("Project creation is currently disabled", HTTP 405, tested on a new project and a component of project 7v5ur); an upload into an existing project was not tried. Decision D43 (below).
+**The job scripts were recovered** (`runner.tar.gz` in the record): 55 results folders are in; 47 of the 60 release folders. Missing: 13 release folders, the visual suite, the table folders, 95 older cited names (`audits/2026-11-28-s106-inventory.md`).
 
 ## What shipped
-- research-update [PR 226](https://github.com/BetterToBest/research-update/pull/226), merged `3f03433`: inventory, plan, handoff.
-- compassionism-simulation [PR 191](https://github.com/BetterToBest/compassionism-simulation/pull/191): deposit tool, manifest, CI check. **Open at session end** (its CI was still running, the guard job green). Merge it when `checks` pass; if red, the new step is `deposit.py check` in `checks.yml`.
+- research-update PR 226 (merged): inventory, plan, handoff.
+- compassionism-simulation [PR 191](https://github.com/BetterToBest/compassionism-simulation/pull/191): deposit tool, manifest (record now published), CI check. **Open at session end; merge it when `checks` pass** (the last push restarted them; `deposit.py check` passes locally). If red, the new step is `deposit.py check` in `checks.yml`.
 
 ## In flight
-Nothing computing. Zenodo draft 24615619 is complete and unpublished.
+Nothing computing.
 
 ## Decisions waiting
-- **D42:** publish the Zenodo draft (permanent; files verified). Default: stays a draft; part 3 waits.
+- **D43 (new):** the OSF copy. Claude cannot create an OSF project (API disabled). Either Duke creates an empty public project on osf.io (title "Compassionism Simulation: study results (copy of Zenodo 10.5281/zenodo.24615619)") and gives its id, or approves uploading into the existing private project `7v5ur` (Simulation Replication). Default: no OSF copy; Zenodo alone is the record.
 - D40 (where big studies run; Kaggle, Oracle, RunPod candidates; ledger I22). S107 waits.
 - I22: reopen old sessions for the 13 missing release folders (optional: they can be rebuilt).
 
 ## Next step
-**S108** (opus, high): unpack `runner.tar.gz` from the draft into compassionism-simulation `runner/`, check each script on seeds 1-5 against the published tables, fix what fails. Free; the session machine. Also open: S106 part 3 (after the publish), S102, S109.
+**S108** (opus, high): unpack `runner.tar.gz` from the draft into compassionism-simulation `runner/`, check each script on seeds 1-5 against the published tables, fix what fails. Free; the session machine. Also open: S106's OSF copy (D43), S110 (DOI into the reports; can start now), S102, S109.
 
 ## Standing rules (permanent: copy this section word for word on every rewrite)
 **Reader text carries no internal labels. Write it right the first time; don't wait for the reader-codes check to catch it.** Fixing each failure afterwards has slowed every step that touches a report.
