@@ -64,3 +64,7 @@ The repo compassionism-sim-results was disabled by GitHub. Do not try to fetch o
    Zenodo token: <paste here>. Upload runner/ first, then the smallest folders, largest last.
 4. Report the deposition id, the folders uploaded with their sizes, and anything that failed.
 ```
+
+## Recovery result and a compute candidate (Nov 27, evening)
+- Two S93 sessions still held sparse clones. 58 folders (56 tarballs, about 2.6 GiB compressed) are in Duke's unpublished Zenodo draft 24615619, with `SHA256SUMS` and `SHA256SUMS-20261128T043653Z.txt`. The job scripts were not recovered. Next: S106 part 1 (inventory and verify), then publish.
+- Kaggle (account `bettertobestresearch`) is a compute candidate for D40: free CPU notebooks with 4 cores and 16 GB, batch runs of up to 12 hours, 20 GB of saved output. Duke phone-verifies the account (internet in notebooks needs it) and creates an API token, best kept in the Claude Code environment's variables (`KAGGLE_USERNAME`, `KAGGLE_KEY`). S107 then tests one shard there: the guard test must match exactly, and Kaggle's terms must allow the use. The session machine reaches kaggle.com (checked Nov 27).
