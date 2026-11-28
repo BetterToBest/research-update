@@ -45,3 +45,22 @@ The studies are deterministic: the same engine commit, job and seeds give identi
 > I am not asking to run Actions in that repository again. I am asking for one of these: (a) the repository restored read-only, or archived, with Actions disabled, so I can download its contents once; or (b) an export of its contents (a git bundle or archive). The data back published, open-access research (CC BY 4.0) and its replication record. Once I have a copy I am happy for the repository to be deleted.
 >
 > Thank you for considering it.
+
+## Duke's answers and the next moves (Nov 27, later)
+- **D39:** Zenodo is the record (Duke's existing account, `AuthorDukeJohnson`); OSF holds a second copy. S106 builds the deposit tool for both.
+- **D41:** GitLab, not Codeberg (Codeberg restricts AI-generated code). Group `BetterToBest-group`, ID 148851118. S109 mirrors every repository into it.
+- **D40:** open. Duke is looking at other compute systems; S107 waits. Checked so far: RunPod has $4.03 prepaid (small runs only). Google AI Pro's cloud machine is Jules, a coding agent with daily task limits and a 20 GB VM, not batch compute; its Drive storage (2 TB or more) can hold a backup copy. Oracle Cloud Always Free is the best free candidate (2 Arm cores and 12 GB, about 1,400 core-hours a month; 4 cores and 24 GB reportedly on a pay-as-you-go account). Any platform's terms must allow long batch jobs, and the guard test must match exactly on its machine before any result from it is used. S107 builds the runner for any plain Linux VM, RunPod included.
+- **Reachable from the session machine (Nov 27):** zenodo.org, gitlab.com, codeberg.org.
+- **Recovery from old sessions (ledger I22).** Each Claude Code session has its own machine; a recent one may still hold its sparse clone of the results repository. The S93 sessions (Nov 21-26) checked out the release folders (about 6.5 GB); S103's never had a clone. Duke reopens them, newest first (then S92, S85, S82), and pastes the prompt below. Recovered data go to an unpublished Zenodo draft, never back to GitHub (re-hosting a disabled repository's contents there could look like evading the enforcement). S108 then checks anything recovered against the published tables and uses recovered job scripts in place of rebuilding them.
+
+```
+The repo compassionism-sim-results was disabled by GitHub. Do not try to fetch or push to it.
+1. Check whether a clone of it exists on this machine (find / -maxdepth 4 -type d -name "compassionism-sim-results*" 2>/dev/null).
+   If none, say so and stop.
+2. If found: list the checked-out folders with sizes (du -sh), whether runner/ and runner/jobs/ are present,
+   and `git -C <clone> log -1 --format='%H %cd'`.
+3. For each folder: tar.gz it, write a SHA256SUMS of the archives, and upload them to a NEW Zenodo
+   deposition as an unpublished draft (do not publish), title "compassionism-sim-results recovery, <date>".
+   Zenodo token: <paste here>. Upload runner/ first, then the smallest folders, largest last.
+4. Report the deposition id, the folders uploaded with their sizes, and anything that failed.
+```
