@@ -5,16 +5,16 @@
 
 Every published figure, report, table and preregistration is safe in the other repositories. What is lost is inside the disabled repository: the per-seed folders, the job scripts (`runner/jobs/*.js`), the `run-study` workflow, the BeforeIT module and NEEC's outside-review result files. The studies are deterministic, so the folders can be rebuilt once their job scripts are.
 
-## Decisions waiting (ledger H)
-- **D39**, the results home. Default: Zenodo deposits with a DOI; git keeps the manifest and hashes.
-- **D40**, where heavy runs go. Default: RunPod CPU pods, each paid batch costed in a ledger decision first.
-- **D41**, the mirror host. Default: Codeberg.
+## Decisions (ledger H)
+- **Answered Nov 27:** D39, Zenodo (Duke's account `AuthorDukeJohnson`) plus an OSF copy; D41, GitLab group `BetterToBest-group` (ID 148851118).
+- **Open:** D40, where big studies run. Duke is looking at options (ledger I22; candidates in the record's last section). S107 waits.
+- **Ledger I22:** Duke tries the old sessions for a surviving clone of the results repository, with the prompt in the record's last section.
 - Carried: the D34 record (v5.9.23) and the below-full-backing swing measure (S93 part 3), as before.
 
 ## Next step
 - **S108** (opus, high): rebuild the job scripts S103 part 2 needs, each checked on seeds 1-5 against the published tables (PLAN.md section "S108"). Free; the session machine.
 - **S102** (sonnet, medium) can run any time.
-- **S106** and **S107** once Duke has answered D39 and D40 and created the accounts. Then S103 part 2 runs on RunPod.
+- **S106** (Zenodo and OSF) and **S109** (GitLab mirrors) can start. **S107** waits for D40. Then S103 part 2 runs on the chosen machine.
 - **S105** (Duke): send the ticket. **S109**, **S110** after.
 
 ## Standing rules (permanent: copy this section word for word on every rewrite)
