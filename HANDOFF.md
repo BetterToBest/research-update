@@ -1,21 +1,19 @@
-# Handoff (Nov 27, 2026): S104 done (the results repository disabled; no study computing on GitHub Actions)
+# Handoff (Nov 28, 2026): S106 part 1 done; the recovered draft is verified and waits for Duke to publish
 
 ## Step status
-**GitHub disabled compassionism-sim-results** (Nov 26, a terms-of-service matter, no reason given). Duke found no copy in the public archives (Nov 27). The likely cause is the study batches run on GitHub-hosted Actions runners. **S104 is done**: from now on no study, batch or analysis computing runs on Actions in any repository (CLAUDE.md, Landing work). Record, rules, plan and the ticket text: `audits/2026-11-27-results-repo-disabled.md`.
-
-Every published figure, report, table and preregistration is safe in the other repositories. What is lost is inside the disabled repository: the per-seed folders, the job scripts (`runner/jobs/*.js`), the `run-study` workflow, the BeforeIT module and NEEC's outside-review result files. The studies are deterministic, so the folders can be rebuilt once their job scripts are.
+**S106 (the results home), parts 1-2 done; the publish click is Duke's.** The Zenodo draft 24615619 (58 files) was downloaded and checked: every archive equals its listed SHA-256 and Zenodo's MD5, and every results folder inside passes its own `SHA256SUMS`. It holds 55 results folders (47 of the 60 release-engine rerun folders) **and `runner.tar.gz`: the job scripts were recovered after all** (the Nov 27 note saying they were not was wrong). Claude set the draft's metadata (CC BY 4.0, creator Duke Johnson, links to the repositories) and uploaded `README.md` and `results-manifest.json`. **Publishing was refused by the permission classifier, so Duke presses Publish** on the draft at zenodo.org (Upload, the draft, "Publish"; the DOI is already reserved: 10.5281/zenodo.24615619). Inventory, the 13 missing release folders and the sessions to reopen: `audits/2026-11-28-s106-inventory.md`.
+Tool and manifest: compassionism-simulation PR 191 (`dev/tools/deposit.py`, `data/results-manifest.json`, a CI check that every cited folder is deposited or listed as not deposited). OSF read access checked (account answers); the OSF copy waits for the publish. Kaggle: a read request answered 200 (empty list), write untested.
 
 ## Decisions (ledger H)
-- **Answered Nov 27:** D39, Zenodo (Duke's account `AuthorDukeJohnson`) plus an OSF copy; D41, GitLab group `BetterToBest-group` (ID 148851118).
-- **Open:** D40, where big studies run. Duke is looking at options (ledger I22; candidates in the record's last section). S107 waits.
-- **Ledger I22:** Duke tries the old sessions for a surviving clone of the results repository, with the prompt in the record's last section.
+- **Answered Nov 27:** D39, Zenodo plus an OSF copy; D41, GitLab group `BetterToBest-group` (ID 148851118).
+- **Open:** D40, where big studies run (ledger I22, candidates in the Nov 27 record; Kaggle added as a candidate). S107 waits.
+- **New ask (Duke):** press Publish on Zenodo draft 24615619 (it is permanent; the files are verified). Then say so, and S106 part 3 (OSF copy, manifest status, DOI in the reports) runs.
 - Carried: the D34 record (v5.9.23) and the below-full-backing swing measure (S93 part 3), as before.
 
 ## Next step
-- **S108** (opus, high): rebuild the job scripts S103 part 2 needs, each checked on seeds 1-5 against the published tables (PLAN.md section "S108"). Free; the session machine.
-- **S102** (sonnet, medium) can run any time.
-- **S106** (Zenodo and OSF) and **S109** (GitLab mirrors) can start. **S107** waits for D40. Then S103 part 2 runs on the chosen machine.
-- **S105** (Duke): send the ticket. **S109**, **S110** after.
+- **S108** (opus, high): the job scripts are back (`runner.tar.gz` in the record; unpack beside the engine). Check each on seeds 1-5 against the published tables and fix what no longer runs, instead of rebuilding. Free; the session machine.
+- **S106 part 3** after the publish: OSF copy, status in the manifest, then S110 (links to DOIs).
+- **S102** (sonnet, medium) can run any time. **S109** (GitLab mirrors) can start. **S107** waits for D40. **S105** (Duke): send the ticket.
 
 ## Standing rules (permanent: copy this section word for word on every rewrite)
 **Reader text carries no internal labels. Write it right the first time; don't wait for the reader-codes check to catch it.** Fixing each failure afterwards has slowed every step that touches a report.
