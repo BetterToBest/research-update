@@ -250,6 +250,13 @@ The last part of the release step (S93 part 5, checklist item F10).
 
 Sections (line): What landed 5 · 1. The Hub's generated blocks 15 · 2. The history page (US policy eras) 28 · 3. The corrections log 70 · 4. The root indexes 74 · 5. The findings page's history note 83 · Checks run 93 · The history study's report 97 · Left for later steps 101
 
+## 2026-11-27-results-repo-disabled.md (48 lines)
+The results repository disabled by GitHub (Nov 26-27, 2026): cause, what survives, and the plan
+
+On or before Nov 26, GitHub disabled `BetterToBest/compassionism-sim-results` for a terms-of-service matter and gave no reason.
+
+Sections (line): What happened 3 · The likely cause (an inference; GitHub has not s 6 · What survives (other repositories) 11 · What is inside the disabled repository 17 · Standing rules from today 24 · Steps (ledger H) 30 · Draft ticket text for Duke (S105) 40
+
 ## 2026-11-engine-round-2.md (41 lines)
 Engine round 2: six improvements after S39 and S55 (Nov 9, 2026)
 

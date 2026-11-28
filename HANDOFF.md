@@ -1,37 +1,21 @@
-# Handoff (Nov 26, 2026): S103 part 1 done (the record studies' audit for the defects fixed before the release)
+# Handoff (Nov 27, 2026): S104 done (the results repository disabled; no study computing on GitHub Actions)
 
 ## Step status
-**S103 part 1 is done; part 2 waits for compassionism-sim-results**, which GitHub has disabled (Duke, Nov 26: a terms-of-service matter; his ticket to restore it is open). `add_repo` refuses it, and anonymous reads return 404. **S102** (sonnet, medium) can start now.
+**GitHub disabled compassionism-sim-results** (Nov 26, a terms-of-service matter, no reason given). Duke found no copy in the public archives (Nov 27). The likely cause is the study batches run on GitHub-hosted Actions runners. **S104 is done**: from now on no study, batch or analysis computing runs on Actions in any repository (CLAUDE.md, Landing work). Record, rules, plan and the ticket text: `audits/2026-11-27-results-repo-disabled.md`.
 
-Record: `audits/2026-11-26-s103-audit.md`. Plan with two dated changes: `audits/2026-11-26-s103-plan.md`. Tools: `audits/s103/`.
+Every published figure, report, table and preregistration is safe in the other repositories. What is lost is inside the disabled repository: the per-seed folders, the job scripts (`runner/jobs/*.js`), the `run-study` workflow, the BeforeIT module and NEEC's outside-review result files. The studies are deterministic, so the folders can be rebuilt once their job scripts are.
 
-## What part 1 found (the six studies whose jobs are in compassionism-simulation `dev/tools/`)
-Studies: the price rule, its derivation, bargaining, PTF realism, the government account, participation.
-- **The stored supply path** (v5.9.22). Every study had rows that took another row's stored path. With the key backported to each study's own engine and every seed rerun, every published table is unchanged. None of these studies uses the setting that moves a no-programme path (pay by household type).
-- **The ESP pool with no wage** (v5.9.23). No year reached in any study (seeds 1-2, every environment; the detector was checked against a control).
-- **The recession-slack reading.** On the price-rule study's engine it binds only in Adverse seed 39 and Stress seeds 39 and 70 (at most 0.28% on the year-20 level), as its report says. On the release engine it binds nowhere. A bisect shows the cause is the private price at the sale (`69e8953`), not the store; the v5.9.22 test note said otherwise. The unit test asserts the reading again at the lagged price.
-- **A third defect, found by the audit.** Before `df9cfbe` the mechanisms' per-run state was not emptied between runs. It moves PTF realism's capacity-test row (`tCap`) slightly: food factor 2.59 to 2.61, cost +$4 to +$7 per adult-year, no sign or rule changes. Corrected tables sit beside the published ones. The other three studies on engines before the reset are identical.
-
-## What shipped
-- compassionism-simulation PR 189 (the history-page note from S93) merged (`084cdd9`).
-- compassionism-simulation PR 190 (merged `e8da605`):
-  - dated notes on the six reports;
-  - `dev/runs/s62-ptf-ops/tables-run-state-corrected.md`;
-  - the slack unit test;
-  - a DECISIONS.md entry.
-- research-update PR 221 (merged): the plan, the record, the tools, the PLAN note and this handoff.
-
-## In flight
-Nothing. compassionism-simulation PR 190 merged (`e8da605`; CI passed); research-update PR 221 merged.
-
-## Decisions waiting
-- Carried from S93 part 3, a ledger decision with a default: section C1's preregistered swing measure failed below full backing for a known reason (it counts steady growth). Amendment 5 replaced it after the failure. Default: the figures below full backing are published from the release engine with both measures and the post-hoc label. The page carries that label. Duke may instead hold them (section C4).
-- D34 (version): **v5.9.23**. Record it on D34 at `/end-session` if not yet done.
-- New, not a decision: the results repository must be restored before S103 part 2 (and any step that reads or writes results).
+## Decisions waiting (ledger H)
+- **D39**, the results home. Default: Zenodo deposits with a DOI; git keeps the manifest and hashes.
+- **D40**, where heavy runs go. Default: RunPod CPU pods, each paid batch costed in a ledger decision first.
+- **D41**, the mirror host. Default: Codeberg.
+- Carried: the D34 record (v5.9.23) and the below-full-backing swing measure (S93 part 3), as before.
 
 ## Next step
-- **S102** (PLAN.md section "S102"): the Hub claims ledger rebuild. `tools/class_claims.py` rewrites `data/claims.csv` wholesale, so review the new rows' classes.
-- **S103 part 2**, once the results repository is back: PLAN.md section "S103", paragraph "Part 2". Order: the round-2 readings on `104691f`, the supply study's folders, part F's bound points, the round-2 screen, then the round-1 and v5.x studies (which also need the per-run reset).
+- **S108** (opus, high): rebuild the job scripts S103 part 2 needs, each checked on seeds 1-5 against the published tables (PLAN.md section "S108"). Free; the session machine.
+- **S102** (sonnet, medium) can run any time.
+- **S106** and **S107** once Duke has answered D39 and D40 and created the accounts. Then S103 part 2 runs on RunPod.
+- **S105** (Duke): send the ticket. **S109**, **S110** after.
 
 ## Standing rules (permanent: copy this section word for word on every rewrite)
 **Reader text carries no internal labels. Write it right the first time; don't wait for the reader-codes check to catch it.** Fixing each failure afterwards has slowed every step that touches a report.
@@ -94,7 +78,7 @@ Nothing. compassionism-simulation PR 190 merged (`e8da605`; CI passed); research
 - `s93_page_check.js` pairs only figures printed in both renders; a cell the published page did not print (the wage reading at 40 years) appears in its section 7, not in the sign-change list.
 - After merging a results PR, the local `origin/main` of the shallow results clone is stale: `git fetch --depth=1 origin main` before branching from it.
 - A remote branch delete through the proxy can fail ("remote end hung up"); the stray branch `claude/s93-part4-continued` in research-update is this session's and points at a merged commit.
-- compassionism-sim-results was disabled by GitHub on or before Nov 26 (Duke: a terms-of-service matter; ticket open). `list_repos` shows `"disabled": true`; `add_repo` says "not found"; raw files return 404. Wait for it; do not reconstruct its contents.
+- compassionism-sim-results was disabled by GitHub on or before Nov 26 (a terms-of-service matter; no archive copy). Do not try to reach it, and do not wait for it: rebuild what a step needs (S108) and deposit results (S106). The pitfalls above about the `run-study` workflow, shards on Actions and the sparse results clone are history: **never run a study on GitHub Actions again** (CLAUDE.md).
 - A public repository can be cloned anonymously through the git proxy without attaching it (`add_repo` with access "read" says so; `GIT_LFS_SKIP_SMUDGE=1`). Pushing still needs access "push".
 - An old engine in a scratch folder (`git archive COMMIT index.html harness.js package.json data dev/tools`) runs its own job scripts, but `runManifest()` has no commit there. Table tools that print it fail; `audits/s103/setcommit.py SHA FILES` writes it in.
 - The S103 patches (`audits/s103/patch.py`, `patch_esp.py`, `patch_reset.py`) are reporting-only switches; with every switch off the engine reproduced the price-rule study's tables byte for byte. Apply them to a scratch copy, never to a checkout.
