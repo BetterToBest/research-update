@@ -1,23 +1,23 @@
-# Handoff (Nov 28, 2026): S110 done (dated notes where pages link the disabled repository)
+# Handoff (Nov 28, 2026): S109 done (GitLab copies of every repository)
 
 ## Step status
-**S110 done** (edits made; two simulation PRs still waiting on checks, below). Every reader-visible mention of compassionism-sim-results now carries a dated note: the repository is offline, figures reproduce from the named engine commit (REPRODUCE.md), the deposit is DOI 10.5281/zenodo.24615619 (OSF copy 7v5ur). Root site has no links; NEEC mentions it only in STATE.md, handoffs and a runner script (not reader text), left alone. The old links stay in place (dead) beside the note; they are replaced by DOIs only where a folder is in the deposit (manifest).
-**S108 on hold (Duke, Nov 28):** wait for GitHub's answer on the disabled repository.
+**S109 done.** Eight public repositories are pull mirrors in GitLab group BetterToBest-group (ID 148851118), each `main` equal to GitHub's at 07:5x UTC Nov 28; GitLab shows them private because the group is private. `research-provenance` (private on GitHub, one commit, five zip files) was copied once through GitLab's commits API: a snapshot, it does not follow GitHub. compassionism-sim-results is not mirrored (disabled). Record: `audits/2026-11-28-gitlab-mirrors.md`. Optional second static host for the Hub waits on the Hub having its own domain.
+**S110 done** last session; **S108 on hold** (Duke, Nov 28): wait for GitHub's answer on the disabled repository.
 
 ## What shipped
-- research-hub [PR 42](https://github.com/BetterToBest/research-hub/pull/42): merged (`1a0c2aa`). Notes on the US policy eras and US money history pages and in corrections. The eras page's PDF was not rebuilt.
-- compassionism-simulation [PR 193](https://github.com/BetterToBest/compassionism-simulation/pull/193): **open**, `checks` still running (guard passed). Notes on 52 reports, five documents, compare and model-card pages, three site scripts. `reader_codes --check` passes; the unit tests were not run (text only).
-- compassionism-simulation [PR 192](https://github.com/BetterToBest/compassionism-simulation/pull/192): **open**, manifest's OSF entry; mergeable, checks about 12 minutes.
+- research-update: GitLab mirror record (`audits/2026-11-28-gitlab-mirrors.md`), PR below.
+- Last session's two compassionism-simulation PRs were not touched this session: [PR 192](https://github.com/BetterToBest/compassionism-simulation/pull/192) (manifest's OSF entry) and [PR 193](https://github.com/BetterToBest/compassionism-simulation/pull/193) (dated notes where pages link the disabled repository). Both were open with `checks` running.
 
 ## In flight
-Nothing computing. Merge PRs 192 and 193 when `checks` pass (next session's first action).
+Nothing computing. Merge compassionism-simulation PRs 192 and 193 when `checks` pass (first action next session; attach that repository with add_repo).
 
 ## Decisions waiting
 - D40 (where big studies run). S107 waits.
 - I22: reopen old sessions for the 13 missing release folders: optional; wait for GitHub first.
+- Duke: revoke the GitLab token (gitlab.com personal access tokens page); it is saved on this environment.
 
 ## Next step
-**S109** (sonnet, low): GitLab mirrors (D41). Then S102.
+**S102** (sonnet, medium): Hub claims ledger rebuilt and the WIR Bank figures sourced (the WIR part first). S107 waits on D40; S108 on hold.
 
 ## Standing rules (permanent: copy this section word for word on every rewrite)
 **Reader text carries no internal labels. Write it right the first time; don't wait for the reader-codes check to catch it.** Fixing each failure afterwards has slowed every step that touches a report.
@@ -92,3 +92,4 @@ Nothing computing. Merge PRs 192 and 193 when `checks` pass (next session's firs
 - OSF: `api.osf.io` reads and writes project metadata but refuses to create projects or components (405); file uploads go to `files.osf.io` (PUT `?kind=file&name=...`, folders `?kind=folder`), which has its own saved credential. The Zenodo-to-OSF copy script skips files already uploaded, so rerunning it is safe.
 - A branch pushed under another name than the local one trips the stop hook ("unpushed commits"): name the local branch as the remote one.
 - A merged PR can leave a later commit on its branch behind: check `git log origin/main` before assuming a pushed commit landed; branch from main for the missing change.
+- GitLab: `request_credential` saves a token for API calls only; git push over HTTPS to gitlab.com does not get it (Basic auth fails). Create mirrors with `POST /api/v4/projects` (`import_url`, `mirror=true`, `visibility=public`); a project in a private group comes out private. A private GitHub repository needs a GitHub token to pull-mirror: copy it through the commits API (base64 `actions`).
