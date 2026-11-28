@@ -1,26 +1,23 @@
-# Handoff (Nov 28, 2026): S106 done (results home: Zenodo record and OSF copy)
+# Handoff (Nov 28, 2026): S110 done (dated notes where pages link the disabled repository)
 
 ## Step status
-**S106 done.** Zenodo record 10.5281/zenodo.24615619 (concept DOI 10.5281/zenodo.24615618): published Nov 28, 60 files, CC BY 4.0. OSF copy: all 60 files in public project `7v5ur`, folder `zenodo-24615619` (https://osf.io/7v5ur/), each file's MD5 equal to Zenodo's. OSF's API cannot create projects; writing files needed a second credential for `files.osf.io` (saved on the environment). **Open:** the manifest's OSF entry is compassionism-simulation PR 192; merge it when `checks` pass (about 12 minutes from its push).
-**S108 on hold (Duke, Nov 28):** wait for GitHub's answer on the disabled repository before rebuilding anything or digging up old sessions.
+**S110 done** (edits made; two simulation PRs still waiting on checks, below). Every reader-visible mention of compassionism-sim-results now carries a dated note: the repository is offline, figures reproduce from the named engine commit (REPRODUCE.md), the deposit is DOI 10.5281/zenodo.24615619 (OSF copy 7v5ur). Root site has no links; NEEC mentions it only in STATE.md, handoffs and a runner script (not reader text), left alone. The old links stay in place (dead) beside the note; they are replaced by DOIs only where a folder is in the deposit (manifest).
+**S108 on hold (Duke, Nov 28):** wait for GitHub's answer on the disabled repository.
 
 ## What shipped
-- research-update PRs 226-230 (merged): inventory, plan, handoffs.
-- compassionism-simulation PR 191 (merged by another session, `6c5d72c`): deposit tool, manifest (record published), CI check.
-- compassionism-simulation [PR 192](https://github.com/BetterToBest/compassionism-simulation/pull/192): manifest records the OSF copy. **Open.**
+- research-hub [PR 42](https://github.com/BetterToBest/research-hub/pull/42): merged (`1a0c2aa`). Notes on the US policy eras and US money history pages and in corrections. The eras page's PDF was not rebuilt.
+- compassionism-simulation [PR 193](https://github.com/BetterToBest/compassionism-simulation/pull/193): **open**, `checks` still running (guard passed). Notes on 52 reports, five documents, compare and model-card pages, three site scripts. `reader_codes --check` passes; the unit tests were not run (text only).
+- compassionism-simulation [PR 192](https://github.com/BetterToBest/compassionism-simulation/pull/192): **open**, manifest's OSF entry; mergeable, checks about 12 minutes.
 
 ## In flight
-Nothing computing.
+Nothing computing. Merge PRs 192 and 193 when `checks` pass (next session's first action).
 
 ## Decisions waiting
-- D40 (where big studies run; Kaggle, Oracle, RunPod candidates). S107 waits.
-- I22: reopen old sessions for the 13 missing release folders: optional, and Duke says wait for GitHub first.
-
-## What S103 part 2 can and cannot do now
-The job scripts are recovered, so reruns are possible. The folders it compares against are mostly not in the record: engines `104691f` (round-2 readings), `aa2a4e0` (supply study) and `8b96cdd` (round-2 screen) are absent; the deposited round-2 and supply folders are on `50bc51d` and `ab11c05`. Without them a rerun can be checked against printed tables only, not per seed.
+- D40 (where big studies run). S107 waits.
+- I22: reopen old sessions for the 13 missing release folders: optional; wait for GitHub first.
 
 ## Next step
-**S110** (sonnet, medium): dated notes and the DOI where pages and reports link the disabled repository. Then S109 (GitLab mirrors), S102.
+**S109** (sonnet, low): GitLab mirrors (D41). Then S102.
 
 ## Standing rules (permanent: copy this section word for word on every rewrite)
 **Reader text carries no internal labels. Write it right the first time; don't wait for the reader-codes check to catch it.** Fixing each failure afterwards has slowed every step that touches a report.
