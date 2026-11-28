@@ -5,7 +5,7 @@
 **S110 done** last session; **S108 on hold** (Duke, Nov 28): wait for GitHub's answer on the disabled repository.
 
 ## What shipped
-- research-update: GitLab mirror record (`audits/2026-11-28-gitlab-mirrors.md`), PR below.
+- research-update: GitLab mirror record (`audits/2026-11-28-gitlab-mirrors.md`), [PR 233](https://github.com/BetterToBest/research-update/pull/233): **open**, its `links` check was queued; merge it when green (first action next session, with PRs 192 and 193).
 - Last session's two compassionism-simulation PRs were not touched this session: [PR 192](https://github.com/BetterToBest/compassionism-simulation/pull/192) (manifest's OSF entry) and [PR 193](https://github.com/BetterToBest/compassionism-simulation/pull/193) (dated notes where pages link the disabled repository). Both were open with `checks` running.
 
 ## In flight
