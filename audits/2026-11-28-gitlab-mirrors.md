@@ -1,6 +1,6 @@
 # GitLab mirrors of the BetterToBest repositories (S109, D41)
 
-Written Nov 28, 2026. Group: `BetterToBest-group` (ID 148851118). Status: **eight public mirrors created and checked Nov 28** (API call `POST /projects` with `import_url` and `mirror=true`, which GitLab.com accepted on this group; all eight `main` commits equal GitHub's). They are private on GitLab because the group is private. `research-provenance` (private on GitHub): empty GitLab project created, history not yet copied (git push over HTTPS needs a username and token that the proxy does not supply).
+Written Nov 28, 2026. Group: `BetterToBest-group` (ID 148851118). Status: **eight public mirrors created and checked Nov 28** (API call `POST /projects` with `import_url` and `mirror=true`, which GitLab.com accepted on this group; all eight `main` commits equal GitHub's). They are private on GitLab because the group is private. `research-provenance` (private on GitHub, one commit `d3d0f11`, five zip files): copied once through GitLab's commits API into a private GitLab project, so it is a snapshot and does not follow GitHub.
 
 ## Repositories to mirror
 Public: research-update, research-hub, compassionism-simulation, bettertobest.github.io, x-cents, NormativeEvaluation, portal, compassionate-meritocracy-plan.
