@@ -257,6 +257,13 @@ On or before Nov 26, GitHub disabled `BetterToBest/compassionism-sim-results` fo
 
 Sections (line): What happened 3 · The likely cause (an inference; GitHub has not s 6 · What survives (other repositories) 11 · What is inside the disabled repository 17 · Standing rules from today 24 · Steps (ledger H) 30 · Draft ticket text for Duke (S105) 40 · Duke's answers and the next moves (Nov 27, later 49 · Recovery result and a compute candidate (Nov 27, 68
 
+## 2026-11-28-gitlab-mirrors.md (43 lines)
+GitLab mirrors of the BetterToBest repositories (S109, D41)
+
+Written Nov 28, 2026.
+
+Sections (line): Repositories to mirror 5 · Important: the free tier has no pull mirror 10 · Option A: pull mirror (needs Premium, or a trial 13 · Option B: GitHub pushes to GitLab (free) 20 · Check each mirror has the latest commit 35
+
 ## 2026-11-28-s106-inventory.md (27 lines)
 S106 part 1: the recovered Zenodo draft, checked against what the published pages cite (Nov 28, 2026)
 
