@@ -257,6 +257,13 @@ On or before Nov 26, GitHub disabled `BetterToBest/compassionism-sim-results` fo
 
 Sections (line): What happened 3 · The likely cause (an inference; GitHub has not s 6 · What survives (other repositories) 11 · What is inside the disabled repository 17 · Standing rules from today 24 · Steps (ledger H) 30 · Draft ticket text for Duke (S105) 40 · Duke's answers and the next moves (Nov 27, later 49 · Recovery result and a compute candidate (Nov 27, 68
 
+## 2026-11-28-s106-inventory.md (27 lines)
+S106 part 1: the recovered Zenodo draft, checked against what the published pages cite (Nov 28, 2026)
+
+Zenodo draft 24615619 (Duke's account, unpublished) holds 58 files: 56 archives, `SHA256SUMS` and `SHA256SUMS-20261128T043653Z.txt`.
+
+Sections (line): What was checked 3 · Job scripts: recovered, after all 9 · Recovered (55 folders) 12 · Not recovered 16 · Sessions to reopen for the missing folders (ledg 22 · Next 25
+
 ## 2026-11-engine-round-2.md (41 lines)
 Engine round 2: six improvements after S39 and S55 (Nov 9, 2026)
 
